@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="L2J_EngineMods" default="dist" basedir=".">
+
+	<property name="workspace" location="${ant.file}/../.." />
+	
+	<target name="dist" depends="jar">
+		<copy todir="build/dist">
+			<fileset dir="dist">
+			</fileset>
+		</copy>
+		
+		<delete dir="build/classes"/>
+	</target>
+
+	<target name="jar" depends="compile" description="Create the jar file.">
+		<jar destfile="build/L2J_EngineMods.jar">
+			<fileset dir="build/classes" />
+			<manifest>
+				<attribute name="Main-Class" value="main.EngineModsManager" />
+				<attribute name="Class-Path" value="${manifest.libs}" />
+			</manifest>
+		</jar>
+	
+		<copy todir="build/dist/libs">
+			<fileset dir="build">
+				<include name="L2J_EngineMods.jar" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="compile" depends="init" description="Compile the source.">
+		<javac srcdir="src" classpathref="classpath" destdir="build/classes" fork="yes" debug="true" debuglevel="lines,vars,source" includeantruntime="false" />
+	</target>
+
+	<target name="init" depends="clean,checkRequirements" description="Create the output directories.">
+		<mkdir dir="build" />
+		<mkdir dir="build/classes" />
+		<mkdir dir="build/dist" />
+		<mkdir dir="build/dist/game" />
+	</target>	
+	
+	<target name="clean" description="Remove the output directories.">
+		<delete dir="build" />
+	</target>
+
+	<target name="checkRequirements" description="Check requirements.">
+		<echo message="Verification of your JDK version."/>
+		<available classname="java.util.stream.Stream" property="JDK10.present" />
+		<fail unless="JDK10.present" message="Java 10 is required, but your version is Java ${ant.java.version}. Install latest JDK." />
+	</target>
+	
+	<path id="L2jAdmins_Core.classpath">
+		<pathelement location="${workspace}/L2jAdmins_Core/bin"/>
+		<pathelement location="${workspace}/L2jAdmins_Core/dist/libs/c3p0-0.9.5-pre8.jar"/>
+		<pathelement location="${workspace}/L2jAdmins_Core/dist/libs/ecj-4.4.jar"/>
+		<pathelement location="${workspace}/L2jAdmins_Core/dist/libs/java-engine-1.8.jar"/>
+		<pathelement location="${workspace}/L2jAdmins_Core/dist/libs/mariadb-java-client-2.2.2.jar"/>
+		<pathelement location="${workspace}/L2jAdmins_Core/dist/libs/mchange-commons-java-0.2.7.jar"/>
+		<pathelement location="${workspace}/L2jAdmins_Core/dist/libs/mysql-connector-java-5.1.35-bin.jar"/>
+	</path>
+
+	<path id="classpath">
+		<pathelement location="bin"/>
+		<path refid="L2jAdmins_Core.classpath"/>
+	</path>
+
+	<pathconvert property="manifest.libs" pathsep=" ">
+		<path refid="classpath" />
+		<mapper>
+			<chainedmapper>
+				<flattenmapper />
+				<globmapper from="*.jar" to="*.jar" />
+			</chainedmapper>
+		</mapper>
+	</pathconvert>	
+	
+</project>
