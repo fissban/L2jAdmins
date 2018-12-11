@@ -1,0 +1,330 @@
+package main.data;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Logger;
+
+import main.engine.AbstractMod;
+import main.holders.DataValueHolder;
+import main.holders.ValuesHolder;
+import l2j.L2DatabaseFactory;
+
+/**
+ * Class responsible for keeping the information stored in the DB of all mods
+ * @author fissban
+ */
+public class ModsData
+{
+	private static final Logger LOG = Logger.getLogger(ModsData.class.getName());
+	
+	private static final String TABLE_FORMAT = "(id int(10) NOT NULL AUTO_INCREMENT, charId int(10), event varchar(255), val varchar(2500), PRIMARY KEY (id))";
+	
+	private static final String SELECT_DB = "SELECT charId,val,event FROM engine_%table_name%";
+	private static final String UPDATE_DB = "UPDATE engine_%table_name% SET val=? WHERE event=? AND charId=?";
+	private static final String INSERT_DB = "INSERT INTO engine_%table_name% (val,event,charId) VALUES (?,?,?)";
+	private static final String DELETE_DB_1 = "DELETE FROM engine_%table_name% WHERE event=? AND charId=?";
+	private static final String DELETE_DB_2 = "DELETE FROM engine_%table_name%";
+	
+	/** Map with all mods values. */
+	private static Map<Integer, List<ValuesHolder>> playersValuesDb = new LinkedHashMap<>();
+	
+	private final static ReentrantLock dbLock = new ReentrantLock();
+	
+	public ModsData()
+	{
+		//
+	}
+	
+	/**
+	 * It removes all the events of the players of certain mods.
+	 * @param mod
+	 */
+	public static void remove(AbstractMod mod)
+	{
+		dbLock.lock();
+		
+		// Search in memory
+		for (var entry : playersValuesDb.entrySet())
+		{
+			ValuesHolder aux = null;
+			var objectId = entry.getKey();
+			for (ValuesHolder vh : entry.getValue())
+			{
+				if (vh.getMod().equals(mod.getClass().getSimpleName()))
+				{
+					aux = vh;
+					break;
+				}
+			}
+			// Remove from memory
+			if (aux != null)
+			{
+				playersValuesDb.get(objectId).remove(aux);
+			}
+		}
+		
+		// Remove from DB
+		var query = DELETE_DB_2.replace("%table_name%", mod.getClass().getSimpleName().toLowerCase());
+		try (var con = L2DatabaseFactory.getInstance().getConnection();
+			var statement = con.prepareStatement(query))
+		{
+			statement.execute();
+		}
+		catch (Exception e)
+		{
+			LOG.warning("Can't delete: mod:" + mod.getClass().getSimpleName() + " " + e);
+			e.printStackTrace();
+		}
+		finally
+		{
+			dbLock.unlock();
+		}
+	}
+	
+	/**
+	 * Removes events from a specific player and mod.
+	 * @param objectId
+	 * @param event
+	 * @param mod
+	 */
+	public static void remove(int objectId, String event, AbstractMod mod)
+	{
+		dbLock.lock();
+		
+		ValuesHolder aux = null;
+		// Search in memory
+		for (var vh : playersValuesDb.get(objectId))
+		{
+			if (vh.getMod().equals(mod.getClass().getSimpleName()) && vh.getEvent().equals(event))
+			{
+				aux = vh;
+				break;
+			}
+		}
+		// Remove from memory
+		if (aux != null)
+		{
+			playersValuesDb.get(objectId).remove(aux);
+		}
+		// Remove from DB
+		var query = DELETE_DB_1.replace("%table_name%", mod.getClass().getSimpleName().toLowerCase());
+		try (var con = L2DatabaseFactory.getInstance().getConnection();
+			var statement = con.prepareStatement(query))
+		{
+			statement.setString(1, event);
+			statement.setInt(2, objectId);
+			statement.execute();
+		}
+		catch (Exception e)
+		{
+			LOG.warning("Can't delete event: " + event + " mod: " + mod.getClass().getSimpleName() + " player objectId :" + objectId + e);
+			e.printStackTrace();
+		}
+		finally
+		{
+			dbLock.unlock();
+		}
+	}
+	
+	/**
+	 * Gets the values of a player in a given event and mod.
+	 * @param objectId
+	 * @param event {startsWith}
+	 * @param mod
+	 * @return {@code Map<String[(event.split(" ")[1])], DataValueHolder> -> String}
+	 */
+	public static Map<String, DataValueHolder> getCollection(int objectId, String event, AbstractMod mod)
+	{
+		var map = new LinkedHashMap<String, DataValueHolder>();
+		
+		if (playersValuesDb.containsKey(objectId))
+		{
+			for (var vh : playersValuesDb.get(objectId))
+			{
+				// Seek only the values of the mod in question
+				if (vh.getMod().equals(mod.getClass().getSimpleName()))
+				{
+					// Look for the event in question
+					if (vh.getEvent().startsWith(event))
+					{
+						// Refund the value of the event and mod we seek.
+						map.put(vh.getEvent().split(" ")[1], vh.getValue());
+					}
+				}
+			}
+		}
+		
+		return map;
+	}
+	
+	/**
+	 * Get the value of a player in a given event and mod.
+	 * @param objectId
+	 * @param event
+	 * @param mod
+	 * @return
+	 */
+	public static DataValueHolder get(int objectId, String event, AbstractMod mod)
+	{
+		if (playersValuesDb.containsKey(objectId))
+		{
+			for (var vh : playersValuesDb.get(objectId))
+			{
+				// Seek only the values of the mod in question
+				if (vh.getMod().equals(mod.getClass().getSimpleName()))
+				{
+					// Look for the event in question
+					if (vh.getEvent().equals(event))
+					{
+						// Refund the value of the event and mod we seek.
+						return vh.getValue();
+					}
+				}
+			}
+		}
+		
+		return new DataValueHolder(null);
+	}
+	
+	public static void set(int objectId, String event, String value, AbstractMod mod)
+	{
+		var modName = mod.getClass().getSimpleName();
+		set(objectId, event, value, modName);
+	}
+	
+	public static void set(int objectId, String event, String value, Class<? extends AbstractMod> mod)
+	{
+		var modName = mod.getSimpleName();
+		set(objectId, event, value, modName);
+	}
+	
+	/**
+	 * Save data in memory and then in db
+	 * @param objectId
+	 * @param event
+	 * @param value
+	 * @param modName
+	 */
+	public static void set(int objectId, String event, String value, String modName)
+	{
+		dbLock.lock();
+		
+		var updateInfo = false;
+		var needQuery = false;
+		// memory check.
+		if (playersValuesDb.containsKey(objectId))
+		{
+			for (var vh : playersValuesDb.get(objectId))
+			{
+				if (vh.getEvent().equals(event) && vh.getMod().equals(modName) && !vh.getValue().getString().equals(value))
+				{
+					// I indicate that a db query is required.
+					needQuery = true;
+					// It requires updating the DB
+					updateInfo = true;
+					// update the value in memory.
+					vh.setValue(value);
+					break;
+				}
+			}
+		}
+		else
+		{
+			// I indicate that a db query is required.
+			needQuery = true;
+			// It initializes the list of values of this character
+			playersValuesDb.put(objectId, new ArrayList<>());
+		}
+		
+		if (!updateInfo)
+		{
+			// I indicate that a db query is required.
+			needQuery = true;
+			// information saved in memory
+			playersValuesDb.get(objectId).add(new ValuesHolder(modName, event, value));
+		}
+		
+		if (needQuery)
+		{
+			var query = updateInfo ? UPDATE_DB : INSERT_DB;
+			query = query.replace("%table_name%", modName);
+			// Update or insert values.
+			try (var con = L2DatabaseFactory.getInstance().getConnection();
+				var statement = con.prepareStatement(query))
+			{
+				statement.setString(1, value);
+				statement.setString(2, event);
+				statement.setInt(3, objectId);
+				statement.execute();
+			}
+			catch (Exception e)
+			{
+				LOG.warning("Can't " + (updateInfo ? "update " : "insert ") + event + " to DB " + e.getMessage());
+				e.printStackTrace();
+			}
+			finally
+			{
+				dbLock.unlock();
+			}
+			return;
+		}
+		
+		dbLock.unlock();
+	}
+	
+	public static void loadValuesFromMod(AbstractMod mod)
+	{
+		var modName = mod.getClass().getSimpleName();
+		
+		try (var con = L2DatabaseFactory.getInstance().getConnection();
+			var statement = con.createStatement())
+		{
+			statement.executeUpdate("CREATE TABLE IF NOT EXISTS engine_" + modName + " " + TABLE_FORMAT);
+			
+			loadValues(modName, con);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		// LOG.info(ModsData.class.getSimpleName() + " load values from players in " + mod.getClass().getSimpleName());
+	}
+	
+	/**
+	 * Load values from one mod
+	 * @param modName
+	 * @param con
+	 */
+	public static void loadValues(String modName, Connection con)
+	{
+		var query = SELECT_DB.replace("%table_name%", modName);
+		
+		try (var statement = con.prepareStatement(query);
+			var rset = statement.executeQuery())
+		{
+			while (rset.next())
+			{
+				var objId = rset.getInt("charId");
+				var value = rset.getString("val");
+				var event = rset.getString("event");
+				
+				if (!playersValuesDb.containsKey(objId))
+				{
+					playersValuesDb.put(objId, new ArrayList<>());
+				}
+				
+				playersValuesDb.get(objId).add(new ValuesHolder(modName, event, value));
+			}
+		}
+		catch (Exception e)
+		{
+			LOG.warning("Can't load values from DB" + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+}
