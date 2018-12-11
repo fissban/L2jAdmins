@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="C4_GameServer" default="delete" basedir=".">
+	<description> L2jAdmins 2014 ~ 2019	</description>
+
+	<property name="build" location="build" />
+	<property name="build.bin" location="${build}/bin" />
+	<property name="build.dist" location="${build}/dist" />
+	<property name="build.dist.game" location="${build.dist}/game" />
+	<property name="build.dist.login" location="${build.dist}/login" />
+	<property name="build.dist.tools" location="${build.dist}/tools" />
+	<property name="libs" location="dist/libs" />
+	<property name="src" location="src" />
+
+	<path id="classpath">
+		<fileset dir="${libs}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<pathconvert property="manifest.libs" pathsep=" ">
+		<path refid="classpath" />
+		<mapper>
+			<chainedmapper>
+				<flattenmapper />
+				<globmapper from="*.jar" to="../libs/*.jar" />
+			</chainedmapper>
+		</mapper>
+	</pathconvert>
+	
+	<target name="checkRequirements" description="Check Requirements.">
+		<fail message="Ant 1.9.1 is required. But your version is ${ant.version} and if you are using Eclipse probably is outdated.">
+			<condition>
+				<not>
+					<antversion atleast="1.9.1" />
+				</not>
+			</condition>
+		</fail>
+		<available classname="java.lang.AutoCloseable" property="JDK10.present" />
+		<fail unless="JDK10.present" message="Java 1.10 is required. But your version is Java ${ant.java.version} and probably JDK is not installed." />
+	</target>
+
+	<target name="init" depends="checkRequirements" description="Create the output directories.">
+		<delete dir="${build.bin}" quiet="true" />
+		<mkdir dir="${build.bin}" />
+	</target>
+
+	<target name="dist" depends="init" description="Export the files to the output directory.">
+		<sync todir="${build.dist}" includeemptydirs="true">
+			<fileset dir="dist" />
+		</sync>
+		
+		<fixcrlf srcdir="${build.dist.game}" eol="lf" eof="remove" includes="**/*.sh" />
+		<fixcrlf srcdir="${build.dist.login}" eol="lf" eof="remove" includes="**/*.sh" />
+		<fixcrlf srcdir="${build.dist.game}" eol="crlf" eof="remove" includes="**/*.bat" />
+		<fixcrlf srcdir="${build.dist.login}" eol="crlf" eof="remove" includes="**/*.bat" />
+		
+		<mkdir dir="${build.dist.game}/log" />
+		<mkdir dir="${build.dist.login}/log" />
+		
+	</target>
+
+	<target name="compile" depends="dist" description="Compile the source.">
+		<javac srcdir="${src}" classpathref="classpath" destdir="${build.bin}" fork="true" debug="true" debuglevel="lines,vars,source" includeantruntime="false" />
+	</target>
+
+	<target name="jar" depends="compile" description="Create the jar files.">
+		<jar destfile="${libs}/Core.jar" level="9">
+			<fileset dir="${build.bin}" />
+		</jar>
+		<jar destfile="build/Core.jar" level="9">
+			<fileset dir="${build.bin}" />
+		</jar>
+	</target>
+
+	<target name="build" depends="jar" description="Create the Zip file.">
+		<zip destfile="${build}/C4_GameServer.zip" basedir="${build.dist}" level="9" />
+	</target> 
+	
+	<target name="delete" depends="build" description="Deleting directories.">
+		<delete dir="${build.dist}" quiet="true" />
+		<delete dir="${build.bin}" quiet="true" />
+	</target>
+	
+</project>
