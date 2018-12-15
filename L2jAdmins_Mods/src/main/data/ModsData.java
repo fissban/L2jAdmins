@@ -8,10 +8,11 @@ import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Logger;
 
+import l2j.L2DatabaseFactory;
+import l2j.util.UtilPrint;
 import main.engine.AbstractMod;
 import main.holders.DataValueHolder;
 import main.holders.ValuesHolder;
-import l2j.L2DatabaseFactory;
 
 /**
  * Class responsible for keeping the information stored in the DB of all mods
@@ -20,25 +21,25 @@ import l2j.L2DatabaseFactory;
 public class ModsData
 {
 	private static final Logger LOG = Logger.getLogger(ModsData.class.getName());
-	
+
 	private static final String TABLE_FORMAT = "(id int(10) NOT NULL AUTO_INCREMENT, charId int(10), event varchar(255), val varchar(2500), PRIMARY KEY (id))";
-	
+
 	private static final String SELECT_DB = "SELECT charId,val,event FROM engine_%table_name%";
 	private static final String UPDATE_DB = "UPDATE engine_%table_name% SET val=? WHERE event=? AND charId=?";
 	private static final String INSERT_DB = "INSERT INTO engine_%table_name% (val,event,charId) VALUES (?,?,?)";
 	private static final String DELETE_DB_1 = "DELETE FROM engine_%table_name% WHERE event=? AND charId=?";
 	private static final String DELETE_DB_2 = "DELETE FROM engine_%table_name%";
-	
+
 	/** Map with all mods values. */
 	private static Map<Integer, List<ValuesHolder>> playersValuesDb = new LinkedHashMap<>();
-	
+
 	private final static ReentrantLock dbLock = new ReentrantLock();
-	
+
 	public ModsData()
 	{
 		//
 	}
-	
+
 	/**
 	 * It removes all the events of the players of certain mods.
 	 * @param mod
@@ -46,7 +47,7 @@ public class ModsData
 	public static void remove(AbstractMod mod)
 	{
 		dbLock.lock();
-		
+
 		// Search in memory
 		for (var entry : playersValuesDb.entrySet())
 		{
@@ -66,10 +67,11 @@ public class ModsData
 				playersValuesDb.get(objectId).remove(aux);
 			}
 		}
-		
+
 		// Remove from DB
 		var query = DELETE_DB_2.replace("%table_name%", mod.getClass().getSimpleName().toLowerCase());
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (
+			var con = L2DatabaseFactory.getInstance().getConnection();
 			var statement = con.prepareStatement(query))
 		{
 			statement.execute();
@@ -84,7 +86,7 @@ public class ModsData
 			dbLock.unlock();
 		}
 	}
-	
+
 	/**
 	 * Removes events from a specific player and mod.
 	 * @param objectId
@@ -94,7 +96,7 @@ public class ModsData
 	public static void remove(int objectId, String event, AbstractMod mod)
 	{
 		dbLock.lock();
-		
+
 		ValuesHolder aux = null;
 		// Search in memory
 		for (var vh : playersValuesDb.get(objectId))
@@ -112,7 +114,8 @@ public class ModsData
 		}
 		// Remove from DB
 		var query = DELETE_DB_1.replace("%table_name%", mod.getClass().getSimpleName().toLowerCase());
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (
+			var con = L2DatabaseFactory.getInstance().getConnection();
 			var statement = con.prepareStatement(query))
 		{
 			statement.setString(1, event);
@@ -129,18 +132,18 @@ public class ModsData
 			dbLock.unlock();
 		}
 	}
-	
+
 	/**
 	 * Gets the values of a player in a given event and mod.
-	 * @param objectId
-	 * @param event {startsWith}
-	 * @param mod
-	 * @return {@code Map<String[(event.split(" ")[1])], DataValueHolder> -> String}
+	 * @param  objectId
+	 * @param  event    {startsWith}
+	 * @param  mod
+	 * @return          {@code Map<String[(event.split(" ")[1])], DataValueHolder> -> String}
 	 */
 	public static Map<String, DataValueHolder> getCollection(int objectId, String event, AbstractMod mod)
 	{
 		var map = new LinkedHashMap<String, DataValueHolder>();
-		
+
 		if (playersValuesDb.containsKey(objectId))
 		{
 			for (var vh : playersValuesDb.get(objectId))
@@ -157,15 +160,15 @@ public class ModsData
 				}
 			}
 		}
-		
+
 		return map;
 	}
-	
+
 	/**
 	 * Get the value of a player in a given event and mod.
-	 * @param objectId
-	 * @param event
-	 * @param mod
+	 * @param  objectId
+	 * @param  event
+	 * @param  mod
 	 * @return
 	 */
 	public static DataValueHolder get(int objectId, String event, AbstractMod mod)
@@ -186,22 +189,22 @@ public class ModsData
 				}
 			}
 		}
-		
+
 		return new DataValueHolder(null);
 	}
-	
+
 	public static void set(int objectId, String event, String value, AbstractMod mod)
 	{
 		var modName = mod.getClass().getSimpleName();
 		set(objectId, event, value, modName);
 	}
-	
+
 	public static void set(int objectId, String event, String value, Class<? extends AbstractMod> mod)
 	{
 		var modName = mod.getSimpleName();
 		set(objectId, event, value, modName);
 	}
-	
+
 	/**
 	 * Save data in memory and then in db
 	 * @param objectId
@@ -212,7 +215,7 @@ public class ModsData
 	public static void set(int objectId, String event, String value, String modName)
 	{
 		dbLock.lock();
-		
+
 		var updateInfo = false;
 		var needQuery = false;
 		// memory check.
@@ -239,7 +242,7 @@ public class ModsData
 			// It initializes the list of values of this character
 			playersValuesDb.put(objectId, new ArrayList<>());
 		}
-		
+
 		if (!updateInfo)
 		{
 			// I indicate that a db query is required.
@@ -247,13 +250,14 @@ public class ModsData
 			// information saved in memory
 			playersValuesDb.get(objectId).add(new ValuesHolder(modName, event, value));
 		}
-		
+
 		if (needQuery)
 		{
 			var query = updateInfo ? UPDATE_DB : INSERT_DB;
 			query = query.replace("%table_name%", modName);
 			// Update or insert values.
-			try (var con = L2DatabaseFactory.getInstance().getConnection();
+			try (
+				var con = L2DatabaseFactory.getInstance().getConnection();
 				var statement = con.prepareStatement(query))
 			{
 				statement.setString(1, value);
@@ -272,29 +276,30 @@ public class ModsData
 			}
 			return;
 		}
-		
+
 		dbLock.unlock();
 	}
-	
+
 	public static void loadValuesFromMod(AbstractMod mod)
 	{
 		var modName = mod.getClass().getSimpleName();
-		
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+
+		try (
+			var con = L2DatabaseFactory.getInstance().getConnection();
 			var statement = con.createStatement())
 		{
 			statement.executeUpdate("CREATE TABLE IF NOT EXISTS engine_" + modName + " " + TABLE_FORMAT);
-			
+
 			loadValues(modName, con);
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-		
+
 		// LOG.info(ModsData.class.getSimpleName() + " load values from players in " + mod.getClass().getSimpleName());
 	}
-	
+
 	/**
 	 * Load values from one mod
 	 * @param modName
@@ -302,9 +307,12 @@ public class ModsData
 	 */
 	public static void loadValues(String modName, Connection con)
 	{
+		var count = 0;
+
 		var query = SELECT_DB.replace("%table_name%", modName);
-		
-		try (var statement = con.prepareStatement(query);
+
+		try (
+			var statement = con.prepareStatement(query);
 			var rset = statement.executeQuery())
 		{
 			while (rset.next())
@@ -312,13 +320,15 @@ public class ModsData
 				var objId = rset.getInt("charId");
 				var value = rset.getString("val");
 				var event = rset.getString("event");
-				
+
 				if (!playersValuesDb.containsKey(objId))
 				{
 					playersValuesDb.put(objId, new ArrayList<>());
 				}
-				
+
 				playersValuesDb.get(objId).add(new ValuesHolder(modName, event, value));
+
+				count++;
 			}
 		}
 		catch (Exception e)
@@ -326,5 +336,7 @@ public class ModsData
 			LOG.warning("Can't load values from DB" + e.getMessage());
 			e.printStackTrace();
 		}
+
+		UtilPrint.result("ModsData", "Loaded info " + modName, count);
 	}
 }

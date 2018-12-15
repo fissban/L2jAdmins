@@ -6,9 +6,10 @@ import java.util.List;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
+import l2j.util.UtilPrint;
+import l2j.util.XmlParser;
 import main.enums.BuffType;
 import main.holders.BuffHolder;
-import l2j.util.XmlParser;
 
 /**
  * @author fissban
@@ -21,7 +22,7 @@ public class SchemeBufferPredefinedData extends XmlParser
 		MAGE,
 		WARRIOR,
 	}
-	
+
 	private BuffLoad type = BuffLoad.GENERAL;
 	/** All buffs can use un schemeBufferNpc */
 	private final static List<BuffHolder> generalBuffs = new ArrayList<>();
@@ -29,7 +30,7 @@ public class SchemeBufferPredefinedData extends XmlParser
 	private final static List<BuffHolder> warriorBuffs = new ArrayList<>();
 	/** List of buffs preset for mages */
 	private final static List<BuffHolder> mageBuffs = new ArrayList<>();
-	
+
 	@Override
 	public void load()
 	{
@@ -37,19 +38,19 @@ public class SchemeBufferPredefinedData extends XmlParser
 		generalBuffs.clear();
 		warriorBuffs.clear();
 		mageBuffs.clear();
-		
+
 		type = BuffLoad.GENERAL;
 		loadFile("data/xml/engine/scheme_buffer/generalBuffs.xml");
 		type = BuffLoad.MAGE;
 		loadFile("data/xml/engine/scheme_buffer/setMageBuffs.xml");
 		type = BuffLoad.WARRIOR;
 		loadFile("data/xml/engine/scheme_buffer/setWarriorBuffs.xml");
-		
-		System.out.println("SchemeBufferPredefinedData: Load " + generalBuffs.size() + " buffs.");
-		System.out.println("SchemeBufferPredefinedData: Load " + warriorBuffs.size() + " set warrior buffs.");
-		System.out.println("SchemeBufferPredefinedData: Load " + mageBuffs.size() + " set mage buffs.");
+
+		UtilPrint.result("SchemeBufferPredefinedData", "Loaded buffs", generalBuffs.size());
+		UtilPrint.result("SchemeBufferPredefinedData", "Loaded warrior buffs", warriorBuffs.size());
+		UtilPrint.result("SchemeBufferPredefinedData", "Loaded mage buffs", mageBuffs.size());
 	}
-	
+
 	@Override
 	protected void parseFile()
 	{
@@ -83,7 +84,7 @@ public class SchemeBufferPredefinedData extends XmlParser
 			}
 		}
 	}
-	
+
 	/**
 	 * Get all preset mage buffs
 	 * @return
@@ -92,7 +93,7 @@ public class SchemeBufferPredefinedData extends XmlParser
 	{
 		return mageBuffs;
 	}
-	
+
 	/**
 	 * Get all preset warrior buffs
 	 * @return
@@ -101,7 +102,7 @@ public class SchemeBufferPredefinedData extends XmlParser
 	{
 		return warriorBuffs;
 	}
-	
+
 	/**
 	 * Get all general buffs
 	 * @return
@@ -110,12 +111,12 @@ public class SchemeBufferPredefinedData extends XmlParser
 	{
 		return generalBuffs;
 	}
-	
+
 	public static SchemeBufferPredefinedData getInstance()
 	{
 		return SingletonHolder.INSTANCE;
 	}
-	
+
 	private static class SingletonHolder
 	{
 		protected static final SchemeBufferPredefinedData INSTANCE = new SchemeBufferPredefinedData();

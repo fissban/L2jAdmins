@@ -7,18 +7,19 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import main.EngineModsManager;
-import main.holders.objects.CharacterHolder;
-import main.holders.objects.ItemHolder;
-import main.holders.objects.NpcHolder;
-import main.holders.objects.ObjectHolder;
-import main.holders.objects.PlayerHolder;
 import l2j.L2DatabaseFactory;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.items.instance.ItemInstance;
+import l2j.util.UtilPrint;
+import main.EngineModsManager;
+import main.holders.objects.CharacterHolder;
+import main.holders.objects.ItemHolder;
+import main.holders.objects.NpcHolder;
+import main.holders.objects.ObjectHolder;
+import main.holders.objects.PlayerHolder;
 
 /**
  * Class responsible for carrying information about the objects that exist inside the game
@@ -31,25 +32,25 @@ public class ObjectData
 	private static final String SELECT_CHARACTERS = "SELECT obj_Id,char_name,account_name FROM characters";
 	/** all objects */
 	private static volatile Map<Integer, ObjectHolder> objects = new ConcurrentHashMap<>();
-	
+
 	public ObjectData()
 	{
 		//
 	}
-	
+
 	// XXX GET ------------------------------------------------------------------------------------------------------
-	
+
 	@SuppressWarnings("unchecked")
 	public static <A> List<A> getAll(Class<A> type)
 	{
 		return (List<A>) objects.values().stream().filter(c -> type.isAssignableFrom(c.getClass())).collect(Collectors.toList());
 	}
-	
+
 	public static <A> A get(Class<A> type, L2Object obj)
 	{
 		return get(type, obj.getObjectId());
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public static <A> A get(Class<A> type, int objId)
 	{
@@ -66,9 +67,9 @@ public class ObjectData
 		}
 		return null;
 	}
-	
+
 	// XXX ADD & REMOVE -----------------------------------------------------------------------------------------------
-	
+
 	/**
 	 * Add new player
 	 * @param objectId
@@ -79,12 +80,12 @@ public class ObjectData
 	{
 		objects.put(objectId, new PlayerHolder(objectId, name, accountName));
 	}
-	
+
 	public static void removePlayer(L2PcInstance p)
 	{
 		((PlayerHolder) objects.get(p.getObjectId())).setInstance(null);
 	}
-	
+
 	/**
 	 * Add new item
 	 * @param item
@@ -98,7 +99,7 @@ public class ObjectData
 			EngineModsManager.onCreatedItem(item);
 		}
 	}
-	
+
 	/**
 	 * Add all objects.
 	 * <li>For add Items {@link #addItem(ItemInstance)}.</li>
@@ -135,7 +136,7 @@ public class ObjectData
 			}
 		}
 	}
-	
+
 	/**
 	 * Remove any object.
 	 * @param obj
@@ -147,19 +148,20 @@ public class ObjectData
 			// removePlayer((L2PcInstance) obj);
 			return;
 		}
-		
+
 		objects.remove(obj.getObjectId());
 	}
-	
+
 	// XXX PLAYERS -----------------------------------------------------------------------------------------------
-	
+
 	/**
 	 * All the created characters are read from the DB.<BR>
 	 * <FONT COLOR=#FF0000><B> <U>Caution</U>: This method should only be used when starting the server</B></FONT>
 	 */
 	public static void loadPlayers()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (
+			var con = L2DatabaseFactory.getInstance().getConnection();
 			var statement = con.prepareStatement(SELECT_CHARACTERS);
 			var rset = statement.executeQuery())
 		{
@@ -174,7 +176,7 @@ public class ObjectData
 			LOG.warning("Could not restore character values: " + e.getMessage());
 			e.printStackTrace();
 		}
-		
-		LOG.info(ObjectData.class.getSimpleName() + " load " + objects.size() + " players from DB");
+
+		UtilPrint.result("ObjectData", "Loaded players info", objects.size());
 	}
 }
