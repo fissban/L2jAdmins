@@ -4,10 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import l2j.util.Rnd;
+import l2j.util.UtilPrint;
+import l2j.util.XmlParser;
 import main.enums.ItemIconType;
 import main.util.builders.html.Icon;
-import l2j.util.Rnd;
-import l2j.util.XmlParser;
 
 /**
  * @author fissban
@@ -15,52 +16,51 @@ import l2j.util.XmlParser;
 public class IconData extends XmlParser
 {
 	protected static final Logger LOG = Logger.getLogger(IconData.class.getName());
-	
+
 	private final static Map<Integer, String> items = new HashMap<>();
-	
+
 	@Override
 	public void load()
 	{
 		// Duplicate data is prevented if this method is reloaded
 		items.clear();
-		
 		loadFile("data/xml/engine/icons.xml");
-		LOG.info("IconData: Load " + items.size() + " icons.");
+		UtilPrint.result("IconData", "Loaded icons", items.size());
 	}
-	
+
 	@Override
 	protected void parseFile()
 	{
 		for (var n : getNodes("item"))
 		{
 			var attrs = n.getAttributes();
-			
+
 			var id = parseInt(attrs, "id");
 			var icon = parseString(attrs, "icon");
 			items.put(id, icon);
 		}
 	}
-	
+
 	/**
 	 * You get an icon of a specific item id
-	 * @param itemId
+	 * @param  itemId
 	 * @return
 	 */
 	public static String getIconByItemId(int itemId)
 	{
 		return items.get(itemId);
 	}
-	
+
 	/**
 	 * You get an icon of a random type of a specific type of item
-	 * @param itemIconType
-	 * @param rnd
+	 * @param  itemIconType
+	 * @param  rnd
 	 * @return
 	 */
 	public static String getRandomItemType(ItemIconType itemIconType, int rnd)
 	{
 		String returnIcon = "";
-		
+
 		while (returnIcon.equals(""))
 		{
 			for (var icon : items.values())
@@ -77,12 +77,12 @@ public class IconData extends XmlParser
 		}
 		return returnIcon;
 	}
-	
+
 	public static IconData getInstance()
 	{
 		return SingletonHolder.INSTANCE;
 	}
-	
+
 	private static class SingletonHolder
 	{
 		protected static final IconData INSTANCE = new IconData();

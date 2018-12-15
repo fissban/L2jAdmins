@@ -3,6 +3,7 @@ package main.data;
 import java.util.HashMap;
 import java.util.Map;
 
+import l2j.util.UtilPrint;
 import l2j.util.XmlParser;
 
 /**
@@ -11,36 +12,36 @@ import l2j.util.XmlParser;
 public class SkillInfoData extends XmlParser
 {
 	private static final Map<String, String> skills = new HashMap<>();
-	
+
 	@Override
 	public void load()
 	{
 		// Duplicate data is prevented if this method is reloaded
 		skills.clear();
-		
+
 		loadFile("data/xml/engine/modsSkill.xml");
-		LOG.info("SkillInfoData: Load " + skills.size() + " skill info.");
+		UtilPrint.result("SkillInfoData", "Loaded skill info", skills.size());
 	}
-	
+
 	@Override
 	protected void parseFile()
 	{
 		for (var n : getNodes("skill"))
 		{
 			var attrs = n.getAttributes();
-			
+
 			var id = parseString(attrs, "id");
 			var level = parseString(attrs, "level");
 			var description = parseString(attrs, "description");
 			skills.put(id + " " + level, description);
 		}
 	}
-	
+
 	public static String getDescription(int id, int lvl)
 	{
 		return skills.get(id + " " + lvl);
 	}
-	
+
 	public static String getSkillIcon(int id)
 	{
 		String formato;
@@ -94,12 +95,12 @@ public class SkillInfoData extends XmlParser
 		}
 		return "Icon.skill" + formato;
 	}
-	
+
 	public static SkillInfoData getInstance()
 	{
 		return SingletonHolder.INSTANCE;
 	}
-	
+
 	private static class SingletonHolder
 	{
 		protected static final SkillInfoData INSTANCE = new SkillInfoData();
