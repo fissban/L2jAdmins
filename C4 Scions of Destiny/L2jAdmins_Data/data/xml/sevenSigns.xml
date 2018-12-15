@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<!-- Black Marketeer of Mammon -->
+	<spawn groupId="2" npcId="8092" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-12345" y="121695" z="-2984" heading="0" />
+	</spawn>
+	<!-- Black Marketeer of Mammon -->
+	<spawn groupId="3" npcId="8092" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="81360" y="150016" z="-3528" heading="16000" />
+	</spawn>
+	<!-- Black Marketeer of Mammon -->
+	<spawn groupId="4" npcId="8092" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="120493" y="76520" z="-2136" heading="35500" />
+	</spawn>
+	<!-- Black Marketeer of Mammon -->
+	<spawn groupId="5" npcId="8092" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-84745" y="151732" z="-3128" heading="50000" />
+	</spawn>
+	<!-- Black Marketeer of Mammon -->
+	<spawn groupId="6" npcId="8092" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="113481" y="218450" z="-3624" heading="33000" />
+	</spawn>
+	<!-- Black Marketeer of Mammon -->
+	<spawn groupId="7" npcId="8092" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="80129" y="56947" z="-1552" heading="32500" />
+	</spawn>
+	<!-- Black Marketeer of Mammon -->
+	<spawn groupId="8" npcId="8092" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="146986" y="29566" z="-2271" heading="32500" />
+	</spawn>
+	<!-- Gatekeeper Spirit -->
+	<spawn groupId="9" npcId="8111" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="183280" y="-11905" z="-4904" heading="-1" />
+	</spawn>
+	<!-- Gatekeeper Spirit -->
+	<spawn groupId="10" npcId="8112" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="185662" y="-13093" z="-5498" heading="-1" />
+	</spawn>
+	<!-- Merchant of Mammon -->
+	<spawn groupId="11" npcId="8113" defaultSpawn="false" broadcastSpawn="true" randomSpawn="true" initialDelay="30000" respawnDelay="3600000" despawnDelay="3600000">
+		<loc x="-52172" y="78884" z="-4741" heading="-1" />
+		<loc x="-41350" y="209876" z="-5087" heading="-1" />
+		<loc x="-21657" y="77164" z="-5173" heading="-1" />
+		<loc x="45029" y="123802" z="-5413" heading="-1" />
+		<loc x="83175" y="208998" z="-5439" heading="-1" />
+		<loc x="111337" y="173804" z="-5439" heading="-1" />
+		<loc x="118343" y="132578" z="-4831" heading="-1" />
+		<loc x="172373" y="-17833" z="-4901" heading="-1" />
+	</spawn>
+	<!-- Blacksmith of Mammon -->
+	<spawn groupId="12" npcId="8126" defaultSpawn="false" broadcastSpawn="true" randomSpawn="true" initialDelay="30000" respawnDelay="3600000" despawnDelay="3600000">
+		<loc x="-19360" y="13278" z="-4901" heading="-1" />
+		<loc x="43093" y="143706" z="-5381" heading="-1" />
+		<loc x="46303" y="170091" z="-4981" heading="-1" />
+		<loc x="77787" y="78176" z="-5125" heading="-1" />
+		<loc x="114013" y="84326" z="-6541" heading="-1" />
+		<loc x="140519" y="79464" z="-5429" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="13" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-84356" y="152742" z="-3204" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="14" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-83157" y="149846" z="-3155" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="15" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-79563" y="152726" z="-3204" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="16" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-16168" y="124129" z="-3143" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="17" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-79123" y="155098" z="-3204" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="18" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-14199" y="126128" z="-3171" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="19" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-14563" y="121461" z="-3015" heading="-1" />
+	</spawn>
+	<!--Orator of Revelations	-->
+	<spawn groupId="20" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="16901" y="144748" z="-3027" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="21" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-12344" y="123605" z="-3132" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="22" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="19038" y="142923" z="-3078" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="23" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="17557" y="147084" z="-3150" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="24" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="77830" y="148627" z="-3623" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="25" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="20826" y="145769" z="-3171" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="26" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="81556" y="152183" z="-3559" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="27" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="81540" y="144204" z="-3559" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="28" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="85328" y="147352" z="-3431" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="29" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="83872" y="143882" z="-3431" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="30" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="115509" y="74857" z="-2625" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="31" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="114907" y="77916" z="-2662" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="32" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="115482" y="219266" z="-3689" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="33" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="80039" y="54291" z="-1586" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="34" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="118273" y="74592" z="-2529" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="35" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="107251" y="218166" z="-3701" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="36" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="143926" y="26468" z="-2338" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="37" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="147460" y="20537" z="-2101" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="38" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="81002" y="53495" z="-1586" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="39" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="81527" y="56009" z="-1551" heading="-1" />
+	</spawn>
+	<!-- Orator of Revelations -->
+	<spawn groupId="40" npcId="8094" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="150417" y="25182" z="-2141" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="41" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-83070" y="152740" z="-3204" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="42" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-80752" y="152738" z="-3204" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="43" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-83107" y="150270" z="-3155" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="44" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-15549" y="124170" z="-3143" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="45" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-14480" y="122330" z="-3126" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="46" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-80690" y="149996" z="-3070" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="47" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-80037" y="154344" z="-3204" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="48" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="15722" y="142877" z="-2732" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="49" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-12591" y="122673" z="-3142" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="50" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-13252" y="123689" z="-3143" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="51" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-14268" y="124941" z="-3156" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="52" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="79825" y="148619" z="-3559" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="52" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="19823" y="145863" z="-3142" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="53" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="19096" y="143980" z="-3096" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="55" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="18172" y="145740" z="-3140" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="56" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="83894" y="147495" z="-3431" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="57" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="83319" y="148054" z="-3431" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="58" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="81547" y="150347" z="-3559" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="59" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="81535" y="146866" z="-3559" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="60" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="118049" y="75783" z="-2715" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="61" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="117098" y="77066" z="-2720" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="62" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="115936" y="75382" z="-2625" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="63" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="115893" y="77551" z="-2729" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="64" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="113479" y="217795" z="-3731" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="65" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="114086" y="220214" z="-3568" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="66" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="80416" y="55959" z="-1586" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="67" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="80617" y="54116" z="-1586" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="68" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="107256" y="218615" z="-3701" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="69" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="109660" y="217339" z="-3775" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="70" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="110189" y="221393" z="-3569" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="71" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="111389" y="219257" z="-3572" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="72" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="146616" y="25816" z="-2039" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="73" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="147440" y="30047" z="-2487" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="74" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="147459" y="21148" z="-2167" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="75" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="148013" y="27029" z="-2231" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="76" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="82048" y="55417" z="-1551" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="77" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="82863" y="53290" z="-1522" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="78" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="145015" y="25269" z="-2167" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="79" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="145394" y="27629" z="-2295" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="80" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="149515" y="27641" z="-2295" heading="-1" />
+	</spawn>
+	<!-- Preacher of Doom -->
+	<spawn groupId="81" npcId="8093" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="149899" y="24719" z="-2167" heading="-1" />
+	</spawn>
+	<!-- Crest of Dawn -->
+	<spawn groupId="82" npcId="8170" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-41312" y="206625" z="-3412" heading="-1" />
+	</spawn>
+	<!--	-->
+	<spawn groupId="83" npcId="8169" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-41312" y="206625" z="-3412" heading="-1" />
+	</spawn>
+	<!-- Crest of Dusk -->
+	<spawn groupId="84" npcId="8171" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-55428" y="79357" z="-3059" heading="-1" />
+	</spawn>
+	<!-- Crest of Dusk -->
+	<spawn groupId="85" npcId="8171" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-24895" y="77634" z="-3495" heading="-1" />
+	</spawn>
+	<!-- Crest of Dawn -->
+	<spawn groupId="86" npcId="8170" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-55428" y="79357" z="-3059" heading="-1" />
+	</spawn>
+	<!-- Crest of Dawn -->
+	<spawn groupId="87" npcId="8170" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-24895" y="77634" z="-3495" heading="-1" />
+	</spawn>
+	<!-- Crest of Dawn -->
+	<spawn groupId="88" npcId="8170" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-22594" y="13760" z="-3216" heading="-1" />
+	</spawn>
+	<!-- Crest of Dusk -->
+	<spawn groupId="89" npcId="8171" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="-22594" y="13760" z="-3216" heading="-1" />
+	</spawn>
+	<!-- Crest of Dawn -->
+	<spawn groupId="90" npcId="8170" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="43074" y="170560" z="-3298" heading="-1" />
+	</spawn>
+	<!--	-->
+	<spawn groupId="91" npcId="8171" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="43074" y="170560" z="-3298" heading="-1" />
+	</spawn>
+	<!-- Crest of Dusk -->
+	<spawn groupId="92" npcId="8170" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="39872" y="144193" z="-3707" heading="-1" />
+	</spawn>
+	<!-- Crest of Dusk -->
+	<spawn groupId="93" npcId="8171" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="39872" y="144193" z="-3707" heading="-1" />
+	</spawn>
+	<!-- Crest of Dawn -->
+	<spawn groupId="94" npcId="8170" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="45504" y="127550" z="-3734" heading="-1" />
+	</spawn>
+	<!-- Crest of Dusk -->
+	<spawn groupId="95" npcId="8171" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="45504" y="127550" z="-3734" heading="-1" />
+	</spawn>
+	<!-- Crest of Dawn -->
+	<spawn groupId="96" npcId="8170" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="79946" y="209470" z="-3760" heading="-1" />
+	</spawn>
+	<!-- Crest of Dusk -->
+	<spawn groupId="97" npcId="8171" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="79946" y="209470" z="-3760" heading="-1" />
+	</spawn>
+	<!-- Crest of Dawn -->
+	<spawn groupId="98" npcId="8170" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="108097" y="174274" z="-3769" heading="-1" />
+	</spawn>
+	<!-- Crest of Dusk -->
+	<spawn groupId="99" npcId="8171" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="108097" y="174274" z="-3769" heading="-1" />
+	</spawn>
+	<!-- Crest of Dawn -->
+	<spawn groupId="100" npcId="8170" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="115136" y="133057" z="-3161" heading="-1" />
+	</spawn>
+	<!-- Crest of Dusk -->
+	<spawn groupId="101" npcId="8171" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="115136" y="133057" z="-3161" heading="-1" />
+	</spawn>
+	<!-- Crest of Dawn -->
+	<spawn groupId="102" npcId="8170" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="74561" y="78656" z="-3446" heading="-1" />
+	</spawn>
+	<!-- Crest of Dusk -->
+	<spawn groupId="103" npcId="8171" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="74561" y="78656" z="-3446" heading="-1" />
+	</spawn>
+	<!-- Crest of Dawn -->
+	<spawn groupId="104" npcId="8170" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="110784" y="84800" z="-4867" heading="-1" />
+	</spawn>
+	<!-- Crest of Dusk -->
+	<spawn groupId="105" npcId="8171" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="110784" y="84800" z="-4867" heading="-1" />
+	</spawn>
+	<!-- Crest of Dawn -->
+	<spawn groupId="106" npcId="8170" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="137278" y="79936" z="-3751" heading="-1" />
+	</spawn>
+	<!-- Crest of Dusk -->
+	<spawn groupId="107" npcId="8171" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="137278" y="79936" z="-3751" heading="-1" />
+	</spawn>
+	<!-- Crest of Dawn -->
+	<spawn groupId="108" npcId="8170" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="169152" y="-17344" z="-3228" heading="-1" />
+	</spawn>
+	<!-- Crest of Dusk -->
+	<spawn groupId="109" npcId="8171" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="60" despawnDelay="0">
+		<loc x="169152" y="-17344" z="-3228" heading="-1" />
+	</spawn>
+	<!-- Lilith -->
+	<spawn groupId="110" npcId="10283" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="86400" despawnDelay="0">
+		<loc x="184460" y="-12015" z="-5495" heading="-1" />
+	</spawn>
+	<!-- Anakim -->
+	<spawn groupId="111" npcId="10286" defaultSpawn="false" broadcastSpawn="false" randomSpawn="false" initialDelay="30000" respawnDelay="86400" despawnDelay="0">
+		<loc x="184460" y="-12015" z="-5495" heading="-1" />
+	</spawn>
+</list>

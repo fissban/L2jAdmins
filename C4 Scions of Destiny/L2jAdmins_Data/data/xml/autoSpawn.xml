@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<!-- Toma -->
+	<spawn groupId="1" npcId="7556" defaultSpawn="true" broadcastSpawn="false" randomSpawn="true" initialDelay="30000" respawnDelay="1800000" despawnDelay="1800000">
+		<loc x="151680" y="-174891" z="-1782" heading="-1" />
+		<loc x="154153" y="-220105" z="-3402" heading="-1" />
+		<loc x="178834" y="-184336" z="-355" heading="-1" />
+	</spawn>
+	<!-- Fallen Chieftain Vegus -->
+	<spawn groupId="2" npcId="5316" defaultSpawn="true" broadcastSpawn="false" randomSpawn="false" initialDelay="1800000" respawnDelay="14400000" despawnDelay="1800000">
+		<loc x="171708" y="43964" z="-4972" heading="-1" />
+	</spawn>
+</list>

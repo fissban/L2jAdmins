@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+	<skill id="2200" levels="3" name="Item - Jade Treasue Box">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2201" levels="3" name="Item - Blue Treasue Box">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2202" levels="3" name="Item - Yellow Treasue Box">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2203" levels="3" name="Item - Orange Treasue Box">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2204" levels="3" name="Item - Violet Treasue Box">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2205" levels="3" name="Item - Red Treasue Box">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2206" levels="3" name="Item - White Treasue Box">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2207" levels="3" name="Item - Black Treasue Box">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2208" levels="1" name="Item - Blessed Scroll of Enchant Armor">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2209" levels="1" name="Item - Blessed Scroll of Enchant Armor">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2210" levels="1" name="Item - Blessed Scroll of Enchant Armor">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2211" levels="1" name="Item - Blessed Scroll of Enchant Armor">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2212" levels="1" name="Item - Blessed Scroll of Enchant Armor">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2213" levels="20" name="Scroll of Escape to X">
+	  <table name="#teleCoords"> -84318,244579,-3730 46934,51467,-2977 9745,15606,-4574 -44836,-112524,-235 115113,-178212,-901 -80826,149775,-3043 -12678,122776,-3116 15670,142983,-2705 17836,170178,-3507 83400,147943,-3404 105918,109759,-3207 111409,219364,-3545 82956,53162,-1495 85348,16142,-3699 116819,76994,-2714 146331,25762,-2018 147928,-55273,-2734 43799,-47727,-798 0,0,0 149864,-81062,-5618 108275,-53785,-2524 </table>
+	  <set name="teleCoords" val="#teleCoords" />
+	  <set name="target" val="TARGET_SELF"/>
+	  <set name="hitTime" val="20000"/>
+	  <set name="staticHitTime" val="true"/>
+	  <set name="skillType" val="RECALL"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2214" levels="10" name="Scroll of Escape to X">
+	<!-- skill levels are 1-5 & 10 ... names correspond with 2213 levels -->
+	  <table name="#teleCoords"> -84318,244579,-3730 46934,51467,-2977 9745,15606,-4574 -44836,-112524,-235 115113,-178212,-901 0,0,0 0,0,0 0,0,0 0,0,0 83400,147943,-3404 </table>
+	  <set name="teleCoords" val="#teleCoords" />
+	  <set name="target" val="TARGET_SELF"/>
+	  <set name="hitTime" val="20000"/>
+	  <set name="staticHitTime" val="true"/>
+	  <set name="skillType" val="RECALL"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2215" levels="4" name="Item - Quest Special Box">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2216" levels="4" name="Item - Quest Special Fish">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2217" levels="5" name="Item - Quest Treasure Box">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2218" levels="3" name="Item - Quest Sac">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2219" levels="2" name="Item - Quest Sac">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2220" levels="9" name="Item - Easy Green Fish">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+		</skill>
+	<skill id="2221" levels="9" name="Item - Easy Jade Fish">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2222" levels="9" name="Item - Easy Blue Fish">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2223" levels="9" name="Item - Easy Yellow Fish">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2224" levels="9" name="Item - Easy Orange Fish">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2225" levels="9" name="Item - Easy Violet Fish">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2226" levels="9" name="Item - Easy Red Fish">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2227" levels="9" name="Item - Easy White Fish">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2228" levels="9" name="Item - Easy Black Fish">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2229" levels="8" name="Treasure Chest Key">
+	  <table name="#itemConsume">6665 6666 6667 6668 6669 6670 6671 6672</table>
+	  <set name="target" val="TARGET_ONE"/>
+	  <set name="hitTime" val="500"/>
+	  <set name="reuseDelay" val="8000"/>
+	  <set name="skillType" val="DELUXE_KEY_UNLOCK"/>
+	  <set name="operateType" val="ACTIVE"/>
+	  <set name="itemConsumeId" val="#itemConsume" />
+	  <set name="itemConsumeCount" val="1"/>
+	  <set name="castRange" val="40"/>
+	  <set name="effectRange" val="400"/>
+	</skill>
+	<skill id="2230" levels="1" name="Item - Theme Sound Crystal">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+	<skill id="2231" levels="1" name="Amulet: Protection of Valakas">
+	  <set name="target" val="TARGET_SELF"/>
+	  <set name="hitTime" val="1000"/>
+	  <set name="skillType" val="BUFF"/>
+	  <set name="operateType" val="ACTIVE"/>
+	  <for>
+	    <effect name="Buff" time="1200" count="1" val="0" stackOrder="1" stackType="valakas_item">
+	      <mul order="0x30" stat="VALAKAS_VULN" val="0.89"/>
+	    </effect>
+	  </for>
+	</skill>
+	<skill id="2232" levels="1" name="Amulet: Slay Valakas">
+	  <set name="target" val="TARGET_SELF"/>
+	  <set name="hitTime" val="1000"/>
+	  <set name="skillType" val="BUFF"/>
+	  <set name="operateType" val="ACTIVE"/>
+	  <for>
+	    <effect name="Buff" time="1200" count="1" val="0" stackOrder="1" stackType="valakas_item">
+	      <mul order="0x30" stat="VALAKAS_PHYSICAL_DMG" val="1.11"/>
+	    </effect>
+	  </for>
+	</skill>
+	<skill id="2233" levels="1" name="Amulet: Flames of Valakas">
+	  <set name="target" val="TARGET_NONE"/>
+	  <set name="skillType" val="NOTDONE"/>
+	  <set name="operateType" val="ACTIVE"/>
+	</skill>
+</list>

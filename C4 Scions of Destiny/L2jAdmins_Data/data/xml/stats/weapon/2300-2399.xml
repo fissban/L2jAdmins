@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+<item id='2368' name="training_gloves">
+  <for>
+    <set val='7' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='5' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='2369' name="squires_sword">
+  <for>
+    <set val='6' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='5' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='2370' name="guild_members_club">
+  <for>
+    <set val='6' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='5' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='2371' name="fist_of_butcher">
+  <for>
+    <set val='16' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='10' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='2372' name="dagger_of_adept">
+  <for>
+    <set val='11' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='10' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='12' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='-3' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='433' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='2373' name="eldritch_staff">
+  <for>
+    <set val='13' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='13' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='2374' name="red_sunset_dagger">
+  <for>
+    <set val='11' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='10' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='12' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='-3' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='433' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+</list>

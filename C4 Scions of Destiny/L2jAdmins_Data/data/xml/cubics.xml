@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+chanceAction   - percentage
+delayAction    - seg
+delayDisappear - min
+skills         - skill id
+ -->
+ 
+<list>
+  <cubic type="LIFE_CUBIC">
+    <chanceAction val="100" />
+    <delayAction val="30" />
+    <delayDisappear val="60" />
+    <skills val="4051" />
+  </cubic>
+  <cubic type="STORM_CUBIC">
+    <chanceAction val="12" />
+    <delayAction val="10" />
+    <delayDisappear val="20" />
+    <skills val="4049" />
+  </cubic>
+  <cubic type="VAMPIRIC_CUBIC">
+    <chanceAction val="8" />
+    <delayAction val="15" />
+    <delayDisappear val="20" />
+    <skills val="4050" />
+  </cubic>
+  <cubic type="POLTERGEIST_CUBIC">
+    <chanceAction val="30" />
+    <delayAction val="8" />
+    <delayDisappear val="20" />
+    <skills val="4053,4054,4055" />
+  </cubic>
+  <cubic type="AQUA_CUBIC">
+    <chanceAction val="30" />
+    <delayAction val="8" />
+    <delayDisappear val="20" />
+    <skills val="4165" />
+  </cubic>
+  <cubic type="BINDING_CUBIC">
+    <chanceAction val="30" />
+    <delayAction val="8" />
+    <delayDisappear val="20" />
+    <skills val="4164" />
+  </cubic>
+  <cubic type="SPARK_CUBIC">
+    <chanceAction val="30" />
+    <delayAction val="8" />
+    <delayDisappear val="20" />
+    <skills val="4166" />
+  </cubic>
+  <cubic type="VIPER_CUBIC">
+    <chanceAction val="30" />
+    <delayAction val="20" />
+    <delayDisappear val="20" />
+    <skills val="4052" />
+  </cubic>
+</list>

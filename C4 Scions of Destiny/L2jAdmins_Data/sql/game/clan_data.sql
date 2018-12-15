@@ -1,0 +1,26 @@
+DROP TABLE IF EXISTS `clan_data`;
+CREATE TABLE `clan_data` (
+  `clan_id` int(11) NOT NULL DEFAULT 0,
+  `clan_name` varchar(45) DEFAULT NULL,
+  `clan_level` tinyint(1) DEFAULT NULL,
+  `hasCastle` tinyint(1) DEFAULT NULL,
+  `ally_id` int(11) DEFAULT NULL,
+  `ally_name` varchar(45) DEFAULT NULL,
+  `leader_id` int(11) DEFAULT NULL,
+  `crest_id` int(11) DEFAULT NULL,
+  `crest_large_id` int(11) DEFAULT NULL,
+  `ally_crest_id` int(11) DEFAULT NULL,
+  `auction_bid_at` int(11) NOT NULL DEFAULT 0,
+  `char_penalty_expiry_time` bigint(20) NOT NULL DEFAULT 0,
+  `recover_penalty_expiry_time` bigint(20) NOT NULL DEFAULT 0,
+  `dissolving_expiry_time` bigint(20) NOT NULL DEFAULT 0,
+  `ally_join_expiry_time` bigint(20) NOT NULL DEFAULT 0,
+  `ally_penalty_expiry_time` bigint(20) NOT NULL DEFAULT 0,
+  `ally_penalty_type` tinyint(1) NOT NULL DEFAULT 0,
+  `enabled` enum('true','false') NOT NULL DEFAULT 'false',
+  `notice` text,
+  `introduction` text,
+  PRIMARY KEY  (`clan_id`),
+  KEY `leader_id` (`leader_id`),
+  KEY `ally_id` (`ally_id`)
+);

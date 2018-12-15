@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<!-- Dark Elf Fighter -->
+	<class id="31" items="1147;1146;10;2369;5588" />
+	<!-- Dark Elf Mage -->
+	<class id="38" items="425;461;6;5588" />
+	<!-- Dwarf Fighter -->
+	<class id="53" items="1147;1146;10;2370;5588" />
+	<!-- Elf Fighter -->
+	<class id="18" items="1147;1146;10;2370;5588" />
+	<!-- Elf Mage -->
+	<class id="25" items="425;461;6;5588" />
+	<!-- Human Fighter -->
+	<class id="0" items="1147;1146;10;2369;5588" />
+	<!-- Human Mage -->
+	<class id="10" items="425;461;6;5588" />
+	<!-- Orc Fighter -->
+	<class id="44" items="1147;1146;2368;2369;5588" />
+	<!-- Orc Mage -->
+	<class id="49" items="425;461;2368;5588" />
+</list>

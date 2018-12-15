@@ -1,0 +1,2259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+  <door id="24180022" name="aden_clanhall_001" unlockable="false" >
+    <position x="145352" y="25368" z="-2112" />
+    <coordinates>
+		<loc x ="145360" y="25343" z="-2142" />
+		<loc x ="145360" y="25385" z="-2142" />
+		<loc x ="145356" y="25385" z="-2142" />
+		<loc x ="145356" y="25344" z="-2142" />
+    </coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24180023" name="aden_clanhall_002" unlockable="false">
+    <position x="145352" y="25320" z="-2112" />
+    <coordinates>
+		<loc x ="145356" y="25345" z="-2142" />
+		<loc x ="145356" y="25304" z="-2142" />
+		<loc x ="145360" y="25304" z="-2142" />
+		<loc x ="145360" y="25345" z="-2142" />
+    </coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24180024" name="aden_clanhall_003" unlockable="false">
+    <position x="149438" y="23154" z="-2120" />
+    <coordinates>
+		<loc x ="149439" y="23135" z="-2152" />
+		<loc x ="149439" y="23176" z="-2152" />
+		<loc x ="149437" y="23176" z="-2152" />
+		<loc x ="149437" y="23135" z="-2152" />
+    </coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24180025" name="aden_clanhall_004" unlockable="false">
+    <position x="149438" y="23116" z="-2120" />
+    <coordinates>
+		<loc x ="149437" y="23136" z="-2152" />
+		<loc x ="149437" y="23095" z="-2152" />
+		<loc x ="149439" y="23095" z="-2152" />
+		<loc x ="149439" y="23136" z="-2152" />
+    </coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24180026" name="aden_clanhall_005" unlockable="false">
+    <position x="150298" y="23674" z="-2112" />
+    <coordinates>
+		<loc x ="150301" y="23653" z="-2141" />
+		<loc x ="150301" y="23695" z="-2141" />
+		<loc x ="150297" y="23695" z="-2141" />
+		<loc x ="150298" y="23653" z="-2141" />
+    </coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24180027" name="aden_clanhall_006" unlockable="false">
+    <position x="150297" y="23636" z="-2112" />
+    <coordinates>
+		<loc x ="150297" y="23655" z="-2141" />
+		<loc x ="150297" y="23614" z="-2141" />
+		<loc x ="150301" y="23614" z="-2141" />
+		<loc x ="150301" y="23656" z="-2141" />
+    </coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24180028" name="aden_clanhall_007" unlockable="false">
+    <position x="150442" y="26562" z="-2248" />
+    <coordinates>
+		<loc x ="150445" y="26542" z="-2278" />
+		<loc x ="150446" y="26583" z="-2278" />
+		<loc x ="150443" y="26583" z="-2278" />
+		<loc x ="150443" y="26542" z="-2278" />
+    </coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24180029" name="aden_clanhall_008" unlockable="false">
+    <position x="150444" y="26524" z="-2248" />
+    <coordinates>
+		<loc x ="150443" y="26543" z="-2278" />
+		<loc x ="150443" y="26502" z="-2278" />
+		<loc x ="150445" y="26502" z="-2278" />
+		<loc x ="150445" y="26543" z="-2278" />
+    </coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24180030" name="aden_clanhall_009" unlockable="false">
+    <position x="144358" y="28218" z="-2240" />
+    <coordinates>
+		<loc x ="144359" y="28197" z="-2270" />
+		<loc x ="144359" y="28238" z="-2270" />
+		<loc x ="144357" y="28238" z="-2270" />
+		<loc x ="144357" y="28197" z="-2270" />
+    </coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24180031" name="aden_clanhall_010" unlockable="false">
+	<position x="144359" y="28178" z="-2240" />
+	<coordinates>
+		<loc x="144357" y="28198" z="-2270" />
+		<loc x="144357" y="28157" z="-2270" />
+		<loc x="144359" y="28157" z="-2270" />
+		<loc x="144359" y="28198" z="-2270" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24180032" name="aden_clanhall_011" unlockable="false">
+	<position x="144296" y="27108" z="-2248" />
+	<coordinates>
+		<loc x="144295" y="27089" z="-2280" />
+		<loc x="144295" y="27130" z="-2280" />
+		<loc x="144293" y="27130" z="-2280" />
+		<loc x="144293" y="27090" z="-2280" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24180033" name="aden_clanhall_012" unlockable="false">
+	<position x="144295" y="27070" z="-2248" />
+	<coordinates>
+		<loc x="144293" y="27090" z="-2280" />
+		<loc x="144293" y="27049" z="-2280" />
+		<loc x="144295" y="27049" z="-2280" />
+		<loc x="144295" y="27090" z="-2280" />
+	</coordinates>
+	<stats hp="126600" pDef="644" mDef="518" height="450" />
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24190001" name="aden_colosseum_outer_001" unlockable="false" isOpen="true">
+	<position x="147086" y="46721" z="-3400" />
+	<coordinates>
+		<loc x="147075" y="46641" z="-3434" />
+		<loc x="147099" y="46641" z="-3434" />
+		<loc x="147099" y="46800" z="-3434" />
+		<loc x="147075" y="46799" z="-3434" />
+	</coordinates>
+    <stat hp="687500" pDef="644" mDef="518" />
+  </door>
+  <door id="24190002" name="aden_colosseum_inner_001" unlockable="false" isOpen="true">
+	<position x="148045" y="46721" z="-3400" />
+	<coordinates>
+		<loc x="148034" y="46642" z="-3435" />
+		<loc x="148055" y="46642" z="-3435" />
+		<loc x="148057" y="46800" z="-3435" />
+		<loc x="148036" y="46798" z="-3435" />
+	</coordinates>
+    <stat hp="687500" pDef="644" mDef="518" />
+  </door>
+  <door id="24190003" name="aden_colosseum_inner_002" unlockable="false" isOpen="true">
+	<position x="151952" y="46721" z="-3400" />
+	<coordinates>
+		<loc x="150939" y="46641" z="-3435" />
+		<loc x="150961" y="46640" z="-3435" />
+		<loc x="150961" y="46797" z="-3435" />
+		<loc x="150941" y="46797" z="-3435" />
+	</coordinates>
+    <stat hp="687500" pDef="644" mDef="518" />
+  </door>
+  <door id="24190004" name="aden_colosseum_outer_002" unlockable="false" isOpen="true">
+	<position x="150913" y="46721" z="-3400" />
+	<coordinates>
+		<loc x="151903" y="46644" z="-3435" />
+		<loc x="151917" y="46644" z="-3435" />
+		<loc x="151918" y="46798" z="-3435" />
+		<loc x="151904" y="46798" z="-3435" />
+	</coordinates>
+    <stat hp="687500" pDef="644" mDef="518" />
+  </door>
+  <door id="22170001" name="bandit_outer_001" unlockable="false">
+	<position x="85512" y="-18200" z="-1792" />
+	<coordinates>
+		<loc x="85414" y="-18299" z="-1821" />
+		<loc x="85633" y="-18123" z="-1821" />
+		<loc x="85629" y="-18118" z="-1821" />
+		<loc x="85411" y="-18295" z="-1821" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22170002" name="bandit_outer_002" unlockable="false">
+	<position x="85320" y="-18376" z="-1792" />
+	<coordinates>
+		<loc x="85208" y="-18466" z="-1821" />
+		<loc x="85425" y="-18291" z="-1821" />
+		<loc x="85422" y="-18288" z="-1821" />
+		<loc x="85206" y="-18463" z="-1821" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22170003" name="bandit_inner_003" unlockable="false">
+	<position x="80824" y="-15400" z="-1800" />
+	<coordinates>
+		<loc x="80815" y="-15445" z="-1829" />
+		<loc x="80821" y="-15445" z="-1829" />
+		<loc x="80821" y="-15349" z="-1829" />
+		<loc x="80816" y="-15349" z="-1829" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22170004" name="bandit_inner_004" unlockable="false">
+	<position x="80818" y="-15473" z="-1800" />
+	<coordinates>
+		<loc x="80815" y="-15525" z="-1829" />
+		<loc x="80820" y="-15525" z="-1829" />
+		<loc x="80820" y="-15431" z="-1829" />
+		<loc x="80815" y="-15431" z="-1829" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="20210001" name="cruma_001" unlockable="true">
+	<position x="17624" y="112427" z="-6584" />
+	<coordinates>
+		<loc x="17506" y="112406" z="-6625" />
+		<loc x="17741" y="112402" z="-6625" />
+		<loc x="17741" y="112452" z="-6625" />
+		<loc x="17506" y="112449" z="-6625" />
+	</coordinates>
+    <stat hp="150000" pDef="476" mDef="383" />
+  </door>
+  <door id="20210002" name="cruma_002" unlockable="true">
+	<position x="17721" y="112427" z="-6584" />
+	<coordinates>
+		<loc x="17624" y="112397" z="-6627" />
+		<loc x="17818" y="112396" z="-6628" />
+		<loc x="17819" y="112458" z="-6628" />
+		<loc x="17623" y="112459" z="-6627" />
+	</coordinates>
+    <stat hp="150000" pDef="476" mDef="383" />
+  </door>
+  <door id="20210003" name="cruma_003" unlockable="true">
+	<position x="17721" y="112427" z="-6584" />
+	<coordinates>
+		<loc x="17624" y="112397" z="-6627" />
+		<loc x="17818" y="112396" z="-6628" />
+		<loc x="17819" y="112458" z="-6628" />
+		<loc x="17623" y="112459" z="-6627" />
+	</coordinates>
+    <stat hp="150000" pDef="476" mDef="383" />
+  </door>
+  <door id="20220011" name="H_Door_MV_01" unlockable="false">
+	<position x="18875" y="143334" z="-3008" />
+	<coordinates>
+		<loc x="18878" y="143353" z="-3039" />
+		<loc x="18874" y="143316" z="-3039" />
+		<loc x="18877" y="143315" z="-3039" />
+		<loc x="18880" y="143353" z="-3039" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="20220012" name="H_Door_MV_01" unlockable="false">
+	<position x="18873" y="143297" z="-3008" />
+	<coordinates>
+		<loc x="18873" y="143278" z="-3039" />
+		<loc x="18877" y="143315" z="-3039" />
+		<loc x="18874" y="143316" z="-3039" />
+		<loc x="18871" y="143278" z="-3039" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="20220013" name="H_Door_MV_01" unlockable="false">
+	<position x="17640" y="145208" z="-3032" />
+	<coordinates>
+		<loc x="17616" y="145183" z="-3066" />
+		<loc x="17648" y="145204" z="-3066" />
+		<loc x="17646" y="145206" z="-3066" />
+		<loc x="17616" y="145185" z="-3066" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="20220014" name="H_Door_MV_01" unlockable="false">
+	<position x="17662" y="145214" z="-3032" />
+	<coordinates>
+		<loc x="17678" y="145227" z="-3066" />
+		<loc x="17646" y="145207" z="-3066" />
+		<loc x="17648" y="145204" z="-3066" />
+		<loc x="17679" y="145226" z="-3066" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="20220015" name="H_Door_MV_01" unlockable="false">
+	<position x="20136" y="145996" z="-3112" />
+	<coordinates>
+		<loc x="20118" y="145992" z="-3140" />
+		<loc x="20155" y="145992" z="-3140" />
+		<loc x="20155" y="145996" z="-3140" />
+		<loc x="20118" y="145996" z="-3140" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="20220016" name="H_Door_MV_01" unlockable="false">
+	<position x="20174" y="145995" z="-3112" />
+	<coordinates>
+		<loc x="20193" y="145995" z="-3140" />
+		<loc x="20156" y="145995" z="-3140" />
+		<loc x="20156" y="145993" z="-3140" />
+		<loc x="20193" y="145993" z="-3140" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25170001" name="devastated_castle_outer_001" unlockable="false">
+	<position x="178283" y="-15028" z="-2256" />
+	<coordinates>
+		<loc x="178211" y="-15038" z="-2294" />
+		<loc x="178342" y="-15038" z="-2294" />
+		<loc x="178341" y="-15017" z="-2294" />
+		<loc x="178211" y="-15017" z="-2294" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25170002" name="devastated_castle_outer_002" unlockable="false">
+	<position x="178392" y="-15032" z="-2256" />
+	<coordinates>
+		<loc x="178339" y="-15038" z="-2295" />
+		<loc x="178469" y="-15038" z="-2294" />
+		<loc x="178469" y="-15017" z="-2294" />
+		<loc x="178339" y="-15017" z="-2294" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25170003" name="devastated_castle_inner_001" unlockable="false">
+	<position x="178153" y="-18214" z="-2224" />
+	<coordinates>
+		<loc x="178120" y="-18225" z="-2262" />
+		<loc x="178183" y="-18225" z="-2262" />
+		<loc x="178183" y="-18211" z="-2262" />
+		<loc x="178120" y="-18211" z="-2262" />
+	</coordinates>
+    <stat hp="79125" pDef="644" mDef="518" />
+  </door>
+  <door id="25170004" name="devastated_castle_inner_002" unlockable="false">
+	<position x="178216" y="-18216" z="-2224" />
+	<coordinates>
+		<loc x="178182" y="-18225" z="-2262" />
+		<loc x="178245" y="-18225" z="-2262" />
+		<loc x="178245" y="-18212" z="-2262" />
+		<loc x="178182" y="-18211" z="-2262" />
+	</coordinates>
+    <stat hp="79125" pDef="644" mDef="518" />
+  </door>
+  <door id="25170005" name="devastated_castle_inner_003" unlockable="false">
+	<position x="178296" y="-18600" z="-2232" />
+	<coordinates>
+		<loc x="178302" y="-18611" z="-2272" />
+		<loc x="178309" y="-18611" z="-2272" />
+		<loc x="178309" y="-18573" z="-2272" />
+		<loc x="178302" y="-18573" z="-2272" />
+	</coordinates>
+    <stat hp="79125" pDef="644" mDef="518" />
+  </door>
+  <door id="25170006" name="devastated_castle_inner_004" unlockable="false">
+	<position x="178300" y="-18630" z="-2232" />
+	<coordinates>
+		<loc x="178302" y="-18648" z="-2272" />
+		<loc x="178309" y="-18648" z="-2272" />
+		<loc x="178309" y="-18610" z="-2272" />
+		<loc x="178302" y="-18610" z="-2272" />
+	</coordinates>
+    <stat hp="79125" pDef="644" mDef="518" />
+  </door>
+  <door id="21240002" name="pirate_isle_002" unlockable="true">
+  	<position x="43736" y="212520" z="-3712" />
+	<coordinates>
+		<loc x="43741" y="212433" z="-3742" />
+		<loc x="43749" y="212433" z="-3742" />
+		<loc x="43749" y="212600" z="-3742" />
+		<loc x="43741" y="212600" z="-3742" />
+	</coordinates>
+    <stat hp="187500" pDef="100000" mDef="10000" />
+  </door>
+  <door id="21240003" name="pirate_isle_003" unlockable="true">
+	<position x="42166" y="213285" z="-3712" />
+	<coordinates>
+		<loc x="42246" y="213280" z="-3760" />
+		<loc x="42246" y="213296" z="-3760" />
+		<loc x="42085" y="213296" z="-3760" />
+		<loc x="42085" y="213280" z="-3760" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="21240004" name="pirate_isle_004" unlockable="true">
+	<position x="51189" y="206113" z="-4000" />
+	<coordinates>
+		<loc x="51270" y="206103" z="-4031" />
+		<loc x="51270" y="206110" z="-4031" />
+		<loc x="51105" y="206110" z="-4031" />
+		<loc x="51105" y="206102" z="-4031" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="21240005" name="pirate_isle_005" unlockable="true">
+	<position x="52910" y="206720" z="-3760" />
+	<coordinates>
+		<loc x="52896" y="206638" z="-3808" />
+		<loc x="52912" y="206638" z="-3808" />
+		<loc x="52912" y="206801" z="-3808" />
+		<loc x="52896" y="206801" z="-3808" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="21240006" name="pirate_isle_006" unlockable="true" openTask="7200000">
+	<position x="52420" y="219105" z="-3224" />
+	<coordinates>
+		<loc x="52427" y="219025" z="-3224" />
+		<loc x="52437" y="219025" z="-3224" />
+		<loc x="52437" y="219185" z="-3224" />
+		<loc x="52427" y="219185" z="-3224" />
+	</coordinates>
+    <stat hp="187500" pDef="1000000" mDef="383" />
+  </door>
+  <door id="22250001" name="goe_001" unlockable="false" openTask="420000">
+	<position x="86216" y="247064" z="-8824" />
+	<coordinates>
+		<loc x="86087" y="246961" z="-8845" />
+		<loc x="86364" y="247159" z="-8845" />
+		<loc x="86362" y="247162" z="-8845" />
+		<loc x="86085" y="246964" z="-8845" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250002" name="goe_003" unlockable="false" openTask="420000">
+	<position x="88490" y="253870" z="-8824" />
+	<coordinates>
+		<loc x="88546" y="253708" z="-8845" />
+		<loc x="88440" y="254031" z="-8845" />
+		<loc x="88436" y="254030" z="-8845" />
+		<loc x="88539" y="253707" z="-8845" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250003" name="goe_003" unlockable="false" openTask="420000">
+	<position x="76872" y="253953" z="-8824" />
+	<coordinates>
+		<loc x="76928" y="254117" z="-8856" />
+		<loc x="76816" y="253789" z="-8856" />
+		<loc x="76820" y="253788" z="-8856" />
+		<loc x="76925" y="254118" z="-8856" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250004" name="goe_004" unlockable="false" openTask="420000">
+	<position x="79032" y="247128" z="-8824" />
+	<coordinates>
+		<loc x="78897" y="247225" z="-8838" />
+		<loc x="79164" y="247032" z="-8838" />
+		<loc x="79162" y="247031" z="-8838" />
+		<loc x="78900" y="247228" z="-8838" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250005" name="goe_005" unlockable="false" openTask="420000">
+	<position x="82737" y="246602" z="-9336" />
+	<coordinates>
+		<loc x="82578" y="246602" z="-9359" />
+		<loc x="82896" y="246602" z="-9359" />
+		<loc x="82896" y="246602" z="-9359" />
+		<loc x="82578" y="246602" z="-9359" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250006" name="goe_006" unlockable="false" openTask="420000">
+	<position x="87902" y="250377" z="-9336" />
+	<coordinates>
+		<loc x="87851" y="250218" z="-9361" />
+		<loc x="87963" y="250535" z="-9361" />
+		<loc x="87952" y="250540" z="-9361" />
+		<loc x="87845" y="250221" z="-9361" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250007" name="goe_007" unlockable="false" openTask="420000">
+	<position x="85913" y="256377" z="-9336" />
+	<coordinates>
+		<loc x="86047" y="256280" z="-9352" />
+		<loc x="85779" y="256477" z="-9352" />
+		<loc x="85778" y="256475" z="-9352" />
+		<loc x="86046" y="256278" z="-9352" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250008" name="goe_008" unlockable="false" openTask="420000">
+	<position x="79561" y="256348" z="-9336" />
+	<coordinates>
+		<loc x="79696" y="256447" z="-9348" />
+		<loc x="79427" y="256254" z="-9348" />
+		<loc x="79428" y="256253" z="-9348" />
+		<loc x="79699" y="256444" z="-9348" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250009" name="goe_009" unlockable="false" openTask="420000">
+	<position x="77616" y="250360" z="-9336" />
+	<coordinates>
+		<loc x="77560" y="250521" z="-9360" />
+		<loc x="77661" y="250195" z="-9360" />
+		<loc x="77671" y="250197" z="-9360" />
+		<loc x="77570" y="250525" z="-9360" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250010" name="goe_010" unlockable="false" openTask="420000">
+	<position x="80101" y="248387" z="-9848" />
+	<coordinates>
+		<loc x="79968" y="248483" z="-9883" />
+		<loc x="80232" y="248290" z="-9883" />
+		<loc x="80233" y="248291" z="-9883" />
+		<loc x="79970" y="248485" z="-9883" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250011" name="goe_011" unlockable="false" openTask="420000">
+	<position x="85343" y="248343" z="-9848" />
+	<coordinates>
+		<loc x="85206" y="248243" z="-9869" />
+		<loc x="85481" y="248439" z="-9869" />
+		<loc x="85478" y="248443" z="-9869" />
+		<loc x="85204" y="248246" z="-9869" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250012" name="goe_012" unlockable="false" openTask="420000">
+	<position x="87018" y="253388" z="-9848" />
+	<coordinates>
+		<loc x="87076" y="253226" z="-9875" />
+		<loc x="86969" y="253544" z="-9875" />
+		<loc x="86965" y="253542" z="-9875" />
+		<loc x="87067" y="253223" z="-9875" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250013" name="goe_013" unlockable="false" openTask="420000">
+	<position x="82767" y="256485" z="-9848" />
+	<coordinates>
+		<loc x="82932" y="256486" z="-9873" />
+		<loc x="82603" y="256485" z="-9873" />
+		<loc x="82603" y="256485" z="-9873" />
+		<loc x="82932" y="256484" z="-9873" />
+	</coordinates>
+  </door>
+  <door id="22250014" name="goe_014" unlockable="false" openTask="420000">
+	<position x="78490" y="253390" z="-9848" />
+	<coordinates>
+		<loc x="78539" y="253551" z="-9884" />
+		<loc x="78435" y="253231" z="-9884" />
+		<loc x="78439" y="253230" z="-9884" />
+		<loc x="78548" y="253546" z="-9884" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250015" name="goe_015" unlockable="false" openTask="420000">
+	<position x="79252" y="253096" z="-10360" />
+	<coordinates>
+		<loc x="79302" y="253256" z="-10386" />
+		<loc x="79196" y="252938" z="-10386" />
+		<loc x="79201" y="252936" z="-10386" />
+		<loc x="79308" y="253253" z="-10386" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250016" name="goe_016" unlockable="false" openTask="420000">
+	<position x="79275" y="250855" z="-10360" />
+	<coordinates>
+		<loc x="79220" y="251014" z="-10386" />
+		<loc x="79326" y="250697" z="-10386" />
+		<loc x="79328" y="250698" z="-10386" />
+		<loc x="79225" y="251017" z="-10386" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250017" name="goe_017" unlockable="false" openTask="420000">
+	<position x="80600" y="249045" z="-10360" />
+	<coordinates>
+		<loc x="80464" y="249140" z="-10370" />
+		<loc x="80733" y="248949" z="-10370" />
+		<loc x="80735" y="248952" z="-10370" />
+		<loc x="80467" y="249143" z="-10370" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250018" name="goe_018" unlockable="false" openTask="420000">
+	<position x="82836" y="248341" z="-10360" />
+	<coordinates>
+		<loc x="82672" y="248352" z="-10391" />
+		<loc x="82999" y="248352" z="-10391" />
+		<loc x="82999" y="248336" z="-10391" />
+		<loc x="82672" y="248336" z="-10391" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250019" name="goe_019" unlockable="false" openTask="420000">
+	<position x="84906" y="249034" z="-10360" />
+	<coordinates>
+		<loc x="84770" y="248927" z="-10379" />
+		<loc x="85050" y="249131" z="-10379" />
+		<loc x="85041" y="249141" z="-10379" />
+		<loc x="84761" y="248938" z="-10379" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250020" name="goe_020" unlockable="false" openTask="420000">
+	<position x="86246" y="250887" z="-10360" />
+	<coordinates>
+		<loc x="86298" y="251048" z="-10368" />
+		<loc x="86186" y="250728" z="-10368" />
+		<loc x="86193" y="250724" z="-10368" />
+		<loc x="86307" y="251045" z="-10368" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250021" name="goe_021" unlockable="false" openTask="420000">
+	<position x="86213" y="253196" z="-10360" />
+	<coordinates>
+		<loc x="86157" y="253357" z="-10380" />
+		<loc x="86260" y="253034" z="-10380" />
+		<loc x="86268" y="253038" z="-10380" />
+		<loc x="86165" y="253360" z="-10380" />
+	</coordinates>
+  </door>
+  <door id="22250022" name="goe_022" unlockable="false" openTask="420000">
+	<position x="84889" y="254972" z="-10360" />
+	<coordinates>
+		<loc x="84750" y="255068" z="-10376" />
+		<loc x="85023" y="254873" z="-10376" />
+		<loc x="85027" y="254877" z="-10376" />
+		<loc x="84754" y="255073" z="-10376" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250023" name="goe_023" unlockable="false" openTask="420000">
+	<position x="82726" y="255659" z="-10360" />
+	<coordinates>
+		<loc x="82561" y="255648" z="-10387" />
+		<loc x="82891" y="255648" z="-10387" />
+		<loc x="82891" y="255664" z="-10387" />
+		<loc x="82561" y="255664" z="-10387" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250024" name="goe_024" unlockable="false" openTask="420000">
+	<position x="80590" y="254949" z="-10360" />
+	<coordinates>
+		<loc x="80724" y="255050" z="-10372" />
+		<loc x="80454" y="254853" z="-10372" />
+		<loc x="80457" y="254851" z="-10372" />
+		<loc x="80727" y="255047" z="-10372" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250025" name="goe_025" unlockable="true" openTask="420000">
+	<position x="82006" y="255499" z="-10872" />
+	<coordinates>
+		<loc x="81657" y="255505" z="-10888" />
+		<loc x="82264" y="255508" z="-10888" />
+		<loc x="82264" y="255478" z="-10888" />
+		<loc x="81657" y="255480" z="-10888" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250026" name="goe_026" unlockable="true" openTask="420000">
+	<position x="83510" y="255496" z="-10872" />
+	<coordinates>
+		<loc x="83194" y="255511" z="-10891" />
+		<loc x="83795" y="255509" z="-10891" />
+		<loc x="83795" y="255479" z="-10891" />
+		<loc x="83194" y="255481" z="-10891" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250027" name="goe_027" unlockable="true" openTask="420000">
+	<position x="83448" y="248504" z="-10872" />
+	<coordinates>
+		<loc x="83247" y="248523" z="-10886" />
+		<loc x="83848" y="248520" z="-10886" />
+		<loc x="83848" y="248490" z="-10886" />
+		<loc x="83247" y="248494" z="-10886" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="22250028" name="goe_028" unlockable="true" openTask="420000">
+	<position x="82052" y="248506" z="-10872" />
+	<coordinates>
+		<loc x="81713" y="248521" z="-10888" />
+		<loc x="82312" y="248520" z="-10888" />
+		<loc x="82312" y="248490" z="-10888" />
+		<loc x="81713" y="248491" z="-10888" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <!-- TODO: ESTO NO ESTA <door id="22250029" name="goe_029" unlockable="true" openTask="420000">
+    <position x="82560" y="254715" z="-10880" />
+    <rangeMax x="82727" y="254719" z="-10577" />
+    <rangeMin x="82395" y="254712" z="-11183" />
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door> -->
+  <door id="17220001" name="gludin_clanhall_001" unlockable="false">
+	<position x="-84488" y="155224" z="-3160" />
+	<coordinates>
+		<loc x="-84480" y="155208" z="-3192" />
+		<loc x="-84480" y="155246" z="-3192" />
+		<loc x="-84496" y="155246" z="-3192" />
+		<loc x="-84496" y="155208" z="-3192" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="17220002" name="gludin_clanhall_002" unlockable="false">
+	<position x="-84488" y="155272" z="-3160" />
+	<coordinates>
+		<loc x="-84496" y="155286" z="-3192" />
+		<loc x="-84496" y="155248" z="-3192" />
+		<loc x="-84480" y="155248" z="-3192" />
+		<loc x="-84480" y="155286" z="-3192" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="17220003" name="gludin_clanhall_003" unlockable="false">
+	<position x="-83960" y="155240" z="-3160" />
+	<coordinates>
+		<loc x="-83952" y="155257" z="-3191" />
+		<loc x="-83952" y="155218" z="-3191" />
+		<loc x="-83968" y="155218" z="-3191" />
+		<loc x="-83968" y="155257" z="-3191" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="17220004" name="gludin_clanhall_004" unlockable="false">
+	<position x="-83960" y="155192" z="-3160" />
+	<coordinates>
+		<loc x="-83968" y="155180" z="-3191" />
+		<loc x="-83968" y="155219" z="-3191" />
+		<loc x="-83952" y="155218" z="-3191" />
+		<loc x="-83952" y="155180" z="-3191" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="17220005" name="gludin_clanhall_005" unlockable="false">
+	<position x="-83896" y="153064" z="-3160" />
+	<coordinates>
+		<loc x="-83878" y="153056" z="-3149" />
+		<loc x="-83917" y="153056" z="-3149" />
+		<loc x="-83916" y="153072" z="-3149" />
+		<loc x="-83878" y="153072" z="-3149" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="17220006" name="gludin_clanhall_006" unlockable="false">
+	<position x="-83944" y="153064" z="-3160" />
+	<coordinates>
+		<loc x="-83955" y="153072" z="-3149" />
+		<loc x="-83916" y="153072" z="-3149" />
+		<loc x="-83917" y="153056" z="-3149" />
+		<loc x="-83955" y="153056" z="-3149" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="17220007" name="gludin_clanhall_007" unlockable="false">
+	<position x="-83909" y="153597" z="-3160" />
+	<coordinates>
+		<loc x="-83927" y="153597" z="-3190" />
+		<loc x="-83889" y="153597" z="-3190" />
+		<loc x="-83889" y="153599" z="-3190" />
+		<loc x="-83927" y="153599" z="-3190" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="17220008" name="gludin_clanhall_008" unlockable="false">
+	<position x="-83868" y="153601" z="-3160" />
+	<coordinates>
+		<loc x="-83850" y="153599" z="-3190" />
+		<loc x="-83888" y="153599" z="-3190" />
+		<loc x="-83889" y="153597" z="-3190" />
+		<loc x="-83850" y="153597" z="-3190" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="17220009" name="gludin_clanhall_009" unlockable="false">
+	<position x="-83990" y="151880" z="-3120" />
+	<coordinates>
+		<loc x="-83971" y="151882" z="-3152" />
+		<loc x="-84009" y="151882" z="-3152" />
+		<loc x="-84009" y="151879" z="-3152" />
+		<loc x="-83971" y="151879" z="-3152" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="17220010" name="gludin_clanhall_010" unlockable="false">
+	<position x="-84027" y="151880" z="-3120" />
+	<coordinates>
+		<loc x="-84046" y="151879" z="-3152" />
+		<loc x="-84008" y="151879" z="-3152" />
+		<loc x="-84008" y="151881" z="-3152" />
+		<loc x="-84046" y="151881" z="-3152" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="17220011" name="gludin_einhasad_001" unlockable="false">
+	<position x="-79736" y="150084" z="-3040" />
+	<coordinates>
+		<loc x="-79735" y="150062" z="-3067" />
+		<loc x="-79735" y="150100" z="-3067" />
+		<loc x="-79737" y="150100" z="-3067" />
+		<loc x="-79737" y="150062" z="-3067" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="17220012" name="gludin_einhasad_002" unlockable="false">
+	<position x="-79736" y="150118" z="-3040" />
+	<coordinates>
+		<loc x="-79737" y="150138" z="-3067" />
+		<loc x="-79737" y="150099" z="-3067" />
+		<loc x="-79735" y="150099" z="-3067" />
+		<loc x="-79735" y="150138" z="-3067" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="17220013" name="gludin_einhasad_003" unlockable="false">
+	<position x="-79739" y="151543" z="-3040" />
+	<coordinates>
+		<loc x="-79728" y="151522" z="-3068" />
+		<loc x="-79728" y="151561" z="-3068" />
+		<loc x="-79744" y="151561" z="-3068" />
+		<loc x="-79744" y="151522" z="-3068" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="17220014" name="gludin_einhasad_004" unlockable="false">
+	<position x="-79740" y="151579" z="-3040" />
+	<coordinates>
+		<loc x="-79744" y="151597" z="-3068" />
+		<loc x="-79744" y="151558" z="-3068" />
+		<loc x="-79728" y="151558" z="-3068" />
+		<loc x="-79728" y="151597" z="-3068" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="19210011" name="gludio_clanhall_001" unlockable="false">
+	<position x="-14789" y="125612" z="-3128" />
+	<coordinates>
+		<loc x="-14791" y="125632" z="-3158" />
+		<loc x="-14791" y="125595" z="-3158" />
+		<loc x="-14789" y="125595" z="-3158" />
+		<loc x="-14789" y="125632" z="-3158" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="19210012" name="gludio_clanhall_002" unlockable="false">
+	<position x="-14791" y="125577" z="-3128" />
+	<coordinates>
+		<loc x="-14789" y="125557" z="-3158" />
+		<loc x="-14789" y="125594" z="-3158" />
+		<loc x="-14791" y="125594" z="-3158" />
+		<loc x="-14791" y="125557" z="-3158" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="19210013" name="gludio_clanhall_003" unlockable="false">
+	<position x="-14116" y="125621" z="-3128" />
+	<coordinates>
+		<loc x="-14115" y="125602" z="-3157" />
+		<loc x="-14115" y="125639" z="-3157" />
+		<loc x="-14117" y="125639" z="-3157" />
+		<loc x="-14117" y="125602" z="-3157" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="19210014" name="gludio_clanhall_004" unlockable="false">
+	<position x="-14117" y="125660" z="-3128" />
+	<coordinates>
+		<loc x="-14117" y="125677" z="-3157" />
+		<loc x="-14117" y="125640" z="-3157" />
+		<loc x="-14115" y="125640" z="-3157" />
+		<loc x="-14115" y="125677" z="-3157" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="19210015" name="gludio_clanhall_005" unlockable="false">
+	<position x="-12618" y="123884" z="-3096" />
+	<coordinates>
+		<loc x="-12600" y="123888" z="-3131" />
+		<loc x="-12637" y="123888" z="-3131" />
+		<loc x="-12637" y="123872" z="-3131" />
+		<loc x="-12600" y="123872" z="-3131" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="19210016" name="gludio_clanhall_006" unlockable="false">
+	<position x="-12659" y="123885" z="-3096" />
+	<coordinates>
+		<loc x="-12676" y="123888" z="-3131" />
+		<loc x="-12639" y="123888" z="-3131" />
+		<loc x="-12639" y="123872" z="-3131" />
+		<loc x="-12676" y="123872" z="-3131" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="19210017" name="gludio_clanhall_007" unlockable="false">
+	<position x="-15964" y="123740" z="-3096" />
+	<coordinates>
+		<loc x="-15981" y="123746" z="-3131" />
+		<loc x="-15946" y="123734" z="-3131" />
+		<loc x="-15945" y="123737" z="-3131" />
+		<loc x="-15981" y="123747" z="-3131" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="19210018" name="gludio_clanhall_008" unlockable="false">
+	<position x="-15926" y="123730" z="-3096" />
+	<coordinates>
+		<loc x="-15909" y="123725" z="-3131" />
+		<loc x="-15944" y="123736" z="-3131" />
+		<loc x="-15945" y="123733" z="-3131" />
+		<loc x="-15909" y="123723" z="-3131" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="21210001" name="partisan001" unlockable="false">
+	<position x="43656" y="108872" z="-1984" />
+	<coordinates>
+		<loc x="43643" y="108840" z="-2015" />
+		<loc x="43650" y="108840" z="-2015" />
+		<loc x="43651" y="108915" z="-2015" />
+		<loc x="43643" y="108915" z="-2015" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="21210002" name="partisan002" unlockable="false">
+	<position x="43648" y="108818" z="-1984" />
+	<coordinates>
+		<loc x="43643" y="108778" z="-2015" />
+		<loc x="43651" y="108778" z="-2015" />
+		<loc x="43651" y="108853" z="-2015" />
+		<loc x="43643" y="108853" z="-2015" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="23180001" name="aden_tower_of_hubris" unlockable="false" openTask="300000">
+	<position x="113848" y="16920" z="-2120" />
+	<coordinates>
+		<loc x="113832" y="16890" z="-2156" />
+		<loc x="113937" y="16996" z="-2156" />
+		<loc x="113920" y="17013" z="-2156" />
+		<loc x="113814" y="16908" z="-2156" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="23180002" name="aden_tower_of_hubris" unlockable="false" openTask="300000">
+	<position x="113801" y="16879" z="-2120" />
+	<coordinates>
+		<loc x="113728" y="16788" z="-2156" />
+		<loc x="113833" y="16893" z="-2156" />
+		<loc x="113815" y="16910" z="-2156" />
+		<loc x="113710" y="16806" z="-2156" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="23180003" name="aden_tower_of_hubris" unlockable="false" openTask="300000">
+	<position x="113218" y="15925" z="3960" />
+	<coordinates>
+		<loc x="113178" y="15931" z="3937" />
+		<loc x="113316" y="15874" z="3937" />
+		<loc x="113326" y="15897" z="3937" />
+		<loc x="113187" y="15954" z="3937" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="23180004" name="aden_tower_of_hubris" unlockable="false" openTask="300000">
+	<position x="113149" y="15952" z="3960" />
+	<coordinates>
+		<loc x="113043" y="15987" z="3938" />
+		<loc x="113181" y="15930" z="3938" />
+		<loc x="113191" y="15953" z="3938" />
+		<loc x="113053" y="16010" z="3938" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="23180005" name="aden_tower_of_hubris" unlockable="false" openTask="300000">
+	<position x="113288" y="15784" z="6992" />
+	<coordinates>
+		<loc x="113219" y="15703" z="6968" />
+		<loc x="113325" y="15808" z="6968" />
+		<loc x="113307" y="15826" z="6968" />
+		<loc x="113201" y="15720" z="6968" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="23180006" name="aden_tower_of_hubris" unlockable="false" openTask="300000">
+	<position x="113336" y="15848" z="6992" />
+	<coordinates>
+		<loc x="113323" y="15806" z="6968" />
+		<loc x="113429" y="15912" z="6968" />
+		<loc x="113411" y="15930" z="6968" />
+		<loc x="113305" y="15824" z="6968" />
+	</coordinates>
+    <stat hp="187500" pDef="476" mDef="383" />
+  </door>
+  <door id="25150011" name="conq_mos" unlockable="false">
+	<position x="181209" y="-85595" z="-7216" />
+	<coordinates>
+		<loc x="181185" y="-85775" z="-7261" />
+		<loc x="181256" y="-85772" z="-7261" />
+		<loc x="181254" y="-85412" z="-7261" />
+		<loc x="181184" y="-85414" z="-7261" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150012" name="visc_hall_gate" unlockable="false">
+	<position x="182981" y="-85580" z="-7216" />
+	<coordinates>
+		<loc x="182971" y="-85759" z="-7259" />
+		<loc x="183041" y="-85755" z="-7259" />
+		<loc x="183045" y="-85401" z="-7259" />
+		<loc x="182970" y="-85399" z="-7259" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150013" name="count_hall_gate" unlockable="false">
+	<position x="184798" y="-85582" z="-7216" />
+	<coordinates>
+		<loc x="184787" y="-85758" z="-7259" />
+		<loc x="184854" y="-85759" z="-7259" />
+		<loc x="184857" y="-85401" z="-7259" />
+		<loc x="184790" y="-85401" z="-7259" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150014" name="marquis_hall_gate" unlockable="false">
+	<position x="186575" y="-85576" z="-7216" />
+	<coordinates>
+		<loc x="186560" y="-85758" z="-7265" />
+		<loc x="186639" y="-85755" z="-7265" />
+		<loc x="186643" y="-85390" z="-7265" />
+		<loc x="186564" y="-85391" z="-7265" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150015" name="duke_hall_gate" unlockable="false">
+	<position x="188363" y="-85576" z="-7216" />
+	<coordinates>
+		<loc x="188344" y="-85767" z="-7259" />
+		<loc x="188425" y="-85772" z="-7259" />
+		<loc x="188426" y="-85388" z="-7259" />
+		<loc x="188346" y="-85383" z="-7259" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150016" name="imp_grave_gate" unlockable="false">
+	<position x="190200" y="-85576" z="-7216" />
+	<coordinates>
+		<loc x="190153" y="-85760" z="-7265" />
+		<loc x="190229" y="-85754" z="-7265" />
+		<loc x="190232" y="-85393" z="-7265" />
+		<loc x="190151" y="-85398" z="-7265" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150001" name="ent_ruler" unlockable="false">
+	<position x="179528" y="-88984" z="-7216" />
+	<coordinates>
+		<loc x="179505" y="-89153" z="-7253" />
+		<loc x="179566" y="-89155" z="-7253" />
+		<loc x="179567" y="-88806" z="-7253" />
+		<loc x="179506" y="-88805" z="-7253" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150002" name="vs_hall_2" unlockable="false">
+	<position x="181272" y="-88984" z="-7216" />
+	<coordinates>
+		<loc x="181244" y="-89155" z="-7254" />
+		<loc x="181304" y="-89154" z="-7254" />
+		<loc x="181302" y="-88804" z="-7254" />
+		<loc x="181240" y="-88805" z="-7254" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150003" name="ct_ahll_2" unlockable="false">
+	<position x="183070" y="-88980" z="-7216" />
+	<coordinates>
+		<loc x="183038" y="-89164" z="-7261" />
+		<loc x="183113" y="-89166" z="-7261" />
+		<loc x="183120" y="-88798" z="-7261" />
+		<loc x="183039" y="-88796" z="-7261" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150004" name="mr_hall_2" unlockable="false">
+	<position x="184891" y="-88972" z="-7216" />
+	<coordinates>
+		<loc x="184873" y="-89148" z="-7243" />
+		<loc x="184946" y="-89148" z="-7243" />
+		<loc x="184943" y="-88790" z="-7243" />
+		<loc x="184871" y="-88790" z="-7243" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150005" name="dk_hall_2" unlockable="false">
+	<position x="186696" y="-88968" z="-7216" />
+	<coordinates>
+		<loc x="186678" y="-89151" z="-7261" />
+		<loc x="186741" y="-89146" z="-7261" />
+		<loc x="186742" y="-88788" z="-7261" />
+		<loc x="186680" y="-88793" z="-7261" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150006" name="em_grav_2" unlockable="false">
+	<position x="188488" y="-88968" z="-7216" />
+	<coordinates>
+		<loc x="188464" y="-89146" z="-7261" />
+		<loc x="188527" y="-89147" z="-7261" />
+		<loc x="188526" y="-88793" z="-7261" />
+		<loc x="188463" y="-88793" z="-7261" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150031" name="ent_grtsage" unlockable="false">
+	<position x="173224" y="-86632" z="-7216" />
+	<coordinates>
+		<loc x="173033" y="-86673" z="-7268" />
+		<loc x="173397" y="-86673" z="-7268" />
+		<loc x="173400" y="-86604" z="-7268" />
+		<loc x="173036" y="-86604" z="-7268" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150032" name="vs_hall_3" unlockable="false">
+	<position x="173208" y="-84808" z="-7216" />
+	<coordinates>
+		<loc x="173032" y="-84846" z="-7268" />
+		<loc x="173399" y="-84844" z="-7268" />
+		<loc x="173404" y="-84768" z="-7268" />
+		<loc x="173032" y="-84770" z="-7268" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150033" name="ct_ahll_3" unlockable="false">
+	<position x="173216" y="-83005" z="-7216" />
+	<coordinates>
+		<loc x="173034" y="-83033" z="-7259" />
+		<loc x="173385" y="-83033" z="-7259" />
+		<loc x="173388" y="-82967" z="-7259" />
+		<loc x="173034" y="-82966" z="-7259" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150034" name="mr_hall_3" unlockable="false">
+	<position x="173208" y="-81192" z="-7216" />
+	<coordinates>
+		<loc x="173034" y="-81217" z="-7254" />
+		<loc x="173387" y="-81221" z="-7254" />
+		<loc x="173388" y="-81156" z="-7254" />
+		<loc x="173035" y="-81152" z="-7254" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150035" name="dk_hall_3" unlockable="false">
+	<position x="173204" y="-79412" z="-7216" />
+	<coordinates>
+		<loc x="173036" y="-79450" z="-7253" />
+		<loc x="173391" y="-79449" z="-7253" />
+		<loc x="173391" y="-79384" z="-7253" />
+		<loc x="173035" y="-79385" z="-7253" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150036" name="em_grav_3" unlockable="false">
+	<position x="173192" y="-77592" z="-7216" />
+	<coordinates>
+		<loc x="173019" y="-77619" z="-7253" />
+		<loc x="173368" y="-77621" z="-7253" />
+		<loc x="173369" y="-77559" z="-7253" />
+		<loc x="173020" y="-77558" z="-7253" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150021" name="ent_judge" unlockable="false">
+	<position x="175608" y="-82744" z="-7216" />
+	<coordinates>
+		<loc x="175429" y="-82761" z="-7251" />
+		<loc x="175788" y="-82759" z="-7251" />
+		<loc x="175790" y="-82691" z="-7251" />
+		<loc x="175429" y="-82693" z="-7251" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150022" name="vs_hall_4" unlockable="false">
+	<position x="175608" y="-80984" z="-7216" />
+	<coordinates>
+		<loc x="175421" y="-81018" z="-7260" />
+		<loc x="175802" y="-81024" z="-7260" />
+		<loc x="175805" y="-80943" z="-7260" />
+		<loc x="175424" y="-80937" z="-7260" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150023" name="ct_ahll_4" unlockable="false">
+	<position x="175601" y="-79196" z="-7216" />
+	<coordinates>
+		<loc x="175426" y="-79217" z="-7259" />
+		<loc x="175776" y="-79217" z="-7259" />
+		<loc x="175777" y="-79155" z="-7259" />
+		<loc x="175428" y="-79155" z="-7259" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150024" name="mr_hall_4" unlockable="false">
+	<position x="175602" y="-77365" z="-7216" />
+	<coordinates>
+		<loc x="175425" y="-77384" z="-7265" />
+		<loc x="175776" y="-77387" z="-7265" />
+		<loc x="175778" y="-77322" z="-7265" />
+		<loc x="175426" y="-77319" z="-7265" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150025" name="dk_hall_4" unlockable="false">
+	<position x="175592" y="-75567" z="-7216" />
+	<coordinates>
+		<loc x="175415" y="-75595" z="-7258" />
+		<loc x="175773" y="-75595" z="-7258" />
+		<loc x="175777" y="-75529" z="-7258" />
+		<loc x="175419" y="-75530" z="-7258" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="25150026" name="em_grav_4" unlockable="false">
+	<position x="175608" y="-73752" z="-7216" />
+	<coordinates>
+		<loc x="175401" y="-73778" z="-7257" />
+		<loc x="175767" y="-73781" z="-7257" />
+		<loc x="175767" y="-73712" z="-7257" />
+		<loc x="175406" y="-73714" z="-7257" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24160001" name="goddard_clanhall_001" unlockable="false">
+	<position x="146442" y="-55483" z="-2760" />
+	<coordinates>
+		<loc x="146450" y="-55504" z="-2820" />
+		<loc x="146443" y="-55453" z="-2821" />
+		<loc x="146432" y="-55455" z="-2821" />
+		<loc x="146438" y="-55506" z="-2821" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24160002" name="goddard_clanhall_002" unlockable="false">
+	<position x="146444" y="-55523" z="-2760" />
+	<coordinates>
+		<loc x="146437" y="-55499" z="-2819" />
+		<loc x="146444" y="-55552" z="-2819" />
+		<loc x="146455" y="-55550" z="-2819" />
+		<loc x="146449" y="-55497" z="-2819" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24160003" name="goddard_clanhall_003" unlockable="false">
+	<position x="147091" y="-56483" z="-2760" />
+	<coordinates>
+		<loc x="147117" y="-56489" z="-2815" />
+		<loc x="147070" y="-56465" z="-2815" />
+		<loc x="147065" y="-56475" z="-2815" />
+		<loc x="147111" y="-56500" z="-2815" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24160004" name="goddard_clanhall_004" unlockable="false">
+	<position x="147130" y="-56503" z="-2760" />
+	<coordinates>
+		<loc x="147105" y="-56498" z="-2818" />
+		<loc x="147151" y="-56522" z="-2818" />
+		<loc x="147158" y="-56511" z="-2818" />
+		<loc x="147111" y="-56486" z="-2818" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24160005" name="goddard_clanhall_005" unlockable="false">
+	<position x="148282" y="-56511" z="-2760" />
+	<coordinates>
+		<loc x="148302" y="-56490" z="-2823" />
+		<loc x="148255" y="-56515" z="-2823" />
+		<loc x="148262" y="-56529" z="-2823" />
+		<loc x="148310" y="-56505" z="-2823" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24160006" name="goddard_clanhall_006" unlockable="false">
+	<position x="148322" y="-56489" z="-2760" />
+	<coordinates>
+		<loc x="148303" y="-56508" z="-2824" />
+		<loc x="148348" y="-56483" z="-2824" />
+		<loc x="148342" y="-56470" z="-2824" />
+		<loc x="148296" y="-56494" z="-2824" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24160007" name="goddard_clanhall_007" unlockable="false">
+	<position x="148974" y="-55535" z="-2760" />
+	<coordinates>
+		<loc x="148971" y="-55509" z="-2812" />
+		<loc x="148965" y="-55560" z="-2812" />
+		<loc x="148976" y="-55561" z="-2812" />
+		<loc x="148982" y="-55511" z="-2812" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24160008" name="goddard_clanhall_008" unlockable="false">
+	<position x="148979" y="-55489" z="-2760" />
+	<coordinates>
+		<loc x="148982" y="-55520" z="-2821" />
+		<loc x="148988" y="-55465" z="-2821" />
+		<loc x="148978" y="-55464" z="-2821" />
+		<loc x="148970" y="-55518" z="-2821" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22220012" name="giran_clanhall_001" unlockable="false">
+	<position x="83624" y="145304" z="-3384" />
+	<coordinates>
+		<loc x="83621" y="145280" z="-3417" />
+		<loc x="83622" y="145332" z="-3417" />
+		<loc x="83615" y="145332" z="-3417" />
+		<loc x="83614" y="145280" z="-3417" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22220011" name="giran_clanhall_002" unlockable="false">
+	<position x="83618" y="145358" z="-3384" />
+	<coordinates>
+		<loc x="83614" y="145383" z="-3417" />
+		<loc x="83614" y="145331" z="-3417" />
+		<loc x="83622" y="145330" z="-3417" />
+		<loc x="83623" y="145383" z="-3417" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22220009" name="giran_clanhall_003" unlockable="false">
+	<position x="81832" y="145336" z="-3512" />
+	<coordinates>
+		<loc x="81827" y="145369" z="-3546" />
+		<loc x="81828" y="145316" z="-3546" />
+		<loc x="81835" y="145316" z="-3546" />
+		<loc x="81835" y="145369" z="-3546" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22220010" name="giran_clanhall_004" unlockable="false">
+	<position x="81832" y="145295" z="-3512" />
+	<coordinates>
+		<loc x="81834" y="145265" z="-3546" />
+		<loc x="81835" y="145319" z="-3546" />
+		<loc x="81828" y="145319" z="-3546" />
+		<loc x="81828" y="145265" z="-3546" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22220008" name="giran_clanhall_005" unlockable="false">
+	<position x="78549" y="148328" z="-3576" />
+	<coordinates>
+		<loc x="78520" y="148323" z="-3614" />
+		<loc x="78572" y="148323" z="-3614" />
+		<loc x="78572" y="148330" z="-3614" />
+		<loc x="78520" y="148331" z="-3614" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22220007" name="giran_clanhall_006" unlockable="false">
+	<position x="78593" y="148327" z="-3576" />
+	<coordinates>
+		<loc x="78622" y="148331" z="-3614" />
+		<loc x="78570" y="148331" z="-3614" />
+		<loc x="78570" y="148323" z="-3614" />
+		<loc x="78623" y="148324" z="-3614" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22220005" name="giran_clanhall_007" unlockable="false">
+	<position x="81195" y="151630" z="-3512" />
+	<coordinates>
+		<loc x="81193" y="151658" z="-3546" />
+		<loc x="81192" y="151605" z="-3546" />
+		<loc x="81200" y="151605" z="-3546" />
+		<loc x="81200" y="151658" z="-3546" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22220006" name="giran_clanhall_008" unlockable="false">
+	<position x="81195" y="151583" z="-3512" />
+	<coordinates>
+		<loc x="81200" y="151555" z="-3546" />
+		<loc x="81200" y="151607" z="-3546" />
+		<loc x="81192" y="151607" z="-3546" />
+		<loc x="81192" y="151555" z="-3546" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22220003" name="giran_clanhall_009" unlockable="false">
+	<position x="81873" y="151916" z="-3512" />
+	<coordinates>
+		<loc x="81871" y="151944" z="-3545" />
+		<loc x="81870" y="151892" z="-3545" />
+		<loc x="81877" y="151892" z="-3545" />
+		<loc x="81876" y="151944" z="-3545" />
+	</coordinates>
+    <stat hp="126600" pDef="644" mDef="518" />
+  </door>
+  <door id="22220004" name="giran_clanhall_010" unlockable="false">
+	<position x="81874" y="151870" z="-3512" />
+	<coordinates>
+		<loc x="81876" y="151842" z="-3545" />
+		<loc x="81877" y="151893" z="-3545" />
+		<loc x="81870" y="151894" z="-3545" />
+		<loc x="81870" y="151842" z="-3545" />
+	</coordinates>
+    <stat hp="126600" pDef="644" mDef="518" />
+  </door>
+  <door id="24210004" name="godad_DCDoor_001" unlockable="false">
+	<position x="190917" y="-115528" z="-1576" />
+	<coordinates>
+		<loc x="190891" y="-115626" z="-1619" />
+		<loc x="190943" y="-115626" z="-1619" />
+		<loc x="190944" y="-115430" z="-1619" />
+		<loc x="190892" y="-115430" z="-1619" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24210005" name="godad_DCDoor1F_002a" unlockable="false">
+	<position x="189479" y="-108511" z="-1016" />
+	<coordinates>
+		<loc x="189570" y="-108551" z="-1056" />
+		<loc x="189579" y="-108510" z="-1056" />
+		<loc x="189388" y="-108473" z="-1056" />
+		<loc x="189380" y="-108508" z="-1056" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24210006" name="godad_DCDoor2F_003a" unlockable="false">
+	<position x="191458" y="-108107" z="-1016" />
+	<coordinates>
+		<loc x="191357" y="-108119" z="-1058" />
+		<loc x="191369" y="-108153" z="-1058" />
+		<loc x="191557" y="-108095" z="-1058" />
+		<loc x="191548" y="-108058" z="-1058" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="23170001" name="borderoutpost_Door_001a" unlockable="false">
+	<position x="112349" y="-16976" z="-992" />
+	<coordinates>
+		<loc x="112233" y="-17023" z="-1045" />
+		<loc x="112460" y="-17016" z="-1045" />
+		<loc x="112460" y="-16920" z="-1045" />
+		<loc x="112233" y="-16918" z="-1045" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24170001" name="borderoutpost_Door_002" unlockable="false">
+	<position x="157976" y="-25112" z="-1304" />
+	<coordinates>
+		<loc x="157859" y="-25097" z="-1344" />
+		<loc x="158095" y="-25172" z="-1344" />
+		<loc x="158104" y="-25144" z="-1344" />
+		<loc x="157870" y="-25069" z="-1344" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="19210001" name="Gludio_outer_001" unlockable="false" castleId="1">
+	<position x="-18408" y="113064" z="-2768" />
+	<coordinates>
+		<loc x="-18481" y="113059" z="-2799" />
+		<loc x="-18351" y="113059" z="-2799" />
+		<loc x="-18351" y="113071" z="-2799" />
+		<loc x="-18481" y="113071" z="-2799" />
+	</coordinates>
+    <stat hp="316500" pDef="644" mDef="518" />
+  </door>
+  <door id="19210002" name="Gludio_outer_002" unlockable="false" castleId="1">
+	<position x="-18285" y="113065" z="-2768" />
+	<coordinates>
+		<loc x="-18350" y="113059" z="-2799" />
+		<loc x="-18219" y="113059" z="-2799" />
+		<loc x="-18219" y="113071" z="-2799" />
+		<loc x="-18350" y="113071" z="-2799" />
+	</coordinates>
+    <stat hp="316500" pDef="644" mDef="518" />
+  </door>
+  <door id="19210003" name="Gludio_wall_001" unlockable="false" castleId="1" isWall="true">
+	<position x="-19912" y="111381" z="-2816" />
+	<coordinates>
+		<loc x="-19975" y="111082" z="-2922" />
+		<loc x="-19849" y="111082" z="-2922" />
+		<loc x="-19848" y="111680" z="-2922" />
+		<loc x="-19975" y="111680" z="-2922" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="19210004" name="Gludio_wall_002" unlockable="false" castleId="1" isWall="true">
+	<position x="-16586" y="111382" z="-2832" />
+	<coordinates>
+		<loc x="-16649" y="111083" z="-2922" />
+		<loc x="-16522" y="111083" z="-2922" />
+		<loc x="-16522" y="111681" z="-2922" />
+		<loc x="-16649" y="111681" z="-2922" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="19210005" name="Gludio_inner_001" unlockable="false" castleId="1">
+	<position x="-18184" y="110520" z="-2512" />
+	<coordinates>
+		<loc x="-18244" y="110514" z="-2547" />
+		<loc x="-18114" y="110514" z="-2547" />
+		<loc x="-18114" y="110526" z="-2547" />
+		<loc x="-18244" y="110526" z="-2547" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="19210006" name="Gludio_inner_002" unlockable="false" castleId="1">
+	<position x="-18047" y="110522" z="-2512" />
+	<coordinates>
+		<loc x="-18112" y="110514" z="-2547" />
+		<loc x="-17981" y="110514" z="-2547" />
+		<loc x="-17981" y="110526" z="-2547" />
+		<loc x="-18112" y="110526" z="-2547" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="19210007" name="Gludio_small_002" unlockable="false" castleId="1">
+	<position x="-19284" y="108274" z="-2376" />
+	<coordinates>
+		<loc x="-19332" y="108276" z="-2408" />
+		<loc x="-19332" y="108276" z="-2408" />
+		<loc x="-19235" y="108276" z="-2408" />
+		<loc x="-19235" y="108276" z="-2408" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="19210008" name="Gludio_station" unlockable="false" castleId="1">
+	<position x="-18996" y="108133" z="-2032" />
+	<coordinates>
+		<loc x="-19003" y="108057" z="-2069" />
+		<loc x="-18991" y="108057" z="-2069" />
+		<loc x="-18991" y="108207" z="-2069" />
+		<loc x="-19003" y="108207" z="-2069" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="19210009" name="Gludio_small_001" unlockable="false" castleId="1">
+	<position x="-17944" y="107064" z="-2376" />
+	<coordinates>
+		<loc x="-17952" y="107011" z="-2408" />
+		<loc x="-17920" y="107011" z="-2408" />
+		<loc x="-17920" y="107109" z="-2408" />
+		<loc x="-17952" y="107109" z="-2408" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="20220001" name="Dion_outer_001" unlockable="false" castleId="2">
+	<position x="22370" y="156683" z="-2960" />
+	<coordinates>
+		<loc x="22449" y="156690" z="-2994" />
+		<loc x="22302" y="156690" z="-2994" />
+		<loc x="22302" y="156677" z="-2994" />
+		<loc x="22449" y="156678" z="-2994" />
+	</coordinates>
+    <stat hp="316500" pDef="644" mDef="518" />
+  </door>
+  <door id="20220002" name="Dion_outer_002" unlockable="false" castleId="2">
+	<position x="22245" y="156685" z="-2960" />
+	<coordinates>
+		<loc x="22171" y="156678" z="-2994" />
+		<loc x="22317" y="156677" z="-2994" />
+		<loc x="22317" y="156690" z="-2994" />
+		<loc x="22171" y="156691" z="-2994" />
+	</coordinates>
+    <stat hp="316500" pDef="644" mDef="518" />
+  </door>
+  <door id="20220003" name="Dion_wall_001" unlockable="false" castleId="2" isWall="true">
+	<position x="23873" y="158368" z="-3016" />
+	<coordinates>
+		<loc x="23809" y="158060" z="-3116" />
+		<loc x="23936" y="158060" z="-3116" />
+		<loc x="23937" y="158676" z="-3116" />
+		<loc x="23810" y="158676" z="-3116" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="20220004" name="Dion_wall_002" unlockable="false" castleId="2" isWall="true">
+	<position x="20546" y="158368" z="-3008" />
+	<coordinates>
+		<loc x="20482" y="158069" z="-3116" />
+		<loc x="20610" y="158069" z="-3116" />
+		<loc x="20610" y="158667" z="-3116" />
+		<loc x="20482" y="158667" z="-3116" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="20220005" name="Dion_inner_001" unlockable="false" castleId="2">
+	<position x="22136" y="159224" z="-2704" />
+	<coordinates>
+		<loc x="22213" y="159236" z="-2735" />
+		<loc x="22067" y="159236" z="-2735" />
+		<loc x="22067" y="159224" z="-2735" />
+		<loc x="22213" y="159224" z="-2735" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="20220006" name="Dion_inner_002" unlockable="false" castleId="2">
+	<position x="22008" y="159224" z="-2704" />
+	<coordinates>
+		<loc x="21935" y="159224" z="-2735" />
+		<loc x="22081" y="159224" z="-2735" />
+		<loc x="22081" y="159236" z="-2735" />
+		<loc x="21935" y="159236" z="-2735" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="20220007" name="Dion_small_001" unlockable="false" castleId="2">
+	<position x="23240" y="161464" z="-2568" />
+	<coordinates>
+		<loc x="23299" y="161470" z="-2602" />
+		<loc x="23299" y="161470" z="-2602" />
+		<loc x="23187" y="161470" z="-2602" />
+		<loc x="23187" y="161470" z="-2602" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="20220008" name="Dion_station" unlockable="false" castleId="2">
+	<position x="22910" y="161619" z="-2224" />
+	<coordinates>
+		<loc x="22911" y="161535" z="-2258" />
+		<loc x="22911" y="161701" z="-2258" />
+		<loc x="22900" y="161701" z="-2258" />
+		<loc x="22900" y="161535" z="-2258" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="20220009" name="Dion_small_002" unlockable="false" castleId="2">
+	<position x="21896" y="162696" z="-2568" />
+	<coordinates>
+		<loc x="21904" y="162628" z="-2602" />
+		<loc x="21888" y="162628" z="-2602" />
+		<loc x="21888" y="162743" z="-2601" />
+		<loc x="21904" y="162743" z="-2601" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="23220001" name="Giran_outer_001" unlockable="false" castleId="3">
+	<position x="112856" y="144808" z="-2832" />
+	<coordinates>
+		<loc x="112851" y="144720" z="-2864" />
+		<loc x="112863" y="144867" z="-2864" />
+		<loc x="112850" y="144867" z="-2864" />
+		<loc x="112863" y="144720" z="-2864" />
+	</coordinates>
+    <stat hp="316500" pDef="644" mDef="518" />
+  </door>
+  <door id="23220002" name="Giran_outer_002" unlockable="false" castleId="3">
+	<position x="112856" y="144920" z="-2832" />
+	<coordinates>
+		<loc x="112851" y="144997" z="-2864" />
+		<loc x="112851" y="144852" z="-2864" />
+		<loc x="112863" y="144852" z="-2864" />
+		<loc x="112863" y="144997" z="-2864" />
+	</coordinates>
+    <stat hp="316500" pDef="644" mDef="518" />
+  </door>
+  <door id="23220003" name="Giran_wall_001" unlockable="false" castleId="3" isWall="true">
+	<position x="114540" y="143296" z="-2864" />
+	<coordinates>
+		<loc x="114232" y="143359" z="-2991" />
+		<loc x="114232" y="143232" z="-2991" />
+		<loc x="114847" y="143232" z="-2991" />
+		<loc x="114847" y="143359" z="-2991" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="23220004" name="Giran_wall_002" unlockable="false" castleId="3" isWall="true">
+	<position x="114540" y="146623" z="-2864" />
+	<coordinates>
+		<loc x="114232" y="146687" z="-2989" />
+		<loc x="114232" y="146560" z="-2989" />
+		<loc x="114848" y="146560" z="-2989" />
+		<loc x="114848" y="146687" z="-2989" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="23220005" name="Giran_inner_001" unlockable="false" castleId="3">
+	<position x="115403" y="145030" z="-2576" />
+	<coordinates>
+		<loc x="115408" y="144957" z="-2607" />
+		<loc x="115408" y="145104" z="-2607" />
+		<loc x="115396" y="145104" z="-2607" />
+		<loc x="115396" y="144957" z="-2607" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="23220006" name="Giran_inner_002" unlockable="false" castleId="3">
+	<position x="115401" y="145162" z="-2576" />
+	<coordinates>
+		<loc x="115396" y="145235" z="-2607" />
+		<loc x="115396" y="145088" z="-2607" />
+		<loc x="115408" y="145088" z="-2607" />
+		<loc x="115408" y="145235" z="-2607" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="23220007" name="Giran_small_001" unlockable="false" castleId="3">
+	<position x="117643" y="143926" z="-2448" />
+	<coordinates>
+		<loc x="117648" y="143869" z="-2475" />
+		<loc x="117632" y="143869" z="-2475" />
+		<loc x="117632" y="143981" z="-2475" />
+		<loc x="117648" y="143981" z="-2475" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="23220008" name="Giran_station" unlockable="false" castleId="3">
+	<position x="117787" y="144240" z="-2096" />
+	<coordinates>
+		<loc x="117715" y="144236" z="-2129" />
+		<loc x="117865" y="144236" z="-2129" />
+		<loc x="117865" y="144248" z="-2129" />
+		<loc x="117715" y="144248" z="-2129" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="23220009" name="Giran_small_002" unlockable="false" castleId="3">
+	<position x="118863" y="145266" z="-2448" />
+	<coordinates>
+		<loc x="118916" y="145264" z="-2475" />
+		<loc x="118916" y="145280" z="-2475" />
+		<loc x="118805" y="145280" z="-2475" />
+		<loc x="118805" y="145264" z="-2475" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22190001" name="Oren_outer_001" unlockable="false" castleId="4">
+	<position x="78921" y="36892" z="-2560" />
+	<coordinates>
+		<loc x="78918" y="36816" z="-2591" />
+		<loc x="78931" y="36959" z="-2591" />
+		<loc x="78918" y="36959" z="-2591" />
+		<loc x="78931" y="36816" z="-2591" />
+	</coordinates>
+    <stat hp="316500" pDef="644" mDef="518" />
+  </door>
+  <door id="22190002" name="Oren_outer_002" unlockable="false" castleId="4">
+	<position x="78920" y="37016" z="-2560" />
+	<coordinates>
+		<loc x="78919" y="37091" z="-2591" />
+		<loc x="78919" y="36950" z="-2591" />
+		<loc x="78931" y="36950" z="-2591" />
+		<loc x="78931" y="37091" z="-2591" />
+	</coordinates>
+    <stat hp="316500" pDef="644" mDef="518" />
+  </door>
+  <door id="22190003" name="Oren_wall_001" unlockable="false" castleId="4" isWall="true">
+	<position x="80616" y="35391" z="-2616" />
+	<coordinates>
+		<loc x="80317" y="35454" z="-2716" />
+		<loc x="80317" y="35328" z="-2716" />
+		<loc x="80923" y="35327" z="-2716" />
+		<loc x="80923" y="35455" z="-2716" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="22190004" name="Oren_wall_002" unlockable="false" castleId="4" isWall="true">
+	<position x="80616" y="38718" z="-2608" />
+	<coordinates>
+		<loc x="80308" y="38781" z="-2716" />
+		<loc x="80309" y="38654" z="-2716" />
+		<loc x="80924" y="38655" z="-2716" />
+		<loc x="80923" y="38782" z="-2716" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="22190005" name="Oren_inner_001" unlockable="false" castleId="4">
+	<position x="81471" y="37133" z="-2304" />
+	<coordinates>
+		<loc x="81476" y="37060" z="-2335" />
+		<loc x="81476" y="37200" z="-2335" />
+		<loc x="81464" y="37200" z="-2335" />
+		<loc x="81464" y="37060" z="-2335" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22190006" name="Oren_inner_002" unlockable="false" castleId="4">
+	<position x="81464" y="37256" z="-2304" />
+	<coordinates>
+		<loc x="81465" y="37331" z="-2335" />
+		<loc x="81464" y="37182" z="-2335" />
+		<loc x="81476" y="37182" z="-2335" />
+		<loc x="81476" y="37331" z="-2335" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22190007" name="Oren_small_001" unlockable="false" castleId="4">
+	<position x="83719" y="36021" z="-2168" />
+	<coordinates>
+		<loc x="83712" y="35964" z="-2202" />
+		<loc x="83728" y="35965" z="-2202" />
+		<loc x="83728" y="36075" z="-2202" />
+		<loc x="83712" y="36075" z="-2202" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22190008" name="Oren_station" unlockable="false" castleId="4">
+	<position x="83865" y="36336" z="-1824" />
+	<coordinates>
+		<loc x="83785" y="36331" z="-1856" />
+		<loc x="83949" y="36331" z="-1856" />
+		<loc x="83949" y="36342" z="-1856" />
+		<loc x="83784" y="36343" z="-1856" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="22190009" name="Oren_small_002" unlockable="false" castleId="4">
+	<position x="84940" y="37364" z="-2168" />
+	<coordinates>
+		<loc x="84992" y="37360" z="-2202" />
+		<loc x="84992" y="37376" z="-2202" />
+		<loc x="84880" y="37376" z="-2202" />
+		<loc x="84880" y="37360" z="-2202" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24180001" name="Aden_outer_001" unlockable="false" castleId="5">
+	<position x="147368" y="8488" z="-464" />
+	<coordinates>
+		<loc x="147277" y="8475" z="-495" />
+		<loc x="147463" y="8475" z="-495" />
+		<loc x="147463" y="8492" z="-495" />
+		<loc x="147278" y="8491" z="-495" />
+	</coordinates>
+    <stat hp="339420" pDef="837" mDef="674" />
+  </door>
+  <door id="24180002" name="Aden_outer_002" unlockable="false" castleId="5">
+	<position x="147538" y="8482" z="-464" />
+	<coordinates>
+		<loc x="147449" y="8474" z="-495" />
+		<loc x="147635" y="8475" z="-495" />
+		<loc x="147634" y="8492" z="-495" />
+		<loc x="147448" y="8492" z="-495" />
+	</coordinates>
+    <stat hp="339420" pDef="837" mDef="674" />
+  </door>
+  <door id="24180003" name="Aden_wall_in" unlockable="false" castleId="5" isWall="true">
+	<position x="146770" y="7000" z="-424" />
+	<coordinates>
+		<loc x="146440" y="6895" z="-496" />
+		<loc x="147100" y="6895" z="-496" />
+		<loc x="147063" y="7104" z="-496" />
+		<loc x="146440" y="7104" z="-496" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="24180004" name="Aden_inner_002" unlockable="false" castleId="5">
+	<position x="147404" y="6210" z="-400" />
+	<coordinates>
+		<loc x="147461" y="6202" z="-430" />
+		<loc x="147341" y="6202" z="-430" />
+		<loc x="147341" y="6218" z="-430" />
+		<loc x="147461" y="6218" z="-430" />
+	</coordinates>
+    <stat hp="84855" pDef="837" mDef="674" />
+  </door>
+  <door id="24180005" name="Aden_inner_001" unlockable="false" castleId="5">
+	<position x="147511" y="6211" z="-400" />
+	<coordinates>
+		<loc x="147450" y="6202" z="-430" />
+		<loc x="147572" y="6202" z="-430" />
+		<loc x="147572" y="6219" z="-430" />
+		<loc x="147450" y="6218" z="-430" />
+	</coordinates>
+    <stat hp="84855" pDef="837" mDef="674" />
+  </door>
+  <door id="24180006" name="Aden_wall_left" unlockable="false" castleId="5" isWall="true">
+	<position x="145200" y="5504" z="-464" />
+	<coordinates>
+		<loc x="144863" y="5120" z="-751" />
+		<loc x="145025" y="5119" z="-751" />
+		<loc x="145536" y="5888" z="-751" />
+		<loc x="145374" y="5889" z="-751" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="24180007" name="Aden_left_004" unlockable="false" castleId="5">
+	<position x="146600" y="5352" z="-16" />
+	<coordinates>
+		<loc x="146600" y="5318" z="-44" />
+		<loc x="146601" y="5385" z="-44" />
+		<loc x="146613" y="5385" z="-44" />
+		<loc x="146613" y="5318" z="-44" />
+	</coordinates>
+    <stat hp="113151" pDef="837" mDef="674" />
+  </door>
+  <door id="24180008" name="Aden_left_003" unlockable="false" castleId="5">
+	<position x="146606" y="5295" z="-16" />
+	<coordinates>
+		<loc x="146600" y="5328" z="-44" />
+		<loc x="146600" y="5262" z="-44" />
+		<loc x="146613" y="5262" z="-44" />
+		<loc x="146613" y="5328" z="-44" />
+	</coordinates>
+    <stat hp="113151" pDef="837" mDef="674" />
+  </door>
+  <door id="24180009" name="Aden_right_003" unlockable="false" castleId="5">
+	<position x="148324" y="5351" z="-16" />
+	<coordinates>
+		<loc x="148317" y="5319" z="-44" />
+		<loc x="148317" y="5385" z="-44" />
+		<loc x="148330" y="5385" z="-44" />
+		<loc x="148330" y="5319" z="-44" />
+	</coordinates>
+    <stat hp="113151" pDef="837" mDef="674" />
+  </door>
+  <door id="24180010" name="Aden_right_004" unlockable="false" castleId="5">
+	<position x="148328" y="5288" z="-16" />
+	<coordinates>
+		<loc x="148316" y="5327" z="-44" />
+		<loc x="148317" y="5261" z="-44" />
+		<loc x="148330" y="5261" z="-44" />
+		<loc x="148329" y="5327" z="-44" />
+	</coordinates>
+    <stat hp="113151" pDef="837" mDef="674" />
+  </door>
+  <door id="24180011" name="Aden_wall_right" unlockable="false" castleId="5" isWall="true">
+	<position x="149711" y="5503" z="-464" />
+	<coordinates>
+		<loc x="149886" y="5118" z="-751" />
+		<loc x="150048" y="5119" z="-751" />
+		<loc x="149537" y="5888" z="-751" />
+		<loc x="149375" y="5888" z="-751" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="24180012" name="Aden_left_002" unlockable="false" castleId="5">
+	<position x="146008" y="4664" z="-400" />
+	<coordinates>
+		<loc x="145992" y="4601" z="-427" />
+		<loc x="146010" y="4601" z="-427" />
+		<loc x="146010" y="4721" z="-427" />
+		<loc x="145993" y="4721" z="-427" />
+	</coordinates>
+    <stat hp="113151" pDef="837" mDef="674" />
+  </door>
+  <door id="24180013" name="Aden_left_001" unlockable="false" castleId="5">
+	<position x="146002" y="4557" z="-400" />
+	<coordinates>
+		<loc x="145992" y="4493" z="-427" />
+		<loc x="146009" y="4493" z="-427" />
+		<loc x="146010" y="4612" z="-427" />
+		<loc x="145992" y="4612" z="-427" />
+	</coordinates>
+    <stat hp="113151" pDef="837" mDef="674" />
+  </door>
+  <door id="24180014" name="Aden_right_001" unlockable="false" castleId="5">
+	<position x="148908" y="4656" z="-400" />
+	<coordinates>
+		<loc x="148899" y="4722" z="-427" />
+		<loc x="148917" y="4722" z="-427" />
+		<loc x="148917" y="4602" z="-427" />
+		<loc x="148899" y="4602" z="-427" />
+	</coordinates>
+    <stat hp="113151" pDef="837" mDef="674" />
+  </door>
+  <door id="24180015" name="Aden_right_002" unlockable="false" castleId="5">
+	<position x="148909" y="4553" z="-400" />
+	<coordinates>
+		<loc x="148900" y="4612" z="-427" />
+		<loc x="148917" y="4612" z="-427" />
+		<loc x="148916" y="4492" z="-427" />
+		<loc x="148900" y="4492" z="-427" />
+	</coordinates>
+    <stat hp="113151" pDef="837" mDef="674" />
+  </door>
+  <door id="24180016" name="Aden_terrace" unlockable="false" castleId="5">
+	<position x="147448" y="2248" z="224" />
+	<coordinates>
+		<loc x="147398" y="2243" z="201" />
+		<loc x="147513" y="2243" z="201" />
+		<loc x="147513" y="2245" z="201" />
+		<loc x="147398" y="2245" z="201" />
+	</coordinates>
+    <stat hp="113151" pDef="837" mDef="674" />
+  </door>
+  <door id="24180018" name="Aden_side_door2" unlockable="false" castleId="5">
+	<position x="150024" y="3848" z="-80" />
+	<coordinates>
+		<loc x="150016" y="3903" z="-101" />
+		<loc x="150016" y="3775" z="-101" />
+		<loc x="150048" y="3776" z="-101" />
+		<loc x="150048" y="3902" z="-101" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="24180019" name="Aden_side_door1" unlockable="false" castleId="5">
+	<position x="149208" y="3128" z="1264" />
+	<coordinates>
+		<loc x="149208" y="3199" z="1234" />
+		<loc x="149208" y="3072" z="1234" />
+		<loc x="149215" y="3072" z="1234" />
+		<loc x="149215" y="3199" z="1234" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="24180020" name="Aden_side_door4" unlockable="false" castleId="5">
+	<position x="144877" y="3839" z="-72" />
+	<coordinates>
+		<loc x="144864" y="3902" z="-102" />
+		<loc x="144864" y="3775" z="-102" />
+		<loc x="144896" y="3776" z="-102" />
+		<loc x="144896" y="3901" z="-102" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="24180021" name="Aden_side_door3" unlockable="false" castleId="5">
+	<position x="145702" y="3135" z="1264" />
+	<coordinates>
+		<loc x="145688" y="3199" z="1234" />
+		<loc x="145688" y="3072" z="1234" />
+		<loc x="145711" y="3072" z="1234" />
+		<loc x="145711" y="3199" z="1234" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="23250001" name="Innadril_outer_002" unlockable="false" castleId="6">
+	<position x="116328" y="245464" z="-1056" />
+	<coordinates>
+		<loc x="116399" y="245469" z="-1090" />
+		<loc x="116254" y="245468" z="-1090" />
+		<loc x="116254" y="245456" z="-1090" />
+		<loc x="116399" y="245456" z="-1090" />
+	</coordinates>
+    <stat hp="316500" pDef="644" mDef="518" />
+  </door>
+  <door id="23250002" name="Innadril_outer_001" unlockable="false" castleId="6">
+	<position x="116197" y="245459" z="-1056" />
+	<coordinates>
+		<loc x="116123" y="245456" z="-1090" />
+		<loc x="116268" y="245456" z="-1090" />
+		<loc x="116268" y="245468" z="-1090" />
+		<loc x="116123" y="245468" z="-1090" />
+	</coordinates>
+    <stat hp="316500" pDef="644" mDef="518" />
+  </door>
+  <door id="23250003" name="Innadril_wall_001" unlockable="false" castleId="6" isWall="true">
+	<position x="117824" y="247146" z="-1096" />
+	<coordinates>
+		<loc x="117745" y="246830" z="-1212" />
+		<loc x="117910" y="246832" z="-1212" />
+		<loc x="117910" y="247462" z="-1212" />
+		<loc x="117747" y="247467" z="-1212" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="23250004" name="Innadril_wall_002" unlockable="false" castleId="6" isWall="true">
+	<position x="114497" y="247146" z="-1096" />
+	<coordinates>
+		<loc x="114417" y="246834" z="-1212" />
+		<loc x="114573" y="246833" z="-1212" />
+		<loc x="114576" y="247457" z="-1212" />
+		<loc x="114419" y="247461" z="-1212" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="23250005" name="Innadril_inner_002" unlockable="false" castleId="6">
+	<position x="116087" y="248008" z="-800" />
+	<coordinates>
+		<loc x="116162" y="248014" z="-831" />
+		<loc x="116018" y="248014" z="-831" />
+		<loc x="116018" y="248002" z="-831" />
+		<loc x="116162" y="248003" z="-831" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="23250006" name="Innadril_inner_001" unlockable="false" castleId="6">
+	<position x="115963" y="248006" z="-800" />
+	<coordinates>
+		<loc x="115886" y="248002" z="-831" />
+		<loc x="116033" y="248002" z="-831" />
+		<loc x="116033" y="248014" z="-831" />
+		<loc x="115886" y="248014" z="-831" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="23250007" name="Innadril_small_001" unlockable="false" castleId="6">
+	<position x="117195" y="250248" z="-664" />
+	<coordinates>
+		<loc x="117249" y="250240" z="-698" />
+		<loc x="117249" y="250256" z="-698" />
+		<loc x="117138" y="250256" z="-698" />
+		<loc x="117138" y="250240" z="-698" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="23250008" name="Innadril_station" unlockable="false" castleId="6">
+	<position x="116856" y="250396" z="-320" />
+	<coordinates>
+		<loc x="116862" y="250315" z="-354" />
+		<loc x="116862" y="250478" z="-354" />
+		<loc x="116850" y="250478" z="-354" />
+		<loc x="116850" y="250315" z="-354" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="23250009" name="Innadril_small_002" unlockable="false" castleId="6">
+	<castle id="6" />
+	<position x="115846" y="251468" z="-664" />
+	<coordinates>
+		<loc x="115840" y="251411" z="-698" />
+		<loc x="115856" y="251411" z="-698" />
+		<loc x="115856" y="251523" z="-697" />
+		<loc x="115840" y="251523" z="-697" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24160009" name="Goddard_outer_002" unlockable="false" castleId="7">
+	<position x="147544" y="-45576" z="-2080" />
+	<coordinates>
+		<loc x="147448" y="-45584" z="-2116" />
+		<loc x="147663" y="-45583" z="-2116" />
+		<loc x="147663" y="-45553" z="-2116" />
+		<loc x="147449" y="-45552" z="-2116" />
+	</coordinates>
+    <stat hp="316500" pDef="644" mDef="518" />
+  </door>
+  <door id="24160010" name="Goddard_outer_001" unlockable="false" castleId="7">
+	<position x="147380" y="-45571" z="-2080" />
+	<coordinates>
+		<loc x="147273" y="-45584" z="-2116" />
+		<loc x="147480" y="-45583" z="-2116" />
+		<loc x="147480" y="-45552" z="-2116" />
+		<loc x="147272" y="-45553" z="-2116" />
+	</coordinates>
+    <stat hp="316500" pDef="644" mDef="518" />
+  </door>
+  <door id="24160011" name="Goddard_side_door_001" unlockable="false" castleId="7">
+	<position x="149148" y="-48239" z="-2376" />
+	<coordinates>
+		<loc x="149158" y="-48384" z="-2411" />
+		<loc x="149158" y="-48098" z="-2411" />
+		<loc x="149129" y="-48098" z="-2411" />
+		<loc x="149129" y="-48384" z="-2411" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24160012" name="Goddard_side_door_002" unlockable="false" castleId="7">
+	<position x="145787" y="-48238" z="-2376" />
+	<coordinates>
+		<loc x="145809" y="-48384" z="-2410" />
+		<loc x="145810" y="-48098" z="-2410" />
+		<loc x="145778" y="-48098" z="-2410" />
+		<loc x="145778" y="-48384" z="-2410" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24160013" name="Goddard_side_door_003" unlockable="false" castleId="7">
+	<position x="148997" y="-47794" z="-1600" />
+	<coordinates>
+		<loc x="148940" y="-47715" z="-1625" />
+		<loc x="149021" y="-47889" z="-1625" />
+		<loc x="149055" y="-47873" z="-1625" />
+		<loc x="148974" y="-47698" z="-1625" />
+	</coordinates>
+    <stat hp="316500" pDef="644" mDef="518" />
+  </door>
+  <door id="24160014" name="Goddard_side_door_004" unlockable="false" castleId="7">
+	<position x="145930" y="-47793" z="-1600" />
+	<coordinates>
+		<loc x="145954" y="-47698" z="-1625" />
+		<loc x="145873" y="-47873" z="-1625" />
+		<loc x="145906" y="-47889" z="-1625" />
+		<loc x="145987" y="-47714" z="-1625" />
+	</coordinates>
+    <stat hp="316500" pDef="644" mDef="518" />
+  </door>
+  <door id="24160015" name="Goddard_station_001" unlockable="false" castleId="7">
+	<position x="148750" y="-49120" z="-672" />
+	<coordinates>
+		<loc x="148650" y="-49143" z="-715" />
+		<loc x="148866" y="-49142" z="-715" />
+		<loc x="148865" y="-49092" z="-715" />
+		<loc x="148651" y="-49092" z="-715" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24160016" name="Goddard_station_002" unlockable="false" castleId="7">
+	<position x="146180" y="-49121" z="-672" />
+	<coordinates>
+		<loc x="146080" y="-49144" z="-715" />
+		<loc x="146296" y="-49143" z="-715" />
+		<loc x="146295" y="-49093" z="-715" />
+		<loc x="146081" y="-49093" z="-715" />
+	</coordinates>
+    <stat hp="158250" pDef="644" mDef="518" />
+  </door>
+  <door id="24160017" name="Goddard_ctr_001" unlockable="false" castleId="7">
+	<position x="150248" y="-48577" z="-1744" />
+	<coordinates>
+		<loc x="150148" y="-48600" z="-1775" />
+		<loc x="150363" y="-48600" z="-1775" />
+		<loc x="150363" y="-48550" z="-1775" />
+		<loc x="150148" y="-48549" z="-1775" />
+	</coordinates>
+    <stat hp="39562" pDef="644" mDef="518" />
+  </door>
+  <door id="24160018" name="Goddard_ctr_002" unlockable="false" castleId="7">
+	<position x="144682" y="-48577" z="-1744" />
+	<coordinates>
+		<loc x="144582" y="-48600" z="-1775" />
+		<loc x="144797" y="-48600" z="-1775" />
+		<loc x="144797" y="-48550" z="-1775" />
+		<loc x="144582" y="-48549" z="-1775" />
+	</coordinates>
+    <stat hp="39562" pDef="644" mDef="518" />
+  </door>
+  <door id="24160019" name="Goddard_inner_001" unlockable="false" castleId="7">
+	<position x="148751" y="-48603" z="-2384" />
+	<coordinates>
+		<loc x="148736" y="-48534" z="-2415" />
+		<loc x="148736" y="-48680" z="-2414" />
+		<loc x="148763" y="-48679" z="-2414" />
+		<loc x="148764" y="-48528" z="-2414" />
+	</coordinates>
+    <stat hp="678840" pDef="644" mDef="518" />
+  </door>
+  <door id="24160020" name="Goddard_inner_002" unlockable="false" castleId="7">
+	<position x="146180" y="-48603" z="-2384" />
+	<coordinates>
+		<loc x="146165" y="-48528" z="-2414" />
+		<loc x="146165" y="-48680" z="-2414" />
+		<loc x="146192" y="-48679" z="-2414" />
+		<loc x="146193" y="-48528" z="-2414" />
+	</coordinates>
+    <stat hp="678840" pDef="644" mDef="518" />
+  </door>
+  <door id="24160021" name="Goddard_wall_001" unlockable="false" castleId="7" isWall="true">
+	<position x="150106" y="-47522" z="-2416" />
+	<coordinates>
+		<loc x="149870" y="-47957" z="-2572" />
+		<loc x="150635" y="-47800" z="-2572" />
+		<loc x="150332" y="-47039" z="-2572" />
+		<loc x="149637" y="-47345" z="-2572" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="24160022" name="Goddard_wall_002" unlockable="false" castleId="7" isWall="true">
+	<position x="144824" y="-47522" z="-2424" />
+	<coordinates>
+		<loc x="144296" y="-47803" z="-2572" />
+		<loc x="145059" y="-47957" z="-2572" />
+		<loc x="145286" y="-47357" z="-2572" />
+		<loc x="144600" y="-47011" z="-2572" />
+	</coordinates>
+    <stat hp="678840" pDef="837" mDef="674" />
+  </door>
+  <door id="24160023" name="Goddard_inner_003" unlockable="false" castleId="7">
+	<position x="147464" y="-46200" z="-2072" />
+	<coordinates>
+		<loc x="147366" y="-46217" z="-2112" />
+		<loc x="147562" y="-46217" z="-2112" />
+		<loc x="147562" y="-46171" z="-2112" />
+		<loc x="147367" y="-46171" z="-2112" />
+	</coordinates>
+    <stat hp="678840" pDef="644" mDef="518" />
+  </door>
+</list>

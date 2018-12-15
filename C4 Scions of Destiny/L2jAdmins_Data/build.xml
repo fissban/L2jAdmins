@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="C4_DataPack" default="dist" basedir=".">
+	<description>
+		This script will build the L2jAdmins.
+	</description>
+
+	<property name="build" location="build"/>
+	<property name="build.dist" location="${build}/dist"/>
+	<property name="build.dist.game" location="${build.dist}/game"/>
+
+	<target name="init" description="Create the output directories. Do nothing if dirs were already created">
+		<mkdir dir="${build}"/>
+		<mkdir dir="${build.dist}"/>
+		<mkdir dir="${build.dist.game}"/>
+	</target>
+	
+ 	<target name="export" description="Syncronizes build space contents with project.">
+	    <sync todir="${build.dist.game}/data">
+	       <fileset dir="${basedir}/data">
+	        <exclude name=".project"/>
+	        <exclude name="log/**"/>
+	        <exclude name="cachedir/**"/>
+	        <exclude name="clans/**"/>
+	        <exclude name="crests/**"/>
+	        <exclude name="**.svn**"/>
+	        <exclude name="**/*.class"/>
+	        <exclude name="**/*.jar"/>
+	        <include name="**/*.*"/>
+	      </fileset>
+		</sync>
+	    <sync todir="${build.dist}/sql">
+	      <fileset dir="${basedir}/sql">
+	      	<include name="**/*.*"/>
+	      </fileset>
+	    </sync>
+	    <sync todir="${build.dist}/tools">
+	      <fileset dir="${basedir}/tools">
+	        <include name="*.*"/>
+	      </fileset>
+	    </sync>
+	</target>
+
+	<target name="dist" depends="export" description="Creates a ZIP file. Suitable for distribution but building takes longer. See dist-deflate for faster builds.">
+	    <zip destfile="${build}/C4_DataPack.zip" basedir="${build.dist}" update="true"/>
+	</target>
+	
+</project>
