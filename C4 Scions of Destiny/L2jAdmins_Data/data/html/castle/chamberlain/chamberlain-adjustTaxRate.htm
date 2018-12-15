@@ -1,0 +1,21 @@
+<html><body>
+<font color="LEVEL">[Adjust Tax Rate]</font><br>
+The current tax rate is: <font color="00FFFF">%castle_tax_rate% %</font><br>
+The rate can be set between <font color="LEVEL">0% - 20%</font>. Changes will be applied after 12PM tomorrow.
+<center>
+<table width=170 height=54 bgcolor="CCCCCC">
+<tr>
+<td width=30 height=18 align=center>Enter:</td>
+<td width=50 height=18 align=right><edit type=number var=value width=30 height=18></td>
+<td width=15 height=18 align=left>%</td>
+</tr>
+<tr>
+<td width=30 height=18><button value=OK action="bypass -h Quest CastleChamberlain tax_set $value" width=74 height=21 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.Btn1_normal></td>
+<td width=30 height=18><br></td>
+<td width=30 height=18></td>
+</tr>
+</table>
+<br>
+<button action="bypass -h Quest CastleChamberlain chamberlain" value="cancel" width=74 height=21 back="L2UI_CH3.Btn1_normalOn" fore="L2UI_CH3.Btn1_normal">
+</center>
+</body></html>

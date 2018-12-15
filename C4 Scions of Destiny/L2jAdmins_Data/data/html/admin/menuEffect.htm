@@ -1,0 +1,77 @@
+<html><body>
+<center>
+<br>
+<table width=240>
+	<tr>
+		<td align=center><button value="Char" action="bypass -h admin_help menuChar.htm" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+		<td align=center><button value="Game" action="bypass -h admin_help menuGame.htm" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+		<td align=center><button value="Admin" action="bypass -h admin_help menuAdmin.htm" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+	</tr>
+</table>
+<br><br>
+<table width=160>
+	<tr>
+		<td><button value="Big Head" action="bypass -h admin_bighead" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+		<td><button value="Shrink Head" action="bypass -h admin_shrinkhead" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+	</tr>
+	<tr></tr><!--Space -->
+	<tr>
+		<td><button value="Para All" action="bypass -h admin_para_all" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+		<td><button value="Unpara All" action="bypass -h admin_unpara_all" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+	</tr>
+	<tr></tr><!--Space -->
+	<tr>
+		<td><button value="Para" action="bypass -h admin_para" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+		<td><button value="Unpara" action="bypass -h admin_unpara" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+	</tr>
+	<tr></tr><!--Space -->
+	<tr>
+		<td><button value="Poly" action="bypass -h admin_poly $polyId" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+		<td><button value="Unpoly" action="bypass -h admin_unpoly" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+	</tr>
+	<tr></tr><!--Space -->
+	<tr>
+		<td align=center><edit var="polyId" width=80 height=18></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+<br><br>
+
+<table width=230>
+	<tr>
+		<td align=center>Command</td>
+		<td align=center><font color="LEVEL">Intensity</font></td>
+		<td align=center><font color="LEVEL">Duration</font></td>
+	</tr>
+	<tr>
+		<td align=center><button value="earthquake" action="bypass -h admin_earthquake $intensity $duration" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+		<td align=center><edit var="intensity" width=80 height=18></td>
+		<td align=center><edit var="duration" width=80 height=18></td>
+	</tr>
+</table>
+
+<br><br>
+
+<font color="LEVEL">Atmosphere</font>
+
+<br>
+
+<table width=160>
+	<tr>
+		<td><button value="Day" action="bypass -h admin_atmosphere sky day" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+		<td><button value="Night" action="bypass -h admin_atmosphere sky night" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+	</tr>
+	<tr></tr><!--Space -->
+	<tr>
+		<td><button value="Dusk" action="bypass -h admin_atmosphere signsky dusk" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+		<td><button value="Dawn" action="bypass -h admin_atmosphere signsky dawn" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+	</tr>
+</table>
+
+</center>
+</body></html>

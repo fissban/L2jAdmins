@@ -1,0 +1,21 @@
+<html><title>NPC Info</title><body>
+<center>
+<table>
+<tr>
+<td><button value="Kill" action="bypass -h admin_kill" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+<td><button value="Delete" action="bypass -h admin_delete" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+<td><button value="Edit" action="bypass -h admin_edit_npc %tmplid%" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+</tr>
+<tr>
+<td><button value="Skills" action="bypass -h admin_show_skilllist_npc %tmplid%" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+<td><button value="Drop" action="bypass -h admin_show_droplist %tmplid%" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+<td><button value="Quests" action="bypass -h admin_show_quests %tmplid%" width=75 height=25 back=L2UI_CH3.Btn1_normalOn fore=L2UI_CH3.btn1_normal></td>
+</tr>
+</table>
+<br><img src="L2UI.SquareWhite" width=260 height=1><br>
+%questName%
+<table width=270 border=0>
+%quests%
+</table>
+<br><img src="L2UI.SquareWhite" width=260 height=1><br>
+</center></body></html>
