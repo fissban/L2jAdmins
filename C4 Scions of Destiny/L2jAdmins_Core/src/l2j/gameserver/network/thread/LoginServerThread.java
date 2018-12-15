@@ -127,52 +127,27 @@ public class LoginServerThread extends AbstractThread
 							
 							sendPacket(new AuthRequest(Config.REQUEST_ID, Config.ACCEPT_ALTERNATE_ID, hexId, Config.EXTERNAL_HOSTNAME, Config.INTERNAL_HOSTNAME, Config.PORT_GAME, Config.RESERVE_HOST_ON_LOGIN, Config.MAXIMUM_ONLINE_USERS));
 							break;
+						
 						case 0x01:
 							var lsf = new LoginServerFail(data);
 							LOG.info("Damn! Registration Failed: " + lsf.getReasonString());
 							// login will close the connection here
 							break;
+						
 						case 0x02:
 							var aresp = new AuthResponse(data);
-							
 							serverId = aresp.getServerId();
 							serverName = aresp.getServerName();
 							Config.saveHexid(hexToString(hexId));
 							LOG.info("Registered on login as Server " + serverId + " : " + serverName);
+							
 							var st = new ServerStatus();
-							if (Config.SERVER_LIST_BRACKET)
-							{
-								st.addAttribute(ServerStatus.SERVER_LIST_SQUARE_BRACKET, ServerStatus.ON);
-							}
-							else
-							{
-								st.addAttribute(ServerStatus.SERVER_LIST_SQUARE_BRACKET, ServerStatus.OFF);
-							}
-							if (Config.SERVER_LIST_CLOCK)
-							{
-								st.addAttribute(ServerStatus.SERVER_LIST_CLOCK, ServerStatus.ON);
-							}
-							else
-							{
-								st.addAttribute(ServerStatus.SERVER_LIST_CLOCK, ServerStatus.OFF);
-							}
-							if (Config.SERVER_LIST_TESTSERVER)
-							{
-								st.addAttribute(ServerStatus.TEST_SERVER, ServerStatus.ON);
-							}
-							else
-							{
-								st.addAttribute(ServerStatus.TEST_SERVER, ServerStatus.OFF);
-							}
-							if (Config.SERVER_GMONLY)
-							{
-								st.addAttribute(ServerStatus.SERVER_LIST_STATUS, ServerStatus.STATUS_GM_ONLY);
-							}
-							else
-							{
-								st.addAttribute(ServerStatus.SERVER_LIST_STATUS, ServerStatus.STATUS_AUTO);
-							}
+							st.addAttribute(ServerStatus.SERVER_LIST_SQUARE_BRACKET, Config.SERVER_LIST_BRACKET ? ServerStatus.ON : ServerStatus.OFF);
+							st.addAttribute(ServerStatus.SERVER_LIST_CLOCK, Config.SERVER_LIST_CLOCK ? ServerStatus.ON : ServerStatus.OFF);
+							st.addAttribute(ServerStatus.TEST_SERVER, Config.SERVER_LIST_TESTSERVER ? ServerStatus.ON : ServerStatus.OFF);
+							st.addAttribute(ServerStatus.SERVER_LIST_STATUS, Config.SERVER_GMONLY ? ServerStatus.STATUS_GM_ONLY : ServerStatus.STATUS_AUTO);
 							sendPacket(st);
+							
 							if (!L2World.getInstance().getAllPlayers().isEmpty())
 							{
 								var playerList = new ArrayList<String>();
@@ -184,6 +159,7 @@ public class LoginServerThread extends AbstractThread
 								sendPacket(new PlayerInGame(playerList));
 							}
 							break;
+						
 						case 0x03:
 							var par = new PlayerAuthResponse(data);
 							
@@ -205,6 +181,7 @@ public class LoginServerThread extends AbstractThread
 								}
 							}
 							break;
+						
 						case 0x04:
 							var kp = new KickPlayer(data);
 							doKickPlayer(kp.getAccount());
