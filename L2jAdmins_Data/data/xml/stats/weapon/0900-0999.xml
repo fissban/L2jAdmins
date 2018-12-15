@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+<item id='945' name="skeleton_buckler">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='69' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_DEFENCE'/>
+  </for>
+</item>
+<item id='946' name="skeleton_dagger">
+  <for>
+    <set val='16' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='13' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='12' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='-3' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='433' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='975' name="blood_saber">
+  <for>
+    <set val='14' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='11' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='981' name="red_sunset_sword">
+  <for>
+    <set val='16' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='10' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='989' name="eldritch_dagger">
+  <for>
+    <set val='11' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='10' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='12' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='-3' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='433' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+</list>

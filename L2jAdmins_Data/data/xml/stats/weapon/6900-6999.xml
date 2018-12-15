@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+<item id='6902' name="pledge_shield">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='90' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='SHIELD_DEFENCE_POWER'/>
+  </for>
+</item>
+<item id='6917' name="monster_only_(poison_sting)">
+  <for>
+    <set val='0' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='0' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='0' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='0' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6918' name="monster_only_(shield_of_silenos)">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='90' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='SHIELD_DEFENCE_POWER'/>
+  </for>
+</item>
+<item id='6919' name="monster_only_(shield_of_ketra_orc)">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='142' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='SHIELD_DEFENCE_POWER'/>
+  </for>
+</item>
+</list>

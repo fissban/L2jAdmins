@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+<item id='2506' name="Wolf's Leather Armor">
+  <for>
+    <add val='9' order='0x10' stat='PHYSICAL_DEFENCE'/>
+    <add val='14' order='0x10' stat='MAGICAL_DEFENCE'/>
+  </for>
+</item>
+</list>

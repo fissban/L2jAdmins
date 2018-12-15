@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+<item id='6600' name="saint_spear__guidance">
+  <for>
+    <set val='281' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='132' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <set val='66' order='0x08' stat='PHYSICAL_ATTACK_RANGE'/>
+    <add val='-3' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6601' name="saint_spear__haste">
+  <for>
+    <set val='281' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='132' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <set val='66' order='0x08' stat='PHYSICAL_ATTACK_RANGE'/>
+    <add val='-3' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6602' name="demon_splinter_focus">
+  <for>
+    <set val='342' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='132' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6603' name="demon_splinter_health">
+  <for>
+    <set val='342' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='132' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6604' name="demon_splinter_crt._stun">
+  <for>
+    <set val='342' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='132' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6605' name="heavens_divider_haste">
+  <for>
+    <set val='342' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='132' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6606' name="heavens_divider_health">
+  <for>
+    <set val='342' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='132' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6607' name="heavens_divider_focus">
+  <for>
+    <set val='342' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='132' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6608' name="arcana_mace_acumen">
+  <for>
+    <set val='225' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='175' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6609' name="arcana_mace_mp_regeneration">
+  <for>
+    <set val='225' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='175' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6610' name="arcana_mace_mana_up">
+  <for>
+    <set val='225' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='175' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6611' name="hero_blade">
+  <for>
+    <set val='297' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='137' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6612' name="hero_cleaver">
+  <for>
+    <set val='361' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='137' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6613' name="hero_axe">
+  <for>
+    <set val='297' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='137' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6614' name="hero_rod">
+  <for>
+    <set val='238' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='182' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6615' name="hero_crusher">
+  <for>
+    <set val='361' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='137' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6616' name="hero_scepter">
+  <for>
+    <set val='290' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='182' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6617' name="hero_stinger">
+  <for>
+    <set val='260' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='137' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='12' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='-3' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='433' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6618' name="hero_fang">
+  <for>
+    <set val='361' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='137' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6619' name="hero_bow">
+  <for>
+    <set val='614' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='137' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='12' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='-3' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='293' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+    <set val='1' order='0x08' stat='MP_CONSUME_RATE'> 
+      <and>
+        <game skill="false" chance="26"/> 
+      </and> 
+    </set>
+  </for>
+</item>
+<item id='6620' name="hero_wing">
+  <for>
+    <set val='361' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='137' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6621' name="hero_spear">
+  <for>
+    <set val='297' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='137' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <set val='66' order='0x08' stat='PHYSICAL_ATTACK_RANGE'/>
+    <add val='-3' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='6678' name="sealed_imperial_crusader_shield">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='276' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='SHIELD_DEFENCE_POWER'/>
+  </for>
+</item>
+</list>

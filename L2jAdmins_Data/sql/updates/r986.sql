@@ -1,0 +1,1 @@
+ALTER TABLE character_skills_save MODIFY systime BIGINT UNSIGNED NOT NULL DEFAULT 0;

@@ -1,0 +1,1 @@
+ALTER TABLE character_skills DROP COLUMN skill_name;

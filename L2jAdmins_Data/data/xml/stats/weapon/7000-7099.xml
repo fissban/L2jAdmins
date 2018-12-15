@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+<item id='7014' name="monster_only_(shield_of_dark_dragon)">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='230' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='SHIELD_DEFENCE_POWER'/>
+  </for>
+</item>
+<item id='7015' name="shield_of_castle_pledge">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='90' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='SHIELD_DEFENCE_POWER'/>
+  </for>
+</item>
+<item id='7058' name="chrono_darbuka">
+  <for>
+    <set val='1' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='1' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+</list>

@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+<item id='5704' name="keshanberk*keshanberk">
+  <for>
+    <set val='259' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='107' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <mul val='1.08' order='0x30' stat='PHYSICAL_ATTACK_SPEED'>
+      <and>
+        <using slotitem="5704;14;4"/>
+      </and>
+    </mul>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='5705' name="keshanberk*damascus">
+  <for>
+    <set val='275' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='112' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <mul val='1.25' order='0x30' stat='MAX_HP'>
+      <and>
+        <using slotitem="5705;14;4"/>
+      </and>
+    </mul>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='5706' name="damascus*damascus">
+  <for>
+    <set val='282' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='114' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <add val='6' order='0x10' stat='ACCURACY_COMBAT'>
+      <and>
+        <using slotitem="5706;14;4"/>
+      </and>
+    </add>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='5791' name="tomb_guard_a">
+  <for>
+    <set val='78' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='39' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='5792' name="tomb_guard_b">
+  <for>
+    <set val='78' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='39' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='5793' name="tomb_savant_a">
+  <for>
+    <set val='156' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='83' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='5794' name="tomb_savant_b">
+  <for>
+    <set val='156' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='83' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='5795' name="tomb_guard_a">
+  <for>
+    <set val='78' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='39' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='5796' name="tomb_guard_b">
+  <for>
+    <set val='78' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='39' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='5797' name="tomb_savant_a">
+  <for>
+    <set val='156' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='83' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='5798' name="tomb_savant_b">
+  <for>
+    <set val='156' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='83' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='5799' name="nephilim_lord">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='142' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='SHIELD_DEFENCE_POWER'/>
+  </for>
+</item>
+</list>

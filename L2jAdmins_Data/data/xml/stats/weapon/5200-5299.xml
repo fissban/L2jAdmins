@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+<item id='5217' name="wolf_level_75_weapon">
+  <for>
+    <add val='194' order='0x10' stat='PHYSICAL_ATTACK'/>
+    <add val='136' order='0x10' stat='MAGICAL_ATTACK'/>
+    <set val='80' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <set val='304' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+  </for>
+</item>
+<item id='5233' name="keshanberk*keshanberk">
+  <for>
+    <set val='259' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='107' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+    <mul val='1.08' order='0x30' stat='PHYSICAL_ATTACK_SPEED'>
+      <and>
+  	    <using slotitem="5233;14;4"/>
+  	  </and>
+  	</mul>
+  </for>
+</item>
+<item id='5284' name="zweihander">
+  <for>
+    <set val='38' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='21' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='5285' name="heavy_sword">
+  <for>
+    <set val='49' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='26' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='5286' name="berserker_blade">
+  <for>
+    <set val='190' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='83' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='5292' name="sealed_dark_crystal_shield">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='243' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='SHIELD_DEFENCE_POWER'/>
+  </for>
+</item>
+</list>

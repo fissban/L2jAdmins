@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+  <armorsets id="1" name="Wooden Breastplate set (heavy)">
+    <chest id="23" />
+    <legs id="2386" />
+    <head id="43" />
+    <skill id="3500" />
+  </armorsets>
+  <armorsets id="2" name="Devotion robe set (robe)">
+    <chest id="1101" />
+    <legs id="1104" />
+    <head id="44" />
+    <skill id="3501" />
+  </armorsets>
+  <armorsets id="3" name="Mithril Breastplate set(heavy)">
+    <chest id="58" />
+    <legs id="59" />
+    <head id="47" />
+    <skill id="3502" />
+    <shield id="628" />
+    <shield_skill id="3543" />
+  </armorsets>
+  <armorsets id="4" name="Brigandine Armor set">
+    <chest id="352" />
+    <legs id="2378" />
+    <head id="2411" />
+    <skill id="3506" />
+    <shield id="2493" />
+    <shield_skill id="3544" />
+  </armorsets>
+  <armorsets id="5" name="Reinforced leather set">
+    <chest id="394" />
+    <legs id="416" />
+    <feet id="2422" />
+    <skill id="3503" />
+  </armorsets>
+  <armorsets id="6" name="Manticore skin set">
+    <chest id="395" />
+    <legs id="417" />
+    <feet id="2424" />
+    <skill id="3505" />
+  </armorsets>
+  <armorsets id="7" name="Tunic of knowledge set">
+    <chest id="436" />
+    <legs id="469" />
+    <gloves id="2447" />
+    <skill id="3504" />
+  </armorsets>
+  <armorsets id="8" name="Mithril Tunic">
+    <chest id="437" />
+    <legs id="470" />
+    <gloves id="2450" />
+    <skill id="3507" />
+  </armorsets>
+  <armorsets id="9" name="Chain Mail Shirt set">
+    <chest id="354" />
+    <legs id="381" />
+    <head id="2413" />
+    <skill id="3509" />
+    <shield id="2495" />
+    <shield_skill id="3545" />
+  </armorsets>
+  <armorsets id="10" name="Composite Armor set">
+    <chest id="60" />
+    <head id="517" />
+    <skill id="3512" />
+    <shield id="107" />
+    <shield_skill id="3546" />
+  </armorsets>
+  <armorsets id="11" name="Full Plate Armor set">
+    <chest id="356" />
+    <head id="2414" />
+    <skill id="3516" />
+    <shield id="2497" />
+    <shield_skill id="3547" />
+  </armorsets>
+  <armorsets id="12" name="Mithrill shirt set">
+    <chest id="397" />
+    <legs id="2387" />
+    <feet id="62" />
+    <skill id="3508" />
+  </armorsets>
+  <armorsets id="13" name="Plated leather set">
+    <chest id="398" />
+    <legs id="418" />
+    <feet id="2431" />
+    <skill id="3511" />
+  </armorsets>
+  <armorsets id="14" name="Theca leather set">
+    <chest id="400" />
+    <legs id="420" />
+    <feet id="2436" />
+    <skill id="3514" />
+  </armorsets>
+  <armorsets id="15" name="Drake leather set">
+    <chest id="401" />
+    <feet id="2437" />
+    <skill id="3515" />
+   </armorsets>
+  <armorsets id="16" name="Karmian robe set">
+    <chest id="439" />
+    <legs id="471" />
+    <gloves id="2454" />
+    <skill id="3510" />
+  </armorsets>
+  <armorsets id="17" name="Demon robe set">
+    <chest id="441" />
+    <legs id="472" />
+    <gloves id="2459" />
+    <skill id="3513" />
+  </armorsets>
+  <armorsets id="18" name="Divine robe set">
+    <chest id="442" />
+    <legs id="473" />
+    <gloves id="2463" />
+    <skill id="3517" />
+  </armorsets>
+  <armorsets id="19" name="Zubei's Breastplate set">
+    <chest id="357" />
+    <legs id="383" />
+    <head id="503" />
+    <gloves id="5710" />
+    <feet id="5726" />
+    <skill id="3518" />
+  </armorsets>
+  <armorsets id="20" name="Zubei's leather set">
+    <chest id="2384" />
+    <legs id="2388" />
+    <head id="503" />
+    <gloves id="5711" />
+    <feet id="5727" />
+    <skill id="3520" />
+  </armorsets>
+  <armorsets id="21" name="Zubei robe set">
+    <chest id="2397" />
+    <legs id="2402" />
+    <head id="503" />
+    <gloves id="5712" />
+    <feet id="5728" />
+    <skill id="3522" />
+  </armorsets>
+  <armorsets id="22" name="Avadon heavy set">
+    <chest id="2376" />
+    <legs id="2379" />
+    <head id="2415" />
+    <gloves id="5714" />
+    <feet id="5730" />
+    <skill id="3519" />
+    <shield id="673" />
+    <shield_skill id="3548" />
+  </armorsets>
+  <armorsets id="23" name="Avadon leather set">
+    <chest id="2390" />
+    <head id="2415" />
+    <gloves id="5715" />
+    <feet id="5731" />
+    <skill id="3521" />
+  </armorsets>
+  <armorsets id="24" name="Avadon robe set">
+    <chest id="2406" />
+    <head id="2415" />
+    <gloves id="5716" />
+    <feet id="5732" />
+    <skill id="3523" />
+  </armorsets>
+  <armorsets id="25" name="Blue Wolf's Breastplate set">
+    <chest id="358" />
+    <legs id="2380" />
+    <head id="2416" />
+    <gloves id="5718" />
+    <feet id="5734" />
+    <skill id="3524" />
+  </armorsets>
+  <armorsets id="26" name="Blue wolf leather set">
+    <chest id="2391" />
+    <head id="2416" />
+    <gloves id="5719" />
+    <feet id="5735" />
+    <skill id="3526" />
+  </armorsets>
+  <armorsets id="27" name="Blue Wolf robe set">
+    <chest id="2398" />
+    <legs id="2403" />
+    <head id="2416" />
+    <gloves id="5720" />
+    <feet id="5736" />
+    <skill id="3528" />
+  </armorsets>
+  <armorsets id="28" name="Doom plate heavy set">
+    <chest id="2381" />
+    <head id="2417" />
+    <gloves id="5722" />
+    <feet id="5738" />
+    <skill id="3525" />
+    <shield id="110" />
+    <shield_skill id="3549" />
+  </armorsets>
+  <armorsets id="29" name="Doom leather set">
+    <chest id="2392" />
+    <head id="2417" />
+    <gloves id="5723" />
+    <feet id="5739" />
+    <skill id="3527" />
+  </armorsets>
+  <armorsets id="30" name="Doom robe set">
+    <chest id="2399" />
+    <legs id="2404" />
+    <head id="2417" />
+    <gloves id="5724" />
+    <feet id="5740" />
+    <skill id="3529" />
+  </armorsets>
+  <armorsets id="31" name="Dark Crystal Breastplate set">
+    <chest id="365" />
+    <legs id="388" />
+    <head id="512" />
+    <gloves id="5765" />
+    <feet id="5777" />
+    <skill id="3530" />
+    <shield id="641" />
+    <shield_skill id="3550" />
+  </armorsets>
+  <armorsets id="32" name="Dark Crystal leather set">
+    <chest id="2385" />
+    <legs id="2389" />
+    <head id="512" />
+    <gloves id="5766" />
+    <feet id="5778" />
+    <skill id="3532" />
+  </armorsets>
+  <armorsets id="33" name="Dark Crystal robe set">
+    <chest id="2407" />
+    <head id="512" />
+    <gloves id="5767" />
+    <feet id="5779" />
+    <skill id="3535" />
+  </armorsets>
+  <armorsets id="34" name="Tallum plate heavy set">
+    <chest id="2382" />
+    <head id="547" />
+    <gloves id="5768" />
+    <feet id="5780" />
+    <skill id="3531" />
+  </armorsets>
+  <armorsets id="35" name="Tallum leather set">
+    <chest id="2393" />
+    <head id="547" />
+    <gloves id="5769" />
+    <feet id="5781" />
+    <skill id="3533" />
+  </armorsets>
+  <armorsets id="36" name="Tallum robe set">
+    <chest id="2400" />
+    <legs id="2405" />
+    <head id="547" />
+    <gloves id="5770" />
+    <feet id="5782" />
+    <skill id="3534" />
+  </armorsets>
+  <armorsets id="37" name="Nightmare heavy set">
+    <chest id="374" />
+    <head id="2418" />
+    <gloves id="5771" />
+    <feet id="5783" />
+    <skill id="3536" />
+    <shield id="2498" />
+    <shield_skill id="3551" />
+  </armorsets>
+  <armorsets id="38" name="Nightmare leather set">
+    <chest id="2394" />
+    <head id="2418" />
+    <gloves id="5772" />
+    <feet id="5784" />
+    <skill id="3538" />
+  </armorsets>
+  <armorsets id="39" name="Robe of nightmare set">
+    <chest id="2408" />
+    <head id="2418" />
+    <gloves id="5773" />
+    <feet id="5785" />
+    <skill id="3540" />
+  </armorsets>
+  <armorsets id="40" name="Majestic plate heavy set">
+    <chest id="2383" />
+    <head id="2419" />
+    <gloves id="5774" />
+    <feet id="5786" />
+    <skill id="3537" />
+  </armorsets>
+  <armorsets id="41" name="Majestic leather set">
+    <chest id="2395" />
+    <head id="2419" />
+    <gloves id="5775" />
+    <feet id="5787" />
+    <skill id="3539" />
+  </armorsets>
+  <armorsets id="42" name="Majestic robe set">
+    <chest id="2409" />
+    <head id="2419" />
+    <gloves id="5776" />
+    <feet id="5788" />
+    <skill id="3541" />
+  </armorsets>
+  <armorsets id="43" name="Imperial crusader set">
+    <chest id="6373" />
+    <legs id="6374" />
+    <head id="6378" />
+    <gloves id="6375" />
+    <feet id="6376" />
+    <skill id="3553" />
+    <shield id="6377" />
+    <shield_skill id="3554" />
+  </armorsets>
+  <armorsets id="44" name="Draconic leather set">
+    <chest id="6379" />
+    <head id="6382" />
+    <gloves id="6380" />
+    <feet id="6381" />
+    <skill id="3555" />
+  </armorsets>
+  <armorsets id="45" name="Major arcana robe set">
+    <chest id="6383" />
+    <head id="6386" />
+    <gloves id="6384" />
+    <feet id="6385" />
+    <skill id="3556" />
+  </armorsets>
+</list>

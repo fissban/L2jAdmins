@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+<item id='1471' name="silenos_blowgun">
+  <for>
+    <set val='5' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='5' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='12' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='-3' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='433' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='1472' name="dreadbane">
+  <for>
+    <set val='50' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='26' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <set val='66' order='0x08' stat='PHYSICAL_ATTACK_RANGE'/>
+    <add val='-3' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+</list>

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+	<skill id="3600" levels="9" name="Special Ability: Anger">
+	  <!-- Fixed by fissban -->
+	  <table name="#pvpBonus"> 1.00 1.00 1.00 1.00 1.00 1.00 1.05 1.05 1.05 </table>
+	  <table name="#pAtk"> 20.44 22.64 24.77 26.78 28.59 30.12 31.30 39.00 45.00 </table>
+	  <set name="target" val="TARGET_SELF"/>
+	  <set name="skillType" val="ITEM_SA"/>
+	  <set name="operateType" val="PASSIVE"/>
+	  <for>
+	    <add order="0x40" stat="PHYSICAL_ATTACK" val="#pAtk" />
+		<add order="0x30" stat="MAX_HP" val="0.85" />
+	    <mul order="0x30" stat="PVP_PHYSICAL_DMG" val="#pvpBonus"/>
+	    <mul order="0x30" stat="PVP_PHYS_SKILL_DMG" val="#pvpBonus"/>
+	    <mul order="0x30" stat="PVP_MAGICAL_DMG" val="#pvpBonus"/>
+	  </for>
+	</skill>
+	<skill id="3601" levels="9" name="Special Ability: Haste">
+	  <!-- Fixed by fissban -->
+	  <table name="#pvpBonus"> 1.00 1.00 1.00 1.00 1.00 1.00 1.05 1.05 1.05 </table>
+	  <table name="#atkSpeed"> 1.08 1.07 1.07 1.07 1.06 1.06 1.06 1.06 1.07 </table>
+	  <set name="target" val="TARGET_SELF"/>
+	  <set name="skillType" val="ITEM_SA"/>
+	  <set name="operateType" val="PASSIVE"/>
+	  <for>
+	    <mul order="0x30" stat="PHYSICAL_ATTACK_SPEED" val="#atkSpeed"/>
+	    <mul order="0x30" stat="PVP_PHYSICAL_DMG" val="#pvpBonus"/>
+	    <mul order="0x30" stat="PVP_PHYS_SKILL_DMG" val="#pvpBonus"/>
+	    <mul order="0x30" stat="PVP_MAGICAL_DMG" val="#pvpBonus"/>
+	  </for>
+	</skill>
+	<skill id="3602" levels="9" name="Special Ability: Guidance">
+	  <!-- Fixed by fissban -->
+	  <table name="#pvpBonus"> 1.00 1.00 1.00 1.00 1.00 1.00 1.05 1.05 1.05 </table>
+	  <table name="#acuracy">  6.88 6.07 5.72 5.37 5.02 4.68 4.34 3.95 5.27 7.5 </table>
+	  <set name="target" val="TARGET_SELF"/>
+	  <set name="skillType" val="ITEM_SA"/>
+	  <set name="operateType" val="PASSIVE"/>
+	  <for>
+	    <add order="0x40" stat="ACCURACY_COMBAT" val="#acuracy"/>
+	    <mul order="0x30" stat="PVP_PHYSICAL_DMG" val="#pvpBonus"/>
+	    <mul order="0x30" stat="PVP_PHYS_SKILL_DMG" val="#pvpBonus"/>
+	    <mul order="0x30" stat="PVP_MAGICAL_DMG" val="#pvpBonus"/>
+	  </for>
+	</skill>
+</list>

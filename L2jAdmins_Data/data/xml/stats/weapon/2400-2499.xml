@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+<item id='2493' name="brigandine_shield">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='142' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='SHIELD_DEFENCE_POWER'/>
+  </for>
+</item>
+<item id='2494' name="plate_shield">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='154' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='SHIELD_DEFENCE_POWER'/>
+  </for>
+</item>
+<item id='2495' name="chain_shield">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='166' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='SHIELD_DEFENCE_POWER'/>
+  </for>
+</item>
+<item id='2496' name="dwarven_chain_shield">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='174' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='SHIELD_DEFENCE_POWER'/>
+  </for>
+</item>
+<item id='2497' name="full_plate_shield">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='203' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='SHIELD_DEFENCE_POWER'/>
+  </for>
+</item>
+<item id='2498' name="shield_of_nightmare">
+  <for>
+    <sub val='8' order='0x10' stat='EVASION_RATE'/>
+    <set val='256' order='0x08' stat='SHIELD_DEFENCE_POWER'/>
+    <set val='20' order='0x08' stat='SHIELD_DEFENCE_RATE'/>
+    <enchant val='0' order='0x0C' stat='SHIELD_DEFENCE_POWER'/>
+  </for>
+</item>
+<item id='2499' name="elven_long_sword">
+  <for>
+    <set val='92' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='54' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+</list>

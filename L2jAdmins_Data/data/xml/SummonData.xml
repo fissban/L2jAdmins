@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+   <!-- Type: STATIC / PET / WYVERN -->
+   <Summon name="Christmas Tree" type="STATIC" itemId="5560" npcId="12619" />
+   <Summon name="Special Cristmas Tree" type="STATIC" itemId="5561" npcId="12620" />
+   <Summon name="Wolf" type="PET" itemId="2375" npcId="12077" />
+   <Summon name="Hatchling of Wind" type="PET" itemId="3500" npcId="12311" />
+   <Summon name="Hatchling of Star" type="PET" itemId="3501" npcId="12312" />
+   <Summon name="Hatchling of Twilight" type="PET" itemId="3502" npcId="12313" />
+   <Summon name="Wind Strider" type="PET" itemId="4422" npcId="12526" />
+   <Summon name="Star Strider" type="PET" itemId="4423" npcId="12527" />
+   <Summon name="Twilight Strider" type="PET" itemId="4424" npcId="12528" />
+   <Summon name="Sin Eater" type="PET" itemId="4425" npcId="12564" />
+   <Summon name="Baby Bufallo" type="PET" itemId="6648" npcId="12780" />
+   <Summon name="Baby Cougar" type="PET" itemId="6649" npcId="12782" />
+   <Summon name="Baby Kookaburra" type="PET" itemId="6650" npcId="12781" />
+</list>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+<item id='1510' name="butchers_sword">
+  <for>
+    <set val='13' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='10' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='1511' name="silversmith_hammer">
+  <for>
+    <set val='13' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='10' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='4' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='4' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+</list>

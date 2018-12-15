@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+<item id='3026' name="talins_spear">
+  <for>
+    <set val='24' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='17' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <set val='66' order='0x08' stat='PHYSICAL_ATTACK_RANGE'/>
+    <add val='-3' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='3027' name="old_knights_sword">
+  <for>
+    <set val='29' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='17' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='325' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='3028' name="crescent_moon_bow">
+  <for>
+    <set val='34' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='12' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='12' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='-3' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='293' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+<item id='3029' name="sword_of_binding">
+  <for>
+    <set val='17' order='0x08' stat='PHYSICAL_ATTACK'/>
+    <set val='12' order='0x08' stat='MAGICAL_ATTACK'/>
+    <set val='8' order='0x08' stat='PHYSICAL_CRITICAL_RATE'/>
+    <add val='0' order='0x10' stat='ACCURACY_COMBAT'/>
+    <set val='379' order='0x08' stat='PHYSICAL_ATTACK_SPEED'/>
+    <enchant val='0' order='0x0C' stat='PHYSICAL_ATTACK'/>
+    <enchant val='0' order='0x0C' stat='MAGICAL_ATTACK'/>
+  </for>
+</item>
+</list>
