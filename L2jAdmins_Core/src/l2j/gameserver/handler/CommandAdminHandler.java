@@ -43,6 +43,7 @@ import l2j.gameserver.handler.command.admin.AdminTest;
 import l2j.gameserver.handler.command.admin.AdminUnblockIp;
 import l2j.gameserver.handler.command.admin.AdminZone;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.util.UtilPrint;
 
 /**
  * @author fissban
@@ -106,7 +107,7 @@ public class CommandAdminHandler
 		registerAdminCommand(new AdminUnblockIp());
 		registerAdminCommand(new AdminZone());
 		
-		LOG.info("CommandAdminHandler: load " + size() + " handlers");
+		UtilPrint.result("CommandAdminHandler", "Loaded handlers", size());
 	}
 	
 	/**

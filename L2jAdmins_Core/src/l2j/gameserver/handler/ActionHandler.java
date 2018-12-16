@@ -15,6 +15,7 @@ import l2j.gameserver.handler.action.SummonOnAction;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
+import l2j.util.UtilPrint;
 
 /**
  * @author fissban
@@ -50,7 +51,7 @@ public class ActionHandler
 		registerAction(new StaticObjectInstanceOnAction());
 		registerAction(new SummonOnAction());
 		
-		LOG.info("ActionHandler: load " + size() + " handlers");
+		UtilPrint.result("ActionHandler", "Loaded handlers", size());
 	}
 	
 	/**

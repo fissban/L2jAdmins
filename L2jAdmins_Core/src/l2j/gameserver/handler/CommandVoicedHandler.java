@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import l2j.gameserver.handler.command.voiced.VoicedCastle;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.util.UtilPrint;
 
 public class CommandVoicedHandler
 {
@@ -29,7 +30,7 @@ public class CommandVoicedHandler
 	{
 		registerHandler(new VoicedCastle());
 		
-		LOG.info("CommandVoicedHandler: load " + size() + " handlers");
+		UtilPrint.result("CommandVoicedHandler", "Loaded handlers", size());
 	}
 	
 	public static void registerHandler(IVoicedCommandHandler handler)

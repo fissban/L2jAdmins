@@ -13,6 +13,7 @@ import l2j.gameserver.handler.community.CommunityMail;
 import l2j.gameserver.handler.community.CommunityMemo;
 import l2j.gameserver.handler.community.CommunityRegion;
 import l2j.gameserver.handler.community.CommunityTop;
+import l2j.util.UtilPrint;
 
 /**
  * Definimos los commandos usados dentro del community.<br>
@@ -41,7 +42,7 @@ public class CommunityHandler
 		registerHandler(new CommunityRegion());
 		registerHandler(new CommunityTop());
 		
-		LOG.info("CommunityHandler: load " + size() + " handlers");
+		UtilPrint.result("CommunityHandler", "Loaded handlers", size());
 	}
 	
 	public static void registerHandler(AbstractCommunityHandler handler)
