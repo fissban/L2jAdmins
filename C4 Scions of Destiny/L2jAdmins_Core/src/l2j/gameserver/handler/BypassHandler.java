@@ -16,6 +16,7 @@ import l2j.gameserver.handler.bypass.BypassTeleport;
 import l2j.gameserver.handler.bypass.BypassTerritoryStatus;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.util.UtilPrint;
 
 /**
  * @author nBd, UnAfraid, fissban
@@ -51,7 +52,7 @@ public class BypassHandler
 		registerHandler(new BypassTeleport());
 		registerHandler(new BypassTerritoryStatus());
 		
-		LOG.info("BypassHandler: load " + size() + " handlers");
+		UtilPrint.result("BypassHandler", "Loaded handlers", size());
 	}
 	
 	public static void registerHandler(IBypassHandler handler)

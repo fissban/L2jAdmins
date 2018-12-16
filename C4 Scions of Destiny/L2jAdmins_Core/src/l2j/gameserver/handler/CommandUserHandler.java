@@ -18,6 +18,7 @@ import l2j.gameserver.handler.command.user.UserPartyInfo;
 import l2j.gameserver.handler.command.user.UserSiegeStatus;
 import l2j.gameserver.handler.command.user.UserTime;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.util.UtilPrint;
 
 /**
  * @author fissban
@@ -55,7 +56,7 @@ public class CommandUserHandler
 		registerHandler(new UserSiegeStatus());
 		registerHandler(new UserTime());
 		
-		LOG.info("CommandUserHandler: load " + size() + " handlers");
+		UtilPrint.result("CommandUserHandler", "Loaded handlers", size());
 	}
 	
 	public void registerHandler(IUserCommandHandler handler)

@@ -31,6 +31,7 @@ import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.skills.Skill;
 import l2j.gameserver.model.skills.enums.SkillTargetType;
+import l2j.util.UtilPrint;
 
 /**
  * @author UnAfraid
@@ -77,6 +78,8 @@ public class TargetHandler
 		registerHandler(new TargetSelf());
 		registerHandler(new TargetUndead());
 		registerHandler(new TargetUnlockable());
+		
+		UtilPrint.result("TargetHandler", "Loaded handlers", size());
 	}
 	
 	public static void registerHandler(ITargetTypeHandler handler)

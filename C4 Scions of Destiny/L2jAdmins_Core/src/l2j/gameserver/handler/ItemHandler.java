@@ -42,6 +42,7 @@ import l2j.gameserver.handler.item.ItemSummonItems;
 import l2j.gameserver.handler.item.ItemWorldMap;
 import l2j.gameserver.model.actor.L2Playable;
 import l2j.gameserver.model.items.instance.ItemInstance;
+import l2j.util.UtilPrint;
 
 public class ItemHandler
 {
@@ -100,7 +101,7 @@ public class ItemHandler
 		registerHandler(new ItemSummonItems());
 		registerHandler(new ItemWorldMap());
 		
-		LOG.info("ItemHandler: load " + size() + " handlers");
+		UtilPrint.result("ItemHandler", "Loaded handlers", size());
 	}
 	
 	public static void registerHandler(IItemHandler handler)

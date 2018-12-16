@@ -9,6 +9,7 @@ import l2j.gameserver.handler.actionshift.DoorOnActionShift;
 import l2j.gameserver.handler.actionshift.NpcOnActionShift;
 import l2j.gameserver.handler.actionshift.PcInstanceOnActionShift;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
+import l2j.util.UtilPrint;
 
 /**
  * @author fissban
@@ -29,7 +30,7 @@ public class ActionShiftHandler
 		registerHandler(new NpcOnActionShift());
 		registerHandler(new PcInstanceOnActionShift());
 		
-		LOG.info("ActionHandler: load " + size() + " handlers");
+		UtilPrint.result("ActionShiftHandler", "Loaded handlers", size());
 	}
 	
 	public static void registerHandler(IActionHandler handler)

@@ -18,6 +18,7 @@ import l2j.gameserver.handler.say.SayTell;
 import l2j.gameserver.handler.say.SayTrade;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.network.external.client.Say2.SayType;
+import l2j.util.UtilPrint;
 
 /**
  * @author fissban
@@ -55,7 +56,7 @@ public class SayHandler
 		registerHandler(new SayTell());
 		registerHandler(new SayTrade());
 		
-		LOG.info("SayHandler: load " + size() + " handlers");
+		UtilPrint.result("SayHandler", "Loaded handlers", size());
 	}
 	
 	public static void registerHandler(ISayHandler handler)
