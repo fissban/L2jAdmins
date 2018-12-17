@@ -150,7 +150,7 @@ public final class PacketHandler implements IPacketHandler<GameClient>, IClientF
 						msg = new RequestLinkHtml();
 						break;
 					case 0x21:
-						// msg = new RequestBypassToServer();
+						msg = new RequestBypassToServer();
 						break;
 					case 0x22:
 						msg = new RequestBBSwrite();
