@@ -591,7 +591,6 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
 			{
 				if (cleanupTask == null)
 				{
-					System.out.println("cleanMe Task start");
 					cleanupTask = ThreadPoolManager.getInstance().schedule(new CleanupTask(), fast ? 5 : 15000L);
 				}
 			}

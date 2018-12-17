@@ -78,7 +78,6 @@ public class Antharas extends Script
 			
 			if (antharas == null)
 			{
-				System.out.println("antharas null");
 				return;
 			}
 			

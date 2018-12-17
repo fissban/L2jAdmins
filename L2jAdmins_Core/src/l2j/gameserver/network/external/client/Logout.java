@@ -67,7 +67,6 @@ public class Logout extends AClientPacket
 		
 		if (EngineModsManager.onExitWorld(player))
 		{
-			System.out.println("Logout 4");
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
