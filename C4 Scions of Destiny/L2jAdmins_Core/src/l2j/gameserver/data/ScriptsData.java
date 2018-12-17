@@ -21,7 +21,7 @@ public class ScriptsData extends XmlParser
 	public void load()
 	{
 		loadFile("data/xml/scripts.xml");
-		UtilPrint.result("RecipeData", "Loaded scripts", scripts.size());
+		UtilPrint.result("ScriptsData", "Loaded scripts", scripts.size());
 	}
 	
 	@Override
