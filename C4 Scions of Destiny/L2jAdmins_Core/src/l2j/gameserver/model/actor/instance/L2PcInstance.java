@@ -5955,14 +5955,12 @@ public final class L2PcInstance extends L2Playable
 	{
 		if (!client.isDetached())
 		{
-			System.out.println("cleanMe Start");
 			client.cleanMe(true);
 		}
 		else if (!client.getConnection().isClosed())
 		{
 			client.close(LeaveWorld.STATIC_PACKET);
 		}
-		System.out.println("logout sin accion");
 	}
 	
 	public int getInventoryLimit()
