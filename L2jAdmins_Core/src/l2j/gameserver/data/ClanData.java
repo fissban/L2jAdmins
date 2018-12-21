@@ -72,7 +72,6 @@ public class ClanData
 					}
 				}
 			}
-			LOG.config("Restored " + clans.size() + " clans from the database.");
 		}
 		catch (Exception e)
 		{
