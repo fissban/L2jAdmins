@@ -16,6 +16,5 @@ public class RestartResponse extends AServerPacket
 		writeC(0x5f);
 		
 		writeD(0x01); // 01-ok
-		writeS("ok merong~ khaha");
 	}
 }

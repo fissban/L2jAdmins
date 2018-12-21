@@ -8,6 +8,7 @@ import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.GameClient.GameClientState;
 import l2j.gameserver.network.external.server.ActionFailed;
 import l2j.gameserver.network.external.server.CharSelectInfo;
+import l2j.gameserver.network.external.server.RestartResponse;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.task.continuous.AttackStanceTaskManager;
 import main.EngineModsManager;
@@ -98,6 +99,8 @@ public class RequestRestart extends AClientPacket
 		
 		// The client to the authed status
 		getClient().setState(GameClientState.AUTHED);
+		
+		sendPacket(RestartResponse.STATIC_PACKET);
 		
 		// send char list
 		CharSelectInfo cs = new CharSelectInfo(getClient().getAccountName(), getClient().getSessionId().playOkID1);
