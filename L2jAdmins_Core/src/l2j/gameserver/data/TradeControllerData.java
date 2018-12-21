@@ -14,6 +14,7 @@ import l2j.Config;
 import l2j.L2DatabaseFactory;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.model.trade.MerchantTradeList;
+import l2j.util.UtilPrint;
 
 /**
  * This class ...
@@ -29,7 +30,7 @@ public class TradeControllerData
 	public void load()
 	{
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-			PreparedStatement statement1 = con.prepareStatement("SELECT shop_id, npc_id  FROM merchant_shopids");
+			PreparedStatement statement1 = con.prepareStatement("SELECT shop_id, npc_id FROM merchant_shopids");
 			ResultSet rset1 = statement1.executeQuery())
 		{
 			int itemId, price, count, currentCount, time;
@@ -91,13 +92,14 @@ public class TradeControllerData
 				}
 			}
 			
-			LOG.config("TradeController: Loaded " + lists.size() + " Buylists.");
 		}
 		catch (Exception e)
 		{
 			LOG.warning("TradeController: Buylists could not be initialized.");
 			e.printStackTrace();
 		}
+		
+		UtilPrint.result("TradeControllerData", "Loaded buylist", lists.size());
 		
 		/*
 		 * If enabled, initialize the custom buylist
@@ -170,7 +172,8 @@ public class TradeControllerData
 					}
 					
 				}
-				LOG.config("TradeController: Loaded " + (lists.size() - initialSize) + " Custom Buylists.");
+				
+				UtilPrint.result("TradeControllerData", "Loaded custom buylist", (lists.size() - initialSize));
 			}
 			catch (Exception e)
 			{
@@ -178,7 +181,6 @@ public class TradeControllerData
 				e.printStackTrace();
 			}
 		}
-		
 	}
 	
 	public MerchantTradeList getBuyList(int listId)
