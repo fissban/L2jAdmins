@@ -64,7 +64,7 @@
 	</target>
 
 	<target name="jar" depends="compile" description="Create the jar files.">
-		<jar destfile="${libs}/Core.jar" level="9">
+		<jar destfile="build/dist/libs/Core.jar" level="9">
 			<fileset dir="${build.bin}" />
 		</jar>
 		<jar destfile="build/Core.jar" level="9">
