@@ -16,6 +16,7 @@ import l2j.gameserver.network.external.server.PlaySound;
 import l2j.gameserver.network.external.server.PlaySound.PlaySoundType;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.network.external.server.TutorialShowQuestionMark;
+import main.data.ConfigData;
 import main.engine.events.daily.AbstractEvent;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.NpcHolder;
@@ -31,36 +32,36 @@ import main.util.builders.html.HtmlBuilder;
 public class NpcClassMaster extends AbstractEvent
 {
 	private static final int NPC = 12371;
-
+	
 	// format:
 	// PriceItemId
 	// PriceItemCount
 	// ReardItemId
 	// RewardItemCount
-
+	
 	// Usar el 0 para no definir ningun valor
 	private static final List<ClassMasterList> ITEM_LIST = new ArrayList<>();
 	{
 		// Primer cambio de clase ----------------------
 		var job1 = new ClassMasterList();
-		job1.setPriceItemId(57);
-		job1.setPriceItemCount(100);
-		job1.setRewardItemId(0);
-		job1.setRewardItemCount(0);
+		job1.setPriceItemId(ConfigData.CLASSMASTER_PRICE_JOB1.getRewardId());
+		job1.setPriceItemCount(ConfigData.CLASSMASTER_PRICE_JOB1.getRewardCount());
+		job1.setRewardItemId(ConfigData.CLASSMASTER_REWARD_JOB1.getRewardId());
+		job1.setRewardItemCount(ConfigData.CLASSMASTER_REWARD_JOB1.getRewardCount());
 		ITEM_LIST.add(job1);
 		// Segundo cambio de clase ----------------------
 		var job2 = new ClassMasterList();
-		job2.setPriceItemId(57);
-		job2.setPriceItemCount(100);
-		job2.setRewardItemId(0);
-		job2.setRewardItemCount(0);
+		job2.setPriceItemId(ConfigData.CLASSMASTER_PRICE_JOB2.getRewardId());
+		job2.setPriceItemCount(ConfigData.CLASSMASTER_PRICE_JOB2.getRewardCount());
+		job2.setRewardItemId(ConfigData.CLASSMASTER_REWARD_JOB2.getRewardCount());
+		job2.setRewardItemCount(ConfigData.CLASSMASTER_REWARD_JOB2.getRewardCount());
 		ITEM_LIST.add(job2);
 		// Tercer cambio de clase -----------------------
 		var job3 = new ClassMasterList();
-		job3.setPriceItemId(57);
-		job3.setPriceItemCount(100);
-		job3.setRewardItemId(0);
-		job3.setRewardItemCount(0);
+		job3.setPriceItemId(ConfigData.CLASSMASTER_PRICE_JOB3.getRewardId());
+		job3.setPriceItemCount(ConfigData.CLASSMASTER_PRICE_JOB3.getRewardCount());
+		job3.setRewardItemId(ConfigData.CLASSMASTER_REWARD_JOB3.getRewardCount());
+		job3.setRewardItemCount(ConfigData.CLASSMASTER_REWARD_JOB3.getRewardCount());
 		ITEM_LIST.add(job3);
 	}
 	// Spawns
@@ -74,14 +75,14 @@ public class NpcClassMaster extends AbstractEvent
 	}
 	// Html
 	private static final String HTML_PATH = "data/html/engine/events/classmaster/";
-
+	
 	private static final List<NpcHolder> npcs = new ArrayList<>();
-
+	
 	public NpcClassMaster()
 	{
-		registerEvent(true, "1-1-2014", "31-1-2020");// TODO missing config
+		registerEvent(ConfigData.ENABLE_ClassMaster, ConfigData.CLASSMASTER_DATE_START, ConfigData.CLASSMASTER_DATE_END);
 	}
-
+	
 	@Override
 	public void onModState()
 	{
@@ -89,12 +90,12 @@ public class NpcClassMaster extends AbstractEvent
 		{
 			case START:
 				UtilMessage.sendAnnounceMsg("Event Class Master: Started!", L2World.getInstance().getAllPlayers());
-
+				
 				ThreadPoolManager.getInstance().schedule(() ->
 				{
 					SPAWNS.forEach(loc -> npcs.add(UtilSpawn.npc(NPC, loc.getX(), loc.getY(), loc.getZ(), 0, 0, 0, TeamType.NONE, 0)));
 				}, 20000);
-
+				
 				break;
 			case END:
 				UtilMessage.sendAnnounceMsg("Event Class Master: End!", L2World.getInstance().getAllPlayers());
@@ -102,30 +103,30 @@ public class NpcClassMaster extends AbstractEvent
 				break;
 		}
 	}
-
+	
 	@Override
 	public void onEnterWorld(PlayerHolder ph)
 	{
 		UtilMessage.sendAnnounceMsg("Event Class Master: Started!", ph);
 	}
-
+	
 	@Override
 	public boolean onInteract(PlayerHolder ph, CharacterHolder character)
 	{
 		if (Util.areObjectType(L2Npc.class, character))
 		{
 			var npc = (L2Npc) character.getInstance();
-
+			
 			if (npc.getId() == NPC)
 			{
 				sendHtmlFile(ph, npc, HTML_PATH + "index.htm");
 				return true;
 			}
 		}
-
+		
 		return false;
 	}
-
+	
 	@Override
 	public void onEvent(PlayerHolder ph, CharacterHolder npc, String event)
 	{
@@ -133,7 +134,7 @@ public class NpcClassMaster extends AbstractEvent
 		{
 			return;
 		}
-
+		
 		if (event.startsWith("1stClass"))
 		{
 			showHtmlMenu(ph, npc.getObjectId(), 1);
@@ -151,7 +152,7 @@ public class NpcClassMaster extends AbstractEvent
 			try
 			{
 				int val = Integer.parseInt(event.split(" ")[1]);
-
+				
 				if (checkAndChangeClass(ph.getInstance(), val))
 				{
 					// Send sound
@@ -169,11 +170,11 @@ public class NpcClassMaster extends AbstractEvent
 			}
 		}
 	}
-
+	
 	public static final void showHtmlMenu(PlayerHolder ph, int objectId, int level)
 	{
 		var html = new NpcHtmlMessage(objectId);
-
+		
 		var currentClassId = ph.getInstance().getClassId();
 		if (currentClassId.level() >= level)
 		{
@@ -198,11 +199,11 @@ public class NpcClassMaster extends AbstractEvent
 						menu.append("</table>");
 					}
 				}
-
+				
 				if (menu.toString().length() > 0)
 				{
 					menu.append("<img src=L2UI_CH3.br_bar2_mp width=204 height=1>");
-
+					
 					html.setFile(HTML_PATH + "template.htm");
 					html.replace("%name%", currentClassId.getName());
 					html.replace("%menu%", menu.toString());
@@ -226,12 +227,12 @@ public class NpcClassMaster extends AbstractEvent
 				}
 			}
 		}
-
+		
 		html.replace("%objectId%", String.valueOf(objectId));
 		html.replace("%req_items%", getRequiredItems(level));
 		ph.getInstance().sendPacket(html);
 	}
-
+	
 	private static final void showQuestionMark(L2PcInstance player)
 	{
 		var classId = player.getClassId();
@@ -239,15 +240,13 @@ public class NpcClassMaster extends AbstractEvent
 		{
 			return;
 		}
-
+		
 		player.sendPacket(new TutorialShowQuestionMark(1001));
 	}
-
+	
 	/**
 	 * Returns minimum player level required for next class transfer
-	 * 
-	 * @param level
-	 *            - current skillId level (0 - start, 1 - first, etc)
+	 * @param  level - current skillId level (0 - start, 1 - first, etc)
 	 * @return
 	 */
 	private static final int getMinLevel(int level)
@@ -264,14 +263,11 @@ public class NpcClassMaster extends AbstractEvent
 				return Integer.MAX_VALUE;
 		}
 	}
-
+	
 	/**
 	 * Returns true if class change is possible
-	 * 
-	 * @param oldCID
-	 *            current player ClassId
-	 * @param val
-	 *            new class index
+	 * @param  oldCID current player ClassId
+	 * @param  val    new class index
 	 * @return
 	 */
 	private static final boolean validateClassId(ClassId oldCID, int val)
@@ -286,15 +282,12 @@ public class NpcClassMaster extends AbstractEvent
 		}
 		return false;
 	}
-
+	
 	/**
 	 * Returns true if class change is possible
-	 * 
-	 * @param oldCID
-	 *            current player ClassId
-	 * @param newCID
-	 *            new ClassId
-	 * @return true if class change is possible
+	 * @param  oldCID current player ClassId
+	 * @param  newCID new ClassId
+	 * @return        true if class change is possible
 	 */
 	private static final boolean validateClassId(ClassId oldCID, ClassId newCID)
 	{
@@ -302,15 +295,15 @@ public class NpcClassMaster extends AbstractEvent
 		{
 			return false;
 		}
-
+		
 		if (oldCID.equals(newCID.getParent()))
 		{
 			return true;
 		}
-
+		
 		return false;
 	}
-
+	
 	private static String getRequiredItems(int level)
 	{
 		level--;
@@ -330,7 +323,7 @@ public class NpcClassMaster extends AbstractEvent
 		}
 		return sb.toString();
 	}
-
+	
 	private static final boolean checkAndChangeClass(L2PcInstance player, int val)
 	{
 		var currentClassId = player.getClassId();
@@ -338,14 +331,14 @@ public class NpcClassMaster extends AbstractEvent
 		{
 			return false;
 		}
-
+		
 		if (!validateClassId(currentClassId, val))
 		{
 			return false;
 		}
-
+		
 		var newJobLevel = currentClassId.level();
-
+		
 		// Weight/Inventory check
 		if (ITEM_LIST.get(newJobLevel).getRewardItemId() != 0)
 		{
@@ -355,24 +348,24 @@ public class NpcClassMaster extends AbstractEvent
 				return false;
 			}
 		}
-
+		
 		// get all required items for class transfer
 		var priceCount = ITEM_LIST.get(newJobLevel).getPriceItemCount();
 		var priceItemId = ITEM_LIST.get(newJobLevel).getPriceItemId();
-
+		
 		if (!player.getInventory().destroyItemByItemId("ClassMaster", priceItemId, priceCount, player, true))
 		{
 			player.sendPacket(SystemMessage.NOT_ENOUGH_ITEMS);
 			return false;
 		}
-
+		
 		// reward player with items
 		var rewardCount = ITEM_LIST.get(newJobLevel).getRewardItemCount();
 		var rewardItemId = ITEM_LIST.get(newJobLevel).getRewardItemId();
 		player.getInventory().addItem("ClassMaster", rewardItemId, rewardCount, player, true);
-
+		
 		player.setClassId(val);
-
+		
 		if (player.isSubClassActive())
 		{
 			player.getSubClasses().get(player.getClassIndex()).setClassId(player.getActiveClass());
@@ -381,65 +374,65 @@ public class NpcClassMaster extends AbstractEvent
 		{
 			player.setBaseClass(player.getActiveClass());
 		}
-
+		
 		player.broadcastUserInfo();
-
+		
 		if (player.getClassId().level() == 1 && player.getLevel() >= 40 || player.getClassId().level() == 2 && player.getLevel() >= 76)
 		{
 			showQuestionMark(player);
 		}
-
+		
 		return true;
 	}
-
+	
 	public class ClassMasterList
 	{
 		private int priceItemId;
 		private int priceItemCount;
-
+		
 		private int rewardItemId;
 		private int rewardItemCount;
-
+		
 		public ClassMasterList()
 		{
 			//
 		}
-
+		
 		public int getPriceItemId()
 		{
 			return priceItemId;
 		}
-
+		
 		public void setPriceItemId(int priceItemId)
 		{
 			this.priceItemId = priceItemId;
 		}
-
+		
 		public int getPriceItemCount()
 		{
 			return priceItemCount;
 		}
-
+		
 		public void setPriceItemCount(int priceItemCount)
 		{
 			this.priceItemCount = priceItemCount;
 		}
-
+		
 		public int getRewardItemId()
 		{
 			return rewardItemId;
 		}
-
+		
 		public void setRewardItemId(int rewardItemId)
 		{
 			this.rewardItemId = rewardItemId;
 		}
-
+		
 		public int getRewardItemCount()
 		{
 			return rewardItemCount;
 		}
-
+		
 		public void setRewardItemCount(int rewardItemCount)
 		{
 			this.rewardItemCount = rewardItemCount;
