@@ -3,12 +3,13 @@ package l2j.gameserver.data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import l2j.L2DatabaseFactory;
 import l2j.gameserver.ThreadPoolManager;
@@ -359,18 +360,12 @@ public class ClanData
 	
 	public List<Clan> getClanAllies(int allianceId)
 	{
-		final List<Clan> clanAllies = new ArrayList<>();
-		if (allianceId != 0)
+		if (allianceId == 0)
 		{
-			for (Clan clan : clans.values())
-			{
-				if ((clan != null) && (clan.getAllyId() == allianceId))
-				{
-					clanAllies.add(clan);
-				}
-			}
+			return Collections.emptyList();
 		}
-		return clanAllies;
+		
+		return clans.values().stream().filter(clan -> (clan.getAllyId() == allianceId)).collect(Collectors.toList());
 	}
 	
 	public static ClanData getInstance()

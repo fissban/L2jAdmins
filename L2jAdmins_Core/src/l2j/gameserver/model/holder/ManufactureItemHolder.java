@@ -10,13 +10,11 @@ public class ManufactureItemHolder
 {
 	private final int recipeId;
 	private final int cost;
-	private final boolean isDwarven;
 	
 	public ManufactureItemHolder(int recipeId, int cost)
 	{
 		this.recipeId = recipeId;
 		this.cost = cost;
-		isDwarven = RecipeData.getRecipeList(recipeId).isDwarvenRecipe();
 	}
 	
 	public int getRecipeId()
@@ -31,6 +29,6 @@ public class ManufactureItemHolder
 	
 	public boolean isDwarven()
 	{
-		return isDwarven;
+		return RecipeData.getRecipeList(recipeId).isDwarvenRecipe();
 	}
 }
