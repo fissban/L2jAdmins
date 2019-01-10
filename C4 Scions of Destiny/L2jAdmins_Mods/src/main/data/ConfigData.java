@@ -17,7 +17,6 @@ import main.holders.IntIntHolder;
 import main.holders.RewardHolder;
 import main.util.UtilProperties;
 
-
 /**
  * @author fissban
  */
@@ -211,6 +210,20 @@ public class ConfigData
 	public static double BONUS_WEEKEND_SPOIL;
 	public static double BONUS_WEEKEND_SEED;
 	
+	public static boolean ENABLE_ClassMaster;
+	public static String CLASSMASTER_DATE_START;
+	public static String CLASSMASTER_DATE_END;
+	public static String CLASSMASTER_MESSAGE_START;
+	
+	public static RewardHolder CLASSMASTER_PRICE_JOB1;
+	public static RewardHolder CLASSMASTER_REWARD_JOB1;
+	
+	public static RewardHolder CLASSMASTER_PRICE_JOB2;
+	public static RewardHolder CLASSMASTER_REWARD_JOB2;
+	
+	public static RewardHolder CLASSMASTER_PRICE_JOB3;
+	public static RewardHolder CLASSMASTER_REWARD_JOB3;
+	
 	public static boolean ENABLE_FireCat;
 	public static String FIRE_CAT_DATE_START;
 	public static String FIRE_CAT_DATE_END;
@@ -291,6 +304,20 @@ public class ConfigData
 	private static void loadEventsNormal()
 	{
 		UtilProperties config = load(EVENTS_NORMAL_FILE);
+		
+		ENABLE_ClassMaster = config.getProperty("Enable_ClassMaster", true);
+		CLASSMASTER_DATE_START = config.getProperty("ClassMasterDateStart", "24-2-2015");
+		CLASSMASTER_DATE_END = config.getProperty("ClassMasterDateEnd", "24-2-2020");
+		CLASSMASTER_MESSAGE_START = config.getProperty("ClassMasterMessageStart", "");
+		
+		CLASSMASTER_PRICE_JOB1 = parseReward(config, "ClassMasterPriceJob1").get(0);
+		CLASSMASTER_REWARD_JOB1 = parseReward(config, "ClassMasterRewardJob1").get(0);
+		
+		CLASSMASTER_PRICE_JOB2 = parseReward(config, "ClassMasterPriceJob2").get(0);
+		CLASSMASTER_REWARD_JOB2 = parseReward(config, "ClassMasterRewardJob2").get(0);
+		
+		CLASSMASTER_PRICE_JOB3 = parseReward(config, "ClassMasterPriceJob3").get(0);
+		CLASSMASTER_REWARD_JOB3 = parseReward(config, "ClassMasterRewardJob3").get(0);
 		
 		ENABLE_FireCat = config.getProperty("Enable_FireCat", true);
 		FIRE_CAT_DATE_START = config.getProperty("FireCatDateStart", "24-2-2015");
