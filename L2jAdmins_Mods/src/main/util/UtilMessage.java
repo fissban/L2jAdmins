@@ -3,14 +3,13 @@ package main.util;
 import java.util.Collection;
 import java.util.List;
 
-import main.holders.objects.PlayerHolder;
 import l2j.gameserver.data.ClanData;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.clan.Clan;
-import l2j.gameserver.model.clan.ClanMemberInstance;
 import l2j.gameserver.network.external.client.Say2.SayType;
 import l2j.gameserver.network.external.server.CreatureSay;
+import main.holders.objects.PlayerHolder;
 
 /**
  * @author fissban
@@ -31,21 +30,12 @@ public class UtilMessage
 	
 	public static void sendAllyMembersMsg(int ally, SayType say2, String name, String text)
 	{
-		for (Clan clan : ClanData.getInstance().getClanAllies(ally))
-		{
-			sendClanMembersMsg(clan, say2, name, text);
-		}
+		ClanData.getInstance().getClanAllies(ally).forEach(clan -> sendClanMembersMsg(clan, say2, name, text));
 	}
 	
 	public static void sendClanMembersMsg(Clan clan, SayType say2, String name, String text)
 	{
-		for (ClanMemberInstance member : clan.getMembers())
-		{
-			if (member != null && member.isOnline())
-			{
-				sendCreatureMsg(member.getPlayerInstance(), say2, name, text);
-			}
-		}
+		clan.getMembers().forEach(member -> sendCreatureMsg(member.getPlayerInstance(), say2, name, text));
 	}
 	
 	// XXX Announcements ----------------------------------------------------------------------------------------------------
