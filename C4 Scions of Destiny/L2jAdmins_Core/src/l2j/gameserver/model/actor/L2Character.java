@@ -4262,7 +4262,11 @@ public abstract class L2Character extends L2Object
 	 */
 	public boolean isSkillDisabled(Skill skill)
 	{
-		return (skill != null) && isSkillDisabled(skill.getReuseHashCode());
+		if (skill == null)
+		{
+			return true;
+		}
+		return isSkillDisabled(skill.getReuseHashCode());
 	}
 	
 	/**
