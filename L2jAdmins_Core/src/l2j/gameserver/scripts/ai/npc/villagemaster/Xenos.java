@@ -52,9 +52,9 @@ public class Xenos extends Script
 			case SPELLHOWLER:
 			case SHILLIEN_ELDER:
 			case PHANTOM_SUMMONER:
-				return HTML_PATCH + "7262-32.htm";
+				return HTML_PATCH + "7290-32.htm";
 			default:
-				return HTML_PATCH + "7262-33.htm";
+				return HTML_PATCH + "7290-33.htm";
 		}
 	}
 	
