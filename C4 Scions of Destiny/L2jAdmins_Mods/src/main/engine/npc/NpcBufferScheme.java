@@ -104,7 +104,6 @@ public class NpcBufferScheme extends AbstractMod
 		var eventParam3 = st.hasMoreTokens() ? st.nextToken() : "";
 		var eventParam4 = st.hasMoreTokens() ? st.nextToken() : "";
 		
-		System.out.println("command: " + command);
 		switch (bypass)
 		{
 			case "reloadscript":
