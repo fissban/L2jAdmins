@@ -1,9 +1,17 @@
 package main.engine.npc;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.StringTokenizer;
 
+import l2j.gameserver.data.SkillData;
+import l2j.gameserver.model.actor.L2Npc;
+import l2j.gameserver.model.actor.instance.L2CubicInstance;
+import l2j.gameserver.model.actor.instance.L2PetInstance;
+import l2j.gameserver.model.skills.enums.SkillType;
+import l2j.gameserver.network.external.server.SetSummonRemainTime;
+import l2j.gameserver.network.external.server.SetupGauge;
+import l2j.gameserver.network.external.server.SetupGauge.SetupGaugeType;
+import l2j.gameserver.network.external.server.SystemMessage;
 import main.data.SchemeBufferPredefinedData;
 import main.data.SkillInfoData;
 import main.engine.AbstractMod;
@@ -19,24 +27,9 @@ import main.util.builders.html.HtmlBuilder;
 import main.util.builders.html.HtmlBuilder.HtmlType;
 import main.util.builders.html.L2UI;
 import main.util.builders.html.L2UI_CH3;
-import l2j.gameserver.data.SkillData;
-import l2j.gameserver.model.actor.L2Npc;
-import l2j.gameserver.model.actor.L2Summon;
-import l2j.gameserver.model.actor.instance.L2CubicInstance;
-import l2j.gameserver.model.actor.instance.L2PetInstance;
-import l2j.gameserver.model.actor.stat.PcStat;
-import l2j.gameserver.model.actor.stat.SummonStat;
-import l2j.gameserver.model.actor.status.PcStatus;
-import l2j.gameserver.model.actor.status.SummonStatus;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.enums.SkillType;
-import l2j.gameserver.network.external.server.SetSummonRemainTime;
-import l2j.gameserver.network.external.server.SetupGauge;
-import l2j.gameserver.network.external.server.SystemMessage;
-import l2j.gameserver.network.external.server.SetupGauge.SetupGaugeType;
 
 /**
- * Adaptacion del buffer de RIn4
+ * Adaptation of the buffer RIn4
  * @author fissban
  */
 public class NpcBufferScheme extends AbstractMod
@@ -64,9 +57,13 @@ public class NpcBufferScheme extends AbstractMod
 	private static final int SCHEME_BUFF_PRICE = 1000;
 	private static final int SCHEMES_PER_PLAYER = 3;
 	
-	// maximo de buffs q se pueden agregar de cada tipo por scheme
+	// maximo de buffs que se pueden agregar de cada tipo por scheme
 	private static final int MAX_SCHEME_BUFFS = 24;
 	private static final int MAX_SCHEME_DANCES = 12;
+	
+	// MISC
+	private static final String SCHEME_NAME = "schemeName";
+	private static final String BLOCK_UNTIL_TIME = "blockUntilTime";
 	
 	public NpcBufferScheme()
 	{
@@ -100,13 +97,14 @@ public class NpcBufferScheme extends AbstractMod
 			return;
 		}
 		
-		StringTokenizer st = new StringTokenizer(command, " ");
-		String bypass = st.hasMoreTokens() ? st.nextToken() : "redirect_main";
-		String eventParam1 = st.hasMoreTokens() ? st.nextToken() : "";
-		String eventParam2 = st.hasMoreTokens() ? st.nextToken() : "";
-		String eventParam3 = st.hasMoreTokens() ? st.nextToken() : "";
-		String eventParam4 = st.hasMoreTokens() ? st.nextToken() : "";
+		var st = new StringTokenizer(command, " ");
+		var bypass = st.hasMoreTokens() ? st.nextToken() : "redirect_main";
+		var eventParam1 = st.hasMoreTokens() ? st.nextToken() : "";
+		var eventParam2 = st.hasMoreTokens() ? st.nextToken() : "";
+		var eventParam3 = st.hasMoreTokens() ? st.nextToken() : "";
+		var eventParam4 = st.hasMoreTokens() ? st.nextToken() : "";
 		
+		System.out.println("command: " + command);
 		switch (bypass)
 		{
 			case "reloadscript":
@@ -160,7 +158,7 @@ public class NpcBufferScheme extends AbstractMod
 			case "create":
 			{
 				// anti sql inject
-				String name = eventParam1.replaceAll("[ !" + "\"" + "#$%&'()*+,/:;<=>?@" + "\\[" + "\\\\" + "\\]" + "\\^" + "`{|}~]", ""); // JOJO
+				var name = eventParam1.replaceAll("[ !" + "\"" + "#$%&'()*+,/:;<=>?@" + "\\[" + "\\\\" + "\\]" + "\\^" + "`{|}~]", ""); // JOJO
 				
 				if (name.length() == 0 || name.equals("no_name"))
 				{
@@ -169,10 +167,9 @@ public class NpcBufferScheme extends AbstractMod
 					return;
 				}
 				
-				// XXX INSERT INTO npcbuffer_scheme_list (player_id,scheme_name) VALUES (?,?)
-				// obtenemos el listado de schemes
-				String allSchemes = getValueDB(ph.getObjectId(), "schemeName").getString();
-				// aqgregamos el nuevo nombre del scheme
+				// get the list of schemes
+				var allSchemes = getValueDB(ph.getObjectId(), SCHEME_NAME).getString();
+				// the new name of the scheme is added
 				if (allSchemes == null)
 				{
 					allSchemes = "";
@@ -180,7 +177,7 @@ public class NpcBufferScheme extends AbstractMod
 				else
 				{
 					// check if scheme name exist
-					for (String s : allSchemes.split(","))
+					for (var s : allSchemes.split(","))
 					{
 						if (s != null && s.equals(name))
 						{
@@ -193,8 +190,8 @@ public class NpcBufferScheme extends AbstractMod
 				
 				allSchemes += name + ",";
 				
-				// salvamos el nuevo listado
-				setValueDB(ph, "schemeName", allSchemes);
+				// the new listing is saved
+				setValueDB(ph, SCHEME_NAME, allSchemes);
 				
 				rebuildMainHtml(ph);
 				return;
@@ -202,23 +199,15 @@ public class NpcBufferScheme extends AbstractMod
 			case "delete":
 			{
 				// TODO missing code
-				String schemeName = eventParam1;
-				// removemos la lista de buffs
+				var schemeName = eventParam1;
+				// the list of buffs is removed
 				removeValueDB(ph.getObjectId(), schemeName);
-				// removemos el nombre del scheme del listado
-				String schemes = getValueDB(ph.getObjectId(), "schemeName").getString();
-				if (schemes.contains(schemeName + ","))
-				{
-					schemes = schemes.replace(schemeName + ",", "");
-				}
-				else
-				{
-					// TODO prevenimos para los q ya tienen mas de un scheme con el viejo sistema
-					schemes = schemes.replace(schemeName, "");
-				}
+				// the name of the scheme is removed from the list
+				var schemes = getValueDB(ph.getObjectId(), SCHEME_NAME).getString();
+				schemes = schemes.replace(schemeName + ",", "");
 				
-				// salvamos el nuevo listado de los nombres de los schemes
-				setValueDB(ph.getObjectId(), "schemeName", schemes);
+				// the new list of the names of the schemes is saved
+				setValueDB(ph.getObjectId(), SCHEME_NAME, schemes);
 				
 				rebuildMainHtml(ph);
 				return;
@@ -260,14 +249,14 @@ public class NpcBufferScheme extends AbstractMod
 			}
 			case "remove_buff":
 			{
-				String[] split = eventParam1.split("_");
-				String schemeNameRemove = split[0];
-				String id = split[1];
-				String level = split[2];
+				var split = eventParam1.split("_");
+				var schemeNameRemove = split[0];
+				var id = split[1];
+				var level = split[2];
 				// "DELETE FROM npcbuffer_scheme_contents WHERE scheme_id=? AND skill_id=? AND skill_level=? LIMIT 1"
 				
 				// obtenemos el scheme actual
-				String listBuff = getValueDB(ph.getObjectId(), schemeNameRemove).getString();
+				var listBuff = getValueDB(ph.getObjectId(), schemeNameRemove).getString();
 				// agregamos el nuevo buff
 				listBuff = listBuff.replaceFirst(id + "," + level + ";", "");
 				// lo salvamos en la memoria y la db
@@ -288,15 +277,15 @@ public class NpcBufferScheme extends AbstractMod
 			}
 			case "add_buff":
 			{
-				String[] split = eventParam1.split("_");
-				String schemeNameAdd = split[0];
-				String id = split[1];
-				String level = split[2];
+				var split = eventParam1.split("_");
+				var schemeNameAdd = split[0];
+				var id = split[1];
+				var level = split[2];
 				
 				// "INSERT INTO npcbuffer_scheme_contents (scheme_id,skill_id,skill_level,buff_class) VALUES (?,?,?,?)"
 				
 				// obtenemos el scheme actual
-				String listBuff = getValueDB(ph.getObjectId(), schemeNameAdd).getString();
+				var listBuff = getValueDB(ph.getObjectId(), schemeNameAdd).getString();
 				// agregamos el nuevo buff
 				if (listBuff == null)
 				{
@@ -405,10 +394,10 @@ public class NpcBufferScheme extends AbstractMod
 			{
 				if (checkTimeOut(ph))
 				{
-					List<BuffHolder> buffs = new ArrayList<>();
+					var buffs = new ArrayList<BuffHolder>();
 					
-					String shemeName = eventParam1;
-					String buffList = getValueDB(ph.getObjectId(), shemeName).getString();
+					var shemeName = eventParam1;
+					var buffList = getValueDB(ph.getObjectId(), shemeName).getString();
 					
 					if (buffList != null)
 					{
@@ -438,9 +427,9 @@ public class NpcBufferScheme extends AbstractMod
 						}
 					}
 					
-					final boolean getPetbuff = isPetBuff(ph);
+					var getPetbuff = isPetBuff(ph);
 					
-					for (BuffHolder bh : buffs)
+					for (var bh : buffs)
 					{
 						if (!getPetbuff)
 						{
@@ -470,10 +459,10 @@ public class NpcBufferScheme extends AbstractMod
 			}
 			case "giveBuffs":
 			{
-				final int cost = BUFF_PRICE;
+				var cost = BUFF_PRICE;
 				
-				int id = Integer.parseInt(eventParam1);
-				int level = Integer.parseInt(eventParam2);
+				var id = Integer.parseInt(eventParam1);
+				var level = Integer.parseInt(eventParam2);
 				if (!isEnabled(id, level))
 				{
 					// posible bypass
@@ -491,7 +480,7 @@ public class NpcBufferScheme extends AbstractMod
 							return;
 						}
 					}
-					Skill skill = SkillData.getInstance().getSkill(id, level);
+					var skill = SkillData.getInstance().getSkill(id, level);
 					if (skill.getSkillType() == SkillType.SUMMON)
 					{
 						if (UtilInventory.getItemsCount(ph, skill.getItemConsumeId()) < skill.getItemConsumeCount())
@@ -500,14 +489,14 @@ public class NpcBufferScheme extends AbstractMod
 							return;
 						}
 					}
-					final boolean getPetbuff = isPetBuff(ph);
+					var getPetbuff = isPetBuff(ph);
 					if (!getPetbuff)
 					{
 						if (eventParam3.equals("CUBIC"))
 						{
 							if (!ph.getInstance().getCubics().isEmpty())
 							{
-								for (L2CubicInstance cubic : ph.getInstance().getCubics().values())
+								for (var cubic : ph.getInstance().getCubics().values())
 								{
 									cubic.stopAction();
 									ph.getInstance().delCubic(cubic.getType());
@@ -561,10 +550,10 @@ public class NpcBufferScheme extends AbstractMod
 						}
 					}
 					
-					final boolean getPetbuff = isPetBuff(ph);
+					var getPetbuff = isPetBuff(ph);
 					if (!getPetbuff)
 					{
-						for (BuffHolder bh : ph.getInstance().isMageClass() ? SchemeBufferPredefinedData.getAllMageBuffs() : SchemeBufferPredefinedData.getAllWarriorBuffs())
+						for (var bh : ph.getInstance().isMageClass() ? SchemeBufferPredefinedData.getAllMageBuffs() : SchemeBufferPredefinedData.getAllWarriorBuffs())
 						{
 							SkillData.getInstance().getSkill(bh.getId(), bh.getLevel()).getEffects(ph.getInstance(), ph.getInstance());
 						}
@@ -574,7 +563,7 @@ public class NpcBufferScheme extends AbstractMod
 						if (ph.getInstance().getPet() != null)
 						{
 							// a los pets le daremos los mismos buff que a los guerreros
-							for (BuffHolder bh : SchemeBufferPredefinedData.getAllWarriorBuffs())
+							for (var bh : SchemeBufferPredefinedData.getAllWarriorBuffs())
 							{
 								SkillData.getInstance().getSkill(bh.getId(), bh.getLevel()).getEffects(ph.getInstance().getPet(), ph.getInstance().getPet());
 							}
@@ -639,13 +628,13 @@ public class NpcBufferScheme extends AbstractMod
 	
 	private static String getSkillIconHtml(int id, int level)
 	{
-		String iconNumber = SkillInfoData.getSkillIcon(id);
+		var iconNumber = SkillInfoData.getSkillIcon(id);
 		return "<button action=\"bypass -h Engine NpcBufferScheme description " + id + " " + level + " x\" width=32 height=32 back=\"" + iconNumber + "\" fore=\"" + iconNumber + "\">";
 	}
 	
 	private boolean checkTimeOut(PlayerHolder ph)
 	{
-		String blockUntilTime = getValueDB(ph.getObjectId(), "blockUntilTime").getString();
+		var blockUntilTime = getValueDB(ph.getObjectId(), BLOCK_UNTIL_TIME).getString();
 		if (blockUntilTime == null || (int) (System.currentTimeMillis() / 1000) > Integer.parseInt(blockUntilTime))
 		{
 			return true;
@@ -656,8 +645,8 @@ public class NpcBufferScheme extends AbstractMod
 	
 	private void addTimeout(PlayerHolder ph, SetupGaugeType gauge, int amount, int offset)
 	{
-		int endtime = (int) ((System.currentTimeMillis() + amount * 1000) / 1000);
-		setValueDB(ph.getObjectId(), "blockUntilTime", String.valueOf(endtime));
+		var endtime = (int) ((System.currentTimeMillis() + amount * 1000) / 1000);
+		setValueDB(ph.getObjectId(), BLOCK_UNTIL_TIME, String.valueOf(endtime));
 		ph.getInstance().sendPacket(new SetupGauge(gauge, amount * 1000 + offset));
 	}
 	
@@ -668,24 +657,24 @@ public class NpcBufferScheme extends AbstractMod
 	
 	private static void heal(PlayerHolder ph, boolean isPet)
 	{
-		L2Summon target = ph.getInstance().getPet();
+		var target = ph.getInstance().getPet();
 		if (!isPet)
 		{
-			PcStatus pcStatus = ph.getInstance().getStatus();
-			PcStat pcStat = ph.getInstance().getStat();
+			var pcStatus = ph.getInstance().getStatus();
+			var pcStat = ph.getInstance().getStat();
 			pcStatus.setCurrentHp(pcStat.getMaxHp());
 			pcStatus.setCurrentMp(pcStat.getMaxMp());
 			pcStatus.setCurrentCp(pcStat.getMaxCp());
 		}
 		else if (target != null)
 		{
-			SummonStatus petStatus = target.getStatus();
-			SummonStat petStat = target.getStat();
+			var petStatus = target.getStatus();
+			var petStat = target.getStat();
 			petStatus.setCurrentHp(petStat.getMaxHp());
 			petStatus.setCurrentMp(petStat.getMaxMp());
 			if (target instanceof L2PetInstance)
 			{
-				L2PetInstance pet = (L2PetInstance) target;
+				var pet = (L2PetInstance) target;
 				pet.setCurrentFed(pet.getPetData().getPetMaxFed());
 				ph.getInstance().sendPacket(new SetSummonRemainTime(pet.getPetData().getPetMaxFed(), pet.getCurrentFed()));
 			}
@@ -729,22 +718,22 @@ public class NpcBufferScheme extends AbstractMod
 		
 		hb.append("<table width=80% cellspacing=0 cellpadding=1>");
 		hb.append("<tr>");
-		hb.append("<td height=32 align=center><button value=Buffs action=\"bypass -h Engine NpcBufferScheme redirect_view_buff\" width=75 height=21back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
-		hb.append("<td height=32 align=center><button value=Resist action=\"bypass -h Engine NpcBufferScheme redirect_view_resist\" width=75 height=21back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
+		hb.append("<td height=32 align=center><button value=Buffs action=\"bypass -h Engine NpcBufferScheme redirect_view_buff\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
+		hb.append("<td height=32 align=center><button value=Resist action=\"bypass -h Engine NpcBufferScheme redirect_view_resist\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
 		hb.append("</tr>");
 		
 		hb.append("<tr>");
-		hb.append("<td height=32 align=center><button value=Songs action=\"bypass -h Engine NpcBufferScheme redirect_view_song\" width=75 height=21back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
-		hb.append("<td height=32 align=center><button value=Dances action=\"bypass -h Engine NpcBufferScheme redirect_view_dances\" width=75 height=21back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
+		hb.append("<td height=32 align=center><button value=Songs action=\"bypass -h Engine NpcBufferScheme redirect_view_song\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
+		hb.append("<td height=32 align=center><button value=Dances action=\"bypass -h Engine NpcBufferScheme redirect_view_dances\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
 		hb.append("</tr>");
 		
 		hb.append("<tr>");
-		hb.append("<td height=32 align=center><button value=Chants action=\"bypass -h Engine NpcBufferScheme redirect_view_chants\" width=75 height=21back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
-		hb.append("<td height=32 align=center><button value=Special action=\"bypass -h Engine NpcBufferScheme redirect_view_special\" width=75 height=21back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
+		hb.append("<td height=32 align=center><button value=Chants action=\"bypass -h Engine NpcBufferScheme redirect_view_chants\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
+		hb.append("<td height=32 align=center><button value=Special action=\"bypass -h Engine NpcBufferScheme redirect_view_special\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
 		hb.append("</tr>");
 		
 		hb.append("<tr>");
-		hb.append("<td height=32 align=center><button value=Others action=\"bypass -h Engine NpcBufferScheme redirect_view_other\" width=75 height=21back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
+		hb.append("<td height=32 align=center><button value=Others action=\"bypass -h Engine NpcBufferScheme redirect_view_other\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
 		hb.append("<td height=32 align=center><button value=Cubics action=\"bypass -h Engine NpcBufferScheme redirect_view_cubic\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
 		hb.append("</tr>");
 		hb.append("</table>");
@@ -764,7 +753,6 @@ public class NpcBufferScheme extends AbstractMod
 		hb.append("</tr>");
 		hb.append("</table>");
 		
-		// hb.append("");
 		// generate html scheme
 		hb.append(generateScheme(player));
 		
@@ -778,7 +766,7 @@ public class NpcBufferScheme extends AbstractMod
 	
 	private String generateScheme(PlayerHolder ph)
 	{
-		String schemeNames = getValueDB(ph.getObjectId(), "schemeName").getString();
+		var schemeNames = getValueDB(ph.getObjectId(), SCHEME_NAME).getString();
 		
 		var hb = new HtmlBuilder(HtmlType.HTML);
 		hb.append("<br1>");
@@ -790,9 +778,9 @@ public class NpcBufferScheme extends AbstractMod
 		
 		hb.append("<br1>");
 		
-		hb.append("<table cellspacing=0 cellpadding=5 height=28>");
+		// hb.append("<table cellspacing=0 cellpadding=5 height=28>");
 		
-		if (schemeNames != null)
+		if (schemeNames != null && !schemeNames.isEmpty())
 		{
 			String[] TRS =
 			{
@@ -817,7 +805,7 @@ public class NpcBufferScheme extends AbstractMod
 			hb.append("</table>");
 		}
 		
-		if (schemeNames == null || schemeNames.split(",").length < SCHEMES_PER_PLAYER)
+		if (schemeNames == null || schemeNames.isEmpty() || schemeNames.split(",").length < SCHEMES_PER_PLAYER)
 		{
 			hb.append("<br1><table><tr><td><button value=Create action=\"bypass -h Engine NpcBufferScheme create_1\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
 		}
@@ -826,7 +814,7 @@ public class NpcBufferScheme extends AbstractMod
 			hb.append("<br1><table width=100><tr>");
 		}
 		
-		if (schemeNames != null)
+		if (schemeNames != null && !schemeNames.isEmpty())
 		{
 			hb.append("<td><button value=Edit action=\"bypass -h Engine NpcBufferScheme edit_1\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td><td><button value=\"Delete\" action=\"bypass -h Engine NpcBufferScheme delete_1\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td></tr></table>");
 		}
@@ -839,13 +827,13 @@ public class NpcBufferScheme extends AbstractMod
 	
 	/**
 	 * Chequeamos la cantidad de buffs q tiene un player en su scheme.
-	 * @param ph
-	 * @param schemeName
+	 * @param  ph
+	 * @param  schemeName
 	 * @return
 	 */
 	private int getBuffCount(PlayerHolder ph, String schemeName)
 	{
-		String buffList = getValueDB(ph.getObjectId(), schemeName).getString();
+		var buffList = getValueDB(ph.getObjectId(), schemeName).getString();
 		if (buffList != null)
 		{
 			return buffList.split(";").length;
@@ -856,13 +844,13 @@ public class NpcBufferScheme extends AbstractMod
 	
 	/**
 	 * Chequeamos si el buff aun esta en nuestro listado de buff habilitados.
-	 * @param id
-	 * @param level
+	 * @param  id
+	 * @param  level
 	 * @return
 	 */
 	private static boolean isEnabled(int id, int level)
 	{
-		for (BuffHolder bh : SchemeBufferPredefinedData.getAllGeneralBuffs())
+		for (var bh : SchemeBufferPredefinedData.getAllGeneralBuffs())
 		{
 			if (bh.getId() == id && bh.getLevel() == level)
 			{
@@ -874,22 +862,22 @@ public class NpcBufferScheme extends AbstractMod
 	
 	/**
 	 * Chequeamos si el player tiene un determinado buff en su scheme o no.
-	 * @param ph
-	 * @param scheme
-	 * @param id
-	 * @param level
+	 * @param  ph
+	 * @param  scheme
+	 * @param  id
+	 * @param  level
 	 * @return
 	 */
 	private boolean isUsed(PlayerHolder ph, String scheme, int id, int level)
 	{
-		String buffList = getValueDB(ph.getObjectId(), scheme).getString();
+		var buffList = getValueDB(ph.getObjectId(), scheme).getString();
 		
 		if (buffList == null)
 		{
 			return false;
 		}
 		
-		for (String buff : buffList.split(";"))
+		for (var buff : buffList.split(";"))
 		{
 			if (Integer.parseInt(buff.split(",")[0]) == id && Integer.parseInt(buff.split(",")[1]) == level)
 			{
@@ -920,12 +908,12 @@ public class NpcBufferScheme extends AbstractMod
 	
 	/**
 	 * Chequeamos si el player selecciono la opcion de pet o char para bufear
-	 * @param ph
+	 * @param  ph
 	 * @return
 	 */
 	private boolean isPetBuff(PlayerHolder ph)
 	{
-		String pettBuff = getValueDB(ph.getObjectId(), "Pet-On-Off").getString();
+		var pettBuff = getValueDB(ph.getObjectId(), "Pet-On-Off").getString();
 		return pettBuff == null || pettBuff.equals("1");
 	}
 	
@@ -938,7 +926,7 @@ public class NpcBufferScheme extends AbstractMod
 		hb.append("<br>Do you really want to delete '" + eventParam1 + "' scheme?<br><br>");
 		hb.append("<button value=\"Yes\" action=\"bypass -h Engine NpcBufferScheme delete " + eventParam1 + "\" width=75 height=21 back=" + L2UI_CH3.Btn1_normalOn + " fore=" + L2UI_CH3.Btn1_normal + ">");
 		hb.append("<button value=\"No\" action=\"bypass -h Engine NpcBufferScheme delete_1\" width=75 height=21 back=" + L2UI_CH3.Btn1_normalOn + " fore=" + L2UI_CH3.Btn1_normal + "><br>");
-		hb.append("<font color=\"303030\">" + TITLE_NAME + "</font></center></body></html>");
+		hb.append("<font color=\"303030\">" + TITLE_NAME + "</font></center>");
 		hb.append(Html.END);
 		
 		sendHtml(null, hb, ph);
@@ -978,8 +966,8 @@ public class NpcBufferScheme extends AbstractMod
 		hb.append("<br>Available schemes:<br><br>");
 		
 		// XXX "SELECT * FROM npcbuffer_scheme_list WHERE player_id=?"
-		String schemeNames = getValueDB(ph.getObjectId(), "schemeName").getString();
-		for (String scheme : schemeNames.split(","))
+		var schemeNames = getValueDB(ph.getObjectId(), SCHEME_NAME).getString();
+		for (var scheme : schemeNames.split(","))
 		{
 			hb.append("<button value=\"", scheme, "\" action=\"bypass -h Engine NpcBufferScheme delete_c ", scheme, " x\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, ">");
 		}
@@ -1004,8 +992,8 @@ public class NpcBufferScheme extends AbstractMod
 		
 		// XXX"SELECT * FROM npcbuffer_scheme_list WHERE player_id=?"
 		
-		String schemeNames = getValueDB(ph.getObjectId(), "schemeName").getString();
-		for (String scheme : schemeNames.split(","))
+		var schemeNames = getValueDB(ph.getObjectId(), SCHEME_NAME).getString();
+		for (var scheme : schemeNames.split(","))
 		{
 			hb.append("<button value=\"" + scheme + "\" action=\"bypass -h Engine NpcBufferScheme manage_scheme_select " + scheme + "\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, ">");
 		}
@@ -1022,7 +1010,7 @@ public class NpcBufferScheme extends AbstractMod
 	
 	private void getOptionList(PlayerHolder ph, String scheme)
 	{
-		int bcount = getBuffCount(ph, scheme);
+		var bcount = getBuffCount(ph, scheme);
 		
 		var hb = new HtmlBuilder(HtmlType.HTML);
 		hb.append(Html.START);
@@ -1052,12 +1040,12 @@ public class NpcBufferScheme extends AbstractMod
 	private static void buildHtml(PlayerHolder ph, BuffType buffType, int page)
 	{
 		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);;
+		hb.append(Html.START);
 		hb.append("<center><br>");
 		
-		List<BuffHolder> buffs = new ArrayList<>();
+		var buffs = new ArrayList<BuffHolder>();
 		
-		for (BuffHolder bh : SchemeBufferPredefinedData.getAllGeneralBuffs())
+		for (var bh : SchemeBufferPredefinedData.getAllGeneralBuffs())
 		{
 			if (bh.getSkill() == null)
 			{
@@ -1092,7 +1080,7 @@ public class NpcBufferScheme extends AbstractMod
 			int count = 0;
 			
 			hb.append(Html.image(L2UI.SquareWhite, 264, 1));
-			for (BuffHolder bh : buffs)
+			for (var bh : buffs)
 			{
 				// min
 				if (count < searchPage)
@@ -1125,7 +1113,7 @@ public class NpcBufferScheme extends AbstractMod
 			hb.append("<tr>");
 			
 			int currentPage = 1;
-			for (int i = 0; i < buffs.size(); i++)
+			for (var i = 0; i < buffs.size(); i++)
 			{
 				if (i % MAX_PER_PAGE == 0)
 				{
@@ -1149,27 +1137,33 @@ public class NpcBufferScheme extends AbstractMod
 		sendHtml(null, hb, ph);
 	}
 	
+	/**
+	 * Get the amount of buffs dances and songs obtained in specific scheme.
+	 * @param  ph
+	 * @param  scheme
+	 * @return
+	 */
 	private String viewAllSchemeBuffsGetBuffCount(PlayerHolder ph, String scheme)
 	{
-		int count = 0;
-		int D_S_Count = 0;
-		int B_Count = 0;
+		var count = 0;
+		var D_S_Count = 0;
+		var B_Count = 0;
 		
-		// obtenemos el listado de skills del scheme de un player
-		String buffList = getValueDB(ph.getObjectId(), scheme).getString();
+		// get the skill list of a player's scheme
+		var buffList = getValueDB(ph.getObjectId(), scheme).getString();
 		
-		if (buffList != null)
+		if (buffList != null && !buffList.isEmpty())
 		{
-			// parseamos cada buff
+			// every buff is parse
 			for (String buff : buffList.split(";"))
 			{
-				// parseamos el id y lvl de cada buff
-				int id = Integer.parseInt(buff.split(",")[0]);
-				int level = Integer.parseInt(buff.split(",")[1]);
+				// get the id and level of each buff
+				var id = Integer.parseInt(buff.split(",")[0]);
+				var level = Integer.parseInt(buff.split(",")[1]);
 				
 				count++;
 				
-				for (BuffHolder bh : SchemeBufferPredefinedData.getAllGeneralBuffs())
+				for (var bh : SchemeBufferPredefinedData.getAllGeneralBuffs())
 				{
 					if (bh.getId() == id && bh.getLevel() == level)
 					{
@@ -1205,19 +1199,19 @@ public class NpcBufferScheme extends AbstractMod
 		
 		hb.append("<br>");
 		
-		String[] eventSplit = viewAllSchemeBuffsGetBuffCount(ph, schemeName).split(" ");
+		var eventSplit = viewAllSchemeBuffsGetBuffCount(ph, schemeName).split(" ");
 		
 		int TOTAL_BUFF = Integer.parseInt(eventSplit[0]);
 		int BUFF_COUNT = Integer.parseInt(eventSplit[1]);
 		int DANCE_SONG = Integer.parseInt(eventSplit[2]);
 		
-		List<BuffHolder> buffs = new ArrayList<>();
+		var buffs = new ArrayList<BuffHolder>();
 		
 		if (action.equals("add"))
 		{
 			hb.append("You can add <font color=\"LEVEL\">", MAX_SCHEME_BUFFS - BUFF_COUNT, "</font> Buffs and <font color=\"LEVEL\">", MAX_SCHEME_DANCES - DANCE_SONG, "</font> Dances more!");
 			
-			for (BuffHolder bh : SchemeBufferPredefinedData.getAllGeneralBuffs())
+			for (var bh : SchemeBufferPredefinedData.getAllGeneralBuffs())
 			{
 				if (DANCE_SONG > MAX_SCHEME_DANCES)
 				{
@@ -1242,17 +1236,17 @@ public class NpcBufferScheme extends AbstractMod
 		{
 			hb.append("You have <font color=\"LEVEL\">", BUFF_COUNT, "</font> Buffs and <font color=\"LEVEL\">", DANCE_SONG, "</font> Dances");
 			
-			String buffList = getValueDB(ph.getObjectId(), schemeName).getString();
+			var buffList = getValueDB(ph.getObjectId(), schemeName).getString();
 			if (buffList == null)
 			{
 				System.out.println("error en remove buff");
 			}
 			else
 			{
-				for (String buff : buffList.split(";"))
+				for (var buff : buffList.split(";"))
 				{
-					int id = Integer.parseInt(buff.split(",")[0]);
-					int level = Integer.parseInt(buff.split(",")[1]);
+					var id = Integer.parseInt(buff.split(",")[0]);
+					var level = Integer.parseInt(buff.split(",")[1]);
 					
 					buffs.add(new BuffHolder(id, level));
 				}
@@ -1264,9 +1258,9 @@ public class NpcBufferScheme extends AbstractMod
 		}
 		
 		hb.append("<br1>", Html.image(L2UI.SquareWhite, 264, 1), "<table border=0 bgcolor=\"000000\"><tr>");
-		final int buffsPerPage = 10;
-		final String width;
-		int pc = (buffs.size() - 1) / buffsPerPage + 1;
+		var buffsPerPage = 10;
+		var width = "";
+		var pc = (buffs.size() - 1) / buffsPerPage + 1;
 		
 		// definimos el largo de las celdas con las pagina
 		if (pc > 5)
@@ -1300,10 +1294,10 @@ public class NpcBufferScheme extends AbstractMod
 		}
 		hb.append("</tr></table>", Html.image(L2UI.SquareWhite, 264, 1));
 		
-		int limit = buffsPerPage * Integer.parseInt(page);
-		int start = limit - buffsPerPage;
-		int end = Math.min(limit, buffs.size());
-		int k = 0;
+		var limit = buffsPerPage * Integer.parseInt(page);
+		var start = limit - buffsPerPage;
+		var end = Math.min(limit, buffs.size());
+		var k = 0;
 		for (int i = start; i < end; ++i)
 		{
 			BuffHolder bh = buffs.get(i);
