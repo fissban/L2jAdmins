@@ -43,13 +43,6 @@ public class Die extends AServerPacket
 			spoiled = ((L2Attackable) cha).isSpoil();
 		}
 		
-		// EngineMods
-		var curEvent = EventCooperativeManager.getCurrentEvent();
-		var ph = ObjectData.get(CharacterHolder.class, cha);
-		if (curEvent != null && curEvent.isStarting() && curEvent.playerInEvent(ph))
-		{
-			fake = true;
-		}
 	}
 	
 	@Override
@@ -70,6 +63,20 @@ public class Die extends AServerPacket
 		// 6d 03 00 00 00 - to siege HQ
 		// sweepable
 		// 6d 04 00 00 00 - FIXED
+		
+		// EngineMods
+		var curEvent = EventCooperativeManager.getCurrentEvent();
+		var ph = ObjectData.get(CharacterHolder.class, cha);
+		if (curEvent != null && curEvent.isStarting() && curEvent.playerInEvent(ph))
+		{
+			writeC(0x00); // to nearest village
+			writeD(0x00); // to hide away
+			writeD(0x00); // to castle
+			writeD(0x00); // to siege HQ
+			writeD(0x00); // sweepable (blue glow)
+			writeD(0x00); // to FIXED
+			return;
+		}
 		
 		writeD(0x01); // 6d 00 00 00 00 - to nearest village
 		if (clan != null)
