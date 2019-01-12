@@ -8,6 +8,9 @@ import l2j.gameserver.model.clan.Clan;
 import l2j.gameserver.model.entity.castle.siege.Siege;
 import l2j.gameserver.model.entity.castle.siege.type.SiegeClanType;
 import l2j.gameserver.network.AServerPacket;
+import main.data.ObjectData;
+import main.engine.events.cooperative.EventCooperativeManager;
+import main.holders.objects.CharacterHolder;
 
 /**
  * sample 0b 952a1048 objectId 00000000 00000000 00000000 00000000 00000000 00000000 format dddddd rev 377 format ddddddd rev 417
@@ -16,7 +19,7 @@ import l2j.gameserver.network.AServerPacket;
 public class Die extends AServerPacket
 {
 	private final int chaId;
-	private final boolean fake;
+	private boolean fake;
 	private boolean spoiled;
 	
 	private int access;
@@ -38,6 +41,14 @@ public class Die extends AServerPacket
 		if (cha instanceof L2Attackable)
 		{
 			spoiled = ((L2Attackable) cha).isSpoil();
+		}
+		
+		// EngineMods
+		var curEvent = EventCooperativeManager.getCurrentEvent();
+		var ph = ObjectData.get(CharacterHolder.class, cha);
+		if (curEvent != null && curEvent.isStarting() && curEvent.playerInEvent(ph))
+		{
+			fake = true;
 		}
 	}
 	
