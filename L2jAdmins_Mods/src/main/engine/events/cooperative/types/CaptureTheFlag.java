@@ -6,15 +6,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
-import main.data.ConfigData;
-import main.engine.events.cooperative.AbstractCooperative;
-import main.holders.objects.CharacterHolder;
-import main.holders.objects.NpcHolder;
-import main.holders.objects.PlayerHolder;
-import main.util.Util;
-import main.util.UtilInventory;
-import main.util.UtilMessage;
-import main.util.builders.html.Html;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.ItemData;
 import l2j.gameserver.model.actor.L2Npc;
@@ -24,6 +15,15 @@ import l2j.gameserver.model.actor.instance.enums.TeamType;
 import l2j.gameserver.model.items.enums.ParpedollType;
 import l2j.gameserver.model.party.Party;
 import l2j.gameserver.network.external.server.InventoryUpdate;
+import main.data.ConfigData;
+import main.engine.events.cooperative.AbstractCooperative;
+import main.holders.objects.CharacterHolder;
+import main.holders.objects.NpcHolder;
+import main.holders.objects.PlayerHolder;
+import main.util.Util;
+import main.util.UtilInventory;
+import main.util.UtilMessage;
+import main.util.builders.html.Html;
 
 /**
  * @author fissban
@@ -215,7 +215,7 @@ public class CaptureTheFlag extends AbstractCooperative
 	// LISTENERS -----------------------------------------------------------------------------------------
 	
 	/**
-	 * @param ph
+	 * @param  ph
 	 * @return
 	 */
 	@Override
@@ -370,13 +370,16 @@ public class CaptureTheFlag extends AbstractCooperative
 	@Override
 	public void onStart()
 	{
+		// init all players in event
+		getPlayersInEvent().forEach(ph -> playerPoints.put(ph.getName(), 0));
+		// get xyz flag for red team
 		var xRed = ConfigData.CTF_FLAG_SPAWN_TEAM_RED.getX();
 		var yRed = ConfigData.CTF_FLAG_SPAWN_TEAM_RED.getY();
 		var zRed = ConfigData.CTF_FLAG_SPAWN_TEAM_RED.getZ();
-		
-		var xBlue = ConfigData.CTF_FLAG_SPAWN_TEAM_RED.getX();
-		var yBlue = ConfigData.CTF_FLAG_SPAWN_TEAM_RED.getY();
-		var zBlue = ConfigData.CTF_FLAG_SPAWN_TEAM_RED.getZ();
+		// get xyz flag for blue team
+		var xBlue = ConfigData.CTF_FLAG_SPAWN_TEAM_BLUE.getX();
+		var yBlue = ConfigData.CTF_FLAG_SPAWN_TEAM_BLUE.getY();
+		var zBlue = ConfigData.CTF_FLAG_SPAWN_TEAM_BLUE.getZ();
 		
 		// Flag spawn
 		addSpawnNpc(ConfigData.CTF_FLAG_ID, xBlue, yBlue, zBlue, 0, 0, 0, TeamType.BLUE);
