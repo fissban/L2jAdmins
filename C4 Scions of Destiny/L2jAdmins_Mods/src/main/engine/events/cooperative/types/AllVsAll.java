@@ -5,6 +5,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
+import l2j.gameserver.ThreadPoolManager;
+import l2j.gameserver.model.actor.L2Playable;
+import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.network.external.client.Say2.SayType;
 import main.data.ConfigData;
 import main.engine.events.cooperative.AbstractCooperative;
 import main.holders.objects.CharacterHolder;
@@ -13,10 +17,6 @@ import main.util.Util;
 import main.util.UtilInventory;
 import main.util.UtilMessage;
 import main.util.builders.html.Html;
-import l2j.gameserver.ThreadPoolManager;
-import l2j.gameserver.model.actor.L2Playable;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.network.external.client.Say2.SayType;
 
 /**
  * @author fissban
@@ -37,6 +37,8 @@ public class AllVsAll extends AbstractCooperative
 	public void onStart()
 	{
 		UtilMessage.sendAnnounceMsg("Prepared? Kill as many as you can!", getPlayersInEvent());
+		// init all players in event
+		getPlayersInEvent().forEach(ph -> playerPoints.put(ph.getName(), 0));
 	}
 	
 	@Override

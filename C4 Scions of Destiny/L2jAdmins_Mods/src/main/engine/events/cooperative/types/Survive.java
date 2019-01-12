@@ -7,6 +7,11 @@ import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import l2j.gameserver.model.actor.L2Playable;
+import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.instance.enums.TeamType;
+import l2j.gameserver.model.spawn.Spawn;
+import l2j.util.Rnd;
 import main.data.ConfigData;
 import main.engine.events.cooperative.AbstractCooperative;
 import main.holders.objects.CharacterHolder;
@@ -16,11 +21,6 @@ import main.util.Util;
 import main.util.UtilInventory;
 import main.util.UtilMessage;
 import main.util.builders.html.Html;
-import l2j.gameserver.model.actor.L2Playable;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.actor.instance.enums.TeamType;
-import l2j.gameserver.model.spawn.Spawn;
-import l2j.util.Rnd;
 
 /**
  * @author fissban
@@ -43,7 +43,9 @@ public class Survive extends AbstractCooperative
 	public void onStart()
 	{
 		UtilMessage.sendAnnounceMsg("Prepared? Survive as long as you can!", getPlayersInEvent());
-		
+		// init all players in event
+		getPlayersInEvent().forEach(ph -> playerPoints.put(ph.getName(), 0));
+		// start first round
 		startTimer("newRound", 10 * 1000, null, null, false);
 	}
 	

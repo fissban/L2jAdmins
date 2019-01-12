@@ -5,6 +5,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
+import l2j.gameserver.ThreadPoolManager;
+import l2j.gameserver.model.actor.L2Playable;
+import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.instance.enums.TeamType;
+import l2j.gameserver.model.party.Party;
 import main.data.ConfigData;
 import main.engine.events.cooperative.AbstractCooperative;
 import main.holders.objects.CharacterHolder;
@@ -13,11 +18,6 @@ import main.util.Util;
 import main.util.UtilInventory;
 import main.util.UtilMessage;
 import main.util.builders.html.Html;
-import l2j.gameserver.ThreadPoolManager;
-import l2j.gameserver.model.actor.L2Playable;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.actor.instance.enums.TeamType;
-import l2j.gameserver.model.party.Party;
 
 /**
  * @author fissban
@@ -41,6 +41,8 @@ public class TeamVsTeam extends AbstractCooperative
 	{
 		// Send message on screen with the points of each team
 		sendPointsToAllParticipant();
+		// init all players in event
+		getPlayersInEvent().forEach(ph -> playerPoints.put(ph.getName(), 0));
 	}
 	
 	@Override

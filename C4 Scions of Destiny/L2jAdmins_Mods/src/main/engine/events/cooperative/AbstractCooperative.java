@@ -7,6 +7,16 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Future;
 
+import l2j.L2DatabaseFactory;
+import l2j.gameserver.ThreadPoolManager;
+import l2j.gameserver.data.DoorData;
+import l2j.gameserver.model.actor.instance.enums.TeamType;
+import l2j.gameserver.model.holder.LocationHolder;
+import l2j.gameserver.model.olympiad.OlympiadManager;
+import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.skills.effects.enums.AbnormalEffectType;
+import l2j.gameserver.network.external.client.Say2.SayType;
+import l2j.gameserver.util.Broadcast;
 import main.data.ConfigData;
 import main.data.ObjectData;
 import main.data.WorldData;
@@ -18,16 +28,6 @@ import main.holders.objects.NpcHolder;
 import main.holders.objects.PlayerHolder;
 import main.util.UtilMessage;
 import main.util.UtilSpawn;
-import l2j.L2DatabaseFactory;
-import l2j.gameserver.ThreadPoolManager;
-import l2j.gameserver.data.DoorData;
-import l2j.gameserver.model.actor.instance.enums.TeamType;
-import l2j.gameserver.model.holder.LocationHolder;
-import l2j.gameserver.model.olympiad.OlympiadManager;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.effects.enums.AbnormalEffectType;
-import l2j.gameserver.network.external.client.Say2.SayType;
-import l2j.gameserver.util.Broadcast;
 
 /**
  * @author fissban
@@ -356,7 +356,7 @@ public abstract class AbstractCooperative extends AbstractMod
 	
 	/**
 	 * Check if a player is AFK more than {@link ConfigData#COOPERATIVE_AFK_SECONDS}
-	 * @param ph
+	 * @param  ph
 	 * @return
 	 */
 	protected static boolean checkIsAfk(PlayerHolder ph)
@@ -443,7 +443,7 @@ public abstract class AbstractCooperative extends AbstractMod
 	}
 	
 	/**
-	 * We get the number of votes from the event.
+	 * Get the number of votes from the event.
 	 * @return
 	 */
 	public int getVotes()
@@ -536,7 +536,7 @@ public abstract class AbstractCooperative extends AbstractMod
 	
 	/**
 	 * Check if one or more characters are inside the event.
-	 * @param player
+	 * @param  player
 	 * @return
 	 */
 	public boolean playerInEvent(CharacterHolder... players)
