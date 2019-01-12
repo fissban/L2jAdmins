@@ -562,7 +562,7 @@ public abstract class AbstractCooperative extends AbstractMod
 	{
 		// Stop all effects
 		ph.getInstance().stopAllEffects();
-		// Stop al cubics
+		// Stop all cubics
 		ph.getInstance().removeCubics();
 		// Revive
 		if (ph.getInstance().isDead())
@@ -630,9 +630,19 @@ public abstract class AbstractCooperative extends AbstractMod
 	@Override
 	public boolean onUseSkill(PlayerHolder ph, Skill skill)
 	{
+		if (skill.hasEffects())
+		{
+			for (var e : skill.getEffectsTemplates())
+			{
+				if (e.getName().equals("Resurrect"))
+				{
+					UtilMessage.sendCreatureMsg(ph, SayType.TELL, "[System]", "You can not use this skill here");
+					return false;
+				}
+			}
+		}
 		switch (skill.getSkillType())
 		{
-			case RESURRECT:
 			case RECALL:
 				UtilMessage.sendCreatureMsg(ph, SayType.TELL, "[System]", "You can not use this skill here");
 				return false;

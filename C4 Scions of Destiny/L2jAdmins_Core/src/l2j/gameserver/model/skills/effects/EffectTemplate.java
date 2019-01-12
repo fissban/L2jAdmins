@@ -33,6 +33,8 @@ public final class EffectTemplate
 	public double power;
 	public double rate;
 	
+	private String name;
+	
 	public EffectTemplate(Condition attachCond, Condition applayCond, String func, Lambda lambda, int counter, int period, AbnormalEffectType abnormalEffect, String stackType, float stackOrder, boolean showIcon, double power, double rate)
 	{
 		this.attachCond = attachCond;
@@ -47,7 +49,7 @@ public final class EffectTemplate
 		
 		this.power = power;
 		this.rate = rate;
-		
+		this.name = func;
 		try
 		{
 			constructor = Class.forName("l2j.gameserver.model.skills.effects.type.Effect" + func).getConstructor(Env.class, EffectTemplate.class);
@@ -78,5 +80,10 @@ public final class EffectTemplate
 	public void attach(FuncTemplate f)
 	{
 		funcTemplates.add(f);
+	}
+	
+	public String getName()
+	{
+		return name;
 	}
 }
