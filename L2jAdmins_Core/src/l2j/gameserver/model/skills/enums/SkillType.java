@@ -20,7 +20,7 @@ public enum SkillType
 	AGGDAMAGE,
 	BUFF,
 	DEBUFF,
-	RESURRECT,
+	RESURRECT, // TODO aun se usa?
 	PASSIVE,
 	UNLOCK,
 	CHARGE,
