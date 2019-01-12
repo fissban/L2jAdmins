@@ -5,10 +5,9 @@ import java.util.List;
 
 import l2j.gameserver.data.ItemData;
 import l2j.gameserver.data.MultisellData;
-import l2j.gameserver.floodprotector.FloodProtector;
-import l2j.gameserver.floodprotector.enums.FloodProtectorType;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Npc;
+import l2j.gameserver.model.actor.enums.FloodProtectorType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.itemcontainer.Inventory;
 import l2j.gameserver.model.itemcontainer.inventory.PcInventory;
@@ -74,7 +73,7 @@ public class MultiSellChoose extends AClientPacket
 			return;
 		}
 		
-		if (!FloodProtector.getInstance().tryPerformAction(player, FloodProtectorType.MULTISELL))
+		if (!player.tryToUseAction(FloodProtectorType.MULTISELL))
 		{
 			return;
 		}

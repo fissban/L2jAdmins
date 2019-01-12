@@ -1,9 +1,8 @@
 package l2j.gameserver.handler.say;
 
-import l2j.gameserver.floodprotector.FloodProtector;
-import l2j.gameserver.floodprotector.enums.FloodProtectorType;
 import l2j.gameserver.handler.SayHandler.ISayHandler;
 import l2j.gameserver.model.PcBlockList;
+import l2j.gameserver.model.actor.enums.FloodProtectorType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.network.external.client.Say2.SayType;
@@ -28,7 +27,7 @@ public class SayHeroe implements ISayHandler
 	{
 		if (activeChar.isHero())
 		{
-			if (!FloodProtector.getInstance().tryPerformAction(activeChar, FloodProtectorType.HERO_VOICE))
+			if (!activeChar.tryToUseAction(FloodProtectorType.HERO_VOICE))
 			{
 				activeChar.sendMessage("Do not spam heroe channel.");
 				return;

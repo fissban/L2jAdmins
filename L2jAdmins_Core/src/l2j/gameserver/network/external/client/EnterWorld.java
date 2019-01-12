@@ -8,7 +8,6 @@ import l2j.gameserver.data.MapRegionData;
 import l2j.gameserver.data.MapRegionData.TeleportWhereType;
 import l2j.gameserver.data.ScriptsData;
 import l2j.gameserver.data.SkillData;
-import l2j.gameserver.floodprotector.FloodProtector;
 import l2j.gameserver.instancemanager.PetitionManager;
 import l2j.gameserver.instancemanager.communitybbs.Community;
 import l2j.gameserver.instancemanager.sevensigns.SevenSignsManager;
@@ -74,9 +73,6 @@ public class EnterWorld extends AClientPacket
 			LOG.warning("EnterWorld failed! activeChar is null...");
 			return;
 		}
-		
-		// Register in flood protector
-		FloodProtector.getInstance().registerNewPlayer(activeChar);
 		
 		if (L2World.getInstance().getObject(activeChar.getObjectId()) != null)
 		{

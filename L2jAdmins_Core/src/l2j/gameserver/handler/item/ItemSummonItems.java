@@ -3,11 +3,10 @@ package l2j.gameserver.handler.item;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.NpcData;
 import l2j.gameserver.data.SummonItemsData;
-import l2j.gameserver.floodprotector.FloodProtector;
-import l2j.gameserver.floodprotector.enums.FloodProtectorType;
 import l2j.gameserver.handler.ItemHandler.IItemHandler;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Playable;
+import l2j.gameserver.model.actor.enums.FloodProtectorType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.L2PetInstance;
 import l2j.gameserver.model.actor.templates.NpcTemplate;
@@ -42,7 +41,7 @@ public class ItemSummonItems implements IItemHandler
 		
 		L2PcInstance activeChar = (L2PcInstance) playable;
 		
-		if (!FloodProtector.getInstance().tryPerformAction(activeChar, FloodProtectorType.ITEM_PET_SUMMON))
+		if (!activeChar.tryToUseAction(FloodProtectorType.ITEM_PET_SUMMON))
 		{
 			return;
 		}

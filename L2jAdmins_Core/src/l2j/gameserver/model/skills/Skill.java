@@ -100,7 +100,7 @@ public abstract class Skill
 	
 	// all times in milliseconds
 	private boolean staticHitTime = false;
-	private final int hitTime;
+	private int hitTime;
 	private final int coolTime;
 	private final int reuseDelay;
 	
@@ -459,6 +459,15 @@ public abstract class Skill
 	public final int getHitTime()
 	{
 		return hitTime;
+	}
+	
+	/**
+	 * Set HitTime in ms
+	 * @param time
+	 */
+	public void setHitTime(int time)
+	{
+		hitTime = time;
 	}
 	
 	/**
