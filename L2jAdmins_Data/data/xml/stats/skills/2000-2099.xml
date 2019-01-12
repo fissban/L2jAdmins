@@ -736,6 +736,7 @@
 	<skill id="2099" levels="1" name="Escape: 5 minutes">
 	  <set name="target" val="TARGET_SELF"/>
 	  <set name="hitTime" val="300000"/>
+	  <set name="staticHitTime" val="true"/>
 	  <set name="skillType" val="RECALL"/>
 	  <set name="operateType" val="ACTIVE"/>
 	  <set name="recallType" val="TOWN" />
