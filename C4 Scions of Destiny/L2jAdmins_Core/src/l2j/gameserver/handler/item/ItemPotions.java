@@ -3,8 +3,6 @@ package l2j.gameserver.handler.item;
 import java.util.List;
 
 import l2j.gameserver.data.SkillData;
-import l2j.gameserver.floodprotector.FloodProtector;
-import l2j.gameserver.floodprotector.enums.FloodProtectorType;
 import l2j.gameserver.handler.ItemHandler.IItemHandler;
 import l2j.gameserver.handler.SkillHandler;
 import l2j.gameserver.handler.SkillHandler.ISkillHandler;
@@ -74,7 +72,7 @@ public class ItemPotions implements IItemHandler
 		
 		int itemId = item.getId();
 		
-		if (!FloodProtector.getInstance().tryPerformAction(activeChar, FloodProtectorType.POTION))
+		if (!activeChar.tryToUseItem(item))
 		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.S1_CANNOT_BE_USED).addItemName(itemId));
 			return;

@@ -1,4 +1,4 @@
-package l2j.gameserver.floodprotector.enums;
+package l2j.gameserver.model.actor.enums;
 
 /**
  * @author fissban
@@ -14,5 +14,4 @@ public enum FloodProtectorType
 	SUBCLASS,
 	DROP_ITEM,
 	BYPASS,
-	POTION
 }

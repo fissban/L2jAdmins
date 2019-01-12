@@ -4,8 +4,6 @@ import java.util.logging.Level;
 
 import l2j.Config;
 import l2j.gameserver.data.AdminCommandData;
-import l2j.gameserver.floodprotector.FloodProtector;
-import l2j.gameserver.floodprotector.enums.FloodProtectorType;
 import l2j.gameserver.handler.BypassHandler;
 import l2j.gameserver.handler.BypassHandler.IBypassHandler;
 import l2j.gameserver.handler.CommandAdminHandler;
@@ -16,6 +14,7 @@ import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;
+import l2j.gameserver.model.actor.enums.FloodProtectorType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.model.world.L2World;
@@ -50,7 +49,7 @@ public class RequestBypassToServer extends AClientPacket
 			return;
 		}
 		
-		if (!FloodProtector.getInstance().tryPerformAction(activeChar, FloodProtectorType.BYPASS))
+		if (!activeChar.tryToUseAction(FloodProtectorType.BYPASS))
 		{
 			return;
 		}

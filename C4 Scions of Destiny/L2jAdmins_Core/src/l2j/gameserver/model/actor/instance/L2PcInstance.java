@@ -34,7 +34,6 @@ import l2j.gameserver.data.PetDataData;
 import l2j.gameserver.data.RecipeData;
 import l2j.gameserver.data.SkillData;
 import l2j.gameserver.data.SkillTreeData;
-import l2j.gameserver.floodprotector.FloodProtector;
 import l2j.gameserver.geoengine.GeoEngine;
 import l2j.gameserver.handler.ItemHandler;
 import l2j.gameserver.handler.SkillHandler;
@@ -55,6 +54,7 @@ import l2j.gameserver.model.actor.base.ClassId;
 import l2j.gameserver.model.actor.base.Race;
 import l2j.gameserver.model.actor.base.Sex;
 import l2j.gameserver.model.actor.base.SubClass;
+import l2j.gameserver.model.actor.enums.FloodProtectorType;
 import l2j.gameserver.model.actor.instance.enums.CubicType;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
 import l2j.gameserver.model.actor.instance.enums.MountType;
@@ -3716,21 +3716,21 @@ public final class L2PcInstance extends L2Playable
 	{
 		if (getTotalSubClasses() > 0)
 		{
-			try (var con = L2DatabaseFactory.getInstance().getConnection())
+			try (var con = L2DatabaseFactory.getInstance().getConnection();
+				var statement = con.prepareStatement(UPDATE_CHAR_SUBCLASS))
 			{
 				for (var subClass : getSubClasses().values())
 				{
-					try (var statement = con.prepareStatement(UPDATE_CHAR_SUBCLASS))
-					{
-						statement.setLong(1, subClass.getExp());
-						statement.setInt(2, subClass.getSp());
-						statement.setInt(3, subClass.getLevel());
-						statement.setInt(4, subClass.getClassId());
-						statement.setInt(5, getObjectId());
-						statement.setInt(6, subClass.getClassIndex());
-						statement.execute();
-					}
+					statement.setLong(1, subClass.getExp());
+					statement.setInt(2, subClass.getSp());
+					statement.setInt(3, subClass.getLevel());
+					statement.setInt(4, subClass.getClassId());
+					statement.setInt(5, getObjectId());
+					statement.setInt(6, subClass.getClassIndex());
+					statement.addBatch();
 				}
+				
+				statement.executeBatch();
 			}
 			catch (final Exception e)
 			{
@@ -5275,7 +5275,6 @@ public final class L2PcInstance extends L2Playable
 		{
 			classLock.unlock();
 		}
-		
 	}
 	
 	/**
@@ -5295,13 +5294,6 @@ public final class L2PcInstance extends L2Playable
 		
 		try
 		{
-			final int oldClassId = getSubClasses().get(classIndex).getClassId();
-			
-			if (Config.DEBUG)
-			{
-				LOG.info(getName() + " has requested to modify sub class index " + classIndex + " from class ID " + oldClassId + " to " + newClassId + ".");
-			}
-			
 			try (var con = L2DatabaseFactory.getInstance().getConnection())
 			{
 				// Remove all henna info stored for this sub-class.
@@ -5928,9 +5920,6 @@ public final class L2PcInstance extends L2Playable
 			
 			// Remove all L2Object from knownObjects and knownPlayer of the L2Character then cancel Attak or Cast and notify AI
 			getKnownList().removeAllObjects();
-			
-			// Remove from flood protector
-			FloodProtector.getInstance().removePlayer(this);
 			
 			if (getClanId() > 0)
 			{
@@ -8434,5 +8423,67 @@ public final class L2PcInstance extends L2Playable
 	public void stopAllToggles()
 	{
 		getAllEffects().stream().filter(e -> (e != null) && e.getSkill().isToggle()).forEach(e -> e.exit());
+	}
+	
+	// XXX FLOOD ITEMS ============================================================================== //
+	
+	private Map<Integer, Long> floodItems = new HashMap<>();
+	
+	/**
+	 * Try to perform the requested use item
+	 * @param  action
+	 * @return        true if the action may be performed
+	 */
+	public boolean tryToUseItem(ItemInstance item)
+	{
+		var time = floodItems.get(item.getItem().getId());
+		var currentTime = System.currentTimeMillis();
+		var value = false;
+		
+		if (time != null && time < currentTime)
+		{
+			value = true;
+		}
+		
+		floodItems.put(item.getItem().getId(), currentTime + 100);
+		return value;
+	}
+	
+	// XXX FLOOD ACTIONS ============================================================================== //
+	
+	private static final int[] REUSEDELAY =
+	{
+		Config.PROTECTED_ROLLDICE,
+		Config.PROTECTED_FIREWORK,
+		Config.PROTECTED_ITEMPETSUMMON,
+		Config.PROTECTED_HEROVOICE,
+		Config.PROTECTED_GLOBALCHAT,
+		Config.PROTECTED_MULTISELL,
+		Config.PROTECTED_SUBCLASS,
+		Config.PROTECTED_DROPITEM,
+		Config.PROTECTED_BYPASS,
+	};
+	
+	private Map<FloodProtectorType, Long> floodActions = new HashMap<>();
+	
+	/**
+	 * Try to perform the requested action
+	 * @param  player
+	 * @param  action
+	 * @return        true if the action may be performed
+	 */
+	public boolean tryToUseAction(FloodProtectorType action)
+	{
+		var flood = floodActions.get(action);
+		var currentTime = System.currentTimeMillis();
+		var value = false;
+		
+		if (flood != null && flood < currentTime)
+		{
+			value = true;
+		}
+		
+		floodActions.put(action, currentTime + REUSEDELAY[action.ordinal()]);
+		return value;
 	}
 }

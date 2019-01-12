@@ -1,10 +1,9 @@
 package l2j.gameserver.handler.item;
 
 import l2j.gameserver.data.SkillData;
-import l2j.gameserver.floodprotector.FloodProtector;
-import l2j.gameserver.floodprotector.enums.FloodProtectorType;
 import l2j.gameserver.handler.ItemHandler.IItemHandler;
 import l2j.gameserver.model.actor.L2Playable;
+import l2j.gameserver.model.actor.enums.FloodProtectorType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.model.skills.Skill;
@@ -39,7 +38,7 @@ public class ItemFirework implements IItemHandler
 		L2PcInstance activeChar = (L2PcInstance) playable;
 		int itemId = item.getId();
 		
-		if (!FloodProtector.getInstance().tryPerformAction(activeChar, FloodProtectorType.FIREWORK))
+		if (!activeChar.tryToUseAction(FloodProtectorType.FIREWORK))
 		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.S1_CANNOT_BE_USED).addItemName(itemId));
 			return;

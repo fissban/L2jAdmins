@@ -1,5 +1,6 @@
 package l2j.gameserver.handler.command.user;
 
+import l2j.Config;
 import l2j.gameserver.data.SkillData;
 import l2j.gameserver.handler.CommandUserHandler.IUserCommandHandler;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -50,7 +51,10 @@ public class UserEscape implements IUserCommandHandler
 		}
 		else
 		{
-			activeChar.doCast(SkillData.getInstance().getSkill(2099, 1));
+			var sk = SkillData.getInstance().getSkill(2099, 1);
+			
+			sk.setHitTime(Config.UNSTUCK_INTERVAL * 1000);
+			activeChar.doCast(sk);
 			activeChar.sendMessage("You use Escape: 5 minutes.");
 		}
 		

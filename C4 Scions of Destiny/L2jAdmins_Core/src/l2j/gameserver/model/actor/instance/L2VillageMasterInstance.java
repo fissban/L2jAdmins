@@ -7,8 +7,6 @@ import java.util.StringTokenizer;
 import l2j.Config;
 import l2j.gameserver.data.CastleData;
 import l2j.gameserver.data.ClanData;
-import l2j.gameserver.floodprotector.FloodProtector;
-import l2j.gameserver.floodprotector.enums.FloodProtectorType;
 import l2j.gameserver.instancemanager.siege.SiegeManager;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.base.ClassId;
@@ -16,6 +14,7 @@ import l2j.gameserver.model.actor.base.ClassType;
 import l2j.gameserver.model.actor.base.PlayerClass;
 import l2j.gameserver.model.actor.base.Race;
 import l2j.gameserver.model.actor.base.SubClass;
+import l2j.gameserver.model.actor.enums.FloodProtectorType;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
 import l2j.gameserver.model.actor.templates.NpcTemplate;
 import l2j.gameserver.model.clan.Clan;
@@ -293,7 +292,7 @@ public final class L2VillageMasterInstance extends L2Npc
 					 * If the character is less than level 75 on any of their previously chosen classes then disallow them to change to their most recently added sub-class choice.
 					 */
 					
-					if (!FloodProtector.getInstance().tryPerformAction(player, FloodProtectorType.SUBCLASS))
+					if (!player.tryToUseAction(FloodProtectorType.SUBCLASS))
 					{
 						LOG.warning("Player " + player.getName() + " has performed a subclass change too fast.");
 						return;
@@ -358,7 +357,7 @@ public final class L2VillageMasterInstance extends L2Npc
 					 * If the character is less than level 75 on any of their previously chosen classes then disallow them to change to their most recently added sub-class choice. Note: paramOne = classIndex
 					 */
 					
-					if (!FloodProtector.getInstance().tryPerformAction(player, FloodProtectorType.SUBCLASS))
+					if (!player.tryToUseAction(FloodProtectorType.SUBCLASS))
 					{
 						LOG.warning("Player " + player.getName() + " has performed a subclass change too fast");
 						return;
@@ -392,7 +391,7 @@ public final class L2VillageMasterInstance extends L2Npc
 					/*
 					 * Warning: the information about this subclass will be removed from the subclass list even if false!
 					 */
-					if (!FloodProtector.getInstance().tryPerformAction(player, FloodProtectorType.SUBCLASS))
+					if (!player.tryToUseAction(FloodProtectorType.SUBCLASS))
 					{
 						LOG.warning("Player " + player.getName() + " has performed a subclass change too fast");
 						return;

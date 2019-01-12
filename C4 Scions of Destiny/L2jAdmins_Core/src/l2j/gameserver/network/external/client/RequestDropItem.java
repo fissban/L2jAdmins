@@ -4,10 +4,9 @@ import java.util.List;
 
 import l2j.Config;
 import l2j.gameserver.data.GmListData;
-import l2j.gameserver.floodprotector.FloodProtector;
-import l2j.gameserver.floodprotector.enums.FloodProtectorType;
 import l2j.gameserver.illegalaction.IllegalAction;
 import l2j.gameserver.illegalaction.enums.IllegalActionType;
+import l2j.gameserver.model.actor.enums.FloodProtectorType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.itemcontainer.Inventory;
 import l2j.gameserver.model.items.enums.EtcItemType;
@@ -55,7 +54,7 @@ public class RequestDropItem extends AClientPacket
 			return;
 		}
 		
-		if (!FloodProtector.getInstance().tryPerformAction(activeChar, FloodProtectorType.DROP_ITEM))
+		if (!activeChar.tryToUseAction(FloodProtectorType.DROP_ITEM))
 		{
 			return;
 		}

@@ -2,9 +2,8 @@ package l2j.gameserver.handler.say;
 
 import l2j.Config;
 import l2j.gameserver.data.MapRegionData;
-import l2j.gameserver.floodprotector.FloodProtector;
-import l2j.gameserver.floodprotector.enums.FloodProtectorType;
 import l2j.gameserver.handler.SayHandler.ISayHandler;
+import l2j.gameserver.model.actor.enums.FloodProtectorType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.network.external.client.Say2.SayType;
@@ -28,7 +27,7 @@ public class SayShout implements ISayHandler
 	@Override
 	public void handleSay(SayType type, L2PcInstance activeChar, String target, String text)
 	{
-		if (!FloodProtector.getInstance().tryPerformAction(activeChar, FloodProtectorType.GLOBAL_CHAT))
+		if (!activeChar.tryToUseAction(FloodProtectorType.GLOBAL_CHAT))
 		{
 			activeChar.sendMessage("Do not spam shout channel.");
 			return;

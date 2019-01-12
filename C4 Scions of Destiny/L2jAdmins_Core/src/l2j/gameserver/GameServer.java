@@ -58,7 +58,6 @@ import l2j.gameserver.data.SummonItemsData;
 import l2j.gameserver.data.TeleportLocationData;
 import l2j.gameserver.data.TradeControllerData;
 import l2j.gameserver.data.ZoneData;
-import l2j.gameserver.floodprotector.FloodProtector;
 import l2j.gameserver.geoengine.GeoEngine;
 import l2j.gameserver.handler.ActionHandler;
 import l2j.gameserver.handler.ActionShiftHandler;
@@ -253,7 +252,6 @@ public class GameServer
 		CastleManorManager.getInstance();
 		MercTicketManager.getInstance();
 		// PetitionManager.getInstance();
-		FloodProtector.getInstance();
 		
 		UtilPrint.section("Monster Race");
 		MonsterRace.getInstance();

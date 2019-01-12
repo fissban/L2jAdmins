@@ -584,7 +584,6 @@ public final class Config
 	public static boolean GMAUDIT;
 	public static boolean ILLEGAL_ACTION_AUDIT;
 	
-	public static int FLOODPROTECTOR_INITIALSIZE;
 	public static int PROTECTED_ROLLDICE;
 	public static int PROTECTED_FIREWORK;
 	public static int PROTECTED_ITEMPETSUMMON;
@@ -594,7 +593,6 @@ public final class Config
 	public static int PROTECTED_SUBCLASS;
 	public static int PROTECTED_DROPITEM;
 	public static int PROTECTED_BYPASS;
-	public static int PROTECTED_POTION;
 	
 	// ------------------------------------------------ //
 	// XXX GM
@@ -1690,9 +1688,6 @@ public final class Config
 			case "ILLEGAL_ACTION_AUDIT":
 				ILLEGAL_ACTION_AUDIT = Boolean.valueOf(pValue);
 				break;
-			case "FLOODPROTECTOR_INITIALSIZE":
-				FLOODPROTECTOR_INITIALSIZE = Integer.parseInt(pValue);
-				break;
 			case "PROTECTED_ROLLDICE":
 				PROTECTED_ROLLDICE = Integer.parseInt(pValue);
 				break;
@@ -2484,7 +2479,6 @@ public final class Config
 		LOG_ITEMS = config.getBoolean("LogItems", false);
 		GMAUDIT = config.getBoolean("GMAudit", false);
 		ILLEGAL_ACTION_AUDIT = config.getBoolean("IllegalActionAudit", false);
-		FLOODPROTECTOR_INITIALSIZE = config.getInteger("floodProtectorInitialSize", 50);
 		PROTECTED_ROLLDICE = config.getInteger("floodProtectorRollDice", 4200);
 		PROTECTED_FIREWORK = config.getInteger("floodProtectorFireWork", 4200);
 		PROTECTED_ITEMPETSUMMON = config.getInteger("floodProtectorItemPetSummon", 1600);
@@ -2494,7 +2488,6 @@ public final class Config
 		PROTECTED_SUBCLASS = config.getInteger("floodProtectorSubClass", 2000);
 		PROTECTED_DROPITEM = config.getInteger("floodProtectorDropItem", 1000);
 		PROTECTED_BYPASS = config.getInteger("floodProtectorBypass", 500);
-		PROTECTED_POTION = config.getInteger("floodProtectorPotion", 200);
 	}
 	
 	/**

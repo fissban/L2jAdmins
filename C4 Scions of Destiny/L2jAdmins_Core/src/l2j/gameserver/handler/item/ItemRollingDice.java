@@ -1,9 +1,8 @@
 package l2j.gameserver.handler.item;
 
-import l2j.gameserver.floodprotector.FloodProtector;
-import l2j.gameserver.floodprotector.enums.FloodProtectorType;
 import l2j.gameserver.handler.ItemHandler.IItemHandler;
 import l2j.gameserver.model.actor.L2Playable;
+import l2j.gameserver.model.actor.enums.FloodProtectorType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.model.zone.enums.ZoneType;
@@ -47,7 +46,7 @@ public class ItemRollingDice implements IItemHandler
 			return;
 		}
 		
-		if (!FloodProtector.getInstance().tryPerformAction(activeChar, FloodProtectorType.ROLLDICE))
+		if (!activeChar.tryToUseAction(FloodProtectorType.ROLLDICE))
 		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.YOU_MAY_NOT_THROW_THE_DICE_AT_THIS_TIME_TRY_AGAIN_LATER));
 			return;
