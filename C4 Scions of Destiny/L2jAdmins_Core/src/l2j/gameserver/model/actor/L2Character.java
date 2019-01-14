@@ -1088,6 +1088,7 @@ public abstract class L2Character extends L2Object
 	{
 		if (!checkDoCastConditions(skill))
 		{
+			setIsCastingNow(false);
 			// Send ActionFailed to the L2PcInstance
 			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
@@ -1225,17 +1226,9 @@ public abstract class L2Character extends L2Object
 		var initMpCons = getStat().getMpInitialConsume(skill);
 		if (initMpCons > 0)
 		{
+			getStatus().reduceMp(calcStat(skill.isMagic() ? StatsType.MAGICAL_MP_CONSUME_RATE : StatsType.PHYSICAL_MP_CONSUME_RATE, initMpCons, null, null));
+			
 			var su = new StatusUpdate(getObjectId());
-			
-			if (skill.isMagic())
-			{
-				getStatus().reduceMp(calcStat(StatsType.MAGICAL_MP_CONSUME_RATE, initMpCons, null, null));
-			}
-			else
-			{
-				getStatus().reduceMp(calcStat(StatsType.PHYSICAL_MP_CONSUME_RATE, initMpCons, null, null));
-			}
-			
 			su.addAttribute(StatusUpdateType.CUR_MP, (int) getCurrentMp());
 			sendPacket(su);
 		}
@@ -1268,7 +1261,7 @@ public abstract class L2Character extends L2Object
 		}
 		
 		// launch the magic in hitTime milliseconds
-		if (hitTime > 410)
+		if (hitTime > 210)
 		{
 			// Send a Server->Client packet SetupGauge with the color of the gauge and the casting time
 			if (this instanceof L2PcInstance)
@@ -1285,7 +1278,7 @@ public abstract class L2Character extends L2Object
 			
 			// Create a task MagicUseTask to launch the MagicSkill at the end of the casting time (hitTime)
 			// For client animation reasons (party buffs especially) 400 ms before!
-			skillCast = ThreadPoolManager.getInstance().schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.LAUNCHED), hitTime - 400);
+			skillCast = ThreadPoolManager.getInstance().schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.LAUNCHED), hitTime - 200);
 		}
 		else
 		{
@@ -1303,14 +1296,12 @@ public abstract class L2Character extends L2Object
 		// Check if the skill is a magic spell and if the L2Character is not muted
 		if (skill.isMagic() && isMuted())
 		{
-			// abortCast();
 			return false;
 		}
 		
 		// Check if the skill is physical and if the L2Character is not physically muted
 		if (!skill.isMagic() && isPhysicalMuted())
 		{
-			// abortCast();
 			return false;
 		}
 		
