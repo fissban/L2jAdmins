@@ -8,9 +8,6 @@ import l2j.gameserver.model.clan.Clan;
 import l2j.gameserver.model.entity.castle.siege.Siege;
 import l2j.gameserver.model.entity.castle.siege.type.SiegeClanType;
 import l2j.gameserver.network.AServerPacket;
-import main.data.ObjectData;
-import main.engine.events.cooperative.EventCooperativeManager;
-import main.holders.objects.CharacterHolder;
 
 /**
  * sample 0b 952a1048 objectId 00000000 00000000 00000000 00000000 00000000 00000000 format dddddd rev 377 format ddddddd rev 417
@@ -18,7 +15,7 @@ import main.holders.objects.CharacterHolder;
  */
 public class Die extends AServerPacket
 {
-	private final int chaId;
+	private int chaId;
 	private boolean fake;
 	private boolean spoiled;
 	
@@ -42,7 +39,6 @@ public class Die extends AServerPacket
 		{
 			spoiled = ((L2Attackable) cha).isSpoil();
 		}
-		
 	}
 	
 	@Override
@@ -54,31 +50,9 @@ public class Die extends AServerPacket
 		}
 		
 		writeC(0x06);
-		
 		writeD(chaId);
-		// NOTE:
-		// 6d 00 00 00 00 - to nearest village
-		// 6d 01 00 00 00 - to hide away
-		// 6d 02 00 00 00 - to castle
-		// 6d 03 00 00 00 - to siege HQ
-		// sweepable
-		// 6d 04 00 00 00 - FIXED
 		
-		// EngineMods
-		var curEvent = EventCooperativeManager.getCurrentEvent();
-		var ph = ObjectData.get(CharacterHolder.class, cha);
-		if (curEvent != null && curEvent.isStarting() && curEvent.playerInEvent(ph))
-		{
-			writeC(0x00); // to nearest village
-			writeD(0x00); // to hide away
-			writeD(0x00); // to castle
-			writeD(0x00); // to siege HQ
-			writeD(0x00); // sweepable (blue glow)
-			writeD(0x00); // to FIXED
-			return;
-		}
-		
-		writeD(0x01); // 6d 00 00 00 00 - to nearest village
+		writeD(0x01); // to nearest village
 		if (clan != null)
 		{
 			boolean isAttackerWithFlag = false;
@@ -91,18 +65,18 @@ public class Die extends AServerPacket
 				isDefender = (!siege.isAttacker(clan)) && siege.isDefender(clan);
 			}
 			
-			writeD(clan.hasClanHall() ? 0x01 : 0x00); // 6d 01 00 00 00 - to hide away
-			writeD((clan.hasCastle()) || isDefender ? 0x01 : 0x00); // 6d 02 00 00 00 - to castle
-			writeD(isAttackerWithFlag ? 0x01 : 0x00); // 6d 03 00 00 00 - to siege HQ
+			writeD(clan.hasClanHall() ? 0x01 : 0x00); // to hide away
+			writeD((clan.hasCastle()) || isDefender ? 0x01 : 0x00); // to castle
+			writeD(isAttackerWithFlag ? 0x01 : 0x00); // to siege HQ
 		}
 		else
 		{
-			writeD(0x00); // 6d 01 00 00 00 - to hide away
-			writeD(0x00); // 6d 02 00 00 00 - to castle
-			writeD(0x00); // 6d 03 00 00 00 - to siege HQ
+			writeD(0x00); // to hide away
+			writeD(0x00); // to castle
+			writeD(0x00); // to siege HQ
 		}
 		
 		writeD(spoiled ? 0x01 : 0x00); // sweepable (blue glow)
-		writeD(access >= 1 ? 0x01 : 0x00); // 6d 04 00 00 00 - to FIXED
+		writeD(access >= 1 ? 0x01 : 0x00); // to FIXED
 	}
 }
