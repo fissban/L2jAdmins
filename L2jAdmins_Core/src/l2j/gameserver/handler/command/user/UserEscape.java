@@ -55,7 +55,7 @@ public class UserEscape implements IUserCommandHandler
 			
 			sk.setHitTime(Config.UNSTUCK_INTERVAL * 1000);
 			activeChar.doCast(sk);
-			activeChar.sendMessage("You use Escape: 5 minutes.");
+			activeChar.sendMessage("You use Escape: " + Config.UNSTUCK_INTERVAL + " seconds.");
 		}
 		
 		return true;
