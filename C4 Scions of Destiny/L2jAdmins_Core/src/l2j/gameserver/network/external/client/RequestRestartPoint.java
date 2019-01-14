@@ -17,6 +17,9 @@ import l2j.gameserver.model.entity.castle.siege.type.SiegeClanType;
 import l2j.gameserver.model.entity.clanhalls.type.ClanHallFunctionType;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.network.AClientPacket;
+import main.data.ObjectData;
+import main.engine.events.cooperative.EventCooperativeManager;
+import main.holders.objects.PlayerHolder;
 
 /**
  * This class ...
@@ -163,6 +166,14 @@ public class RequestRestartPoint extends AClientPacket
 		L2PcInstance activeChar = getClient().getActiveChar();
 		
 		if (activeChar == null)
+		{
+			return;
+		}
+		
+		// EngineMods
+		var curEvent = EventCooperativeManager.getCurrentEvent();
+		var ph = ObjectData.get(PlayerHolder.class, activeChar);
+		if (curEvent != null && curEvent.playerInEvent(ph))
 		{
 			return;
 		}
