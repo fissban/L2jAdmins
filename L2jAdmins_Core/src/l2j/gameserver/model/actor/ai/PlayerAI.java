@@ -207,12 +207,14 @@ public class PlayerAI extends CharacterAI
 				setTarget(null);
 			}
 			
+			clientActionFailed();
 			activeActor.setIsCastingNow(false);
 			return;
 		}
 		
 		if ((target != null) && maybeMoveToPawn(target, activeActor.getStat().getMagicalAttackRange(currentSkill)))
 		{
+			clientActionFailed();
 			activeActor.setIsCastingNow(false);
 			return;
 		}
