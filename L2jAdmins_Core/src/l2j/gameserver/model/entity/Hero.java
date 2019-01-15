@@ -181,8 +181,8 @@ public class Hero
 			e.printStackTrace();
 		}
 		
-		UtilPrint.result("DayNightSpawnManager", "Loaded heroes ", heroes.size());
-		UtilPrint.result("DayNightSpawnManager", "Loaded all time Heroes ", completeHeroes.size());
+		UtilPrint.result("Hero", "Loaded heroes ", heroes.size());
+		UtilPrint.result("Hero", "Loaded all time Heroes ", completeHeroes.size());
 	}
 	
 	public Map<Integer, StatsSet> getHeroes()
