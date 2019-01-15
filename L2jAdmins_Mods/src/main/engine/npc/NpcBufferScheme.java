@@ -159,7 +159,7 @@ public class NpcBufferScheme extends AbstractMod
 				// anti sql inject
 				var name = eventParam1.replaceAll("[ !" + "\"" + "#$%&'()*+,/:;<=>?@" + "\\[" + "\\\\" + "\\]" + "\\^" + "`{|}~]", ""); // JOJO
 				
-				if (name.length() == 0 || name.equals("no_name"))
+				if ((name.length() == 0) || name.equals("no_name"))
 				{
 					ph.getInstance().sendPacket(SystemMessage.INCORRECT_NAME_TRY_AGAIN);
 					showText(ph, "Info", "Please, enter the scheme name!", true, "Return", "main");
@@ -178,7 +178,7 @@ public class NpcBufferScheme extends AbstractMod
 					// check if scheme name exist
 					for (var s : allSchemes.split(","))
 					{
-						if (s != null && s.equals(name))
+						if ((s != null) && s.equals(name))
 						{
 							ph.getInstance().sendPacket(SystemMessage.INCORRECT_NAME_TRY_AGAIN);
 							showText(ph, "Info", "The name you are trying to use is already in use!", true, "Return", "main");
@@ -300,7 +300,7 @@ public class NpcBufferScheme extends AbstractMod
 				
 				int temp = Integer.parseInt(eventParam3) + 1;
 				
-				if (temp >= MAX_SCHEME_BUFFS + MAX_SCHEME_DANCES)
+				if (temp >= (MAX_SCHEME_BUFFS + MAX_SCHEME_DANCES))
 				{
 					getOptionList(ph, schemeNameAdd);
 				}
@@ -634,7 +634,7 @@ public class NpcBufferScheme extends AbstractMod
 	private boolean checkTimeOut(PlayerHolder ph)
 	{
 		var blockUntilTime = getValueDB(ph.getObjectId(), BLOCK_UNTIL_TIME).getString();
-		if (blockUntilTime == null || (int) (System.currentTimeMillis() / 1000) > Integer.parseInt(blockUntilTime))
+		if ((blockUntilTime == null) || ((int) (System.currentTimeMillis() / 1000) > Integer.parseInt(blockUntilTime)))
 		{
 			return true;
 		}
@@ -644,9 +644,9 @@ public class NpcBufferScheme extends AbstractMod
 	
 	private void addTimeout(PlayerHolder ph, SetupGaugeType gauge, int amount, int offset)
 	{
-		var endtime = (int) ((System.currentTimeMillis() + amount * 1000) / 1000);
+		var endtime = (int) ((System.currentTimeMillis() + (amount * 1000)) / 1000);
 		setValueDB(ph.getObjectId(), BLOCK_UNTIL_TIME, String.valueOf(endtime));
-		ph.getInstance().sendPacket(new SetupGauge(gauge, amount * 1000 + offset));
+		ph.getInstance().sendPacket(new SetupGauge(gauge, (amount * 1000) + offset));
 	}
 	
 	private static String getItemNameHtml(int itemId)
@@ -779,7 +779,7 @@ public class NpcBufferScheme extends AbstractMod
 		
 		// hb.append("<table cellspacing=0 cellpadding=5 height=28>");
 		
-		if (schemeNames != null && !schemeNames.isEmpty())
+		if ((schemeNames != null) && !schemeNames.isEmpty())
 		{
 			String[] TRS =
 			{
@@ -804,7 +804,7 @@ public class NpcBufferScheme extends AbstractMod
 			hb.append("</table>");
 		}
 		
-		if (schemeNames == null || schemeNames.isEmpty() || schemeNames.split(",").length < SCHEMES_PER_PLAYER)
+		if ((schemeNames == null) || schemeNames.isEmpty() || (schemeNames.split(",").length < SCHEMES_PER_PLAYER))
 		{
 			hb.append("<br1><table><tr><td><button value=Create action=\"bypass -h Engine NpcBufferScheme create_1\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td>");
 		}
@@ -813,7 +813,7 @@ public class NpcBufferScheme extends AbstractMod
 			hb.append("<br1><table width=100><tr>");
 		}
 		
-		if (schemeNames != null && !schemeNames.isEmpty())
+		if ((schemeNames != null) && !schemeNames.isEmpty())
 		{
 			hb.append("<td><button value=Edit action=\"bypass -h Engine NpcBufferScheme edit_1\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td><td><button value=\"Delete\" action=\"bypass -h Engine NpcBufferScheme delete_1\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, "></td></tr></table>");
 		}
@@ -851,7 +851,7 @@ public class NpcBufferScheme extends AbstractMod
 	{
 		for (var bh : SchemeBufferPredefinedData.getAllGeneralBuffs())
 		{
-			if (bh.getId() == id && bh.getLevel() == level)
+			if ((bh.getId() == id) && (bh.getLevel() == level))
 			{
 				return true;
 			}
@@ -878,7 +878,7 @@ public class NpcBufferScheme extends AbstractMod
 		
 		for (var buff : buffList.split(";"))
 		{
-			if (Integer.parseInt(buff.split(",")[0]) == id && Integer.parseInt(buff.split(",")[1]) == level)
+			if ((Integer.parseInt(buff.split(",")[0]) == id) && (Integer.parseInt(buff.split(",")[1]) == level))
 			{
 				return true;
 			}
@@ -913,7 +913,7 @@ public class NpcBufferScheme extends AbstractMod
 	private boolean isPetBuff(PlayerHolder ph)
 	{
 		var pettBuff = getValueDB(ph.getObjectId(), "Pet-On-Off").getString();
-		return pettBuff == null || pettBuff.equals("1");
+		return (pettBuff == null) || pettBuff.equals("1");
 	}
 	
 	private static void deleteSpecifiedScheme(PlayerHolder ph, String eventParam1)
@@ -1017,7 +1017,7 @@ public class NpcBufferScheme extends AbstractMod
 		hb.append("<center>");
 		hb.append("<br>There are ", Html.fontColor("LEVEL", bcount), " buffs in current scheme!<br><br>");
 		
-		if (bcount < MAX_SCHEME_BUFFS + MAX_SCHEME_DANCES)
+		if (bcount < (MAX_SCHEME_BUFFS + MAX_SCHEME_DANCES))
 		{
 			hb.append("<button value=\"Add buffs\" action=\"bypass -h Engine NpcBufferScheme manage_scheme_add ", scheme, " 1\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, ">");
 		}
@@ -1088,12 +1088,12 @@ public class NpcBufferScheme extends AbstractMod
 					continue;
 				}
 				// max
-				if (count >= searchPage + MAX_PER_PAGE)
+				if (count >= (searchPage + MAX_PER_PAGE))
 				{
 					continue;
 				}
 				
-				hb.append("<table width=264", count % 2 == 0 ? " bgcolor=\"000000\">" : ">");
+				hb.append("<table width=264", (count % 2) == 0 ? " bgcolor=\"000000\">" : ">");
 				String name = bh.getSkill().getName().replace("+", " ");
 				hb.append("<tr>");
 				hb.append("<td height=32 fixwidth=32>", getSkillIconHtml(bh.getId(), bh.getLevel()), "</td>");
@@ -1114,7 +1114,7 @@ public class NpcBufferScheme extends AbstractMod
 			int currentPage = 1;
 			for (var i = 0; i < buffs.size(); i++)
 			{
-				if (i % MAX_PER_PAGE == 0)
+				if ((i % MAX_PER_PAGE) == 0)
 				{
 					hb.append("<td width=20 align=center><a action=\"bypass -h Engine NpcBufferScheme redirect_view_", buffType.name().toLowerCase(), " ", currentPage, "\">", currentPage, "</a></td>");
 					currentPage++;
@@ -1151,7 +1151,7 @@ public class NpcBufferScheme extends AbstractMod
 		// get the skill list of a player's scheme
 		var buffList = getValueDB(ph.getObjectId(), scheme).getString();
 		
-		if (buffList != null && !buffList.isEmpty())
+		if ((buffList != null) && !buffList.isEmpty())
 		{
 			// every buff is parse
 			for (String buff : buffList.split(";"))
@@ -1164,9 +1164,9 @@ public class NpcBufferScheme extends AbstractMod
 				
 				for (var bh : SchemeBufferPredefinedData.getAllGeneralBuffs())
 				{
-					if (bh.getId() == id && bh.getLevel() == level)
+					if ((bh.getId() == id) && (bh.getLevel() == level))
 					{
-						if (bh.getType() == BuffType.SONG || bh.getType() == BuffType.DANCE)
+						if ((bh.getType() == BuffType.SONG) || (bh.getType() == BuffType.DANCE))
 						{
 							D_S_Count++;
 						}
@@ -1214,7 +1214,7 @@ public class NpcBufferScheme extends AbstractMod
 			{
 				if (DANCE_SONG > MAX_SCHEME_DANCES)
 				{
-					if (bh.getType() == BuffType.DANCE || bh.getType() == BuffType.SONG)
+					if ((bh.getType() == BuffType.DANCE) || (bh.getType() == BuffType.SONG))
 					{
 						continue;
 					}
@@ -1222,7 +1222,7 @@ public class NpcBufferScheme extends AbstractMod
 				
 				if (BUFF_COUNT > MAX_SCHEME_BUFFS)
 				{
-					if (bh.getType() != BuffType.DANCE && bh.getType() != BuffType.SONG)
+					if ((bh.getType() != BuffType.DANCE) && (bh.getType() != BuffType.SONG))
 					{
 						continue;
 					}
@@ -1259,7 +1259,7 @@ public class NpcBufferScheme extends AbstractMod
 		hb.append("<br1>", Html.image(L2UI.SquareWhite, 264, 1), "<table border=0 bgcolor=\"000000\"><tr>");
 		var buffsPerPage = 10;
 		var width = "";
-		var pc = (buffs.size() - 1) / buffsPerPage + 1;
+		var pc = ((buffs.size() - 1) / buffsPerPage) + 1;
 		
 		// definimos el largo de las celdas con las pagina
 		if (pc > 5)
@@ -1309,7 +1309,7 @@ public class NpcBufferScheme extends AbstractMod
 			{
 				if (!isUsed(ph, schemeName, id, level))
 				{
-					if (k % 2 != 0)
+					if ((k % 2) != 0)
 					{
 						
 						hb.append("<br1>", Html.image(L2UI.SquareGray, 264, 1), "<table border=0>");
@@ -1330,7 +1330,7 @@ public class NpcBufferScheme extends AbstractMod
 			}
 			else if (action.equals("remove"))
 			{
-				if (k % 2 != 0)
+				if ((k % 2) != 0)
 				{
 					hb.append("<br1>", Html.image(L2UI.SquareGray, 264, 1), "<table border=0>");
 				}

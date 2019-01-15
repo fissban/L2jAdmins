@@ -7,6 +7,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Logger;
 
+import l2j.gameserver.model.actor.L2Npc;
+import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.skills.stats.enums.StatsType;
+import l2j.gameserver.model.zone.Zone;
+import l2j.gameserver.network.external.server.NpcHtmlMessage;
+import l2j.gameserver.network.external.server.ShowBoard;
 import main.EngineModsManager;
 import main.data.ModsData;
 import main.enums.EngineStateType;
@@ -19,12 +25,6 @@ import main.holders.objects.PlayerHolder;
 import main.instances.NpcDropsInstance;
 import main.instances.NpcExpInstance;
 import main.util.builders.html.HtmlBuilder;
-import l2j.gameserver.model.actor.L2Npc;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.stats.enums.StatsType;
-import l2j.gameserver.model.zone.Zone;
-import l2j.gameserver.network.external.server.NpcHtmlMessage;
-import l2j.gameserver.network.external.server.ShowBoard;
 
 /**
  * @author fissban
@@ -68,8 +68,8 @@ public abstract class AbstractMod
 	
 	/**
 	 * You get the value of a player in a certain event
-	 * @param objectId
-	 * @param event
+	 * @param  objectId
+	 * @param  event
 	 * @return
 	 */
 	public DataValueHolder getValueDB(int objectId, String event)
@@ -79,8 +79,8 @@ public abstract class AbstractMod
 	
 	/**
 	 * You get the value of a player in a certain event
-	 * @param ph
-	 * @param event
+	 * @param  ph
+	 * @param  event
 	 * @return
 	 */
 	public DataValueHolder getValueDB(PlayerHolder ph, String event)
@@ -90,8 +90,8 @@ public abstract class AbstractMod
 	
 	/**
 	 * You get the value of a player in a certain event
-	 * @param ph
-	 * @param event
+	 * @param  ph
+	 * @param  event
 	 * @return
 	 */
 	public Map<String, DataValueHolder> getCollectionValuesDB(PlayerHolder ph, String event)
@@ -101,8 +101,8 @@ public abstract class AbstractMod
 	
 	/**
 	 * You get the value of a player in a certain event
-	 * @param objId
-	 * @param event
+	 * @param  objId
+	 * @param  event
 	 * @return
 	 */
 	public Map<String, DataValueHolder> getCollectionValuesDB(int objId, String event)
@@ -164,10 +164,10 @@ public abstract class AbstractMod
 	
 	/**
 	 * Add a timer to the mod, if it doesn't exist already. If the timer is repeatable, it will auto-fire automatically, at a fixed rate, until explicitly canceled.
-	 * @param name name of the timer (also passed back as "event" in onTimer)
-	 * @param time time in ms for when to fire the timer
-	 * @param npc npc associated with this timer (can be null)
-	 * @param ph player associated with this timer (can be null)
+	 * @param name      name of the timer (also passed back as "event" in onTimer)
+	 * @param time      time in ms for when to fire the timer
+	 * @param npc       npc associated with this timer (can be null)
+	 * @param ph        player associated with this timer (can be null)
 	 * @param repeating indicates if the timer is repeatable or one-time.
 	 */
 	public void startTimer(String name, long time, NpcHolder npc, PlayerHolder ph, boolean repeating)
@@ -189,7 +189,7 @@ public abstract class AbstractMod
 			for (var timer : timers)
 			{
 				// If so, return.
-				if (timer != null && timer.equals(name, npc, ph))
+				if ((timer != null) && timer.equals(name, npc, ph))
 				{
 					return;
 				}
@@ -215,12 +215,12 @@ public abstract class AbstractMod
 		var timers = eventTimers.get(name.hashCode());
 		
 		// Timer list does not exists or is empty, return.
-		if (timers == null || timers.isEmpty())
+		if ((timers == null) || timers.isEmpty())
 		{
 			return null;
 		}
 		
-		return timers.stream().filter(timer -> timer != null && timer.equals(name, npc, player)).findAny().orElse(null);
+		return timers.stream().filter(timer -> (timer != null) && timer.equals(name, npc, player)).findAny().orElse(null);
 	}
 	
 	public void cancelTimer(String name, NpcHolder npc, PlayerHolder ph)
@@ -240,7 +240,7 @@ public abstract class AbstractMod
 		var timers = eventTimers.get(name.hashCode());
 		
 		// Timer list does not exists or is empty, return.
-		if (timers == null || timers.isEmpty())
+		if ((timers == null) || timers.isEmpty())
 		{
 			return;
 		}
@@ -265,7 +265,7 @@ public abstract class AbstractMod
 		var timers = eventTimers.get(timer.getName().hashCode());
 		
 		// Timer list does not exists or is empty, return.
-		if (timers == null || timers.isEmpty())
+		if ((timers == null) || timers.isEmpty())
 		{
 			return;
 		}
@@ -355,7 +355,7 @@ public abstract class AbstractMod
 	 */
 	public static void sendCommunity(PlayerHolder ph, String html)
 	{
-		if (html == null || ph == null)
+		if ((html == null) || (ph == null))
 		{
 			return;
 		}
@@ -463,8 +463,8 @@ public abstract class AbstractMod
 	}
 	
 	/**
-	 * @param killer
-	 * @param npc
+	 * @param  killer
+	 * @param  npc
 	 * @return
 	 */
 	public void onNpcDrop(PlayerHolder killer, NpcHolder npc, NpcDropsInstance instance)
@@ -534,8 +534,8 @@ public abstract class AbstractMod
 	
 	/**
 	 * Mainly used in events such as TvT, DM, etc etc
-	 * @param killer
-	 * @param victim
+	 * @param  killer
+	 * @param  victim
 	 * @return
 	 */
 	public boolean canAttack(CharacterHolder killer, CharacterHolder victim)
@@ -576,8 +576,8 @@ public abstract class AbstractMod
 	/**
 	 * This method multiplies any stat of the characters, so we return "1.0" if we want to realize any increase.<br>
 	 * Example: 1.1 -> 10% more stat
-	 * @param stat
-	 * @param character
+	 * @param  stat
+	 * @param  character
 	 * @return
 	 */
 	public double onStats(StatsType stat, CharacterHolder character, double value)

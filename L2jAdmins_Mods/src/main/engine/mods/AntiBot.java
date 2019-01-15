@@ -2,6 +2,9 @@ package main.engine.mods;
 
 import java.util.Arrays;
 
+import l2j.gameserver.model.actor.instance.L2MonsterInstance;
+import l2j.gameserver.model.skills.effects.enums.AbnormalEffectType;
+import l2j.util.Rnd;
 import main.data.ConfigData;
 import main.data.IconData;
 import main.engine.AbstractMod;
@@ -14,9 +17,6 @@ import main.util.Util;
 import main.util.builders.html.Html;
 import main.util.builders.html.HtmlBuilder;
 import main.util.builders.html.HtmlBuilder.HtmlType;
-import l2j.gameserver.model.actor.instance.L2MonsterInstance;
-import l2j.gameserver.model.skills.effects.enums.AbnormalEffectType;
-import l2j.util.Rnd;
 
 /**
  * AntiBot style system Google
@@ -49,7 +49,7 @@ public class AntiBot extends AbstractMod
 	@Override
 	public void onKill(CharacterHolder killer, CharacterHolder victim, boolean isPet)
 	{
-		if (!Util.areObjectType(L2MonsterInstance.class, victim) || killer.getActingPlayer() == null)
+		if (!Util.areObjectType(L2MonsterInstance.class, victim) || (killer.getActingPlayer() == null))
 		{
 			return;
 		}
@@ -59,7 +59,7 @@ public class AntiBot extends AbstractMod
 		// increasing the amount of dead mobs
 		ph.modifyAntiBotKills(MathType.INCREASE_BY_ONE);
 		
-		var count = ConfigData.KILLER_MONSTERS_ANTIBOT_INCREASE_LEVEL ? ConfigData.KILLER_MONSTERS_ANTIBOT + ph.getInstance().getLevel() * 3 : ConfigData.KILLER_MONSTERS_ANTIBOT;
+		var count = ConfigData.KILLER_MONSTERS_ANTIBOT_INCREASE_LEVEL ? ConfigData.KILLER_MONSTERS_ANTIBOT + (ph.getInstance().getLevel() * 3) : ConfigData.KILLER_MONSTERS_ANTIBOT;
 		
 		if (ph.getAntiBotKillsCount() >= count)
 		{

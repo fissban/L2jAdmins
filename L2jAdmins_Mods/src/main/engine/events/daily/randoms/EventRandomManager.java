@@ -3,6 +3,7 @@ package main.engine.events.daily.randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import l2j.util.Rnd;
 import main.data.ConfigData;
 import main.engine.AbstractMod;
 import main.engine.events.daily.AbstractEvent;
@@ -11,7 +12,6 @@ import main.engine.events.daily.randoms.type.CityElpys;
 import main.engine.events.daily.randoms.type.SearchChest;
 import main.holders.objects.NpcHolder;
 import main.holders.objects.PlayerHolder;
-import l2j.util.Rnd;
 
 /**
  * @author fissban

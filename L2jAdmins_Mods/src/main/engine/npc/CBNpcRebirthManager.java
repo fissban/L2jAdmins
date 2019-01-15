@@ -1,12 +1,12 @@
 package main.engine.npc;
 
+import l2j.gameserver.model.actor.L2Npc;
 import main.EngineModsManager;
 import main.engine.AbstractMod;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.NpcHolder;
 import main.holders.objects.PlayerHolder;
 import main.util.Util;
-import l2j.gameserver.model.actor.L2Npc;
 
 /**
  * @author fissban

@@ -4,14 +4,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+import l2j.gameserver.model.world.L2World;
+import l2j.gameserver.util.Broadcast;
 import main.data.ConfigData;
 import main.data.ObjectData;
 import main.engine.AbstractMod;
 import main.holders.RewardHolder;
 import main.holders.objects.NpcHolder;
 import main.holders.objects.PlayerHolder;
-import l2j.gameserver.model.world.L2World;
-import l2j.gameserver.util.Broadcast;
 
 /**
  * @author fissban
@@ -144,8 +144,8 @@ public class VoteReward extends AbstractMod
 	}
 	
 	/**
-	 * @param rewardsList
-	 * @param voteTop
+	 * @param  rewardsList
+	 * @param  voteTop
 	 * @return
 	 */
 	private static void checkVoteRewards(int voteTop, TopType topName)

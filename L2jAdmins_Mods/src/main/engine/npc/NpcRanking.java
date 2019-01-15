@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import l2j.L2DatabaseFactory;
+import l2j.gameserver.model.actor.L2Npc;
 import main.engine.AbstractMod;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.NpcHolder;
@@ -16,8 +18,6 @@ import main.util.builders.html.HtmlBuilder;
 import main.util.builders.html.HtmlBuilder.HtmlType;
 import main.util.builders.html.L2UI;
 import main.util.builders.html.L2UI_CH3;
-import l2j.L2DatabaseFactory;
-import l2j.gameserver.model.actor.L2Npc;
 
 /**
  * @author fissban
@@ -163,7 +163,7 @@ public class NpcRanking extends AbstractMod
 	@Override
 	public void onEvent(PlayerHolder ph, CharacterHolder npc, String command)
 	{
-		if (!Util.areObjectType(L2Npc.class, npc) || ((NpcHolder) npc).getId() != NPC)
+		if (!Util.areObjectType(L2Npc.class, npc) || (((NpcHolder) npc).getId() != NPC))
 		{
 			return;
 		}

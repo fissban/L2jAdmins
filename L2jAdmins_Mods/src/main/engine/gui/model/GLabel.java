@@ -10,14 +10,14 @@ import javax.swing.JLabel;
 public class GLabel extends JLabel
 {
 	private static final long serialVersionUID = 1L;
-
+	
 	private static final Font FONT = new Font("Tahoma", Font.BOLD, 11);
-
+	
 	public GLabel()
 	{
 		setFont(FONT);
 	}
-
+	
 	public GLabel(String text)
 	{
 		super(text);

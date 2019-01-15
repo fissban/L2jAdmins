@@ -3,15 +3,15 @@ package main.engine.mods;
 import java.util.HashMap;
 import java.util.Map;
 
-import main.data.ConfigData;
-import main.engine.AbstractMod;
-import main.holders.objects.CharacterHolder;
-import main.util.Util;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.network.external.client.Say2.SayType;
 import l2j.gameserver.network.external.server.CreatureSay;
 import l2j.gameserver.network.external.server.PlaySound;
 import l2j.gameserver.util.Broadcast;
+import main.data.ConfigData;
+import main.engine.AbstractMod;
+import main.holders.objects.CharacterHolder;
+import main.util.Util;
 
 /**
  * Class responsible for managing ads deaths according to consecutive kills amount.
@@ -45,7 +45,7 @@ public class SpreeKills extends AbstractMod
 	@Override
 	public void onKill(CharacterHolder killer, CharacterHolder victim, boolean isPet)
 	{
-		if (!Util.areObjectType(L2PcInstance.class, victim) || killer.getActingPlayer() == null)
+		if (!Util.areObjectType(L2PcInstance.class, victim) || (killer.getActingPlayer() == null))
 		{
 			return;
 		}

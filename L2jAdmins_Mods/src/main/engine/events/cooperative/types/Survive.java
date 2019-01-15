@@ -126,7 +126,7 @@ public class Survive extends AbstractCooperative
 				UtilMessage.sendAnnounceMsg("Round " + round, getPlayersInEvent());
 				
 				// Give spawn to all mobs
-				for (int i = 0; i < ConfigData.SURVIVE_MOBS_PER_ROUND * round; i++)
+				for (int i = 0; i < (ConfigData.SURVIVE_MOBS_PER_ROUND * round); i++)
 				{
 					var rnd = Rnd.get(0, ConfigData.SURVIVE_MOBS_ID.size() - 1);
 					

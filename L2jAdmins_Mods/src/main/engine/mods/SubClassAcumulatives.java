@@ -3,11 +3,11 @@ package main.engine.mods;
 import java.util.HashMap;
 import java.util.logging.Level;
 
+import l2j.L2DatabaseFactory;
+import l2j.gameserver.data.SkillData;
 import main.data.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.objects.PlayerHolder;
-import l2j.L2DatabaseFactory;
-import l2j.gameserver.data.SkillData;
 
 /**
  * @author fissban
@@ -82,7 +82,7 @@ public class SubClassAcumulatives extends AbstractMod
 					// Save all the skills that we will teach our character.
 					// This will avoid teaching a skill from lvl 1 to 15 for example
 					// And directly we teach the lvl 15 =)
-					if (skills.get(id) != null && skills.get(id) > level)
+					if ((skills.get(id) != null) && (skills.get(id) > level))
 					{
 						continue;
 					}

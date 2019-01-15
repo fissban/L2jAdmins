@@ -4,10 +4,6 @@ import java.lang.reflect.Field;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import main.data.ObjectData;
-import main.data.WorldData;
-import main.holders.objects.NpcHolder;
-import main.holders.objects.ObjectHolder;
 import l2j.gameserver.data.DoorData;
 import l2j.gameserver.data.NpcData;
 import l2j.gameserver.geoengine.GeoEngine;
@@ -20,6 +16,10 @@ import l2j.gameserver.model.actor.templates.NpcTemplate;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.model.spawn.Spawn;
 import l2j.util.Rnd;
+import main.data.ObjectData;
+import main.data.WorldData;
+import main.holders.objects.NpcHolder;
+import main.holders.objects.ObjectHolder;
 
 /**
  * @author fissban
@@ -84,7 +84,7 @@ public class UtilSpawn
 		{
 			NpcTemplate template = NpcData.getInstance().getTemplate(npcId);
 			
-			if (x == 0 && y == 0)
+			if ((x == 0) && (y == 0))
 			{
 				LOG.log(Level.SEVERE, "UtilSpawn: Failed to adjust bad locks for mod spawn! Spawn aborted!");
 				return null;

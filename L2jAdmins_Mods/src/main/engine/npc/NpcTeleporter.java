@@ -34,19 +34,19 @@ public class NpcTeleporter extends AbstractMod
 		TELEPORTS.put("70", new LocationHolder(188191, -74959, -2738));
 		// ......missing
 	}
-
+	
 	public NpcTeleporter()
 	{
 		registerMod(true);// TODO missing config
 		spawnGuards();
 	}
-
+	
 	@Override
 	public void onModState()
 	{
 		// TODO Auto-generated method stub
 	}
-
+	
 	/**
 	 * Se spawnean guardias en las zonas de teleports
 	 */
@@ -59,10 +59,10 @@ public class NpcTeleporter extends AbstractMod
 				UtilSpawn.npc(60010, loc, 50, 0, TeamType.RED, 0);
 				UtilSpawn.npc(60010, loc, 50, 0, TeamType.RED, 0);
 			}
-
+			
 		}, 20000); // 20 seg es hardcode
 	}
-
+	
 	@Override
 	public boolean onInteract(PlayerHolder ph, CharacterHolder npc)
 	{
@@ -70,18 +70,18 @@ public class NpcTeleporter extends AbstractMod
 		{
 			return false;
 		}
-
+		
 		if (((NpcHolder) npc).getId() != NPC)
 		{
 			return false;
 		}
-
+		
 		var hb = new HtmlBuilder(HtmlType.HTML);
 		hb.append(Html.START);
 		hb.append(Html.head("TELEPORT MASTER"));
 		hb.append("Puedo mostrarte las zonas donde");
 		hb.append("los hombres se convierten en <font color=LEVEL>dioses!</font>");
-
+		
 		for (String tele : TELEPORTS.keySet())
 		{
 			hb.append("<table width=280>");
@@ -92,14 +92,14 @@ public class NpcTeleporter extends AbstractMod
 			hb.append("</tr>");
 			hb.append("</table>");
 		}
-
+		
 		hb.append(Html.END);
-
+		
 		sendHtml((NpcHolder) npc, hb, ph);
-
+		
 		return true;
 	}
-
+	
 	@Override
 	public void onEvent(PlayerHolder ph, CharacterHolder npc, String command)
 	{
@@ -107,19 +107,19 @@ public class NpcTeleporter extends AbstractMod
 		{
 			return;
 		}
-
+		
 		if (((NpcHolder) npc).getId() != NPC)
 		{
 			return;
 		}
-
+		
 		StringTokenizer st = new StringTokenizer(command, " ");
-
+		
 		switch (st.nextToken())
 		{
 			case "teleport":
 				String locName = st.nextToken();
-
+				
 				if (!TELEPORTS.containsKey(locName))
 				{
 					// posible bypass....juaz!

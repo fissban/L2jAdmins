@@ -5,16 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import l2j.gameserver.data.ItemData;
+import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.network.external.client.Say2.SayType;
+import l2j.util.Rnd;
 import main.data.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.PlayerHolder;
 import main.util.Util;
 import main.util.UtilMessage;
-import l2j.gameserver.data.ItemData;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.network.external.client.Say2.SayType;
-import l2j.util.Rnd;
 
 /**
  * @author fissban
@@ -53,7 +53,7 @@ public class PvpReward extends AbstractMod
 	@Override
 	public void onKill(CharacterHolder killer, CharacterHolder victim, boolean isPet)
 	{
-		if (!Util.areObjectType(L2PcInstance.class, victim) || killer.getActingPlayer() == null)
+		if (!Util.areObjectType(L2PcInstance.class, victim) || (killer.getActingPlayer() == null))
 		{
 			return;
 		}
@@ -74,7 +74,7 @@ public class PvpReward extends AbstractMod
 			// If you find that I ever kill this player, it checks how long it was.
 			if (pvp.victim == phVictim.getObjectId())
 			{
-				if (pvp.time + ConfigData.PVP_TIME < System.currentTimeMillis())
+				if ((pvp.time + ConfigData.PVP_TIME) < System.currentTimeMillis())
 				{
 					// The prize is awarded
 					giveRewards(phKiller);

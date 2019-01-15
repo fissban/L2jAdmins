@@ -4,14 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import main.data.ConfigData;
-import main.engine.AbstractMod;
-import main.holders.objects.PlayerHolder;
-import main.util.builders.html.Html;
-import main.util.builders.html.HtmlBuilder;
-import main.util.builders.html.HtmlBuilder.HtmlType;
-import main.util.builders.html.L2UI;
-import main.util.builders.html.L2UI_CH3;
 import l2j.Config;
 import l2j.gameserver.data.CastleData;
 import l2j.gameserver.data.ClanData;
@@ -28,9 +20,17 @@ import l2j.gameserver.network.external.server.ItemList;
 import l2j.gameserver.network.external.server.MagicSkillUse;
 import l2j.gameserver.network.external.server.PledgeShowMemberListDelete;
 import l2j.gameserver.network.external.server.StatusUpdate;
+import l2j.gameserver.network.external.server.StatusUpdate.StatusUpdateType;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.network.external.server.UserInfo;
-import l2j.gameserver.network.external.server.StatusUpdate.StatusUpdateType;
+import main.data.ConfigData;
+import main.engine.AbstractMod;
+import main.holders.objects.PlayerHolder;
+import main.util.builders.html.Html;
+import main.util.builders.html.HtmlBuilder;
+import main.util.builders.html.HtmlBuilder.HtmlType;
+import main.util.builders.html.L2UI;
+import main.util.builders.html.L2UI_CH3;
 
 /**
  * @author fissban
@@ -393,13 +393,13 @@ public class ClanCommunityBoard extends AbstractMod
 				continue;
 			}
 			// max
-			if (count >= searchPage + MAX_PER_PAGE)
+			if (count >= (searchPage + MAX_PER_PAGE))
 			{
 				continue;
 			}
 			
 			// 50
-			hb.append("<table width=460 ", color % 2 == 0 ? "bgcolor=000000 " : "", "border=0 cellspacing=0 cellpadding=0>");
+			hb.append("<table width=460 ", (color % 2) == 0 ? "bgcolor=000000 " : "", "border=0 cellspacing=0 cellpadding=0>");
 			hb.append("<tr>");
 			hb.append("<td fixwidth=114 align=center>", member.getName(), "</td>");
 			hb.append("<td fixwidth=30 align=center>", getColorLevel(member.getLevel()), "</td>");
@@ -422,7 +422,7 @@ public class ClanCommunityBoard extends AbstractMod
 		int size = ph.getInstance().getClan().getMembersCount();
 		for (int i = 0; i < size; i++)
 		{
-			if (i % MAX_PER_PAGE == 0)
+			if ((i % MAX_PER_PAGE) == 0)
 			{
 				if (currentPage == page)
 				{
@@ -462,7 +462,7 @@ public class ClanCommunityBoard extends AbstractMod
 	private static String bodyInfoClan(Clan clan, int color)
 	{
 		var hb = new HtmlBuilder(HtmlType.COMUNITY);
-		hb.append("<table width=460 height=22 ", color % 2 == 0 ? "bgcolor=000000 " : "", "border=0 cellspacing=0 cellpadding=0>");
+		hb.append("<table width=460 height=22 ", (color % 2) == 0 ? "bgcolor=000000 " : "", "border=0 cellspacing=0 cellpadding=0>");
 		hb.append("<tr>");
 		hb.append("<td fixwidth=16 height=22 align=center>", Html.image(L2UI_CH3.ps_sizecontrol2_over, 16, 16), "</td>");
 		hb.append("<td fixwidth=84 height=22 align=center>", Html.fontColor("FF8000", clan.getName()), "</td>");
@@ -480,7 +480,7 @@ public class ClanCommunityBoard extends AbstractMod
 	private static String bodyInfoNoClan(int color)
 	{
 		var hb = new HtmlBuilder(HtmlType.COMUNITY);
-		hb.append("<table width=460 ", color % 2 == 0 ? "bgcolor=000000 " : "", "border=0 cellspacing=0 cellpadding=0>");
+		hb.append("<table width=460 ", (color % 2) == 0 ? "bgcolor=000000 " : "", "border=0 cellspacing=0 cellpadding=0>");
 		hb.append("<tr>");
 		hb.append("<td fixwidth=100 align=center>-</td>");
 		hb.append("<td fixwidth=30 align=center>-</td>");
@@ -528,7 +528,7 @@ public class ClanCommunityBoard extends AbstractMod
 				continue;
 			}
 			// max
-			if (count >= searchPage + MAX_PER_PAGE)
+			if (count >= (searchPage + MAX_PER_PAGE))
 			{
 				continue;
 			}
@@ -547,7 +547,7 @@ public class ClanCommunityBoard extends AbstractMod
 		hb.append("<tr>");
 		for (int i = 0; i < size; i++)
 		{
-			if (i % MAX_PER_PAGE == 0)
+			if ((i % MAX_PER_PAGE) == 0)
 			{
 				if (currentPage == page)
 				{
@@ -654,7 +654,7 @@ public class ClanCommunityBoard extends AbstractMod
 			
 			if (Config.ALT_CLAN_DISSOLVE_DAYS > 0)
 			{
-				player.getClan().setDissolvingExpiryTime(System.currentTimeMillis() + Config.ALT_CLAN_DISSOLVE_DAYS * 86400000L);
+				player.getClan().setDissolvingExpiryTime(System.currentTimeMillis() + (Config.ALT_CLAN_DISSOLVE_DAYS * 86400000L));
 				player.getClan().updateClanInDB();
 				
 				ClanData.getInstance().scheduleRemoveClan(player.getClan().getId());
@@ -760,8 +760,8 @@ public class ClanCommunityBoard extends AbstractMod
 		
 		// proceso de actualizacion para el clan --------------------------
 		// this also updates the database
-		clan.removeClanMember(member.getObjectId(), System.currentTimeMillis() + Config.ALT_CLAN_JOIN_DAYS * 86400000L);
-		clan.setCharPenaltyExpiryTime(System.currentTimeMillis() + Config.ALT_CLAN_JOIN_DAYS * 86400000L);
+		clan.removeClanMember(member.getObjectId(), System.currentTimeMillis() + (Config.ALT_CLAN_JOIN_DAYS * 86400000L));
+		clan.setCharPenaltyExpiryTime(System.currentTimeMillis() + (Config.ALT_CLAN_JOIN_DAYS * 86400000L));
 		clan.updateClanInDB();
 		
 		clan.broadcastClanStatus(); // refresh clan tab
@@ -829,18 +829,18 @@ public class ClanCommunityBoard extends AbstractMod
 	
 	/**
 	 * Assign a color according to the level of the character
-	 * @param lvl
+	 * @param  lvl
 	 * @return
 	 */
 	private static String getColorLevel(int lvl)
 	{
 		var hb = new HtmlBuilder();
 		
-		if (lvl >= 20 && lvl < 40)
+		if ((lvl >= 20) && (lvl < 40))
 		{
 			hb.append(Html.fontColor("LEVEL", lvl)); // yellow
 		}
-		else if (lvl >= 40 && lvl < 76)
+		else if ((lvl >= 40) && (lvl < 76))
 		{
 			hb.append(Html.fontColor("9A5C00", lvl)); // dark orange
 		}
@@ -858,18 +858,18 @@ public class ClanCommunityBoard extends AbstractMod
 	
 	/**
 	 * A color is assigned according to the level of the clan
-	 * @param lvl
+	 * @param  lvl
 	 * @return
 	 */
 	private static String getClanColorLevel(int lvl)
 	{
 		var hb = new HtmlBuilder();
 		
-		if (lvl >= 2 && lvl < 4)
+		if ((lvl >= 2) && (lvl < 4))
 		{
 			hb.append(Html.fontColor("LEVEL", lvl)); // yellow
 		}
-		else if (lvl >= 5 && lvl < 7)
+		else if ((lvl >= 5) && (lvl < 7))
 		{
 			hb.append(Html.fontColor("9A5C00", lvl)); // dark orange
 		}
@@ -895,7 +895,7 @@ public class ClanCommunityBoard extends AbstractMod
 		{
 			case 0:
 				// upgrade to 1
-				if (player.getSp() >= 30000 && player.getInventory().getAdena() >= 650000)
+				if ((player.getSp() >= 30000) && (player.getInventory().getAdena() >= 650000))
 				{
 					if (player.getInventory().reduceAdena("ClanLvl", 650000, null, true))
 					{
@@ -906,7 +906,7 @@ public class ClanCommunityBoard extends AbstractMod
 				break;
 			case 1:
 				// upgrade to 2
-				if (player.getSp() >= 150000 && player.getInventory().getAdena() >= 2500000)
+				if ((player.getSp() >= 150000) && (player.getInventory().getAdena() >= 2500000))
 				{
 					if (player.getInventory().reduceAdena("ClanLvl", 2500000, null, true))
 					{
@@ -917,7 +917,7 @@ public class ClanCommunityBoard extends AbstractMod
 				break;
 			case 2:
 				// upgrade to 3
-				if (player.getSp() >= 500000 && player.getInventory().getItemById(1419) != null)
+				if ((player.getSp() >= 500000) && (player.getInventory().getItemById(1419) != null))
 				{
 					// itemid 1419 == proof of blood
 					if (player.getInventory().destroyItemByItemId("ClanLvl", 1419, 1, player.getTarget(), false))
@@ -929,7 +929,7 @@ public class ClanCommunityBoard extends AbstractMod
 				break;
 			case 3:
 				// upgrade to 4
-				if (player.getSp() >= 1400000 && player.getInventory().getItemById(3874) != null)
+				if ((player.getSp() >= 1400000) && (player.getInventory().getItemById(3874) != null))
 				{
 					// itemid 3874 == proof of alliance
 					if (player.getInventory().destroyItemByItemId("ClanLvl", 3874, 1, player.getTarget(), false))
@@ -941,7 +941,7 @@ public class ClanCommunityBoard extends AbstractMod
 				break;
 			case 4:
 				// upgrade to 5
-				if (player.getSp() >= 3500000 && player.getInventory().getItemById(3870) != null)
+				if ((player.getSp() >= 3500000) && (player.getInventory().getItemById(3870) != null))
 				{
 					// itemid 3870 == proof of aspiration
 					if (player.getInventory().destroyItemByItemId("ClanLvl", 3870, 1, player.getTarget(), false))

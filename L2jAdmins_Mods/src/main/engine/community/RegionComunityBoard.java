@@ -2,6 +2,10 @@ package main.engine.community;
 
 import java.util.StringTokenizer;
 
+import l2j.gameserver.data.MapRegionData;
+import l2j.gameserver.model.actor.base.Sex;
+import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.world.L2World;
 import main.data.ConfigData;
 import main.data.ObjectData;
 import main.engine.AbstractMod;
@@ -11,10 +15,6 @@ import main.util.builders.html.HtmlBuilder;
 import main.util.builders.html.HtmlBuilder.HtmlType;
 import main.util.builders.html.L2UI;
 import main.util.builders.html.L2UI_CH3;
-import l2j.gameserver.data.MapRegionData;
-import l2j.gameserver.model.actor.base.Sex;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.world.L2World;
 
 /**
  * @author fissban
@@ -87,7 +87,7 @@ public class RegionComunityBoard extends AbstractMod
 					continue;
 				}
 				// max
-				if (count >= searchPage + MAX_PER_PAGE)
+				if (count >= (searchPage + MAX_PER_PAGE))
 				{
 					continue;
 				}
@@ -116,7 +116,7 @@ public class RegionComunityBoard extends AbstractMod
 			int size = L2World.getInstance().getAllPlayers().size();
 			for (int i = 0; i < size; i++)
 			{
-				if (i % MAX_PER_PAGE == 0)
+				if ((i % MAX_PER_PAGE) == 0)
 				{
 					if (currentPage == page)
 					{
@@ -163,18 +163,18 @@ public class RegionComunityBoard extends AbstractMod
 	
 	/**
 	 * Asignamos un color segun el nievel del personaje
-	 * @param lvl
+	 * @param  lvl
 	 * @return
 	 */
 	private static String getColorLevel(int lvl)
 	{
 		var hb = new HtmlBuilder();
 		
-		if (lvl >= 20 && lvl < 40)
+		if ((lvl >= 20) && (lvl < 40))
 		{
 			hb.append(Html.fontColor("LEVEL", lvl)); // amarillo
 		}
-		else if (lvl >= 40 && lvl < 76)
+		else if ((lvl >= 40) && (lvl < 76))
 		{
 			hb.append(Html.fontColor("9A5C00", lvl)); // naranja oscuro
 		}

@@ -6,17 +6,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.StringTokenizer;
 
-import main.data.ConfigData;
-import main.data.IconData;
-import main.data.ObjectData;
-import main.engine.AbstractMod;
-import main.holders.AuctionItemHolder;
-import main.holders.objects.PlayerHolder;
-import main.util.builders.html.Html;
-import main.util.builders.html.HtmlBuilder;
-import main.util.builders.html.HtmlBuilder.HtmlType;
-import main.util.builders.html.L2UI;
-import main.util.builders.html.L2UI_CH3;
 import l2j.gameserver.data.ItemData;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.items.Item;
@@ -30,6 +19,17 @@ import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.network.external.client.Say2.SayType;
 import l2j.gameserver.network.external.server.CreatureSay;
+import main.data.ConfigData;
+import main.data.IconData;
+import main.data.ObjectData;
+import main.engine.AbstractMod;
+import main.holders.AuctionItemHolder;
+import main.holders.objects.PlayerHolder;
+import main.util.builders.html.Html;
+import main.util.builders.html.HtmlBuilder;
+import main.util.builders.html.HtmlBuilder.HtmlType;
+import main.util.builders.html.L2UI;
+import main.util.builders.html.L2UI_CH3;
 
 /**
  * @author fissban
@@ -291,7 +291,7 @@ public class MemoCommunityBoard extends AbstractMod
 			
 			ItemInstance item = ItemData.getInstance().createDummyItem(holder.getItemId());
 			
-			hb.append("<table ", color % 2 == 0 ? "bgcolor=000000 " : "", "cellspacing=0 cellpadding=0 width=600 height=56>");
+			hb.append("<table ", (color % 2) == 0 ? "bgcolor=000000 " : "", "cellspacing=0 cellpadding=0 width=600 height=56>");
 			hb.append("<tr>");
 			hb.append("<td width=32>", Html.image(IconData.getIconByItemId(item.getId()), 32, 32), "</td>");
 			hb.append("<td width=489>");
@@ -576,7 +576,7 @@ public class MemoCommunityBoard extends AbstractMod
 				continue;
 			}
 			// max
-			if (count >= searchPage + MAX_PER_PAGE)
+			if (count >= (searchPage + MAX_PER_PAGE))
 			{
 				continue;
 			}
@@ -592,7 +592,7 @@ public class MemoCommunityBoard extends AbstractMod
 			// }
 			// }
 			
-			hb.append("<table ", color % 2 == 0 ? "bgcolor=000000 " : "", "cellspacing=0 cellpadding=0 width=600 height=42>");
+			hb.append("<table ", (color % 2) == 0 ? "bgcolor=000000 " : "", "cellspacing=0 cellpadding=0 width=600 height=42>");
 			hb.append("<tr>");
 			hb.append("<td width=32>", Html.image(IconData.getIconByItemId(item.getId()), 32, 32), "</td>");
 			hb.append("<td width=300>");
@@ -626,7 +626,7 @@ public class MemoCommunityBoard extends AbstractMod
 		int size = list.size();
 		for (int i = 0; i < size; i++)
 		{
-			if (i % MAX_PER_PAGE == 0)
+			if ((i % MAX_PER_PAGE) == 0)
 			{
 				if (currentPage == page)
 				{
@@ -710,12 +710,12 @@ public class MemoCommunityBoard extends AbstractMod
 					continue;
 				}
 				// max
-				if (count >= searchPage + MAX_PER_PAGE)
+				if (count >= (searchPage + MAX_PER_PAGE))
 				{
 					continue;
 				}
 				
-				hb.append("<table ", color % 2 == 0 ? "bgcolor=000000 " : "", "cellspacing=0 cellpadding=0 width=474 height=42>");
+				hb.append("<table ", (color % 2) == 0 ? "bgcolor=000000 " : "", "cellspacing=0 cellpadding=0 width=474 height=42>");
 				hb.append("<tr>");
 				hb.append("<td fixwidth=32 height=42>", Html.image(IconData.getIconByItemId(item.getId()), 32, 32), "</td>");
 				hb.append("<td>");
@@ -767,7 +767,7 @@ public class MemoCommunityBoard extends AbstractMod
 			int size = itemList.size();
 			for (int i = 0; i < size; i++)
 			{
-				if (i % MAX_PER_PAGE == 0)
+				if ((i % MAX_PER_PAGE) == 0)
 				{
 					if (currentPage == page)
 					{
@@ -838,7 +838,7 @@ public class MemoCommunityBoard extends AbstractMod
 			}
 			case "chest":
 			{
-				if (it.getItem().getBodyPart() == SlotType.CHEST || it.getItem().getBodyPart() == SlotType.FULL_ARMOR)
+				if ((it.getItem().getBodyPart() == SlotType.CHEST) || (it.getItem().getBodyPart() == SlotType.FULL_ARMOR))
 				{
 					return true;
 				}

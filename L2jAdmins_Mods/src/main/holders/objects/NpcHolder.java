@@ -1,7 +1,7 @@
 package main.holders.objects;
 
-import main.enums.ChampionType;
 import l2j.gameserver.model.actor.L2Npc;
+import main.enums.ChampionType;
 
 /**
  * @author fissban

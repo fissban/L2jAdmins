@@ -3,6 +3,10 @@ package main.engine.community;
 import java.util.Map.Entry;
 import java.util.StringTokenizer;
 
+import l2j.Config;
+import l2j.gameserver.data.ExperienceData;
+import l2j.gameserver.data.ItemData;
+import l2j.gameserver.model.actor.instance.L2PcInstance;
 import main.data.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.RewardHolder;
@@ -12,10 +16,6 @@ import main.util.builders.html.HtmlBuilder;
 import main.util.builders.html.HtmlBuilder.HtmlType;
 import main.util.builders.html.L2UI;
 import main.util.builders.html.L2UI_CH3;
-import l2j.Config;
-import l2j.gameserver.data.ExperienceData;
-import l2j.gameserver.data.ItemData;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
 
 /***
  * @author fissban

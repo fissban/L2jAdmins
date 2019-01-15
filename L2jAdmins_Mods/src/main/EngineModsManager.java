@@ -75,14 +75,14 @@ import main.instances.NpcExpInstance;
 public class EngineModsManager
 {
 	private static final Logger LOG = Logger.getLogger(AbstractMod.class.getName());
-
+	
 	private static final Map<String, AbstractMod> ENGINES_MODS = new LinkedHashMap<>();
-
+	
 	public EngineModsManager()
 	{
 		//
 	}
-
+	
 	/**
 	 * Load the basic systems that contain necessary information for the engine
 	 */
@@ -95,7 +95,7 @@ public class EngineModsManager
 		SchemeBufferPredefinedData.getInstance().load();
 		WorldData.init();
 	}
-
+	
 	/**
 	 * Load all mods and events
 	 */
@@ -157,27 +157,27 @@ public class EngineModsManager
 			e.printStackTrace();
 		}
 	}
-
+	
 	public static void registerMod(AbstractMod mod)
 	{
 		ENGINES_MODS.put(mod.getClass().getSimpleName(), mod);
 	}
-
+	
 	public static Collection<AbstractMod> getAllMods()
 	{
 		return ENGINES_MODS.values();
 	}
-
+	
 	public static AbstractMod getMod(String name)
 	{
 		return ENGINES_MODS.get(name);
 	}
-
+	
 	/** MISC ---------------------------------------------------------------------------------------------- */
 	public static Class<?> createCustomEffect(String name)
 	{
 		Class<?> func = null;
-
+		
 		try
 		{
 			func = Class.forName("main.engine.effects.Effect" + name);
@@ -186,12 +186,12 @@ public class EngineModsManager
 		{
 			//
 		}
-
+		
 		return func;
 	}
-
+	
 	/** XXX LISTENERS ----------------------------------------------------------------------------------------- */
-
+	
 	public static void onIncreaseLvl(L2PcInstance player)
 	{
 		var ph = ObjectData.get(PlayerHolder.class, player);
@@ -209,11 +209,11 @@ public class EngineModsManager
 			}
 		}
 	}
-
+	
 	public static boolean onUseSkill(L2PcInstance player, Skill skill)
 	{
 		var ph = ObjectData.get(PlayerHolder.class, player);
-
+		
 		for (var mod : ENGINES_MODS.values())
 		{
 			try
@@ -222,7 +222,7 @@ public class EngineModsManager
 				{
 					continue;
 				}
-
+				
 				if (!mod.onUseSkill(ph, skill))
 				{
 					// Send a Server->Client packet ActionFailed to the L2PcInstance
@@ -236,15 +236,15 @@ public class EngineModsManager
 				e.printStackTrace();
 			}
 		}
-
+		
 		return true;
 	}
-
+	
 	public static boolean onUseItem(L2PcInstance player, ItemInstance item)
 	{
 		var ph = ObjectData.get(PlayerHolder.class, player);
 		var ih = ObjectData.get(ItemHolder.class, item);
-
+		
 		for (var mod : ENGINES_MODS.values())
 		{
 			try
@@ -253,7 +253,7 @@ public class EngineModsManager
 				{
 					continue;
 				}
-
+				
 				if (!mod.onUseItem(ph, ih))
 				{
 					// Send a Server->Client packet ActionFailed to the L2PcInstance
@@ -267,15 +267,15 @@ public class EngineModsManager
 				e.printStackTrace();
 			}
 		}
-
+		
 		return true;
 	}
-
+	
 	public static void onSellItems(L2PcInstance player, ItemInstance item)
 	{
 		var ph = ObjectData.get(PlayerHolder.class, player);
 		var ih = ObjectData.get(ItemHolder.class, item);
-
+		
 		ENGINES_MODS.values().stream().filter(mod -> mod.isStarting()).forEach(mod ->
 		{
 			try
@@ -289,11 +289,11 @@ public class EngineModsManager
 			}
 		});
 	}
-
+	
 	public static boolean onCommunityBoard(L2PcInstance player, String command)
 	{
 		var ph = ObjectData.get(PlayerHolder.class, player);
-
+		
 		for (var mod : ENGINES_MODS.values())
 		{
 			try
@@ -313,11 +313,10 @@ public class EngineModsManager
 				e.printStackTrace();
 			}
 		}
-		;
-
+		
 		return false;
 	}
-
+	
 	public static void onShutDown()
 	{
 		ENGINES_MODS.values().stream().filter(mod -> mod.isStarting()).forEach(mod ->
@@ -335,16 +334,16 @@ public class EngineModsManager
 			}
 		});
 	}
-
+	
 	public static boolean onExitWorld(L2PcInstance player)
 	{
 		var ph = ObjectData.get(PlayerHolder.class, player);
-
+		
 		if (ph.getWorldId() != 0)
 		{
 			WorldData.get(ph.getWorldId()).remove(ph);
 		}
-
+		
 		var exitPlayer = false;
 		for (var mod : ENGINES_MODS.values())
 		{
@@ -365,27 +364,27 @@ public class EngineModsManager
 				e.printStackTrace();
 			}
 		}
-
+		
 		if (!exitPlayer)
 		{
 			ObjectData.removeObject(player);
 		}
-
+		
 		return exitPlayer;
 	}
-
+	
 	public static boolean onNpcExpSp(L2Attackable npc, L2Character creature)
 	{
 		var phKiller = ObjectData.get(PlayerHolder.class, creature);
 		var nh = ObjectData.get(NpcHolder.class, npc);
-
-		if (phKiller == null || phKiller.getInstance() == null)
+		
+		if ((phKiller == null) || (phKiller.getInstance() == null))
 		{
 			return false;
 		}
-
+		
 		var instance = new NpcExpInstance();
-
+		
 		ENGINES_MODS.values().stream().filter(mod -> mod.isStarting()).forEach(mod ->
 		{
 			try
@@ -398,23 +397,23 @@ public class EngineModsManager
 				e.printStackTrace();
 			}
 		});
-
+		
 		if (instance.hasSettings())
 		{
 			instance.init(npc, creature);
 			return true;
 		}
-
+		
 		return false;
 	}
-
+	
 	public static boolean onNpcDrop(L2Attackable npc, L2Character creature)
 	{
 		var phKiller = ObjectData.get(PlayerHolder.class, creature);
 		var nh = ObjectData.get(NpcHolder.class, npc);
-
+		
 		var instance = new NpcDropsInstance();
-
+		
 		for (var mod : ENGINES_MODS.values())
 		{
 			try
@@ -430,20 +429,20 @@ public class EngineModsManager
 				e.printStackTrace();
 			}
 		}
-
+		
 		if (instance.hasSettings())
 		{
 			instance.init(npc, creature);
 			return true;
 		}
-
+		
 		return false;
 	}
-
+	
 	public static void onEnterZone(L2Character creature, Zone zone)
 	{
 		var ch = ObjectData.get(CharacterHolder.class, creature);
-
+		
 		ENGINES_MODS.values().stream().filter(mod -> mod.isStarting()).forEach(mod ->
 		{
 			try
@@ -457,11 +456,11 @@ public class EngineModsManager
 			}
 		});
 	}
-
+	
 	public static void onExitZone(L2Character creature, Zone zone)
 	{
 		var ch = ObjectData.get(CharacterHolder.class, creature);
-
+		
 		ENGINES_MODS.values().stream().filter(mod -> mod.isStarting()).forEach(mod ->
 		{
 			try
@@ -475,14 +474,14 @@ public class EngineModsManager
 			}
 		});
 	}
-
+	
 	public static void onCreateCharacter(L2PcInstance player)
 	{
 		var ph = ObjectData.get(PlayerHolder.class, player);
-
+		
 		// Quest system
 		ph.getInstance().sendPacket(new TutorialShowQuestionMark(-1));
-
+		
 		ENGINES_MODS.values().stream().filter(mod -> mod.isStarting()).forEach(mod ->
 		{
 			try
@@ -496,18 +495,18 @@ public class EngineModsManager
 			}
 		});
 	}
-
+	
 	public static boolean onVoiced(L2PcInstance player, String chat)
 	{
 		var ph = ObjectData.get(PlayerHolder.class, player);
-
+		
 		for (var mod : ENGINES_MODS.values())
 		{
 			if (!mod.isStarting())
 			{
 				continue;
 			}
-
+			
 			try
 			{
 				if (chat.startsWith("admin_"))
@@ -516,7 +515,7 @@ public class EngineModsManager
 					{
 						return false;
 					}
-
+					
 					if (mod.onAdminCommand(ph, chat.replace("admin_", "")))
 					{
 						return true;
@@ -543,27 +542,27 @@ public class EngineModsManager
 				e.printStackTrace();
 			}
 		}
-
+		
 		return false;
 	}
-
+	
 	public static boolean onInteract(L2PcInstance player, L2Character creature)
 	{
 		var ph = ObjectData.get(PlayerHolder.class, player);
 		var ch = ObjectData.get(CharacterHolder.class, creature);
-
+		
 		if (ch == null)
 		{
 			return false;
 		}
-
+		
 		for (var mod : ENGINES_MODS.values())
 		{
 			if (!mod.isStarting())
 			{
 				continue;
 			}
-
+			
 			try
 			{
 				if (!mod.onInteract(ph, ch))
@@ -581,13 +580,13 @@ public class EngineModsManager
 				e.printStackTrace();
 			}
 		}
-
+		
 		// Send a Server->Client packet ActionFailed to the L2PcInstance
 		player.sendPacket(ActionFailed.STATIC_PACKET);
-
+		
 		return false;
 	}
-
+	
 	/**
 	 * Todos los bypass tienen que tener el formato "bypass -h Engine modName bypassName", pero al mod solo llegara "bypassName".
 	 * @param player
@@ -598,14 +597,14 @@ public class EngineModsManager
 	{
 		var ph = ObjectData.get(PlayerHolder.class, player);
 		var ch = ph.getTarget();
-
+		
 		ENGINES_MODS.values().stream().filter(mod -> command.startsWith(mod.getClass().getSimpleName()) && mod.isStarting()).forEach(mod ->
 		{
-			if (ch != null && !player.isInsideRadius(ch.getInstance(), L2Npc.INTERACTION_DISTANCE, false, false))
+			if ((ch != null) && !player.isInsideRadius(ch.getInstance(), L2Npc.INTERACTION_DISTANCE, false, false))
 			{
 				return;
 			}
-
+			
 			try
 			{
 				mod.onEvent(ph, ch, command.replace(mod.getClass().getSimpleName() + " ", ""));
@@ -616,11 +615,11 @@ public class EngineModsManager
 				e.printStackTrace();
 			}
 		});
-
+		
 		// Send a Server->Client packet ActionFailed to the L2PcInstance
 		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
-
+	
 	public static void onSpawn(L2Npc npc)
 	{
 		// TODO es realmente necesario?
@@ -628,9 +627,9 @@ public class EngineModsManager
 		{
 			ObjectData.addObject(npc);
 		}
-
+		
 		var nh = ObjectData.get(NpcHolder.class, npc);
-
+		
 		ENGINES_MODS.values().stream().filter(mod -> mod.isStarting()).forEach(mod ->
 		{
 			try
@@ -644,11 +643,11 @@ public class EngineModsManager
 			}
 		});
 	}
-
+	
 	public static void onEnterWorld(L2PcInstance player)
 	{
 		var ph = ObjectData.get(PlayerHolder.class, player);
-
+		
 		ENGINES_MODS.values().stream().filter(mod -> mod.isStarting()).forEach(mod ->
 		{
 			try
@@ -661,28 +660,28 @@ public class EngineModsManager
 				e.printStackTrace();
 			}
 		});
-
+		
 		// Quest system
 		ph.getInstance().sendPacket(new TutorialShowQuestionMark(-1));
 	}
-
+	
 	public static boolean onAttack(L2Character killer, L2Character victim)
 	{
 		var chKiller = ObjectData.get(CharacterHolder.class, killer);
 		var chVictim = ObjectData.get(CharacterHolder.class, victim);
-
+		
 		if (chVictim == null)
 		{
 			return false;
 		}
-
+		
 		for (var mod : ENGINES_MODS.values())
 		{
 			if (!mod.isStarting())
 			{
 				continue;
 			}
-
+			
 			try
 			{
 				if (!mod.onAttack(chKiller, chVictim))
@@ -696,27 +695,27 @@ public class EngineModsManager
 				e.printStackTrace();
 			}
 		}
-
+		
 		return false;
 	}
-
+	
 	public static boolean canAttack(L2Character killer, L2Character victim)
 	{
 		var chKiller = ObjectData.get(CharacterHolder.class, killer);
 		var chVictim = ObjectData.get(CharacterHolder.class, victim);
-
+		
 		if (chVictim == null)
 		{
 			return false;
 		}
-
+		
 		for (var mod : ENGINES_MODS.values())
 		{
 			if (!mod.isStarting())
 			{
 				continue;
 			}
-
+			
 			try
 			{
 				if (mod.canAttack(chKiller, chVictim))
@@ -730,20 +729,20 @@ public class EngineModsManager
 				e.printStackTrace();
 			}
 		}
-
+		
 		return false;
 	}
-
+	
 	public static void onKill(L2Character killer, L2Character victim, boolean isPet)
 	{
 		var chKiller = ObjectData.get(CharacterHolder.class, killer);
 		var chVictim = ObjectData.get(CharacterHolder.class, victim);
-
+		
 		if (chVictim == null)
 		{
 			return;
 		}
-
+		
 		ENGINES_MODS.values().stream().filter(mod -> mod.isStarting()).forEach(mod ->
 		{
 			try
@@ -757,11 +756,11 @@ public class EngineModsManager
 			}
 		});
 	}
-
+	
 	public static void onDeath(L2Character character)
 	{
 		var ch = ObjectData.get(CharacterHolder.class, character);
-
+		
 		try
 		{
 			ENGINES_MODS.values().stream().filter(mod -> mod.isStarting()).forEach(mod -> mod.onDeath(ch));
@@ -772,11 +771,11 @@ public class EngineModsManager
 			e.printStackTrace();
 		}
 	}
-
+	
 	public static void onEnchant(L2PcInstance player)
 	{
 		var ph = ObjectData.get(PlayerHolder.class, player);
-
+		
 		ENGINES_MODS.values().stream().filter(mod -> mod.isStarting()).forEach(mod ->
 		{
 			try
@@ -790,11 +789,11 @@ public class EngineModsManager
 			}
 		});
 	}
-
+	
 	public static void onEquip(L2Character creature)
 	{
 		var ch = ObjectData.get(CharacterHolder.class, creature);
-
+		
 		ENGINES_MODS.values().stream().filter(mod -> mod.isStarting()).forEach(mod ->
 		{
 			try
@@ -808,11 +807,11 @@ public class EngineModsManager
 			}
 		});
 	}
-
+	
 	public static void onUnequip(L2Character creature)
 	{
 		var ch = ObjectData.get(CharacterHolder.class, creature);
-
+		
 		ENGINES_MODS.values().stream().filter(mod -> mod.isStarting()).forEach(mod ->
 		{
 			try
@@ -826,11 +825,11 @@ public class EngineModsManager
 			}
 		});
 	}
-
+	
 	public static boolean onRestoreSkills(L2PcInstance player)
 	{
 		var ph = ObjectData.get(PlayerHolder.class, player);
-
+		
 		ENGINES_MODS.values().stream().filter(mod -> mod.isStarting()).forEach(mod ->
 		{
 			try
@@ -843,21 +842,21 @@ public class EngineModsManager
 				e.printStackTrace();
 			}
 		});
-
+		
 		return false;
 	}
-
+	
 	public static void onCreatedItem(ItemInstance item)
 	{
 		var ih = ObjectData.get(ItemHolder.class, item);
-
+		
 		for (AbstractMod mod : ENGINES_MODS.values())
 		{
 			if (!mod.isStarting())
 			{
 				continue;
 			}
-
+			
 			try
 			{
 				mod.onCreatedItem(ih);
@@ -869,23 +868,23 @@ public class EngineModsManager
 			}
 		}
 	}
-
+	
 	public static double onStats(StatsType stat, L2Character creature, double value)
 	{
 		var ch = ObjectData.get(CharacterHolder.class, creature);
-
-		if (ch == null || ch.getInstance() == null)
+		
+		if ((ch == null) || (ch.getInstance() == null))
 		{
 			return value;
 		}
-
+		
 		for (var mod : ENGINES_MODS.values())
 		{
 			if (!mod.isStarting())
 			{
 				continue;
 			}
-
+			
 			try
 			{
 				value += mod.onStats(stat, ch, value) - value;
@@ -896,24 +895,24 @@ public class EngineModsManager
 				e.printStackTrace();
 			}
 		}
-
+		
 		return value;
 	}
-
+	
 	public static void onSendData(ByteBuffer data)
 	{
 		if (data == null)
 		{
 			return;
 		}
-
+		
 		for (var mod : ENGINES_MODS.values())
 		{
 			if (!mod.isStarting())
 			{
 				continue;
 			}
-
+			
 			try
 			{
 				mod.onSendData(data);
@@ -925,21 +924,21 @@ public class EngineModsManager
 			}
 		}
 	}
-
+	
 	public static void onReceiveData(ByteBuffer data)
 	{
 		if (data == null)
 		{
 			return;
 		}
-
+		
 		for (var mod : ENGINES_MODS.values())
 		{
 			if (!mod.isStarting())
 			{
 				continue;
 			}
-
+			
 			try
 			{
 				mod.onReceiveData(data);
@@ -951,5 +950,5 @@ public class EngineModsManager
 			}
 		}
 	}
-
+	
 }

@@ -3,6 +3,16 @@ package main.engine.mods;
 import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
+import l2j.gameserver.ThreadPoolManager;
+import l2j.gameserver.data.SkillData;
+import l2j.gameserver.model.actor.L2Character;
+import l2j.gameserver.model.actor.instance.enums.TeamType;
+import l2j.gameserver.model.olympiad.OlympiadManager;
+import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.skills.enums.SkillType;
+import l2j.gameserver.model.world.L2World;
+import l2j.gameserver.model.zone.enums.ZoneType;
+import l2j.gameserver.network.external.client.Say2.SayType;
 import main.data.ConfigData;
 import main.data.ObjectData;
 import main.data.SkillInfoData;
@@ -16,16 +26,6 @@ import main.util.UtilMessage;
 import main.util.builders.html.Html;
 import main.util.builders.html.HtmlBuilder;
 import main.util.builders.html.HtmlBuilder.HtmlType;
-import l2j.gameserver.ThreadPoolManager;
-import l2j.gameserver.data.SkillData;
-import l2j.gameserver.model.actor.L2Character;
-import l2j.gameserver.model.actor.instance.enums.TeamType;
-import l2j.gameserver.model.olympiad.OlympiadManager;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.enums.SkillType;
-import l2j.gameserver.model.world.L2World;
-import l2j.gameserver.model.zone.enums.ZoneType;
-import l2j.gameserver.network.external.client.Say2.SayType;
 
 /**
  * @author fissban
@@ -145,7 +145,7 @@ public class SellBuffs extends AbstractMod
 					var sellerBuff = L2World.getInstance().getPlayer(sellerName);
 					
 					// Check if target inside radius
-					if (sellerBuff == null || !ph.getInstance().isInsideRadius(sellerBuff, 500, false, false))
+					if ((sellerBuff == null) || !ph.getInstance().isInsideRadius(sellerBuff, 500, false, false))
 					{
 						UtilMessage.sendCreatureMsg(ph, SayType.TELL, "[Engine]", "Missing seller buff!");
 						return;
@@ -153,13 +153,13 @@ public class SellBuffs extends AbstractMod
 					
 					var phSeller = ObjectData.get(PlayerHolder.class, sellerBuff);
 					
-					if (phSeller == null || !phSeller.isSellBuff())
+					if ((phSeller == null) || !phSeller.isSellBuff())
 					{
 						return;
 					}
 					
 					// prevent bypass exploit
-					if (sellerBuff.getSkillLevel(id) == -1 && sellerBuff.getSkillLevel(id) != lvl)
+					if ((sellerBuff.getSkillLevel(id) == -1) && (sellerBuff.getSkillLevel(id) != lvl))
 					{
 						return;
 					}
@@ -237,7 +237,7 @@ public class SellBuffs extends AbstractMod
 		
 		var seller = (PlayerHolder) sellerBuff;
 		
-		if (seller == null || !seller.isSellBuff())
+		if ((seller == null) || !seller.isSellBuff())
 		{
 			return false;
 		}
@@ -288,7 +288,7 @@ public class SellBuffs extends AbstractMod
 			}
 			
 			// Removal from olympiad game
-			if (OlympiadManager.getInstance().isRegistered(player) || player.getOlympiadGameId() != -1)
+			if (OlympiadManager.getInstance().isRegistered(player) || (player.getOlympiadGameId() != -1))
 			{
 				OlympiadManager.getInstance().removeDisconnectedCompetitor(player);
 			}
@@ -344,7 +344,7 @@ public class SellBuffs extends AbstractMod
 				continue;
 			}
 			// max
-			if (count >= searchPage + MAX_SKILL_PER_PAGE)
+			if (count >= (searchPage + MAX_SKILL_PER_PAGE))
 			{
 				continue;
 			}
@@ -371,7 +371,7 @@ public class SellBuffs extends AbstractMod
 		// Generate page system
 		for (int i = 0; i < count; i++)
 		{
-			if (i % MAX_SKILL_PER_PAGE == 0)
+			if ((i % MAX_SKILL_PER_PAGE) == 0)
 			{
 				hb.append("<td width=18 align=center><a action=\"bypass -h Engine SellBuffs start " + currentPage + "\">" + currentPage + "</a></td>");
 				currentPage++;
@@ -388,7 +388,7 @@ public class SellBuffs extends AbstractMod
 	
 	private static void getBuffList(PlayerHolder ph, ObjectHolder sellerBuff, int page)
 	{
-		if (sellerBuff == null || !(sellerBuff instanceof PlayerHolder) || !((PlayerHolder) sellerBuff).isSellBuff())
+		if ((sellerBuff == null) || !(sellerBuff instanceof PlayerHolder) || !((PlayerHolder) sellerBuff).isSellBuff())
 		{
 			return;
 		}
@@ -402,7 +402,7 @@ public class SellBuffs extends AbstractMod
 		hb.append("<center>");
 		hb.append("<font color=LEVEL>Hello </font><font color=00C3FF>", ph.getName(), "</font><font color=LEVEL> want my Buff!</font>");
 		hb.append("<br>");
-		var skills = ((L2Character) seller.getInstance()).getSkills().values().stream().filter(sk -> checkSkil(sk) && seller.getSellBuffPrice(sk.getId()) >= 0).collect(Collectors.toList());
+		var skills = ((L2Character) seller.getInstance()).getSkills().values().stream().filter(sk -> checkSkil(sk) && (seller.getSellBuffPrice(sk.getId()) >= 0)).collect(Collectors.toList());
 		
 		if (skills.isEmpty())
 		{
@@ -428,7 +428,7 @@ public class SellBuffs extends AbstractMod
 				continue;
 			}
 			// max
-			if (count >= searchPage + MAX_SKILL_PER_PAGE)
+			if (count >= (searchPage + MAX_SKILL_PER_PAGE))
 			{
 				continue;
 			}
@@ -451,7 +451,7 @@ public class SellBuffs extends AbstractMod
 		
 		for (int i = 0; i < count; i++)
 		{
-			if (i % MAX_SKILL_PER_PAGE == 0)
+			if ((i % MAX_SKILL_PER_PAGE) == 0)
 			{
 				hb.append("<td width=18 align=center><a action=\"bypass -h Engine SellBuffs view " + currentPage + "\">" + currentPage + "</a></td>");
 				currentPage++;
@@ -470,12 +470,12 @@ public class SellBuffs extends AbstractMod
 	
 	/**
 	 * Check if skill can use in sell buff system.
-	 * @param sk
+	 * @param  sk
 	 * @return
 	 */
 	private static boolean checkSkil(Skill sk)
 	{
-		if (sk.isPassive() || sk.isOffensive() || sk.getSkillType() != SkillType.BUFF)
+		if (sk.isPassive() || sk.isOffensive() || (sk.getSkillType() != SkillType.BUFF))
 		{
 			return false;
 		}

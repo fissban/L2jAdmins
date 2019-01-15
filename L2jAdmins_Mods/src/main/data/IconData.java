@@ -16,9 +16,9 @@ import main.util.builders.html.Icon;
 public class IconData extends XmlParser
 {
 	protected static final Logger LOG = Logger.getLogger(IconData.class.getName());
-
+	
 	private final static Map<Integer, String> items = new HashMap<>();
-
+	
 	@Override
 	public void load()
 	{
@@ -27,20 +27,20 @@ public class IconData extends XmlParser
 		loadFile("data/xml/engine/icons.xml");
 		UtilPrint.result("IconData", "Loaded icons", items.size());
 	}
-
+	
 	@Override
 	protected void parseFile()
 	{
 		for (var n : getNodes("item"))
 		{
 			var attrs = n.getAttributes();
-
+			
 			var id = parseInt(attrs, "id");
 			var icon = parseString(attrs, "icon");
 			items.put(id, icon);
 		}
 	}
-
+	
 	/**
 	 * You get an icon of a specific item id
 	 * @param  itemId
@@ -50,7 +50,7 @@ public class IconData extends XmlParser
 	{
 		return items.get(itemId);
 	}
-
+	
 	/**
 	 * You get an icon of a random type of a specific type of item
 	 * @param  itemIconType
@@ -60,7 +60,7 @@ public class IconData extends XmlParser
 	public static String getRandomItemType(ItemIconType itemIconType, int rnd)
 	{
 		String returnIcon = "";
-
+		
 		while (returnIcon.equals(""))
 		{
 			for (var icon : items.values())
@@ -68,7 +68,7 @@ public class IconData extends XmlParser
 				if (icon.startsWith(itemIconType.getSearchItem()))
 				{
 					// it leaves aside the icons that can generate confusion.
-					if (Rnd.get(rnd) == 0 && !icon.equals(Icon.noimage) && !icon.equals(Icon.weapon_monster_i00))
+					if ((Rnd.get(rnd) == 0) && !icon.equals(Icon.noimage) && !icon.equals(Icon.weapon_monster_i00))
 					{
 						returnIcon = icon;
 					}
@@ -77,12 +77,12 @@ public class IconData extends XmlParser
 		}
 		return returnIcon;
 	}
-
+	
 	public static IconData getInstance()
 	{
 		return SingletonHolder.INSTANCE;
 	}
-
+	
 	private static class SingletonHolder
 	{
 		protected static final IconData INSTANCE = new IconData();

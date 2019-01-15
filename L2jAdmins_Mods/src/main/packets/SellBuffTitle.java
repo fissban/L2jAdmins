@@ -1,7 +1,7 @@
 package main.packets;
 
-import main.holders.objects.PlayerHolder;
 import l2j.gameserver.network.AServerPacket;
+import main.holders.objects.PlayerHolder;
 
 /**
  * @author fissban
