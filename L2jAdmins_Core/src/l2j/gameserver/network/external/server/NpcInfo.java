@@ -35,7 +35,6 @@ public class NpcInfo extends AServerPacket
 	private final float attackSpeedMultiplier;
 	private final int rhand, lhand, chest, val;
 	private final double collisionHeight, collisionRadius;
-	private String name = "";
 	private String title = "";
 	private int clanCrest, allyCrest, allyId, clanId;
 	
@@ -49,24 +48,16 @@ public class NpcInfo extends AServerPacket
 		idTemplate = cha.getTemplate().getIdTemplate();
 		isAttackable = cha.isAutoAttackable(attacker);
 		isSummoned = false;
-		rhand = cha.getTemplate().getRhand();
-		lhand = cha.getTemplate().getLhand();
+		rhand = cha.getRhand();
+		lhand = cha.getLhand();
 		chest = 0;
 		
 		val = 0;
 		
 		collisionHeight = cha.getCollisionHeight();
 		collisionRadius = cha.getCollisionRadius();
-		name = cha.getTemplate().getName();
 		
-		if ((cha.getTitle() == null) || cha.getTitle().equals(""))
-		{
-			title = cha.getTemplate().getTitle();
-		}
-		else
-		{
-			title = cha.getTitle();
-		}
+		title = cha.getTitle();
 		
 		if (Config.SHOW_NPC_LVL && (cha instanceof L2MonsterInstance))
 		{
@@ -116,7 +107,6 @@ public class NpcInfo extends AServerPacket
 		collisionHeight = cha.getTemplate().getCollisionHeight();
 		collisionRadius = cha.getTemplate().getCollisionRadius();
 		
-		name = cha.getName();
 		title = cha.getOwner() != null ? (!cha.getOwner().isOnline() ? "" : cha.getOwner().getName()) : "";
 		
 		x = cha.getX();
@@ -197,7 +187,7 @@ public class NpcInfo extends AServerPacket
 		writeC(cha.isAlikeDead() ? 0x01 : 0x00);
 		writeC(isSummoned ? 0x02 : val); // 0=teleported 1=default 2=summoned
 		
-		writeS(name);
+		writeS(cha.getName());
 		writeS(title);
 		
 		if (cha instanceof L2Summon)
