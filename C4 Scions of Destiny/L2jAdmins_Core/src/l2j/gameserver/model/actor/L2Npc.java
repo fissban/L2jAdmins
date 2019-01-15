@@ -60,6 +60,9 @@ public class L2Npc extends L2Character
 	private int isSpoiledBy = 0;
 	protected ScheduledFuture<?> rAniTask = null;
 	
+	private final int rhand;
+	private final int lhand;
+	
 	private int scriptValue = 0;
 	
 	// Despawn sheduled
@@ -173,6 +176,9 @@ public class L2Npc extends L2Character
 		
 		// Set the name of the L2Character
 		setName(template.getName());
+		setTitle(template.getTitle());
+		rhand = template.getRhand();
+		lhand = template.getLhand();
 		
 		if (((template.getSs() > 0) || (template.getBss() > 0)) && (template.getSsRate() > 0))
 		{
@@ -372,17 +378,17 @@ public class L2Npc extends L2Character
 	/**
 	 * @return the Identifier of the item in the left hand of this L2Npc contained in the L2NpcTemplate.
 	 */
-	public int getLeftHandItem()
+	public int getLhand()
 	{
-		return getTemplate().getLhand();
+		return lhand;
 	}
 	
 	/**
 	 * @return the Identifier of the item in the right hand of this L2Npc contained in the L2NpcTemplate.
 	 */
-	public int getRightHandItem()
+	public int getRhand()
 	{
-		return getTemplate().getRhand();
+		return rhand;
 	}
 	
 	/**
@@ -531,7 +537,7 @@ public class L2Npc extends L2Character
 	public ItemWeapon getActiveWeaponItem()
 	{
 		// Get the weapon identifier equipped in the right hand of the L2Npc
-		int weaponId = getTemplate().getRhand();
+		int weaponId = rhand;
 		
 		if (weaponId < 1)
 		{
@@ -539,7 +545,7 @@ public class L2Npc extends L2Character
 		}
 		
 		// Get the weapon item equiped in the right hand of the L2Npc
-		Item item = ItemData.getInstance().getTemplate(getTemplate().getRhand());
+		Item item = ItemData.getInstance().getTemplate(rhand);
 		
 		if (!(item instanceof ItemWeapon))
 		{
@@ -566,7 +572,7 @@ public class L2Npc extends L2Character
 	public ItemWeapon getSecondaryWeaponItem()
 	{
 		// Get the weapon identifier equipped in the right hand of the L2Npc
-		int weaponId = getTemplate().getLhand();
+		int weaponId = lhand;
 		
 		if (weaponId < 1)
 		{
@@ -574,7 +580,7 @@ public class L2Npc extends L2Character
 		}
 		
 		// Get the weapon item equipped in the right hand of the L2Npc
-		Item item = ItemData.getInstance().getTemplate(getTemplate().getLhand());
+		Item item = ItemData.getInstance().getTemplate(lhand);
 		
 		if (!(item instanceof ItemWeapon))
 		{
@@ -648,11 +654,6 @@ public class L2Npc extends L2Character
 		}
 		
 		player.tempInventoryDisable();
-		
-		if (Config.DEBUG)
-		{
-			LOG.fine("Showing buylist :" + player.getName() + " List ID :" + val);
-		}
 		
 		MerchantTradeList list = TradeControllerData.getInstance().getBuyList(val);
 		
@@ -811,7 +812,7 @@ public class L2Npc extends L2Character
 	@Override
 	public String toString()
 	{
-		return getTemplate().getName();
+		return getName();
 	}
 	
 	public void endDecayTask()
