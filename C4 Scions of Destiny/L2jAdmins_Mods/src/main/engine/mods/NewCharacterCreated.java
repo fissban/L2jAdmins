@@ -3,11 +3,11 @@ package main.engine.mods;
 import java.util.ArrayList;
 import java.util.List;
 
+import l2j.gameserver.network.external.client.Say2.SayType;
 import main.data.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.objects.PlayerHolder;
 import main.util.UtilMessage;
-import l2j.gameserver.network.external.client.Say2.SayType;
 
 /**
  * @author fissban

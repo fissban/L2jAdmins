@@ -48,7 +48,7 @@ public class L2Day extends AbstractEvent
 	private final static int LETTER_S = 3886;
 	private final static int LETTER_T = 3887;
 	private final static int LETTER_II = 3888;
-
+	
 	private static final Map<Integer, String> TALKERS = new HashMap<>();
 	static
 	{
@@ -58,7 +58,7 @@ public class L2Day extends AbstractEvent
 		TALKERS.put(EVENT_DWARF, "event_dwarf001.htm");
 		TALKERS.put(EVENT_ORC, "event_orc001.htm");
 	}
-
+	
 	private static final List<LocationHolder> SPAWNS_HUMAN = new ArrayList<>();
 	static
 	{
@@ -91,7 +91,7 @@ public class L2Day extends AbstractEvent
 		SPAWNS_HUMAN.add(new LocationHolder(44176, -48732, -800, 33000)); // rune02_npc2116_lc01
 		SPAWNS_HUMAN.add(new LocationHolder(44294, -47642, -792, 50000)); // rune02_npc2116_lc02
 	}
-
+	
 	private static final List<LocationHolder> SPAWNS_ELF = new ArrayList<>();
 	static
 	{
@@ -101,38 +101,38 @@ public class L2Day extends AbstractEvent
 		SPAWNS_ELF.add(new LocationHolder(107904, 218096, -3675, 0)); // innadril09_npc2324_lc02
 		SPAWNS_ELF.add(new LocationHolder(114920, 220020, -3632, 32768)); // innadril09_npc2324_lc03
 	}
-
+	
 	private static final List<LocationHolder> SPAWNS_DARKELF = new ArrayList<>();
 	static
 	{
 		SPAWNS_DARKELF.add(new LocationHolder(11281, 15652, -4584, 25000)); // oren09_npc2018_lc01
 		SPAWNS_DARKELF.add(new LocationHolder(11303, 17732, -4574, 57344)); // oren09_npc2018_lc02
 	}
-
+	
 	private static final List<LocationHolder> SPAWNS_DWARF = new ArrayList<>();
 	static
 	{
 		SPAWNS_DWARF.add(new LocationHolder(114733, -178691, -821, 0)); // schuttgart03_npc2312_lc01
 		SPAWNS_DWARF.add(new LocationHolder(115708, -182362, -1449, 0)); // schuttgart03_npc2312_lc02
 	}
-
+	
 	private static final List<LocationHolder> SPAWNS_ORC = new ArrayList<>();
 	static
 	{
 		SPAWNS_ORC.add(new LocationHolder(-44337, -113669, -224, 0)); // schuttgart03_npc2312_lc01
 		SPAWNS_ORC.add(new LocationHolder(-44628, -115409, -240, 22500)); // schuttgart03_npc2312_lc02
 	}
-
+	
 	// Message
 	private static final String MESSAGE_START = "L2Day Event: Collect Letters and trade them for prizes at Event Cats in every town! Hurry up, since the event will end at Feb 28th!";
-
+	
 	private static final List<NpcHolder> npcs = new ArrayList<>();
-
+	
 	public L2Day()
 	{
 		registerEvent(true, ConfigData.HEAVY_MEDALS_DATE_START, ConfigData.HEAVY_MEDALS_DATE_END);
 	}
-
+	
 	@Override
 	public void onModState()
 	{
@@ -153,7 +153,7 @@ public class L2Day extends AbstractEvent
 					SPAWNS_HUMAN.forEach(loc -> npcs.add(UtilSpawn.npc(EVENT_HUMAN, loc, 0, 0, TeamType.NONE, 0)));
 					SPAWNS_HUMAN.forEach(loc -> npcs.add(UtilSpawn.npc(EVENT_HUMAN, loc, 0, 0, TeamType.NONE, 0)));
 				}, 20000);
-
+				
 				break;
 			case END:
 				// remove npc spawns
@@ -162,20 +162,20 @@ public class L2Day extends AbstractEvent
 				break;
 		}
 	}
-
+	
 	@Override
 	public void onEnterWorld(PlayerHolder ph)
 	{
 		UtilMessage.sendAnnounceMsg(MESSAGE_START, ph);
 	}
-
+	
 	@Override
 	public void onKill(CharacterHolder killer, CharacterHolder victim, boolean isPet)
 	{
 		if (Util.areObjectType(L2MonsterInstance.class, victim))
 		{
 			var itemId = 0;
-
+			
 			var chance = Rnd.get(100);
 			if (chance < 10)
 			{
@@ -183,7 +183,7 @@ public class L2Day extends AbstractEvent
 			}
 			else if (chance < 10)
 			{
-
+				
 			}
 		}
 	}

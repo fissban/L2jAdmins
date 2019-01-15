@@ -83,7 +83,7 @@ public class Html
 	 * -> Survive<br>
 	 * -> SearchChest<br>
 	 * -> <br>
-	 * @param pointsOrdered
+	 * @param  pointsOrdered
 	 * @return
 	 */
 	public static HtmlBuilder eventRanking(Map<String, Integer> pointsOrdered)
@@ -108,7 +108,7 @@ public class Html
 		for (Entry<String, Integer> entry : pointsOrdered.entrySet())
 		{
 			cont++;
-			hb.append("<table width=280", cont % 2 == 0 ? " bgcolor=\"000000\">" : ">");
+			hb.append("<table width=280", (cont % 2) == 0 ? " bgcolor=\"000000\">" : ">");
 			hb.append("<tr>");
 			hb.append("<td width=16 height=22 align=center>", image(POS[cont - 1], 16, 16), "</td>");
 			hb.append("<td width=214 align=center>", entry.getKey(), "</td>");
@@ -125,18 +125,18 @@ public class Html
 	
 	/**
 	 * A color is assigned according to the character's lvl
-	 * @param lvl
+	 * @param  lvl
 	 * @return
 	 */
 	public static String getClanColorLevel(int lvl)
 	{
 		var hb = new HtmlBuilder();
 		
-		if (lvl >= 2 && lvl < 4)
+		if ((lvl >= 2) && (lvl < 4))
 		{
 			hb.append(Html.fontColor(BgColor.YELLOW, lvl)); // yellow
 		}
-		else if (lvl >= 4 && lvl < 7)
+		else if ((lvl >= 4) && (lvl < 7))
 		{
 			hb.append(Html.fontColor("9A5C00", lvl)); // orange
 		}

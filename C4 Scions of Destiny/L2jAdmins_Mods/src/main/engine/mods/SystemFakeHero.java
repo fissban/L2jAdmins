@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
 
+import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.network.external.client.Say2.SayType;
 import main.data.ObjectData;
 import main.engine.AbstractMod;
 import main.holders.objects.CharacterHolder;
@@ -14,8 +16,6 @@ import main.util.UtilMessage;
 import main.util.builders.html.Html;
 import main.util.builders.html.HtmlBuilder;
 import main.util.builders.html.HtmlBuilder.HtmlType;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.network.external.client.Say2.SayType;
 
 /**
  * @author fissban
@@ -252,12 +252,12 @@ public class SystemFakeHero extends AbstractMod
 					continue;
 				}
 				// max
-				if (count >= searchPage + MAX_PER_PAGE)
+				if (count >= (searchPage + MAX_PER_PAGE))
 				{
 					continue;
 				}
 				
-				hb.append("<table", count % 2 == 0 ? " bgcolor=000000>" : ">");
+				hb.append("<table", (count % 2) == 0 ? " bgcolor=000000>" : ">");
 				hb.append("<tr>");
 				hb.append("<td width=64>", ph.getName(), "</td><td width=200>", ph.getFakeHeroExpireDateFormat(), "</td>");
 				hb.append("</tr>");
@@ -275,7 +275,7 @@ public class SystemFakeHero extends AbstractMod
 		
 		for (int i = 0; i < countFakeHero; i++)
 		{
-			if (i % MAX_PER_PAGE == 0)
+			if ((i % MAX_PER_PAGE) == 0)
 			{
 				hb.append("<td width=18 align=center><a action=\"bypass -h Engine SystemFakeHero allFakeHero ", currentPage, "\">", currentPage, "</a></td>");
 				currentPage++;

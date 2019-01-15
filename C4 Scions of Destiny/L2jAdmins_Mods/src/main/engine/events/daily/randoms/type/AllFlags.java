@@ -1,9 +1,9 @@
 package main.engine.events.daily.randoms.type;
 
-import main.engine.AbstractMod;
-import main.holders.objects.PlayerHolder;
 import l2j.gameserver.model.actor.instance.L2PcInstance.FlagType;
 import l2j.gameserver.model.world.L2World;
+import main.engine.AbstractMod;
+import main.holders.objects.PlayerHolder;
 
 /**
  * @author fissban

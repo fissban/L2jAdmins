@@ -2,17 +2,17 @@ package main.engine.mods;
 
 import java.util.logging.Level;
 
+import l2j.gameserver.ThreadPoolManager;
+import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.olympiad.OlympiadManager;
+import l2j.gameserver.model.world.L2World;
+import l2j.gameserver.model.zone.enums.ZoneType;
 import main.EngineModsManager;
 import main.data.ConfigData;
 import main.data.ObjectData;
 import main.engine.AbstractMod;
 import main.holders.objects.PlayerHolder;
 import main.util.UtilPlayer;
-import l2j.gameserver.ThreadPoolManager;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.olympiad.OlympiadManager;
-import l2j.gameserver.model.world.L2World;
-import l2j.gameserver.model.zone.enums.ZoneType;
 
 /**
  * @author fissban
@@ -81,7 +81,7 @@ public class OfflineShop extends AbstractMod
 				if (saveValue)
 				{
 					// saved state and items in memory
-					setValueDB(player.getObjectId(), "offlineShop", storeType + "#" + (title == null || title.length() == 0 ? "null" : title.replaceAll("#", " ")) + "#" + storeItems);
+					setValueDB(player.getObjectId(), "offlineShop", storeType + "#" + ((title == null) || (title.length() == 0) ? "null" : title.replaceAll("#", " ")) + "#" + storeItems);
 				}
 			}
 			catch (Exception e)
@@ -136,7 +136,7 @@ public class OfflineShop extends AbstractMod
 			}
 			
 			// Handle removal from olympiad game
-			if (OlympiadManager.getInstance().isRegistered(player) || player.getOlympiadGameId() != -1)
+			if (OlympiadManager.getInstance().isRegistered(player) || (player.getOlympiadGameId() != -1))
 			{
 				OlympiadManager.getInstance().removeDisconnectedCompetitor(player);
 			}

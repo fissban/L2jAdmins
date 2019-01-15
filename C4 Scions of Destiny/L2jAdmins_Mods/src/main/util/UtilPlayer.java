@@ -49,9 +49,9 @@ public class UtilPlayer
 	// XXX Change class
 	/**
 	 * Returns true if class change is possible
-	 * @param oldCID current player ClassId
-	 * @param newCID new ClassId
-	 * @return true if class change is possible
+	 * @param  oldCID current player ClassId
+	 * @param  newCID new ClassId
+	 * @return        true if class change is possible
 	 */
 	public static final boolean validateChangeClassId(ClassId oldCID, int val)
 	{
@@ -68,13 +68,13 @@ public class UtilPlayer
 	
 	/**
 	 * Returns true if class change is possible
-	 * @param oldCID current player ClassId
-	 * @param newCID new ClassId
-	 * @return true if class change is possible
+	 * @param  oldCID current player ClassId
+	 * @param  newCID new ClassId
+	 * @return        true if class change is possible
 	 */
 	public static final boolean validateChangeClassId(ClassId oldCID, ClassId newCID)
 	{
-		if (newCID == null || newCID.getRace() == null)
+		if ((newCID == null) || (newCID.getRace() == null))
 		{
 			return false;
 		}
@@ -94,7 +94,7 @@ public class UtilPlayer
 	
 	/**
 	 * Returns minimum player level required for next class transfer
-	 * @param level - current skillId level (0 - start, 1 - first, etc)
+	 * @param  level - current skillId level (0 - start, 1 - first, etc)
 	 * @return
 	 */
 	public static final int getMinLevelChangeClass(int level)

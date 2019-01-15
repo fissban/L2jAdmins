@@ -1,10 +1,10 @@
 package main.util;
 
-import main.holders.RewardHolder;
-import main.holders.objects.PlayerHolder;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.SystemMessage;
+import main.holders.RewardHolder;
+import main.holders.objects.PlayerHolder;
 
 /**
  * @author fissban
@@ -14,8 +14,8 @@ public class UtilInventory
 	
 	/**
 	 * Check for multiple items in player's inventory.
-	 * @param itemIds a list of item IDs to check for
-	 * @return {@code true} if all items exist in player's inventory, {@code false} otherwise
+	 * @param  itemIds a list of item IDs to check for
+	 * @return         {@code true} if all items exist in player's inventory, {@code false} otherwise
 	 */
 	public static boolean hasItems(L2PcInstance player, int... itemIds)
 	{
@@ -32,8 +32,8 @@ public class UtilInventory
 	
 	/**
 	 * Check for multiple items in player's inventory.
-	 * @param itemIds a list of item IDs to check for
-	 * @return {@code true} if all items exist in player's inventory, {@code false} otherwise
+	 * @param  itemIds a list of item IDs to check for
+	 * @return         {@code true} if all items exist in player's inventory, {@code false} otherwise
 	 */
 	public static boolean hasItems(PlayerHolder ph, int... itemIds)
 	{
@@ -49,8 +49,8 @@ public class UtilInventory
 	}
 	
 	/**
-	 * @param itemId : ID of the item wanted to be count
-	 * @return the quantity of one sort of item hold by the player
+	 * @param  itemId : ID of the item wanted to be count
+	 * @return        the quantity of one sort of item hold by the player
 	 */
 	public static int getItemsCount(PlayerHolder ph, int itemId)
 	{
@@ -58,7 +58,7 @@ public class UtilInventory
 		
 		for (var item : ph.getInstance().getInventory().getItems())
 		{
-			if (item != null && item.getId() == itemId)
+			if ((item != null) && (item.getId() == itemId))
 			{
 				count += item.getCount();
 			}
@@ -69,7 +69,7 @@ public class UtilInventory
 	
 	/**
 	 * Give items to the player's inventory.
-	 * @param itemId : Identifier of the item.
+	 * @param itemId    : Identifier of the item.
 	 * @param itemCount : Quantity of items to add.
 	 */
 	public static void giveItems(PlayerHolder ph, RewardHolder... rewards)
@@ -82,7 +82,7 @@ public class UtilInventory
 	
 	/**
 	 * Give items to the player's inventory.
-	 * @param itemId : Identifier of the item.
+	 * @param itemId    : Identifier of the item.
 	 * @param itemCount : Quantity of items to add.
 	 */
 	public static void giveItems(PlayerHolder ph, int itemId, int itemCount)
@@ -92,8 +92,8 @@ public class UtilInventory
 	
 	/**
 	 * Give items to the player's inventory.
-	 * @param itemId : Identifier of the item.
-	 * @param itemCount : Quantity of items to add.
+	 * @param itemId       : Identifier of the item.
+	 * @param itemCount    : Quantity of items to add.
 	 * @param enchantLevel : Enchant level of items to add.
 	 */
 	public static void giveItems(PlayerHolder ph, int itemId, int itemCount, int enchantLevel)
@@ -141,7 +141,7 @@ public class UtilInventory
 	
 	/**
 	 * Remove items from the player's inventory.
-	 * @param itemId : Identifier of the item.
+	 * @param itemId    : Identifier of the item.
 	 * @param itemCount : Quantity of items to destroy.
 	 */
 	public static boolean takeItems(PlayerHolder ph, int itemId, int itemCount)
@@ -154,7 +154,7 @@ public class UtilInventory
 		}
 		
 		// Tests on count value and set correct value if necessary.
-		if (itemCount < 0 || itemCount > item.getCount())
+		if ((itemCount < 0) || (itemCount > item.getCount()))
 		{
 			itemCount = item.getCount();
 		}

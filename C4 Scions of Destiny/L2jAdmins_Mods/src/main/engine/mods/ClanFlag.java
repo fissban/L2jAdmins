@@ -1,8 +1,8 @@
 package main.engine.mods;
 
+import l2j.gameserver.data.SkillData;
 import main.engine.AbstractMod;
 import main.holders.objects.PlayerHolder;
-import l2j.gameserver.data.SkillData;
 
 /**
  * @author fissban

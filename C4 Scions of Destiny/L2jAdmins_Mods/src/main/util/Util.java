@@ -15,20 +15,20 @@ public class Util
 	
 	/**
 	 * Check if the objects belong to a particular instance.
-	 * @param type
-	 * @param objects
+	 * @param  type
+	 * @param  objects
 	 * @return
 	 */
 	public static <A> boolean areObjectType(Class<A> type, ObjectHolder... objects)
 	{
-		if (objects == null || objects.length <= 0)
+		if ((objects == null) || (objects.length <= 0))
 		{
 			return false;
 		}
 		
 		for (var o : objects)
 		{
-			if (o == null || o.getInstance() == null || !type.isAssignableFrom(o.getInstance().getClass()))
+			if ((o == null) || (o.getInstance() == null) || !type.isAssignableFrom(o.getInstance().getClass()))
 			{
 				return false;
 			}
@@ -65,9 +65,9 @@ public class Util
 	 * Check the difference in level between 2 characters, return true if it is lower than lvl
 	 * <li></li>
 	 * <li></li>
-	 * @param ph
-	 * @param obj
-	 * @param lvl
+	 * @param  ph
+	 * @param  obj
+	 * @param  lvl
 	 * @return
 	 */
 	public static boolean checkLvlDifference(CharacterHolder ph, CharacterHolder obj, int lvl)

@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.StringTokenizer;
 
+import l2j.gameserver.model.actor.L2Playable;
+import l2j.gameserver.model.actor.base.ClassId;
+import l2j.gameserver.model.skills.stats.enums.StatsType;
 import main.engine.AbstractMod;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.PlayerHolder;
@@ -15,9 +18,6 @@ import main.util.builders.html.HtmlBuilder;
 import main.util.builders.html.HtmlBuilder.HtmlType;
 import main.util.builders.html.L2UI;
 import main.util.builders.html.L2UI_CH3;
-import l2j.gameserver.model.actor.L2Playable;
-import l2j.gameserver.model.actor.base.ClassId;
-import l2j.gameserver.model.skills.stats.enums.StatsType;
 
 /**
  * @author fissban
@@ -379,13 +379,13 @@ public class StatsPlayer extends AbstractMod
 				continue;
 			}
 			// max
-			if (count >= searchPage + MAX_PER_PAGE)
+			if (count >= (searchPage + MAX_PER_PAGE))
 			{
 				continue;
 			}
 			
 			double value = classStats.get(className).getBonus(bonusType, stat);
-			hb.append("<table width=460 height=22 ", color % 2 == 0 ? "bgcolor=000000 " : "", "cellspacing=0 cellpadding=0>");
+			hb.append("<table width=460 height=22 ", (color % 2) == 0 ? "bgcolor=000000 " : "", "cellspacing=0 cellpadding=0>");
 			hb.append("<tr>");
 			hb.append("<td fixwidth=16 height=22 align=center>", Html.image(L2UI_CH3.ps_sizecontrol2_over, 16, 16), "</td>");
 			hb.append("<td width=100 height=22 align=center>", Html.fontColor("LEVEL", stat.toString().replace("_", " ").toLowerCase()), " </td>");
@@ -408,7 +408,7 @@ public class StatsPlayer extends AbstractMod
 		hb.append("<tr>");
 		for (int i = 0; i < size; i++)
 		{
-			if (i % MAX_PER_PAGE == 0)
+			if ((i % MAX_PER_PAGE) == 0)
 			{
 				if (currentPage == page)
 				{
@@ -457,9 +457,9 @@ public class StatsPlayer extends AbstractMod
 		
 		if (classStats.containsKey(player.getClassId().name()))
 		{
-			value *= classStats.get(player.getClassId().name()).getBonus(bonusType, stat) / 10.0 + 1.0;
+			value *= (classStats.get(player.getClassId().name()).getBonus(bonusType, stat) / 10.0) + 1.0;
 		}
 		
-		return value * (classStats.get("all").getBonus(bonusType, stat) / 100.0 + 1.0);
+		return value * ((classStats.get("all").getBonus(bonusType, stat) / 100.0) + 1.0);
 	}
 }

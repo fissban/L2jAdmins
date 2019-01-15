@@ -42,7 +42,7 @@ public class CharacterHolder extends ObjectHolder
 	{
 		getInstance().setTeam(team);
 		
-		if (getInstance() != null && getInstance() instanceof L2PcInstance)
+		if ((getInstance() != null) && (getInstance() instanceof L2PcInstance))
 		{
 			((L2PcInstance) getInstance()).broadcastUserInfo();
 		}

@@ -33,10 +33,10 @@ public class FireCat extends AbstractEvent
 	private static final int MAGNESIUM = 6405;
 	private static final int FIREWORK = 6406;
 	private static final int LARGE_FIREWORK = 6407;
-
+	
 	// Html
 	private static final String HTML_PATH = "data/html/engine/events/firecat/";
-
+	
 	private static final List<LocationHolder> SPAWNS_CAT = new ArrayList<>();
 	{
 		SPAWNS_CAT.add(new LocationHolder(-44162, -112238, -240, 41000)); // lyonn03_npc1814_fi01
@@ -70,14 +70,14 @@ public class FireCat extends AbstractEvent
 		SPAWNS_CAT.add(new LocationHolder(44176, -48732, -800, 33000)); // rune02_npc2116_fi01
 		SPAWNS_CAT.add(new LocationHolder(44294, -47642, -792, 50000)); // rune02_npc2116_fi02
 	}
-
+	
 	private static List<NpcHolder> npcs = new ArrayList<>();
-
+	
 	public FireCat()
 	{
 		registerEvent(ConfigData.ENABLE_FireCat, ConfigData.FIRE_CAT_DATE_START, ConfigData.FIRE_CAT_DATE_END);
 	}
-
+	
 	@Override
 	public void onModState()
 	{
@@ -107,14 +107,14 @@ public class FireCat extends AbstractEvent
 				break;
 		}
 	}
-
+	
 	@Override
 	public void onKill(CharacterHolder killer, CharacterHolder victim, boolean isPet)
 	{
 		if (Util.areObjectType(L2Attackable.class, victim) && Util.checkLvlDifference(killer, victim, 9))
 		{
 			var chance = Rnd.get(100);
-
+			
 			if (chance > 75) // 25%
 			{
 				UtilInventory.giveItems((PlayerHolder) killer, ELVEN_FIRECRACKER, 1);
@@ -127,23 +127,23 @@ public class FireCat extends AbstractEvent
 			{
 				UtilInventory.giveItems((PlayerHolder) killer, GUNPOWDER, 1);
 			}
-
+			
 		}
 	}
-
+	
 	@Override
 	public void onEnterWorld(PlayerHolder ph)
 	{
 		UtilMessage.sendAnnounceMsg(ConfigData.FIRE_CAT_MESSAGE_START, ph);
 	}
-
+	
 	@Override
 	public boolean onInteract(PlayerHolder ph, CharacterHolder character)
 	{
 		if (Util.areObjectType(L2Npc.class, character))
 		{
 			var npc = (L2Npc) character.getInstance();
-
+			
 			if (npc.getId() == CAT)
 			{
 				sendHtmlFile(ph, npc, HTML_PATH + CAT + ".htm");
@@ -152,7 +152,7 @@ public class FireCat extends AbstractEvent
 		}
 		return false;
 	}
-
+	
 	@Override
 	public void onEvent(PlayerHolder ph, CharacterHolder npc, String command)
 	{
@@ -160,23 +160,23 @@ public class FireCat extends AbstractEvent
 		{
 			return;
 		}
-
+		
 		var htmltext = "";
-
+		
 		switch (command)
 		{
 			case "create":
 				htmltext = "wantcreate.htm";
 				break;
 			case "regular":
-				if (UtilInventory.getItemsCount(ph, ELVEN_FIRECRACKER) >= 2 && UtilInventory.getItemsCount(ph, GUNPOWDER) >= 2)
+				if ((UtilInventory.getItemsCount(ph, ELVEN_FIRECRACKER) >= 2) && (UtilInventory.getItemsCount(ph, GUNPOWDER) >= 2))
 				{
 					// take items
 					UtilInventory.takeItems(ph, ELVEN_FIRECRACKER, 2);
 					UtilInventory.takeItems(ph, GUNPOWDER, 2);
 					// give item
 					UtilInventory.giveItems(ph, FIREWORK, 1);
-
+					
 					htmltext = "regular.htm";
 				}
 				else
@@ -185,7 +185,7 @@ public class FireCat extends AbstractEvent
 				}
 				break;
 			case "large":
-				if (UtilInventory.getItemsCount(ph, ELVEN_FIRECRACKER) >= 4 && UtilInventory.getItemsCount(ph, GUNPOWDER) >= 4 && UtilInventory.getItemsCount(ph, MAGNESIUM) >= 1)
+				if ((UtilInventory.getItemsCount(ph, ELVEN_FIRECRACKER) >= 4) && (UtilInventory.getItemsCount(ph, GUNPOWDER) >= 4) && (UtilInventory.getItemsCount(ph, MAGNESIUM) >= 1))
 				{
 					// take items
 					UtilInventory.takeItems(ph, ELVEN_FIRECRACKER, 4);
@@ -193,12 +193,12 @@ public class FireCat extends AbstractEvent
 					UtilInventory.takeItems(ph, MAGNESIUM, 1);
 					// give item
 					UtilInventory.giveItems(ph, LARGE_FIREWORK, 1);
-
+					
 					htmltext = "large.htm";
 				}
 				else
 				{
-
+					
 					htmltext = "no-item.htm";
 				}
 				break;
@@ -206,7 +206,7 @@ public class FireCat extends AbstractEvent
 				htmltext = "info.htm";
 				break;
 		}
-
+		
 		sendHtmlFile(ph, (L2Npc) npc.getInstance(), HTML_PATH + htmltext);
 	}
 }

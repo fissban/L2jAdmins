@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import main.enums.ExpSpType;
 import l2j.gameserver.model.actor.L2Attackable;
 import l2j.gameserver.model.actor.L2Attackable.AggroInfo;
 import l2j.gameserver.model.actor.L2Character;
@@ -19,6 +18,7 @@ import l2j.gameserver.model.party.Party;
 import l2j.gameserver.model.skills.stats.enums.StatsType;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.util.Util;
+import main.enums.ExpSpType;
 
 /**
  * @author fissban
@@ -39,7 +39,7 @@ public class NpcExpInstance
 	public void increaseRate(ExpSpType type, double bonus)
 	{
 		double oldValue = expSettings.get(type);
-		expSettings.put(type, oldValue + bonus - 1);
+		expSettings.put(type, (oldValue + bonus) - 1);
 	}
 	
 	public boolean hasSettings()
@@ -90,7 +90,7 @@ public class NpcExpInstance
 				// Prevent unwanted behavior
 				if (damage > 1)
 				{
-					if (attacker instanceof L2SummonInstance || attacker instanceof L2PetInstance)
+					if ((attacker instanceof L2SummonInstance) || (attacker instanceof L2PetInstance))
 					{
 						ddealer = attacker.getActingPlayer();
 					}
@@ -122,7 +122,7 @@ public class NpcExpInstance
 					// set max dealer owner pet or summon or player
 					maxDealer = ddealer.getActingPlayer();
 					
-					if (maxDealer != null && reward.dmg > maxDamage)
+					if ((maxDealer != null) && (reward.dmg > maxDamage))
 					{
 						maxDamage = reward.dmg;
 					}
@@ -130,7 +130,7 @@ public class NpcExpInstance
 			}
 			
 			// Manage Base, Quests and Sweep drops of the L2Attackable
-			npc.doItemDrop(maxDealer != null && maxDealer.isOnline() ? maxDealer : lastAttacker);
+			npc.doItemDrop((maxDealer != null) && maxDealer.isOnline() ? maxDealer : lastAttacker);
 			
 			if (!npc.getMustRewardExpSP())
 			{
@@ -178,7 +178,7 @@ public class NpcExpInstance
 					}
 					
 					// If this attacker is a L2PcInstance with a summoned L2SummonInstance, get Exp Penalty applied for the current summoned L2SummonInstance
-					if (attacker instanceof L2PcInstance && attacker.getActingPlayer().getPet() != null)
+					if ((attacker instanceof L2PcInstance) && (attacker.getActingPlayer().getPet() != null))
 					{
 						penalty = ((L2PcInstance) attacker).getPet().getExpPenalty();
 					}
@@ -206,7 +206,7 @@ public class NpcExpInstance
 							var sinEaterExp = false;
 							
 							// check if "sin eater" pet
-							if (attacker.getActingPlayer().getPet() != null && attacker.getActingPlayer().getPet().getId() == 12564)
+							if ((attacker.getActingPlayer().getPet() != null) && (attacker.getActingPlayer().getPet().getId() == 12564))
 							{
 								exp = tmp[0];
 								sinEaterExp = true;
@@ -222,7 +222,7 @@ public class NpcExpInstance
 							if (attacker instanceof L2PcInstance)
 							{
 								final L2PcInstance player = (L2PcInstance) attacker;
-								if (npc.isOverhit() && attacker == npc.getOverhitAttacker())
+								if (npc.isOverhit() && (attacker == npc.getOverhitAttacker()))
 								{
 									player.sendPacket(SystemMessage.OVER_HIT);
 									exp += npc.calculateOverhitExp(exp);
@@ -260,7 +260,7 @@ public class NpcExpInstance
 						// Go through all L2PcInstance in the party
 						for (final L2PcInstance player : attackerParty.getMembers())
 						{
-							if (player == null || player.isDead())
+							if ((player == null) || player.isDead())
 							{
 								continue;
 							}
@@ -317,7 +317,7 @@ public class NpcExpInstance
 							// Until that time, we must remove reward here, for owner with pet.
 							// Current way is definitely wrong.
 							final L2Summon summon = player.getPet();
-							if (summon != null && summon instanceof L2PetInstance)
+							if ((summon != null) && (summon instanceof L2PetInstance))
 							{
 								rewardedMembers.remove(summon.getOwner());
 							}
@@ -351,7 +351,7 @@ public class NpcExpInstance
 						if (attacker instanceof L2PcInstance)
 						{
 							final L2PcInstance player = (L2PcInstance) attacker;
-							if (npc.isOverhit() && attacker == npc.getOverhitAttacker())
+							if (npc.isOverhit() && (attacker == npc.getOverhitAttacker()))
 							{
 								player.sendPacket(SystemMessage.OVER_HIT);
 								exp += npc.calculateOverhitExp(exp);
@@ -359,7 +359,7 @@ public class NpcExpInstance
 						}
 						
 						// Distribute Experience and SP rewards to L2PcInstance Party members in the known area of the last attacker
-						if (partyDmg > 0 && !rewardedMembers.isEmpty())
+						if ((partyDmg > 0) && !rewardedMembers.isEmpty())
 						{
 							attackerParty.distributeXpAndSp(exp, sp, rewardedMembers, partyLvl);
 						}
@@ -382,8 +382,8 @@ public class NpcExpInstance
 		{
 			diff = -5; // makes possible to use ALT_GAME_EXPONENT configuration
 		}
-		xp = (double) npc.getExpReward() * damage / npc.getStat().getMaxHp();
-		sp = (double) npc.getSpReward() * damage / npc.getStat().getMaxHp();
+		xp = ((double) npc.getExpReward() * damage) / npc.getStat().getMaxHp();
+		sp = ((double) npc.getSpReward() * damage) / npc.getStat().getMaxHp();
 		
 		if (diff > 5)
 		{

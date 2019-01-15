@@ -3,11 +3,11 @@ package main.holders;
 import java.util.concurrent.ScheduledFuture;
 import java.util.logging.Logger;
 
+import l2j.gameserver.ThreadPoolManager;
 import main.EngineModsManager;
 import main.engine.AbstractMod;
 import main.holders.objects.NpcHolder;
 import main.holders.objects.PlayerHolder;
-import l2j.gameserver.ThreadPoolManager;
 
 public class ModTimerHolder
 {
@@ -22,8 +22,8 @@ public class ModTimerHolder
 	
 	public ModTimerHolder(AbstractMod mod, String name, NpcHolder npc, PlayerHolder player, long time, boolean repeating)
 	{
-		this.modName = mod.getClass().getSimpleName();
-		this.timerName = name;
+		modName = mod.getClass().getSimpleName();
+		timerName = name;
 		this.npc = npc;
 		this.player = player;
 		
@@ -82,20 +82,20 @@ public class ModTimerHolder
 	
 	/**
 	 * public method to compare if this timer matches with the key attributes passed.
-	 * @param mod : Mod instance to which the timer is attached
-	 * @param timerName : Name of the timer
-	 * @param npc : Npc instance attached to the desired timer (null if no npc attached)
-	 * @param player : Player instance attached to the desired timer (null if no player attached)
-	 * @return boolean
+	 * @param  mod       : Mod instance to which the timer is attached
+	 * @param  timerName : Name of the timer
+	 * @param  npc       : Npc instance attached to the desired timer (null if no npc attached)
+	 * @param  player    : Player instance attached to the desired timer (null if no player attached)
+	 * @return           boolean
 	 */
 	public final boolean equals(String timerName, NpcHolder npc, PlayerHolder player)
 	{
-		if (timerName == null || !this.timerName.equals(timerName))
+		if ((timerName == null) || !this.timerName.equals(timerName))
 		{
 			return false;
 		}
 		
-		return this.npc == npc && this.player == player;
+		return (this.npc == npc) && (this.player == player);
 	}
 	
 	public String getName()

@@ -5,6 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import l2j.Config;
+import l2j.gameserver.model.actor.L2Attackable;
+import l2j.gameserver.model.actor.instance.L2GrandBossInstance;
+import l2j.gameserver.model.actor.instance.L2MonsterInstance;
+import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.instance.L2RaidBossInstance;
+import l2j.gameserver.model.actor.instance.enums.TeamType;
+import l2j.gameserver.model.holder.ItemHolder;
+import l2j.gameserver.model.skills.stats.enums.StatsType;
+import l2j.util.Rnd;
 import main.data.ConfigData;
 import main.data.ObjectData;
 import main.engine.events.daily.AbstractEvent;
@@ -18,16 +28,6 @@ import main.holders.objects.PlayerHolder;
 import main.instances.NpcDropsInstance;
 import main.instances.NpcExpInstance;
 import main.util.Util;
-import l2j.Config;
-import l2j.gameserver.model.actor.L2Attackable;
-import l2j.gameserver.model.actor.instance.L2GrandBossInstance;
-import l2j.gameserver.model.actor.instance.L2MonsterInstance;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.actor.instance.L2RaidBossInstance;
-import l2j.gameserver.model.actor.instance.enums.TeamType;
-import l2j.gameserver.model.holder.ItemHolder;
-import l2j.gameserver.model.skills.stats.enums.StatsType;
-import l2j.util.Rnd;
 
 /**
  * @author fissban
@@ -83,7 +83,7 @@ public class Champions extends AbstractEvent
 				//
 				break;
 			case END:
-				ObjectData.getAll(NpcHolder.class).stream().filter(npc -> npc.getInstance() != null && npc.isChampion()).forEach(npc ->
+				ObjectData.getAll(NpcHolder.class).stream().filter(npc -> (npc.getInstance() != null) && npc.isChampion()).forEach(npc ->
 				{
 					// It becomes the npc to its original state (without team)
 					npc.setTeam(TeamType.NONE);
@@ -132,7 +132,7 @@ public class Champions extends AbstractEvent
 			CHAMPIONS_INFO_STATS.get(npc.getChampionType()).rewards.stream().filter(rewards -> Rnd.get(100) <= rewards.getRewardChance()).forEach(rewards ->
 			{
 				// Check if enable autolot or drop reward
-				if (victim.getInstance().isRaid() && Config.AUTO_LOOT_RAIDS || !victim.getInstance().isRaid() && Config.AUTO_LOOT)
+				if ((victim.getInstance().isRaid() && Config.AUTO_LOOT_RAIDS) || (!victim.getInstance().isRaid() && Config.AUTO_LOOT))
 				{
 					killer.getInstance().getActingPlayer().doAutoLoot((L2Attackable) victim.getInstance(), new ItemHolder(rewards.getRewardId(), rewards.getRewardCount()));
 				}
@@ -208,7 +208,7 @@ public class Champions extends AbstractEvent
 	 * <li>L2RaidBossInstance -> NO!
 	 * <li>L2GrandBossInstance -> NO!
 	 * <li>L2MonsterInstance -> SI!
-	 * @param obj
+	 * @param  obj
 	 * @return
 	 */
 	private static boolean checkNpcType(NpcHolder obj)

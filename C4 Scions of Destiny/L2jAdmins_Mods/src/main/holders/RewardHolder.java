@@ -15,9 +15,9 @@ public class RewardHolder
 	 */
 	public RewardHolder(int rewardId, int rewardCount)
 	{
-		this.id = rewardId;
-		this.count = rewardCount;
-		this.chance = 100;
+		id = rewardId;
+		count = rewardCount;
+		chance = 100;
 	}
 	
 	/**
@@ -27,9 +27,9 @@ public class RewardHolder
 	 */
 	public RewardHolder(int rewardId, int rewardCount, int rewardChance)
 	{
-		this.id = rewardId;
-		this.count = rewardCount;
-		this.chance = rewardChance;
+		id = rewardId;
+		count = rewardCount;
+		chance = rewardChance;
 	}
 	
 	public int getRewardId()

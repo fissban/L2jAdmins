@@ -158,7 +158,7 @@ public abstract class AbstractCooperative extends AbstractMod
 								ph.getInstance().getPet().unSummon();
 							}
 							// Remove the player from the Olympiad.
-							if (OlympiadManager.getInstance().isRegistered(ph.getInstance()) || ph.getInstance().getOlympiadGameId() != -1)
+							if (OlympiadManager.getInstance().isRegistered(ph.getInstance()) || (ph.getInstance().getOlympiadGameId() != -1))
 							{
 								OlympiadManager.getInstance().removeDisconnectedCompetitor(ph.getInstance());
 							}
@@ -220,10 +220,10 @@ public abstract class AbstractCooperative extends AbstractMod
 						
 						time++;
 						
-						announceFinishEvent(ConfigData.COOPERATIVE_EVENT_DURATION * 60 - time);
+						announceFinishEvent((ConfigData.COOPERATIVE_EVENT_DURATION * 60) - time);
 						
 						// How long the event will last in minutes
-						if (time >= ConfigData.COOPERATIVE_EVENT_DURATION * 60)
+						if (time >= (ConfigData.COOPERATIVE_EVENT_DURATION * 60))
 						{
 							setEventState(EventState.END);
 							break;
@@ -657,7 +657,7 @@ public abstract class AbstractCooperative extends AbstractMod
 		if (deathTasks.containsKey(ph.getObjectId()))
 		{
 			var task = deathTasks.get(ph.getObjectId());
-			if (task != null && !task.isDone())
+			if ((task != null) && !task.isDone())
 			{
 				task.cancel(true);
 				deathTasks.remove(ph.getObjectId());
@@ -687,7 +687,7 @@ public abstract class AbstractCooperative extends AbstractMod
 		// Canceled all the "revive" tasks.
 		for (var task : deathTasks.values())
 		{
-			if (task != null && !task.isDone())
+			if ((task != null) && !task.isDone())
 			{
 				task.cancel(true);
 				task = null;

@@ -111,7 +111,7 @@ public class CaptureTheFlag extends AbstractCooperative
 			}
 			
 			// If the party exceeds the limit of members we start the creation of a new one
-			if (leader != null && leader.getInstance().getParty() != null && leader.getInstance().getParty().getMemberCount() >= 7)
+			if ((leader != null) && (leader.getInstance().getParty() != null) && (leader.getInstance().getParty().getMemberCount() >= 7))
 			{
 				switch (ph.getTeam())
 				{
@@ -357,7 +357,7 @@ public class CaptureTheFlag extends AbstractCooperative
 			var ph = (PlayerHolder) player;
 			var flag = ph.getInstance().getInventory().getPaperdollItem(ParpedollType.RHAND);
 			
-			if (flag == null && ph.hasFlag())
+			if ((flag == null) && ph.hasFlag())
 			{
 				// drop flag
 				unequipFlag(ph, true);

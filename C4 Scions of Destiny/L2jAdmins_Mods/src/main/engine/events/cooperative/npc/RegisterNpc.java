@@ -2,6 +2,7 @@ package main.engine.events.cooperative.npc;
 
 import java.util.StringTokenizer;
 
+import l2j.gameserver.model.actor.L2Npc;
 import main.data.ConfigData;
 import main.engine.AbstractMod;
 import main.engine.events.cooperative.EventCooperativeManager;
@@ -14,7 +15,6 @@ import main.util.builders.html.HtmlBuilder;
 import main.util.builders.html.HtmlBuilder.HtmlType;
 import main.util.builders.html.L2UI;
 import main.util.builders.html.L2UI_CH3;
-import l2j.gameserver.model.actor.L2Npc;
 
 /**
  * Class responsible for managing the actions of the NPC responsible for the votes and registrations to cooperative type events.
@@ -211,7 +211,7 @@ public class RegisterNpc extends AbstractMod
 			{
 				var eventName = e.getClass().getSimpleName();
 				
-				hb.append("<table width=280", cont % 2 == 0 ? " bgcolor=000000>" : ">");
+				hb.append("<table width=280", (cont % 2) == 0 ? " bgcolor=000000>" : ">");
 				hb.append("<tr>");
 				hb.append("<td width=130 align=center>", Html.fontColor("LEVEL", eventName), "</td>");
 				hb.append("<td width=75 align=center>", Html.fontColor("LEVEL", "Votes : "), e.getVotes(), "</td>");

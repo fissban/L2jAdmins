@@ -1,8 +1,8 @@
 package main.holders;
 
-import main.enums.BuffType;
 import l2j.gameserver.data.SkillData;
 import l2j.gameserver.model.skills.Skill;
+import main.enums.BuffType;
 
 /**
  * Clase usada en NpcBufferScheme

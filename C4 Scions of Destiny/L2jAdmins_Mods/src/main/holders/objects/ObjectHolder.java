@@ -1,8 +1,8 @@
 package main.holders.objects;
 
-import main.data.ObjectData;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import main.data.ObjectData;
 
 /**
  * @author fissban
@@ -50,7 +50,7 @@ public class ObjectHolder
 		// remove from old world
 		removeDifferentWorldObjects();
 		
-		if (this instanceof PlayerHolder && ((L2PcInstance) getInstance()).getPet() != null)
+		if ((this instanceof PlayerHolder) && (((L2PcInstance) getInstance()).getPet() != null))
 		{
 			ObjectData.get(ObjectHolder.class, ((L2PcInstance) getInstance()).getPet()).setWorldId(id);
 		}

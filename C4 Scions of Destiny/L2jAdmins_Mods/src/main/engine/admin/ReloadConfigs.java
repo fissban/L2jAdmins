@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import l2j.gameserver.data.MapRegionData;
 import main.data.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.PlayerHolder;
-import l2j.gameserver.data.MapRegionData;
 
 /**
  * @author fissban

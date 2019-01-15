@@ -2,6 +2,7 @@ package main.engine.admin;
 
 import java.util.StringTokenizer;
 
+import l2j.gameserver.network.external.client.Say2.SayType;
 import main.data.ConfigData;
 import main.data.WorldData;
 import main.engine.AbstractMod;
@@ -11,7 +12,6 @@ import main.util.UtilMessage;
 import main.util.builders.html.Html;
 import main.util.builders.html.HtmlBuilder;
 import main.util.builders.html.HtmlBuilder.HtmlType;
-import l2j.gameserver.network.external.client.Say2.SayType;
 import main.util.builders.html.L2UI_CH3;
 
 /**

@@ -188,7 +188,7 @@ public class NpcClassMaster extends AbstractEvent
 				var menu = new HtmlBuilder();
 				for (var cid : ClassId.values())
 				{
-					if (validateClassId(currentClassId, cid) && cid.level() == level)
+					if (validateClassId(currentClassId, cid) && (cid.level() == level))
 					{
 						String className = cid.getName();
 						menu.append("<img src=L2UI_CH3.br_bar2_mp width=204 height=1>");
@@ -291,7 +291,7 @@ public class NpcClassMaster extends AbstractEvent
 	 */
 	private static final boolean validateClassId(ClassId oldCID, ClassId newCID)
 	{
-		if (newCID == null || newCID.getRace() == null)
+		if ((newCID == null) || (newCID.getRace() == null))
 		{
 			return false;
 		}
@@ -308,7 +308,7 @@ public class NpcClassMaster extends AbstractEvent
 	{
 		level--;
 		var sb = new StringBuilder();
-		if (ITEM_LIST.get(level).getPriceItemId() != 0 && ITEM_LIST.get(level).getPriceItemCount() != 0)
+		if ((ITEM_LIST.get(level).getPriceItemId() != 0) && (ITEM_LIST.get(level).getPriceItemCount() != 0))
 		{
 			var count = ITEM_LIST.get(level).getPriceItemCount();
 			var itemName = ItemData.getInstance().getTemplate(ITEM_LIST.get(level).getPriceItemId()).getName();
@@ -342,7 +342,7 @@ public class NpcClassMaster extends AbstractEvent
 		// Weight/Inventory check
 		if (ITEM_LIST.get(newJobLevel).getRewardItemId() != 0)
 		{
-			if (player.getWeightPenalty() >= 3 || player.getInventoryLimit() * 0.8 <= player.getInventory().getSize())
+			if ((player.getWeightPenalty() >= 3) || ((player.getInventoryLimit() * 0.8) <= player.getInventory().getSize()))
 			{
 				player.sendPacket(SystemMessage.INVENTORY_LESS_THAN_80_PERCENT);
 				return false;
@@ -377,7 +377,7 @@ public class NpcClassMaster extends AbstractEvent
 		
 		player.broadcastUserInfo();
 		
-		if (player.getClassId().level() == 1 && player.getLevel() >= 40 || player.getClassId().level() == 2 && player.getLevel() >= 76)
+		if (((player.getClassId().level() == 1) && (player.getLevel() >= 40)) || ((player.getClassId().level() == 2) && (player.getLevel() >= 76)))
 		{
 			showQuestionMark(player);
 		}

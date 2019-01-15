@@ -174,7 +174,7 @@ public class FavoriteCommunityBoard extends AbstractMod
 	@Override
 	public void onKill(CharacterHolder killer, CharacterHolder victim, boolean isPet)
 	{
-		if (!Util.areObjectType(L2MonsterInstance.class, victim) || killer.getActingPlayer() == null)
+		if (!Util.areObjectType(L2MonsterInstance.class, victim) || (killer.getActingPlayer() == null))
 		{
 			return;
 		}
@@ -237,7 +237,7 @@ public class FavoriteCommunityBoard extends AbstractMod
 			return hb.toString();
 		}
 		// Check that the character is at the highest level.
-		if (ph.getInstance().getLevel() < ExperienceData.getInstance().getMaxLevel() - 1)
+		if (ph.getInstance().getLevel() < (ExperienceData.getInstance().getMaxLevel() - 1))
 		{
 			hb.append("<br><br><br><br>", Html.fontColor("LEVEL", "You have not yet reached the maximum level!<br>"));
 			hb.append("Remember that the level to be reborn is ", ExperienceData.getInstance().getMaxLevel() - 1);

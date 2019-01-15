@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import main.holders.objects.NpcHolder;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.network.AServerPacket;
+import main.holders.objects.NpcHolder;
 
 /**
  * OriginalPacket -> PartyMemberPosition

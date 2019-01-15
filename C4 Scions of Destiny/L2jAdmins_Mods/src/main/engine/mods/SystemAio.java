@@ -4,6 +4,13 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
 
+import l2j.gameserver.data.MapRegionData.TeleportWhereType;
+import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.instance.L2TeleporterInstance;
+import l2j.gameserver.model.skills.stats.enums.StatsType;
+import l2j.gameserver.model.zone.Zone;
+import l2j.gameserver.model.zone.enums.ZoneType;
+import l2j.gameserver.network.external.client.Say2.SayType;
 import main.data.ConfigData;
 import main.data.ObjectData;
 import main.data.SkillInfoData;
@@ -17,13 +24,6 @@ import main.util.UtilMessage;
 import main.util.builders.html.Html;
 import main.util.builders.html.HtmlBuilder;
 import main.util.builders.html.HtmlBuilder.HtmlType;
-import l2j.gameserver.data.MapRegionData.TeleportWhereType;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.actor.instance.L2TeleporterInstance;
-import l2j.gameserver.model.skills.stats.enums.StatsType;
-import l2j.gameserver.model.zone.Zone;
-import l2j.gameserver.model.zone.enums.ZoneType;
-import l2j.gameserver.network.external.client.Say2.SayType;
 
 /**
  * @author fissban
@@ -90,7 +90,7 @@ public class SystemAio extends AbstractMod
 		{
 			case "checkZone":
 			{
-				if (ph.getInstance() != null && !ph.getInstance().isInsideZone(ZoneType.PEACE))
+				if ((ph.getInstance() != null) && !ph.getInstance().isInsideZone(ZoneType.PEACE))
 				{
 					ph.getInstance().teleToLocation(TeleportWhereType.TOWN);
 				}
@@ -279,7 +279,7 @@ public class SystemAio extends AbstractMod
 				continue;
 			}
 			// max
-			if (count >= searchPage + MAX_PER_PAGE)
+			if (count >= (searchPage + MAX_PER_PAGE))
 			{
 				continue;
 			}
@@ -300,7 +300,7 @@ public class SystemAio extends AbstractMod
 		var currentPage = 1;
 		for (int i = 0; i < ConfigData.AIO_LIST_SKILLS.size(); i++)
 		{
-			if (i % MAX_PER_PAGE == 0)
+			if ((i % MAX_PER_PAGE) == 0)
 			{
 				hb.append("<td width=18 align=center><a action=\"bypass -h Engine SystemAio aioInfo ", currentPage, "\">" + currentPage, "</a></td>");
 				currentPage++;
@@ -389,12 +389,12 @@ public class SystemAio extends AbstractMod
 					continue;
 				}
 				// max
-				if (count >= searchPage + MAX_PER_PAGE)
+				if (count >= (searchPage + MAX_PER_PAGE))
 				{
 					continue;
 				}
 				
-				hb.append("<table", count % 2 == 0 ? " bgcolor=000000>" : ">");
+				hb.append("<table", (count % 2) == 0 ? " bgcolor=000000>" : ">");
 				hb.append("<tr>");
 				hb.append("<td width=64>", ph.getName(), "</td><td width=200>", ph.getAioExpireDateFormat(), "</td>");
 				hb.append("</tr>");
@@ -412,7 +412,7 @@ public class SystemAio extends AbstractMod
 		
 		for (int i = 0; i < countAio; i++)
 		{
-			if (i % MAX_PER_PAGE == 0)
+			if ((i % MAX_PER_PAGE) == 0)
 			{
 				hb.append("<td width=18 align=center><a action=\"bypass -h Engine SystemAio allAio ", currentPage, "\">", currentPage, "</a></td>");
 				currentPage++;

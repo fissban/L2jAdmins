@@ -110,7 +110,7 @@ public class ObjectData
 	 */
 	public static void addObject(L2Object obj)
 	{
-		if (objects.containsKey(obj.getObjectId()) && obj instanceof L2PcInstance)
+		if (objects.containsKey(obj.getObjectId()) && (obj instanceof L2PcInstance))
 		{
 			((PlayerHolder) objects.get(obj.getObjectId())).setInstance((L2PcInstance) obj);
 		}

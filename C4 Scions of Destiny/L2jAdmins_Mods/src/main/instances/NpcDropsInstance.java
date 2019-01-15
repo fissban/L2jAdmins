@@ -3,8 +3,6 @@ package main.instances;
 import java.util.HashMap;
 import java.util.Map;
 
-import main.enums.ItemDropType;
-import main.holders.DropBonusHolder;
 import l2j.Config;
 import l2j.gameserver.instancemanager.sevensigns.SevenSignsManager;
 import l2j.gameserver.model.actor.L2Attackable;
@@ -17,6 +15,8 @@ import l2j.gameserver.model.holder.ItemHolder;
 import l2j.gameserver.model.itemcontainer.Inventory;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.util.Rnd;
+import main.enums.ItemDropType;
+import main.holders.DropBonusHolder;
 
 /**
  * @author fissban
@@ -45,7 +45,7 @@ public class NpcDropsInstance
 	{
 		for (DropBonusHolder holder : dropsSettings.values())
 		{
-			if (holder.getAmountBonus() > 1.0 || holder.getChanceBonus() > 1.0)
+			if ((holder.getAmountBonus() > 1.0) || (holder.getChanceBonus() > 1.0))
 			{
 				return true;
 			}
@@ -97,7 +97,7 @@ public class NpcDropsInstance
 				if (item != null)
 				{
 					// Check if the autoLoot mode is active
-					if (!player.isFullAdenaInventory(item.getId()) && (npc.isRaid() && Config.AUTO_LOOT_RAIDS || Config.AUTO_LOOT && !npc.isRaid()))
+					if (!player.isFullAdenaInventory(item.getId()) && ((npc.isRaid() && Config.AUTO_LOOT_RAIDS) || (Config.AUTO_LOOT && !npc.isRaid())))
 					{
 						player.doAutoLoot(npc, item); // Give this or these Item(s) to the L2PcInstance that has killed the L2Attackable
 					}
@@ -122,11 +122,11 @@ public class NpcDropsInstance
 	/**
 	 * Calculates quantity of items for specific drop CATEGORY according to current situation <br>
 	 * Only a max of ONE item from a category is allowed to be dropped.
-	 * @param drop The L2DropData count is being calculated for
-	 * @param lastAttacker The L2PcInstance that has killed the L2Attackable
-	 * @param categoryDrops
-	 * @param deepBlueDrop Factor to divide the drop chance
-	 * @param levelModifier level modifier in %'s (will be subtracted from drop chance)
+	 * @param  drop          The L2DropData count is being calculated for
+	 * @param  lastAttacker  The L2PcInstance that has killed the L2Attackable
+	 * @param  categoryDrops
+	 * @param  deepBlueDrop  Factor to divide the drop chance
+	 * @param  levelModifier level modifier in %'s (will be subtracted from drop chance)
 	 * @return
 	 */
 	private ItemHolder calculateCategoryDrop(L2Attackable npc, L2PcInstance lastAttacker, DropCategory categoryDrops, int levelModifier)
@@ -148,7 +148,7 @@ public class NpcDropsInstance
 			int deepBlueDrop = levelModifier > 0 ? 3 : 1;
 			
 			// Check if we should apply our maths so deep blue mobs will not drop that easy
-			categoryDropChance = (categoryDropChance - categoryDropChance * levelModifier / 100) / deepBlueDrop;
+			categoryDropChance = (categoryDropChance - ((categoryDropChance * levelModifier) / 100)) / deepBlueDrop;
 		}
 		
 		// Applies Drop rates
@@ -178,11 +178,11 @@ public class NpcDropsInstance
 	
 	/**
 	 * Calculates quantity of items for specific drop according to current situation <br>
-	 * @param drop The L2DropData count is being calculated for
-	 * @param lastAttacker The L2PcInstance that has killed the L2Attackable
-	 * @param deepBlueDrop Factor to divide the drop chance
-	 * @param levelModifier level modifier in %'s (will be subtracted from drop chance)
-	 * @param isSweep
+	 * @param  drop          The L2DropData count is being calculated for
+	 * @param  lastAttacker  The L2PcInstance that has killed the L2Attackable
+	 * @param  deepBlueDrop  Factor to divide the drop chance
+	 * @param  levelModifier level modifier in %'s (will be subtracted from drop chance)
+	 * @param  isSweep
 	 * @return
 	 */
 	private ItemHolder calculateSweepDrop(L2Attackable npc, L2PcInstance lastAttacker, DropInstance drop, int levelModifier, boolean isSweep)
@@ -212,7 +212,7 @@ public class NpcDropsInstance
 			}
 			
 			// Check if we should apply our maths so deep blue mobs will not drop that easy
-			dropChance = (drop.getChance() - drop.getChance() * levelModifier / 100) / deepBlueDrop;
+			dropChance = (drop.getChance() - ((drop.getChance() * levelModifier) / 100)) / deepBlueDrop;
 		}
 		
 		// Define a chance to drop depending on the defined configs.
@@ -242,9 +242,9 @@ public class NpcDropsInstance
 	
 	/**
 	 * We define the number of items to be obtained from what defined within our configs files.
-	 * @param drop
-	 * @param itemChance
-	 * @param isSweep
+	 * @param  drop
+	 * @param  itemChance
+	 * @param  isSweep
 	 * @return
 	 */
 	private int getAmountDropItems(L2Attackable npc, DropInstance drop, boolean isSweep)
@@ -321,7 +321,7 @@ public class NpcDropsInstance
 	
 	/**
 	 * We define a chance to drop depending on the defined configs.
-	 * @param drop
+	 * @param  drop
 	 * @return
 	 */
 	private static int getChanceDropItems(L2Attackable npc, DropInstance drop)
@@ -346,7 +346,7 @@ public class NpcDropsInstance
 	
 	/**
 	 * Calculates the level modifier for drop<br>
-	 * @param lastAttacker The L2PcInstance that has killed the L2Attackable
+	 * @param  lastAttacker The L2PcInstance that has killed the L2Attackable
 	 * @return
 	 */
 	private static int calculateLevelModifierForDrop(L2Attackable npc, L2PcInstance lastAttacker)
@@ -356,11 +356,11 @@ public class NpcDropsInstance
 			int highestLevel = lastAttacker.getLevel();
 			
 			// Check to prevent very high level player to nearly kill mob and let low level player do the last hit.
-			if (npc.getAttackByList() != null && !npc.getAttackByList().isEmpty())
+			if ((npc.getAttackByList() != null) && !npc.getAttackByList().isEmpty())
 			{
 				for (L2Character atkChar : npc.getAttackByList())
 				{
-					if (atkChar != null && atkChar.getLevel() > highestLevel)
+					if ((atkChar != null) && (atkChar.getLevel() > highestLevel))
 					{
 						highestLevel = atkChar.getLevel();
 					}
@@ -368,7 +368,7 @@ public class NpcDropsInstance
 			}
 			
 			// According to official data (Prima), deep blue mobs are 9 or more levels below players
-			if (highestLevel - 9 >= npc.getLevel())
+			if ((highestLevel - 9) >= npc.getLevel())
 			{
 				return (highestLevel - (npc.getLevel() + 8)) * 9;
 			}

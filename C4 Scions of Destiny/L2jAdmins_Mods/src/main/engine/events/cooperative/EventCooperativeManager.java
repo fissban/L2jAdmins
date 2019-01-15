@@ -7,15 +7,15 @@ import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
+import l2j.gameserver.ThreadPoolManager;
+import l2j.gameserver.model.world.L2World;
+import l2j.gameserver.util.Broadcast;
 import main.data.ConfigData;
 import main.engine.events.cooperative.types.AllVsAll;
 import main.engine.events.cooperative.types.CaptureTheFlag;
 import main.engine.events.cooperative.types.Survive;
 import main.engine.events.cooperative.types.TeamVsTeam;
 import main.holders.objects.PlayerHolder;
-import l2j.gameserver.ThreadPoolManager;
-import l2j.gameserver.model.world.L2World;
-import l2j.gameserver.util.Broadcast;
 
 /**
  * @author fissban
@@ -132,7 +132,7 @@ public class EventCooperativeManager
 					if (getRegisterPlayersCount() < ConfigData.COOPERATIVE_MIN_PLAYERS)
 					{
 						Broadcast.toAllOnlinePlayers("Event Canceled due to lack of participants!");
-						Broadcast.toAllOnlinePlayers("Next event in " + time / 60 + " minutes!");
+						Broadcast.toAllOnlinePlayers("Next event in " + (time / 60) + " minutes!");
 						
 						clear();
 						break;
@@ -200,7 +200,7 @@ public class EventCooperativeManager
 	 * <li>It is checked that all registered players are online.</li>
 	 * <li>It is checked that they can register.</li>
 	 * <li>It is checked that it is no longer registered.</li>
-	 * @param ph
+	 * @param  ph
 	 * @return
 	 */
 	public static boolean register(PlayerHolder ph)
@@ -237,7 +237,7 @@ public class EventCooperativeManager
 	 * Check if a player is already registered
 	 * <li>Check that all registered players are online.</li>
 	 * <li>Check if another character is already registered with the character's ip</li>
-	 * @param ph
+	 * @param  ph
 	 * @return
 	 */
 	public static boolean isRegisterPlayer(PlayerHolder ph)
@@ -256,8 +256,8 @@ public class EventCooperativeManager
 	 * Check if a character's ip is already registered to the event.
 	 * <li>We check that all registered players are online.</li>
 	 * <li>Check the player's ip with the others registered.</li>
-	 * @param ph
-	 * @param removeOffline -> remove offline players from {@link #registerPlayers}
+	 * @param  ph
+	 * @param  removeOffline -> remove offline players from {@link #registerPlayers}
 	 * @return
 	 */
 	public static boolean isRegisterPlayerIp(PlayerHolder ph, boolean removeOffline)
@@ -318,7 +318,7 @@ public class EventCooperativeManager
 	
 	/**
 	 * Check if the character votes for an event.
-	 * @param ph
+	 * @param  ph
 	 * @return
 	 */
 	public static boolean hasVote(PlayerHolder ph)

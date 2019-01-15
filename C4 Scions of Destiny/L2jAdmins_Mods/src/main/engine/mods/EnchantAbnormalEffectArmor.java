@@ -1,16 +1,16 @@
 package main.engine.mods;
 
+import l2j.gameserver.data.ArmorSetsData;
+import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.items.enums.ParpedollType;
+import l2j.gameserver.model.items.instance.ItemInstance;
+import l2j.gameserver.network.external.server.MagicSkillUse;
 import main.data.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.NpcHolder;
 import main.holders.objects.PlayerHolder;
 import main.util.Util;
-import l2j.gameserver.data.ArmorSetsData;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.items.enums.ParpedollType;
-import l2j.gameserver.model.items.instance.ItemInstance;
-import l2j.gameserver.network.external.server.MagicSkillUse;
 
 /**
  * Class responsible for giving the character a "custom" effect by having all their set enchanted to xxx
@@ -101,8 +101,8 @@ public class EnchantAbnormalEffectArmor extends AbstractMod
 	 * It checks the character:<br>
 	 * <li>Keep all equipment + ENCHANT_EFFECT_LVL except the coat and jewelry</li>
 	 * <li>You have equipped a complete set according to "ArmorSetsTable"</li> <br>
-	 * @param ph
-	 * @param paperdoll
+	 * @param  ph
+	 * @param  paperdoll
 	 * @return
 	 */
 	private boolean checkItems(PlayerHolder ph)
@@ -137,25 +137,25 @@ public class EnchantAbnormalEffectArmor extends AbstractMod
 		ItemInstance item = null;
 		
 		item = inv.getPaperdollItem(ParpedollType.LEGS);
-		if (item == null || item.getEnchantLevel() < ConfigData.ENCHANT_EFFECT_LVL)
+		if ((item == null) || (item.getEnchantLevel() < ConfigData.ENCHANT_EFFECT_LVL))
 		{
 			return false;
 		}
 		
 		item = inv.getPaperdollItem(ParpedollType.HEAD);
-		if (item == null || item.getEnchantLevel() < ConfigData.ENCHANT_EFFECT_LVL)
+		if ((item == null) || (item.getEnchantLevel() < ConfigData.ENCHANT_EFFECT_LVL))
 		{
 			return false;
 		}
 		
 		item = inv.getPaperdollItem(ParpedollType.GLOVES);
-		if (item == null || item.getEnchantLevel() < ConfigData.ENCHANT_EFFECT_LVL)
+		if ((item == null) || (item.getEnchantLevel() < ConfigData.ENCHANT_EFFECT_LVL))
 		{
 			return false;
 		}
 		
 		item = inv.getPaperdollItem(ParpedollType.FEET);
-		if (item == null || item.getEnchantLevel() < ConfigData.ENCHANT_EFFECT_LVL)
+		if ((item == null) || (item.getEnchantLevel() < ConfigData.ENCHANT_EFFECT_LVL))
 		{
 			return false;
 		}

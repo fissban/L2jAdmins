@@ -1,5 +1,7 @@
 package main.engine.npc;
 
+import l2j.gameserver.model.actor.L2Npc;
+import l2j.gameserver.network.external.client.Say2.SayType;
 import main.data.ConfigData;
 import main.engine.AbstractMod;
 import main.engine.mods.VoteReward;
@@ -14,8 +16,6 @@ import main.util.builders.html.HtmlBuilder;
 import main.util.builders.html.HtmlBuilder.HtmlType;
 import main.util.builders.html.L2UI;
 import main.util.builders.html.L2UI_CH3;
-import l2j.gameserver.model.actor.L2Npc;
-import l2j.gameserver.network.external.client.Say2.SayType;
 
 /**
  * @author fissban
@@ -104,7 +104,7 @@ public class NpcVoteRewardTopzone extends AbstractMod
 			var lastVote = Long.parseLong(vote);
 			
 			// check time
-			if (lastVote + ConfigData.INDIVIDUAL_VOTE_TIME_CAN_VOTE * 3600000 > System.currentTimeMillis())
+			if ((lastVote + (ConfigData.INDIVIDUAL_VOTE_TIME_CAN_VOTE * 3600000)) > System.currentTimeMillis())
 			{
 				return false;
 			}

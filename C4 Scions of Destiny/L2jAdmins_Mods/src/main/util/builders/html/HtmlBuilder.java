@@ -32,7 +32,7 @@ public class HtmlBuilder
 	 */
 	public HtmlBuilder(HtmlType type)
 	{
-		this.html = new StringBuilder(type.getMaxValue());
+		html = new StringBuilder(type.getMaxValue());
 		this.type = type;
 	}
 	
@@ -41,8 +41,8 @@ public class HtmlBuilder
 	 */
 	public HtmlBuilder()
 	{
-		this.html = new StringBuilder();
-		this.type = HtmlType.HTML;
+		html = new StringBuilder();
+		type = HtmlType.HTML;
 	}
 	
 	/**

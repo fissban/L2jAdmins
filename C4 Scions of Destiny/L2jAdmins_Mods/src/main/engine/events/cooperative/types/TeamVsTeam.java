@@ -194,7 +194,7 @@ public class TeamVsTeam extends AbstractCooperative
 			}
 			
 			// If the party exceeds the limit of members we start the creation of a new one
-			if (leader != null && leader.getInstance().getParty() != null && leader.getInstance().getParty().getMemberCount() >= 7)
+			if ((leader != null) && (leader.getInstance().getParty() != null) && (leader.getInstance().getParty().getMemberCount() >= 7))
 			{
 				switch (ph.getTeam())
 				{

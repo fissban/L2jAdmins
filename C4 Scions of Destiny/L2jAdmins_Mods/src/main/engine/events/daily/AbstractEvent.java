@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.StringTokenizer;
 import java.util.concurrent.Future;
 
+import l2j.gameserver.ThreadPoolManager;
+import l2j.gameserver.util.Broadcast;
 import main.EngineModsManager;
 import main.engine.AbstractMod;
 import main.enums.WeekDayType;
-import l2j.gameserver.ThreadPoolManager;
-import l2j.gameserver.util.Broadcast;
 
 /**
  * @author fissban
@@ -61,13 +61,13 @@ public class AbstractEvent extends AbstractMod
 	 * The mod is registered to run only on certain days of the week.<br>
 	 * one thread start and one thread end will be created for each day us to add to the list.
 	 * @param day <br>
-	 *            <li>{@link WeekDayType#SUNDAY}</li>
-	 *            <li>{@link WeekDayType#MONDAY}</li>
-	 *            <li>{@link WeekDayType#TUESDAY}</li>
-	 *            <li>{@link WeekDayType#WEDNESDAY}</li>
-	 *            <li>{@link WeekDayType#THURSDAY}</li>
-	 *            <li>{@link WeekDayType#FRIDAY}</li>
-	 *            <li>{@link WeekDayType#SATURDAY}</li>
+	 *                <li>{@link WeekDayType#SUNDAY}</li>
+	 *                <li>{@link WeekDayType#MONDAY}</li>
+	 *                <li>{@link WeekDayType#TUESDAY}</li>
+	 *                <li>{@link WeekDayType#WEDNESDAY}</li>
+	 *                <li>{@link WeekDayType#THURSDAY}</li>
+	 *                <li>{@link WeekDayType#FRIDAY}</li>
+	 *                <li>{@link WeekDayType#SATURDAY}</li>
 	 */
 	public void registerEvent(boolean config, List<WeekDayType> day)
 	{
@@ -82,13 +82,13 @@ public class AbstractEvent extends AbstractMod
 	 * The mod is registered to run only on certain days of the week.<br>
 	 * one thread start and one thread end will be created for each day us to add to the list.
 	 * @param day <br>
-	 *            <li>{@link WeekDayType#SUNDAY}</li>
-	 *            <li>{@link WeekDayType#MONDAY}</li>
-	 *            <li>{@link WeekDayType#TUESDAY}</li>
-	 *            <li>{@link WeekDayType#WEDNESDAY}</li>
-	 *            <li>{@link WeekDayType#THURSDAY}</li>
-	 *            <li>{@link WeekDayType#FRIDAY}</li>
-	 *            <li>{@link WeekDayType#SATURDAY}</li>
+	 *                <li>{@link WeekDayType#SUNDAY}</li>
+	 *                <li>{@link WeekDayType#MONDAY}</li>
+	 *                <li>{@link WeekDayType#TUESDAY}</li>
+	 *                <li>{@link WeekDayType#WEDNESDAY}</li>
+	 *                <li>{@link WeekDayType#THURSDAY}</li>
+	 *                <li>{@link WeekDayType#FRIDAY}</li>
+	 *                <li>{@link WeekDayType#SATURDAY}</li>
 	 */
 	public void registerEvent(boolean config, String start, String end)
 	{
@@ -104,13 +104,13 @@ public class AbstractEvent extends AbstractMod
 	 * The mod is registered to run only on certain days of the week.<br>
 	 * one thread start and one thread end will be created for each day us to add to the list.
 	 * @param day <br>
-	 *            <li>{@link WeekDayType#SUNDAY}</li>
-	 *            <li>{@link WeekDayType#MONDAY}</li>
-	 *            <li>{@link WeekDayType#TUESDAY}</li>
-	 *            <li>{@link WeekDayType#WEDNESDAY}</li>
-	 *            <li>{@link WeekDayType#THURSDAY}</li>
-	 *            <li>{@link WeekDayType#FRIDAY}</li>
-	 *            <li>{@link WeekDayType#SATURDAY}</li>
+	 *                <li>{@link WeekDayType#SUNDAY}</li>
+	 *                <li>{@link WeekDayType#MONDAY}</li>
+	 *                <li>{@link WeekDayType#TUESDAY}</li>
+	 *                <li>{@link WeekDayType#WEDNESDAY}</li>
+	 *                <li>{@link WeekDayType#THURSDAY}</li>
+	 *                <li>{@link WeekDayType#FRIDAY}</li>
+	 *                <li>{@link WeekDayType#SATURDAY}</li>
 	 */
 	private void startEvent(WeekDayType day)
 	{
@@ -160,7 +160,7 @@ public class AbstractEvent extends AbstractMod
 	
 	/**
 	 * @param start : date DD-MM-AAAA
-	 * @param end : date DD-MM-AAAA
+	 * @param end   : date DD-MM-AAAA
 	 */
 	public void startEvent(String start, String end)
 	{
@@ -206,7 +206,7 @@ public class AbstractEvent extends AbstractMod
 			
 			// one thread where we indicate when to start the event and the actions to take is created.
 			var time = 0L;
-			if (timeStart.getTimeInMillis() - hoy > 0)
+			if ((timeStart.getTimeInMillis() - hoy) > 0)
 			{
 				time = timeStart.getTimeInMillis() - hoy;
 			}

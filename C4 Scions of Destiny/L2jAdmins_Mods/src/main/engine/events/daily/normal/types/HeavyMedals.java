@@ -49,8 +49,14 @@ public class HeavyMedals extends AbstractEvent
 	private final static String HTML_PATH = "data/html/engine/events/heavymedals/";
 	// Win chance
 	private final static byte WIN_CHANCE = 50;
-
-	private final static int[] MEDALS = { 5, 10, 20, 40 };
+	
+	private final static int[] MEDALS =
+	{
+		5,
+		10,
+		20,
+		40
+	};
 	// Badges
 	private final static int BADGE_OF_RABBIT = 6399;
 	private final static int BADGE_OF_HYENA = 6400;
@@ -66,7 +72,7 @@ public class HeavyMedals extends AbstractEvent
 		SPAWNS_WENDY.add(new LocationHolder(81106, 52966, -1560));// Oren
 		SPAWNS_WENDY.add(new LocationHolder(147535, -59528, -2982));// Goddard
 	}
-
+	
 	private static final List<LocationHolder> SPAWNS_WINNIE = new ArrayList<>();
 	{
 		SPAWNS_WINNIE.add(new LocationHolder(-44595, -113628, -199, 0));
@@ -109,7 +115,7 @@ public class HeavyMedals extends AbstractEvent
 		SPAWNS_WINNIE.add(new LocationHolder(44176, -48688, -800, 33000));
 		SPAWNS_WINNIE.add(new LocationHolder(44294, -47642, -792, 50000));
 	}
-
+	
 	private static final List<LocationHolder> SPAWNS_ROY = new ArrayList<>();
 	{
 		SPAWNS_ROY.add(new LocationHolder(-44599, -113576, -199, 0));
@@ -156,12 +162,12 @@ public class HeavyMedals extends AbstractEvent
 	private static final String MESSAGE_START = ConfigData.HEAVY_MEDALS_MESSAGE_START;
 	// Npc instances
 	private static List<NpcHolder> npcs = new ArrayList<>();
-
+	
 	public HeavyMedals()
 	{
 		registerEvent(ConfigData.ENABLE_HeavyMedals, ConfigData.HEAVY_MEDALS_DATE_START, ConfigData.HEAVY_MEDALS_DATE_END);
 	}
-
+	
 	@Override
 	public void onModState()
 	{
@@ -176,7 +182,7 @@ public class HeavyMedals extends AbstractEvent
 					SPAWNS_ROY.forEach(loc -> npcs.add(UtilSpawn.npc(CAT_ROY, loc, 0, 0, TeamType.NONE, 0)));
 					SPAWNS_WINNIE.forEach(loc -> npcs.add(UtilSpawn.npc(CAT_WINNIE, loc, 0, 0, TeamType.NONE, 0)));
 				}, 20000);
-
+				
 				startTimer("spawn_wendy", TRAVEL_TIME * 1000, null, null, true);
 				break;
 			case END:
@@ -186,13 +192,13 @@ public class HeavyMedals extends AbstractEvent
 				break;
 		}
 	}
-
+	
 	@Override
 	public void onEnterWorld(PlayerHolder ph)
 	{
 		UtilMessage.sendAnnounceMsg(MESSAGE_START, ph);
 	}
-
+	
 	@Override
 	public boolean onInteract(PlayerHolder ph, CharacterHolder character)
 	{
@@ -211,14 +217,14 @@ public class HeavyMedals extends AbstractEvent
 		}
 		return false;
 	}
-
+	
 	@Override
 	public void onKill(CharacterHolder killer, CharacterHolder victim, boolean isPet)
 	{
 		if (Util.areObjectType(L2Attackable.class, victim) && Util.checkLvlDifference(killer, victim, 9))
 		{
 			var chance = Rnd.get(100);
-
+			
 			var itemId = 0;
 			if (chance < 5) // 5%
 			{
@@ -228,7 +234,7 @@ public class HeavyMedals extends AbstractEvent
 			{
 				itemId = EVENT_MEDAL;
 			}
-
+			
 			if (itemId > 0)
 			{
 				if (Config.AUTO_LOOT)
@@ -242,12 +248,12 @@ public class HeavyMedals extends AbstractEvent
 			}
 		}
 	}
-
+	
 	@Override
 	public void onEvent(PlayerHolder ph, CharacterHolder npc, String event)
 	{
 		var level = 0;
-
+		
 		switch (event)
 		{
 			case "spawn_wendy":
@@ -267,13 +273,13 @@ public class HeavyMedals extends AbstractEvent
 			case "game":
 			{
 				level = getLevel(ph);
-
+				
 				var html = HTML_PATH + "8229-game.htm";
 				if (UtilInventory.getItemsCount(ph, EVENT_GLITTERING_MEDAL) < MEDALS[level])
 				{
 					html = HTML_PATH + "noMedal.htm";
 				}
-
+				
 				sendHtmlFile(ph, (L2Npc) npc.getInstance(), html);
 				break;
 			}
@@ -286,9 +292,9 @@ public class HeavyMedals extends AbstractEvent
 					sendHtmlFile(ph, (L2Npc) npc.getInstance(), HTML_PATH + "noMedal.htm");
 					return;
 				}
-
+				
 				UtilInventory.takeItems(ph, EVENT_GLITTERING_MEDAL, MEDALS[level]);
-
+				
 				if (Rnd.get(100) <= WIN_CHANCE)
 				{
 					ph.getInstance().sendPacket(new SocialAction(ph.getInstance().getObjectId(), SocialActionType.SAD));
@@ -317,7 +323,7 @@ public class HeavyMedals extends AbstractEvent
 					}
 					ph.getInstance().playSound(PlaySoundType.QUEST_JACKPOT);
 					ph.getInstance().sendPacket(new SocialAction(ph.getInstance().getObjectId(), SocialActionType.VICTORY));
-
+					
 					var html = new HtmlBuilder();
 					html.append("<html><body>");
 					html.append("Event Manager Winnie the Cat:<br>");
@@ -342,7 +348,7 @@ public class HeavyMedals extends AbstractEvent
 				html.append("Hunting the monsters that dwell outside the village will yield medals. Bring them to me and I'll reward you with a fabulous prize, personally selected for you by Collector Bashtal! You'll find two types of medals: Regular medals and glittering medals. Glittering medals are quite rare, and therefore most valuable, especially for your future.<br><br>");
 				html.append("<font color=LEVEL>2 - Advancing Levels</font><br>");
 				html.append("A collector's level reflects that player's contribution to the medal collection and collecting skill.");
-
+				
 				if (((L2Npc) npc.getInstance()).getId() == CAT_WINNIE)
 				{
 					html.append(" You should raise your level as high as you can! Meow!! <font color=LEVEL>To raise your level, just bring me glittering medals and pass a simple test.</font> Meow~!<br>");
@@ -351,7 +357,7 @@ public class HeavyMedals extends AbstractEvent
 				{
 					html.append(" Meow! Higher levels are eligible for a greater selection of prizes.<font color=LEVEL> Winnie over there can tell you more about raising your level.</font> Meow~!<br>");
 				}
-
+				
 				html.append("</body></html>");
 				sendHtml((NpcHolder) npc, ph, html);
 				break;
@@ -367,25 +373,25 @@ public class HeavyMedals extends AbstractEvent
 						html.append("<font color=LEVEL>Greater Haste Potion, Greater Swift Attack Potion, Greater Magic Haste Potion, Quick Healing Potion, Blessed Scroll of Escape, Blessed Scroll of Resurrection, Scroll: Enchant Weapon (All Grades), Red Party Mask.</font><br>");
 						html.append("You'll don't need to raise your collector level to be eligible for some of these items.");
 						break;
-
+					
 					case CAT_WINNIE:
 						html.append("<font color=LEVEL>Greater Haste Potion, Greater Swift Attack Potion, Greater Magic Haste Potion, Quick Healing Potion, Blessed Scroll of Escape, Blessed Scroll of Resurrection, Scroll: Enchant Armor (All Grades), Scroll: Enchant Weapon (All Grades), Red Party Mask, Soul Crystal (All Colors) - Stage 11, Soul Crystal (All Colors) - Stage 12, Sealed Majestic Necklace, Sealed Majestic Earring, and Sealed Majestic Ring</font>. Whew! An impressive list, eh? Meow!<br>");
 						html.append("I don't think I missed anything. <font color=LEVEL>Roy the Cat over there will trade medals for prizes.</font> Meow~!");
 						break;
-
+					
 					case CAT_ROY:
 						html.append("<font color=LEVEL>Greater Haste Potion, Greater Swift Attack Potion, Greater Magic Haste Potion, Quick Healing Potion, Blessed Scroll of Escape, Blessed Scroll of Resurrection, Scroll: Enchant Armor (All Grades), Scroll: Enchant Weapon (All Grades), Red Party Mask, Soul Crystal (All Colors) - Stage 11, Soul Crystal (All Colors) - Stage 12, Sealed Majestic Necklace, Sealed Majestic Earring, and Sealed Majestic Ring</font>.<br>");
 						html.append("You'll need to raise your collector level to be eligible for some of these items. If you wish to raise your level, go see <font color=LEVEL>Winnie the Cat!</font>");
 						break;
 				}
-
+				
 				html.append("</body></html>");
 				sendHtml((NpcHolder) npc, ph, html);
 				break;
 			}
 		}
 	}
-
+	
 	private byte getLevel(PlayerHolder ph)
 	{
 		if (UtilInventory.hasItems(ph, BADGE_OF_WOLF))
@@ -404,10 +410,10 @@ public class HeavyMedals extends AbstractEvent
 		{
 			return 1;
 		}
-
+		
 		return 0;
 	}
-
+	
 	private String getStatus(PlayerHolder ph)
 	{
 		if (UtilInventory.hasItems(ph, BADGE_OF_WOLF))
@@ -426,7 +432,7 @@ public class HeavyMedals extends AbstractEvent
 		{
 			return "Rabbit";
 		}
-
+		
 		return "Beginner";
 	}
 }

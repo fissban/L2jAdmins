@@ -13,7 +13,7 @@ import main.holders.objects.PlayerHolder;
 public class PanelGui extends AbstractMod
 {
 	private static Gui gui;
-
+	
 	public PanelGui()
 	{
 		var so = System.getProperty("os.name").toLowerCase();
@@ -22,7 +22,7 @@ public class PanelGui extends AbstractMod
 			registerMod(true);
 		}
 	}
-
+	
 	@Override
 	public void onModState()
 	{
@@ -36,7 +36,7 @@ public class PanelGui extends AbstractMod
 				startTimer("updateData", Gui.UPDATE_DATA, null, null, true);
 				startTimer("update", Gui.UPDATE_GUI, null, null, true);
 				startTimer("updateLong", Gui.UPDATE_LONG_GUI, null, null, true);
-
+				
 				// init gui
 				Gui.getInfo().updateSevenSign();
 				Gui.getInfo().updateSieges();
@@ -48,7 +48,7 @@ public class PanelGui extends AbstractMod
 			}
 		}
 	}
-
+	
 	@Override
 	public void onTimer(String timerName, NpcHolder npc, PlayerHolder ph)
 	{
@@ -58,7 +58,7 @@ public class PanelGui extends AbstractMod
 		}
 		switch (timerName)
 		{
-
+			
 			case "update":
 				// memory
 				Gui.getStats().memoryMax.setText(getTotalMemory() + " MB.");
@@ -77,7 +77,7 @@ public class PanelGui extends AbstractMod
 				break;
 		}
 	}
-
+	
 	@Override
 	public void onSendData(ByteBuffer data)
 	{
@@ -86,7 +86,7 @@ public class PanelGui extends AbstractMod
 			Gui.getStats().addSended(data.array());
 		}
 	}
-
+	
 	@Override
 	public void onReceiveData(ByteBuffer data)
 	{
@@ -95,7 +95,7 @@ public class PanelGui extends AbstractMod
 			Gui.getStats().addReceive(data.array());
 		}
 	}
-
+	
 	@Override
 	public void onEnterWorld(PlayerHolder ph)
 	{
@@ -104,7 +104,7 @@ public class PanelGui extends AbstractMod
 			Gui.getPlayers().onEnter(ph);
 		}
 	}
-
+	
 	@Override
 	public boolean onExitWorld(PlayerHolder ph)
 	{
@@ -115,7 +115,7 @@ public class PanelGui extends AbstractMod
 		}
 		return super.onExitWorld(ph);
 	}
-
+	
 	@Override
 	public void onKill(CharacterHolder killer, CharacterHolder victim, boolean isPet)
 	{
@@ -124,14 +124,14 @@ public class PanelGui extends AbstractMod
 			Gui.getPlayers().onKill(victim);
 		}
 	}
-
+	
 	@Override
 	public boolean onChat(PlayerHolder ph, String chat)
 	{
 		Gui.getUtils().addChat(ph, chat);
 		return super.onChat(ph, chat);
 	}
-
+	
 	/**
 	 * Cantidad de memoria RAM usada por el servidor.
 	 * @return
@@ -140,7 +140,7 @@ public class PanelGui extends AbstractMod
 	{
 		return (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1048576;
 	}
-
+	
 	/**
 	 * Total de memoria RAM dedicada al servidor.
 	 * @return

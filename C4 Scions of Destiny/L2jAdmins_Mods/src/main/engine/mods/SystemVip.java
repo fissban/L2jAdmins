@@ -4,6 +4,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
 
+import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.skills.stats.enums.StatsType;
+import l2j.gameserver.network.external.client.Say2.SayType;
 import main.data.ConfigData;
 import main.data.ObjectData;
 import main.engine.AbstractMod;
@@ -19,9 +22,6 @@ import main.util.UtilMessage;
 import main.util.builders.html.Html;
 import main.util.builders.html.HtmlBuilder;
 import main.util.builders.html.HtmlBuilder.HtmlType;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.skills.stats.enums.StatsType;
-import l2j.gameserver.network.external.client.Say2.SayType;
 
 /**
  * @author fissban
@@ -371,12 +371,12 @@ public class SystemVip extends AbstractMod
 					continue;
 				}
 				// max
-				if (count >= searchPage + MAX_PER_PAGE)
+				if (count >= (searchPage + MAX_PER_PAGE))
 				{
 					continue;
 				}
 				
-				hb.append("<table", count % 2 == 0 ? " bgcolor=000000>" : ">");
+				hb.append("<table", (count % 2) == 0 ? " bgcolor=000000>" : ">");
 				hb.append("<tr>");
 				hb.append("<td width=64>", p.getName(), "</td><td width=200>" + p.getVipExpireDateFormat(), "</td>");
 				hb.append("</tr>");
@@ -394,7 +394,7 @@ public class SystemVip extends AbstractMod
 		
 		for (int i = 0; i < countVip; i++)
 		{
-			if (i % MAX_PER_PAGE == 0)
+			if ((i % MAX_PER_PAGE) == 0)
 			{
 				hb.append("<td width=18><center><a action=\"bypass -h Engine SystemVip allVip ", currentPage, "\">" + currentPage, "</center></a></td>");
 				currentPage++;

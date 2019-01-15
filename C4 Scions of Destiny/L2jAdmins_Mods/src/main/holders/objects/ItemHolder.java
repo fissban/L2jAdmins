@@ -1,7 +1,7 @@
 package main.holders.objects;
 
-import main.data.ObjectData;
 import l2j.gameserver.model.items.instance.ItemInstance;
+import main.data.ObjectData;
 
 /**
  * @author fissban
