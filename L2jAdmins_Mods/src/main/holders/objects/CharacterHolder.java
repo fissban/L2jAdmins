@@ -1,6 +1,5 @@
 package main.holders.objects;
 
-import main.data.ObjectData;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.enums.TeamType;
@@ -21,20 +20,13 @@ public class CharacterHolder extends ObjectHolder
 		return (L2Character) super.getInstance();
 	}
 	
-	// TODO
-	// cuando contruyamos PlayableHolder, SummonHolder etc etc podemos expandir este sistema.
 	public PlayerHolder getActingPlayer()
 	{
-		var owner = getInstance().getActingPlayer();
-		if (owner != null)
-		{
-			return ObjectData.get(PlayerHolder.class, owner.getObjectId());
-		}
 		return null;
 	}
 	
 	/**
-	 * Obtengo el team del objecto
+	 * Obtengo el team del objeto
 	 * @return -> <b>TeamType</b>
 	 */
 	public TeamType getTeam()

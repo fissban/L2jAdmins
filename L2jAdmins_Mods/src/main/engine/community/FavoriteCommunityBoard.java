@@ -2,6 +2,11 @@ package main.engine.community;
 
 import java.util.StringTokenizer;
 
+import l2j.gameserver.data.ExperienceData;
+import l2j.gameserver.model.actor.L2Playable;
+import l2j.gameserver.model.actor.instance.L2MonsterInstance;
+import l2j.gameserver.model.skills.stats.enums.StatsType;
+import l2j.gameserver.network.external.client.Say2.SayType;
 import main.data.ConfigData;
 import main.data.ObjectData;
 import main.engine.AbstractMod;
@@ -16,11 +21,6 @@ import main.util.builders.html.HtmlBuilder;
 import main.util.builders.html.HtmlBuilder.HtmlType;
 import main.util.builders.html.L2UI;
 import main.util.builders.html.L2UI_CH3;
-import l2j.gameserver.data.ExperienceData;
-import l2j.gameserver.model.actor.L2Playable;
-import l2j.gameserver.model.actor.instance.L2MonsterInstance;
-import l2j.gameserver.model.skills.stats.enums.StatsType;
-import l2j.gameserver.network.external.client.Say2.SayType;
 
 /**
  * @author fissban
@@ -181,7 +181,7 @@ public class FavoriteCommunityBoard extends AbstractMod
 		
 		if (killer.getInstance().getLevel() == ExperienceData.getInstance().getMaxLevel())
 		{
-			killer.getInstance().sendMessage("Nivel maximo!");
+			killer.getInstance().sendMessage("Max Level!");
 		}
 	}
 	
@@ -371,9 +371,9 @@ public class FavoriteCommunityBoard extends AbstractMod
 	
 	/**
 	 * Used only in <b>bbsBodyPanelStats</b> to shrink text
-	 * @param statName
-	 * @param statPoint
-	 * @param bypass
+	 * @param  statName
+	 * @param  statPoint
+	 * @param  bypass
 	 * @return
 	 */
 	private static String tableStat(String statName, int statPoint, String bypass)

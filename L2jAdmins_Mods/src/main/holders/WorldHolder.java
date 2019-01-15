@@ -4,7 +4,11 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
+import l2j.gameserver.model.actor.instance.L2PcInstance;
+import main.data.ObjectData;
 import main.holders.objects.ObjectHolder;
+import main.holders.objects.PlayerHolder;
+import main.holders.objects.SummonHolder;
 
 /**
  * @author fissban
@@ -33,6 +37,17 @@ public class WorldHolder
 	{
 		o.setWorldId(id);
 		objects.add(o);
+		
+		if (o instanceof PlayerHolder)
+		{
+			var summon = ((L2PcInstance) o.getInstance()).getPet();
+			if (summon != null)
+			{
+				var sh = ObjectData.get(SummonHolder.class, summon);
+				sh.setWorldId(id);
+				objects.add(sh);
+			}
+		}
 	}
 	
 	public void remove(ObjectHolder o)

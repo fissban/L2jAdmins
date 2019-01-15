@@ -39,6 +39,8 @@ import l2j.gameserver.network.external.server.PetStatusUpdate;
 import l2j.gameserver.network.external.server.RelationChanged;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.task.continuous.DecayTaskManager;
+import main.data.ObjectData;
+import main.holders.objects.PlayerHolder;
 
 public abstract class L2Summon extends L2Playable
 {
@@ -195,6 +197,8 @@ public abstract class L2Summon extends L2Playable
 	@Override
 	public void onSpawn()
 	{
+		ObjectData.get(PlayerHolder.class, getOwner()).setSummon(this);
+		
 		setFollowStatus(true);
 		
 		updateAndBroadcastStatus(0);
