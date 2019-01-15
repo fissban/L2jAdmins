@@ -242,9 +242,6 @@ public class Hero
 				}
 				
 				player.getInventory().destroyItem("Hero", item, null, true);
-				iu = new InventoryUpdate();
-				iu.addRemovedItem(item);
-				player.sendPacket(iu);
 			}
 			
 			player.broadcastUserInfo();

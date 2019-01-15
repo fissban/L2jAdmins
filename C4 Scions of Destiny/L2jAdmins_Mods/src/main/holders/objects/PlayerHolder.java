@@ -10,14 +10,15 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
+import l2j.gameserver.data.CharNameData;
+import l2j.gameserver.model.actor.L2Summon;
+import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.holder.LocationHolder;
+import l2j.gameserver.model.skills.stats.enums.StatsType;
 import main.data.ObjectData;
 import main.enums.MaestriaType;
 import main.enums.MathType;
 import main.holders.AuctionItemHolder;
-import l2j.gameserver.data.CharNameData;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.holder.LocationHolder;
-import l2j.gameserver.model.skills.stats.enums.StatsType;
 
 /**
  * @author fissban
@@ -26,6 +27,7 @@ public class PlayerHolder extends CharacterHolder
 {
 	/** Player Instance */
 	private L2PcInstance player = null;
+	private SummonHolder summon = null;
 	private final int objectId;
 	private final String name;
 	private final String accountName;
@@ -72,12 +74,6 @@ public class PlayerHolder extends CharacterHolder
 		return player;
 	}
 	
-	@Override
-	public PlayerHolder getActingPlayer()
-	{
-		return this;
-	}
-	
 	public void setInstance(L2PcInstance player)
 	{
 		// Whenever an instance is defined for the character we will define the instanceId to 0
@@ -86,6 +82,18 @@ public class PlayerHolder extends CharacterHolder
 			setWorldId(0);
 		}
 		this.player = player;
+	}
+	
+	public SummonHolder getSummon()
+	{
+		return summon;
+	}
+	
+	public void setSummon(L2Summon summon)
+	{
+		this.summon = ObjectData.get(SummonHolder.class, summon);
+		this.summon.setOwner(this);
+		this.summon.setWorldId(getWorldId());
 	}
 	
 	public CharacterHolder getTarget()
@@ -134,7 +142,7 @@ public class PlayerHolder extends CharacterHolder
 	
 	/**
 	 * The price of a buff is obtained, if it does not have a definite price, -1 is returned.
-	 * @param skillId
+	 * @param  skillId
 	 * @return
 	 */
 	public Integer getSellBuffPrice(int skillId)
@@ -332,10 +340,10 @@ public class PlayerHolder extends CharacterHolder
 	
 	/**
 	 * Modify the number of rebirth.
-	 * @param mathType <br>
-	 *            * {@link MathType#SET}<br>
-	 *            * {@link MathType#ADD}<br>
-	 * @param value
+	 * @param  mathType <br>
+	 *                      * {@link MathType#SET}<br>
+	 *                      * {@link MathType#ADD}<br>
+	 * @param  value
 	 * @return
 	 */
 	public int modifyRebirth(MathType mathType, int value)
@@ -364,10 +372,10 @@ public class PlayerHolder extends CharacterHolder
 	
 	/**
 	 * Free points to modify to stats
-	 * @param mathType <br>
-	 *            * {@link MathType#SET}<br>
-	 *            * {@link MathType#ADD}<br>
-	 *            * {@link MathType#SUB}<br>
+	 * @param  mathType <br>
+	 *                      * {@link MathType#SET}<br>
+	 *                      * {@link MathType#ADD}<br>
+	 *                      * {@link MathType#SUB}<br>
 	 * @return
 	 */
 	public int modifyFreeStatsPoints(MathType mathType, int value)
@@ -426,10 +434,10 @@ public class PlayerHolder extends CharacterHolder
 	
 	/**
 	 * Free points to increase to stats
-	 * @param mathType <br>
-	 *            * {@link MathType#SET}<br>
-	 *            * {@link MathType#ADD}<br>
-	 *            * {@link MathType#SUB}<br>
+	 * @param  mathType <br>
+	 *                      * {@link MathType#SET}<br>
+	 *                      * {@link MathType#ADD}<br>
+	 *                      * {@link MathType#SUB}<br>
 	 * @return
 	 */
 	public int modifyMasteryPoints(MathType mathType, int value)
@@ -524,7 +532,7 @@ public class PlayerHolder extends CharacterHolder
 	
 	/**
 	 * Check if the answer given by the player is correct.
-	 * @param bypass
+	 * @param  bypass
 	 * @return
 	 */
 	public boolean isAntiBotAnswerRight(String bypass)
@@ -552,9 +560,9 @@ public class PlayerHolder extends CharacterHolder
 	
 	/**
 	 * Free points to increase to stats
-	 * @param mathType <br>
-	 *            * {@link MathType#INIT}<br>
-	 *            * {@link MathType#INCREASE_BY_ONE}<br>
+	 * @param  mathType <br>
+	 *                      * {@link MathType#INIT}<br>
+	 *                      * {@link MathType#INCREASE_BY_ONE}<br>
 	 * @return
 	 */
 	public int modifyAntiBotKills(MathType mathType)
@@ -574,9 +582,9 @@ public class PlayerHolder extends CharacterHolder
 	
 	/**
 	 * Attempts for AntiBot answer.
-	 * @param mathType <br>
-	 *            * {@link MathType#INIT}<br>
-	 *            * {@link MathType#DECREASE_BY_ONE}<br>
+	 * @param  mathType <br>
+	 *                      * {@link MathType#INIT}<br>
+	 *                      * {@link MathType#DECREASE_BY_ONE}<br>
 	 * @return
 	 */
 	public int modifyAntiBotAttempts(MathType mathType)
@@ -697,12 +705,12 @@ public class PlayerHolder extends CharacterHolder
 	
 	/**
 	 * List of mobs that have killed
-	 * @param mathType <br>
-	 *            * {@link MathType#SET}<br>
-	 *            ** value: String { ip,System.currentTimeMilliseconds();... }<br>
-	 *            * {@link MathType#ADD}<br>
-	 *            ** value: String { ip,System.currentTimeMilliseconds() }<br>
-	 * @param value
+	 * @param  mathType <br>
+	 *                      * {@link MathType#SET}<br>
+	 *                      ** value: String { ip,System.currentTimeMilliseconds();... }<br>
+	 *                      * {@link MathType#ADD}<br>
+	 *                      ** value: String { ip,System.currentTimeMilliseconds() }<br>
+	 * @param  value
 	 * @return
 	 */
 	public void modifyAllIpLogin(MathType mathType, String value)
@@ -737,10 +745,10 @@ public class PlayerHolder extends CharacterHolder
 	/**
 	 * List of mobs that have killed
 	 * @param mathType <br>
-	 *            * {@link MathType#SET}<br>
-	 *            ** value: int { count }<br>
-	 *            * {@link MathType#ADD}<br>
-	 *            ** value: int { count }<br>
+	 *                     * {@link MathType#SET}<br>
+	 *                     ** value: int { count }<br>
+	 *                     * {@link MathType#ADD}<br>
+	 *                     ** value: int { count }<br>
 	 */
 	public void modifyAllKillMonsters(MathType mathType, int value)
 	{
@@ -774,10 +782,10 @@ public class PlayerHolder extends CharacterHolder
 	/**
 	 * List of the all skill used.
 	 * @param mathType <br>
-	 *            * {@link MathType#SET}<br>
-	 *            ** value: String { skillId,count;... }<br>
-	 *            * {@link MathType#ADD}<br>
-	 *            ** value: String { skillId }<br>
+	 *                     * {@link MathType#SET}<br>
+	 *                     ** value: String { skillId,count;... }<br>
+	 *                     * {@link MathType#ADD}<br>
+	 *                     ** value: String { skillId }<br>
 	 */
 	public void modifyAllSkillUseIds(MathType mathType, String value)
 	{
@@ -820,10 +828,10 @@ public class PlayerHolder extends CharacterHolder
 	 * List of the last pvp/pk characters won.<br>
 	 * Always show the last pvp/pk won first
 	 * @param mathType <br>
-	 *            * {@link MathType#SET}<br>
-	 *            ** value: String { playerName;... }<br>
-	 *            * {@link MathType#ADD}<br>
-	 *            ** value: String { playerName }<br>
+	 *                     * {@link MathType#SET}<br>
+	 *                     ** value: String { playerName;... }<br>
+	 *                     * {@link MathType#ADD}<br>
+	 *                     ** value: String { playerName }<br>
 	 */
 	public void modifyKillPlayersName(MathType mathType, String value)
 	{
