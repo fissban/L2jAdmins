@@ -1,7 +1,7 @@
 package main.util;
 
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.network.external.server.InventoryUpdate;
+import l2j.gameserver.network.external.server.ItemList;
 import l2j.gameserver.network.external.server.SystemMessage;
 import main.holders.RewardHolder;
 import main.holders.objects.PlayerHolder;
@@ -162,17 +162,16 @@ public class UtilInventory
 		// Disarm item, if equipped.
 		if (item.isEquipped())
 		{
-			var iu = new InventoryUpdate();
-			for (var itm : ph.getInstance().getInventory().unEquipItemInBodySlotAndRecord(item.getItem().getBodyPart()))
-			{
-				iu.addModifiedItem(itm);
-			}
-			
-			ph.getInstance().sendPacket(iu);
-			ph.getInstance().broadcastUserInfo();
+			ph.getInstance().getInventory().unEquipItemInBodySlotAndRecord(item.getItem().getBodyPart());
 		}
 		
 		// Destroy the quantity of items wanted.
-		return ph.getInstance().getInventory().destroyItemByItemId("Quest", itemId, itemCount, ph.getInstance(), true);
+		var val = ph.getInstance().getInventory().destroyItemByItemId("Engine", itemId, itemCount, ph.getInstance(), true);
+		
+		// Send the ItemList Server->Client Packet to the player in order to refresh its Inventory
+		ph.getInstance().sendPacket(new ItemList(ph.getInstance().getInventory().getItems(), true));
+		
+		ph.getInstance().broadcastUserInfo();
+		return val;
 	}
 }

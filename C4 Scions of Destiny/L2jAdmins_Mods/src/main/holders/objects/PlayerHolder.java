@@ -74,6 +74,12 @@ public class PlayerHolder extends CharacterHolder
 		return player;
 	}
 	
+	@Override
+	public PlayerHolder getActingPlayer()
+	{
+		return this;
+	}
+	
 	public void setInstance(L2PcInstance player)
 	{
 		// Whenever an instance is defined for the character we will define the instanceId to 0
