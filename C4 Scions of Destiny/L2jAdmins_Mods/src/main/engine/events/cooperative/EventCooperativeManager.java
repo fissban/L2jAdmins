@@ -360,6 +360,7 @@ public class EventCooperativeManager
 			if (e.getVotes() > topVotes)
 			{
 				event = e.getClass().getSimpleName();
+				topVotes = e.getVotes();
 			}
 		}
 		
@@ -376,7 +377,7 @@ public class EventCooperativeManager
 		
 		for (var e : EVENTS.values())
 		{
-			aux = e.getVotes();
+			aux += e.getVotes();
 		}
 		return aux;
 	}
