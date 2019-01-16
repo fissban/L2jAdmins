@@ -98,8 +98,8 @@ public class Html
 		hb.append("<table width=280 bgcolor=\"000000\">");
 		hb.append("<tr>");
 		hb.append("<td width=16 align=center></td>");
-		hb.append("<td width=214 align=center>Player</td>");
-		hb.append("<td width=50 align=center>Kills</td>");
+		hb.append("<td width=214 align=center>", fontColor("LEVEL", "Player"), "</td>");
+		hb.append("<td width=50 align=center>", fontColor("LEVEL", "Kills"), "</td>");
 		hb.append("</tr>");
 		hb.append("</table>");
 		hb.append(image(L2UI_CH3.br_bar2_mp, 280, 1));
