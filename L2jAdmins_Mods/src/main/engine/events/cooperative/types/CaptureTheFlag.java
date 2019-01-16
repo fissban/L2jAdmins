@@ -7,14 +7,13 @@ import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
 import l2j.gameserver.ThreadPoolManager;
-import l2j.gameserver.data.ItemData;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.L2Playable;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.enums.TeamType;
 import l2j.gameserver.model.items.enums.ParpedollType;
 import l2j.gameserver.model.party.Party;
-import l2j.gameserver.network.external.server.InventoryUpdate;
+import l2j.gameserver.network.external.server.NpcInfo;
 import main.data.ConfigData;
 import main.engine.events.cooperative.AbstractCooperative;
 import main.holders.objects.CharacterHolder;
@@ -127,7 +126,7 @@ public class CaptureTheFlag extends AbstractCooperative
 			// Created the party
 			if (leader.getInstance().getParty() == null)
 			{
-				Party party = new Party(leader.getInstance());
+				var party = new Party(leader.getInstance());
 				party.addPartyMember(ph.getInstance());
 			}
 			// Added a new party member
@@ -303,27 +302,27 @@ public class CaptureTheFlag extends AbstractCooperative
 			return false;
 		}
 		
-		var flag = (NpcHolder) character;
+		var nh = (NpcHolder) character;
 		
-		if (flag.getId() == ConfigData.CTF_FLAG_ID)
+		if (nh.getId() == ConfigData.CTF_FLAG_ID)
 		{
 			if (ph.hasFlag())
 			{
 				return false;
 			}
-			if (ph.getTeam() != flag.getTeam())
+			if (ph.getTeam() != nh.getTeam())
 			{
-				equipFlag(ph, flag);
+				equipFlag(ph, nh);
 				return true;
 			}
 			return false;
 		}
 		
-		if (flag.getId() == ConfigData.CTF_HOLDER_ID)
+		if (nh.getId() == ConfigData.CTF_HOLDER_ID)
 		{
 			if (ph.hasFlag())
 			{
-				if (ph.getTeam() == flag.getTeam())
+				if (ph.getTeam() == nh.getTeam())
 				{
 					unequipFlag(ph, false);
 					
@@ -355,7 +354,7 @@ public class CaptureTheFlag extends AbstractCooperative
 		if (player instanceof PlayerHolder)
 		{
 			var ph = (PlayerHolder) player;
-			var flag = ph.getInstance().getInventory().getPaperdollItem(ParpedollType.RHAND);
+			var flag = ph.getInstance().getInventory().getPaperdollItem(ParpedollType.LRHAND);
 			
 			if ((flag == null) && ph.hasFlag())
 			{
@@ -396,16 +395,7 @@ public class CaptureTheFlag extends AbstractCooperative
 		getPlayersInEvent().stream().filter(ph -> ph.getInstance().getParty() != null).forEach(ph -> ph.getInstance().getParty().removePartyMember(ph.getInstance(), true));
 		
 		// Unspawn all flags and holders
-		flagAndHolders.values().stream().filter(npc -> npc.getInstance() != null).forEach(npc ->
-		{
-			// stop respawn
-			if (npc.getInstance().getSpawn() != null)
-			{
-				npc.getInstance().getSpawn().stopRespawn();
-			}
-			// remove from world
-			npc.getInstance().deleteMe();
-		});
+		flagAndHolders.values().stream().filter(npc -> npc.getInstance() != null).forEach(npc -> npc.getInstance().deleteMe());
 		
 		// Generate ranking
 		var pointsOrdered = new LinkedHashMap<String, Integer>();
@@ -452,7 +442,7 @@ public class CaptureTheFlag extends AbstractCooperative
 	}
 	
 	/**
-	 * Increase by 1 the number of points of a character
+	 * Increase points of a character
 	 * @param ph
 	 */
 	private static void increasePlayerPoint(PlayerHolder ph, int p)
@@ -475,34 +465,31 @@ public class CaptureTheFlag extends AbstractCooperative
 	{
 		var teamType = ph.getTeam();
 		
-		// get and remove flag from memory
+		// get flag
 		var flag = flagAndHolders.remove(npc.getObjectId());
-		// stop flag respawn
-		if (flag.getInstance().getSpawn() != null)
-		{
-			flag.getInstance().getSpawn().stopRespawn();
-		}
 		// remove flag from world
 		flag.getInstance().deleteMe();
-		
-		ph.setHasFlag(true);
-		// Equip flag
-		var flagItem = ItemData.getInstance().createItem("", FLAG_ITEM, 1, ph.getInstance(), null);
+		// give flag
+		UtilInventory.giveItems(ph, FLAG_ITEM, 1);
+		// equip flag
+		var flagItem = ph.getInstance().getInventory().getItemById(FLAG_ITEM);
 		if (flagItem != null)
 		{
-			ph.getInstance().getInventory().equipItem(flagItem);
+			ph.getInstance().getInventory().equipItemAndRecord(flagItem);
 		}
-		// Send Message
+		// add in memory
+		ph.setHasFlag(true);
+		// send Message
 		UtilMessage.sendAnnounceMsg("The " + teamType.name().toLowerCase() + " team has taken the flag!", getPlayersInEvent());
 	}
 	
 	/**
-	 * We remove the flag of a character.
+	 * Remove the flag of a character.
 	 * @param ph
 	 */
 	private void unequipFlag(PlayerHolder ph, boolean drop)
 	{
-		// Create new spawn
+		// create new spawn
 		switch (ph.getTeam())
 		{
 			case BLUE:
@@ -519,25 +506,19 @@ public class CaptureTheFlag extends AbstractCooperative
 				break;
 		}
 		
-		// Unequip flag
-		var flag = ph.getInstance().getInventory().getPaperdollItem(ParpedollType.RHAND);
-		if (flag != null)
-		{
-			var items = ph.getInstance().getInventory().unEquipItemInSlotAndRecord(ParpedollType.RHAND);
-			
-			var iu = new InventoryUpdate();
-			iu.addItems(items);
-			ph.getInstance().sendPacket(iu);
-		}
+		// remove from memory
+		ph.setHasFlag(false);
 		
-		var teamType = ph.getTeam();
+		// take flag
+		UtilInventory.takeItems(ph, FLAG_ITEM, 1);
+		
 		if (drop)
 		{
-			UtilMessage.sendAnnounceMsg("The " + teamType.name().toLowerCase() + " has drop flag!", getPlayersInEvent());
+			UtilMessage.sendAnnounceMsg("The " + ph.getTeam().name().toLowerCase() + " has drop flag!", getPlayersInEvent());
 		}
 		else
 		{
-			UtilMessage.sendAnnounceMsg("The " + teamType.name().toLowerCase() + " team has delivered the flag!", getPlayersInEvent());
+			UtilMessage.sendAnnounceMsg("The " + ph.getTeam().name().toLowerCase() + " team has delivered the flag!", getPlayersInEvent());
 		}
 	}
 	
@@ -545,6 +526,9 @@ public class CaptureTheFlag extends AbstractCooperative
 	public NpcHolder addSpawnNpc(int npcId, int x, int y, int z, int heading, int randomOffset, long despawnDelay, TeamType teamType)
 	{
 		var npc = super.addSpawnNpc(npcId, x, y, z, heading, randomOffset, despawnDelay, teamType);
+		npc.getInstance().setTitle(teamType.name());
+		npc.getInstance().getSpawn().stopRespawn();
+		npc.getInstance().broadcastPacket(new NpcInfo(npc.getInstance(), npc.getInstance()));
 		flagAndHolders.put(npc.getObjectId(), npc);
 		return npc;
 	}
