@@ -375,8 +375,6 @@ public final class Config
 	public static int PORT_GAME;
 	/** External Host name */
 	public static String EXTERNAL_HOSTNAME;
-	/** Internal Host name */
-	public static String INTERNAL_HOSTNAME;
 	/** Game Server login port */
 	public static int GAME_SERVER_LOGIN_PORT;
 	/** Game Server login Host */
@@ -2360,7 +2358,6 @@ public final class Config
 		GAMESERVER_HOSTNAME = config.getString("GameserverHostname", "*");
 		PORT_GAME = config.getInteger("GameserverPort", 7777);
 		EXTERNAL_HOSTNAME = config.getString("ExternalHostname", "*");
-		INTERNAL_HOSTNAME = config.getString("InternalHostname", "*");
 		GAME_SERVER_LOGIN_PORT = config.getInteger("LoginPort", 9014);
 		GAME_SERVER_LOGIN_HOST = config.getString("LoginHost", "127.0.0.1");
 		REQUEST_ID = config.getInteger("RequestServerID", 0);
@@ -2696,7 +2693,6 @@ public final class Config
 		
 		LOGIN_BLOCK_AFTER_BAN = config.getInteger("LoginBlockAfterBan", 600);
 		
-		INTERNAL_HOSTNAME = config.getString("InternalHostname", "localhost");
 		EXTERNAL_HOSTNAME = config.getString("ExternalHostname", "localhost");
 		
 		DATABASE_DRIVER = config.getString("Driver", "com.mysql.jdbc.Driver");

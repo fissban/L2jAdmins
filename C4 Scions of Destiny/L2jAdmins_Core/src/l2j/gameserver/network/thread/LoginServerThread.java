@@ -125,7 +125,7 @@ public class LoginServerThread extends AbstractThread
 							// now, only accept packet with the new encryption
 							blowfish = new NewCrypt(blowfishKey);
 							
-							sendPacket(new AuthRequest(Config.REQUEST_ID, Config.ACCEPT_ALTERNATE_ID, hexId, Config.EXTERNAL_HOSTNAME, Config.INTERNAL_HOSTNAME, Config.PORT_GAME, Config.RESERVE_HOST_ON_LOGIN, Config.MAXIMUM_ONLINE_USERS));
+							sendPacket(new AuthRequest(Config.REQUEST_ID, Config.ACCEPT_ALTERNATE_ID, hexId, Config.EXTERNAL_HOSTNAME, Config.PORT_GAME, Config.RESERVE_HOST_ON_LOGIN, Config.MAXIMUM_ONLINE_USERS));
 							break;
 						
 						case 0x01:

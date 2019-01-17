@@ -42,11 +42,21 @@ public final class ServerList extends ALoginServerPacket
 			
 			try
 			{
-				var raw = InetAddress.getByName(server.getHostName()).getAddress();
-				writeC(raw[0] & 0xff);
-				writeC(raw[1] & 0xff);
-				writeC(raw[2] & 0xff);
-				writeC(raw[3] & 0xff);
+				if (isInternalIP(getClient().getConnection().getInetAddress().getHostAddress()))
+				{
+					writeC(127);
+					writeC(0);
+					writeC(0);
+					writeC(1);
+				}
+				else
+				{
+					var raw = InetAddress.getByName(server.getHostName()).getAddress();
+					writeC(raw[0] & 0xff);
+					writeC(raw[1] & 0xff);
+					writeC(raw[2] & 0xff);
+					writeC(raw[3] & 0xff);
+				}
 			}
 			catch (UnknownHostException e)
 			{
@@ -78,5 +88,20 @@ public final class ServerList extends ALoginServerPacket
 			writeD(bits);
 			writeC(server.isShowingBrackets() ? 0x01 : 0x00);
 		}
+	}
+	
+	private static boolean isInternalIP(String ipAddress)
+	{
+		InetAddress addr = null;
+		try
+		{
+			addr = InetAddress.getByName(ipAddress);
+			return addr.isSiteLocalAddress() || addr.isLoopbackAddress();
+		}
+		catch (UnknownHostException e)
+		{
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
