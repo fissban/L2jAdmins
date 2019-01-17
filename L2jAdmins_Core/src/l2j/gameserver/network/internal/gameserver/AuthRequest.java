@@ -5,7 +5,7 @@ import l2j.gameserver.network.AGamePacket;
 public class AuthRequest extends AGamePacket
 {
 	/**
-	 * Format: cccSddb c desired ID c accept alternative ID c reserve Host s ExternalHostName s InetranlHostName d max players d hexid size b hexid
+	 * Format: cccSddb c desired ID c accept alternative ID c reserve Host s ExternalHostName d max players d hexid size b hexid
 	 * @param id
 	 * @param acceptAlternate
 	 * @param hexid
@@ -15,7 +15,7 @@ public class AuthRequest extends AGamePacket
 	 * @param reserveHost
 	 * @param maxplayer
 	 */
-	public AuthRequest(int id, boolean acceptAlternate, byte[] hexid, String externalHost, String internalHost, int port, boolean reserveHost, int maxplayer)
+	public AuthRequest(int id, boolean acceptAlternate, byte[] hexid, String externalHost, int port, boolean reserveHost, int maxplayer)
 	{
 		writeC(0x01);
 		writeC(id);
