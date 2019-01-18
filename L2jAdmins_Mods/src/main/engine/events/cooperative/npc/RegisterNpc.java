@@ -176,7 +176,7 @@ public class RegisterNpc extends AbstractMod
 		if (EventCooperativeManager.canRegisterOrVote())
 		{
 			hb.append("Participate in our events<br1>");
-			hb.append("And wins important prizes.<br>");
+			hb.append("and wins important prizes.<br>");
 			hb.append("Registered Players: ", Html.fontColor("LEVEL", EventCooperativeManager.getRegisterPlayersCount() + " / " + ConfigData.COOPERATIVE_MAX_PLAYERS), "<br>");
 			
 			if (EventCooperativeManager.isRegisterPlayerIp(ph, true))
@@ -185,7 +185,7 @@ public class RegisterNpc extends AbstractMod
 			}
 			else
 			{
-				hb.append("Registered: ", Html.fontColor("9933FF", EventCooperativeManager.isRegisterPlayer(ph) ? "yes" : "no"), "<br>");
+				hb.append("Registered: ", Html.fontColor("9933FF", EventCooperativeManager.isRegisterPlayer(ph) ? "YES" : "NO"), "<br>");
 			}
 			
 			hb.append(Html.fontColor("LEVEL", "Register for the next event!"), "<br>");
