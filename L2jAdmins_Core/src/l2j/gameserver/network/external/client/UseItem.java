@@ -147,19 +147,12 @@ public class UseItem extends AClientPacket
 			// Equip or unEquip
 			List<ItemInstance> items = null;
 			
-			ItemInstance old = activeChar.getInventory().getPaperdollItem(ParpedollType.LRHAND);
-			
-			if (old == null)
-			{
-				old = activeChar.getInventory().getPaperdollItem(ParpedollType.RHAND);
-			}
-			
 			if (item.isEquipped())
 			{
-				sendMessageEquippedOrUnequippedItem(item, activeChar, false);
-				
 				SlotType slot = activeChar.getInventory().getSlotFromItem(item);
 				items = activeChar.getInventory().unEquipItemInBodySlotAndRecord(slot);
+				
+				sendMessageEquippedOrUnequippedItem(item, activeChar, false);
 			}
 			else
 			{

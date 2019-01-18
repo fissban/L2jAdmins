@@ -23,7 +23,7 @@ public class EffectMute extends Effect
 	{
 		super.onStart();
 		
-		getEffected().startMuted();
+		getEffected().startMagicalMuted();
 	}
 	
 	@Override
@@ -31,7 +31,7 @@ public class EffectMute extends Effect
 	{
 		super.onExit();
 		
-		getEffected().stopMuted();
+		getEffected().stopMagicalMuted();
 	}
 	
 	@Override

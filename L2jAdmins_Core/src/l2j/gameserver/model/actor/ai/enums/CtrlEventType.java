@@ -39,7 +39,7 @@ public enum CtrlEventType
 	/** The character attack anyone randomly **/
 	CONFUSED,
 	/** The character cannot cast spells anymore **/
-	MUTED,
+	MAGICAL_MUTED,
 	PHYSICAL_MUTED,
 	/** The character flee in random directions **/
 	AFRAID,

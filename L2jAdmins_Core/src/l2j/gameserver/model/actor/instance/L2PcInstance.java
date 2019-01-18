@@ -1864,26 +1864,6 @@ public final class L2PcInstance extends L2Playable
 	}
 	
 	/**
-	 * Manage hit process (called by Hit Task of L2Character).<BR>
-	 * <B><U> Actions</U> :</B><BR>
-	 * <li>If the attacker/target is dead or use fake death, notify the AI with EVT_CANCEL and send a Server->Client packet ActionFailed (if attacker is a L2PcInstance)
-	 * <li>If attack isn't aborted, send a message system (critical hit, missed...) to attacker/target if they are L2PcInstance
-	 * <li>If attack isn't aborted and hit isn't missed, reduce HP of the target and calculate reflection damage to reduce HP of attacker if necessary
-	 * <li>if attack isn't aborted and hit isn't missed, manage attack or cast break of the target (calculating rate, sending message...)
-	 * @param target   The L2Character targeted
-	 * @param damage   Nb of HP to reduce
-	 * @param crit     True if hit is critical
-	 * @param miss     True if hit is missed
-	 * @param soulshot True if SoulShot are charged
-	 * @param shld     True if shield is efficient
-	 */
-	@Override
-	protected void onHitTimer(L2Character target, int damage, boolean crit, boolean miss, boolean soulshot, boolean shld)
-	{
-		super.onHitTimer(target, damage, crit, miss, soulshot, shld);
-	}
-	
-	/**
 	 * Send a Server->Client packet StatusUpdate to the L2PcInstance.
 	 */
 	@Override
@@ -4278,12 +4258,6 @@ public final class L2PcInstance extends L2Playable
 			return;
 		}
 		
-		if (!EngineModsManager.onUseSkill(this, skill))
-		{
-			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
-		}
-		
 		// ************************************* Check Casting in Progress *******************************************
 		
 		// If a skill is currently being used, queue this one if this is not the same
@@ -4296,6 +4270,16 @@ public final class L2PcInstance extends L2Playable
 			}
 			
 			// Send ActionFailed to the L2PcInstance
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
+		setIsCastingNow(true);
+		
+		// ************************************* Check Engine ********************************************************
+		
+		if (!EngineModsManager.onUseSkill(this, skill))
+		{
 			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
@@ -4329,8 +4313,6 @@ public final class L2PcInstance extends L2Playable
 			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
-		
-		setIsCastingNow(true);
 		
 		// Set the player currentSkill.
 		setCurrentSkill(skill, forceUse, dontMove);

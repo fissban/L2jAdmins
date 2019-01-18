@@ -21,14 +21,14 @@ public class EffectSilenceMagicPhysical extends Effect
 	@Override
 	public void onStart()
 	{
-		getEffected().startMuted();
+		getEffected().startMagicalMuted();
 		getEffected().startPhysicalMuted();
 	}
 	
 	@Override
 	public void onExit()
 	{
-		getEffected().stopMuted();
+		getEffected().stopMagicalMuted();
 		getEffected().stopPhysicalMuted();
 	}
 	

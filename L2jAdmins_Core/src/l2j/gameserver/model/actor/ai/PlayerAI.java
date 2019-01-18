@@ -219,6 +219,11 @@ public class PlayerAI extends CharacterAI
 			return;
 		}
 		
+		if (currentSkill.getHitTime() > 50)
+		{
+			clientStopMoving(null);
+		}
+		
 		if (!currentSkill.isToggle() || (currentSkill.getId() == 60))
 		{
 			clientStopMoving(null);

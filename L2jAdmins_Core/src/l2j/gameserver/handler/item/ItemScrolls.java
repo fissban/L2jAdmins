@@ -178,7 +178,7 @@ public class ItemScrolls implements IItemHandler
 		Skill skill = SkillData.getInstance().getSkill(magicId, level);
 		if (skill != null)
 		{
-			activeChar.doCast(skill);
+			activeChar.useMagic(skill, true, true);
 		}
 	}
 }
