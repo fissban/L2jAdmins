@@ -1196,7 +1196,15 @@ public class PcInventory extends Inventory
 	public void sendUpdateNewItem(ItemInstance item)
 	{
 		var iu = new InventoryUpdate();
-		iu.addItem(item);
+		
+		if ((item == null) || (item.getCount() == 0))
+		{
+			iu.addRemovedItem(item);
+		}
+		else
+		{
+			iu.addModifiedItem(item);
+		}
 		
 		// Send Packet InventoryUpdate
 		owner.sendPacket(iu);

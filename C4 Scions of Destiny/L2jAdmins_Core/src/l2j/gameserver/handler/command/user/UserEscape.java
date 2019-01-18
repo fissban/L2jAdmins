@@ -47,14 +47,14 @@ public class UserEscape implements IUserCommandHandler
 		// Official timer 5 minutes, for GM 1 second
 		if (activeChar.isGM())
 		{
-			activeChar.doCast(SkillData.getInstance().getSkill(2100, 1));
+			activeChar.useMagic(SkillData.getInstance().getSkill(2100, 1), true, true);
 		}
 		else
 		{
 			var sk = SkillData.getInstance().getSkill(2099, 1);
 			
 			sk.setHitTime(Config.UNSTUCK_INTERVAL * 1000);
-			activeChar.doCast(sk);
+			activeChar.useMagic(sk, true, true);;
 			activeChar.sendMessage("You use Escape: " + Config.UNSTUCK_INTERVAL + " seconds.");
 		}
 		

@@ -298,7 +298,7 @@ public abstract class AbstractAI
 			case CONFUSED:
 				onEvtConfused((L2Character) arg0);
 				break;
-			case MUTED:
+			case MAGICAL_MUTED:
 				onEvtMuted((L2Character) arg0);
 				break;
 			case READY_TO_ACT:
