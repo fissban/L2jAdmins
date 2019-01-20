@@ -7,6 +7,7 @@ import l2j.Config;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.privatestore.PcStoreType;
 import l2j.gameserver.model.trade.CharacterTradeList;
+import l2j.gameserver.model.zone.enums.ZoneType;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.PrivateStoreManageListSell;
 import l2j.gameserver.network.external.server.PrivateStoreMsgSell;
@@ -73,12 +74,11 @@ public class SetPrivateStoreListSell extends AClientPacket
 			return;
 		}
 		
-		// if (player.isInsideZone(ZoneType.NO_STORE))
-		// {
-		// player.sendPacket(SystemMessage.NO_PRIVATE_STORE_HERE);
-		// player.sendPacket(new PrivateStoreManageListSell(player, packageSale));
-		// return;
-		// }
+		if (player.isInsideZone(ZoneType.NO_STORE))
+		{
+			player.sendPacket(SystemMessage.NO_PRIVATE_STORE_HERE);
+			return;
+		}
 		
 		if (items == null)
 		{
