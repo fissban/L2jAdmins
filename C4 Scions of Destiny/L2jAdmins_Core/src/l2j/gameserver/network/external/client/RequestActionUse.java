@@ -1,22 +1,16 @@
 package l2j.gameserver.network.external.client;
 
-import java.util.Map;
-
-import l2j.Config;
 import l2j.gameserver.data.CastleData;
 import l2j.gameserver.model.L2Object;
-import l2j.gameserver.model.actor.L2Summon;
 import l2j.gameserver.model.actor.ai.SummonAI;
 import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;
 import l2j.gameserver.model.actor.instance.L2DoorInstance;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.L2PetInstance;
 import l2j.gameserver.model.actor.instance.L2StaticObjectInstance;
 import l2j.gameserver.model.actor.instance.L2SummonInstance;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.model.privatestore.PcStoreType;
 import l2j.gameserver.model.privatestore.PrivateStoreList;
-import l2j.gameserver.model.skills.Skill;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.ActionFailed;
 import l2j.gameserver.network.external.server.ChairSit;
@@ -44,17 +38,14 @@ public class RequestActionUse extends AClientPacket
 	@Override
 	public void runImpl()
 	{
-		L2PcInstance activeChar = getClient().getActiveChar();
+		var activeChar = getClient().getActiveChar();
 		
 		if (activeChar == null)
 		{
 			return;
 		}
 		
-		if (Config.DEBUG)
-		{
-			LOG.finest(activeChar.getName() + " request Action use: id " + actionId + " 2:" + ctrlPressed + " 3:" + shiftPressed);
-		}
+		// LOG.finest(activeChar.getName() + " request Action use: id " + actionId + " 2:" + ctrlPressed + " 3:" + shiftPressed);
 		
 		// Don't do anything if player is dead or confused
 		if (((activeChar.isFakeDeath() && (actionId != 0)) || activeChar.isDead() || activeChar.isOutOfControl()) && (actionId != 0))
@@ -63,17 +54,12 @@ public class RequestActionUse extends AClientPacket
 			return;
 		}
 		
-		L2Summon pet = activeChar.getPet();
-		L2Object target = activeChar.getTarget();
-		
-		if (Config.DEBUG)
-		{
-			LOG.info("Requested Action ID: " + String.valueOf(actionId));
-		}
+		var pet = activeChar.getPet();
+		var target = activeChar.getTarget();
 		
 		switch (actionId)
 		{
-			case 0:
+			case 0: // -> sitDown/standUp
 			{
 				if (activeChar.isMounted())
 				{
@@ -114,7 +100,7 @@ public class RequestActionUse extends AClientPacket
 				
 				break;
 			}
-			case 1:
+			case 1: // -> run/walking
 			{
 				if (activeChar.isRunning())
 				{
@@ -127,8 +113,8 @@ public class RequestActionUse extends AClientPacket
 				
 				break;
 			}
-			case 15:
-			case 21: // pet follow/stop
+			case 15: // -> pet follow/stop
+			case 21: // -> pet follow/stop
 			{
 				if ((pet != null) && !pet.isMovementDisabled())
 				{
@@ -136,8 +122,8 @@ public class RequestActionUse extends AClientPacket
 				}
 				break;
 			}
-			case 16:
-			case 22: // pet attack
+			case 16: // -> pet attack
+			case 22: // -> pet attack
 			{
 				if ((target != null) && (pet != null) && (pet != target) && !pet.isMovementDisabled())
 				{
@@ -176,8 +162,8 @@ public class RequestActionUse extends AClientPacket
 				}
 				break;
 			}
-			case 17:
-			case 23: // pet - cancel action
+			case 17: // -> pet - cancel action
+			case 23: // -> pet - cancel action
 			{
 				if ((pet != null) && !pet.isMovementDisabled())
 				{
@@ -186,7 +172,7 @@ public class RequestActionUse extends AClientPacket
 				
 				break;
 			}
-			case 19: // pet unsummon
+			case 19: // -> pet unsummon
 			{
 				if (pet != null)
 				{
@@ -212,17 +198,17 @@ public class RequestActionUse extends AClientPacket
 				}
 				break;
 			}
-			case 38: // pet mount
+			case 38: // -> pet mount
 			{
 				activeChar.mountPlayer(pet);
 				break;
 			}
-			case 32: // Wild Hog Cannon - Mode Change
+			case 32: // -> Wild Hog Cannon - Mode Change
 			{
 				useSkill(4230);
 				break;
 			}
-			case 36: // Soulless - Toxic Smoke
+			case 36: // -> Soulless - Toxic Smoke
 			{
 				useSkill(4259);
 				break;
@@ -254,12 +240,12 @@ public class RequestActionUse extends AClientPacket
 				activeChar.sendPacket(new RecipeShopManageList(activeChar, true));
 				break;
 			}
-			case 39: // Soulless - Parasite Burst
+			case 39: // -> Soulless - Parasite Burst
 			{
 				useSkill(4138);
 				break;
 			}
-			case 41: // Wild Hog Cannon - Attack
+			case 41: // -> Wild Hog Cannon - Attack
 			{
 				if (!(target instanceof L2DoorInstance))
 				{
@@ -270,37 +256,37 @@ public class RequestActionUse extends AClientPacket
 				useSkill(4230);
 				break;
 			}
-			case 42: // Kai the Cat - Self Damage Shield
+			case 42: // -> Kai the Cat - Self Damage Shield
 			{
 				useSkill(4378, activeChar);
 				break;
 			}
-			case 43: // Unicorn Merrow - Hydro Screw
+			case 43: // -> Unicorn Merrow - Hydro Screw
 			{
 				useSkill(4137);
 				break;
 			}
-			case 44: // Big Boom - Boom Attack
+			case 44: // -> Big Boom - Boom Attack
 			{
 				useSkill(4139);
 				break;
 			}
-			case 45: // Unicorn Boxer - Master Recharge
+			case 45: // -> Unicorn Boxer - Master Recharge
 			{
 				useSkill(4025, activeChar);
 				break;
 			}
-			case 46: // Mew the Cat - Mega Storm Strike
+			case 46: // -> Mew the Cat - Mega Storm Strike
 			{
 				useSkill(4261);
 				break;
 			}
-			case 47: // Silhouette - Steal Blood
+			case 47: // -> Silhouette - Steal Blood
 			{
 				useSkill(4260);
 				break;
 			}
-			case 48: // Mechanic Golem - Mech. Cannon
+			case 48: // -> Mechanic Golem - Mech. Cannon
 			{
 				useSkill(4068);
 				break;
@@ -333,7 +319,7 @@ public class RequestActionUse extends AClientPacket
 				activeChar.sendPacket(new RecipeShopManageList(activeChar, false));
 				break;
 			}
-			case 52: // unsummon
+			case 52: // -> unsummon
 			{
 				if ((pet != null) && (pet instanceof L2SummonInstance))
 				{
@@ -341,7 +327,7 @@ public class RequestActionUse extends AClientPacket
 				}
 				break;
 			}
-			case 53: // move to target
+			case 53: // -> move to target
 			{
 				if ((target != null) && (pet != null) && (pet != target) && !pet.isMovementDisabled())
 				{
@@ -350,7 +336,7 @@ public class RequestActionUse extends AClientPacket
 				}
 				break;
 			}
-			case 54: // move to target hatch/strider
+			case 54: // -> move to target hatch/strider
 			{
 				if ((target != null) && (pet != null) && (pet != target) && !pet.isMovementDisabled())
 				{
@@ -359,17 +345,17 @@ public class RequestActionUse extends AClientPacket
 				
 				break;
 			}
-			case 96: // Quit Party Command Channel
+			case 96: // -> Quit Party Command Channel
 			{
 				LOG.info("96 Accessed");
 				break;
 			}
-			case 97: // Request Party Command Channel Info
+			case 97: // -> Request Party Command Channel Info
 			{
 				LOG.info("97 Accessed");
 				break;
 			}
-			case 1000: // Siege Golem - Siege Hammer
+			case 1000: // -> Siege Golem - Siege Hammer
 			{
 				if (!(target instanceof L2DoorInstance))
 				{
@@ -381,68 +367,69 @@ public class RequestActionUse extends AClientPacket
 				break;
 			}
 			case 1001:
+				LOG.info("1001 Accessed");
 				break;
-			case 1003: // Wind Hatchling/Strider - Wild Stun
+			case 1003: // -> Wind Hatchling/Strider - Wild Stun
 			{
 				useSkill(4710); // TODO use correct skill lvl based on pet lvl
 				break;
 			}
-			case 1004: // Wind Hatchling/Strider - Wild Defense
+			case 1004: // -> Wind Hatchling/Strider - Wild Defense
 			{
 				useSkill(4711, activeChar); // TODO use correct skill lvl based on pet lvl
 				break;
 			}
-			case 1005: // Star Hatchling/Strider - Bright Burst
+			case 1005: // -> Star Hatchling/Strider - Bright Burst
 			{
 				useSkill(4712); // TODO use correct skill lvl based on pet lvl
 				break;
 			}
-			case 1006: // Star Hatchling/Strider - Bright Heal
+			case 1006: // -> Star Hatchling/Strider - Bright Heal
 			{
 				useSkill(4713, activeChar); // TODO use correct skill lvl based on pet lvl
 				break;
 			}
-			case 1007: // Cat Queen - Blessing of Queen
+			case 1007: // -> Cat Queen - Blessing of Queen
 			{
 				useSkill(4699, activeChar);
 				break;
 			}
-			case 1008: // Cat Queen - Gift of Queen
+			case 1008: // -> Cat Queen - Gift of Queen
 			{
 				useSkill(4700, activeChar);
 				break;
 			}
-			case 1009: // Cat Queen - Cure of Queen
+			case 1009: // -> Cat Queen - Cure of Queen
 			{
 				useSkill(4701);
 				break;
 			}
-			case 1010: // Unicorn Seraphim - Blessing of Seraphim
+			case 1010: // -> Unicorn Seraphim - Blessing of Seraphim
 			{
 				useSkill(4702, activeChar);
 				break;
 			}
-			case 1011: // Unicorn Seraphim - Gift of Seraphim
+			case 1011: // -> Unicorn Seraphim - Gift of Seraphim
 			{
 				useSkill(4703, activeChar);
 				break;
 			}
-			case 1012: // Unicorn Seraphim - Cure of Seraphim
+			case 1012: // -> Unicorn Seraphim - Cure of Seraphim
 			{
 				useSkill(4704);
 				break;
 			}
-			case 1013: // Nightshade - Curse of Shade
+			case 1013: // -> Nightshade - Curse of Shade
 			{
 				useSkill(4705);
 				break;
 			}
-			case 1014: // Nightshade - Mass Curse of Shade
+			case 1014: // -> Nightshade - Mass Curse of Shade
 			{
 				useSkill(4706);
 				break;
 			}
-			case 1015: // Nightshade - Shade Sacrifice
+			case 1015: // -> Nightshade - Shade Sacrifice
 			{
 				useSkill(4707);
 				break;
@@ -452,7 +439,7 @@ public class RequestActionUse extends AClientPacket
 				useSkill(4709);
 				break;
 			}
-			case 1017: // Cursed Man - Cursed Strike/Stun
+			case 1017: // -> Cursed Man - Cursed Strike/Stun
 			{
 				useSkill(4708);
 				break;
@@ -467,13 +454,13 @@ public class RequestActionUse extends AClientPacket
 	 */
 	private void useSkill(int skillId, L2Object target)
 	{
-		L2PcInstance activeChar = getClient().getActiveChar();
+		var activeChar = getClient().getActiveChar();
 		if (activeChar == null)
 		{
 			return;
 		}
 		
-		L2Summon activeSummon = activeChar.getPet();
+		var activeSummon = activeChar.getPet();
 		
 		if (activeChar.getPrivateStore().isInStoreMode())
 		{
@@ -483,7 +470,7 @@ public class RequestActionUse extends AClientPacket
 		
 		if (activeSummon != null)
 		{
-			Map<Integer, Skill> skills = activeSummon.getTemplate().getSkills();
+			var skills = activeSummon.getTemplate().getSkills();
 			
 			if (skills == null)
 			{
@@ -492,19 +479,14 @@ public class RequestActionUse extends AClientPacket
 			
 			if (skills.isEmpty())
 			{
-				SystemMessage sm = new SystemMessage(SystemMessage.S1_NOT_AVAILABLE);
-				sm.addString("skill");
-				activeChar.sendPacket(sm);
+				activeChar.sendPacket(new SystemMessage(SystemMessage.S1_NOT_AVAILABLE).addString("skill"));
 				return;
 			}
 			
-			Skill skill = skills.get(skillId);
+			var skill = skills.get(skillId);
 			if (skill == null)
 			{
-				if (Config.DEBUG)
-				{
-					LOG.warning("Skill " + skillId + " missing from npc_skills.sql for a summon id " + activeSummon.getId());
-				}
+				LOG.warning("Skill " + skillId + " missing from npc_skills.sql for a summon id " + activeSummon.getId());
 				return;
 			}
 			
@@ -518,14 +500,12 @@ public class RequestActionUse extends AClientPacket
 	 */
 	private void useSkill(int skillId)
 	{
-		L2PcInstance activeChar = getClient().getActiveChar();
+		var activeChar = getClient().getActiveChar();
 		
-		if (activeChar == null)
+		if (activeChar != null)
 		{
-			return;
+			useSkill(skillId, activeChar.getTarget());
 		}
-		
-		useSkill(skillId, activeChar.getTarget());
 	}
 	
 	@Override

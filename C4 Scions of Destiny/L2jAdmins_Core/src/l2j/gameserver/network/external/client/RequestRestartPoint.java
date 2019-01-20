@@ -73,9 +73,9 @@ public class RequestRestartPoint extends AClientPacket
 						}
 						loc = MapRegionData.getInstance().getTeleToLocation(activeChar, TeleportWhereType.CLAN_HALL);
 						
-						if ((ClanHallData.getInstance().getClanHallByOwner(activeChar.getClan()) != null) && (ClanHallData.getInstance().getClanHallByOwner(activeChar.getClan()).getFunction(ClanHallFunctionType.RESTORE_EXP) != null))
+						if ((ClanHallData.getClanHallByOwner(activeChar.getClan()) != null) && (ClanHallData.getClanHallByOwner(activeChar.getClan()).getFunction(ClanHallFunctionType.RESTORE_EXP) != null))
 						{
-							activeChar.restoreExp(ClanHallData.getInstance().getClanHallByOwner(activeChar.getClan()).getFunction(ClanHallFunctionType.RESTORE_EXP).getLvl());
+							activeChar.restoreExp(ClanHallData.getClanHallByOwner(activeChar.getClan()).getFunction(ClanHallFunctionType.RESTORE_EXP).getLvl());
 						}
 						break;
 					}

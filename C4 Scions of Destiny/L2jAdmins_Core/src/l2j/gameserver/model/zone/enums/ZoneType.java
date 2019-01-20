@@ -17,7 +17,8 @@ public enum ZoneType
 	MONSTERTRACK,
 	NOHQ,
 	BOSS,
-	EFFECT;
+	EFFECT,
+	NO_STORE;
 	
 	public static final int NUM_ZONE = values().length;
 }
