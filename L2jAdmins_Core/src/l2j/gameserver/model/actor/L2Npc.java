@@ -961,7 +961,7 @@ public class L2Npc extends L2Character
 	{
 		if (clanHallId < 0)
 		{
-			ClanHall ch = ClanHallData.getInstance().getNearbyClanHall(getX(), getY(), 500);
+			ClanHall ch = ClanHallData.getNearbyClanHall(getX(), getY(), 500);
 			
 			if (ch != null)
 			{
@@ -969,7 +969,7 @@ public class L2Npc extends L2Character
 				return ch;
 			}
 		}
-		return ClanHallData.getInstance().getClanHallById(clanHallId);
+		return ClanHallData.getClanHallById(clanHallId);
 	}
 	
 	public enum BuildingConditionType

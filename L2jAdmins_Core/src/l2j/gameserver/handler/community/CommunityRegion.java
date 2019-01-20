@@ -98,7 +98,7 @@ public class CommunityRegion extends AbstractCommunityHandler
 		
 		String list = "";
 		
-		final List<ClanHall> clanHalls = ClanHallData.getInstance().getClanHallsByLocation(castle.getName());
+		final List<ClanHall> clanHalls = ClanHallData.getClanHallsByLocation(castle.getName());
 		if ((clanHalls != null) && !clanHalls.isEmpty())
 		{
 			list = CLAN_HALL_BAR;

@@ -96,7 +96,7 @@ public final class Formulas
 				if (player.getClan().hasClanHall())
 				{
 					int clanHallId = player.getClan().getClanHallId();
-					ClanHall ch = ClanHallData.getInstance().getClanHallById(clanHallId);
+					ClanHall ch = ClanHallData.getClanHallById(clanHallId);
 					if (ch != null)
 					{
 						if (ch.getFunction(ClanHallFunctionType.RESTORE_HP) != null)
@@ -178,7 +178,7 @@ public final class Formulas
 				if (player.getClan().hasClanHall())
 				{
 					int clanHallId = player.getClan().getClanHallId();
-					ClanHall ch = ClanHallData.getInstance().getClanHallById(clanHallId);
+					ClanHall ch = ClanHallData.getClanHallById(clanHallId);
 					if (ch != null)
 					{
 						if (ch.getFunction(ClanHallFunctionType.RESTORE_MP) != null)
