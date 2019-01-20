@@ -189,7 +189,7 @@ public class ClanData
 		
 		if (clan.hasClanHall())
 		{
-			ClanHallData.getInstance().getClanHallByOwner(clan).setOwner(null);
+			ClanHallData.getClanHallByOwner(clan).setOwner(null);
 		}
 		
 		int castleId = clan.getCastleId();

@@ -279,7 +279,7 @@ public class EnterWorld extends AClientPacket
 		if (activeChar.getClan() != null)
 		{
 			// Add message if clanHall not paid. Possibly this is custom...
-			ClanHall clanHall = ClanHallData.getInstance().getClanHallByOwner(activeChar.getClan());
+			ClanHall clanHall = ClanHallData.getClanHallByOwner(activeChar.getClan());
 			if ((clanHall != null) && !clanHall.getPaid())
 			{
 				activeChar.sendPacket(SystemMessage.PAYMENT_FOR_YOUR_CLAN_HALL_HAS_NOT_BEEN_MADE_PLEASE_MAKE_PAYMENT_TO_YOUR_CLAN_WAREHOUSE_BY_S1_TOMORROW);

@@ -30,7 +30,7 @@ public class ClanHallZone extends ZoneSpawn
 			clanHallId = Integer.parseInt(value);
 			
 			// Register self to the correct clan hall
-			ClanHallData.getInstance().getClanHallById(clanHallId).setZone(this);
+			ClanHallData.getClanHallById(clanHallId).setZone(this);
 		}
 		else
 		{
@@ -46,7 +46,7 @@ public class ClanHallZone extends ZoneSpawn
 			// Set as in clan hall
 			character.setInsideZone(ZoneType.CLANHALL, true);
 			
-			ClanHall clanHall = ClanHallData.getInstance().getClanHallById(clanHallId);
+			ClanHall clanHall = ClanHallData.getClanHallById(clanHallId);
 			if (clanHall == null)
 			{
 				return;

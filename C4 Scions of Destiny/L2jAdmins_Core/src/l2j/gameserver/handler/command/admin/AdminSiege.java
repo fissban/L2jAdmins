@@ -54,7 +54,7 @@ public class AdminSiege implements IAdminCommandHandler
 		ClanHall clanhall = null;
 		if (command.startsWith("admin_clanhall"))
 		{
-			clanhall = ClanHallData.getInstance().getClanHallById(Integer.parseInt(st.nextToken()));
+			clanhall = ClanHallData.getClanHallById(Integer.parseInt(st.nextToken()));
 		}
 		else if (st.hasMoreTokens())
 		{
@@ -264,7 +264,7 @@ public class AdminSiege implements IAdminCommandHandler
 		}
 		sb.append("</td><td>");
 		int id = 0;
-		for (ClanHall clanhall : ClanHallData.getInstance().getClanHalls())
+		for (ClanHall clanhall : ClanHallData.getClanHalls())
 		{
 			id++;
 			if (id > 15)

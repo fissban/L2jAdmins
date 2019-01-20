@@ -210,7 +210,7 @@ public class MapRegionData
 				// If teleport to clan hall
 				if (teleportWhere == TeleportWhereType.CLAN_HALL)
 				{
-					clanhall = ClanHallData.getInstance().getClanHallByOwner(player.getClan());
+					clanhall = ClanHallData.getClanHallByOwner(player.getClan());
 					if (clanhall != null)
 					{
 						ClanHallZone zone = clanhall.getZone();

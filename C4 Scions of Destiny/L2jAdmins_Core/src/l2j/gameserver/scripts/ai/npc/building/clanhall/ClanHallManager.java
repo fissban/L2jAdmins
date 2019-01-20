@@ -433,7 +433,7 @@ public class ClanHallManager extends Script
 	
 	private static void revalidateDeco(L2PcInstance player)
 	{
-		ClanHall hall = ClanHallData.getInstance().getClanHallByOwner(player.getClan());
+		ClanHall hall = ClanHallData.getClanHallByOwner(player.getClan());
 		if (hall != null)
 		{
 			player.sendPacket(new ClanHallDecoration(hall));

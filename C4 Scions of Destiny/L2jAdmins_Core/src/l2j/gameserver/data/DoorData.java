@@ -265,7 +265,7 @@ public class DoorData extends XmlParser
 				castleDoors.put(door.getId(), door);
 			}
 			
-			ClanHall clanhall = ClanHallData.getInstance().getNearbyClanHall(door.getX(), door.getY(), 500);
+			ClanHall clanhall = ClanHallData.getNearbyClanHall(door.getX(), door.getY(), 500);
 			
 			if (clanhall != null)
 			{

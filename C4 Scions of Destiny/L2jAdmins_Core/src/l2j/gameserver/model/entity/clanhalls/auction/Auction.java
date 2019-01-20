@@ -455,9 +455,9 @@ public class Auction
 		if (sellerId > 0)
 		{
 			returnItem(sellerClanName, highestBidderMaxBid, true);
-			returnItem(sellerClanName, ClanHallData.getInstance().getClanHallById(id).getLease(), false);
+			returnItem(sellerClanName, ClanHallData.getClanHallById(id).getLease(), false);
 		}
-		ClanHallData.getInstance().getClanHallById(id).setOwner(ClanData.getInstance().getClanByName(bidders.get(highestBidderId).getClanName()));
+		ClanHallData.getClanHallById(id).setOwner(ClanData.getInstance().getClanByName(bidders.get(highestBidderId).getClanName()));
 		cancelAuction();
 	}
 	
