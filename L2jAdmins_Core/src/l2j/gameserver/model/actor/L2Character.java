@@ -1252,6 +1252,9 @@ public abstract class L2Character extends L2Object
 		
 		broadcastPacket(new MagicSkillUse(this, target, skill.getId(), level, hitTime, reuseDelay));
 		
+		// Send a Server->Client packet MagicSkillLaunched to the L2Character AND to all L2PcInstance in the KnownPlayers of the L2Character
+		broadcastPacket(new MagicSkillLaunched(this, skill.getId(), skill.getLevel(), targets));
+		
 		// Send a system message USE_S1 to the L2Character
 		if ((this instanceof L2PcInstance) && (skill.getId() != 1312))
 		{
@@ -1259,7 +1262,7 @@ public abstract class L2Character extends L2Object
 		}
 		
 		// launch the magic in hitTime milliseconds
-		if (hitTime > 410)
+		if (hitTime > 210)
 		{
 			// Send a Server->Client packet SetupGauge with the color of the gauge and the casting time
 			if (this instanceof L2PcInstance)
@@ -1274,8 +1277,8 @@ public abstract class L2Character extends L2Object
 			}
 			
 			// Create a task MagicUseTask to launch the MagicSkill at the end of the casting time (hitTime)
-			// For client animation reasons (party buffs especially) 400 ms before!
-			skillCast = ThreadPoolManager.getInstance().schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.LAUNCHED), hitTime - 400);
+			// For client animation reasons (party buffs especially) 200 ms before!
+			skillCast = ThreadPoolManager.getInstance().schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.LAUNCHED), hitTime - 200);
 		}
 		else
 		{
@@ -3065,49 +3068,43 @@ public abstract class L2Character extends L2Object
 		}
 		
 		// Get the Move Speed of the L2Charcater
-		var speed = getStat().getMoveSpeed();
-		if ((speed <= 0) || isMovementDisabled())
+		if ((getStat().getMoveSpeed() <= 0) || isMovementDisabled())
 		{
 			// Cancel the move action
 			move = null;
 			return false;
 		}
 		
-		var md = move;
-		if (md == null)
-		{
-			return false;
-		}
-		
+		var oldMove = move;
 		// Create and Init a MoveData object
-		var moveData = new MoveData();
+		var newMove = new MoveData();
 		
 		// Update MoveData object
-		moveData.onGeodataPathIndex = md.onGeodataPathIndex + 1; // next segment
-		moveData.geoPath = md.geoPath;
-		moveData.geoPathGtx = md.geoPathGtx;
-		moveData.geoPathGty = md.geoPathGty;
-		moveData.geoPathAccurateTx = md.geoPathAccurateTx;
-		moveData.geoPathAccurateTy = md.geoPathAccurateTy;
+		newMove.onGeodataPathIndex = oldMove.onGeodataPathIndex + 1; // next segment
+		newMove.geoPath = oldMove.geoPath;
+		newMove.geoPathGtx = oldMove.geoPathGtx;
+		newMove.geoPathGty = oldMove.geoPathGty;
+		newMove.geoPathAccurateTx = oldMove.geoPathAccurateTx;
+		newMove.geoPathAccurateTy = oldMove.geoPathAccurateTy;
 		
-		if (md.onGeodataPathIndex == (md.geoPath.size() - 2))
+		if (oldMove.onGeodataPathIndex == (oldMove.geoPath.size() - 2))
 		{
-			moveData.xDestination = md.geoPathAccurateTx;
-			moveData.yDestination = md.geoPathAccurateTy;
-			moveData.zDestination = md.geoPath.get(moveData.onGeodataPathIndex).getZ();
+			newMove.xDestination = oldMove.geoPathAccurateTx;
+			newMove.yDestination = oldMove.geoPathAccurateTy;
+			newMove.zDestination = oldMove.geoPath.get(newMove.onGeodataPathIndex).getZ();
 		}
 		else
 		{
-			moveData.xDestination = md.geoPath.get(moveData.onGeodataPathIndex).getX();
-			moveData.yDestination = md.geoPath.get(moveData.onGeodataPathIndex).getY();
-			moveData.zDestination = md.geoPath.get(moveData.onGeodataPathIndex).getZ();
+			newMove.xDestination = oldMove.geoPath.get(newMove.onGeodataPathIndex).getX();
+			newMove.yDestination = oldMove.geoPath.get(newMove.onGeodataPathIndex).getY();
+			newMove.zDestination = oldMove.geoPath.get(newMove.onGeodataPathIndex).getZ();
 		}
 		
-		moveData.heading = 0;
-		moveData.moveStartTime = System.currentTimeMillis();
+		newMove.heading = 0;
+		newMove.moveStartTime = System.currentTimeMillis();
 		
 		// set new MoveData as character MoveData
-		move = moveData;
+		move = newMove;
 		
 		// get travel distance
 		var dx = (move.xDestination - super.getX());
@@ -3131,7 +3128,7 @@ public abstract class L2Character extends L2Object
 	
 	public boolean validateMovementHeading(int heading)
 	{
-		final MoveData m = move;
+		var m = move;
 		
 		if (m == null)
 		{
@@ -3703,7 +3700,7 @@ public abstract class L2Character extends L2Object
 			}
 		}
 		
-		return Formulas.calcPAtkSpd(this, target, getStat().getPAtkSpd());
+		return Formulas.calcPAtkSpd(getStat().getPAtkSpd());
 	}
 	
 	private int calculateReuseTime(L2Character target, ItemWeapon weapon)
@@ -4061,16 +4058,13 @@ public abstract class L2Character extends L2Object
 			targets = targetList;
 		}
 		
-		// Send a Server->Client packet MagicSkillLaunched to the L2Character AND to all L2PcInstance in the KnownPlayers of the L2Character
-		broadcastPacket(new MagicSkillLaunched(this, skill.getId(), skill.getLevel(), targets));
-		
 		if (instant)
 		{
 			onMagicHitTimer(targets, skill, coolTime, true);
 		}
 		else
 		{
-			skillCast = ThreadPoolManager.getInstance().schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.HIT), 400);
+			skillCast = ThreadPoolManager.getInstance().schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.HIT), 200);
 		}
 	}
 	

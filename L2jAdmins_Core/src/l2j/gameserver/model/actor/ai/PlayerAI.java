@@ -53,7 +53,6 @@ public class PlayerAI extends CharacterAI
 		// do nothing if next intention is same as current one.
 		if ((currentIntention == intention) && (arg0 == intentionArg0) && (arg1 == intentionArg1))
 		{
-			super.changeIntention(intention, arg0, arg1);
 			return;
 		}
 		
@@ -64,7 +63,7 @@ public class PlayerAI extends CharacterAI
 	
 	/**
 	 * Launch actions corresponding to the Event ReadyToAct.<br>
-	 * <b><u> Actions</u> :</b><br>
+	 * <b><u>Actions</u>:</b><br>
 	 * <li>Launch actions corresponding to the Event Think
 	 */
 	@Override
@@ -81,7 +80,7 @@ public class PlayerAI extends CharacterAI
 	
 	/**
 	 * Launch actions corresponding to the Event Cancel.<br>
-	 * <b><u> Actions</u> :</b><br>
+	 * <b><u>Actions</u>:</b><br>
 	 * <li>Stop an AI Follow Task
 	 * <li>Launch actions corresponding to the Event Think
 	 */
@@ -169,8 +168,8 @@ public class PlayerAI extends CharacterAI
 	@Override
 	protected void clientNotifyDead()
 	{
+		// clientMovingToPawnOffset = 0;
 		clientMoving = false;
-		
 		super.clientNotifyDead();
 	}
 	
@@ -292,7 +291,7 @@ public class PlayerAI extends CharacterAI
 	@Override
 	protected void onEvtThink()
 	{
-		if (thinking)
+		if (thinking && (getIntention() != null && getIntention() != CtrlIntentionType.CAST))
 		{
 			return;
 		}

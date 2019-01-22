@@ -73,7 +73,7 @@ public final class L2GuardInstance extends L2Attackable
 	}
 	
 	/**
-	 * Notify the L2GuardInstance to return to its home location (AI_INTENTION_MOVE_TO) and clear its aggroList.
+	 * Notify the L2GuardInstance to return to its home location {@link CtrlIntentionType#MOVE_TO} and clear its aggroList.
 	 */
 	public void returnHome()
 	{

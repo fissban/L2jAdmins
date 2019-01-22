@@ -62,8 +62,8 @@ public class CharacterAI extends AbstractAI
 	
 	/**
 	 * Manage the Idle Intention : Stop Attack, Movement and Stand Up the actor.<br>
-	 * <b><u> Actions</u> :</b><br>
-	 * <li>Set the AI Intention to AI_INTENTION_IDLE
+	 * <b><u>Actions</u>:</b><br>
+	 * <li>Set the AI Intention to {@link CtrlIntentionType#IDLE}
 	 * <li>Init cast and attack target
 	 * <li>Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
 	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
@@ -88,7 +88,7 @@ public class CharacterAI extends AbstractAI
 	/**
 	 * Manage the Active Intention : Stop Attack, Movement and Launch Think Event.<br>
 	 * <b><u> Actions</u> : <I>if the Intention is not already Active</I></b><br>
-	 * <li>Set the AI Intention to AI_INTENTION_ACTIVE
+	 * <li>Set the AI Intention to {@link CtrlIntentionType#ACTIVE}
 	 * <li>Init cast and attack target
 	 * <li>Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
 	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
@@ -100,7 +100,7 @@ public class CharacterAI extends AbstractAI
 		// Check if the Intention is not already Active
 		if (getIntention() != CtrlIntentionType.ACTIVE)
 		{
-			// Set the AI Intention to AI_INTENTION_ACTIVE
+			// Set the AI Intention to ACTIVE
 			changeIntention(CtrlIntentionType.ACTIVE, null, null);
 			
 			// Init cast and attack target
@@ -127,7 +127,7 @@ public class CharacterAI extends AbstractAI
 	/**
 	 * Manage the Rest Intention.<br>
 	 * <b><u> Actions</u> : </b><br>
-	 * <li>Set the AI Intention to AI_INTENTION_IDLE</li>
+	 * <li>Set the AI Intention to {@link CtrlIntentionType#IDLE}</li>
 	 */
 	@Override
 	protected void onIntentionRest()
@@ -140,7 +140,7 @@ public class CharacterAI extends AbstractAI
 	 * Manage the Attack Intention : Stop current Attack (if necessary), Start a new Attack and Launch Think Event.<br>
 	 * <b><u> Actions</u> : </b><br>
 	 * <li>Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
-	 * <li>Set the Intention of this AI to AI_INTENTION_ATTACK
+	 * <li>Set the Intention of this AI to {@link CtrlIntentionType#ATTACK}
 	 * <li>Set or change the AI attack target
 	 * <li>Start the actor Auto Attack client side by sending Server->Client packet AutoAttackStart (broadcast)
 	 * <li>Launch the Think Event <b><u> Overridden in</u> :</b><br>
@@ -169,7 +169,7 @@ public class CharacterAI extends AbstractAI
 			return;
 		}
 		
-		// Check if the Intention is already AI_INTENTION_ATTACK
+		// Check if the Intention is already ATTACK
 		if (getIntention() == CtrlIntentionType.ATTACK)
 		{
 			// Check if the AI already targets the L2Character
@@ -193,7 +193,7 @@ public class CharacterAI extends AbstractAI
 			// Set the AI attack target
 			setTarget(target);
 			
-			// Set the Intention of this AbstractAI to AI_INTENTION_ATTACK
+			// Set the Intention of this AbstractAI to ATTACK
 			changeIntention(CtrlIntentionType.ATTACK, target, null);
 			
 			stopFollow();
@@ -209,8 +209,8 @@ public class CharacterAI extends AbstractAI
 	 * <li>Set the AI cast target
 	 * <li>Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
 	 * <li>Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
-	 * <li>Set the AI skill used by INTENTION_CAST
-	 * <li>Set the Intention of this AI to AI_INTENTION_CAST
+	 * <li>Set the AI skill used by {@link CtrlIntentionType#CAST}
+	 * <li>Set the Intention of this AI to {@link CtrlIntentionType#CAST}
 	 * <li>Launch the Think Event</li>
 	 */
 	@Override
@@ -233,10 +233,10 @@ public class CharacterAI extends AbstractAI
 			activeActor.abortAttack();
 		}
 		
-		// Set the AI skill used by INTENTION_CAST
+		// Set the AI skill used by CAST
 		currentSkill = skill;
 		
-		// Change the Intention of this AbstractAI to AI_INTENTION_CAST
+		// Change the Intention of this AbstractAI to CAST
 		changeIntention(CtrlIntentionType.CAST, skill, target);
 		
 		// Launch the Think Event
@@ -247,7 +247,7 @@ public class CharacterAI extends AbstractAI
 	 * Manage the Move To Intention : Stop current Attack and Launch a Move to Location Task.<br>
 	 * <b><u> Actions</u>:</b><br>
 	 * <li>Stop the actor auto-attack server side AND client side by sending Server->Client packet AutoAttackStop (broadcast)
-	 * <li>Set the Intention of this AI to AI_INTENTION_MOVE_TO
+	 * <li>Set the Intention of this AI to {@link CtrlIntentionType#MOVE_TO}
 	 * <li>Move the actor to Location (x,y,z) server side AND client side by sending Server->Client packet CharMoveToLocation (broadcast)</li>
 	 */
 	@Override
@@ -267,14 +267,14 @@ public class CharacterAI extends AbstractAI
 			return;
 		}
 		
-		// Set the Intention of this AbstractAI to AI_INTENTION_MOVE_TO
+		// Set the Intention of this AbstractAI to MOVE_TO
 		changeIntention(CtrlIntentionType.MOVE_TO, pos, null);
 		
 		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
-		clientStopAutoAttack();
+		// clientStopAutoAttack();
 		
 		// Abort the attack of the L2Character and send Server->Client ActionFailed packet
-		activeActor.abortAttack();
+		// activeActor.abortAttack();
 		
 		// Move the actor to Location (x,y,z) server side AND client side by sending Server->Client packet CharMoveToLocation (broadcast)
 		moveTo(pos.getX(), pos.getY(), pos.getZ());
@@ -297,7 +297,7 @@ public class CharacterAI extends AbstractAI
 			return;
 		}
 		
-		if (activeActor.isAllSkillsDisabled())
+		if (activeActor.isAllSkillsDisabled() || activeActor.isCastingNow())
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
 			clientActionFailed();
@@ -326,7 +326,7 @@ public class CharacterAI extends AbstractAI
 		}
 		
 		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
-		clientStopAutoAttack();
+		// clientStopAutoAttack();
 		
 		// Set the Intention of this AbstractAI to AI_INTENTION_FOLLOW
 		changeIntention(CtrlIntentionType.FOLLOW, target, null);
@@ -366,7 +366,7 @@ public class CharacterAI extends AbstractAI
 		}
 		
 		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
-		clientStopAutoAttack();
+		// clientStopAutoAttack();
 		
 		if ((object instanceof ItemInstance) && (((ItemInstance) object).getLocation() != ItemLocationType.VOID))
 		{
@@ -409,7 +409,7 @@ public class CharacterAI extends AbstractAI
 		}
 		
 		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
-		clientStopAutoAttack();
+		// clientStopAutoAttack();
 		
 		if (getIntention() != CtrlIntentionType.INTERACT)
 		{
@@ -506,7 +506,7 @@ public class CharacterAI extends AbstractAI
 	
 	/**
 	 * Launch actions corresponding to the Event Rooted.<br>
-	 * <b><u> Actions</u> :</b><br>
+	 * <b><u>Actions</u>:</b><br>
 	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
 	 * <li>Launch actions corresponding to the Event onAttacked</li>
 	 */
@@ -522,7 +522,7 @@ public class CharacterAI extends AbstractAI
 	
 	/**
 	 * Launch actions corresponding to the Event Confused.<br>
-	 * <b><u> Actions</u> :</b><br>
+	 * <b><u>Actions</u>:</b><br>
 	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
 	 * <li>Launch actions corresponding to the Event onAttacked</li>
 	 */
@@ -538,7 +538,7 @@ public class CharacterAI extends AbstractAI
 	
 	/**
 	 * Launch actions corresponding to the Event Muted.<br>
-	 * <b><u> Actions</u> :</b><br>
+	 * <b><u>Actions</u>:</b><br>
 	 * <li>Break a cast and send Server->Client ActionFailed packet and a System Message to the L2Character
 	 */
 	@Override
@@ -550,7 +550,7 @@ public class CharacterAI extends AbstractAI
 	
 	/**
 	 * Launch actions corresponding to the Event ReadyToAct.<br>
-	 * <b><u> Actions</u> :</b><br>
+	 * <b><u>Actions</u>:</b><br>
 	 * <li>Launch actions corresponding to the Event Think
 	 */
 	@Override
@@ -561,8 +561,8 @@ public class CharacterAI extends AbstractAI
 	}
 	
 	/**
-	 * Launch actions corresponding to the Event Arrived. <b><u> Actions</u> :</b><br>
-	 * <li>If the Intention was AI_INTENTION_MOVE_TO, set the Intention to AI_INTENTION_ACTIVE
+	 * Launch actions corresponding to the Event Arrived. <b><u>Actions</u>:</b><br>
+	 * <li>If the Intention was {@link CtrlIntentionType#MOVE_TO}, set the Intention to {@link CtrlIntentionType#ACTIVE}
 	 * <li>Launch actions corresponding to the Event Think</li>
 	 */
 	@Override
@@ -590,7 +590,7 @@ public class CharacterAI extends AbstractAI
 		
 		clientStoppedMoving();
 		
-		// If the Intention was AI_INTENTION_MOVE_TO, set the Intention to AI_INTENTION_ACTIVE
+		// If the Intention was MOVE_TO, set the Intention to ACTIVE
 		if (getIntention() == CtrlIntentionType.MOVE_TO)
 		{
 			setIntention(CtrlIntentionType.ACTIVE);
@@ -602,15 +602,15 @@ public class CharacterAI extends AbstractAI
 	
 	/**
 	 * Launch actions corresponding to the Event ArrivedBlocked.<br>
-	 * <b><u> Actions</u> :</b><br>
+	 * <b><u>Actions</u>:</b><br>
 	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
-	 * <li>If the Intention was AI_INTENTION_MOVE_TO, set the Intention to AI_INTENTION_ACTIVE
+	 * <li>If the Intention was {@link CtrlIntentionType#MOVE_TO}, set the Intention to {@link CtrlIntentionType#ACTIVE}
 	 * <li>Launch actions corresponding to the Event Think</li>
 	 */
 	@Override
 	protected void onEvtArrivedBlocked(LocationHolder blocked_at_pos)
 	{
-		// If the Intention was AI_INTENTION_MOVE_TO, set the Intention to AI_INTENTION_ACTIVE
+		// If the Intention was MOVE_TO, set the Intention to ACTIVE
 		if ((getIntention() == CtrlIntentionType.MOVE_TO) || (getIntention() == CtrlIntentionType.CAST))
 		{
 			setIntention(CtrlIntentionType.ACTIVE);
@@ -625,12 +625,12 @@ public class CharacterAI extends AbstractAI
 	
 	/**
 	 * Launch actions corresponding to the Event ForgetObject.<br>
-	 * <b><u> Actions</u> :</b><br>
-	 * <li>If the object was targeted and the Intention was AI_INTENTION_INTERACT or AI_INTENTION_PICK_UP, set the Intention to AI_INTENTION_ACTIVE
-	 * <li>If the object was targeted to attack, stop the auto-attack, cancel target and set the Intention to AI_INTENTION_ACTIVE
-	 * <li>If the object was targeted to cast, cancel target and set the Intention to AI_INTENTION_ACTIVE
-	 * <li>If the object was targeted to follow, stop the movement, cancel AI Follow Task and set the Intention to AI_INTENTION_ACTIVE
-	 * <li>If the targeted object was the actor , cancel AI target, stop AI Follow Task, stop the movement and set the Intention to AI_INTENTION_IDLE</li>
+	 * <b><u>Actions</u>:</b><br>
+	 * <li>If the object was targeted and the Intention was AI_INTENTION_INTERACT or AI_INTENTION_PICK_UP, set the Intention to {@link CtrlIntentionType#ACTIVE}
+	 * <li>If the object was targeted to attack, stop the auto-attack, cancel target and set the Intention to {@link CtrlIntentionType#ACTIVE}
+	 * <li>If the object was targeted to cast, cancel target and set the Intention to {@link CtrlIntentionType#ACTIVE}
+	 * <li>If the object was targeted to follow, stop the movement, cancel AI Follow Task and set the Intention to {@link CtrlIntentionType#ACTIVE}
+	 * <li>If the targeted object was the actor , cancel AI target, stop AI Follow Task, stop the movement and set the Intention to {@link CtrlIntentionType#IDLE}</li>
 	 */
 	@Override
 	protected void onEvtForgetObject(L2Object object)
@@ -641,7 +641,7 @@ public class CharacterAI extends AbstractAI
 			// Cancel attack target
 			setTarget(null);
 			
-			// Set the Intention of this AbstractAI to AI_INTENTION_ACTIVE
+			// Set the Intention of this AbstractAI to ACTIVE
 			setIntention(CtrlIntentionType.ACTIVE);
 		}
 		
@@ -654,7 +654,7 @@ public class CharacterAI extends AbstractAI
 			// Stop an AI Follow Task
 			stopFollow();
 			
-			// Set the Intention of this AbstractAI to AI_INTENTION_ACTIVE
+			// Set the Intention of this AbstractAI to ACTIVE
 			setIntention(CtrlIntentionType.ACTIVE);
 		}
 		
@@ -677,7 +677,7 @@ public class CharacterAI extends AbstractAI
 	
 	/**
 	 * Launch actions corresponding to the Event Cancel.<br>
-	 * <b><u> Actions</u> :</b><br>
+	 * <b><u>Actions</u>:</b><br>
 	 * <li>Stop an AI Follow Task
 	 * <li>Launch actions corresponding to the Event Think</li>
 	 */
@@ -700,7 +700,7 @@ public class CharacterAI extends AbstractAI
 	
 	/**
 	 * Launch actions corresponding to the Event Dead.<br>
-	 * <b><u> Actions</u> :</b><br>
+	 * <b><u>Actions</u>:</b><br>
 	 * <li>Stop an AI Follow Task
 	 * <li>Kill the actor client side by sending Server->Client packet AutoAttackStop, StopMove/StopRotation, Die (broadcast)
 	 */
@@ -721,7 +721,7 @@ public class CharacterAI extends AbstractAI
 	
 	/**
 	 * Launch actions corresponding to the Event Fake Death.<br>
-	 * <b><u> Actions</u> :</b><br>
+	 * <b><u>Actions</u>:</b><br>
 	 * <li>Stop an AI Follow Task</li>
 	 */
 	@Override
@@ -746,7 +746,7 @@ public class CharacterAI extends AbstractAI
 	
 	/**
 	 * Manage the Move to Pawn action in function of the distance and of the Interact area.<br>
-	 * <b><u> Actions</u> :</b><br>
+	 * <b><u>Actions</u>:</b><br>
 	 * <li>Get the distance between the current position of the L2Character and the target (x,y)
 	 * <li>If the distance > offset+20, move the actor (by running) to Pawn server side AND client side by sending Server->Client packet MoveToPawn (broadcast)
 	 * <li>If the distance <= offset+20, Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast) <b><u> Example of use </u> :</b><br>
@@ -827,7 +827,7 @@ public class CharacterAI extends AbstractAI
 	 * <I>If the target is lost or dead</I></b><br>
 	 * <li>Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
 	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
-	 * <li>Set the Intention of this AbstractAI to AI_INTENTION_ACTIVE <b><u> Example of use </u> :</b><br>
+	 * <li>Set the Intention of this AbstractAI to {@link CtrlIntentionType#ACTIVE} <b><u> Example of use </u> :</b><br>
 	 * <li>L2PLayerAI, L2SummonAI
 	 * @param  target The targeted L2Object
 	 * @return        True if the target is lost or dead (false if fake death)
@@ -843,7 +843,7 @@ public class CharacterAI extends AbstractAI
 				return false;
 			}
 			
-			// Set the Intention of this AbstractAI to AI_INTENTION_ACTIVE
+			// Set the Intention of this AbstractAI to ACTIVE
 			setIntention(CtrlIntentionType.ACTIVE);
 			return true;
 		}
@@ -857,7 +857,7 @@ public class CharacterAI extends AbstractAI
 	 * <I>If the target is lost</I></b><br>
 	 * <li>Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
 	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
-	 * <li>Set the Intention of this AbstractAI to AI_INTENTION_ACTIVE <b><u> Example of use </u> :</b><br>
+	 * <li>Set the Intention of this AbstractAI to {@link CtrlIntentionType#ACTIVE} <b><u> Example of use </u> :</b><br>
 	 * <li>L2PLayerAI, L2SummonAI
 	 * @param  target The targeted L2Object
 	 * @return        True if the target is lost
@@ -878,7 +878,7 @@ public class CharacterAI extends AbstractAI
 		
 		if (target == null)
 		{
-			// Set the Intention of this AbstractAI to AI_INTENTION_ACTIVE
+			// Set the Intention of this AbstractAI to ACTIVE
 			setIntention(CtrlIntentionType.ACTIVE);
 			return true;
 		}

@@ -309,7 +309,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 	
 	/**
 	 * Manage AI standard thinks of a L2Attackable (called by onEvtThink).<BR>
-	 * <B><U> Actions</U> :</B><BR>
+	 * <b><u>Actions</u>:</b><BR>
 	 * <li>Update every 1s the globalAggro counter to come close to 0</li>
 	 * <li>If the actor is Aggressive and can attack, add all autoAttackable L2Character in its Aggro Range to its aggroList, chose a target and order to attack it</li>
 	 * <li>If the actor is a L2GuardInstance that can't attack, order to it to return to its home location</li>
@@ -495,7 +495,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 	
 	/**
 	 * Manage AI attack thinks of a L2Attackable (called by onEvtThink).<BR>
-	 * <B><U> Actions</U> :</B><BR>
+	 * <b><u>Actions</u>:</b><BR>
 	 * <li>Update the attack timeout if actor is running</li>
 	 * <li>If target is dead or timeout is expired, stop this attack and set the Intention to ACTIVE</li>
 	 * <li>Call all L2Object of its Faction inside the Faction Range</li>
@@ -996,7 +996,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 	
 	/**
 	 * Launch actions corresponding to the Event Attacked.<BR>
-	 * <B><U> Actions</U> :</B><BR>
+	 * <b><u>Actions</u>:</b><BR>
 	 * <li>Init the attack : Calculate the attack timeout, Set the globalAggro to 0, Add the attacker to the actor aggroList</li>
 	 * <li>Set the L2Character movement type to run and send Server->Client packet ChangeMoveType to all others L2PcInstance</li>
 	 * <li>Set the Intention to ATTACK</li>
@@ -1074,7 +1074,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 	
 	/**
 	 * Launch actions corresponding to the Event Aggression.<BR>
-	 * <B><U> Actions</U> :</B><BR>
+	 * <b><u>Actions</u>:</b><BR>
 	 * <li>Add the target to the actor aggroList or update hate if already present</li>
 	 * <li>Set the actor Intention to ATTACK (if actor is L2GuardInstance check if it isn't too far from its home location)</li>
 	 * @param target The L2Character that attacks
