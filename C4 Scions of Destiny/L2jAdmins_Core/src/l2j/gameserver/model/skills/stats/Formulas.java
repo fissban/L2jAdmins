@@ -714,11 +714,10 @@ public final class Formulas
 	/**
 	 * Calculate delay (in milliseconds) before next ATTACK
 	 * @param  attacker
-	 * @param  target
 	 * @param  rate
 	 * @return
 	 */
-	public static int calcPAtkSpd(L2Character attacker, L2Character target, double rate)
+	public static int calcPAtkSpd(double rate)
 	{
 		// measured Oct 2006 by Tank6585, formula by Sami
 		if (rate < 2)
@@ -737,11 +736,7 @@ public final class Formulas
 	 */
 	public static int calcAtkSpd(L2Character attacker, Skill skill, double skillTime)
 	{
-		if (skill.isMagic())
-		{
-			return (int) ((skillTime * 333) / attacker.getStat().getMAtkSpd());
-		}
-		return (int) ((skillTime * 300) / attacker.getStat().getPAtkSpd());
+		return (int) (skillTime * 333) / (skill.isMagic() ? attacker.getStat().getMAtkSpd() : attacker.getStat().getPAtkSpd());
 	}
 	
 	/**
@@ -754,131 +749,131 @@ public final class Formulas
 	public static boolean calcHitMiss(L2Character attacker, L2Character target)
 	{
 		int delta = attacker.getStat().getAccuracy() - target.getStat().getEvasionRate(attacker);
-		float min_chance = Rnd.get(1000);
-		float attacker_chance = 0;
+		float minChance = Rnd.get(1000);
+		float attackerChance = 0;
 		
 		if (delta >= 10)
 		{
 			// Chance to Hit has an upward cap of 98%
-			attacker_chance = 980;
+			attackerChance = 980;
 		}
 		else
 		{
 			switch (delta)
 			{
 				case 9:
-					attacker_chance = 975;
+					attackerChance = 975;
 					break;
 				case 8:
-					attacker_chance = 970;
+					attackerChance = 970;
 					break;
 				case 7:
-					attacker_chance = 965;
+					attackerChance = 965;
 					break;
 				case 6:
-					attacker_chance = 960;
+					attackerChance = 960;
 					break;
 				case 5:
-					attacker_chance = 955;
+					attackerChance = 955;
 					break;
 				case 4:
-					attacker_chance = 945;
+					attackerChance = 945;
 					break;
 				case 3:
-					attacker_chance = 935;
+					attackerChance = 935;
 					break;
 				case 2:
-					attacker_chance = 925;
+					attackerChance = 925;
 					break;
 				case 1:
-					attacker_chance = 915;
+					attackerChance = 915;
 					break;
 				case 0:
-					attacker_chance = 905;
+					attackerChance = 905;
 					break;
 				case -1:
-					attacker_chance = 890;
+					attackerChance = 890;
 					break;
 				case -2:
-					attacker_chance = 875;
+					attackerChance = 875;
 					break;
 				case -3:
-					attacker_chance = 860;
+					attackerChance = 860;
 					break;
 				case -4:
-					attacker_chance = 845;
+					attackerChance = 845;
 					break;
 				case -5:
-					attacker_chance = 830;
+					attackerChance = 830;
 					break;
 				case -6:
-					attacker_chance = 815;
+					attackerChance = 815;
 					break;
 				case -7:
-					attacker_chance = 800;
+					attackerChance = 800;
 					break;
 				case -8:
-					attacker_chance = 785;
+					attackerChance = 785;
 					break;
 				case -9:
-					attacker_chance = 770;
+					attackerChance = 770;
 					break;
 				case -10:
-					attacker_chance = 755;
+					attackerChance = 755;
 					break;
 				case -11:
-					attacker_chance = 735;
+					attackerChance = 735;
 					break;
 				case -12:
-					attacker_chance = 715;
+					attackerChance = 715;
 					break;
 				case -13:
-					attacker_chance = 695;
+					attackerChance = 695;
 					break;
 				case -14:
-					attacker_chance = 675;
+					attackerChance = 675;
 					break;
 				case -15:
-					attacker_chance = 655;
+					attackerChance = 655;
 					break;
 				case -16:
-					attacker_chance = 625;
+					attackerChance = 625;
 					break;
 				case -17:
-					attacker_chance = 595;
+					attackerChance = 595;
 					break;
 				case -18:
-					attacker_chance = 565;
+					attackerChance = 565;
 					break;
 				case -19:
-					attacker_chance = 535;
+					attackerChance = 535;
 					break;
 				case -20:
-					attacker_chance = 505;
+					attackerChance = 505;
 					break;
 				case -21:
-					attacker_chance = 455;
+					attackerChance = 455;
 					break;
 				case -22:
-					attacker_chance = 405;
+					attackerChance = 405;
 					break;
 				case -23:
-					attacker_chance = 355;
+					attackerChance = 355;
 					break;
 				case -24:
-					attacker_chance = 305;
+					attackerChance = 305;
 					break;
 				// and a lower cap of approximately 27.5%
 				default:
-					attacker_chance = 275;
+					attackerChance = 275;
 			}
 		}
 		
 		// For anything other than direct attacks from the front, multiply the result by the Position Modifier
 		// So... get additional bonus from the conditions when you are attacking
-		attacker_chance *= HitConditionBonusData.getInstance().getConditionBonus(attacker, target);
+		attackerChance *= HitConditionBonusData.getInstance().getConditionBonus(attacker, target);
 		
-		return Math.max(Math.min(attacker_chance, 980), 275) < min_chance;
+		return Math.max(Math.min(attackerChance, 980), 275) < minChance;
 	}
 	
 	/**

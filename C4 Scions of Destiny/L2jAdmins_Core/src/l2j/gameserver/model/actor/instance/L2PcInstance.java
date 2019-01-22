@@ -4274,12 +4274,11 @@ public final class L2PcInstance extends L2Playable
 			return;
 		}
 		
-		setIsCastingNow(true);
-		
 		// ************************************* Check Engine ********************************************************
 		
 		if (!EngineModsManager.onUseSkill(this, skill))
 		{
+			setIsCastingNow(false);
 			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
@@ -4314,6 +4313,8 @@ public final class L2PcInstance extends L2Playable
 			return;
 		}
 		
+		setIsCastingNow(true);
+		
 		// Set the player currentSkill.
 		setCurrentSkill(skill, forceUse, dontMove);
 		
@@ -4345,6 +4346,15 @@ public final class L2PcInstance extends L2Playable
 		
 		if (isDead())
 		{
+			return false;
+		}
+		
+		// ************************************* Check skill availability *******************************************
+		
+		// Check if skill is disabled
+		if (isSkillDisabled(skill))
+		{
+			sendPacket(new SystemMessage(SystemMessage.S1_PREPARED_FOR_REUSE).addSkillName(skill.getId(), skill.getLevel()));
 			return false;
 		}
 		
@@ -4398,15 +4408,6 @@ public final class L2PcInstance extends L2Playable
 				effect.exit();
 				return false;
 			}
-		}
-		
-		// ************************************* Check skill availability *******************************************
-		
-		// Check if skill is disabled
-		if (isSkillDisabled(skill))
-		{
-			sendPacket(new SystemMessage(SystemMessage.S1_PREPARED_FOR_REUSE).addSkillName(skill.getId(), skill.getLevel()));
-			return false;
 		}
 		
 		// ************************************* Check Casting Conditions *******************************************
