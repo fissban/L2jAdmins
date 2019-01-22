@@ -10,7 +10,7 @@ import l2j.gameserver.model.zone.enums.ZoneType;
 public class NoStore extends Zone
 {
 	
-	protected NoStore(int id)
+	public NoStore(int id)
 	{
 		super(id);
 	}
