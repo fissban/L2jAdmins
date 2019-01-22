@@ -33,6 +33,7 @@ import l2j.gameserver.model.zone.type.JailZone;
 import l2j.gameserver.model.zone.type.MotherTreeZone;
 import l2j.gameserver.model.zone.type.NoHqZone;
 import l2j.gameserver.model.zone.type.NoLandingZone;
+import l2j.gameserver.model.zone.type.NoStore;
 import l2j.gameserver.model.zone.type.OlympiadStadiumZone;
 import l2j.gameserver.model.zone.type.PeaceZone;
 import l2j.gameserver.model.zone.type.SiegeZone;
@@ -162,6 +163,10 @@ public class ZoneData
 							else if (zoneType.equals("BossZone"))
 							{
 								zone = new BossZone(zoneId);
+							}
+							else if (zoneType.equals("NoStore"))
+							{
+								zone = new NoStore(zoneId);
 							}
 							
 							// Check for unknown type
