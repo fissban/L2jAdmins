@@ -1,1 +1,0 @@
-UPDATE `spawnlist` SET locx='45208', locy='-48648' WHERE npc_templateid='8593';
