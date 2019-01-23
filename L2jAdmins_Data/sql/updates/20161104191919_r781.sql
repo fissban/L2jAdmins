@@ -1,1 +1,0 @@
-UPDATE `spawnlist` SET `npc_templateid` = 12889 WHERE `npc_templateid` = 8150;
