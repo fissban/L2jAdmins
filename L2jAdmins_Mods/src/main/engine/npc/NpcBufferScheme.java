@@ -526,7 +526,20 @@ public class NpcBufferScheme extends AbstractMod
 						}
 					}
 					
-					skill.getEffects(ph.getInstance(), ph.getInstance());
+					if (getPetbuff)
+					{
+						if (ph.getInstance().getPet() == null)
+						{
+							showText(ph, "Info", "You can't use the Pet's options.<br>Summon your pet first!", false, "Return", "main");
+							return;
+						}
+						skill.getEffects(ph.getInstance().getPet(), ph.getInstance().getPet());
+					}
+					else
+					{
+						skill.getEffects(ph.getInstance(), ph.getInstance());
+					}
+					
 					UtilInventory.takeItems(ph, CONSUMABLE_ID, cost);
 					if (TIME_OUT)
 					{
