@@ -67,23 +67,23 @@ public final class ArmorSetHolder
 	 */
 	public boolean containAll(int chest, int legs, int head, int gloves, int feet)
 	{
-		if ((chest != 0) && (this.chest != chest))
+		if ((this.chest != 0) && (this.chest != chest))
 		{
 			return false;
 		}
-		if ((legs != 0) && (this.legs != legs))
+		if ((this.legs != 0) && (this.legs != legs))
 		{
 			return false;
 		}
-		if ((head != 0) && (this.head != head))
+		if ((this.head != 0) && (this.head != head))
 		{
 			return false;
 		}
-		if ((gloves != 0) && (this.gloves != gloves))
+		if ((this.gloves != 0) && (this.gloves != gloves))
 		{
 			return false;
 		}
-		if ((feet != 0) && (this.feet != feet))
+		if ((this.feet != 0) && (this.feet != feet))
 		{
 			return false;
 		}
