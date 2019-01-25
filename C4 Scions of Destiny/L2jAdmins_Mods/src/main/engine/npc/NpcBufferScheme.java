@@ -1289,7 +1289,7 @@ public class NpcBufferScheme extends AbstractMod
 			// creamos la botonera con las paginas
 			if (ii == Integer.parseInt(page))
 			{
-				hb.append("<td width=", width, " align=center><font color=\"LEVEL\">", ii, "</font></td>");
+				hb.append("<td width=", width, "><font color=\"LEVEL\">", ii, "</font></td>");
 			}
 			else if (action.equals("add"))
 			{
