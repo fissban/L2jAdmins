@@ -90,15 +90,7 @@ public abstract class ItemContainer
 	 */
 	public ItemInstance getItemById(int itemId)
 	{
-		for (final ItemInstance item : items)
-		{
-			if ((item != null) && (item.getId() == itemId))
-			{
-				return item;
-			}
-		}
-		
-		return null;
+		return items.stream().filter(item -> item.getId() == itemId).findFirst().orElse(null);
 	}
 	
 	/**
@@ -108,15 +100,7 @@ public abstract class ItemContainer
 	 */
 	public ItemInstance getItemByObjectId(int objectId)
 	{
-		for (final ItemInstance item : items)
-		{
-			if (item.getObjectId() == objectId)
-			{
-				return item;
-			}
-		}
-		
-		return null;
+		return items.stream().filter(item -> item.getObjectId() == objectId).findFirst().orElse(null);
 	}
 	
 	/**
@@ -517,10 +501,7 @@ public abstract class ItemContainer
 	 */
 	public synchronized void destroyAllItems(String process, L2PcInstance actor, L2Object reference)
 	{
-		for (final ItemInstance item : items)
-		{
-			destroyItem(process, item, actor, reference);
-		}
+		items.forEach(item -> destroyItem(process, item, actor, reference));
 	}
 	
 	/**
@@ -574,14 +555,11 @@ public abstract class ItemContainer
 	{
 		if (getOwner() != null)
 		{
-			for (ItemInstance item : items)
+			items.forEach(item ->
 			{
-				if (item != null)
-				{
-					item.updateDatabase();
-					L2World.getInstance().removeObject(item);
-				}
-			}
+				item.updateDatabase();
+				L2World.getInstance().removeObject(item);
+			});
 		}
 		items.clear();
 	}
@@ -593,13 +571,11 @@ public abstract class ItemContainer
 	{
 		if (getOwner() != null)
 		{
-			for (final ItemInstance item : items)
+			items.forEach(item ->
 			{
-				if (item != null)
-				{
-					item.updateDatabase(true);
-				}
-			}
+				item.updateDatabase(true);
+				L2World.getInstance().removeObject(item);
+			});
 		}
 	}
 	

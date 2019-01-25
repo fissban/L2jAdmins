@@ -402,7 +402,7 @@ public final class L2PcInstance extends L2Playable
 	private double mpUpdateInterval = .0;
 	
 	/** Char Coords from Client */
-	private final LocationHolder clienteLoc = new LocationHolder(0, 0, 0, 0);
+	private LocationHolder clientLoc = new LocationHolder(0, 0, 0, 0);
 	
 	private boolean isPendingSitting = false;
 	
@@ -6176,15 +6176,12 @@ public final class L2PcInstance extends L2Playable
 	
 	public LocationHolder getClientLoc()
 	{
-		return clienteLoc;
+		return clientLoc;
 	}
 	
 	public void setClientLoc(int x, int y, int z, int heading)
 	{
-		clienteLoc.setX(x);
-		clienteLoc.setY(y);
-		clienteLoc.setZ(z);
-		clienteLoc.setHeading(heading);
+		clientLoc = new LocationHolder(x, y, z, heading);
 	}
 	
 	public final boolean isFakeDeath()
