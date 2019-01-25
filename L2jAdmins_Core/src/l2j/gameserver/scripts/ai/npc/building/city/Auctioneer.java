@@ -85,6 +85,10 @@ public class Auctioneer extends Script
 				return null;
 			}
 			
+			if (command.equalsIgnoreCase("main"))
+			{
+				return HTML_PATH + "auction.htm";
+			}
 			if (command.equalsIgnoreCase("auction"))
 			{
 				try
@@ -228,12 +232,16 @@ public class Auctioneer extends Script
 				
 				for (var a : AuctionData.getInstance().getAuctions())
 				{
+					var year = (a.getEndDate().get(Calendar.YEAR) + "").substring(2, 4);
+					var month = (a.getEndDate().get(Calendar.MONTH) + 1);
+					var day = a.getEndDate().get(Calendar.DATE);
+					
 					items.append("<table width=270 border=0>");
 					items.append("<tr>");
 					items.append("<td width=50 align=center>" + ClanHallData.getClanHallById(a.getId()).getLocation() + "</td>");
 					items.append("<td width=100 align=center><a action=\"bypass -h Quest Auctioneer bidding " + a.getId() + "\">" + a.getClanHallName() + "</a></td>");
-					items.append("<td width=50 align=center>" + a.getEndDate().get(Calendar.YEAR) + "/" + (a.getEndDate().get(Calendar.MONTH) + 1) + "/" + a.getEndDate().get(Calendar.DATE) + "</td>");
-					items.append("<td width=70 align=center>>" + a.getStartingBid() + "</td>");
+					items.append("<td width=50 align=center>" + year + "/" + month + "/" + day + "</td>");
+					items.append("<td width=70 align=center>" + a.getStartingBid() + "</td>");
 					items.append("</tr>");
 					items.append("</table>");
 				}

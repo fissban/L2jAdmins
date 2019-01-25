@@ -94,7 +94,7 @@ public class NpcHtmlMessage extends AServerPacket
 			}
 			
 			start += 10;
-			i = start;
+			i = finish;
 			int finish2 = html.indexOf("$", start);
 			if ((finish2 < finish) && (finish2 > 0))
 			{
@@ -102,7 +102,7 @@ public class NpcHtmlMessage extends AServerPacket
 			}
 			else
 			{
-				activeChar.addBypass(html.substring(start, finish).trim(), npcObjId);
+				activeChar.addBypass(html.substring(start, finish), npcObjId);
 			}
 		}
 	}
