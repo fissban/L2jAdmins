@@ -237,22 +237,17 @@ public class CharStat
 	
 	public float getMoveSpeed()
 	{
-		if (activeChar.isRunning())
-		{
-			return getRunSpeed();
-		}
-		return getWalkSpeed();
+		return activeChar.isRunning() ? getRunSpeed() : getWalkSpeed();
 	}
 	
 	public int getWalkSpeed()
 	{
-		double baseWalkSpd = activeChar.getTemplate().getBaseWalkSpd();
-		if (baseWalkSpd == 0)
-		{
-			return 0;
-		}
-		
-		return (int) calcStat(StatsType.WALK_SPEED, baseWalkSpd, null, null);
+		return (int) calcStat(StatsType.WALK_SPEED, activeChar.getTemplate().getBaseWalkSpd(), null, null);
+	}
+	
+	public int getRunSpeed()
+	{
+		return (int) (calcStat(StatsType.RUN_SPEED, activeChar.getTemplate().getBaseRunSpd(), null, null));
 	}
 	
 	public final double getMReuseRate(Skill skill)
@@ -326,11 +321,6 @@ public class CharStat
 	public final double getWeaponReuseModifier(L2Character target)
 	{
 		return calcStat(StatsType.PHYSICAL_ATTACK_REUSE, 1, target, null);
-	}
-	
-	public int getRunSpeed()
-	{
-		return (int) (calcStat(StatsType.RUN_SPEED, activeChar.getTemplate().getBaseRunSpd(), null, null));
 	}
 	
 	public final int getShldDef()

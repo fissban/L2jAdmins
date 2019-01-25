@@ -6,7 +6,6 @@ import java.util.Map;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
-import l2j.Config;
 import l2j.gameserver.model.holder.ArmorSetHolder;
 import l2j.util.UtilPrint;
 import l2j.util.XmlParser;
@@ -71,11 +70,6 @@ public class ArmorSetsData extends XmlParser
 						shield_skill_id = parseInt(attrs, "id");
 						break;
 				}
-			}
-			
-			if (Config.DEBUG)
-			{
-				LOG.info(getClass().getSimpleName() + " load: armorSets ID: " + chest + "chest:" + chest + " legs:" + legs + " head:" + head + " gloves:" + gloves + " feet:" + feet + " skillId:" + skill_id + " shield:" + shield_id + " shield_skill:" + shield_skill_id);
 			}
 			
 			armorSets.put(chest, new ArmorSetHolder(chest, legs, head, gloves, feet, skill_id, shield_id, shield_skill_id));
