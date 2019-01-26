@@ -270,12 +270,6 @@ public class CharacterAI extends AbstractAI
 		// Set the Intention of this AbstractAI to MOVE_TO
 		changeIntention(CtrlIntentionType.MOVE_TO, pos, null);
 		
-		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
-		// clientStopAutoAttack();
-		
-		// Abort the attack of the L2Character and send Server->Client ActionFailed packet
-		// activeActor.abortAttack();
-		
 		// Move the actor to Location (x,y,z) server side AND client side by sending Server->Client packet CharMoveToLocation (broadcast)
 		moveTo(pos.getX(), pos.getY(), pos.getZ());
 	}
@@ -325,9 +319,6 @@ public class CharacterAI extends AbstractAI
 			return;
 		}
 		
-		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
-		// clientStopAutoAttack();
-		
 		// Set the Intention of this AbstractAI to AI_INTENTION_FOLLOW
 		changeIntention(CtrlIntentionType.FOLLOW, target, null);
 		
@@ -364,9 +355,6 @@ public class CharacterAI extends AbstractAI
 			object.setXYZ(getActor().getX(), getActor().getY(), getActor().getZ() + 5);
 			return;
 		}
-		
-		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
-		// clientStopAutoAttack();
 		
 		if ((object instanceof ItemInstance) && (((ItemInstance) object).getLocation() != ItemLocationType.VOID))
 		{
@@ -407,9 +395,6 @@ public class CharacterAI extends AbstractAI
 			clientActionFailed();
 			return;
 		}
-		
-		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
-		// clientStopAutoAttack();
 		
 		if (getIntention() != CtrlIntentionType.INTERACT)
 		{

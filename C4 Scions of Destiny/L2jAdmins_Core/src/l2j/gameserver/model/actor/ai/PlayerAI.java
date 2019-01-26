@@ -155,9 +155,6 @@ public class PlayerAI extends CharacterAI
 		// Set the Intention of this AbstractAI to CtrlIntentionType.MOVE_TO
 		changeIntention(CtrlIntentionType.MOVE_TO, pos, null);
 		
-		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
-		clientStopAutoAttack();
-		
 		// Abort the attack of the L2Character and send Server->Client ActionFailed packet
 		activeActor.abortAttack();
 		
