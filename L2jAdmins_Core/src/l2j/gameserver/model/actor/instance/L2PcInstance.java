@@ -8451,6 +8451,12 @@ public final class L2PcInstance extends L2Playable
 	};
 	
 	private Map<FloodProtectorType, Long> floodActions = new HashMap<>();
+	{
+		for (var type : FloodProtectorType.values())
+		{
+			floodActions.put(type, 0L);
+		}
+	}
 	
 	/**
 	 * Try to perform the requested action
