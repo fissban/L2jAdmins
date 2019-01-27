@@ -8413,7 +8413,11 @@ public final class L2PcInstance extends L2Playable
 	
 	// XXX FLOOD ITEMS ============================================================================== //
 	
+	private static final List<Integer> ALL_POTS = List.of(65, 725, 726, 727, 728, 731, 734, 735, 1060, 1061, 1062, 1073, 1374, 1375, 1539, 1540, 4679, 5234, 5283, 5591, 5592, 6035, 6036);
 	private Map<Integer, Long> floodItems = new HashMap<>();
+	{
+		ALL_POTS.forEach(pot -> floodItems.put(pot, 0L));
+	}
 	
 	/**
 	 * Try to perform the requested use item
