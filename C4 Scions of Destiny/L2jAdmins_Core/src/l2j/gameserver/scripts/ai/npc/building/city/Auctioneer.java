@@ -291,7 +291,7 @@ public class Auctioneer extends Script
 					return null;
 				}
 				
-				if ((player.getClan() != null) || (player.getClan().getLevel() < 2))
+				if ((player.getClan() != null) && (player.getClan().getLevel() < 2))
 				{
 					player.sendMessage("you have not made any auction.");
 					return null;
