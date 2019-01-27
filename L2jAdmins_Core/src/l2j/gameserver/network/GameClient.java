@@ -319,12 +319,12 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
 			ps.execute();
 			ps.close();
 			
-			ps = con.prepareStatement("DELETE FROM character_quests WHERE charId=?");
+			ps = con.prepareStatement("DELETE FROM character_quests WHERE char_id=?");
 			ps.setInt(1, objid);
 			ps.execute();
 			ps.close();
 			
-			ps = con.prepareStatement("DELETE FROM character_recipebook WHERE charId=?");
+			ps = con.prepareStatement("DELETE FROM character_recipebook WHERE char_id=?");
 			ps.setInt(1, objid);
 			ps.execute();
 			ps.close();
