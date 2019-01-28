@@ -61,6 +61,14 @@ public class PvpReward extends AbstractMod
 		var phKiller = killer.getActingPlayer();
 		var phVictim = victim.getActingPlayer();
 		
+		var ip1 = phKiller.getInstance().getClient().getConnection().getInetAddress().getHostAddress();
+		var ip2 = phVictim.getInstance().getClient().getConnection().getInetAddress().getHostAddress();
+		
+		if (ip1.equals(ip2))
+		{
+			return;
+		}
+		
 		// Check if this character won some PvP
 		if (!pvp.containsKey(phKiller.getObjectId()))
 		{
