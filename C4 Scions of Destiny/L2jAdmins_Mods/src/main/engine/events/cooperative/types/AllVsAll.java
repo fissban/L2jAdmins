@@ -7,7 +7,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.model.actor.L2Playable;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.network.external.client.Say2.SayType;
 import main.data.ConfigData;
 import main.engine.events.cooperative.AbstractCooperative;
@@ -123,7 +122,7 @@ public class AllVsAll extends AbstractCooperative
 	@Override
 	public boolean canAttack(CharacterHolder attacker, CharacterHolder victim)
 	{
-		if (Util.areObjectType(L2PcInstance.class, attacker, victim))
+		if (Util.areObjectType(L2Playable.class, attacker, victim))
 		{
 			// Check if the 2 players are participating in the event.
 			if (playerInEvent(attacker, victim))

@@ -9,7 +9,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.L2Playable;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.enums.TeamType;
 import l2j.gameserver.model.items.enums.ParpedollType;
 import l2j.gameserver.model.party.Party;
@@ -48,7 +47,7 @@ public class CaptureTheFlag extends AbstractCooperative
 	@Override
 	public boolean canAttack(CharacterHolder attacker, CharacterHolder victim)
 	{
-		if (Util.areObjectType(L2PcInstance.class, attacker, victim))
+		if (Util.areObjectType(L2Playable.class, attacker, victim))
 		{
 			// Check if the 2 players are participating in the event.
 			if (playerInEvent(attacker, victim))

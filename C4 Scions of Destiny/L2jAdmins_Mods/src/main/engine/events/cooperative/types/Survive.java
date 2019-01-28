@@ -8,7 +8,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import l2j.gameserver.model.actor.L2Playable;
-import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.enums.TeamType;
 import l2j.gameserver.model.spawn.Spawn;
 import l2j.util.Rnd;
@@ -169,7 +168,7 @@ public class Survive extends AbstractCooperative
 	@Override
 	public boolean canAttack(CharacterHolder attacker, CharacterHolder victim)
 	{
-		if (Util.areObjectType(L2PcInstance.class, attacker))
+		if (Util.areObjectType(L2Playable.class, attacker))
 		{
 			if (playerInEvent(attacker) && mobs.contains(victim))
 			{

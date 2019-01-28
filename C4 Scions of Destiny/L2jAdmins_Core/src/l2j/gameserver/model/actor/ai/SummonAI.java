@@ -4,10 +4,10 @@ import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Summon;
 import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;
 
-public class SummonAI extends CharacterAI
+public class SummonAI extends PlayableAI
 {
 	private boolean thinking; // to prevent recursive thinking
-	private boolean previousFollowStatus = getActiveSummon().getFollowStatus();
+	private boolean previousFollowStatus = getActor().getFollowStatus();
 	
 	/**
 	 * @param actor
@@ -30,7 +30,7 @@ public class SummonAI extends CharacterAI
 	{
 		if (previousFollowStatus)
 		{
-			setIntention(CtrlIntentionType.FOLLOW, getActiveSummon().getOwner());
+			setIntention(CtrlIntentionType.FOLLOW, getActor().getOwner());
 		}
 		else
 		{
@@ -53,9 +53,9 @@ public class SummonAI extends CharacterAI
 			return;
 		}
 		
-		if (maybeMoveToPawn(target, getActiveSummon().getStat().getPhysicalAttackRange()))
+		if (maybeMoveToPawn(target, getActor().getStat().getPhysicalAttackRange()))
 		{
-			getActiveSummon().breakAttack();
+			getActor().breakAttack();
 			return;
 		}
 		
@@ -73,13 +73,13 @@ public class SummonAI extends CharacterAI
 		
 		boolean val = previousFollowStatus;
 		
-		if (maybeMoveToPawn(getTarget(), getActiveSummon().getStat().getMagicalAttackRange(currentSkill)))
+		if (maybeMoveToPawn(getTarget(), getActor().getStat().getMagicalAttackRange(currentSkill)))
 		{
 			return;
 		}
 		
 		clientStopMoving(null);
-		getActiveSummon().setFollowStatus(false);
+		getActor().setFollowStatus(false);
 		setIntention(CtrlIntentionType.IDLE);
 		previousFollowStatus = val;
 		getActor().doCast(currentSkill);
@@ -100,12 +100,12 @@ public class SummonAI extends CharacterAI
 			return;
 		}
 		setIntention(CtrlIntentionType.IDLE);
-		((L2Summon) getActor()).doPickupItem(getTarget());
+		getActor().doPickupItem(getTarget());
 	}
 	
 	private void thinkInteract()
 	{
-		if (getActiveSummon().isAllSkillsDisabled())
+		if (getActor().isAllSkillsDisabled())
 		{
 			return;
 		}
@@ -121,9 +121,15 @@ public class SummonAI extends CharacterAI
 	}
 	
 	@Override
+	public void clientStartAutoAttack()
+	{
+		activeActor.getActingPlayer().getAI().clientStartAutoAttack();
+	}
+	
+	@Override
 	protected void onEvtThink()
 	{
-		if (thinking || activeActor.isCastingNow() || getActiveSummon().isAllSkillsDisabled())
+		if (thinking || activeActor.isCastingNow() || getActor().isAllSkillsDisabled())
 		{
 			return;
 		}
@@ -155,9 +161,9 @@ public class SummonAI extends CharacterAI
 	@Override
 	protected void onEvtFinishCasting()
 	{
-		if (getActiveSummon().getAI().getIntention() != CtrlIntentionType.ATTACK)
+		if (getActor().getAI().getIntention() != CtrlIntentionType.ATTACK)
 		{
-			getActiveSummon().setFollowStatus(previousFollowStatus);
+			getActor().setFollowStatus(previousFollowStatus);
 		}
 	}
 	
@@ -169,7 +175,7 @@ public class SummonAI extends CharacterAI
 			case ACTIVE:
 			case FOLLOW:
 			case IDLE:
-				getActiveSummon().setFollowStatus(previousFollowStatus);
+				getActor().setFollowStatus(previousFollowStatus);
 				break;
 		}
 	}
@@ -179,7 +185,12 @@ public class SummonAI extends CharacterAI
 		previousFollowStatus = val;
 	}
 	
-	private L2Summon getActiveSummon()
+	/**
+	 * get the actual actor
+	 * @return
+	 */
+	@Override
+	public L2Summon getActor()
 	{
 		return (L2Summon) activeActor;
 	}

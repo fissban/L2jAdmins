@@ -7,8 +7,10 @@ import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.L2StaticObjectInstance;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.network.external.server.AutoAttackStart;
+import l2j.gameserver.task.continuous.AttackStanceTaskManager;
 
-public class PlayerAI extends CharacterAI
+public class PlayerAI extends PlayableAI
 {
 	private boolean thinking; // to prevent recursive thinking
 	private IntentionCommand nextIntention = null;
@@ -170,6 +172,22 @@ public class PlayerAI extends CharacterAI
 		super.clientNotifyDead();
 	}
 	
+	@Override
+	public void clientStartAutoAttack()
+	{
+		if (!AttackStanceTaskManager.getInstance().isInAttackStance(activeActor))
+		{
+			var summon = ((L2PcInstance) activeActor).getPet();
+			if (summon != null)
+			{
+				summon.broadcastPacket(new AutoAttackStart(summon));
+			}
+			
+			activeActor.broadcastPacket(new AutoAttackStart(activeActor));
+		}
+		AttackStanceTaskManager.getInstance().add(activeActor);
+	}
+	
 	private void thinkAttack()
 	{
 		L2Character target = (L2Character) getTarget();
@@ -252,7 +270,7 @@ public class PlayerAI extends CharacterAI
 		}
 		
 		setIntention(CtrlIntentionType.IDLE);
-		((L2PcInstance) getActor()).doPickupItem(target);
+		getActor().doPickupItem(target);
 	}
 	
 	private void thinkInteract()
@@ -280,7 +298,7 @@ public class PlayerAI extends CharacterAI
 		
 		if (!(target instanceof L2StaticObjectInstance))
 		{
-			((L2PcInstance) getActor()).doInteract((L2Character) target);
+			getActor().doInteract((L2Character) target);
 		}
 		setIntention(CtrlIntentionType.IDLE);
 	}
@@ -317,5 +335,15 @@ public class PlayerAI extends CharacterAI
 		{
 			thinking = false;
 		}
+	}
+	
+	/**
+	 * get the actual actor
+	 * @return
+	 */
+	@Override
+	public L2PcInstance getActor()
+	{
+		return (L2PcInstance) activeActor;
 	}
 }

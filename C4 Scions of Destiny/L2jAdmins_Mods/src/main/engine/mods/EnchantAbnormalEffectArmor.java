@@ -2,8 +2,8 @@ package main.engine.mods;
 
 import l2j.gameserver.data.ArmorSetsData;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.holder.ArmorSetHolder;
 import l2j.gameserver.model.items.enums.ParpedollType;
-import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.external.server.MagicSkillUse;
 import main.data.ConfigData;
 import main.engine.AbstractMod;
@@ -129,37 +129,47 @@ public class EnchantAbnormalEffectArmor extends AbstractMod
 		}
 		
 		// check enchant lvl
-		if (chestItem.getEnchantLevel() < ConfigData.ENCHANT_EFFECT_LVL)
+		if (!checkEnchant(ph, ParpedollType.CHEST, armorSet))
 		{
 			return false;
 		}
-		
-		ItemInstance item = null;
-		
-		item = inv.getPaperdollItem(ParpedollType.LEGS);
-		if ((item == null) || (item.getEnchantLevel() < ConfigData.ENCHANT_EFFECT_LVL))
+		if (!checkEnchant(ph, ParpedollType.LEGS, armorSet))
 		{
 			return false;
 		}
-		
-		item = inv.getPaperdollItem(ParpedollType.HEAD);
-		if ((item == null) || (item.getEnchantLevel() < ConfigData.ENCHANT_EFFECT_LVL))
+		if (!checkEnchant(ph, ParpedollType.HEAD, armorSet))
 		{
 			return false;
 		}
-		
-		item = inv.getPaperdollItem(ParpedollType.GLOVES);
-		if ((item == null) || (item.getEnchantLevel() < ConfigData.ENCHANT_EFFECT_LVL))
+		if (!checkEnchant(ph, ParpedollType.GLOVES, armorSet))
 		{
 			return false;
 		}
-		
-		item = inv.getPaperdollItem(ParpedollType.FEET);
-		if ((item == null) || (item.getEnchantLevel() < ConfigData.ENCHANT_EFFECT_LVL))
+		if (!checkEnchant(ph, ParpedollType.FEET, armorSet))
+		{
+			return false;
+		}
+		if (!checkEnchant(ph, ParpedollType.HEAD, armorSet))
 		{
 			return false;
 		}
 		
 		return true;
+	}
+	
+	private static boolean checkEnchant(PlayerHolder ph, ParpedollType type, ArmorSetHolder armorSet)
+	{
+		var item = ph.getInstance().getInventory().getPaperdollItem(type);
+		
+		if (item == null)
+		{
+			return true;
+		}
+		if (armorSet.containItem(type, item.getId()) && item.getEnchantLevel() >= ConfigData.ENCHANT_EFFECT_LVL)
+		{
+			return true;
+		}
+		
+		return false;
 	}
 }
