@@ -543,7 +543,7 @@ public abstract class AbstractCooperative extends AbstractMod
 	{
 		for (var p : players)
 		{
-			if (!playersInEvent.contains(p.getObjectId()))
+			if (!playersInEvent.contains(p.getActingPlayer().getObjectId()))
 			{
 				return false;
 			}

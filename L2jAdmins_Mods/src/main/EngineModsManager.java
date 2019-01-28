@@ -151,6 +151,8 @@ public class EngineModsManager
 			new HomeComunityBoard();
 			new MemoCommunityBoard();
 			new RegionComunityBoard();
+			
+			// new GosthDeath();
 		}
 		catch (Exception e)
 		{
@@ -718,9 +720,9 @@ public class EngineModsManager
 			
 			try
 			{
-				if (mod.canAttack(chKiller, chVictim))
+				if (!mod.canAttack(chKiller, chVictim))
 				{
-					return true;
+					return false;
 				}
 			}
 			catch (Exception e)
@@ -730,7 +732,7 @@ public class EngineModsManager
 			}
 		}
 		
-		return false;
+		return true;
 	}
 	
 	public static void onKill(L2Character killer, L2Character victim, boolean isPet)

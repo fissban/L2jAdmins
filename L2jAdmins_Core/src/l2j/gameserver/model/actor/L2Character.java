@@ -106,6 +106,7 @@ import l2j.gameserver.task.continuous.MovementTaskManager;
 import l2j.gameserver.util.Broadcast;
 import l2j.gameserver.util.Util;
 import l2j.util.Rnd;
+import main.EngineModsManager;
 import main.data.ObjectData;
 
 /**
@@ -605,6 +606,12 @@ public abstract class L2Character extends L2Object
 			}
 		}
 		
+		if (EngineModsManager.canAttack(this, target))
+		{
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
 		// Checking if target has moved to peace zone
 		if (isInsidePeaceZone(target))
 		{
@@ -748,7 +755,8 @@ public abstract class L2Character extends L2Object
 		
 		if (player != null)
 		{
-			AttackStanceTaskManager.getInstance().add(player);
+			// Refresh the attack stance.
+			player.getAI().clientStartAutoAttack();
 			
 			if (player.getPet() != target)
 			{
@@ -3396,6 +3404,11 @@ public abstract class L2Character extends L2Object
 		
 		if (!miss && (damage > 0))
 		{
+			if (target instanceof L2PcInstance)
+			{
+				target.getAI().clientStartAutoAttack();
+			}
+			
 			var weapon = getActiveWeaponItem();
 			var isBow = ((weapon != null) && (weapon.getType() == WeaponType.BOW));
 			
@@ -3450,11 +3463,6 @@ public abstract class L2Character extends L2Object
 				}
 			}
 			
-			// Notify AI with CtrlEventType.ATTACKED
-			if (target.hasAI())
-			{
-				target.getAI().notifyEvent(CtrlEventType.ATTACKED, this);
-			}
 			getAI().clientStartAutoAttack();
 			
 			// Manage attack or cast break of the target (calculating rate, sending message...)
@@ -4365,13 +4373,14 @@ public abstract class L2Character extends L2Object
 									case BLOW:
 										break;
 									default:
-										targetPlayer.getAI().notifyEvent(CtrlEventType.ATTACKED, this);
+										targetPlayer.getAI().clientStartAutoAttack();
+										// targetPlayer.getAI().notifyEvent(CtrlEventType.ATTACKED, this);
+										
+										if (activeChar.getPet() != targetPlayer)
+										{
+											activeChar.updatePvPStatus(targetPlayer);
+										}
 										break;
-								}
-								
-								if (activeChar.getPet() != targetPlayer)
-								{
-									activeChar.updatePvPStatus(targetPlayer);
 								}
 							}
 							else if (targetPlayer instanceof L2Attackable)
