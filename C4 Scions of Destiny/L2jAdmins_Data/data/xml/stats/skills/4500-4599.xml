@@ -480,7 +480,7 @@
 		<set name="effectType" val="DEBUFF" />
 		<set name="effectPower" val="100" />
 		<for>
-		<effect name="Debuff" time="600" val="0">
+		<effect name="Debuff" time="600" val="0" abnormal="POISON">
 			<mul order="0x30" stat="PHYSICAL_DEFENCE" val="#pDef" />
 			<add order="0x40" stat="PHYSICAL_CRITICAL_RATE" val="#rCrit" />
 		</effect>
@@ -502,7 +502,7 @@
 		<set name="effectType" val="DEBUFF" />
 		<set name="effectPower" val="100" />
 		<for>
-		<effect name="Debuff" time="600" val="0">
+		<effect name="Debuff" time="600" val="0" abnormal="POISON">
 			<sub order="0x40" stat="EVASION_RATE" val="#rEvas" />
 			<add order="0x40" stat="ACCURACY_COMBAT" val="#accCombat" />
 		</effect>
@@ -523,7 +523,7 @@
 		<set name="effectType" val="DEBUFF" />
 		<set name="effectPower" val="100" />
 		<for>
-		<effect name="Debuff" time="600" val="0">
+		<effect name="Debuff" time="600" val="0" abnormal="POISON">
 			<mul order="0x30" stat="PHYSICAL_ATTACK_SPEED" val="#pAtkSpd" />
 			<mul order="0x30" stat="PHYSICAL_ATTACK" val="#pAtk" />
 		</effect>
@@ -544,7 +544,7 @@
 		<set name="effectType" val="DEBUFF" />
 		<set name="effectPower" val="100" />
 		<for>
-		<effect name="Debuff" time="600" val="0">
+		<effect name="Debuff" time="600" val="0" abnormal="POISON">
 			<mul order="0x30" stat="MAGICAL_ATTACK_SPEED" val="#mAtkSpd" />
 			<mul order="0x30" stat="MAGICAL_MP_CONSUME_RATE" val="#MpConsumeRate" />
 		</effect>
