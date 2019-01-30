@@ -90,10 +90,8 @@ public class HeavyMedals extends AbstractEvent
 		SPAWNS_WINNIE.add(new LocationHolder(44157, 50827, -3059, 57344));
 		SPAWNS_WINNIE.add(new LocationHolder(79798, 55629, -1560, 0));
 		SPAWNS_WINNIE.add(new LocationHolder(83328, 55769, -1525, 32768));
+		SPAWNS_WINNIE.add(new LocationHolder(83304, 149176, -3400, 0));
 		SPAWNS_WINNIE.add(new LocationHolder(80986, 54452, -1525, 32768));
-		SPAWNS_WINNIE.add(new LocationHolder(83488, 149280, -3405, 46000));
-		SPAWNS_WINNIE.add(new LocationHolder(82277, 148564, -3467, 0));
-		SPAWNS_WINNIE.add(new LocationHolder(81620, 148689, -3464, 32768));
 		SPAWNS_WINNIE.add(new LocationHolder(81691, 145610, -3467, 32768));
 		SPAWNS_WINNIE.add(new LocationHolder(114719, -178742, -821, 0));
 		SPAWNS_WINNIE.add(new LocationHolder(115708, -182422, -1449, 0));
@@ -133,10 +131,8 @@ public class HeavyMedals extends AbstractEvent
 		SPAWNS_ROY.add(new LocationHolder(44122, 50784, -3059, 57344));
 		SPAWNS_ROY.add(new LocationHolder(79806, 55570, -1560, 0));
 		SPAWNS_ROY.add(new LocationHolder(83328, 55824, -1525, 32768));
+		SPAWNS_ROY.add(new LocationHolder(83304, 149224, -3400, 0));
 		SPAWNS_ROY.add(new LocationHolder(80986, 54504, -1525, 32768));
-		SPAWNS_ROY.add(new LocationHolder(83442, 149287, -3405, 48152));
-		SPAWNS_ROY.add(new LocationHolder(82277, 148598, -3467, 0));
-		SPAWNS_ROY.add(new LocationHolder(81621, 148725, -3467, 32768));
 		SPAWNS_ROY.add(new LocationHolder(81680, 145656, -3467, 32768));
 		SPAWNS_ROY.add(new LocationHolder(114733, -178691, -821, 0));
 		SPAWNS_ROY.add(new LocationHolder(115708, -182362, -1449, 0));
