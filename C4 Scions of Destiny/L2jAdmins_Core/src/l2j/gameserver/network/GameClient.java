@@ -364,17 +364,17 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
 			ps.execute();
 			ps.close();
 			
-			ps = con.prepareStatement("DELETE FROM pets WHERE item_obj_id IN (SELECT object_id FROM items WHERE items.owner_id=?)");
+			ps = con.prepareStatement("DELETE FROM pets WHERE item_obj_id IN (SELECT object_id FROM character_items WHERE character_items.owner_id=?)");
 			ps.setInt(1, objid);
 			ps.execute();
 			ps.close();
 			
-			ps = con.prepareStatement("DELETE FROM augmentations WHERE item_id IN (SELECT object_id FROM items WHERE items.owner_id=?)");
+			ps = con.prepareStatement("DELETE FROM augmentations WHERE item_id IN (SELECT object_id FROM character_items WHERE character_items.owner_id=?)");
 			ps.setInt(1, objid);
 			ps.execute();
 			ps.close();
 			
-			ps = con.prepareStatement("DELETE FROM items WHERE owner_id=?");
+			ps = con.prepareStatement("DELETE FROM character_items WHERE owner_id=?");
 			ps.setInt(1, objid);
 			ps.execute();
 			ps.close();
