@@ -6,9 +6,7 @@ import l2j.gameserver.illegalaction.IllegalAction;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.holder.HennaHolder;
 import l2j.gameserver.model.items.ItemHenna;
-import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.AClientPacket;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**
@@ -76,13 +74,7 @@ public class RequestHennaEquip extends AClientPacket
 			activeChar.sendPacket(new SystemMessage(SystemMessage.SYMBOL_ADDED));
 			
 			activeChar.getInventory().reduceAdena("Henna", temp.getPrice(), activeChar, activeChar.getLastTalkNpc());
-			ItemInstance dyeToUpdate = activeChar.getInventory().destroyItemByItemId("Henna", temp.getItemIdDye(), temp.getAmountDyeRequire(), activeChar, activeChar.getLastTalkNpc());
-			
-			// update inventory
-			InventoryUpdate iu = new InventoryUpdate();
-			iu.addModifiedItem(activeChar.getInventory().getAdenaInstance());
-			iu.addModifiedItem(dyeToUpdate);
-			activeChar.sendPacket(iu);
+			activeChar.getInventory().destroyItemByItemId("Henna", temp.getItemIdDye(), temp.getAmountDyeRequire(), activeChar, activeChar.getLastTalkNpc());
 		}
 		else
 		{

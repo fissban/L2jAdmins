@@ -136,7 +136,6 @@ import l2j.gameserver.network.external.server.ExOlympiadSpelledInfo;
 import l2j.gameserver.network.external.server.ExStorageMaxCount;
 import l2j.gameserver.network.external.server.GetOnVehicle;
 import l2j.gameserver.network.external.server.HennaInfo;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.ItemList;
 import l2j.gameserver.network.external.server.LeaveWorld;
 import l2j.gameserver.network.external.server.MagicEffectIcons;
@@ -2877,8 +2876,6 @@ public final class L2PcInstance extends L2Playable
 			return;
 		}
 		
-		var iu = new InventoryUpdate();
-		
 		// Adjust item quantity
 		if (arrows.getCount() > 1)
 		{
@@ -2887,7 +2884,7 @@ public final class L2PcInstance extends L2Playable
 				arrows.changeCountWithoutTrace(-1, this, null);
 				arrows.setLastChange(ChangeType.MODIFIED);
 				
-				iu.addModifiedItem(arrows);
+				inventory.sendUpdateItem(arrows);
 				// could do also without saving, but let's save approx 1 of 10
 				if (Rnd.get(10) < 1)
 				{
@@ -2898,14 +2895,10 @@ public final class L2PcInstance extends L2Playable
 		}
 		else
 		{
-			iu.addRemovedItem(arrows);
-			
 			// Destroy entire item and save to database
 			inventory.destroyItem("Consume", arrows, this, null);
 			getInventory().unEquipItemInSlot(ParpedollType.LHAND);
 		}
-		
-		sendPacket(iu);
 	}
 	
 	/**
@@ -2959,12 +2952,6 @@ public final class L2PcInstance extends L2Playable
 			}
 			
 			var unequiped = getInventory().unEquipItemInBodySlotAndRecord(wpn.getItem().getBodyPart());
-			var iu = new InventoryUpdate();
-			for (var element : unequiped)
-			{
-				iu.addModifiedItem(element);
-			}
-			sendPacket(iu);
 			
 			abortAttack();
 			broadcastUserInfo();
@@ -2995,12 +2982,6 @@ public final class L2PcInstance extends L2Playable
 			}
 			
 			var unequiped = getInventory().unEquipItemInBodySlotAndRecord(sld.getItem().getBodyPart());
-			var iu = new InventoryUpdate();
-			for (var element : unequiped)
-			{
-				iu.addModifiedItem(element);
-			}
-			sendPacket(iu);
 			
 			abortAttack();
 			broadcastUserInfo();

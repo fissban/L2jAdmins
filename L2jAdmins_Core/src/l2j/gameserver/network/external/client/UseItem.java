@@ -1,7 +1,5 @@
 package l2j.gameserver.network.external.client;
 
-import java.util.List;
-
 import l2j.gameserver.data.CastleData;
 import l2j.gameserver.handler.ItemHandler;
 import l2j.gameserver.handler.ItemHandler.IItemHandler;
@@ -18,7 +16,6 @@ import l2j.gameserver.model.items.enums.WeaponType;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.ActionFailed;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.ItemList;
 import l2j.gameserver.network.external.server.SystemMessage;
 
@@ -145,28 +142,22 @@ public class UseItem extends AClientPacket
 			}
 			
 			// Equip or unEquip
-			List<ItemInstance> items = null;
-			
 			if (item.isEquipped())
 			{
 				SlotType slot = activeChar.getInventory().getSlotFromItem(item);
-				items = activeChar.getInventory().unEquipItemInBodySlotAndRecord(slot);
+				activeChar.getInventory().unEquipItemInBodySlotAndRecord(slot);
 				
 				sendMessageEquippedOrUnequippedItem(item, activeChar, false);
 			}
 			else
 			{
-				items = activeChar.getInventory().equipItemAndRecord(item);
+				activeChar.getInventory().equipItemAndRecord(item);
 				
 				sendMessageEquippedOrUnequippedItem(item, activeChar, true);
 			}
 			
 			activeChar.refreshExpertisePenalty();
 			activeChar.broadcastUserInfo();
-			
-			InventoryUpdate iu = new InventoryUpdate();
-			iu.addItems(items);
-			activeChar.sendPacket(iu);
 		}
 		else
 		{

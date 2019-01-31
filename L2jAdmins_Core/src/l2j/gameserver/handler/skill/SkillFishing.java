@@ -20,7 +20,6 @@ import l2j.gameserver.model.zone.Zone;
 import l2j.gameserver.model.zone.enums.ZoneType;
 import l2j.gameserver.model.zone.type.FishingZone;
 import l2j.gameserver.model.zone.type.WaterZone;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.util.Util;
 import l2j.util.Rnd;
@@ -197,10 +196,7 @@ public class SkillFishing implements ISkillHandler
 		
 		// Has enough bait, consume 1 and update inventory. Start fishing follows.
 		
-		lure2 = player.getInventory().destroyItem("Consume", player.getInventory().getPaperdollObjectId(ParpedollType.LHAND), 1, player, null);
-		InventoryUpdate iu = new InventoryUpdate();
-		iu.addModifiedItem(lure2);
-		player.sendPacket(iu);
+		player.getInventory().destroyItem("Consume", player.getInventory().getPaperdollObjectId(ParpedollType.LHAND), 1, player, null);
 		// If everything else checks out, actually cast the hook and start fishing
 		player.getFishing().startFishing(x, y, z);
 	}

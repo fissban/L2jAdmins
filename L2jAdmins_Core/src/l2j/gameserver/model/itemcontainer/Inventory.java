@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import l2j.Config;
 import l2j.L2DatabaseFactory;
 import l2j.gameserver.data.ItemData;
 import l2j.gameserver.model.L2Object;
@@ -28,6 +27,7 @@ import l2j.gameserver.model.items.enums.SlotType;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.model.items.instance.enums.ChangeType;
 import l2j.gameserver.model.world.L2World;
+import l2j.gameserver.network.external.server.InventoryUpdate;
 import main.EngineModsManager;
 
 /**
@@ -421,7 +421,8 @@ public abstract class Inventory extends ItemContainer
 	}
 	
 	/**
-	 * Unequips item in body slot and returns alterations.
+	 * Unequips item in body slot and returns alterations.<br>
+	 * Send packet InventoryUpdate
 	 * @param  slot : int designating the slot of the paperdoll
 	 * @return      ItemInstance : list of changes
 	 */
@@ -436,6 +437,9 @@ public abstract class Inventory extends ItemContainer
 		{
 			removePaperdollListener(recorder);
 		}
+		
+		getOwner().sendPacket(new InventoryUpdate(recorder.getChangedItems()));
+		
 		return recorder.getChangedItems();
 	}
 	
@@ -474,10 +478,6 @@ public abstract class Inventory extends ItemContainer
 	 */
 	private void unEquipItemInBodySlot(SlotType slot)
 	{
-		if (Config.DEBUG)
-		{
-			LOG.fine("--- unequip body slot:" + slot.name());
-		}
 		ParpedollType pdollSlot = null;
 		
 		switch (slot)
@@ -607,6 +607,8 @@ public abstract class Inventory extends ItemContainer
 		{
 			removePaperdollListener(recorder);
 		}
+		
+		getOwner().sendPacket(new InventoryUpdate(recorder.getChangedItems()));
 		
 		return recorder.getChangedItems();
 	}

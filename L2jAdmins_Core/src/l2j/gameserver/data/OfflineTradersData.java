@@ -171,6 +171,11 @@ public class OfflineTradersData
 					}
 				}
 				
+				if (type == null)
+				{
+					continue;
+				}
+				
 				if (type == PcStoreType.NONE)
 				{
 					continue;

@@ -1,7 +1,5 @@
 package l2j.gameserver.network.external.client;
 
-import java.util.List;
-
 import l2j.Config;
 import l2j.gameserver.data.GmListData;
 import l2j.gameserver.illegalaction.IllegalAction;
@@ -13,7 +11,6 @@ import l2j.gameserver.model.items.enums.EtcItemType;
 import l2j.gameserver.model.items.enums.ItemType2;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.AClientPacket;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.ItemList;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.util.audit.GMAudit;
@@ -125,10 +122,6 @@ public class RequestDropItem extends AClientPacket
 		
 		if ((ItemType2.QUEST == item.getItem().getType2()) && !activeChar.isGM())
 		{
-			if (Config.DEBUG)
-			{
-				LOG.finest(activeChar.getObjectId() + ":player tried to drop quest item");
-			}
 			activeChar.sendPacket(SystemMessage.CANNOT_DISCARD_EXCHANGE_ITEM);
 			
 			return;
@@ -136,40 +129,18 @@ public class RequestDropItem extends AClientPacket
 		
 		if (!activeChar.isInsideRadius(x, y, 150, false) || (Math.abs(z - activeChar.getZ()) > 50))
 		{
-			if (Config.DEBUG)
-			{
-				LOG.finest(activeChar.getObjectId() + ": trying to drop too far away");
-			}
 			activeChar.sendPacket(SystemMessage.CANNOT_DISCARD_DISTANCE_TOO_FAR);
 			return;
 		}
 		
-		if (Config.DEBUG)
-		{
-			LOG.fine("requested drop item " + objectId + "(" + item.getCount() + ") at " + x + "/" + y + "/" + z);
-		}
-		
 		if (item.isEquipped())
 		{
-			List<ItemInstance> unequiped = activeChar.getInventory().unEquipItemInBodySlotAndRecord(item.getItem().getBodyPart());
-			
-			InventoryUpdate iu = new InventoryUpdate();
-			for (ItemInstance element : unequiped)
-			{
-				iu.addModifiedItem(element);
-			}
-			
-			activeChar.sendPacket(iu);
-			activeChar.broadcastUserInfo();
+			activeChar.getInventory().unEquipItemInBodySlotAndRecord(item.getItem().getBodyPart());
 			activeChar.sendPacket(new ItemList(activeChar, true));
+			activeChar.broadcastUserInfo();
 		}
 		
 		ItemInstance dropedItem = activeChar.getInventory().dropItem("Drop", objectId, count, x, y, z, null, false, false);
-		
-		if (Config.DEBUG)
-		{
-			LOG.fine("dropping " + objectId + " item(" + count + ") at: " + x + " " + y + " " + z);
-		}
 		
 		if (activeChar.isGM())
 		{

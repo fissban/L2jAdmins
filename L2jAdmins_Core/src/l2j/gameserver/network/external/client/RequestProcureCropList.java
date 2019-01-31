@@ -14,7 +14,6 @@ import l2j.gameserver.model.items.Item;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.ActionFailed;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**
@@ -146,9 +145,6 @@ public class RequestProcureCropList extends AClientPacket
 			return;
 		}
 		
-		// Proceed the purchase
-		InventoryUpdate playerIU = new InventoryUpdate();
-		
 		for (int i = 0; i < size; i++)
 		{
 			int objId = items[(i * 4) + 0];
@@ -252,22 +248,7 @@ public class RequestProcureCropList extends AClientPacket
 				CastleData.getInstance().getCastleById(manorId).updateCrop(crop.getId(), crop.getAmount(), CastleManorManager.PERIOD_CURRENT);
 			}
 			
-			ItemInstance itemAdd = player.getInventory().addItem("Manor", rewardItem, rewardItemCount, player, manorManager);
-			
-			if (itemAdd == null)
-			{
-				continue;
-			}
-			
-			playerIU.addRemovedItem(itemDel);
-			if (itemAdd.getCount() > rewardItemCount)
-			{
-				playerIU.addModifiedItem(itemAdd);
-			}
-			else
-			{
-				playerIU.addNewItem(itemAdd);
-			}
+			player.getInventory().addItem("Manor", rewardItem, rewardItemCount, player, manorManager);
 			
 			// Send System Messages
 			SystemMessage sm = new SystemMessage(SystemMessage.TRADED_S2_OF_CROP_S1);
@@ -299,11 +280,5 @@ public class RequestProcureCropList extends AClientPacket
 			sm.addNumber(rewardItemCount);
 			player.sendPacket(sm);
 		}
-		
-		// Send update packets
-		player.sendPacket(playerIU);
-		
-		// Update current load as well
-		player.updateCurLoad();
 	}
 }

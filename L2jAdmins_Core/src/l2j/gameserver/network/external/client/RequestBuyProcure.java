@@ -13,10 +13,8 @@ import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.holder.CropProcureHolder;
 import l2j.gameserver.model.items.Item;
-import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.ActionFailed;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 public class RequestBuyProcure extends AClientPacket
@@ -136,7 +134,6 @@ public class RequestBuyProcure extends AClientPacket
 		}
 		
 		// Proceed the purchase
-		InventoryUpdate playerIU = new InventoryUpdate();
 		procureList = manor.getCastle().getCropProcure(CastleManorManager.PERIOD_CURRENT);
 		
 		for (int i = 0; i < count; i++)
@@ -155,23 +152,8 @@ public class RequestBuyProcure extends AClientPacket
 			rewardItemCount = count / rewardItemCount;
 			
 			// Add item to Inventory and adjust update packet
-			ItemInstance item = player.getInventory().addItem("Manor", rewardItemId, rewardItemCount, player, manor);
-			ItemInstance iteme = player.getInventory().destroyItemByItemId("Manor", itemId, count, player, manor);
-			
-			if ((item == null) || (iteme == null))
-			{
-				continue;
-			}
-			
-			playerIU.addRemovedItem(iteme);
-			if (item.getCount() > rewardItemCount)
-			{
-				playerIU.addModifiedItem(item);
-			}
-			else
-			{
-				playerIU.addNewItem(item);
-			}
+			player.getInventory().addItem("Manor", rewardItemId, rewardItemCount, player, manor);
+			player.getInventory().destroyItemByItemId("Manor", itemId, count, player, manor);
 			
 			// Send Char Buy Messages
 			SystemMessage sm = new SystemMessage(SystemMessage.EARNED_S2_S1_S);
@@ -180,9 +162,6 @@ public class RequestBuyProcure extends AClientPacket
 			player.sendPacket(sm);
 			sm = null;
 		}
-		
-		// Send update packets
-		player.sendPacket(playerIU);
 		
 		// Update current load as well
 		player.updateCurLoad();

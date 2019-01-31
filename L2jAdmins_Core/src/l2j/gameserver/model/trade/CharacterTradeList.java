@@ -521,26 +521,12 @@ public class CharacterTradeList
 			// Add changes to inventory update packets
 			if (ownerIU != null)
 			{
-				if ((oldItem.getCount() > 0) && (oldItem != newItem))
-				{
-					ownerIU.addModifiedItem(oldItem);
-				}
-				else
-				{
-					ownerIU.addRemovedItem(oldItem);
-				}
+				ownerIU.addItems(oldItem);
 			}
 			
 			if (partnerIU != null)
 			{
-				if (newItem.getCount() > titem.getCount())
-				{
-					partnerIU.addModifiedItem(newItem);
-				}
-				else
-				{
-					partnerIU.addNewItem(newItem);
-				}
+				partnerIU.addItems(oldItem);
 			}
 		}
 		return true;
@@ -718,10 +704,10 @@ public class CharacterTradeList
 		InventoryUpdate playerIU = new InventoryUpdate();
 		
 		playerInventory.reduceAdena("PrivateStore", price, player, owner);
-		playerIU.addItem(playerInventory.getAdenaInstance());
+		playerIU.addItems(playerInventory.getAdenaInstance());
 		
 		ownerInventory.addAdena("PrivateStore", price, owner, player);
-		ownerIU.addItem(ownerInventory.getAdenaInstance());
+		ownerIU.addItems(ownerInventory.getAdenaInstance());
 		
 		// Transfer items
 		for (ItemRequestHolder item : items)
@@ -750,22 +736,9 @@ public class CharacterTradeList
 			removeItem(item.getObjectId(), -1, item.getCount());
 			
 			// Add changes to inventory update packets
-			if ((oldItem.getCount() > 0) && (oldItem != newItem))
-			{
-				ownerIU.addModifiedItem(oldItem);
-			}
-			else
-			{
-				ownerIU.addRemovedItem(oldItem);
-			}
-			if (newItem.getCount() > item.getCount())
-			{
-				playerIU.addModifiedItem(newItem);
-			}
-			else
-			{
-				playerIU.addNewItem(newItem);
-			}
+			
+			ownerIU.addItems(oldItem);
+			playerIU.addItems(newItem);
 			
 			// Send messages about the transaction to both players
 			if (newItem.isStackable())
@@ -849,23 +822,9 @@ public class CharacterTradeList
 			}
 			removeItem(-1, item.getItemId(), item.getCount());
 			
-			// Add changes to inventory update packets
-			if ((oldItem.getCount() > 0) && (oldItem != newItem))
-			{
-				playerIU.addModifiedItem(oldItem);
-			}
-			else
-			{
-				playerIU.addRemovedItem(oldItem);
-			}
-			if (newItem.getCount() > item.getCount())
-			{
-				ownerIU.addModifiedItem(newItem);
-			}
-			else
-			{
-				ownerIU.addNewItem(newItem);
-			}
+			// Inventory update packets
+			playerIU.addItems(oldItem);
+			ownerIU.addItems(newItem);
 			
 			// Send messages about the transaction to both players
 			if (newItem.isStackable())
@@ -887,10 +846,10 @@ public class CharacterTradeList
 		}
 		
 		ownerInventory.reduceAdena("PrivateStore", price, owner, player);
-		ownerIU.addItem(ownerInventory.getAdenaInstance());
+		ownerIU.addItems(ownerInventory.getAdenaInstance());
 		
 		playerInventory.addAdena("PrivateStore", price, player, owner);
-		playerIU.addItem(playerInventory.getAdenaInstance());
+		playerIU.addItems(playerInventory.getAdenaInstance());
 		
 		// Send inventory update packet
 		owner.sendPacket(ownerIU);

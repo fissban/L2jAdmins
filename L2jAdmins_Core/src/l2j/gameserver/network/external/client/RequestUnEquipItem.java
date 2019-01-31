@@ -6,7 +6,6 @@ import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.items.enums.SlotType;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.AClientPacket;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**
@@ -47,13 +46,6 @@ public class RequestUnEquipItem extends AClientPacket
 		}
 		
 		List<ItemInstance> unequiped = activeChar.getInventory().unEquipItemInBodySlotAndRecord(SlotType.valueOfMask(slot));
-		InventoryUpdate iu = new InventoryUpdate();
-		
-		for (ItemInstance element : unequiped)
-		{
-			iu.addModifiedItem(element);
-		}
-		activeChar.sendPacket(iu);
 		
 		activeChar.broadcastUserInfo();
 		

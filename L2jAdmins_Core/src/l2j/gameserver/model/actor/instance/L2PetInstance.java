@@ -562,16 +562,7 @@ public class L2PetInstance extends L2Summon
 		if (target instanceof PcInventory)
 		{
 			final L2PcInstance targetPlayer = ((PcInventory) target).getOwner();
-			final InventoryUpdate playerUI = new InventoryUpdate();
-			if (newItem.getCount() > count)
-			{
-				playerUI.addModifiedItem(newItem);
-			}
-			else
-			{
-				playerUI.addNewItem(newItem);
-			}
-			targetPlayer.sendPacket(playerUI);
+			targetPlayer.sendPacket(new InventoryUpdate(newItem));
 			
 			// Update current load as well
 			targetPlayer.updateCurLoad();
@@ -654,9 +645,7 @@ public class L2PetInstance extends L2Summon
 			{
 				owner.sendPacket(new SystemMessage(SystemMessage.S1_DISAPPEARED).addItemName(removedItem.getId()));
 				
-				final InventoryUpdate iu = new InventoryUpdate();
-				iu.addRemovedItem(removedItem);
-				owner.sendPacket(iu);
+				owner.sendPacket(new InventoryUpdate(removedItem));
 				
 				// Update current load status on player
 				owner.updateCurLoad();
@@ -1097,9 +1086,7 @@ public class L2PetInstance extends L2Summon
 			// name not set yet
 			controlItem.setCustomType2(name != null ? 1 : 0);
 			controlItem.updateDatabase();
-			final InventoryUpdate iu = new InventoryUpdate();
-			iu.addModifiedItem(controlItem);
-			getOwner().sendPacket(iu);
+			getOwner().sendPacket(new InventoryUpdate(controlItem));
 		}
 		
 		super.setName(name);

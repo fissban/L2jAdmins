@@ -11,7 +11,6 @@ import l2j.gameserver.model.itemcontainer.ItemContainer;
 import l2j.gameserver.model.itemcontainer.warehouse.ClanWarehouse;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.AClientPacket;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**
@@ -49,6 +48,7 @@ public class SendWareHouseWithDrawList extends AClientPacket
 		}
 	}
 	
+	@SuppressWarnings("null")
 	@Override
 	public void runImpl()
 	{
@@ -136,7 +136,6 @@ public class SendWareHouseWithDrawList extends AClientPacket
 		}
 		
 		// Proceed to the transfer
-		InventoryUpdate playerIU = new InventoryUpdate();
 		for (int i = 0; i < count; i++)
 		{
 			int objectId = items.get(i).getObjectId();
@@ -153,19 +152,7 @@ public class SendWareHouseWithDrawList extends AClientPacket
 				LOG.warning("Error withdrawing a warehouse object for char " + player.getName());
 				continue;
 			}
-			
-			if (newItem.getCount() > count)
-			{
-				playerIU.addModifiedItem(newItem);
-			}
-			else
-			{
-				playerIU.addNewItem(newItem);
-			}
 		}
-		
-		// Send updated item list to the player
-		player.sendPacket(playerIU);
 		
 		// Update current load as well
 		player.updateCurLoad();

@@ -15,7 +15,6 @@ import l2j.gameserver.model.itemcontainer.ItemContainer;
 import l2j.gameserver.model.itemcontainer.inventory.PcFreightManager;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.AClientPacket;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**
@@ -179,7 +178,6 @@ public class RequestPackageSend extends AClientPacket
 		}
 		
 		// Proceed to the transfer
-		InventoryUpdate playerIU = new InventoryUpdate();
 		for (ItemRequest i : items)
 		{
 			int objectId = i.id;
@@ -209,19 +207,7 @@ public class RequestPackageSend extends AClientPacket
 				LOG.warning("Error depositing a warehouse object for char " + player.getName() + " (newitem == null)");
 				continue;
 			}
-			
-			if ((oldItem.getCount() > 0) && (oldItem != newItem))
-			{
-				playerIU.addModifiedItem(oldItem);
-			}
-			else
-			{
-				playerIU.addRemovedItem(oldItem);
-			}
 		}
-		
-		// Send updated item list to the player
-		player.sendPacket(playerIU);
 		
 		// Update current load as well
 		player.updateCurLoad();

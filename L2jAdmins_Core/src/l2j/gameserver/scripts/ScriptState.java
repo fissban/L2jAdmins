@@ -3,7 +3,6 @@ package l2j.gameserver.scripts;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +14,6 @@ import l2j.gameserver.model.itemcontainer.inventory.PcInventory;
 import l2j.gameserver.model.items.enums.ParpedollType;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.external.server.ExShowQuestMark;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.PlaySound;
 import l2j.gameserver.network.external.server.PlaySound.PlaySoundType;
 import l2j.gameserver.network.external.server.QuestList;
@@ -721,14 +719,7 @@ public final class ScriptState
 		// Disarm item, if equipped.
 		if (item.isEquipped())
 		{
-			List<ItemInstance> unequiped = player.getInventory().unEquipItemInBodySlotAndRecord(item.getItem().getBodyPart());
-			InventoryUpdate iu = new InventoryUpdate();
-			for (ItemInstance itm : unequiped)
-			{
-				iu.addModifiedItem(itm);
-			}
-			
-			player.sendPacket(iu);
+			player.getInventory().unEquipItemInBodySlotAndRecord(item.getItem().getBodyPart());
 			player.broadcastUserInfo();
 		}
 		

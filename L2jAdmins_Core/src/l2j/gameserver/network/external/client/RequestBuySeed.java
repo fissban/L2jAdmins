@@ -11,10 +11,8 @@ import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.entity.castle.Castle;
 import l2j.gameserver.model.holder.SeedProductionHolder;
 import l2j.gameserver.model.items.Item;
-import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.ActionFailed;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**
@@ -153,7 +151,6 @@ public class RequestBuySeed extends AClientPacket
 		castle.addToTreasuryNoTax((int) totalPrice);
 		
 		// Proceed the purchase
-		InventoryUpdate playerIU = new InventoryUpdate();
 		for (int i = 0; i < count; i++)
 		{
 			int seedId = items[(i * 2) + 0];
@@ -172,16 +169,7 @@ public class RequestBuySeed extends AClientPacket
 			}
 			
 			// Add item to Inventory and adjust update packet
-			ItemInstance item = player.getInventory().addItem("Buy", seedId, count, player, target);
-			
-			if (item.getCount() > count)
-			{
-				playerIU.addModifiedItem(item);
-			}
-			else
-			{
-				playerIU.addNewItem(item);
-			}
+			player.getInventory().addItem("Buy", seedId, count, player, target);
 			
 			// Send Char Buy Messages
 			SystemMessage sm = null;
@@ -190,11 +178,5 @@ public class RequestBuySeed extends AClientPacket
 			sm.addNumber(count);
 			player.sendPacket(sm);
 		}
-		
-		// Send update packets
-		player.sendPacket(playerIU);
-		
-		// Update current load as well
-		player.updateCurLoad();
 	}
 }

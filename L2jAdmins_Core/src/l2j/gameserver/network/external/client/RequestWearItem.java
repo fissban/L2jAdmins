@@ -231,7 +231,7 @@ public class RequestWearItem extends AClientPacket
 			player.getInventory().equipItemAndRecord(item);
 			
 			// Add this Item in the InventoryUpdate Server->Client Packet
-			playerIU.addItem(item);
+			playerIU.addItems(item);
 		}
 		
 		// Send the InventoryUpdate Server->Client Packet to the player
