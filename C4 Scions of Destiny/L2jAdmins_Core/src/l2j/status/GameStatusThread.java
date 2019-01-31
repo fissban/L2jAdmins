@@ -353,7 +353,7 @@ public class GameStatusThread extends Thread
 						{
 							ItemInstance item = player.getInventory().addItem("Status-Give", itemId, amount, null, null);
 							InventoryUpdate iu = new InventoryUpdate();
-							iu.addItem(item);
+							iu.addItems(item);
 							player.sendPacket(iu);
 							SystemMessage sm = new SystemMessage(SystemMessage.YOU_PICKED_UP_S1_S2);
 							sm.addItemName(itemId);

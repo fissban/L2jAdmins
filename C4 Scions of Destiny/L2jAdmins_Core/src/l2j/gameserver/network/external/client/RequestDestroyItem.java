@@ -2,7 +2,6 @@ package l2j.gameserver.network.external.client;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.List;
 import java.util.logging.Level;
 
 import l2j.L2DatabaseFactory;
@@ -11,7 +10,6 @@ import l2j.gameserver.illegalaction.IllegalAction;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.AClientPacket;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**
@@ -105,13 +103,7 @@ public class RequestDestroyItem extends AClientPacket
 		
 		if (itemToRemove.isEquipped())
 		{
-			List<ItemInstance> unequiped = activeChar.getInventory().unEquipItemInSlotAndRecord(itemToRemove.getEquipSlot());
-			InventoryUpdate iu = new InventoryUpdate();
-			for (ItemInstance element : unequiped)
-			{
-				iu.addModifiedItem(element);
-			}
-			activeChar.sendPacket(iu);
+			activeChar.getInventory().unEquipItemInSlotAndRecord(itemToRemove.getEquipSlot());
 		}
 		
 		int itemId = itemToRemove.getId();
@@ -136,22 +128,7 @@ public class RequestDestroyItem extends AClientPacket
 		}
 		
 		// Destroy item
-		ItemInstance removedItem = activeChar.getInventory().destroyItem("Destroy", objectId, count, activeChar, null);
-		
-		InventoryUpdate iu = new InventoryUpdate();
-		if ((removedItem == null) || (removedItem.getCount() == 0))
-		{
-			iu.addRemovedItem(removedItem);
-		}
-		else
-		{
-			iu.addModifiedItem(removedItem);
-		}
-		
-		activeChar.sendPacket(iu);
-		
-		// Update current load as well
-		activeChar.updateCurLoad();
+		activeChar.getInventory().destroyItem("Destroy", objectId, count, activeChar, null);
 		// Update user info
 		activeChar.broadcastUserInfo();
 	}

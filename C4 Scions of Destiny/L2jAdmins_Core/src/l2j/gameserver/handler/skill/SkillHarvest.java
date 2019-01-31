@@ -9,7 +9,6 @@ import l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.skills.Skill;
 import l2j.gameserver.model.skills.enums.SkillType;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.util.Rnd;
 
@@ -64,8 +63,6 @@ public class SkillHarvest implements ISkillHandler
 					var items = manor.takeHarvest();
 					if ((items != null) && (items.size() > 0))
 					{
-						var iu = new InventoryUpdate();
-						
 						for (var ritem : items)
 						{
 							cropId = ritem.getId(); // always got 1 type of crop as reward
@@ -76,7 +73,6 @@ public class SkillHarvest implements ISkillHandler
 							else
 							{
 								var item = player.getInventory().addItem("Manor", ritem.getId(), ritem.getCount(), player, object);
-								iu.addItem(item);
 								
 								send = true;
 								total += ritem.getCount();
@@ -92,8 +88,6 @@ public class SkillHarvest implements ISkillHandler
 							{
 								player.getParty().broadcastToPartyMembers(player, new SystemMessage(SystemMessage.C1_HARVESTED_S3_S2S).addString(player.getName()).addNumber(total).addItemName(cropId));
 							}
-							
-							player.sendPacket(iu);
 						}
 					}
 				}

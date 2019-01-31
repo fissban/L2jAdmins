@@ -251,11 +251,12 @@ public abstract class ItemContainer
 			}
 		}
 		
-		if (item.getItem().getWeight() > 0)
+		if (item != null && item.getItem().getWeight() > 0)
 		{
 			refreshWeight();
 		}
 		
+		getOwner().getActingPlayer().getInventory().sendUpdateItem(item);
 		return item;
 	}
 	

@@ -56,12 +56,13 @@ public abstract class ALoginPacket
 		{
 			result = new String(decrypt, off, decrypt.length - off, "UTF-16LE");
 			result = result.substring(0, result.indexOf(0x00));
+			off += (result.length() * 2) + 2;
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-		off += (result.length() * 2) + 2;
+		
 		return result;
 	}
 	

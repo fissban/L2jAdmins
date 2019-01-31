@@ -37,8 +37,6 @@ public final class PacketHandler implements IPacketHandler<GameClient>, IClientF
 		
 		var opCode = buf.get() & 0xFF;
 		
-		// printDebug(opCode, buf, state, client);
-		
 		switch (state)
 		{
 			case CONNECTED:
@@ -696,6 +694,9 @@ public final class PacketHandler implements IPacketHandler<GameClient>, IClientF
 								break;
 						}
 						break;
+					default:
+						LOG.warning("missing Packet: 0x" + Integer.toHexString(opCode) + " on State: " + state.name() + " Client: " + client.toString());
+						break;
 				}
 				break;
 			default:
@@ -717,7 +718,7 @@ public final class PacketHandler implements IPacketHandler<GameClient>, IClientF
 		client.onUnknownPacket();
 		
 		var size = buf.remaining();
-		LOG.warning("Unknown Packet: 0x" + Integer.toHexString(opcode) + " on State: " + state.name() + " Client: " + client.toString());
+		LOG.warning("Packet: 0x" + Integer.toHexString(opcode) + " on State: " + state.name() + " Client: " + client.toString());
 		var array = new byte[size];
 		buf.get(array);
 		LOG.warning(printData(array, size));

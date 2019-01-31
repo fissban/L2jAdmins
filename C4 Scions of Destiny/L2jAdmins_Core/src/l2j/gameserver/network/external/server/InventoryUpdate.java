@@ -5,7 +5,6 @@ import java.util.List;
 
 import l2j.gameserver.model.holder.ItemInfoHolder;
 import l2j.gameserver.model.items.instance.ItemInstance;
-import l2j.gameserver.model.items.instance.enums.ChangeType;
 import l2j.gameserver.network.AServerPacket;
 
 /**
@@ -31,63 +30,38 @@ import l2j.gameserver.network.AServerPacket;
  */
 public class InventoryUpdate extends AServerPacket
 {
-	private final List<ItemInfoHolder> itemsList;
+	private List<ItemInfoHolder> itemsList = new ArrayList<>();
 	
 	public InventoryUpdate()
 	{
-		itemsList = new ArrayList<>();
+		//
 	}
 	
-	/**
-	 * @param items
-	 */
-	public InventoryUpdate(List<ItemInfoHolder> items)
+	public InventoryUpdate(ItemInstance... items)
 	{
-		itemsList = items;
+		addItems(items);
 	}
 	
-	public void addItem(ItemInstance item)
+	public InventoryUpdate(List<ItemInstance> items)
 	{
-		if (item != null)
+		addItems(items);
+	}
+	
+	public void addItems(ItemInstance... items)
+	{
+		for (var item : items)
 		{
 			itemsList.add(new ItemInfoHolder(item));
 		}
 	}
 	
-	public void addNewItem(ItemInstance item)
-	{
-		if (item != null)
-		{
-			itemsList.add(new ItemInfoHolder(item, ChangeType.ADDED));
-		}
-	}
-	
-	public void addModifiedItem(ItemInstance item)
-	{
-		if (item != null)
-		{
-			itemsList.add(new ItemInfoHolder(item, ChangeType.MODIFIED));
-		}
-	}
-	
-	public void addRemovedItem(ItemInstance item)
-	{
-		if (item != null)
-		{
-			itemsList.add(new ItemInfoHolder(item, ChangeType.REMOVED));
-		}
-	}
-	
 	public void addItems(List<ItemInstance> items)
 	{
-		if (items != null)
+		for (var item : items)
 		{
-			for (ItemInstance item : items)
+			if (item != null)
 			{
-				if (item != null)
-				{
-					itemsList.add(new ItemInfoHolder(item));
-				}
+				itemsList.add(new ItemInfoHolder(item));
 			}
 		}
 	}

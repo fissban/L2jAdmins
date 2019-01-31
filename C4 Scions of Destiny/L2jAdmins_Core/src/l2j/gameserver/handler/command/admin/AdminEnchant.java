@@ -6,9 +6,7 @@ import l2j.gameserver.handler.CommandAdminHandler.IAdminCommandHandler;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.items.enums.ParpedollType;
 import l2j.gameserver.model.items.instance.ItemInstance;
-import l2j.gameserver.network.external.server.CharInfo;
 import l2j.gameserver.network.external.server.InventoryUpdate;
-import l2j.gameserver.network.external.server.UserInfo;
 
 /**
  * This class handles following admin commands: - enchant_armor
@@ -165,11 +163,8 @@ public class AdminEnchant implements IAdminCommandHandler
 			player.getInventory().equipItemAndRecord(itemInstance);
 			
 			// send packets
-			InventoryUpdate iu = new InventoryUpdate();
-			iu.addModifiedItem(itemInstance);
-			player.sendPacket(iu);
-			player.broadcastPacket(new CharInfo(player));
-			player.sendPacket(new UserInfo(player));
+			player.sendPacket(new InventoryUpdate(itemInstance));
+			player.broadcastUserInfo();
 			
 			// informations
 			activeChar.sendMessage("Changed enchantment of " + player.getName() + "'s " + itemInstance.getItem().getName() + " from " + curEnchant + " to " + ench + ".");

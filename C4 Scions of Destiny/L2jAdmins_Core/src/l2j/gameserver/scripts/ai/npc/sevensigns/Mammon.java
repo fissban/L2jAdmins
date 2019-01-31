@@ -10,7 +10,6 @@ import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.itemcontainer.Inventory;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.external.server.ActionFailed;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.scripts.Script;
 
@@ -74,11 +73,6 @@ public class Mammon extends Script
 				
 				player.getInventory().reduceAncientAdena("SevenSigns", amount, npc, true);
 				player.getInventory().addAdena("SevenSigns", amount, npc, true);
-				
-				InventoryUpdate iu = new InventoryUpdate();
-				iu.addModifiedItem(player.getInventory().getAncientAdenaInstance());
-				iu.addModifiedItem(player.getInventory().getAdenaInstance());
-				player.sendPacket(iu);
 				break;
 			}
 		}

@@ -81,7 +81,7 @@ public class PcInventory extends Inventory
 			addItem(process, Inventory.ADENA_ID, count, owner, reference);
 			
 			// Send update packet
-			sendUpdateNewItem(getAdenaInstance());
+			sendUpdateItem(getAdenaInstance());
 		}
 	}
 	
@@ -127,7 +127,7 @@ public class PcInventory extends Inventory
 			destroyItemByItemId(process, Inventory.ADENA_ID, count, owner, reference);
 			
 			// Send update packet
-			sendUpdateNewItem(adenaItem);
+			sendUpdateItem(adenaItem);
 			
 			if (sendMessage)
 			{
@@ -167,7 +167,7 @@ public class PcInventory extends Inventory
 			addItem(process, Inventory.ANCIENT_ADENA_ID, count, owner, reference);
 			
 			// Send update packet
-			sendUpdateNewItem(getAncientAdenaInstance());
+			sendUpdateItem(getAncientAdenaInstance());
 		}
 	}
 	
@@ -198,7 +198,7 @@ public class PcInventory extends Inventory
 			destroyItemByItemId(process, Inventory.ANCIENT_ADENA_ID, count, owner, reference);
 			
 			// Send update packet
-			sendUpdateNewItem(ancientAdenaItem);
+			sendUpdateItem(ancientAdenaItem);
 			
 			if (sendMessage)
 			{
@@ -241,7 +241,7 @@ public class PcInventory extends Inventory
 			var newItem = addItem(process, item, owner, reference);
 			
 			// Send update packet
-			sendUpdateNewItem(newItem);
+			sendUpdateItem(newItem);
 			
 			// If over capacity, drop the item
 			if (!owner.isGM() && !validateCapacity(0) && item.isDropable())
@@ -294,7 +294,7 @@ public class PcInventory extends Inventory
 			var item = addItem(process, itemId, count, owner, reference);
 			
 			// Send inventory update packet
-			sendUpdateNewItem(item);
+			sendUpdateItem(item);
 			
 			// If over capacity, drop the item
 			if (!owner.isGM() && !validateCapacity(0) && item.isDropable())
@@ -341,7 +341,7 @@ public class PcInventory extends Inventory
 		}
 		
 		// Send inventory update packet
-		sendUpdateModifiedItem(item);
+		sendUpdateItem(item);
 		
 		// Sends message to client if requested
 		if (sendMessage)
@@ -412,7 +412,7 @@ public class PcInventory extends Inventory
 		}
 		
 		// Send inventory update packet
-		sendUpdateNewItem(item);
+		sendUpdateItem(item);
 		
 		// Sends message to client if requested
 		if (sendMessage)
@@ -448,7 +448,7 @@ public class PcInventory extends Inventory
 		// Send inventory update packet
 		if (oldItem != newItem)
 		{
-			sendUpdateModifiedItem(oldItem);
+			sendUpdateItem(oldItem);
 		}
 		
 		// Update current load as well
@@ -458,7 +458,7 @@ public class PcInventory extends Inventory
 		if (target instanceof PcInventory)
 		{
 			// Send inventory update packet
-			((PcInventory) target).getOwner().getInventory().sendUpdateModifiedItem(newItem);
+			((PcInventory) target).getOwner().getInventory().sendUpdateItem(newItem);
 			
 			// Update current load as well
 			owner.updateCurLoad();
@@ -466,14 +466,7 @@ public class PcInventory extends Inventory
 		else if (target instanceof PetInventory)
 		{
 			var petIU = new PetInventoryUpdate();
-			if (newItem.getCount() > count)
-			{
-				petIU.addModifiedItem(newItem);
-			}
-			else
-			{
-				petIU.addNewItem(newItem);
-			}
+			petIU.addItem(newItem);
 			
 			((PetInventory) target).getOwner().getOwner().sendPacket(petIU);
 			owner.getPet().getInventory().refreshWeight();
@@ -531,7 +524,7 @@ public class PcInventory extends Inventory
 		}
 		
 		// Send inventory update packet
-		sendUpdateNewItem(item);
+		sendUpdateItem(item);
 		
 		// Sends message to client if requested
 		if (sendMessage)
@@ -600,7 +593,7 @@ public class PcInventory extends Inventory
 		}
 		
 		// Send inventory update packet
-		sendUpdateNewItem(invItem);
+		sendUpdateItem(invItem);
 		
 		// Sends message to client if requested
 		if (sendMessage)
@@ -958,7 +951,7 @@ public class PcInventory extends Inventory
 		
 		if (item != null)
 		{
-			sendUpdateNewItem(item);
+			sendUpdateItem(item);
 		}
 		
 		return item;
@@ -1193,43 +1186,10 @@ public class PcInventory extends Inventory
 	 * <li>Update current load status on player</li>
 	 * @param item
 	 */
-	public void sendUpdateNewItem(ItemInstance item)
+	public void sendUpdateItem(ItemInstance item)
 	{
 		var iu = new InventoryUpdate();
-		
-		if ((item == null) || (item.getCount() == 0))
-		{
-			iu.addRemovedItem(item);
-		}
-		else
-		{
-			iu.addModifiedItem(item);
-		}
-		
-		// Send Packet InventoryUpdate
-		owner.sendPacket(iu);
-		// Update CurLoad
-		owner.updateCurLoad();
-	}
-	
-	/**
-	 * Actions:<br>
-	 * <li>sendPacket <b>InventoryUpdate</b></li>
-	 * <li>Update current load status on player</li>
-	 * @param item
-	 */
-	public void sendUpdateModifiedItem(ItemInstance item)
-	{
-		var iu = new InventoryUpdate();
-		
-		if (item.getCount() == 0)
-		{
-			iu.addRemovedItem(item);
-		}
-		else
-		{
-			iu.addModifiedItem(item);
-		}
+		iu.addItems(item);
 		
 		// Send Packet InventoryUpdate
 		owner.sendPacket(iu);

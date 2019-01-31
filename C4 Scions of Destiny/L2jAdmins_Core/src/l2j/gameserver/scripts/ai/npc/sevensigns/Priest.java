@@ -383,16 +383,8 @@ public class Priest extends Script
 							showChatWindow(player, npc, 9, "b", false);
 							break;
 						}
-						
+						// add ancient adena
 						player.getInventory().addAncientAdena("SevenSigns", ancientAdenaReward, npc, true);
-						
-						// Send inventory update packet
-						iu = new InventoryUpdate();
-						iu.addModifiedItem(player.getInventory().getAncientAdenaInstance());
-						player.sendPacket(iu);
-						
-						// Update current load as well
-						player.updateCurLoad();
 						
 						showChatWindow(player, npc, 9, "a", false);
 					}
@@ -505,15 +497,6 @@ public class Priest extends Script
 						if (player.getInventory().destroyItemByItemId("SevenSigns", convertStoneId, convertCount, npc, true))
 						{
 							player.getInventory().addAncientAdena("SevenSigns", ancientAdenaReward, npc, true);
-							
-							// Send inventory update packet
-							iu = new InventoryUpdate();
-							iu.addModifiedItem(player.getInventory().getAncientAdenaInstance());
-							iu.addModifiedItem(convertItem);
-							npc.sendPacket(iu);
-							
-							// Update current load as well
-							player.updateCurLoad();
 						}
 					}
 					else

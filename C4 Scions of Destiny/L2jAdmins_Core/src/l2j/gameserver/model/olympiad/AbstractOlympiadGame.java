@@ -20,7 +20,6 @@ import l2j.gameserver.model.skills.Skill;
 import l2j.gameserver.model.zone.type.OlympiadStadiumZone;
 import l2j.gameserver.network.AServerPacket;
 import l2j.gameserver.network.external.server.ExOlympiadMode;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**
@@ -238,12 +237,7 @@ public abstract class AbstractOlympiadGame
 		if ((itemId >= 6611) && (itemId <= 6621))
 		{
 			List<ItemInstance> unequiped = player.getInventory().unEquipItemInBodySlotAndRecord(wpn.getItem().getBodyPart());
-			InventoryUpdate iu = new InventoryUpdate();
-			for (ItemInstance element : unequiped)
-			{
-				iu.addModifiedItem(element);
-			}
-			player.sendPacket(iu);
+			
 			player.abortAttack();
 			player.broadcastUserInfo();
 			
@@ -389,7 +383,6 @@ public abstract class AbstractOlympiadGame
 		
 		try
 		{
-			final InventoryUpdate iu = new InventoryUpdate();
 			for (Entry<Integer, Integer> it : map.entrySet())
 			{
 				var id = it.getKey();
@@ -401,10 +394,8 @@ public abstract class AbstractOlympiadGame
 					continue;
 				}
 				
-				iu.addModifiedItem(item);
 				player.sendPacket(new SystemMessage(SystemMessage.EARNED_S2_S1_S).addItemName(id).addNumber(count));
 			}
-			player.sendPacket(iu);
 		}
 		catch (Exception e)
 		{

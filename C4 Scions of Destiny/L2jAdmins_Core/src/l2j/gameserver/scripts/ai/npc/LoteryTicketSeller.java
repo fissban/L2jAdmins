@@ -10,7 +10,6 @@ import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.external.server.ActionFailed;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.NpcHtmlMessage;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.scripts.Script;
@@ -205,12 +204,6 @@ public class LoteryTicketSeller extends Script
 				item.setEnchantLevel(enchant);
 				item.setCustomType2(type2);
 				player.getInventory().addItem("Loto", item, player, npc);
-				
-				InventoryUpdate iu = new InventoryUpdate();
-				iu.addItem(item);
-				ItemInstance adenaupdate = player.getInventory().getItemById(57);
-				iu.addModifiedItem(adenaupdate);
-				player.sendPacket(iu);
 				
 				filename = (npc.getHtmlPath(npc.getId(), 3));
 				html.setFile(filename);

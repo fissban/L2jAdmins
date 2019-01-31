@@ -1,7 +1,5 @@
 package l2j.gameserver.network.external.client;
 
-import java.util.List;
-
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.items.enums.CrystalType;
 import l2j.gameserver.model.items.instance.ItemInstance;
@@ -9,7 +7,6 @@ import l2j.gameserver.model.skills.Skill;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.ActionFailed;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**
@@ -111,13 +108,7 @@ public class RequestCrystallizeItem extends AClientPacket
 		// Unequip if needed
 		if (item.isEquipped())
 		{
-			List<ItemInstance> unequiped = activeChar.getInventory().unEquipItemInSlotAndRecord(item.getEquipSlot());
-			InventoryUpdate iu = new InventoryUpdate();
-			for (ItemInstance element : unequiped)
-			{
-				iu.addModifiedItem(element);
-			}
-			activeChar.sendPacket(iu);
+			activeChar.getInventory().unEquipItemInSlotAndRecord(item.getEquipSlot());
 		}
 		
 		// Remove from inventory
@@ -126,33 +117,10 @@ public class RequestCrystallizeItem extends AClientPacket
 		// Add crystals
 		int crystalId = item.getItem().getCrystalItemId();
 		int crystalAmount = item.getCrystalCount();
-		ItemInstance createdItem = activeChar.getInventory().addItem("Crystalize", crystalId, crystalAmount, activeChar, item);
+		activeChar.getInventory().addItem("Crystalize", crystalId, crystalAmount, activeChar, item);
 		// Send message
 		activeChar.sendPacket(new SystemMessage(SystemMessage.EARNED_S2_S1_S).addItemName(crystalId).addNumber(crystalAmount));
 		
-		// Send inventory update
-		InventoryUpdate iu = new InventoryUpdate();
-		if (item.getCount() == 0)
-		{
-			iu.addRemovedItem(item);
-		}
-		else
-		{
-			iu.addModifiedItem(item);
-		}
-		
-		if (createdItem.getCount() != crystalAmount)
-		{
-			iu.addModifiedItem(createdItem);
-		}
-		else
-		{
-			iu.addNewItem(createdItem);
-		}
-		activeChar.sendPacket(iu);
-		
-		// Update current load as well
-		activeChar.updateCurLoad();
 		// Update user info
 		activeChar.broadcastUserInfo();
 		// Remove object from world

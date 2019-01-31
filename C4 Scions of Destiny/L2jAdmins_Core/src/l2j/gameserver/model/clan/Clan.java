@@ -515,20 +515,6 @@ public class Clan
 		}
 	}
 	
-	private void updateWarsInDB()
-	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-			PreparedStatement ps = con.prepareStatement("UPDATE clan_wars SET wantspeace1=? WHERE clan1=?"))
-		{
-			ps.setInt(1, 0);
-			ps.setInt(2, 0);
-		}
-		catch (Exception e)
-		{
-			LOG.warning("could not update clans wars data:" + e);
-		}
-	}
-	
 	private void restoreWars()
 	{
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection();

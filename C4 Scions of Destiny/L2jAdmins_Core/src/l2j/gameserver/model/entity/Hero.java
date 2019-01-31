@@ -17,7 +17,6 @@ import l2j.gameserver.model.items.enums.SlotType;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.model.olympiad.Olympiad;
 import l2j.gameserver.model.world.L2World;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.util.Util;
 import l2j.util.UtilPrint;
 
@@ -206,29 +205,9 @@ public class Hero
 			
 			player.setHero(false);
 			
-			List<ItemInstance> items = player.getInventory().unEquipItemInBodySlotAndRecord(SlotType.LR_HAND);
-			InventoryUpdate iu = new InventoryUpdate();
-			for (ItemInstance item : items)
-			{
-				iu.addModifiedItem(item);
-			}
-			player.sendPacket(iu);
-			
-			items = player.getInventory().unEquipItemInBodySlotAndRecord(SlotType.R_HAND);
-			iu = new InventoryUpdate();
-			for (ItemInstance item : items)
-			{
-				iu.addModifiedItem(item);
-			}
-			player.sendPacket(iu);
-			
-			items = player.getInventory().unEquipItemInBodySlotAndRecord(SlotType.HAIR);
-			iu = new InventoryUpdate();
-			for (ItemInstance item : items)
-			{
-				iu.addModifiedItem(item);
-			}
-			player.sendPacket(iu);
+			player.getInventory().unEquipItemInBodySlotAndRecord(SlotType.LR_HAND);
+			player.getInventory().unEquipItemInBodySlotAndRecord(SlotType.R_HAND);
+			player.getInventory().unEquipItemInBodySlotAndRecord(SlotType.HAIR);
 			
 			for (ItemInstance item : player.getInventory().getAvailableItems(false))
 			{

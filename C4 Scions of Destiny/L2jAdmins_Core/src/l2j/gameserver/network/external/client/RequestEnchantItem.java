@@ -1,7 +1,5 @@
 package l2j.gameserver.network.external.client;
 
-import java.util.List;
-
 import l2j.Config;
 import l2j.gameserver.illegalaction.IllegalAction;
 import l2j.gameserver.illegalaction.enums.IllegalActionType;
@@ -15,7 +13,6 @@ import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.EnchantResult;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.ItemList;
 import l2j.gameserver.network.external.server.PlaySound.PlaySoundType;
 import l2j.gameserver.network.external.server.SystemMessage;
@@ -397,15 +394,7 @@ public class RequestEnchantItem extends AClientPacket
 						activeChar.sendPacket(sm);
 					}
 					
-					List<ItemInstance> unequiped = activeChar.getInventory().unEquipItemInSlotAndRecord(item.getEquipSlot());
-					
-					InventoryUpdate iu = new InventoryUpdate();
-					for (ItemInstance element : unequiped)
-					{
-						iu.addModifiedItem(element);
-					}
-					
-					activeChar.sendPacket(iu);
+					activeChar.getInventory().unEquipItemInSlotAndRecord(item.getEquipSlot());
 					activeChar.broadcastUserInfo();
 				}
 				
@@ -430,19 +419,6 @@ public class RequestEnchantItem extends AClientPacket
 				sm.addItemName(crystals.getId());
 				sm.addNumber(count);
 				activeChar.sendPacket(sm);
-				
-				InventoryUpdate iu = new InventoryUpdate();
-				if (destroyItem.getCount() == 0)
-				{
-					iu.addRemovedItem(destroyItem);
-				}
-				else
-				{
-					iu.addModifiedItem(destroyItem);
-				}
-				iu.addItem(crystals);
-				
-				activeChar.sendPacket(iu);
 				
 				activeChar.broadcastUserInfo();
 				

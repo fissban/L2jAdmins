@@ -4,9 +4,7 @@ import l2j.gameserver.instancemanager.sevensigns.SevenSignsFestival;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
 import l2j.gameserver.model.actor.templates.NpcTemplate;
-import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.model.party.Party;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 
 /**
  * L2FestivalMonsterInstance This class manages all attackable festival NPCs, spawned during the Festival of Darkness.
@@ -94,20 +92,7 @@ public class L2FestivalMonsterInstance extends L2MonsterInstance
 		}
 		
 		L2PcInstance partyLeader = associatedParty.getLeader();
-		ItemInstance addedOfferings = partyLeader.getInventory().addItem("Sign", SevenSignsFestival.FESTIVAL_OFFERING_ID, bonusMultiplier, partyLeader, this);
-		
-		InventoryUpdate iu = new InventoryUpdate();
-		
-		if (addedOfferings.getCount() != bonusMultiplier)
-		{
-			iu.addModifiedItem(addedOfferings);
-		}
-		else
-		{
-			iu.addNewItem(addedOfferings);
-		}
-		
-		partyLeader.sendPacket(iu);
+		partyLeader.getInventory().addItem("Sign", SevenSignsFestival.FESTIVAL_OFFERING_ID, bonusMultiplier, partyLeader, this);
 		
 		super.doItemDrop(lastAttacker); // Normal drop
 	}
