@@ -293,9 +293,6 @@ public class PcInventory extends Inventory
 			// Add the item to inventory
 			var item = addItem(process, itemId, count, owner, reference);
 			
-			// Send inventory update packet
-			sendUpdateItem(item);
-			
 			// If over capacity, drop the item
 			if (!owner.isGM() && !validateCapacity(0) && item.isDropable())
 			{
