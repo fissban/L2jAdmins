@@ -3,7 +3,6 @@ package l2j.gameserver.model.actor.instance;
 import java.util.concurrent.Future;
 import java.util.logging.Logger;
 
-import l2j.Config;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Summon;
@@ -28,6 +27,8 @@ public class L2SummonInstance extends L2Summon
 	private int timeRemaining;
 	private int nextItemConsumeTime;
 	public int lastShownTimeRemaining; // Following FbiAgent's example to avoid sending useless packets
+	
+	private long timeToSpawn;
 	
 	private Future<?> summonLifeTask;
 	
@@ -70,12 +71,7 @@ public class L2SummonInstance extends L2Summon
 			nextItemConsumeTime = totalLifeTime - (totalLifeTime / (itemConsumeSteps + 1));
 		}
 		
-		// When no item consume is defined task only need to check when summon life time has ended.
-		// Otherwise have to destroy items from owner's inventory in order to let summon live.
-		if (Config.DEBUG && (itemConsumeCount != 0))
-		{
-			LOG.warning("L2SummonInstance: Item Consume ID: " + itemConsumeId + ", Count: " + itemConsumeCount + ", Rate: " + itemConsumeSteps + " times.");
-		}
+		timeToSpawn = System.currentTimeMillis() + 3000;
 		
 		summonLifeTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new SummonLifetime(getOwner(), this), 1000, 1000);
 	}
@@ -195,11 +191,6 @@ public class L2SummonInstance extends L2Summon
 		@Override
 		public void run()
 		{
-			if (Config.DEBUG)
-			{
-				LOG.warning("L2SummonInstance: " + summon.getTemplate().getName() + " (" + activeChar.getName() + ") run task.");
-			}
-			
 			try
 			{
 				double oldTimeRemaining = summon.getTimeRemaining();
@@ -242,10 +233,7 @@ public class L2SummonInstance extends L2Summon
 			}
 			catch (Throwable e)
 			{
-				if (Config.DEBUG)
-				{
-					LOG.warning("Summon of player [#" + activeChar.getName() + "] has encountered item consumption errors: " + e);
-				}
+				LOG.warning("Summon of player [#" + activeChar.getName() + "] has encountered item consumption errors: " + e);
 			}
 		}
 	}
@@ -253,6 +241,11 @@ public class L2SummonInstance extends L2Summon
 	@Override
 	public void unSummon()
 	{
+		// it is verified if I finish the summon animation
+		if (timeToSpawn > System.currentTimeMillis())
+		{
+			return;
+		}
 		if (summonLifeTask != null)
 		{
 			summonLifeTask.cancel(true);
@@ -290,9 +283,7 @@ public class L2SummonInstance extends L2Summon
 				getOwner().dmgDealt += damage;
 			}
 			
-			SystemMessage sm = new SystemMessage(SystemMessage.SUMMON_GAVE_DAMAGE_S1);
-			sm.addNumber(damage);
-			getOwner().sendPacket(sm);
+			getOwner().sendPacket(new SystemMessage(SystemMessage.SUMMON_GAVE_DAMAGE_S1).addNumber(damage));
 		}
 	}
 }
