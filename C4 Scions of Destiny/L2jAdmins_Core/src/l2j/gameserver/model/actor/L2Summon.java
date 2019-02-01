@@ -28,7 +28,6 @@ import l2j.gameserver.model.party.Party;
 import l2j.gameserver.model.skills.Skill;
 import l2j.gameserver.model.skills.effects.Effect;
 import l2j.gameserver.model.skills.enums.SkillTargetType;
-import l2j.gameserver.model.world.L2WorldRegion;
 import l2j.gameserver.network.external.server.ActionFailed;
 import l2j.gameserver.network.external.server.NpcInfo;
 import l2j.gameserver.network.external.server.PartySpelled;
@@ -346,14 +345,9 @@ public abstract class L2Summon extends L2Playable
 			// stop HP and MP regeneration
 			stopHpMpRegeneration();
 			
-			getAI().stopFollow();
-			getOwner().sendPacket(new PetDelete(getSummonType(), getObjectId()));
-			
 			store();
 			
 			giveAllToOwner();
-			
-			getOwner().setPet(null);
 			
 			// Stop AI tasks
 			if (hasAI())
@@ -362,14 +356,6 @@ public abstract class L2Summon extends L2Playable
 			}
 			
 			stopAllEffects();
-			final L2WorldRegion oldRegion = getWorldRegion();
-			
-			if (oldRegion != null)
-			{
-				oldRegion.removeFromZones(this);
-			}
-			
-			decayMe();
 			
 			getKnownList().removeAllObjects();
 			
@@ -381,6 +367,12 @@ public abstract class L2Summon extends L2Playable
 					getOwner().disableAutoShot(itemId);
 				}
 			}
+			
+			decayMe();
+			
+			getOwner().sendPacket(new PetDelete(getSummonType(), getObjectId()));
+			
+			getOwner().setPet(null);
 		}
 	}
 	
