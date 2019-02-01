@@ -1,7 +1,3 @@
-
-/**
- * @author FBIagent
- */
 package l2j.gameserver.data;
 
 import java.io.File;
@@ -16,6 +12,9 @@ import l2j.gameserver.model.holder.ExtractableItemHolder;
 import l2j.gameserver.model.holder.ExtractableProductItemHolder;
 import l2j.util.UtilPrint;
 
+/**
+ * @author FBIagent
+ */
 public class ExtractableItemsData
 {
 	private static final Logger LOG = Logger.getLogger(ExtractableItemsData.class.getName());
