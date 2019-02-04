@@ -759,10 +759,10 @@ public class CharacterAI extends AbstractAI
 			// Caller should be L2Playable and thinkAttack/thinkCast/thinkInteract/thinkPickUp
 			if (getFollowTarget() != null)
 			{
-				int foffset = offset + (((L2Character) target).isMoving() ? 100 : 0);
+				// int foffset = offset + (((L2Character) target).isMoving() ? 100 : 0);
 				
 				// allow larger hit range when the target is moving (check is run only once per second)
-				if (!activeActor.isInsideRadius(target, foffset, false, false))
+				if (!activeActor.isInsideRadius(target, offset + 100, false, false))
 				{
 					if (!activeActor.isAttackingNow() || (activeActor instanceof L2Summon))
 					{
@@ -780,6 +780,7 @@ public class CharacterAI extends AbstractAI
 				if (getIntention() == CtrlIntentionType.ATTACK)
 				{
 					setIntention(CtrlIntentionType.IDLE);
+					clientActionFailed();
 				}
 				return true;
 			}
@@ -792,6 +793,16 @@ public class CharacterAI extends AbstractAI
 			
 			if ((target instanceof L2Character) && !(target instanceof L2DoorInstance))
 			{
+				if (((L2Character) target).isMoving())
+				{
+					offset -= 30;
+				}
+				
+				if (offset < 5)
+				{
+					offset = 5;
+				}
+				
 				startFollow((L2Character) target, offset);
 			}
 			else
