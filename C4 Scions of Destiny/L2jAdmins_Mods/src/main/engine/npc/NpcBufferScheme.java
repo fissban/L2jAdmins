@@ -926,7 +926,7 @@ public class NpcBufferScheme extends AbstractMod
 	private boolean isPetBuff(PlayerHolder ph)
 	{
 		var pettBuff = getValueDB(ph.getObjectId(), "Pet-On-Off").getString();
-		return (pettBuff == null) || pettBuff.equals("1");
+		return (pettBuff != null) && pettBuff.equals("1");
 	}
 	
 	private static void deleteSpecifiedScheme(PlayerHolder ph, String eventParam1)
