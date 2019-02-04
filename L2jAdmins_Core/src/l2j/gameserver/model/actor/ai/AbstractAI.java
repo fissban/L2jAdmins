@@ -11,11 +11,13 @@ import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.network.AServerPacket;
 import l2j.gameserver.network.external.server.ActionFailed;
 import l2j.gameserver.network.external.server.AutoAttackStart;
 import l2j.gameserver.network.external.server.AutoAttackStop;
 import l2j.gameserver.network.external.server.CharMoveToLocation;
 import l2j.gameserver.network.external.server.Die;
+import l2j.gameserver.network.external.server.MoveToPawn;
 import l2j.gameserver.network.external.server.StopMove;
 import l2j.gameserver.network.external.server.StopRotation;
 import l2j.gameserver.task.continuous.AttackStanceTaskManager;
@@ -398,10 +400,7 @@ public abstract class AbstractAI
 	 */
 	protected void clientActionFailed()
 	{
-		if (activeActor instanceof L2PcInstance)
-		{
-			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
-		}
+		activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	/**
@@ -412,21 +411,63 @@ public abstract class AbstractAI
 	 */
 	protected void moveToPawn(L2Object pawn, int offset)
 	{
-		if (clientMoving && (target == pawn) && activeActor.isOnGeodataPath() && (System.currentTimeMillis() < moveToPawnTimeout))
+		// Check if actor can move
+		if (activeActor.isMovementDisabled())
 		{
+			clientActionFailed();
 			return;
 		}
 		
+		var time = System.currentTimeMillis();
+		// prevent possible extra calls to this function (there is none?).
+		if (clientMoving && (target == pawn))
+		{
+			if (activeActor.isOnGeodataPath())
+			{
+				// minimum time to calculate new route is 2 seconds
+				if (time < moveToPawnTimeout + 1000)
+				{
+					clientActionFailed();
+					return;
+				}
+			}
+		}
+		
+		// Set AI movement data
+		clientMoving = true;
+		// clientMovingToPawnOffset = offset;
 		target = pawn;
+		moveToPawnTimeout = time + 1000;
 		
 		if (target == null)
 		{
+			clientActionFailed();
 			return;
 		}
 		
-		moveToPawnTimeout = System.currentTimeMillis() + 2000;
+		// Calculate movement data for a move to location action and add the actor to movingObjects of GameTimeController
+		activeActor.moveToLocation(pawn.getX(), pawn.getY(), pawn.getZ(), offset < 10 ? offset : 10);
 		
-		moveTo(target.getX(), target.getY(), target.getZ(), (offset < 10) ? 10 : offset);
+		if (!activeActor.isMoving())
+		{
+			clientActionFailed();
+			return;
+		}
+		
+		AServerPacket send = null;
+		// Broadcast MoveToPawn/MoveToLocation packet
+		if (target instanceof L2Character)
+		{
+			send = activeActor.isOnGeodataPath() ? new CharMoveToLocation(activeActor) : new MoveToPawn(activeActor, (L2Character) target, offset);
+		}
+		else
+		{
+			send = new CharMoveToLocation(activeActor);
+		}
+		
+		// Send a Server->Client packet CharMoveToLocation/MoveToPawn to the actor and all L2PcInstance in its knownPlayers
+		activeActor.broadcastPacket(send);
+		// moveTo(target.getX(), target.getY(), target.getZ(), (offset < 10) ? 10 : offset);
 	}
 	
 	protected void moveTo(int x, int y, int z)
@@ -444,25 +485,19 @@ public abstract class AbstractAI
 	 */
 	protected void moveTo(int x, int y, int z, int offset)
 	{
-		// Check if actor can move
 		if (activeActor.isMovementDisabled())
 		{
-			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
+			clientActionFailed();
 			return;
 		}
+		
 		// Set AI movement data
 		clientMoving = true;
 		
 		// Calculate movement data for a move to location action and add the actor to movingObjects of GameTimeController
 		activeActor.moveToLocation(x, y, z, offset);
 		
-		if (!activeActor.isMoving())
-		{
-			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
-			return;
-		}
-		
-		// Send a Server->Client packet CharMoveToLocation to the actor and all L2PcInstance in its knownPlayers
+		// Send a Server->Client packet CharMoveToLocation/MoveToPawn to the actor and all L2PcInstance in its knownPlayers
 		activeActor.broadcastPacket(new CharMoveToLocation(activeActor));
 	}
 	
