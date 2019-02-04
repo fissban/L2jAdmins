@@ -641,6 +641,8 @@ public abstract class L2Character extends L2Object
 			return;
 		}
 		
+		long time = System.currentTimeMillis();
+		
 		// Check for a bow
 		if (((weaponItem != null) && (weaponItem.getType() == WeaponType.BOW)))
 		{
@@ -659,11 +661,10 @@ public abstract class L2Character extends L2Object
 				}
 				
 				// Verify if the bow can be used
-				var timeToNextBowAttack = disableBowAttackEndTime - System.currentTimeMillis();
-				if (timeToNextBowAttack > 0)
+				if (disableBowAttackEndTime > time)
 				{
 					// Cancel the action because the bow can't be re-use at this moment
-					ThreadPoolManager.getInstance().schedule(() -> getAI().notifyEvent(CtrlEventType.READY_TO_ACT), timeToNextBowAttack);
+					ThreadPoolManager.getInstance().schedule(() -> getAI().notifyEvent(CtrlEventType.READY_TO_ACT), 100);
 					sendPacket(ActionFailed.STATIC_PACKET);
 					return;
 				}
@@ -710,8 +711,12 @@ public abstract class L2Character extends L2Object
 		var wasSSCharged = isChargedShot(ShotType.SOULSHOTS);
 		
 		// Get the Attack Speed of the L2Character (delay (in milliseconds) before next attack)
-		var timeAtk = calculateTimeBetweenAttacks(target, weaponItem);
+		// var timeAtk = calculateTimeBetweenAttacks(target, weaponItem);
+		// Get the Attack Speed of the Creature (delay (in milliseconds) before next attack)
+		int timeAtk = calculateTimeBetweenAttacks(target, weaponItem);
 		
+		attackEndTime = time + timeAtk - 100;
+		disableBowAttackEndTime = time + 50;
 		attackEndTime = System.currentTimeMillis() + timeAtk;
 		// Create a Server->Client packet Attack
 		var attack = new Attack(this, wasSSCharged, (weaponItem != null) ? weaponItem.getCrystalType() : CrystalType.CRYSTAL_NONE);
@@ -849,7 +854,7 @@ public abstract class L2Character extends L2Object
 		ThreadPoolManager.getInstance().schedule(new HitTask(target, damage, crit, miss, attack.soulshot, shld), sAtk);
 		
 		// Calculate and set the disable delay of the bow in function of the Attack Speed
-		disableBowAttackEndTime = System.currentTimeMillis() + (sAtk + reuse);
+		disableBowAttackEndTime += (sAtk + reuse);
 		
 		// Add this hit to the Server-Client packet Attack
 		attack.addHit(target, damage, miss, crit, shld);
@@ -3553,15 +3558,7 @@ public abstract class L2Character extends L2Object
 		
 		if (player.isInOlympiadMode() && (player.getTarget() != null))
 		{
-			L2PcInstance target;
-			if (player.getTarget() instanceof L2Summon)
-			{
-				target = ((L2Summon) player.getTarget()).getOwner();
-			}
-			else
-			{
-				target = (L2PcInstance) player.getTarget();
-			}
+			L2PcInstance target = player.getActingPlayer();
 			
 			if ((target == null) || (target.isInOlympiadMode() && (!player.isOlympiadStart() || (player.getOlympiadGameId() != target.getOlympiadGameId()))))
 			{
