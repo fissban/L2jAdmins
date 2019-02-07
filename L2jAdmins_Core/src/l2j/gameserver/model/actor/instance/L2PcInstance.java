@@ -1981,11 +1981,6 @@ public final class L2PcInstance extends L2Playable
 		// Send a Server->Client packet ActionFailed to the L2PcInstance
 		sendPacket(ActionFailed.STATIC_PACKET);
 		
-		if (Config.DEBUG)
-		{
-			LOG.fine("pickup pos: " + item.getX() + " " + item.getY() + " " + item.getZ());
-		}
-		
 		// Send a Server->Client packet StopMove to this L2PcInstance
 		sendPacket(new StopMove(getObjectId(), getX(), getY(), getZ(), getHeading()));
 		
@@ -4259,7 +4254,6 @@ public final class L2PcInstance extends L2Playable
 		
 		if (!EngineModsManager.onUseSkill(this, skill))
 		{
-			setIsCastingNow(false);
 			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
