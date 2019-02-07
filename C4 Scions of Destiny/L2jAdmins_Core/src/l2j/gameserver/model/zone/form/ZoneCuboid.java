@@ -16,8 +16,8 @@ public class ZoneCuboid extends ZoneForm
 		this.x2 = x2;
 		if (this.x1 > this.x2) // switch them if alignment is wrong
 		{
-			x1 = x2;
-			x2 = x1;
+			this.x1 = x2;
+			this.x2 = x1;
 		}
 		
 		this.y1 = y1;
