@@ -22,7 +22,6 @@ import l2j.gameserver.network.external.server.LeaveWorld;
 import l2j.gameserver.network.internal.gameserver.ServerStatus;
 import l2j.gameserver.network.thread.LoginServerThread;
 import l2j.gameserver.task.continuous.ItemsOnGroundTaskManager;
-import l2j.gameserver.task.continuous.MovementTaskManager;
 import main.EngineModsManager;
 
 /**
@@ -152,18 +151,6 @@ public class Shutdown extends Thread
 				OfflineTradersData.storeOffliners();
 			}
 			
-			// ensure all services are stopped
-			try
-			{
-				MovementTaskManager.getInstance().interrupt();
-			}
-			catch (Throwable t)
-			{
-			}
-			
-			// stop all threadpools
-			ThreadPoolManager.getInstance().shutdown();
-			
 			try
 			{
 				LoginServerThread.getInstance().interrupt();
@@ -187,6 +174,9 @@ public class Shutdown extends Thread
 			
 			// commit data, last chance
 			L2DatabaseFactory.getInstance().shutdown();
+			
+			// stop all threadpools
+			ThreadPoolManager.getInstance().shutdown();
 			
 			// server will quit, when this function ends.
 			if (getInstance().shutdownMode == GM_RESTART)

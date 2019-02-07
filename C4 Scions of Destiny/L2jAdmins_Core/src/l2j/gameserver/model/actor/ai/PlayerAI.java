@@ -167,7 +167,7 @@ public class PlayerAI extends PlayableAI
 	@Override
 	protected void clientNotifyDead()
 	{
-		// clientMovingToPawnOffset = 0;
+		clientMovingToPawnOffset = 0;
 		clientMoving = false;
 		super.clientNotifyDead();
 	}
@@ -217,18 +217,15 @@ public class PlayerAI extends PlayableAI
 		{
 			if (currentSkill.isOffensive() && (target != null))
 			{
-				// Notify the target
 				setTarget(null);
 			}
 			
-			clientActionFailed();
 			activeActor.setIsCastingNow(false);
 			return;
 		}
 		
 		if ((target != null) && maybeMoveToPawn(target, activeActor.getStat().getMagicalAttackRange(currentSkill)))
 		{
-			clientActionFailed();
 			activeActor.setIsCastingNow(false);
 			return;
 		}
