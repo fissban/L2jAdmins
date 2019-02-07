@@ -559,6 +559,7 @@ public class CharacterAI extends AbstractAI
 			if (((L2PcInstance) getActor()).isPendingSitting())
 			{
 				((L2PcInstance) getActor()).sitDown();
+				return;
 			}
 		}
 		getActor().revalidateZone(true);
@@ -748,10 +749,10 @@ public class CharacterAI extends AbstractAI
 			return false;
 		}
 		
-		offset += (int) activeActor.getTemplate().getCollisionRadius();
+		offset += activeActor.getTemplate().getCollisionRadius();
 		if (target instanceof L2Character)
 		{
-			offset += (int) ((L2Character) target).getTemplate().getCollisionRadius();
+			offset += ((L2Character) target).getTemplate().getCollisionRadius();
 		}
 		
 		if (!activeActor.isInsideRadius(target, offset, false, false))
@@ -759,8 +760,6 @@ public class CharacterAI extends AbstractAI
 			// Caller should be L2Playable and thinkAttack/thinkCast/thinkInteract/thinkPickUp
 			if (getFollowTarget() != null)
 			{
-				// int foffset = offset + (((L2Character) target).isMoving() ? 100 : 0);
-				
 				// allow larger hit range when the target is moving (check is run only once per second)
 				if (!activeActor.isInsideRadius(target, offset + 100, false, false))
 				{

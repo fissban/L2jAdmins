@@ -1102,8 +1102,11 @@ public abstract class L2Character extends L2Object
 		if (!checkDoCastConditions(skill))
 		{
 			setIsCastingNow(false);
-			// Send ActionFailed to the L2PcInstance
-			sendPacket(ActionFailed.STATIC_PACKET);
+			
+			if (this instanceof L2PcInstance)
+			{
+				getAI().setIntention(CtrlIntentionType.ACTIVE);
+			}
 			return;
 		}
 		
@@ -2654,8 +2657,7 @@ public abstract class L2Character extends L2Object
 		var distFraction = Double.MAX_VALUE;
 		if (delta > 1)
 		{
-			final double distPassed = (getStat().getMoveSpeed() * (time - moveData.moveTimestamp)) / 1000;
-			distFraction = distPassed / delta;
+			distFraction = ((getStat().getMoveSpeed() * (time - moveData.moveTimestamp)) / 1000) / delta;
 		}
 		
 		// already there, Set the position of the L2Character to the destination
@@ -2880,7 +2882,6 @@ public abstract class L2Character extends L2Object
 			{
 				// Notify the AI that the L2Character is arrived at destination
 				getAI().notifyEvent(CtrlEventType.ARRIVED);
-				
 				return;
 			}
 			// Calculate movement angles needed

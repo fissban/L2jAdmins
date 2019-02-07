@@ -111,6 +111,7 @@ public abstract class AbstractAI
 	
 	/** Different internal state flags */
 	private long moveToPawnTimeout;
+	protected int clientMovingToPawnOffset;
 	
 	/**
 	 * Constructor of AbstractAI.
@@ -304,16 +305,10 @@ public abstract class AbstractAI
 				onEvtMuted((L2Character) arg0);
 				break;
 			case READY_TO_ACT:
-				if (!activeActor.isCastingNow())
-				{
-					onEvtReadyToAct();
-				}
+				onEvtReadyToAct();
 				break;
 			case ARRIVED:
-				if (!activeActor.isCastingNow())
-				{
-					onEvtArrived();
-				}
+				onEvtArrived();
 				break;
 			case ARRIVED_BLOCKED:
 				onEvtArrivedBlocked((LocationHolder) arg0);
@@ -420,7 +415,15 @@ public abstract class AbstractAI
 		
 		var time = System.currentTimeMillis();
 		// prevent possible extra calls to this function (there is none?).
-		if (clientMoving && (target == pawn))
+		if (clientMovingToPawnOffset == offset)
+		{
+			if (System.currentTimeMillis() < moveToPawnTimeout)
+			{
+				clientActionFailed();
+				return;
+			}
+		}
+		else if (clientMoving && (target == pawn))
 		{
 			if (activeActor.isOnGeodataPath())
 			{
@@ -438,6 +441,7 @@ public abstract class AbstractAI
 		// clientMovingToPawnOffset = offset;
 		target = pawn;
 		moveToPawnTimeout = time + 1000;
+		clientMovingToPawnOffset = offset;
 		
 		if (target == null)
 		{
@@ -458,6 +462,10 @@ public abstract class AbstractAI
 		// Broadcast MoveToPawn/MoveToLocation packet
 		if (target instanceof L2Character)
 		{
+			if (activeActor.isOnGeodataPath())
+			{
+				clientMovingToPawnOffset = 0;
+			}
 			send = activeActor.isOnGeodataPath() ? new CharMoveToLocation(activeActor) : new MoveToPawn(activeActor, (L2Character) target, offset);
 		}
 		else
@@ -467,7 +475,6 @@ public abstract class AbstractAI
 		
 		// Send a Server->Client packet CharMoveToLocation/MoveToPawn to the actor and all L2PcInstance in its knownPlayers
 		activeActor.broadcastPacket(send);
-		// moveTo(target.getX(), target.getY(), target.getZ(), (offset < 10) ? 10 : offset);
 	}
 	
 	protected void moveTo(int x, int y, int z)
@@ -493,6 +500,7 @@ public abstract class AbstractAI
 		
 		// Set AI movement data
 		clientMoving = true;
+		clientMovingToPawnOffset = 0;
 		
 		// Calculate movement data for a move to location action and add the actor to movingObjects of GameTimeController
 		activeActor.moveToLocation(x, y, z, offset);
@@ -514,6 +522,8 @@ public abstract class AbstractAI
 			activeActor.stopMove(pos);
 		}
 		
+		clientMovingToPawnOffset = 0;
+		
 		if (clientMoving || (pos != null))
 		{
 			clientMoving = false;
@@ -532,6 +542,12 @@ public abstract class AbstractAI
 	// Client has already arrived to target, no need to force StopMove packet
 	protected void clientStoppedMoving()
 	{
+		if (clientMovingToPawnOffset > 0) // movetoPawn needs to be stopped
+		{
+			clientMovingToPawnOffset = 0;
+			activeActor.broadcastPacket(new StopMove(activeActor));
+		}
+		
 		clientMoving = false;
 	}
 	
@@ -585,7 +601,14 @@ public abstract class AbstractAI
 	{
 		if (getIntention() == CtrlIntentionType.MOVE_TO)
 		{
-			player.sendPacket(new CharMoveToLocation(activeActor));
+			if (clientMovingToPawnOffset != 0 && followTarget != null)
+			{
+				player.sendPacket(new MoveToPawn(activeActor, followTarget, clientMovingToPawnOffset));
+			}
+			else
+			{
+				player.sendPacket(new CharMoveToLocation(activeActor));
+			}
 		}
 	}
 	
