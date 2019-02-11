@@ -15,6 +15,7 @@ public class MagicSkillUse extends AServerPacket
 	private final int hitTime;
 	private final int reuseDelay;
 	private final int chaId, x, y, z;
+	private boolean critical = false;
 	
 	public MagicSkillUse(L2Character cha, L2Character target, int skillId, int skillLevel, int hitTime, int reuseDelay)
 	{
@@ -55,9 +56,19 @@ public class MagicSkillUse extends AServerPacket
 		writeD(x);
 		writeD(y);
 		writeD(z);
-		writeH(0x00); // unknown loop but not AoE
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
+		
+		if (critical)
+		{
+			writeD(0x01);
+			writeH(0x00);
+		}
+		else
+		{
+			writeD(0x00);
+		}
+		
+		writeD(x);
+		writeD(y);
+		writeD(z);
 	}
 }

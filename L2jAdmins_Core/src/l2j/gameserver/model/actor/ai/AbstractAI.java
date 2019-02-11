@@ -71,14 +71,7 @@ public abstract class AbstractAI
 			// target is not in range, trigger proper AI
 			if (!activeActor.isInsideRadius(follow, range, true, false))
 			{
-				if ((getIntention() == CtrlIntentionType.ATTACK) || (getIntention() == CtrlIntentionType.CAST))
-				{
-					onEvtThink();
-				}
-				else
-				{
-					moveToPawn(follow, range);
-				}
+				moveToPawn(follow, range);
 			}
 		}
 	}
@@ -414,18 +407,19 @@ public abstract class AbstractAI
 		}
 		
 		var time = System.currentTimeMillis();
-		// prevent possible extra calls to this function (there is none?).
-		if (clientMovingToPawnOffset == offset)
+		
+		if (clientMoving && (target == pawn))
 		{
-			if (System.currentTimeMillis() < moveToPawnTimeout)
+			// prevent possible extra calls to this function (there is none?).
+			if (clientMovingToPawnOffset == offset)
 			{
-				clientActionFailed();
-				return;
+				if (time < moveToPawnTimeout)
+				{
+					clientActionFailed();
+					return;
+				}
 			}
-		}
-		else if (clientMoving && (target == pawn))
-		{
-			if (activeActor.isOnGeodataPath())
+			else if (activeActor.isOnGeodataPath())
 			{
 				// minimum time to calculate new route is 2 seconds
 				if (time < moveToPawnTimeout + 1000)
@@ -438,12 +432,11 @@ public abstract class AbstractAI
 		
 		// Set AI movement data
 		clientMoving = true;
-		// clientMovingToPawnOffset = offset;
 		target = pawn;
 		moveToPawnTimeout = time + 1000;
 		clientMovingToPawnOffset = offset;
 		
-		if (target == null)
+		if (pawn == null)
 		{
 			clientActionFailed();
 			return;

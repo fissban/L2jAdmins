@@ -126,7 +126,7 @@ public abstract class L2Character extends L2Object
 	
 	private final Set<L2Character> attackByList = new HashSet<>();
 	private Skill lastSkillCast;
-	private boolean isDead = false;
+	private AtomicBoolean isDead = new AtomicBoolean(false);
 	private boolean isImmobilized = false;
 	private boolean isOverloaded = false; // the char is carrying too much
 	
@@ -157,7 +157,7 @@ public abstract class L2Character extends L2Object
 	/** Map<ZoneType, Boolean> contains all the areas where the character is currently located. */
 	private final Map<ZoneType, Boolean> insideZone = new ConcurrentHashMap<>(ZoneType.NUM_ZONE);
 	{
-		// init alla zones in false
+		// init all zones in false
 		for (var zone : ZoneType.values())
 		{
 			insideZone.put(zone, false);
@@ -365,12 +365,10 @@ public abstract class L2Character extends L2Object
 	 */
 	public void addAttackerToAttackByList(L2Character player)
 	{
-		if ((player == null) || (player == this) || getAttackByList().contains(player))
+		if ((player != null) && (player != this) && !getAttackByList().contains(player))
 		{
-			return;
+			getAttackByList().add(player);
 		}
-		
-		getAttackByList().add(player);
 	}
 	
 	/**
@@ -1242,9 +1240,12 @@ public abstract class L2Character extends L2Object
 		{
 			getStatus().reduceMp(calcStat(skill.isMagic() ? StatsType.MAGICAL_MP_CONSUME_RATE : StatsType.PHYSICAL_MP_CONSUME_RATE, initMpCons, null, null));
 			
-			var su = new StatusUpdate(getObjectId());
-			su.addAttribute(StatusUpdateType.CUR_MP, (int) getCurrentMp());
-			sendPacket(su);
+			if (this instanceof L2PcInstance)
+			{
+				var su = new StatusUpdate(getObjectId());
+				su.addAttribute(StatusUpdateType.CUR_MP, (int) getCurrentMp());
+				sendPacket(su);
+			}
 		}
 		
 		// Disable the skill during the re-use delay and create a task EnableSkill with Medium priority to enable it at the end of the re-use delay
@@ -1255,6 +1256,12 @@ public abstract class L2Character extends L2Object
 				reuseDelay = 100;
 			}
 			disableSkill(skill, reuseDelay);
+		}
+		
+		// Skill reuse check
+		if ((reuseDelay > 30000) && !skillMastery)
+		{
+			addTimeStamp(skill.getId(), skill.getLevel(), reuseDelay);
 		}
 		
 		// Make sure that char is facing selected target
@@ -1268,9 +1275,6 @@ public abstract class L2Character extends L2Object
 		
 		broadcastPacket(new MagicSkillUse(this, target, skill.getId(), level, hitTime, reuseDelay));
 		
-		// Send a Server->Client packet MagicSkillLaunched to the L2Character AND to all L2PcInstance in the KnownPlayers of the L2Character
-		broadcastPacket(new MagicSkillLaunched(this, skill.getId(), skill.getLevel(), targets));
-		
 		// Send a system message USE_S1 to the L2Character
 		if ((this instanceof L2PcInstance) && (skill.getId() != 1312))
 		{
@@ -1278,7 +1282,7 @@ public abstract class L2Character extends L2Object
 		}
 		
 		// launch the magic in hitTime milliseconds
-		if (hitTime > 210)
+		if (hitTime > CALC_SKILL + 10)
 		{
 			// Send a Server->Client packet SetupGauge with the color of the gauge and the casting time
 			if (this instanceof L2PcInstance)
@@ -1293,13 +1297,18 @@ public abstract class L2Character extends L2Object
 			}
 			
 			// Create a task MagicUseTask to launch the MagicSkill at the end of the casting time (hitTime)
-			// For client animation reasons (party buffs especially) 200 ms before!
-			skillCast = ThreadPoolManager.getInstance().schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.LAUNCHED), hitTime - 200);
+			// For client animation reasons (party buffs especially) 400 ms before!
+			skillCast = ThreadPoolManager.getInstance().schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.LAUNCHED), hitTime - CALC_SKILL);
 		}
 		else
 		{
 			onMagicLaunchedTimer(targets, skill, coolTime, true);
 		}
+	}
+	
+	protected void addTimeStamp(int id, int level, int reuseDelay)
+	{
+		//
 	}
 	
 	private boolean checkDoCastConditions(Skill skill)
@@ -1366,6 +1375,7 @@ public abstract class L2Character extends L2Object
 			getAI().notifyEvent(CtrlEventType.DEAD, null);
 		}
 		
+		// clear list to attack this character
 		getAttackByList().clear();
 		return true;
 	}
@@ -1375,7 +1385,9 @@ public abstract class L2Character extends L2Object
 		//
 	}
 	
-	/** Sets HP, MP and CP and revives the L2Character. */
+	/**
+	 * Sets HP, MP and CP and revives the L2Character.
+	 */
 	public void doRevive()
 	{
 		if (!isDead())
@@ -1505,7 +1517,7 @@ public abstract class L2Character extends L2Object
 	 */
 	public boolean isAlikeDead()
 	{
-		return isDead;
+		return isDead.get();
 	}
 	
 	/**
@@ -1513,12 +1525,12 @@ public abstract class L2Character extends L2Object
 	 */
 	public final boolean isDead()
 	{
-		return isDead;
+		return isDead.get();
 	}
 	
 	public final void setIsDead(boolean value)
 	{
-		isDead = value;
+		isDead.set(value);
 	}
 	
 	public void setIsImmobilized(boolean value)
@@ -1763,36 +1775,6 @@ public abstract class L2Character extends L2Object
 			{
 				LOG.log(Level.SEVERE, "", e);
 				setIsCastingNow(false);
-			}
-		}
-	}
-	
-	/** Task launching the function useMagic() */
-	class QueuedMagicUseTask implements Runnable
-	{
-		L2PcInstance currPlayer;
-		Skill queuedSkill;
-		boolean isCtrlPressed;
-		boolean isShiftPressed;
-		
-		public QueuedMagicUseTask(L2PcInstance currPlayer, Skill queuedSkill, boolean isCtrlPressed, boolean isShiftPressed)
-		{
-			this.currPlayer = currPlayer;
-			this.queuedSkill = queuedSkill;
-			this.isCtrlPressed = isCtrlPressed;
-			this.isShiftPressed = isShiftPressed;
-		}
-		
-		@Override
-		public void run()
-		{
-			try
-			{
-				currPlayer.useMagic(queuedSkill, isCtrlPressed, isShiftPressed);
-			}
-			catch (final Throwable e)
-			{
-				LOG.log(Level.SEVERE, "", e);
 			}
 		}
 	}
@@ -2225,6 +2207,7 @@ public abstract class L2Character extends L2Object
 	/** L2Character targeted by the L2Character */
 	private L2Object target;
 	
+	private static final int CALC_SKILL = 400;
 	private volatile long attackEndTime;
 	private final AtomicBoolean isCastingNow = new AtomicBoolean(false);
 	private long castInterruptTime;
@@ -3983,13 +3966,14 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Manage the magic skill launching task (MP, HP, Item consummation...) and display the magic skill animation on client.<br>
-	 * <b><u>Actions</u>:</b><br>
-	 * <li>Send a Server->Client packet MagicSkillLaunched (to display magic skill animation) to all L2PcInstance of L2Charcater knownPlayers
+	 * <b><u>Actions</u>:</b>
+	 * <li>Send a Server->Client packet {@link MagicSkillLaunched} (to display magic skill animation) to all {@link L2PcInstance} of {@link L2Character} knownPlayers
 	 * <li>Consume MP, HP and Item if necessary
 	 * <li>Send a Server->Client packet StatusUpdate with MP modification to the L2PcInstance
 	 * <li>Launch the magic skill in order to calculate its effects
 	 * <li>If the skill type is PDAM, notify the AI of the target with AI_INTENTION_ATTACK
-	 * <li>Notify the AI of the L2Character with CtrlEventType.FINISH_CASTING <FONT COLOR=#FF0000><b> <u>Caution</u> : A magic skill casting MUST BE in progress</b></FONT><br>
+	 * <li>Notify the AI of the {@link L2Character} with {@link CtrlEventType#FINISH_CASTING} <FONT COLOR=#FF0000><b><br>
+	 * <u>Caution</u> : A magic skill casting MUST BE in progress</b></FONT><br>
 	 * @param targets
 	 * @param skill    The Skill to use
 	 * @param coolTime
@@ -4064,17 +4048,20 @@ public abstract class L2Character extends L2Object
 			targets = targetList;
 		}
 		
+		// Send a Server->Client packet MagicSkillLaunched to all knownPlayers
+		broadcastPacket(new MagicSkillLaunched(this, skill.getId(), skill.getLevel(), targets));
+		
 		if (instant)
 		{
 			onMagicHitTimer(targets, skill, coolTime, true);
 		}
 		else
 		{
-			skillCast = ThreadPoolManager.getInstance().schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.HIT), 200);
+			skillCast = ThreadPoolManager.getInstance().schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.HIT), CALC_SKILL);
 		}
 	}
 	
-	/*
+	/**
 	 * Runs in the end of skill casting
 	 */
 	public void onMagicHitTimer(List<L2Object> targets, Skill skill, int coolTime, boolean instant)
@@ -4148,7 +4135,7 @@ public abstract class L2Character extends L2Object
 		// Launch the magic skill in order to calculate its effects
 		callSkill(skill, targets);
 		
-		if (instant || (coolTime == 0))
+		if (instant || (coolTime <= 0))
 		{
 			onMagicFinalizer(targets, skill);
 		}
@@ -4158,7 +4145,7 @@ public abstract class L2Character extends L2Object
 		}
 	}
 	
-	/*
+	/**
 	 * Runs after skill hitTime+coolTime
 	 */
 	public void onMagicFinalizer(List<L2Object> targets, Skill skill)
@@ -4196,11 +4183,11 @@ public abstract class L2Character extends L2Object
 				player.setCurrentSkill(null, false, false);
 				
 				// Check if a skill is queued.
-				var queuedSkill = player.getQueuedSkill();
-				if (queuedSkill.getSkill() != null)
+				var qs = player.getQueuedSkill();
+				if (qs.getSkill() != null)
 				{
-					ThreadPoolManager.getInstance().execute(new QueuedMagicUseTask(player, queuedSkill.getSkill(), queuedSkill.isCtrlPressed(), queuedSkill.isShiftPressed()));
 					player.setQueuedSkill(null, false, false);
+					ThreadPoolManager.getInstance().execute(() -> player.useMagic(qs.getSkill(), qs.isCtrlPressed(), qs.isShiftPressed()));
 				}
 			}
 			else
@@ -4211,9 +4198,9 @@ public abstract class L2Character extends L2Object
 	}
 	
 	/**
-	 * Enable a skill (remove it from disabledSkills of the L2Character).<br>
+	 * Enable a skill (remove it from {@link #disabledSkills} of the {@link L2Character}).<br>
 	 * <b><u> Concept</u> :</b><br>
-	 * All skills disabled are identified by their skillId in <b>_disabledSkills</b> of the L2Character
+	 * All skills disabled are identified by their skillId in {@link #disabledSkills} of the {@link L2Character}
 	 * @param skill The Skill to enable
 	 */
 	public void enableSkill(Skill skill)
@@ -4244,7 +4231,7 @@ public abstract class L2Character extends L2Object
 	/**
 	 * Check if a skill is disabled.<br>
 	 * <b><u> Concept</u> :</b><br>
-	 * All skills disabled are identified by their reuse hashcodes in <b>disabledSkills</b> of the L2Character
+	 * All skills disabled are identified by their reuse hashcodes in {@link #disabledSkills} of the {@link L2Character}
 	 * @param  skill The Skill to check
 	 * @return       true if the skill is currently disabled.
 	 */
@@ -4260,7 +4247,7 @@ public abstract class L2Character extends L2Object
 	/**
 	 * Check if a skill is disabled.<br>
 	 * <b><u> Concept</u> :</b><br>
-	 * All skills disabled are identified by their reuse hashcodes in <b>disabledSkills</b> of the L2Character
+	 * All skills disabled are identified by their reuse hashcodes in {@link #disabledSkills} of the {@link L2Character}
 	 * @param  reuseHashCode The reuse hashcode of the skillId/level to check
 	 * @return               true if the skill is currently disabled.
 	 */
@@ -4522,7 +4509,7 @@ public abstract class L2Character extends L2Object
 	}
 	
 	/**
-	 * Return True if the L2Character is behind the target and can't be seen.<br>
+	 * Return True if the {@link L2Character} is behind the target and can't be seen.<br>
 	 * @param  target
 	 * @return
 	 */
