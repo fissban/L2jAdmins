@@ -1706,9 +1706,10 @@ public final class L2PcInstance extends L2Playable
 		
 		var needCpUpdate = needCpUpdate();
 		var needHpUpdate = needHpUpdate();
+		var needMpUpdate = needMpUpdate();
 		
 		// Check if a party is in progress and party window update is usefull
-		if (isInParty() && (needCpUpdate || needHpUpdate || needHpUpdate() || needMpUpdate()))
+		if (isInParty() && (needCpUpdate || needHpUpdate || needMpUpdate))
 		{
 			// Send the Server->Client packet PartySmallWindowUpdate with current HP, MP and Level to all other L2PcInstance of the Party
 			getParty().broadcastToPartyMembers(this, new PartySmallWindowUpdate(this));
@@ -4250,10 +4251,22 @@ public final class L2PcInstance extends L2Playable
 			return;
 		}
 		
+		setIsCastingNow(true);
+		
+		// Set the player currentSkill.
+		setCurrentSkill(skill, forceUse, dontMove);
+		
+		// Wipe queued skill.
+		if (getQueuedSkill().getSkill() != null)
+		{
+			setQueuedSkill(null, false, false);
+		}
+		
 		// ************************************* Check Engine ********************************************************
 		
 		if (!EngineModsManager.onUseSkill(this, skill))
 		{
+			setIsCastingNow(false);
 			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
@@ -4283,20 +4296,10 @@ public final class L2PcInstance extends L2Playable
 		// Check skill general condition
 		if (!checkUseMagicConditions(skill, target, forceUse, dontMove))
 		{
+			setIsCastingNow(false);
 			// Send ActionFailed to the L2PcInstance
 			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
-		}
-		
-		setIsCastingNow(true);
-		
-		// Set the player currentSkill.
-		setCurrentSkill(skill, forceUse, dontMove);
-		
-		// Wipe queued skill.
-		if (getQueuedSkill().getSkill() != null)
-		{
-			setQueuedSkill(null, false, false);
 		}
 		
 		// Notify the AI with CtrlIntentionType.CAST and target

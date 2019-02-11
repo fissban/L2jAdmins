@@ -165,7 +165,7 @@ public class CharStatus
 			getActiveChar().abortAttack();
 			// Stop any cast
 			getActiveChar().abortCast();
-			// Set target to null and cancel Attack or Cast
+			// Set target to null
 			getActiveChar().setTarget(null);
 			// Stop movement
 			getActiveChar().stopMove(null);

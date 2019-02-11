@@ -54,6 +54,44 @@ public class SkillMdam implements ISkillHandler
 			
 			var damage = (int) Formulas.calcMagicDam(activeChar, target, skill, sps, bss, mcrit);
 			
+			if (damage > 0)
+			{
+				// Manage attack or cast break of the target (calculating rate, sending message...)
+				if (Formulas.calcAtkBreak(target, damage))
+				{
+					target.breakAttack();
+					target.breakCast();
+				}
+				
+				// reduce target HP
+				target.reduceCurrentHp(damage, activeChar);
+				
+				// send damage message
+				activeChar.sendDamageMessage(target, damage, mcrit, false, false);
+				
+				// apply effects
+				if (skill.hasEffects())
+				{
+					if (Formulas.calcEffectSuccess(activeChar, target, skill, skill.getEffectPower(), true, false, sps, bss))
+					{
+						if (Formulas.calculateSkillReflect(skill, target))
+						{
+							target = activeChar;
+						}
+						
+						// activate attacked effects, if any
+						target.stopEffect(skill.getId());
+						if (target.getEffect(skill.getId()) != null)
+						{
+							target.removeEffect(target.getEffect(skill.getId()));
+						}
+						
+						skill.getEffects(activeChar, target);
+					}
+				}
+			}
+			
+			// log damage
 			if (Config.LOG_VERY_HIGH_DAMAGE)
 			{
 				if ((damage > Config.LOG_DMG) && (activeChar instanceof L2PcInstance))
@@ -74,46 +112,6 @@ public class SkillMdam implements ISkillHandler
 					name += target.getLevel() + " lvl";
 					Log.add(activeChar.getName() + "(" + activeChar.getObjectId() + ") " + activeChar.getLevel() + " lvl did damage " + damage + " with skill " + skill.getName() + "(" + skill.getId() + ") to " + name, "damage_mdam");
 				}
-			}
-			
-			// Why are we trying to reduce the current target HP here?
-			// Why not inside the below "if" condition, after the effects processing as it should be?
-			// It doesn't seem to make sense for me. I'm moving this line inside the "if" condition, right after the effects processing...
-			// [changed by nexus - 2006-08-15]
-			// target.reduceCurrentHp(damage, activeChar);
-			
-			if (damage > 0)
-			{
-				// Manage attack or cast break of the target (calculating rate, sending message...)
-				if (Formulas.calcAtkBreak(target, damage))
-				{
-					target.breakAttack();
-					target.breakCast();
-				}
-				
-				activeChar.sendDamageMessage(target, damage, mcrit, false, false);
-				
-				if (skill.hasEffects())
-				{
-					if (Formulas.calcEffectSuccess(activeChar, target, skill, skill.getEffectPower(), true, false, sps, bss))
-					{
-						if (Formulas.calculateSkillReflect(skill, target))
-						{
-							target = activeChar;
-						}
-						
-						// activate attacked effects, if any
-						target.stopEffect(skill.getId());
-						if (target.getEffect(skill.getId()) != null)
-						{
-							target.removeEffect(target.getEffect(skill.getId()));
-						}
-						
-						skill.getEffects(activeChar, target);
-					}
-				}
-				
-				target.reduceCurrentHp(damage, activeChar);
 			}
 		}
 		

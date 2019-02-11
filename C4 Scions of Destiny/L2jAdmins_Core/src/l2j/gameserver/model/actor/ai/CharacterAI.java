@@ -5,7 +5,6 @@ import l2j.gameserver.model.actor.L2Attackable;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.L2Playable;
-import l2j.gameserver.model.actor.L2Summon;
 import l2j.gameserver.model.actor.ai.enums.CtrlEventType;
 import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;
 import l2j.gameserver.model.actor.instance.L2DoorInstance;
@@ -763,10 +762,6 @@ public class CharacterAI extends AbstractAI
 				// allow larger hit range when the target is moving (check is run only once per second)
 				if (!activeActor.isInsideRadius(target, offset + 100, false, false))
 				{
-					if (!activeActor.isAttackingNow() || (activeActor instanceof L2Summon))
-					{
-						moveToPawn(target, offset);
-					}
 					return true;
 				}
 				
@@ -774,7 +769,7 @@ public class CharacterAI extends AbstractAI
 				return false;
 			}
 			
-			if (activeActor.isMovementDisabled() && !(activeActor instanceof L2Attackable))
+			if (activeActor.isMovementDisabled())
 			{
 				if (getIntention() == CtrlIntentionType.ATTACK)
 				{
