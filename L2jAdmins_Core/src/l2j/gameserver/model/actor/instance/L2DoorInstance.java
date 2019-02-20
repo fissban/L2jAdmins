@@ -135,7 +135,7 @@ public class L2DoorInstance extends L2Character implements IGeoObject
 			// la puerta de zaken habre en un horario especifico.
 			if (getId() == 21240006)
 			{
-				ThreadPoolManager.getInstance().scheduleAtFixedRate(() ->
+				ThreadPoolManager.scheduleAtFixedRate(() ->
 				{
 					try
 					{
@@ -150,7 +150,7 @@ public class L2DoorInstance extends L2Character implements IGeoObject
 			}
 			else
 			{
-				ThreadPoolManager.getInstance().scheduleAtFixedRate(() ->
+				ThreadPoolManager.scheduleAtFixedRate(() ->
 				{
 					try
 					{
@@ -293,7 +293,7 @@ public class L2DoorInstance extends L2Character implements IGeoObject
 	
 	public void closeMeTask()
 	{
-		ThreadPoolManager.getInstance().schedule(() -> closeMe(), 60000);
+		ThreadPoolManager.schedule(() -> closeMe(), 60000);
 	}
 	
 	public final void closeMe()

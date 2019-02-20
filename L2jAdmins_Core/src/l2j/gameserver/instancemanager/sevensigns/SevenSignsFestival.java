@@ -12,7 +12,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.instancemanager.sevensigns.enums.CabalType;
 import l2j.gameserver.model.StatsSet;
@@ -777,7 +777,7 @@ public class SevenSignsFestival
 		// Start the Festival Manager for the first time after the server has started
 		// at the specified time, then invoke it automatically after every cycle.
 		setNextFestivalStart(Config.ALT_FESTIVAL_MANAGER_START + FESTIVAL_SIGNUP_TIME);
-		managerScheduledTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new FestivalManager(), Config.ALT_FESTIVAL_MANAGER_START, Config.ALT_FESTIVAL_CYCLE_LENGTH);
+		managerScheduledTask = ThreadPoolManager.scheduleAtFixedRate(new FestivalManager(), Config.ALT_FESTIVAL_MANAGER_START, Config.ALT_FESTIVAL_CYCLE_LENGTH);
 		
 		LOG.info("SevenSignsFestival: The first Festival of Darkness cycle begins in " + (Config.ALT_FESTIVAL_MANAGER_START / 60000) + " minute(s).");
 	}
@@ -787,7 +787,7 @@ public class SevenSignsFestival
 	 */
 	protected void restoreFestivalData()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			try (PreparedStatement ps = con.prepareStatement("SELECT festivalId, cabal, cycle, date, score, members " + "FROM seven_signs_festival");
 				ResultSet rset = ps.executeQuery())
@@ -863,7 +863,7 @@ public class SevenSignsFestival
 	{
 		LOG.info("SevenSignsFestival: Saving festival data to disk.");
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			PreparedStatement ps = null;
 			

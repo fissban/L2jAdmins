@@ -53,7 +53,7 @@ public class L2CubicInstance
 			doAction();
 		}
 		
-		disappearTask = ThreadPoolManager.getInstance().schedule(() ->
+		disappearTask = ThreadPoolManager.schedule(() ->
 		{
 			stopAction();
 			owner.delCubic(cubic.getType());
@@ -67,11 +67,11 @@ public class L2CubicInstance
 		{
 			if (cubic.getType() == CubicType.LIFE_CUBIC)
 			{
-				actionTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(() -> healTask(), 0, cubic.getDelayAction() * 1000);
+				actionTask = ThreadPoolManager.scheduleAtFixedRate(() -> healTask(), 0, cubic.getDelayAction() * 1000);
 			}
 			else
 			{
-				actionTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(() -> actionTask(), 0, cubic.getDelayAction() * 1000);
+				actionTask = ThreadPoolManager.scheduleAtFixedRate(() -> actionTask(), 0, cubic.getDelayAction() * 1000);
 			}
 		}
 	}

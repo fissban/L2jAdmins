@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Future;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.ExperienceData;
 import l2j.gameserver.data.PetDataData;
@@ -661,7 +661,7 @@ public class L2PetInstance extends L2Summon
 		}
 		
 		// pet control item no longer exists, delete the pet from the db
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("DELETE FROM pets WHERE item_obj_id=?"))
 		{
 			ps.setInt(1, getControlItemId());
@@ -729,7 +729,7 @@ public class L2PetInstance extends L2Summon
 			pet = new L2PetInstance(IdFactory.getInstance().getNextId(), template, owner, control);
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT item_obj_id, name, level, curHp, curMp, exp, sp, fed, weapon, armor, jewel FROM pets WHERE item_obj_id=?"))
 		{
 			ps.setInt(1, control.getObjectId());
@@ -797,7 +797,7 @@ public class L2PetInstance extends L2Summon
 			SQL = "UPDATE pets SET name=?,level=?,curHp=?,curMp=?,exp=?,sp=?,fed=?,weapon=?,armor=?,jewel=? " + "WHERE item_obj_id = ?";
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(SQL))
 		{
 			ps.setString(1, getName());
@@ -843,7 +843,7 @@ public class L2PetInstance extends L2Summon
 		
 		if (!isDead() && (getOwner().getPet() == this))
 		{
-			feedTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new FeedTask(), 10000, 10000);
+			feedTask = ThreadPoolManager.scheduleAtFixedRate(new FeedTask(), 10000, 10000);
 		}
 	}
 	

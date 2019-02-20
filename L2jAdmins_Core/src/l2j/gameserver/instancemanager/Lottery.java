@@ -8,7 +8,7 @@ import java.util.Calendar;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.AnnouncementsData;
 import l2j.gameserver.model.items.instance.ItemInstance;
@@ -67,7 +67,7 @@ public class Lottery
 	public void increasePrize(int count)
 	{
 		prize += count;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(UPDATE_PRICE))
 		{
 			ps.setInt(1, getPrize());
@@ -101,7 +101,7 @@ public class Lottery
 		@Override
 		public void run()
 		{
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement(SELECT_LAST_LOTTERY);
 				ResultSet rset = ps.executeQuery())
 			{
@@ -128,12 +128,12 @@ public class Lottery
 						if (enddate > System.currentTimeMillis())
 						{
 							isStarted = true;
-							ThreadPoolManager.getInstance().schedule(new finishLottery(), enddate - System.currentTimeMillis());
+							ThreadPoolManager.schedule(new finishLottery(), enddate - System.currentTimeMillis());
 							
 							if (enddate > (System.currentTimeMillis() + (12 * MINUTE)))
 							{
 								isSellingTickets = true;
-								ThreadPoolManager.getInstance().schedule(new stopSellingTickets(), enddate - System.currentTimeMillis() - (10 * MINUTE));
+								ThreadPoolManager.schedule(new stopSellingTickets(), enddate - System.currentTimeMillis() - (10 * MINUTE));
 							}
 							return;
 						}
@@ -171,10 +171,10 @@ public class Lottery
 				enddate = finishtime.getTimeInMillis();
 			}
 			
-			ThreadPoolManager.getInstance().schedule(new stopSellingTickets(), enddate - System.currentTimeMillis() - (10 * MINUTE));
-			ThreadPoolManager.getInstance().schedule(new finishLottery(), enddate - System.currentTimeMillis());
+			ThreadPoolManager.schedule(new stopSellingTickets(), enddate - System.currentTimeMillis() - (10 * MINUTE));
+			ThreadPoolManager.schedule(new finishLottery(), enddate - System.currentTimeMillis());
 			
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement(INSERT_LOTTERY))
 			{
 				ps.setInt(1, 1);
@@ -280,7 +280,7 @@ public class Lottery
 			int count3 = 0;
 			int count4 = 0;
 			
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement(SELECT_LOTTERY_ITEM))
 			{
 				ps.setInt(1, getId());
@@ -387,7 +387,7 @@ public class Lottery
 				AnnouncementsData.getInstance().announceToAll(new SystemMessage(SystemMessage.AMOUNT_FOR_LOTTERY_S1_IS_S2_ADENA_NO_WINNER).addNumber(getId()).addNumber(getPrize()));
 			}
 			
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement(UPDATE_LOTTERY))
 			{
 				ps.setInt(1, getPrize());
@@ -405,7 +405,7 @@ public class Lottery
 				LOG.warning("Lottery: Could not store finished lottery data: " + e);
 			}
 			
-			ThreadPoolManager.getInstance().schedule(new startLottery(), MINUTE);
+			ThreadPoolManager.schedule(new startLottery(), MINUTE);
 			number++;
 			
 			isStarted = false;
@@ -460,7 +460,7 @@ public class Lottery
 			0
 		};
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(SELECT_LOTTERY_TICKET))
 		{
 			ps.setInt(1, id);

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.clan.Clan;
 import l2j.gameserver.model.entity.clanhalls.ClanHall;
 import l2j.util.UtilPrint;
@@ -29,7 +29,7 @@ public class ClanHallData
 	
 	public void load()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var ps = con.prepareStatement("SELECT * FROM clanhall ORDER BY id");
 			var rs = ps.executeQuery())
 		{

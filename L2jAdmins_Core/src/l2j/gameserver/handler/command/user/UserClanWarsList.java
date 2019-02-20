@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.handler.CommandUserHandler.IUserCommandHandler;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.clan.Clan;
@@ -38,7 +38,7 @@ public class UserClanWarsList implements IUserCommandHandler
 		
 		SystemMessage sm;
 		String sql = "";
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			if (id == 88)
 			{

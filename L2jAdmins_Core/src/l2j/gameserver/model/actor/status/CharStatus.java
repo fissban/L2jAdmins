@@ -209,7 +209,7 @@ public class CharStatus
 			int period = Formulas.getRegeneratePeriod(getActiveChar());
 			
 			// Create the HP/MP/CP Regeneration task
-			regTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(() -> regenTask(), period, period);
+			regTask = ThreadPoolManager.scheduleAtFixedRate(() -> regenTask(), period, period);
 		}
 	}
 	

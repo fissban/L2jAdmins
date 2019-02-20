@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.idfactory.IdFactory;
 import l2j.gameserver.instancemanager.siege.SiegeManager;
@@ -49,7 +49,7 @@ public class ClanData
 	public ClanData()
 	{
 		clans.clear();
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(SELECT);
 			ResultSet rs = ps.executeQuery())
 		{
@@ -222,7 +222,7 @@ public class ClanData
 		clans.remove(clanId);
 		IdFactory.getInstance().releaseId(clanId);
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			try (PreparedStatement ps = con.prepareStatement(UPDATE_1))
 			{
@@ -279,7 +279,7 @@ public class ClanData
 		
 		clan1.broadcastClanStatus();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement statement = con.prepareStatement(REPLACE))
 		{
 			statement.setInt(1, clanId1);
@@ -307,7 +307,7 @@ public class ClanData
 		
 		clan1.broadcastClanStatus();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(DELETE))
 		{
 			ps.setInt(1, clanId1);
@@ -343,7 +343,7 @@ public class ClanData
 	
 	public void scheduleRemoveClan(final int clanId)
 	{
-		ThreadPoolManager.getInstance().schedule(() ->
+		ThreadPoolManager.schedule(() ->
 		{
 			if (getClanById(clanId) == null)
 			{

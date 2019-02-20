@@ -184,7 +184,7 @@ public class SiegeGuardAI extends CharacterAI implements Runnable
 		// If not idle - create an AI task (schedule onEvtThink repeatedly)
 		if (aiTask == null)
 		{
-			aiTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(this, 1000, 1000);
+			aiTask = ThreadPoolManager.scheduleAtFixedRate(this, 1000, 1000);
 		}
 	}
 	

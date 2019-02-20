@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.instancemanager.siege.SiegeManager;
 import l2j.gameserver.instancemanager.zone.ZoneArenaManager;
 import l2j.gameserver.instancemanager.zone.ZoneTownManager;
@@ -55,7 +55,7 @@ public class MapRegionData
 	{
 		int count = 0;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT region, sec0, sec1, sec2, sec3, sec4, sec5, sec6, sec7, sec8, sec9, sec10 FROM mapregion");
 			ResultSet rs = ps.executeQuery())
 		{

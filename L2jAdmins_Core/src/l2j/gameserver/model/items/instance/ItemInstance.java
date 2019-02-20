@@ -11,7 +11,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.ItemData;
 import l2j.gameserver.geoengine.GeoEngine;
@@ -303,7 +303,7 @@ public final class ItemInstance extends L2Object
 			return;
 		}
 		
-		if ((itemCount > 0) && (count > (Integer.MAX_VALUE - itemCount)))
+		if ((itemCount > 0) && (count + itemCount > Integer.MAX_VALUE))
 		{
 			count = Integer.MAX_VALUE;
 		}
@@ -863,7 +863,7 @@ public final class ItemInstance extends L2Object
 			return;
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(UPDATE_ITEMS))
 		{
 			ps.setInt(1, ownerId);
@@ -900,7 +900,7 @@ public final class ItemInstance extends L2Object
 		
 		assert !existsInDb && (getObjectId() != 0);
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(INSERT_ITEMS))
 		{
 			ps.setInt(1, ownerId);
@@ -937,7 +937,7 @@ public final class ItemInstance extends L2Object
 		
 		assert existsInDb;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(DELETE_ITEMS))
 		{
 			ps.setInt(1, getObjectId());
@@ -1030,7 +1030,7 @@ public final class ItemInstance extends L2Object
 			remainingTime = 0;
 		}
 		
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(() ->
+		ThreadPoolManager.scheduleAtFixedRate(() ->
 		{
 			// restore init count
 			if (decrease)
@@ -1039,7 +1039,7 @@ public final class ItemInstance extends L2Object
 			}
 			
 			// data timer save
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement(UPDATE_BUYLIST))
 			{
 				ps.setLong(1, System.currentTimeMillis() + ((long) getTime() * 3600000));

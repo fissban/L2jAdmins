@@ -150,7 +150,7 @@ public class PcFishing
 						break;
 				}
 			}
-			taskForFish = ThreadPoolManager.getInstance().scheduleAtFixedRate(new PcLookingForFishTask(player, fish.getWaitTime(), fish.getFishGuts(), fish.getType(), fish.getLureType()), 10000, checkDelay);
+			taskForFish = ThreadPoolManager.scheduleAtFixedRate(new PcLookingForFishTask(player, fish.getWaitTime(), fish.getFishGuts(), fish.getType(), fish.getLureType()), 10000, checkDelay);
 		}
 	}
 	

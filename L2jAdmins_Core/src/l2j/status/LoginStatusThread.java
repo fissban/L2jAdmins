@@ -18,16 +18,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Base64;
 import java.util.Properties;
-import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.loginserver.LoginServer;
 
 public class LoginStatusThread extends Thread
 {
-	private static final Logger LOG = Logger.getLogger(LoginStatusThread.class.getName());
-	
 	private Socket csocket;
 	
 	private PrintWriter print;
@@ -210,7 +207,7 @@ public class LoginStatusThread extends Thread
 	private boolean validLogin(String login)
 	{
 		boolean ok = true;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT password, access_level FROM accounts WHERE login=?"))
 		{
 			ps.setString(1, login);

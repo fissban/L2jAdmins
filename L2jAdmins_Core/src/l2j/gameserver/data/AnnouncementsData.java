@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.Future;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.holder.AnnouncementHolder;
@@ -60,7 +60,7 @@ public class AnnouncementsData
 	 */
 	public void load()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(LOAD_ANNOUNCEMENTS);
 			ResultSet result = ps.executeQuery())
 		{
@@ -92,7 +92,7 @@ public class AnnouncementsData
 	 */
 	public void save()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			// remove all announcements from DB
 			try (PreparedStatement ps = con.prepareStatement(DELETE_ANNOUNCEMENTS))
@@ -176,7 +176,7 @@ public class AnnouncementsData
 		if (ah.isRepeatable())
 		{
 			// Create new task
-			announcementsTask.put(ah.getAnnouncement(), ThreadPoolManager.getInstance().scheduleAtFixedRate(() ->
+			announcementsTask.put(ah.getAnnouncement(), ThreadPoolManager.scheduleAtFixedRate(() ->
 			{
 				if (ah.getAnnouncementType() == AnnouncementType.SYSTEM)
 				{

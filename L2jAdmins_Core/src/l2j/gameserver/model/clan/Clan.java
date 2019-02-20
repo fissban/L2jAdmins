@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.data.CastleData;
 import l2j.gameserver.data.ClanData;
 import l2j.gameserver.data.CrestData;
@@ -435,7 +435,7 @@ public class Clan
 	
 	public void updateClanInDB()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(UPDATE_CLAN))
 		{
 			ps.setInt(1, getLeaderId());
@@ -467,7 +467,7 @@ public class Clan
 	 */
 	public void store()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(CREATE_CLAN))
 		{
 			ps.setInt(1, getId());
@@ -495,7 +495,7 @@ public class Clan
 	
 	private void removeMemberFromDB(ClanMemberInstance member, long clanJoinExpiryTime, long clanCreateExpiryTime)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(REMOVE_MEMBER_CLAN))
 		{
 			ps.setString(1, "");
@@ -517,7 +517,7 @@ public class Clan
 	
 	private void restoreWars()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT clan1, clan2, wantspeace1, wantspeace2 FROM clan_wars");
 			ResultSet rset = ps.executeQuery())
 		{
@@ -537,7 +537,7 @@ public class Clan
 	
 	private void restore()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(RESTORE_CLAN))
 		{
 			ps.setInt(1, getId());
@@ -733,7 +733,7 @@ public class Clan
 		
 		if (storeInDb)
 		{
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement(UPDATE_AUCTION_BID))
 			{
 				ps.setInt(1, id);
@@ -1100,7 +1100,7 @@ public class Clan
 	 */
 	public void changeLevel(int level)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE clan_data SET clan_level = ? WHERE clan_id = ?"))
 		{
 			ps.setInt(1, level);
@@ -1164,7 +1164,7 @@ public class Clan
 			this.allyId = allyId;
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(sqlStatement))
 		{
 			ps.setInt(1, crestId);
@@ -1213,7 +1213,7 @@ public class Clan
 		
 		setCrestId(crestId);
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE clan_data SET crest_id = ? WHERE clan_id = ?"))
 		{
 			ps.setInt(1, crestId);
@@ -1244,7 +1244,7 @@ public class Clan
 		
 		setCrestLargeId(crestId);
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE clan_data SET crest_large_id = ? WHERE clan_id = ?"))
 		{
 			ps.setInt(1, crestId);
@@ -1274,7 +1274,7 @@ public class Clan
 			notice = notice.substring(0, MAX_NOTICE_LENGTH - 1);
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(UPDATE_CLAN_NOTICE))
 		{
 			ps.setString(1, (enabled) ? "true" : "false");
@@ -1340,7 +1340,7 @@ public class Clan
 				intro = intro.substring(0, MAX_INTRODUCTION_LENGTH - 1);
 			}
 			
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement(UPDATE_CLAN_INTRODUCTION))
 			{
 				ps.setString(1, intro);

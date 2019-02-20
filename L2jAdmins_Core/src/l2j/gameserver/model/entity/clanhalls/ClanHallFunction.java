@@ -84,11 +84,11 @@ public class ClanHallFunction
 		long currentTime = System.currentTimeMillis();
 		if (getEndTime() > currentTime)
 		{
-			functionTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new ClanHallFunctionTask(ch, this), getEndTime() - currentTime, getRate());
+			functionTask = ThreadPoolManager.scheduleAtFixedRate(new ClanHallFunctionTask(ch, this), getEndTime() - currentTime, getRate());
 		}
 		else
 		{
-			functionTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new ClanHallFunctionTask(ch, this), 1000, getRate());
+			functionTask = ThreadPoolManager.scheduleAtFixedRate(new ClanHallFunctionTask(ch, this), 1000, getRate());
 		}
 	}
 	

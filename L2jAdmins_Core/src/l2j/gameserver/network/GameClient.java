@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.CharNameData;
 import l2j.gameserver.data.ClanData;
@@ -81,7 +81,7 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
 		stats = new ClientStats();
 		packetQueue = new ArrayBlockingQueue<>(Config.CLIENT_PACKET_QUEUE_SIZE);
 		
-		autoSaveInDB = ThreadPoolManager.getInstance().scheduleAtFixedRate(() -> autoSaveTask(), 300000L, 900000L);
+		autoSaveInDB = ThreadPoolManager.scheduleAtFixedRate(() -> autoSaveTask(), 300000L, 900000L);
 	}
 	
 	public byte[] enableCrypt()
@@ -210,7 +210,7 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
 			return -1;
 		}
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection())
+		try (var con = DatabaseManager.getConnection())
 		{
 			var answer = 0;
 			
@@ -278,7 +278,7 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
 			return;
 		}
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var ps = con.prepareStatement("UPDATE characters SET deletetime=0 WHERE obj_id=?"))
 		{
 			ps.setInt(1, objid);
@@ -299,7 +299,7 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
 		
 		CharNameData.getInstance().removeName(objid);
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			try (PreparedStatement statement = con.prepareStatement("DELETE FROM character_friends WHERE char_id=? OR friend_id=?"))
 			{
@@ -489,7 +489,7 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
 		// no long running tasks here, do it async
 		try
 		{
-			ThreadPoolManager.getInstance().execute(new DisconnectTask());
+			ThreadPoolManager.execute(new DisconnectTask());
 		}
 		catch (RejectedExecutionException e)
 		{
@@ -511,7 +511,7 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
 				cancelCleanup();
 			}
 			
-			cleanupTask = ThreadPoolManager.getInstance().schedule(new CleanupTask(), 0); // instant
+			cleanupTask = ThreadPoolManager.schedule(new CleanupTask(), 0); // instant
 		}
 	}
 	
@@ -591,7 +591,7 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
 			{
 				if (cleanupTask == null)
 				{
-					cleanupTask = ThreadPoolManager.getInstance().schedule(new CleanupTask(), fast ? 5 : 15000L);
+					cleanupTask = ThreadPoolManager.schedule(new CleanupTask(), fast ? 5 : 15000L);
 				}
 			}
 		}
@@ -757,7 +757,7 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
 				return;
 			}
 			
-			ThreadPoolManager.getInstance().execute(this);
+			ThreadPoolManager.execute(this);
 		}
 		catch (RejectedExecutionException e)
 		{

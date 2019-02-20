@@ -8,7 +8,7 @@ import java.util.Stack;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.util.UtilPrint;
 
 /**
@@ -30,7 +30,7 @@ public class StackIDFactory extends IdFactory
 		curOID = FIRST_OID;
 		tempOID = FIRST_OID;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			int[] tmpobjids = extractUsedObjectIDTable();
 			if (tmpobjids.length > 0)

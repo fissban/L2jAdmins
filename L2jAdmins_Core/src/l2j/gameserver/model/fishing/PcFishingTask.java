@@ -53,7 +53,7 @@ public class PcFishingTask implements Runnable
 		
 		if (fishAItask == null)
 		{
-			fishAItask = ThreadPoolManager.getInstance().scheduleAtFixedRate(this, 1000, 1000);
+			fishAItask = ThreadPoolManager.scheduleAtFixedRate(this, 1000, 1000);
 		}
 	}
 	

@@ -24,7 +24,7 @@ public class L2XmassTreeInstance extends L2Npc
 		super(objectId, template);
 		
 		setInstanceType(InstanceType.L2XmassTreeInstance);
-		aiTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new XmassAI(this), 3000, 3000);
+		aiTask = ThreadPoolManager.scheduleAtFixedRate(new XmassAI(this), 3000, 3000);
 	}
 	
 	class XmassAI implements Runnable

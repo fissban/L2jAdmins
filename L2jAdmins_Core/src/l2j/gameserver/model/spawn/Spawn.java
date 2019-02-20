@@ -312,7 +312,7 @@ public class Spawn
 			scheduledCount++;
 			
 			// Create a new SpawnTask to launch after the respawn Delay
-			ThreadPoolManager.getInstance().schedule(new SpawnTask(oldNpc), respawnDelay);
+			ThreadPoolManager.schedule(new SpawnTask(oldNpc), respawnDelay);
 		}
 	}
 	
@@ -405,7 +405,7 @@ public class Spawn
 	public void doRespawn()
 	{
 		// Schedule respawn of the NPC
-		ThreadPoolManager.getInstance().schedule(() -> init(), getRespawnDelay());
+		ThreadPoolManager.schedule(() -> init(), getRespawnDelay());
 	}
 	
 	/**

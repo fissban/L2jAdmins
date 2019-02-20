@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 
 public class CommunityTopicInstance
 {
@@ -61,7 +61,7 @@ public class CommunityTopicInstance
 	 */
 	private void insertInDB()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("INSERT INTO topic (topic_id,topic_forum_id,topic_name,topic_date,topic_ownerName,topic_ownerid,topic_type,topic_reply) values (?,?,?,?,?,?,?,?)"))
 		{
 			ps.setInt(1, id);
@@ -112,7 +112,7 @@ public class CommunityTopicInstance
 	 */
 	public void deleteFromDB(CommunityForumInstance f)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("DELETE FROM topic WHERE topic_id=? AND topic_forum_id=?"))
 		{
 			ps.setInt(1, getID());

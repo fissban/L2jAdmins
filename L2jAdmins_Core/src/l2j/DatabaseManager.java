@@ -8,13 +8,13 @@ import java.util.logging.Logger;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-public class L2DatabaseFactory
+public class DatabaseManager
 {
-	private static Logger LOG = Logger.getLogger(L2DatabaseFactory.class.getName());
+	private static final Logger LOG = Logger.getLogger(DatabaseManager.class.getName());
 	
-	private HikariDataSource source;
+	private static HikariDataSource source;
 	
-	public L2DatabaseFactory()
+	public DatabaseManager()
 	{
 		try
 		{
@@ -42,19 +42,11 @@ public class L2DatabaseFactory
 		}
 	}
 	
-	public void shutdown()
+	public static void shutdown()
 	{
 		try
 		{
 			source.close();
-		}
-		catch (Exception e)
-		{
-			LOG.log(Level.INFO, "", e);
-		}
-		
-		try
-		{
 			source = null;
 		}
 		catch (Exception e)
@@ -63,7 +55,7 @@ public class L2DatabaseFactory
 		}
 	}
 	
-	public Connection getConnection()
+	public static Connection getConnection()
 	{
 		Connection con = null;
 		
@@ -81,13 +73,13 @@ public class L2DatabaseFactory
 		return con;
 	}
 	
-	public static L2DatabaseFactory getInstance()
+	public static DatabaseManager getInstance()
 	{
 		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final L2DatabaseFactory INSTANCE = new L2DatabaseFactory();
+		protected static final DatabaseManager INSTANCE = new DatabaseManager();
 	}
 }

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.L2Npc;
 import main.engine.AbstractMod;
 import main.holders.objects.CharacterHolder;
@@ -74,7 +74,7 @@ public class NpcRanking extends AbstractMod
 			{
 				rankingPvP.clear();
 				
-				try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+				try (Connection con = DatabaseManager.getConnection();
 					PreparedStatement statement = con.prepareStatement(SQL_PVP);
 					ResultSet rset = statement.executeQuery())
 				{
@@ -97,7 +97,7 @@ public class NpcRanking extends AbstractMod
 			{
 				rankingPk.clear();
 				
-				try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+				try (Connection con = DatabaseManager.getConnection();
 					PreparedStatement statement = con.prepareStatement(SQL_PK);
 					ResultSet rset = statement.executeQuery())
 				{

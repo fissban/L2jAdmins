@@ -17,7 +17,7 @@ import java.util.Properties;
 import java.util.StringTokenizer;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.Shutdown;
 import l2j.gameserver.data.AnnouncementsData;
 import l2j.gameserver.data.GmListData;
@@ -618,7 +618,7 @@ public class GameStatusThread extends Thread
 	
 	private void jailOfflinePlayer(String name, int delay)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE characters SET x=?, y=?, z=?, in_jail=?, jail_timer=? WHERE char_name=?"))
 		{
 			ps.setInt(1, -114356);
@@ -652,7 +652,7 @@ public class GameStatusThread extends Thread
 	
 	private void unjailOfflinePlayer(String name)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE characters SET x=?, y=?, z=?, in_jail=?, jail_timer=? WHERE char_name=?"))
 		{
 			ps.setInt(1, 17836);

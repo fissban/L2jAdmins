@@ -4,7 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.data.AnnouncementsData;
 import l2j.gameserver.data.GrandBossSpawnData;
 import l2j.gameserver.data.OfflineTradersData;
@@ -173,10 +173,10 @@ public class Shutdown extends Thread
 			}
 			
 			// commit data, last chance
-			L2DatabaseFactory.getInstance().shutdown();
+			DatabaseManager.shutdown();
 			
 			// stop all threadpools
-			ThreadPoolManager.getInstance().shutdown();
+			ThreadPoolManager.shutdown();
 			
 			// server will quit, when this function ends.
 			if (getInstance().shutdownMode == GM_RESTART)

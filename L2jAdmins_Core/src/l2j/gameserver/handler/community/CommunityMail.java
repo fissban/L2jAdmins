@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.data.CharNameData;
 import l2j.gameserver.data.HtmData;
 import l2j.gameserver.instancemanager.communitybbs.Community;
@@ -468,7 +468,7 @@ public class CommunityMail extends AbstractCommunityHandler
 			subject = "(no subject)";
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			Set<String> recipts = new HashSet<>(5);
 			String[] recipAr = recipients.split(";");
@@ -667,7 +667,7 @@ public class CommunityMail extends AbstractCommunityHandler
 			}
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(DELETE_MAIL))
 		{
 			ps.setInt(1, letterId);
@@ -683,7 +683,7 @@ public class CommunityMail extends AbstractCommunityHandler
 	{
 		getLetter(activeChar, letterId).unread = false;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(MARK_MAIL_READ))
 		{
 			ps.setInt(1, 0);
@@ -700,7 +700,7 @@ public class CommunityMail extends AbstractCommunityHandler
 	{
 		getLetter(activeChar, letterId).location = location;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(SET_LETTER_LOC))
 		{
 			ps.setString(1, location);
@@ -722,7 +722,7 @@ public class CommunityMail extends AbstractCommunityHandler
 	private static boolean isGM(int charId)
 	{
 		boolean isGM = false;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT accesslevel FROM characters WHERE obj_Id = ?"))
 		{
 			ps.setInt(1, charId);

@@ -188,7 +188,7 @@ public class SellBuffs extends AbstractMod
 					skill.getEffects(ph.getInstance(), ph.getInstance());
 					sellerBuff.setCurrentMp(sellerBuff.getStat().getMaxMp());
 					// Sit down at the end of throwing the skill.
-					ThreadPoolManager.getInstance().schedule(() -> sellerBuff.sitDown(), skill.getHitTime() + 100);
+					ThreadPoolManager.schedule(() -> sellerBuff.sitDown(), skill.getHitTime() + 100);
 					
 					var page = st.hasMoreTokens() ? Integer.parseInt(st.nextToken()) : 1;
 					
@@ -295,7 +295,7 @@ public class SellBuffs extends AbstractMod
 			
 			if (ConfigData.OFFLINE_SET_NAME_COLOR)
 			{
-				ThreadPoolManager.getInstance().schedule(() -> player.setNameColor(ConfigData.OFFLINE_NAME_COLOR), 5000);
+				ThreadPoolManager.schedule(() -> player.setNameColor(ConfigData.OFFLINE_NAME_COLOR), 5000);
 			}
 			
 			ph.setOffline(true);

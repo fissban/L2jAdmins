@@ -78,7 +78,7 @@ public class EffectZone extends Zone
 				{
 					if (task == null)
 					{
-						task = ThreadPoolManager.getInstance().scheduleAtFixedRate(() ->
+						task = ThreadPoolManager.scheduleAtFixedRate(() ->
 						{
 							for (L2Character temp : characterList.values())
 							{

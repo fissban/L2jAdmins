@@ -118,7 +118,7 @@ public class ItemSummonItems implements IItemHandler
 				
 				activeChar.setIsCastingNow(true);
 				
-				ThreadPoolManager.getInstance().schedule(new PetSummonFinalizer(activeChar, template, item), 5000);
+				ThreadPoolManager.schedule(new PetSummonFinalizer(activeChar, template, item), 5000);
 				break;
 			case WYVERN: // wyvern
 				activeChar.mount(sitem.getNpcId(), item.getObjectId(), true);
@@ -207,7 +207,7 @@ public class ItemSummonItems implements IItemHandler
 				
 				if (petSummon.getCurrentFed() <= 0)
 				{
-					ThreadPoolManager.getInstance().schedule(new PetSummonFeedWait(petSummon), 60000);
+					ThreadPoolManager.schedule(new PetSummonFeedWait(petSummon), 60000);
 				}
 				else
 				{

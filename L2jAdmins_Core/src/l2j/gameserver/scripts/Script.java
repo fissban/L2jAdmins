@@ -17,7 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.HtmData;
 import l2j.gameserver.data.ItemData;
@@ -156,7 +156,7 @@ public class Script
 	 */
 	public final static void playerEnter(L2PcInstance player)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement invalidQuestData = con.prepareStatement("DELETE FROM character_quests WHERE char_id = ? AND name = ?");
 			PreparedStatement invalidQuestDataVar = con.prepareStatement("DELETE FROM character_quests WHERE char_id = ? AND name = ? AND var = ?");
 			PreparedStatement ps1 = con.prepareStatement("SELECT name, value FROM character_quests WHERE char_id = ? AND var = ?"))
@@ -1129,7 +1129,7 @@ public class Script
 	
 	public final boolean notifyAggroRangeEnter(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		ThreadPoolManager.getInstance().execute(new TmpOnAggroEnter(npc, player, isPet));
+		ThreadPoolManager.execute(new TmpOnAggroEnter(npc, player, isPet));
 		return true;
 	}
 	
@@ -1587,7 +1587,7 @@ public class Script
 	
 	public final boolean notifySkillSee(L2Npc npc, L2PcInstance caster, Skill skill, List<L2Object> targets, boolean isPet)
 	{
-		ThreadPoolManager.getInstance().execute(new TmpOnSkillSee(npc, caster, skill, targets, isPet));
+		ThreadPoolManager.execute(new TmpOnSkillSee(npc, caster, skill, targets, isPet));
 		return true;
 	}
 	
@@ -1736,7 +1736,7 @@ public class Script
 	 */
 	public final void saveGlobalQuestVar(String var, String value)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("REPLACE INTO quest_global_data (quest_name,var,value) VALUES (?,?,?)"))
 		{
 			ps.setString(1, getName());
@@ -1762,7 +1762,7 @@ public class Script
 	public final String loadGlobalQuestVar(String var)
 	{
 		String result = "";
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT value FROM quest_global_data WHERE quest_name = ? AND var = ?"))
 		{
 			ps.setString(1, getName());
@@ -1788,7 +1788,7 @@ public class Script
 	 */
 	public final void deleteGlobalQuestVar(String var)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("DELETE FROM quest_global_data WHERE quest_name = ? AND var = ?"))
 		{
 			ps.setString(1, getName());
@@ -1806,7 +1806,7 @@ public class Script
 	 */
 	public final void deleteAllGlobalQuestVars()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("DELETE FROM quest_global_data WHERE quest_name = ?"))
 		{
 			ps.setString(1, getName());

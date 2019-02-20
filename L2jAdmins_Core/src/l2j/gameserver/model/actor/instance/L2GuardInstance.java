@@ -48,7 +48,7 @@ public final class L2GuardInstance extends L2Attackable
 		
 		setInstanceType(InstanceType.L2GuardInstance);
 		
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(new ReturnTask(), RETURN_INTERVAL, RETURN_INTERVAL + Rnd.nextInt(60000));
+		ThreadPoolManager.scheduleAtFixedRate(new ReturnTask(), RETURN_INTERVAL, RETURN_INTERVAL + Rnd.nextInt(60000));
 	}
 	
 	@Override

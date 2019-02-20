@@ -11,7 +11,6 @@ import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.clan.Clan;
 import l2j.gameserver.model.items.instance.ItemInstance;
-import l2j.gameserver.network.external.server.InventoryUpdate;
 import l2j.gameserver.network.external.server.NpcHtmlMessage;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.scripts.Script;
@@ -150,8 +149,6 @@ public class Priest extends Script
 		}
 		else if (event.startsWith("SevenSigns"))
 		{
-			InventoryUpdate iu;
-			
 			int val = 0;
 			CabalType cabal = CabalType.NULL;
 			SealType seal = SealType.NULL;

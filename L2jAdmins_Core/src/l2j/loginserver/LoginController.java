@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 import javax.crypto.Cipher;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.loginserver.crypt.ScrambledKeyPair;
 import l2j.loginserver.model.AccountInfo;
 import l2j.loginserver.model.GameServerInfo;
@@ -166,7 +166,7 @@ public class LoginController
 			var raw = password.getBytes(StandardCharsets.UTF_8);
 			var hashBase64 = Base64.getEncoder().encodeToString(md.digest(raw));
 			
-			try (var con = L2DatabaseFactory.getInstance().getConnection();
+			try (var con = DatabaseManager.getConnection();
 				var ps = con.prepareStatement(USER_INFO_SELECT))
 			{
 				ps.setString(1, login);
@@ -195,7 +195,7 @@ public class LoginController
 				return null;
 			}
 			
-			try (var con = L2DatabaseFactory.getInstance().getConnection();
+			try (var con = DatabaseManager.getConnection();
 				var ps = con.prepareStatement(AUTOCREATE_ACCOUNTS_INSERT))
 			{
 				ps.setString(1, login);
@@ -254,7 +254,7 @@ public class LoginController
 	 */
 	private static boolean canCheckin(LoginClient client, InetAddress address, AccountInfo info)
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection())
+		try (var con = DatabaseManager.getConnection())
 		{
 			client.setAccessLevel(info.getAccessLevel());
 			client.setLastServer(info.getLastServer());
@@ -388,7 +388,7 @@ public class LoginController
 		
 		if (loginOk && (client.getLastServer() != serverId))
 		{
-			try (var con = L2DatabaseFactory.getInstance().getConnection();
+			try (var con = DatabaseManager.getConnection();
 				var ps = con.prepareStatement(ACCOUNT_LAST_SERVER_UPDATE))
 			{
 				ps.setInt(1, serverId);
@@ -405,7 +405,7 @@ public class LoginController
 	
 	public void setAccountAccessLevel(String account, int banLevel)
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var ps = con.prepareStatement(ACCOUNT_ACCESS_LEVEL_UPDATE))
 		{
 			ps.setInt(1, banLevel);

@@ -141,7 +141,7 @@ public class OfflineShop extends AbstractMod
 				OlympiadManager.getInstance().removeDisconnectedCompetitor(player);
 			}
 			
-			ThreadPoolManager.getInstance().schedule(() ->
+			ThreadPoolManager.schedule(() ->
 			{
 				if (ConfigData.OFFLINE_SET_NAME_COLOR)
 				{

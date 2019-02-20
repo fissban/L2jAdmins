@@ -45,7 +45,7 @@ public class NpcWalkerAI extends CharacterAI implements Runnable
 		
 		// Here we need 1 second initial delay cause getActor().hasAI() will return null...
 		// Constructor of L2NpcWalkerAI is called faster then ai object is attached in L2NpcWalkerInstance
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(this, 1000, 1000);
+		ThreadPoolManager.scheduleAtFixedRate(this, 1000, 1000);
 	}
 	
 	@Override

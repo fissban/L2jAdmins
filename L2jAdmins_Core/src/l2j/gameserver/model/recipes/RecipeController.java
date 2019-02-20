@@ -103,7 +103,7 @@ public class RecipeController
 			if (Config.ALT_GAME_CREATION)
 			{
 				activeMakers.put(manufacturer, maker);
-				ThreadPoolManager.getInstance().schedule(maker, 100);
+				ThreadPoolManager.schedule(maker, 100);
 			}
 			else
 			{
@@ -145,7 +145,7 @@ public class RecipeController
 			if (Config.ALT_GAME_CREATION)
 			{
 				activeMakers.put(player, maker);
-				ThreadPoolManager.getInstance().schedule(maker, 100);
+				ThreadPoolManager.schedule(maker, 100);
 			}
 			else
 			{
@@ -358,7 +358,7 @@ public class RecipeController
 					player.broadcastPacket(new MagicSkillUse(player, skillId, skillLevel, delay, 0));
 					
 					player.sendPacket(new SetupGauge(SetupGaugeType.BLUE, delay));
-					ThreadPoolManager.getInstance().schedule(this, 100 + delay);
+					ThreadPoolManager.schedule(this, 100 + delay);
 				}
 				else
 				{
@@ -493,7 +493,7 @@ public class RecipeController
 				{
 					// rest (wait for MP)
 					player.sendPacket(new SetupGauge(SetupGaugeType.BLUE, delay));
-					ThreadPoolManager.getInstance().schedule(this, 100 + delay);
+					ThreadPoolManager.schedule(this, 100 + delay);
 				}
 				else
 				{

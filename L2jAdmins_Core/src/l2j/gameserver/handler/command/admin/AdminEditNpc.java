@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.data.HtmData;
 import l2j.gameserver.data.ItemData;
 import l2j.gameserver.data.NpcData;
@@ -157,7 +157,7 @@ public class AdminEditNpc implements IAdminCommandHandler
 			final int skillId = Integer.parseInt(st.nextToken());
 			
 			// Borramos de la DB los skills de ese npc
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+			try (Connection con = DatabaseManager.getConnection())
 			{
 				if (npcId > 0)
 				{
@@ -182,7 +182,7 @@ public class AdminEditNpc implements IAdminCommandHandler
 					}
 					
 					// volvemos a actualizar la informacion leyenda la nueva desde la DB
-					try (Connection con1 = L2DatabaseFactory.getInstance().getConnection())
+					try (Connection con1 = DatabaseManager.getConnection())
 					{
 						final NpcTemplate npcData = NpcData.getInstance().getTemplate(npcId);
 						
@@ -472,7 +472,7 @@ public class AdminEditNpc implements IAdminCommandHandler
 	private static int findOrderTradeList(int itemID, int price, int tradeListID)
 	{
 		int order = -1;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement stmt = con.prepareStatement("SELECT * FROM merchant_buylists WHERE `shop_id`='" + tradeListID + "' AND `item_id` ='" + itemID + "' AND `price` = '" + price + "'");
 			ResultSet rs = stmt.executeQuery())
 		{
@@ -507,7 +507,7 @@ public class AdminEditNpc implements IAdminCommandHandler
 	 */
 	private static void deleteTradeList(int tradeListID, int order)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			int updated = 0;
 			if (Config.CUSTOM_MERCHANT_TABLES)
@@ -540,7 +540,7 @@ public class AdminEditNpc implements IAdminCommandHandler
 	 */
 	private static void storeTradeList(int itemID, int price, int tradeListID, int order)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			String table = "merchant_buylists";
 			if (Config.CUSTOM_MERCHANT_TABLES)

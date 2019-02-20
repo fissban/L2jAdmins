@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.data.CastleData;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
@@ -82,7 +82,7 @@ public class SiegeManager
 			return true;
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT clan_id FROM siege_clans WHERE clan_id=? AND castle_id=?"))
 		{
 			ps.setInt(1, clan.getId());

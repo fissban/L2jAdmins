@@ -49,7 +49,7 @@ public class L2BoatInstance extends L2Npc
 		boatInfo = info;
 		boatCycle = info.getCycleStart();
 		
-		ThreadPoolManager.getInstance().schedule(() -> boatCaptain(), 10);
+		ThreadPoolManager.schedule(() -> boatCaptain(), 10);
 	}
 	
 	@Override
@@ -266,7 +266,7 @@ public class L2BoatInstance extends L2Npc
 		else
 		{
 			changeBoatCycle();
-			ThreadPoolManager.getInstance().schedule(() -> boatCaptain(), 10);
+			ThreadPoolManager.schedule(() -> boatCaptain(), 10);
 		}
 	}
 	
@@ -335,22 +335,22 @@ public class L2BoatInstance extends L2Npc
 		{
 			case 10:
 				say(BoatMessageType.MESSAGE_10);
-				ThreadPoolManager.getInstance().schedule(() -> boatCaptain(), 30 * 1000);// 600000
+				ThreadPoolManager.schedule(() -> boatCaptain(), 30 * 1000);// 600000
 				sayState = 5;
 				break;
 			case 5:
 				say(BoatMessageType.MESSAGE_5);
-				ThreadPoolManager.getInstance().schedule(() -> boatCaptain(), 30 * 1000);// 300000
+				ThreadPoolManager.schedule(() -> boatCaptain(), 30 * 1000);// 300000
 				sayState = 1;
 				break;
 			case 1:
 				say(BoatMessageType.MESSAGE_1);
-				ThreadPoolManager.getInstance().schedule(() -> boatCaptain(), 30 * 1000);// 40000
+				ThreadPoolManager.schedule(() -> boatCaptain(), 30 * 1000);// 40000
 				sayState = 0;
 				break;
 			case 0:
 				say(BoatMessageType.MESSAGE_0);
-				ThreadPoolManager.getInstance().schedule(() -> boatCaptain(), 30 * 1000);// 20000
+				ThreadPoolManager.schedule(() -> boatCaptain(), 30 * 1000);// 20000
 				sayState = -1;
 				break;
 			case -1:

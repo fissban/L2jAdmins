@@ -18,7 +18,7 @@ import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.BoatData;
 import l2j.gameserver.data.CastleData;
@@ -1537,7 +1537,7 @@ public final class L2PcInstance extends L2Playable
 			
 			broadcastPacket(new ChangeWaitType(this, ChangeWait.WT_SITTING));
 			// Schedule a sit down task to wait for the animation to finish
-			ThreadPoolManager.getInstance().schedule(() ->
+			ThreadPoolManager.schedule(() ->
 			{
 				setIsParalyzed(false);
 				getAI().setIntention(CtrlIntentionType.REST);
@@ -1556,7 +1556,7 @@ public final class L2PcInstance extends L2Playable
 			broadcastPacket(new ChangeWaitType(this, ChangeWait.WT_STANDING));
 			
 			// Schedule a stand up task to wait for the animation to finish
-			ThreadPoolManager.getInstance().schedule(() ->
+			ThreadPoolManager.schedule(() ->
 			{
 				getAI().setIntention(CtrlIntentionType.IDLE);
 				isSitting = false;
@@ -1576,7 +1576,7 @@ public final class L2PcInstance extends L2Playable
 		{
 			if (protectTask == null)
 			{
-				protectTask = ThreadPoolManager.getInstance().schedule(() ->
+				protectTask = ThreadPoolManager.schedule(() ->
 				{
 					setProtection(false);
 					sendMessage("The spawn protection has ended.");
@@ -3158,7 +3158,7 @@ public final class L2PcInstance extends L2Playable
 	 */
 	public void updateOnlineStatus()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.prepareStatement("UPDATE characters SET online=?, lastAccess=? WHERE obj_Id=?"))
 		{
 			statement.setInt(1, isOnline() ? 1 : 0);
@@ -3178,7 +3178,7 @@ public final class L2PcInstance extends L2Playable
 	 */
 	private boolean createDb()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.prepareStatement(INSERT_NEW_CHARACTER))
 		{
 			var i = 0;
@@ -3236,7 +3236,7 @@ public final class L2PcInstance extends L2Playable
 	private static L2PcInstance restore(int objectId)
 	{
 		L2PcInstance player = null;
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.prepareStatement(RESTORE_CHARACTER))
 		{
 			
@@ -3442,7 +3442,7 @@ public final class L2PcInstance extends L2Playable
 	 */
 	private static boolean restoreSubClassData(L2PcInstance player)
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.prepareStatement(RESTORE_CHAR_SUBCLASSES))
 		{
 			statement.setInt(1, player.getObjectId());
@@ -3499,7 +3499,7 @@ public final class L2PcInstance extends L2Playable
 			return;
 		}
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection())
+		try (var con = DatabaseManager.getConnection())
 		{
 			try (var statement = con.prepareStatement("DELETE FROM character_recipebook WHERE char_id=? AND type=1"))
 			{
@@ -3534,7 +3534,7 @@ public final class L2PcInstance extends L2Playable
 			return;
 		}
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection())
+		try (var con = DatabaseManager.getConnection())
 		{
 			try (var statement = con.prepareStatement("DELETE FROM character_recipebook WHERE char_id=? AND type=0"))
 			{
@@ -3565,7 +3565,7 @@ public final class L2PcInstance extends L2Playable
 	 */
 	private void restoreRecipeBook(int recipeType)
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var st = con.prepareStatement("SELECT id, type FROM character_recipebook WHERE char_id=? AND type<>?"))
 		{
 			st.setInt(1, getObjectId());
@@ -3608,7 +3608,7 @@ public final class L2PcInstance extends L2Playable
 	
 	private void storeCharBase()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.prepareStatement(UPDATE_CHARACTER))
 		{
 			var i = 0;
@@ -3673,7 +3673,7 @@ public final class L2PcInstance extends L2Playable
 	{
 		if (getTotalSubClasses() > 0)
 		{
-			try (var con = L2DatabaseFactory.getInstance().getConnection();
+			try (var con = DatabaseManager.getConnection();
 				var statement = con.prepareStatement(UPDATE_CHAR_SUBCLASS))
 			{
 				for (var subClass : getSubClasses().values())
@@ -3704,7 +3704,7 @@ public final class L2PcInstance extends L2Playable
 			return;
 		}
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var delete = con.prepareStatement(DELETE_SKILL_SAVE))
 		{
 			delete.setInt(1, getObjectId());
@@ -3716,7 +3716,7 @@ public final class L2PcInstance extends L2Playable
 			e.printStackTrace();
 		}
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var add = con.prepareStatement(ADD_SKILL_SAVE))
 		{
 			if (storeEffects)
@@ -3880,7 +3880,7 @@ public final class L2PcInstance extends L2Playable
 		// Remove a skill from the L2Character and its Func objects from calculator set of the L2Character
 		var oldSkill = super.removeSkill(skill);
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection())
+		try (var con = DatabaseManager.getConnection())
 		{
 			if (oldSkill != null)
 			{
@@ -3931,7 +3931,7 @@ public final class L2PcInstance extends L2Playable
 			classIndex = newClassIndex;
 		}
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection())
+		try (var con = DatabaseManager.getConnection())
 		{
 			if ((oldSkill != null) && (newSkill != null))
 			{
@@ -3977,7 +3977,7 @@ public final class L2PcInstance extends L2Playable
 			return;
 		}
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.prepareStatement(RESTORE_SKILLS_FOR_CHAR))
 		{
 			statement.setInt(1, getObjectId());
@@ -4016,7 +4016,7 @@ public final class L2PcInstance extends L2Playable
 	 */
 	public void restoreEffects()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection())
+		try (var con = DatabaseManager.getConnection())
 		{
 			/**
 			 * Restore Type 0 These skill were still in effect on the character upon logout. Some of which were self casted and might still have had a long reuse delay which also is restored.
@@ -4738,7 +4738,7 @@ public final class L2PcInstance extends L2Playable
 	{
 		inventoryDisable = true;
 		// The inventory is disabled for a specified time
-		ThreadPoolManager.getInstance().schedule(() -> enableInventory(), 1500);
+		ThreadPoolManager.schedule(() -> enableInventory(), 1500);
 	}
 	
 	/**
@@ -5000,7 +5000,7 @@ public final class L2PcInstance extends L2Playable
 	
 	public void setChatUnbanTask(int time)
 	{
-		chatUnbanTask = ThreadPoolManager.getInstance().schedule(() ->
+		chatUnbanTask = ThreadPoolManager.schedule(() ->
 		{
 			setChatBanned(false);
 		}, time * 60000);
@@ -5188,7 +5188,7 @@ public final class L2PcInstance extends L2Playable
 			newClass.setClassId(classId);
 			newClass.setClassIndex(classIndex);
 			
-			try (var con = L2DatabaseFactory.getInstance().getConnection();
+			try (var con = DatabaseManager.getConnection();
 				var statement = con.prepareStatement(ADD_CHAR_SUBCLASS))
 			{
 				// Store the basic info about this new sub-class.
@@ -5261,7 +5261,7 @@ public final class L2PcInstance extends L2Playable
 		
 		try
 		{
-			try (var con = L2DatabaseFactory.getInstance().getConnection())
+			try (var con = DatabaseManager.getConnection())
 			{
 				// Remove all henna info stored for this sub-class.
 				try (var statement = con.prepareStatement(DELETE_CHAR_HENNAS))
@@ -5579,7 +5579,7 @@ public final class L2PcInstance extends L2Playable
 		if (taskRentPet == null)
 		{
 			// We determine the time a user will have yielded a pet.
-			taskRentPet = ThreadPoolManager.getInstance().scheduleAtFixedRate(new RentPetTask(), seconds * 1000, seconds * 1000);
+			taskRentPet = ThreadPoolManager.scheduleAtFixedRate(new RentPetTask(), seconds * 1000, seconds * 1000);
 		}
 	}
 	
@@ -5611,7 +5611,7 @@ public final class L2PcInstance extends L2Playable
 			
 			sendPacket(new SetupGauge(SetupGaugeType.CYAN, timeInWater));
 			// After expiry of the time the player can swim, began to shrink your hp.
-			taskWater = ThreadPoolManager.getInstance().scheduleAtFixedRate(() ->
+			taskWater = ThreadPoolManager.scheduleAtFixedRate(() ->
 			{
 				double reduceHp = getStat().getMaxHp() / 100;
 				if (reduceHp < 1)
@@ -6335,7 +6335,7 @@ public final class L2PcInstance extends L2Playable
 				jailTimer = delayInMinutes * 60000; // in millisec
 				
 				// start the countdown
-				jailTask = ThreadPoolManager.getInstance().schedule(() -> setInJail(false, 0), jailTimer);
+				jailTask = ThreadPoolManager.schedule(() -> setInJail(false, 0), jailTimer);
 				sendMessage("You have been jailed for " + delayInMinutes + " minutes.");
 			}
 			
@@ -6380,7 +6380,7 @@ public final class L2PcInstance extends L2Playable
 			if (jailTimer > 0)
 			{
 				// restart the countdown
-				jailTask = ThreadPoolManager.getInstance().schedule(() -> setInJail(false, 0), jailTimer);
+				jailTask = ThreadPoolManager.schedule(() -> setInJail(false, 0), jailTimer);
 				sendMessage("You are still in jail for " + Math.round(jailTimer / 60000) + " minutes.");
 			}
 			
@@ -6673,7 +6673,7 @@ public final class L2PcInstance extends L2Playable
 	
 	public void enteredNoLanding()
 	{
-		dismountTask = ThreadPoolManager.getInstance().schedule(() -> dismount(), 5000);
+		dismountTask = ThreadPoolManager.schedule(() -> dismount(), 5000);
 	}
 	
 	public class FeedTask implements Runnable
@@ -6752,7 +6752,7 @@ public final class L2PcInstance extends L2Playable
 			sendPacket(new SetupGauge(SetupGaugeType.GREEN, (getCurrentFeed() * 10000) / getFeedConsume(), (getMaxFeed() * 10000) / getFeedConsume()));
 			if (!isDead())
 			{
-				mountFeedTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new FeedTask(), 10000, 10000);
+				mountFeedTask = ThreadPoolManager.scheduleAtFixedRate(new FeedTask(), 10000, 10000);
 			}
 		}
 		else if (canFeed)
@@ -6761,7 +6761,7 @@ public final class L2PcInstance extends L2Playable
 			sendPacket(new SetupGauge(SetupGaugeType.GREEN, (getCurrentFeed() * 10000) / getFeedConsume(), (getMaxFeed() * 10000) / getFeedConsume()));
 			if (!isDead())
 			{
-				mountFeedTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new FeedTask(), 10000, 10000);
+				mountFeedTask = ThreadPoolManager.scheduleAtFixedRate(new FeedTask(), 10000, 10000);
 			}
 		}
 	}
@@ -6788,7 +6788,7 @@ public final class L2PcInstance extends L2Playable
 	{
 		if ((controlItemId != 0) && (petId != 0))
 		{
-			try (var con = L2DatabaseFactory.getInstance().getConnection();
+			try (var con = DatabaseManager.getConnection();
 				var statement = con.prepareStatement("UPDATE pets SET fed=? WHERE item_obj_id=?"))
 			{
 				statement.setInt(1, getCurrentFeed());
@@ -7181,7 +7181,7 @@ public final class L2PcInstance extends L2Playable
 	
 	private void restoreFriends()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.prepareStatement(RESTORE_FRIENDS))
 		{
 			statement.setInt(1, getObjectId());
@@ -7746,7 +7746,7 @@ public final class L2PcInstance extends L2Playable
 	 */
 	private void restoreHenna()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.prepareStatement(RESTORE_CHAR_HENNAS))
 		{
 			statement.setInt(1, getObjectId());
@@ -7836,7 +7836,7 @@ public final class L2PcInstance extends L2Playable
 		var holder = henna[slot];
 		henna[slot] = null;
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.prepareStatement(DELETE_CHAR_HENNA))
 		{
 			statement.setInt(1, getObjectId());
@@ -7887,7 +7887,7 @@ public final class L2PcInstance extends L2Playable
 				// Calculate Henna modifiers of this L2PcInstance
 				recalcHennaStats();
 				
-				try (var con = L2DatabaseFactory.getInstance().getConnection();
+				try (var con = DatabaseManager.getConnection();
 					var statement = con.prepareStatement(ADD_CHAR_HENNA))
 				{
 					statement.setInt(1, getObjectId());
@@ -8233,7 +8233,7 @@ public final class L2PcInstance extends L2Playable
 		
 		updatePvPFlag(FlagType.PVP);
 		
-		pvpRegTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(() ->
+		pvpRegTask = ThreadPoolManager.scheduleAtFixedRate(() ->
 		{
 			try
 			{

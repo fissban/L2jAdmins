@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.instancemanager.zone.ZoneArenaManager;
 import l2j.gameserver.instancemanager.zone.ZoneGrandBossManager;
 import l2j.gameserver.instancemanager.zone.ZoneOlympiadStadiumManager;
@@ -177,7 +177,7 @@ public class ZoneData
 							}
 							
 							// Get the zone shape from sql
-							try (var con = L2DatabaseFactory.getInstance().getConnection();
+							try (var con = DatabaseManager.getConnection();
 								var statement = con.prepareStatement("SELECT x,y FROM zone_vertices WHERE id=? ORDER BY 'order' ASC "))
 							{
 								statement.setInt(1, zoneId);

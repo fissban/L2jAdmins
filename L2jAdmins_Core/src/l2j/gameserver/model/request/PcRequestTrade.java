@@ -107,7 +107,7 @@ public class PcRequestTrade
 		isRequestor = isRequestor ? true : false;
 		isAnswerer = isRequestor ? false : true;
 		
-		requestTime = ThreadPoolManager.getInstance().schedule(() -> clear(), REQUEST_TIMEOUT * 1000);
+		requestTime = ThreadPoolManager.schedule(() -> clear(), REQUEST_TIMEOUT * 1000);
 	}
 	
 	private void endRequestTimer()

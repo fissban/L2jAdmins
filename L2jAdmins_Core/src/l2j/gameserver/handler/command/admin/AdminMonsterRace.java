@@ -78,7 +78,7 @@ public class AdminMonsterRace implements IAdminCommandHandler
 			Broadcast.toSelfAndKnownPlayersInRadius(activeChar, new PlaySound(PlaySoundType.RACE_START, 12125, 182487, -3559), -1);
 			Broadcast.toSelfAndKnownPlayersInRadius(activeChar, new MonRaceInfo(codes[state][0], codes[state][1], race.getMonsters(), race.getSpeeds()), -1);
 			
-			ThreadPoolManager.getInstance().schedule(new RunRace(codes, activeChar), 5000);
+			ThreadPoolManager.schedule(new RunRace(codes, activeChar), 5000);
 		}
 	}
 	
@@ -99,7 +99,7 @@ public class AdminMonsterRace implements IAdminCommandHandler
 		{
 			MonRaceInfo spk = new MonRaceInfo(codes[2][0], codes[2][1], MonsterRace.getInstance().getMonsters(), MonsterRace.getInstance().getSpeeds());
 			Broadcast.toSelfAndKnownPlayersInRadius(activeChar, spk, -1);
-			ThreadPoolManager.getInstance().schedule(new RunEnd(activeChar), 30000);
+			ThreadPoolManager.schedule(new RunEnd(activeChar), 30000);
 		}
 	}
 	

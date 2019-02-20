@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.AuctionData;
 import l2j.gameserver.data.ClanData;
@@ -216,22 +216,22 @@ public class ClanHall
 		long currentTime = System.currentTimeMillis();
 		if (paidUntil > currentTime)
 		{
-			ThreadPoolManager.getInstance().schedule(new ClanHallRentTask(this), paidUntil - currentTime);
+			ThreadPoolManager.schedule(new ClanHallRentTask(this), paidUntil - currentTime);
 		}
 		else if (!paid && !forced)
 		{
 			if ((System.currentTimeMillis() + (86400000)) <= (paidUntil + CH_RATE))
 			{
-				ThreadPoolManager.getInstance().schedule(new ClanHallRentTask(this), (86400000));
+				ThreadPoolManager.schedule(new ClanHallRentTask(this), (86400000));
 			}
 			else
 			{
-				ThreadPoolManager.getInstance().schedule(new ClanHallRentTask(this), (paidUntil + CH_RATE) - System.currentTimeMillis());
+				ThreadPoolManager.schedule(new ClanHallRentTask(this), (paidUntil + CH_RATE) - System.currentTimeMillis());
 			}
 		}
 		else
 		{
-			ThreadPoolManager.getInstance().schedule(new ClanHallRentTask(this), 0);
+			ThreadPoolManager.schedule(new ClanHallRentTask(this), 0);
 		}
 	}
 	
@@ -276,7 +276,7 @@ public class ClanHall
 	
 	public void updateDb()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE clanhall SET ownerId=?, paidUntil=?, paid=? WHERE id=?"))
 		{
 			ps.setInt(1, ownerId);
@@ -294,7 +294,7 @@ public class ClanHall
 	
 	public void updateFunctionRent(ClanHallFunctionType chType, long endTime)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE clanhall_functions SET endTime=? WHERE type=? AND hall_id=?"))
 		{
 			ps.setLong(1, endTime);
@@ -310,7 +310,7 @@ public class ClanHall
 	
 	private void loadFunctions()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM clanhall_functions WHERE hall_id = ?"))
 		{
 			ps.setInt(1, getId());
@@ -338,7 +338,7 @@ public class ClanHall
 			function.cancelFunctionTask();
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("DELETE FROM clanhall_functions WHERE hall_id=? AND type=?"))
 		{
 			ps.setInt(1, getId());
@@ -353,7 +353,7 @@ public class ClanHall
 	
 	public boolean updateFunctions(ClanHallFunctionType type, int lvl, int lease, long rate, long time, boolean addNew)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			if (addNew)
 			{

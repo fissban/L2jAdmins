@@ -59,10 +59,7 @@ public class AutoSpawnManager
 	 */
 	public void setSpawn(Map<Integer, AutoSpawnHolder> spawns, boolean isActive)
 	{
-		for (AutoSpawnHolder spawn : spawns.values())
-		{
-			setSpawn(spawn, isActive);
-		}
+		spawns.values().forEach(spawn -> setSpawn(spawn, isActive));
 	}
 	
 	/**
@@ -95,11 +92,11 @@ public class AutoSpawnManager
 			
 			if (spawn.getDespawnDelay() > 0)
 			{
-				spawnTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new TaskSpawn(objectId), spawn.getInitialDelay(), spawn.getRespawnDelay());
+				spawnTask = ThreadPoolManager.scheduleAtFixedRate(new TaskSpawn(objectId), spawn.getInitialDelay(), spawn.getRespawnDelay());
 			}
 			else
 			{
-				spawnTask = ThreadPoolManager.getInstance().schedule(new TaskSpawn(objectId), spawn.getInitialDelay());
+				spawnTask = ThreadPoolManager.schedule(new TaskSpawn(objectId), spawn.getInitialDelay());
 			}
 			runningSpawns.put(objectId, spawnTask);
 		}
@@ -111,7 +108,7 @@ public class AutoSpawnManager
 			{
 				spawnTask.cancel(false);
 				spawnTask = null;
-				ThreadPoolManager.getInstance().schedule(new TaskDespawn(objectId), 0);
+				ThreadPoolManager.schedule(new TaskDespawn(objectId), 0);
 			}
 		}
 	}
@@ -326,7 +323,7 @@ public class AutoSpawnManager
 				// If there is no despawn time, do not create a despawn task.
 				if (spawn.getDespawnDelay() > 0)
 				{
-					ThreadPoolManager.getInstance().schedule(new TaskDespawn(objectId), spawn.getDespawnDelay() - 1000);
+					ThreadPoolManager.schedule(new TaskDespawn(objectId), spawn.getDespawnDelay() - 1000);
 				}
 			}
 			catch (Exception e)

@@ -91,7 +91,7 @@ public class NpcClassMaster extends AbstractEvent
 			case START:
 				UtilMessage.sendAnnounceMsg("Event Class Master: Started!", L2World.getInstance().getAllPlayers());
 				
-				ThreadPoolManager.getInstance().schedule(() ->
+				ThreadPoolManager.schedule(() ->
 				{
 					SPAWNS.forEach(loc -> npcs.add(UtilSpawn.npc(NPC, loc.getX(), loc.getY(), loc.getZ(), 0, 0, 0, TeamType.NONE, 0)));
 				}, 20000);

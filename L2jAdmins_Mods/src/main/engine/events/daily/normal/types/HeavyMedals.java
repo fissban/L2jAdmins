@@ -173,7 +173,7 @@ public class HeavyMedals extends AbstractEvent
 				// send message
 				UtilMessage.sendAnnounceMsg(MESSAGE_START, L2World.getInstance().getAllPlayers());
 				// add npc spawns
-				ThreadPoolManager.getInstance().schedule(() ->
+				ThreadPoolManager.schedule(() ->
 				{
 					SPAWNS_ROY.forEach(loc -> npcs.add(UtilSpawn.npc(CAT_ROY, loc, 0, 0, TeamType.NONE, 0)));
 					SPAWNS_WINNIE.forEach(loc -> npcs.add(UtilSpawn.npc(CAT_WINNIE, loc, 0, 0, TeamType.NONE, 0)));

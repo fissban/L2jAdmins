@@ -43,7 +43,7 @@ public class TeleportPc implements ISkillHandler
 				character.teleToLocation(activeChar.getX(), activeChar.getY(), activeChar.getZ());
 				// set agresion for next action
 				
-				ThreadPoolManager.getInstance().schedule(() ->
+				ThreadPoolManager.schedule(() ->
 				{
 					try
 					{

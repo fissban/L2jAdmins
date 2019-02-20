@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.instancemanager.sevensigns.enums.CabalType;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -41,7 +41,7 @@ public class CastleData
 	
 	public final void load()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(SELECT);
 			ResultSet rs = ps.executeQuery())
 		{
@@ -241,7 +241,7 @@ public class CastleData
 				}
 				
 				// else offline-player circlet removal
-				try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+				try (Connection con = DatabaseManager.getConnection())
 				{
 					try (PreparedStatement ps = con.prepareStatement(DELETE_1))
 					{

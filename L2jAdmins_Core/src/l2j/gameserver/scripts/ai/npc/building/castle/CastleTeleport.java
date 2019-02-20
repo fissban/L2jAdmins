@@ -82,7 +82,7 @@ public class CastleTeleport extends Script
 				}
 				
 				setTask(true);
-				ThreadPoolManager.getInstance().schedule(() ->
+				ThreadPoolManager.schedule(() ->
 				{
 					try
 					{

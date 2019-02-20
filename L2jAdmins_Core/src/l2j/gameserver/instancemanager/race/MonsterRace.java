@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.NpcData;
 import l2j.gameserver.idfactory.IdFactory;
@@ -85,7 +85,7 @@ public class MonsterRace
 		first = new int[2];
 		second = new int[2];
 		
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(new Announcement(), 0, 1000);
+		ThreadPoolManager.scheduleAtFixedRate(new Announcement(), 0, 1000);
 	}
 	
 	private class Announcement implements Runnable
@@ -314,7 +314,7 @@ public class MonsterRace
 	 */
 	protected static void loadHistory()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM mdt_history");
 			ResultSet rset = ps.executeQuery())
 		{
@@ -338,7 +338,7 @@ public class MonsterRace
 	 */
 	protected static void saveHistory(MonsterRaceHistoryInfo history)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("INSERT INTO mdt_history (race_id, first, second, odd_rate) VALUES (?,?,?,?)"))
 		{
 			ps.setInt(1, history.getRaceId());
@@ -359,7 +359,7 @@ public class MonsterRace
 	 */
 	protected static void loadBets()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM mdt_bets");
 			ResultSet rset = ps.executeQuery())
 		{
@@ -381,7 +381,7 @@ public class MonsterRace
 	 */
 	protected static void saveBet(int lane, long sum)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("REPLACE INTO mdt_bets (lane_id, bet) VALUES (?,?)"))
 		{
 			ps.setInt(1, lane);
@@ -404,7 +404,7 @@ public class MonsterRace
 			betsPerLane.put(key, 0L);
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE mdt_bets SET bet = 0"))
 		{
 			ps.execute();

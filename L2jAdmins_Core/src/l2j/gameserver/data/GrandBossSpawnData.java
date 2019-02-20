@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.instancemanager.zone.ZoneGrandBossManager;
 import l2j.gameserver.model.actor.instance.L2GrandBossInstance;
 import l2j.gameserver.model.holder.GrandBossHolder;
@@ -30,7 +30,7 @@ public class GrandBossSpawnData
 	
 	public void load()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var ps = con.prepareStatement(SELECT);
 			var rset = ps.executeQuery())
 		{
@@ -64,7 +64,7 @@ public class GrandBossSpawnData
 	{
 		ZoneGrandBossManager.storeToDb();
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection())
+		try (var con = DatabaseManager.getConnection())
 		{
 			if (gb.getBoss() == null)
 			{

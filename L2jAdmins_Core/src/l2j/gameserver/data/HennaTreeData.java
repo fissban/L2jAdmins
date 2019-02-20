@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.base.ClassId;
 import l2j.gameserver.model.holder.HennaHolder;
 import l2j.gameserver.model.items.ItemHenna;
@@ -32,7 +32,7 @@ public class HennaTreeData
 		int classId = 0;
 		int count = 0;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT class_name, id, parent_id FROM class_list ORDER BY id");
 			ResultSet classlist = ps.executeQuery())
 		{

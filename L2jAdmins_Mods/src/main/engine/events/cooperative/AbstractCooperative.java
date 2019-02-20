@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Future;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.DoorData;
 import l2j.gameserver.model.actor.instance.enums.TeamType;
@@ -119,7 +119,7 @@ public abstract class AbstractCooperative extends AbstractMod
 	{
 		playersInEvent.addAll(list);
 		
-		start = ThreadPoolManager.getInstance().scheduleAtFixedRate(() ->
+		start = ThreadPoolManager.scheduleAtFixedRate(() ->
 		{
 			try
 			{
@@ -503,7 +503,7 @@ public abstract class AbstractCooperative extends AbstractMod
 		// Remove the character from the playersInEvent list
 		playersInEvent.remove(Integer.valueOf(objId));
 		// Update in the db the coordinates of the character and we send it to its last location before the event.
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var ps = con.prepareStatement("UPDATE characters SET x=?,y=?,z=? WHERE obj_id=?");)
 		{
 			ps.setInt(1, ObjectData.get(PlayerHolder.class, objId).getLastLoc().getX());

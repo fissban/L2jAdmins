@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.clan.Clan;
@@ -153,7 +153,7 @@ public class Q503_PursuitClanAmbition extends Script
 		int leaderId = st.getPlayer().getClan().getLeaderId();
 		int val = 0;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement offline = con.prepareStatement("SELECT value FROM character_quests WHERE char_id=? AND var=? AND name=?"))
 		{
 			offline.setInt(1, leaderId);

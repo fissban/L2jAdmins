@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.holder.NpcWalkerHolder;
 import l2j.util.UtilPrint;
 
@@ -32,7 +32,7 @@ public class NpcWalkerRoutesData
 	{
 		routes.clear();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT npc_id, chatText, move_x, move_y, move_z, delay, running FROM walker_routes ORDER By move_point ASC");
 			ResultSet rset = ps.executeQuery())
 		{

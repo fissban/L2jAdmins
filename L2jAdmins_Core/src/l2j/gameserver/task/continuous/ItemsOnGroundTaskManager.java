@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.items.enums.ItemLocationType;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.model.world.L2World;
@@ -148,7 +148,7 @@ public class ItemsOnGroundTaskManager extends AbstractTask implements Runnable
 				continue;
 			}
 			
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement(SAVE_ITEMS))
 			{
 				ps.setInt(1, item.getObjectId());
@@ -191,7 +191,7 @@ public class ItemsOnGroundTaskManager extends AbstractTask implements Runnable
 	 */
 	private void load()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(LOAD_ITEMS);
 			ResultSet result = ps.executeQuery())
 		{
@@ -258,7 +258,7 @@ public class ItemsOnGroundTaskManager extends AbstractTask implements Runnable
 	 */
 	private void cleanUp()
 	{
-		try (Connection conn = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection conn = DatabaseManager.getConnection();
 			PreparedStatement ps = conn.prepareStatement(REMOVE_ITEMS))
 		{
 			ps.execute();

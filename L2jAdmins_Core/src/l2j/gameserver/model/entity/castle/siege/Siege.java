@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.AnnouncementsData;
 import l2j.gameserver.data.ClanData;
@@ -299,12 +299,12 @@ public class Siege
 	
 	public void scheduleEndSiegeTask(long time)
 	{
-		ThreadPoolManager.getInstance().schedule(new SiegeEndTask(this), time);
+		ThreadPoolManager.schedule(new SiegeEndTask(this), time);
 	}
 	
 	public void scheduleStartSiegeTask(long time)
 	{
-		ThreadPoolManager.getInstance().schedule(new SiegeStartTask(this), time);
+		ThreadPoolManager.schedule(new SiegeStartTask(this), time);
 	}
 	
 	/**
@@ -389,7 +389,7 @@ public class Siege
 	/** Clear all registered siege clans from database for castle */
 	public void clearSiegeClan()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			try (PreparedStatement ps = con.prepareStatement("DELETE FROM siege_clans WHERE castle_id=?"))
 			{
@@ -418,7 +418,7 @@ public class Siege
 	/** Clear all siege clans waiting for approval from database for castle */
 	public void clearSiegeWaitingClan()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("DELETE FROM siege_clans WHERE castle_id=? AND type = 2"))
 		{
 			ps.setInt(1, castle.getId());
@@ -636,7 +636,7 @@ public class Siege
 			return;
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("DELETE FROM siege_clans WHERE castle_id=? AND clan_id=?"))
 		{
 			ps.setInt(1, castle.getId());
@@ -842,7 +842,7 @@ public class Siege
 		{
 			clanListMngr.addClan(SiegeClanType.OWNER, castle.getOwnerId());
 		}
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT clan_id,type FROM siege_clans WHERE castle_id=?"))
 		{
 			ps.setInt(1, castle.getId());
@@ -886,7 +886,7 @@ public class Siege
 	/** Save siege date to database. */
 	private void saveSiegeDate()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE castle SET siegeDate=? WHERE id=?"))
 		{
 			ps.setLong(1, getSiegeDate().getTimeInMillis());
@@ -927,7 +927,7 @@ public class Siege
 				return;
 			}
 		}
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			if (!isUpdateRegistration)
 			{

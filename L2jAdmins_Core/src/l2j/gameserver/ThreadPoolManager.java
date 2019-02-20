@@ -12,10 +12,10 @@ import l2j.Config;
 
 public class ThreadPoolManager
 {
-	private final List<ScheduledThreadPoolExecutor> scheduledPools;
-	private final List<ThreadPoolExecutor> instantPools;
+	private static List<ScheduledThreadPoolExecutor> scheduledPools;
+	private static List<ThreadPoolExecutor> instantPools;
 	
-	private int threadPoolRandomizer;
+	private static int threadPoolRandomizer;
 	
 	/** temp workaround for VM issue */
 	private static final long MAX_DELAY = TimeUnit.NANOSECONDS.toMillis(Long.MAX_VALUE - System.nanoTime()) / 2;
@@ -47,7 +47,7 @@ public class ThreadPoolManager
 	/**
 	 * Shutdown thread pooling system correctly. Send different informations.
 	 */
-	public void shutdown()
+	public static void shutdown()
 	{
 		try
 		{
@@ -66,7 +66,7 @@ public class ThreadPoolManager
 	 * Executes the given task sometime in the future.
 	 * @param r : the task to execute.
 	 */
-	public void execute(Runnable r)
+	public static void execute(Runnable r)
 	{
 		try
 		{
@@ -84,7 +84,7 @@ public class ThreadPoolManager
 	 * @param  delay : the time from now to delay execution.
 	 * @return       a ScheduledFuture representing pending completion of the task and whose get() method will return null upon completion.
 	 */
-	public ScheduledFuture<?> schedule(Runnable r, long delay)
+	public static ScheduledFuture<?> schedule(Runnable r, long delay)
 	{
 		try
 		{
@@ -104,7 +104,7 @@ public class ThreadPoolManager
 	 * @param  period : the period between successive executions.
 	 * @return        a ScheduledFuture representing pending completion of the task and whose get() method will throw an exception upon cancellation.
 	 */
-	public ScheduledFuture<?> scheduleAtFixedRate(Runnable r, long delay, long period)
+	public static ScheduledFuture<?> scheduleAtFixedRate(Runnable r, long delay, long period)
 	{
 		try
 		{
@@ -122,7 +122,7 @@ public class ThreadPoolManager
 	 * @param  threadPools : The pool array to check.
 	 * @return             the less fed pool.
 	 */
-	private <T> T getPool(List<T> threadPools)
+	private static <T> T getPool(List<T> threadPools)
 	{
 		return threadPools.get(threadPoolRandomizer++ % threadPools.size());
 	}
@@ -152,7 +152,7 @@ public class ThreadPoolManager
 		}
 	}
 	
-	public List<ScheduledThreadPoolExecutor> getScheduledPools()
+	public static List<ScheduledThreadPoolExecutor> getScheduledPools()
 	{
 		return scheduledPools;
 	}

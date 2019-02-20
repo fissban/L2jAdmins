@@ -87,7 +87,7 @@ public class FireCat extends AbstractEvent
 				// send message
 				UtilMessage.sendAnnounceMsg(ConfigData.FIRE_CAT_MESSAGE_START, L2World.getInstance().getAllPlayers());
 				// add npc spawns
-				ThreadPoolManager.getInstance().schedule(() ->
+				ThreadPoolManager.schedule(() ->
 				{
 					SPAWNS_CAT.forEach(loc -> npcs.add(UtilSpawn.npc(CAT, loc, 0, 0, TeamType.NONE, 0)));
 				}, 20000);

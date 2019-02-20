@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 
 /**
  * @author Maktakien
@@ -76,7 +76,7 @@ public class CommunityPostInstance
 	
 	private void insertInDB(CPost cp)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("INSERT INTO posts (post_id,post_owner_name,post_ownerid,post_date,post_topic_id,post_forum_id,post_txt) values (?,?,?,?,?,?,?)"))
 		{
 			ps.setInt(1, cp.postID);
@@ -96,7 +96,7 @@ public class CommunityPostInstance
 	
 	public void deleteFromDB(CommunityTopicInstance t)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement statement = con.prepareStatement("DELETE FROM posts WHERE post_forum_id=? AND post_topic_id=?"))
 		{
 			statement.setInt(1, t.getForumID());
@@ -114,7 +114,7 @@ public class CommunityPostInstance
 	 */
 	private void load(CommunityTopicInstance t)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM posts WHERE post_forum_id=? AND post_topic_id=? ORDER BY post_id ASC"))
 		{
 			ps.setInt(1, t.getForumID());
@@ -148,7 +148,7 @@ public class CommunityPostInstance
 	 */
 	public void updatetxt(int i)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE posts SET post_txt=? WHERE post_id=? AND post_topic_id=? AND post_forum_id=?"))
 		{
 			final CPost cp = getCPost(i);

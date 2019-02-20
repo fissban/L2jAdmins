@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.instancemanager.spawn.DayNightSpawnManager;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.templates.NpcTemplate;
@@ -66,7 +66,7 @@ public class SpawnData
 	 */
 	private void readTable()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			loadSpawns(con, SPAWN_QUERY, false);
 			
@@ -154,7 +154,7 @@ public class SpawnData
 		
 		if (storeInDb)
 		{
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement("INSERT INTO " + (spawn.isCustom() ? "custom_spawnlist" : "spawnlist") + " (count,npc_templateid,locx,locy,locz,heading,respawn_delay,loc_id) values(?,?,?,?,?,?,?,?)");)
 			{
 				// statement.setInt(1, -1);
@@ -192,7 +192,7 @@ public class SpawnData
 		
 		if (updateDb)
 		{
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement("DELETE FROM " + (spawn.isCustom() ? "custom_spawnlist" : "spawnlist") + " WHERE locx=? AND locy=? AND locz=? AND npc_templateid=? AND heading=?"))
 			{
 				ps.setInt(1, spawn.getX());

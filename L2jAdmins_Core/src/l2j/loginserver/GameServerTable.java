@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.loginserver.datatable.ServerNameTable;
 import l2j.loginserver.model.GameServerInfo;
 import l2j.util.Rnd;
@@ -54,7 +54,7 @@ public class GameServerTable
 	
 	private void loadRegisteredGameServers()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var ps = con.prepareStatement("SELECT * FROM gameservers");
 			var rs = ps.executeQuery())
 		{
@@ -110,7 +110,7 @@ public class GameServerTable
 	
 	public void registerServerOnDB(byte[] hexId, int id, String hostName)
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var ps = con.prepareStatement("INSERT INTO gameservers (hexid,server_id,host) values (?,?,?)"))
 		{
 			ps.setString(1, hexToString(hexId));

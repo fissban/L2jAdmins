@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.data.ItemData;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Playable;
@@ -849,7 +849,7 @@ public abstract class Inventory extends ItemContainer
 	@Override
 	public void restore()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT owner_id, object_id, item_id, count, enchant_level, loc, loc_data, freightLocation, price_sell, price_buy, time_of_use, custom_type1, custom_type2 FROM character_items WHERE owner_id=? AND (loc=? OR loc=?)"))
 		{
 			ps.setInt(1, getOwnerId());

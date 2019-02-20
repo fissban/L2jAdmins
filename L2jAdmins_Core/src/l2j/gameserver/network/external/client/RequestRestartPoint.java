@@ -196,7 +196,7 @@ public class RequestRestartPoint extends AClientPacket
 			if ((activeChar.getClan() != null) && siege.isAttacker(activeChar.getClan()))
 			{
 				// Schedule respawn delay for attacker
-				ThreadPoolManager.getInstance().schedule(new DeathTask(activeChar), Config.SIEGE_ATTACKER_RESPAWN_DELAY);
+				ThreadPoolManager.schedule(new DeathTask(activeChar), Config.SIEGE_ATTACKER_RESPAWN_DELAY);
 				
 				if (Config.SIEGE_ATTACKER_RESPAWN_DELAY > 0)
 				{

@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.holder.ManufactureItemHolder;
 import l2j.gameserver.model.holder.TradeItemHolder;
@@ -36,7 +36,7 @@ public class OfflineTradersData
 	public static void storeOffliners()
 	{
 		var count = 0;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			clearAllTables(con);
 			
@@ -143,7 +143,7 @@ public class OfflineTradersData
 		
 		int nTraders = 0;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement stm = con.prepareStatement(LOAD_OFFLINE_STATUS);
 			ResultSet rs = stm.executeQuery())
 		{

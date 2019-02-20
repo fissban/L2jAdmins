@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.idfactory.IdFactory;
 import l2j.gameserver.model.clan.Clan;
 import l2j.gameserver.model.holder.CrestDataHolder;
@@ -125,7 +125,7 @@ public class CrestData
 				file.renameTo(new File(CRESTS_DIR + "Crest_" + newId + ".bmp"));
 				LOG.info("Renamed Clan crest to new format: Crest_" + newId + ".bmp");
 				
-				try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+				try (Connection con = DatabaseManager.getConnection();
 					PreparedStatement ps = con.prepareStatement("UPDATE clan_data SET crest_id = ? WHERE clan_id = ?"))
 				{
 					ps.setInt(1, newId);

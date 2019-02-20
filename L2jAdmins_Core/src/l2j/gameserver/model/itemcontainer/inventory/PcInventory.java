@@ -6,7 +6,7 @@ import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.holder.TradeItemHolder;
@@ -1102,7 +1102,7 @@ public class PcInventory extends Inventory
 	{
 		var paperdoll = new int[16][3];
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement2 = con.prepareStatement("SELECT object_id,item_id,loc_data,enchant_level FROM character_items WHERE owner_id=? AND loc='PAPERDOLL'"))
 		{
 			statement2.setInt(1, objectId);

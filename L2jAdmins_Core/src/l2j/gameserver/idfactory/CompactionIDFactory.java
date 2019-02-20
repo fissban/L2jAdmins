@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.util.UtilPrint;
 
 /**
@@ -26,7 +26,7 @@ public class CompactionIDFactory extends IdFactory
 		curOID = FIRST_OID;
 		freeSize = 0;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			int[] tmp_obj_ids = extractUsedObjectIDTable();
 			

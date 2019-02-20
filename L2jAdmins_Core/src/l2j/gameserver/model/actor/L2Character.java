@@ -662,7 +662,7 @@ public abstract class L2Character extends L2Object
 				if (disableBowAttackEndTime > time)
 				{
 					// Cancel the action because the bow can't be re-use at this moment
-					ThreadPoolManager.getInstance().schedule(() -> getAI().notifyEvent(CtrlEventType.READY_TO_ACT), 100);
+					ThreadPoolManager.schedule(() -> getAI().notifyEvent(CtrlEventType.READY_TO_ACT), 100);
 					sendPacket(ActionFailed.STATIC_PACKET);
 					return;
 				}
@@ -674,7 +674,7 @@ public abstract class L2Character extends L2Object
 					if (getCurrentMp() < mpConsume)
 					{
 						// If L2PcInstance doesn't have enough MP, stop the attack
-						ThreadPoolManager.getInstance().schedule(() -> getAI().notifyEvent(CtrlEventType.READY_TO_ACT), 100);
+						ThreadPoolManager.schedule(() -> getAI().notifyEvent(CtrlEventType.READY_TO_ACT), 100);
 						sendPacket(SystemMessage.NOT_ENOUGH_MP);
 						sendPacket(ActionFailed.STATIC_PACKET);
 						return;
@@ -787,7 +787,7 @@ public abstract class L2Character extends L2Object
 		}
 		
 		// Notify AI with CtrlEventType.READY_TO_ACT
-		ThreadPoolManager.getInstance().schedule(() -> getAI().notifyEvent(CtrlEventType.READY_TO_ACT), timeAtk);
+		ThreadPoolManager.schedule(() -> getAI().notifyEvent(CtrlEventType.READY_TO_ACT), timeAtk);
 	}
 	
 	/**
@@ -849,7 +849,7 @@ public abstract class L2Character extends L2Object
 		}
 		
 		// Create a new hit task with Medium priority
-		ThreadPoolManager.getInstance().schedule(new HitTask(target, damage, crit, miss, attack.soulshot, shld), sAtk);
+		ThreadPoolManager.schedule(new HitTask(target, damage, crit, miss, attack.soulshot, shld), sAtk);
 		
 		// Calculate and set the disable delay of the bow in function of the Attack Speed
 		disableBowAttackEndTime += (sAtk + reuse);
@@ -917,10 +917,10 @@ public abstract class L2Character extends L2Object
 		}
 		
 		// Create a new hit task with Medium priority for hit 1
-		ThreadPoolManager.getInstance().schedule(new HitTask(target, damage1, crit1, miss1, attack.soulshot, shld1), sAtk / 2);
+		ThreadPoolManager.schedule(new HitTask(target, damage1, crit1, miss1, attack.soulshot, shld1), sAtk / 2);
 		
 		// Create a new hit task with Medium priority for hit 2 with a higher delay
-		ThreadPoolManager.getInstance().schedule(new HitTask(target, damage2, crit2, miss2, attack.soulshot, shld2), sAtk);
+		ThreadPoolManager.schedule(new HitTask(target, damage2, crit2, miss2, attack.soulshot, shld2), sAtk);
 		
 		// Add those hits to the Server-Client packet Attack
 		attack.addHit(target, damage1, miss1, crit1, shld1);
@@ -1074,7 +1074,7 @@ public abstract class L2Character extends L2Object
 		}
 		
 		// Create a new hit task with Medium priority
-		ThreadPoolManager.getInstance().schedule(new HitTask(target, damage, crit, miss, attack.soulshot, shld), sAtk);
+		ThreadPoolManager.schedule(new HitTask(target, damage, crit, miss, attack.soulshot, shld), sAtk);
 		
 		// Add this hit to the Server-Client packet Attack
 		attack.addHit(target, damage, miss, crit, shld);
@@ -1298,7 +1298,7 @@ public abstract class L2Character extends L2Object
 			
 			// Create a task MagicUseTask to launch the MagicSkill at the end of the casting time (hitTime)
 			// For client animation reasons (party buffs especially) 400 ms before!
-			skillCast = ThreadPoolManager.getInstance().schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.LAUNCHED), hitTime - CALC_SKILL);
+			skillCast = ThreadPoolManager.schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.LAUNCHED), hitTime - CALC_SKILL);
 		}
 		else
 		{
@@ -4057,7 +4057,7 @@ public abstract class L2Character extends L2Object
 		}
 		else
 		{
-			skillCast = ThreadPoolManager.getInstance().schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.HIT), CALC_SKILL);
+			skillCast = ThreadPoolManager.schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.HIT), CALC_SKILL);
 		}
 	}
 	
@@ -4141,7 +4141,7 @@ public abstract class L2Character extends L2Object
 		}
 		else
 		{
-			skillCast = ThreadPoolManager.getInstance().schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.FINALIZER), coolTime);
+			skillCast = ThreadPoolManager.schedule(new MagicUseTask(targets, skill, coolTime, MagicUseType.FINALIZER), coolTime);
 		}
 	}
 	
@@ -4187,7 +4187,7 @@ public abstract class L2Character extends L2Object
 				if (qs.getSkill() != null)
 				{
 					player.setQueuedSkill(null, false, false);
-					ThreadPoolManager.getInstance().execute(() -> player.useMagic(qs.getSkill(), qs.isCtrlPressed(), qs.isShiftPressed()));
+					ThreadPoolManager.execute(() -> player.useMagic(qs.getSkill(), qs.isCtrlPressed(), qs.isShiftPressed()));
 				}
 			}
 			else
