@@ -42,7 +42,7 @@ public class DamageZone extends Zone
 		if (task == null)
 		{
 			// Apply dmg
-			task = ThreadPoolManager.getInstance().scheduleAtFixedRate(() ->
+			task = ThreadPoolManager.scheduleAtFixedRate(() ->
 			{
 				for (L2Character temp : getCharacterList())
 				{

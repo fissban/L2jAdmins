@@ -73,7 +73,7 @@ public class L2SummonInstance extends L2Summon
 		
 		timeToSpawn = System.currentTimeMillis() + 3000;
 		
-		summonLifeTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new SummonLifetime(getOwner(), this), 1000, 1000);
+		summonLifeTask = ThreadPoolManager.scheduleAtFixedRate(new SummonLifetime(getOwner(), this), 1000, 1000);
 	}
 	
 	@Override

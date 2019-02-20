@@ -113,7 +113,7 @@ public class L2Npc extends L2Character
 		int interval = Rnd.get(minWait, maxWait) * 1000;
 		
 		// Create a RandomAnimation Task that will be launched after the calculated delay
-		rAniTask = ThreadPoolManager.getInstance().schedule(() ->
+		rAniTask = ThreadPoolManager.schedule(() ->
 		{
 			try
 			{
@@ -233,7 +233,7 @@ public class L2Npc extends L2Character
 	
 	public void scheduleDespawn(long delay)
 	{
-		sheduledDespawn = ThreadPoolManager.getInstance().schedule(() -> super.deleteMe(), delay);
+		sheduledDespawn = ThreadPoolManager.schedule(() -> super.deleteMe(), delay);
 	}
 	
 	/**

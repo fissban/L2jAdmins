@@ -35,7 +35,7 @@ public class BitSetIDFactory extends IdFactory
 	protected BitSetIDFactory()
 	{
 		super();
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(new BitSetCapacityCheck(), 30000, 30000);
+		ThreadPoolManager.scheduleAtFixedRate(new BitSetCapacityCheck(), 30000, 30000);
 		initialize();
 		UtilPrint.result("IdFactory", "Id's available", freeIds.size());
 		UtilPrint.result("IdFactory", "Free ObjectID's remaining", size());

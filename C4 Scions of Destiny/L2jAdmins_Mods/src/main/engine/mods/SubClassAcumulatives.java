@@ -3,7 +3,7 @@ package main.engine.mods;
 import java.util.HashMap;
 import java.util.logging.Level;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.data.SkillData;
 import main.data.ConfigData;
 import main.engine.AbstractMod;
@@ -41,7 +41,7 @@ public class SubClassAcumulatives extends AbstractMod
 		
 		var skills = new HashMap<Integer, Integer>();
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var ps = con.prepareStatement(RESTORE_SKILLS_FOR_CHAR))
 		{
 			// Retrieve all skills of this Player from the database

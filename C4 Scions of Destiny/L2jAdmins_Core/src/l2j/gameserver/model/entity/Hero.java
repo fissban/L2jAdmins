@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.data.ClanData;
 import l2j.gameserver.model.StatsSet;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -67,7 +67,7 @@ public class Hero
 	
 	private void init()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			try (PreparedStatement ps = con.prepareStatement(GET_HEROES);
 				ResultSet rset = ps.executeQuery())
@@ -280,7 +280,7 @@ public class Hero
 	
 	public void updateHeroes(boolean setDefault)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			if (setDefault)
 			{
@@ -367,7 +367,7 @@ public class Hero
 	
 	private void deleteItemsInDb()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(DELETE_ITEMS))
 		{
 			ps.execute();

@@ -18,7 +18,7 @@ public abstract class AbstractTask
 	 */
 	public void generalSchedule(Runnable task, long delay)
 	{
-		ThreadPoolManager.getInstance().schedule(task, delay);
+		ThreadPoolManager.schedule(task, delay);
 	}
 	
 	/**
@@ -28,7 +28,7 @@ public abstract class AbstractTask
 	 */
 	public void fixedSchedule(Runnable task, long delay, long interval)
 	{
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(task, delay, interval);
+		ThreadPoolManager.scheduleAtFixedRate(task, delay, interval);
 	}
 	
 	/**
@@ -60,6 +60,6 @@ public abstract class AbstractTask
 			delay += countDay;
 		}
 		
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(task, delay, countDay);
+		ThreadPoolManager.scheduleAtFixedRate(task, delay, countDay);
 	}
 }

@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.model.trade.MerchantTradeList;
 import l2j.util.UtilPrint;
@@ -29,7 +29,7 @@ public class TradeControllerData
 	
 	public void load()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement statement1 = con.prepareStatement("SELECT shop_id, npc_id FROM merchant_shopids");
 			ResultSet rset1 = statement1.executeQuery())
 		{
@@ -106,7 +106,7 @@ public class TradeControllerData
 		 */
 		if (Config.CUSTOM_MERCHANT_TABLES)
 		{
-			try (java.sql.Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (java.sql.Connection con = DatabaseManager.getConnection();
 				PreparedStatement statement1 = con.prepareStatement("SELECT shop_id, npc_id  FROM custom_merchant_shopids");
 				ResultSet rset1 = statement1.executeQuery())
 			{
@@ -208,7 +208,7 @@ public class TradeControllerData
 	
 	public void dataCountStore()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE merchant_buylists SET currentCount =? WHERE item_id =? && shop_id = ?"))
 		{
 			for (MerchantTradeList list : lists.values())

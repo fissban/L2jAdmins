@@ -62,7 +62,7 @@ public final class MovementTaskManager extends AbstractTask implements Runnable
 				if (ai != null)
 				{
 					// Inform AI about arrival.
-					ThreadPoolManager.getInstance().execute(() -> ai.notifyEvent(CtrlEventType.ARRIVED));
+					ThreadPoolManager.execute(() -> ai.notifyEvent(CtrlEventType.ARRIVED));
 				}
 			}
 		}

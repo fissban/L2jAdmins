@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.instancemanager.communitybbs.CommunityTopicInstance.ConstructorType;
 
 public class CommunityForumInstance
@@ -70,7 +70,7 @@ public class CommunityForumInstance
 	
 	private void load()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM forums WHERE forum_id=?"))
 		{
 			ps.setInt(1, forumId);
@@ -91,7 +91,7 @@ public class CommunityForumInstance
 			LOG.log(Level.WARNING, "Data error on Forum " + forumId + " : " + e.getMessage(), e);
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM topic WHERE topic_forum_id=? ORDER BY topic_id DESC"))
 		{
 			ps.setInt(1, forumId);
@@ -118,7 +118,7 @@ public class CommunityForumInstance
 	
 	private void getChildren()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT forum_id FROM forums WHERE forum_parent=?"))
 		{
 			ps.setInt(1, forumId);
@@ -194,7 +194,7 @@ public class CommunityForumInstance
 	
 	public void insertIntoDb()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("INSERT INTO forums (forum_id,forum_name,forum_parent,forum_post,forum_type,forum_perm,forum_owner_id) VALUES (?,?,?,?,?,?,?)"))
 		{
 			ps.setInt(1, forumId);

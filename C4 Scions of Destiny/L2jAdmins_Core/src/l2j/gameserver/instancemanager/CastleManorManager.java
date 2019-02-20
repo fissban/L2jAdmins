@@ -10,7 +10,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.CastleData;
 import l2j.gameserver.data.ClanData;
@@ -79,7 +79,7 @@ public class CastleManorManager
 	
 	private void load()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			for (Castle castle : CastleData.getInstance().getCastles())
 			{
@@ -174,14 +174,14 @@ public class CastleManorManager
 	public void updateManorRefresh()
 	{
 		LOG.info("Manor System: Manor refresh updated");
-		scheduledManorRefresh = ThreadPoolManager.getInstance().schedule(() ->
+		scheduledManorRefresh = ThreadPoolManager.schedule(() ->
 		{
 			if (!isDisabled())
 			{
 				setUnderMaintenance(true);
 				LOG.info("Manor System: Under maintenance mode started");
 				
-				scheduledMaintenanceEnd = ThreadPoolManager.getInstance().schedule(() ->
+				scheduledMaintenanceEnd = ThreadPoolManager.schedule(() ->
 				{
 					LOG.info("Manor System: Next period started");
 					setNextPeriod();
@@ -203,7 +203,7 @@ public class CastleManorManager
 	public void updatePeriodApprove()
 	{
 		LOG.info("Manor System: Manor period approve updated");
-		scheduledNextPeriodapprove = ThreadPoolManager.getInstance().schedule(() ->
+		scheduledNextPeriodapprove = ThreadPoolManager.schedule(() ->
 		{
 			if (!isDisabled())
 			{

@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.StatsSet;
 import l2j.gameserver.model.actor.base.ClassId;
 import l2j.gameserver.model.actor.enums.NpcRaceType;
@@ -53,7 +53,7 @@ public class NpcData
 	
 	private void readTable()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			// Load npcs -------------------------------------------------------
 			loadNpcs(con, NPC_QUERY);
@@ -299,7 +299,7 @@ public class NpcData
 		}
 		
 		int updated = 0;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();)
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			if (Config.CUSTOM_NPC_TABLE)
 			{

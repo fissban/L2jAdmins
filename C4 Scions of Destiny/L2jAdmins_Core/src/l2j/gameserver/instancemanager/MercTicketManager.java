@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.CastleData;
 import l2j.gameserver.data.NpcData;
@@ -95,7 +95,7 @@ public class MercTicketManager
 	public void load()
 	{
 		// load merc tickets into the world
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM castle_siege_guards WHERE isHired = 1");
 			ResultSet rs = ps.executeQuery())
 		{
@@ -348,7 +348,7 @@ public class MercTicketManager
 			
 			if (despawnDelay > 0)
 			{
-				ThreadPoolManager.getInstance().schedule(() -> npc.deleteMe(), despawnDelay);
+				ThreadPoolManager.schedule(() -> npc.deleteMe(), despawnDelay);
 			}
 		}
 	}

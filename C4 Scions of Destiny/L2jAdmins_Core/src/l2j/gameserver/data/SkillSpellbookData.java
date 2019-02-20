@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.skills.Skill;
 import l2j.util.UtilPrint;
 
@@ -32,7 +32,7 @@ public class SkillSpellbookData
 	{
 		skillSpellbooks = new HashMap<>();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT skill_id, item_id FROM skill_spellbooks");
 			ResultSet rs = ps.executeQuery())
 		{

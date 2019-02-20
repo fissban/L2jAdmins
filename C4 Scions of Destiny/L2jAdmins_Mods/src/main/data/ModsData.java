@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.util.UtilPrint;
 import main.engine.AbstractMod;
 import main.holders.DataValueHolder;
@@ -70,7 +70,7 @@ public class ModsData
 		
 		// Remove from DB
 		var query = DELETE_DB_2.replace("%table_name%", mod.getClass().getSimpleName().toLowerCase());
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.prepareStatement(query))
 		{
 			statement.execute();
@@ -113,7 +113,7 @@ public class ModsData
 		}
 		// Remove from DB
 		var query = DELETE_DB_1.replace("%table_name%", mod.getClass().getSimpleName().toLowerCase());
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.prepareStatement(query))
 		{
 			statement.setString(1, event);
@@ -254,7 +254,7 @@ public class ModsData
 			var query = updateInfo ? UPDATE_DB : INSERT_DB;
 			query = query.replace("%table_name%", modName);
 			// Update or insert values.
-			try (var con = L2DatabaseFactory.getInstance().getConnection();
+			try (var con = DatabaseManager.getConnection();
 				var statement = con.prepareStatement(query))
 			{
 				statement.setString(1, value);
@@ -281,7 +281,7 @@ public class ModsData
 	{
 		var modName = mod.getClass().getSimpleName();
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.createStatement())
 		{
 			statement.executeUpdate("CREATE TABLE IF NOT EXISTS engine_" + modName + " " + TABLE_FORMAT);

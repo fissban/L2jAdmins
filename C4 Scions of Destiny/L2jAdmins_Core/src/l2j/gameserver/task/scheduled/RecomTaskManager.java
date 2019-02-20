@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.network.external.server.UserInfo;
@@ -44,7 +44,7 @@ public class RecomTaskManager extends AbstractTask implements Runnable
 		List<PlayerRecomHolder> players = new ArrayList<>();
 		
 		// Read all players in db
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT obj_id,level,rec_have FROM characters"))
 		{
 			try (ResultSet rset = ps.executeQuery())
@@ -69,7 +69,7 @@ public class RecomTaskManager extends AbstractTask implements Runnable
 		}
 		
 		// Update rec left and rec have for offline players
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE characters SET rec_left=?,rec_have=? WHERE obj_id=?"))
 		{
 			for (PlayerRecomHolder prh : players)

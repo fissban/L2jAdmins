@@ -99,7 +99,7 @@ public final class L2BabyPetInstance extends L2PetInstance
 			}
 			
 			// start the healing task
-			healingTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new HealTask(this), 0, 1000);
+			healingTask = ThreadPoolManager.scheduleAtFixedRate(new HealTask(this), 0, 1000);
 		}
 	}
 	
@@ -137,7 +137,7 @@ public final class L2BabyPetInstance extends L2PetInstance
 		super.doRevive();
 		if (healingTask == null)
 		{
-			healingTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new HealTask(this), 0, 1000);
+			healingTask = ThreadPoolManager.scheduleAtFixedRate(new HealTask(this), 0, 1000);
 		}
 	}
 	

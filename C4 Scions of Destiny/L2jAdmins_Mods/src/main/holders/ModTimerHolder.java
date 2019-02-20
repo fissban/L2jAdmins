@@ -29,11 +29,11 @@ public class ModTimerHolder
 		
 		if (repeating)
 		{
-			schedular = ThreadPoolManager.getInstance().scheduleAtFixedRate(new ScheduleTimerTask(repeating), time, time);
+			schedular = ThreadPoolManager.scheduleAtFixedRate(new ScheduleTimerTask(repeating), time, time);
 		}
 		else
 		{
-			schedular = ThreadPoolManager.getInstance().schedule(new ScheduleTimerTask(repeating), time);
+			schedular = ThreadPoolManager.schedule(new ScheduleTimerTask(repeating), time);
 		}
 	}
 	

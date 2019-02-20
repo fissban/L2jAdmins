@@ -83,7 +83,7 @@ public class EventCooperativeManager
 	 */
 	public static void startTimerToStart()
 	{
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(() ->
+		ThreadPoolManager.scheduleAtFixedRate(() ->
 		{
 			time--;
 			

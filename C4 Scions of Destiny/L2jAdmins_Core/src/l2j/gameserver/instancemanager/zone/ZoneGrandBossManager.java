@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.holder.LocationHolder;
@@ -42,7 +42,7 @@ public class ZoneGrandBossManager
 			}
 		}
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var ps = con.prepareStatement(SELECT);
 			var rset = ps.executeQuery())
 		{
@@ -68,7 +68,7 @@ public class ZoneGrandBossManager
 	 */
 	public static void storeToDb()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection())
+		try (var con = DatabaseManager.getConnection())
 		{
 			// clear table first
 			try (var ps = con.prepareStatement(DELETE_ALL))

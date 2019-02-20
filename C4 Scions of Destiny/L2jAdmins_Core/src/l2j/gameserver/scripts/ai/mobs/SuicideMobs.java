@@ -134,7 +134,7 @@ public class SuicideMobs extends Script
 							}
 							
 							// Generate task for remove mob
-							ThreadPoolManager.getInstance().schedule(() -> npc.deleteMe(), 100);
+							ThreadPoolManager.schedule(() -> npc.deleteMe(), 100);
 						}
 						else
 						{

@@ -12,7 +12,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.engines.DocumentEngine;
 import l2j.gameserver.data.engines.item.DocumentItemHolder;
@@ -140,7 +140,7 @@ public class ItemData
 		armors = new HashMap<>();
 		weapons = new HashMap<>();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			for (String selectQuery : SQL_ITEM_SELECTS)
 			{
@@ -175,7 +175,7 @@ public class ItemData
 		
 		if (Config.CUSTOM_ITEM_TABLES)
 		{
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+			try (Connection con = DatabaseManager.getConnection())
 			{
 				for (String selectQuery : SQL_CUSTOM_ITEM_SELECTS)
 				{
@@ -616,13 +616,13 @@ public class ItemData
 			if ((reference != null) && (reference instanceof L2Attackable) && ((L2Attackable) reference).isRaid() && !Config.AUTO_LOOT_RAIDS)
 			{
 				item.setOwnerId(actor.getObjectId());
-				itemLootShedule = ThreadPoolManager.getInstance().schedule(new resetOwner(item), 15000);
+				itemLootShedule = ThreadPoolManager.schedule(new resetOwner(item), 15000);
 				item.setItemLootSchedule(itemLootShedule);
 			}
 			else if (!Config.AUTO_LOOT)
 			{
 				item.setOwnerId(actor.getObjectId());
-				itemLootShedule = ThreadPoolManager.getInstance().schedule(new resetOwner(item), 15000);
+				itemLootShedule = ThreadPoolManager.schedule(new resetOwner(item), 15000);
 				item.setItemLootSchedule(itemLootShedule);
 			}
 		}
@@ -733,7 +733,7 @@ public class ItemData
 			// if it's a pet control item, delete the pet as well
 			if (PetDataData.isPetItem(item.getId()))
 			{
-				try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+				try (Connection con = DatabaseManager.getConnection();
 					PreparedStatement ps = con.prepareStatement("DELETE FROM pets WHERE item_obj_id=?"))
 				{
 					ps.setInt(1, item.getObjectId());

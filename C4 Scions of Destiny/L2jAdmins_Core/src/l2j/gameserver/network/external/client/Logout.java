@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.data.SkillData;
 import l2j.gameserver.instancemanager.sevensigns.SevenSignsFestival;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -118,7 +118,7 @@ public class Logout extends AClientPacket
 	
 	private static void notifyFriends(L2PcInstance cha)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT friend_id FROM character_friends WHERE char_id=?"))
 		{
 			ps.setInt(1, cha.getObjectId());

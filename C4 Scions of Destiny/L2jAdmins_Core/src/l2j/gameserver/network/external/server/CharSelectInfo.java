@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.data.ClanData;
 import l2j.gameserver.model.actor.base.Sex;
 import l2j.gameserver.model.clan.Clan;
@@ -166,7 +166,7 @@ public class CharSelectInfo extends AServerPacket
 		CharSelectInfoHolder charInfopackage;
 		List<CharSelectInfoHolder> characterList = new ArrayList<>();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT obj_id,char_name,deletetime,clanid,level,maxHp,curHp,maxMp,curMp,karma,face,hairstyle,haircolor,sex,exp,sp,race,x,y,z,accesslevel,base_class,classid,lastAccess FROM characters WHERE account_name=?"))
 		{
 			ps.setString(1, loginName);
@@ -194,7 +194,7 @@ public class CharSelectInfo extends AServerPacket
 	
 	private void loadCharacterSubclassInfo(CharSelectInfoHolder charInfopackage, int objectId, int activeClassId)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT exp, sp, level FROM character_subclasses WHERE char_obj_id=? && class_id=? ORDER BY char_obj_id"))
 		{
 			ps.setInt(1, objectId);

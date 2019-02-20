@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.data.PetDataData;
 import l2j.gameserver.illegalaction.IllegalAction;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -115,7 +115,7 @@ public class RequestDestroyItem extends AClientPacket
 			}
 			
 			// if it's a pet control item, delete the pet
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement("DELETE FROM pets WHERE item_obj_id=?"))
 			{
 				ps.setInt(1, objectId);

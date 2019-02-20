@@ -619,7 +619,7 @@ public abstract class AbstractAI
 		
 		// Create and Launch an AI Follow Task to execute every 1s
 		followTarget = target;
-		followTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new FollowTask(), 5, FOLLOW_INTERVAL);
+		followTask = ThreadPoolManager.scheduleAtFixedRate(new FollowTask(), 5, FOLLOW_INTERVAL);
 	}
 	
 	/**
@@ -636,7 +636,7 @@ public abstract class AbstractAI
 		}
 		
 		followTarget = target;
-		followTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new FollowTask(range), 5, ATTACK_FOLLOW_INTERVAL);
+		followTask = ThreadPoolManager.scheduleAtFixedRate(new FollowTask(range), 5, ATTACK_FOLLOW_INTERVAL);
 	}
 	
 	/**

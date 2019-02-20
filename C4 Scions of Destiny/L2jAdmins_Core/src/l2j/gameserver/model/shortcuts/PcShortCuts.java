@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.items.enums.EtcItemType;
 import l2j.gameserver.model.items.instance.ItemInstance;
@@ -143,7 +143,7 @@ public class PcShortCuts
 	 */
 	private void deleteShortCutFromDb(PcShortCutsInstance shortCut)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(DELETE_SHORTCUT))
 		{
 			ps.setInt(1, player.getObjectId());
@@ -163,7 +163,7 @@ public class PcShortCuts
 	
 	private void registerShortCutFromDb(PcShortCutsInstance shortcut)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(REGISTER_SHORTCUT))
 		{
 			ps.setInt(1, player.getObjectId());
@@ -185,7 +185,7 @@ public class PcShortCuts
 	{
 		shortCuts.clear();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(RESTORE_SHORTCUT))
 		{
 			ps.setInt(1, player.getObjectId());

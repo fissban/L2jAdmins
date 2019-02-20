@@ -54,7 +54,7 @@ public class ClanHallRentTask implements Runnable
 				
 				clan.getWarehouse().destroyItemByItemId("CH_rental_fee", Inventory.ADENA_ID, ch.getLease(), null, null);
 				
-				ThreadPoolManager.getInstance().schedule(new ClanHallRentTask(ch), ch.getPaidUntil() - time);
+				ThreadPoolManager.schedule(new ClanHallRentTask(ch), ch.getPaidUntil() - time);
 				ch.setPaid(true);
 				ch.updateDb();
 			}
@@ -73,11 +73,11 @@ public class ClanHallRentTask implements Runnable
 					
 					if ((System.currentTimeMillis() + (86400000)) <= (ch.getPaidUntil() + ClanHall.CH_RATE))
 					{
-						ThreadPoolManager.getInstance().schedule(new ClanHallRentTask(ch), (86400000));
+						ThreadPoolManager.schedule(new ClanHallRentTask(ch), (86400000));
 					}
 					else
 					{
-						ThreadPoolManager.getInstance().schedule(new ClanHallRentTask(ch), (ch.getPaidUntil() + ClanHall.CH_RATE) - time);
+						ThreadPoolManager.schedule(new ClanHallRentTask(ch), (ch.getPaidUntil() + ClanHall.CH_RATE) - time);
 					}
 				}
 			}

@@ -11,7 +11,7 @@ import java.util.Map.Entry;
 import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.shortcuts.PcShortCutsInstance;
 import l2j.gameserver.model.shortcuts.PcShortCutsType;
@@ -148,7 +148,7 @@ public class PcMacro
 	
 	private void registerMacroInDb(PcMacroHolder macro)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(REGISTER_MACRO))
 		{
 			ps.setInt(1, player.getObjectId());
@@ -184,7 +184,7 @@ public class PcMacro
 	 */
 	private void deleteMacroFromDb(PcMacroHolder macro)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(DELETE_MACRO))
 		{
 			ps.setInt(1, player.getObjectId());
@@ -200,7 +200,7 @@ public class PcMacro
 	public void restore()
 	{
 		macroses.clear();
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(RESTORE_MACRO))
 		{
 			ps.setInt(1, player.getObjectId());

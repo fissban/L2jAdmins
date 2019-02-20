@@ -149,10 +149,10 @@ public class AbstractEvent extends AbstractMod
 			time.add(Calendar.DAY_OF_YEAR, eventTime);
 			var timeStart = time.getTimeInMillis() - System.currentTimeMillis();
 			
-			scheduledStateEvent.add(ThreadPoolManager.getInstance().schedule(new ScheduleStart(), timeStart < 0 ? 0 : timeStart));
+			scheduledStateEvent.add(ThreadPoolManager.schedule(new ScheduleStart(), timeStart < 0 ? 0 : timeStart));
 			// one thread where we indicate when to end the event and the actions to take will be created.
 			time.add(Calendar.DAY_OF_YEAR, eventTime + 1);
-			scheduledStateEvent.add(ThreadPoolManager.getInstance().schedule(new ScheduleEnd(), time.getTimeInMillis() - System.currentTimeMillis()));
+			scheduledStateEvent.add(ThreadPoolManager.schedule(new ScheduleEnd(), time.getTimeInMillis() - System.currentTimeMillis()));
 			
 			weekToStartEvent--;
 		}
@@ -210,9 +210,9 @@ public class AbstractEvent extends AbstractMod
 			{
 				time = timeStart.getTimeInMillis() - hoy;
 			}
-			scheduledStateEvent.add(ThreadPoolManager.getInstance().schedule(new ScheduleStart(), time));
+			scheduledStateEvent.add(ThreadPoolManager.schedule(new ScheduleStart(), time));
 			// one thread where we indicate when to end the event and the actions to take is created.
-			scheduledStateEvent.add(ThreadPoolManager.getInstance().schedule(new ScheduleEnd(), timeEnd.getTimeInMillis() - hoy));
+			scheduledStateEvent.add(ThreadPoolManager.schedule(new ScheduleEnd(), timeEnd.getTimeInMillis() - hoy));
 		}
 		catch (Exception e)
 		{

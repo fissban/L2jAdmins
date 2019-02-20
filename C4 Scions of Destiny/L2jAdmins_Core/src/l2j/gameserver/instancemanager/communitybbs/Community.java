@@ -13,7 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.util.Util;
 import l2j.util.UtilPrint;
@@ -45,7 +45,7 @@ public class Community
 	protected Community()
 	{
 		// ForumsBBSManager
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(SELECT_FORUM_ID);
 			ResultSet result = ps.executeQuery())
 		{
@@ -69,7 +69,7 @@ public class Community
 		}
 		
 		// MailBBSManager
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(SELECT_LAST_ID);
 			ResultSet result = ps.executeQuery())
 		{
@@ -155,7 +155,7 @@ public class Community
 		if (letters == null)
 		{
 			letters = new ArrayList<>();
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement(SELECT_CHAR_MAILS))
 			{
 				ps.setInt(1, objId);

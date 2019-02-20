@@ -141,7 +141,7 @@ public final class OlympiadGameTask implements Runnable
 		this.game = game;
 		state = GameState.BEGIN;
 		needAnnounce = false;
-		ThreadPoolManager.getInstance().execute(this);
+		ThreadPoolManager.execute(this);
 	}
 	
 	@Override
@@ -258,7 +258,7 @@ public final class OlympiadGameTask implements Runnable
 					return;
 				}
 			}
-			ThreadPoolManager.getInstance().schedule(this, delay * 1000);
+			ThreadPoolManager.schedule(this, delay * 1000);
 		}
 		catch (Exception e)
 		{
@@ -278,7 +278,7 @@ public final class OlympiadGameTask implements Runnable
 			
 			LOG.log(Level.WARNING, "Exception in " + state + ", trying to port players back: " + e.getMessage(), e);
 			state = GameState.GAME_STOPPED;
-			ThreadPoolManager.getInstance().schedule(this, 1000);
+			ThreadPoolManager.schedule(this, 1000);
 		}
 	}
 	

@@ -243,7 +243,7 @@ public class CaptureTheFlag extends AbstractCooperative
 			unequipFlag(ph, true);
 		}
 		
-		var death = ThreadPoolManager.getInstance().schedule(() ->
+		var death = ThreadPoolManager.schedule(() ->
 		{
 			deathTasks.remove(character.getObjectId());
 			

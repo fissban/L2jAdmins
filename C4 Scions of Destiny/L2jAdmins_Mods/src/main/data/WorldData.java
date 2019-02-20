@@ -107,7 +107,7 @@ public class WorldData
 	 */
 	private static synchronized void autoPurgeEmptyWorld()
 	{
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(() ->
+		ThreadPoolManager.scheduleAtFixedRate(() ->
 		{
 			var it = worlds.values().iterator();
 			

@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.StringTokenizer;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.handler.CommandAdminHandler.IAdminCommandHandler;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.world.L2World;
@@ -44,7 +44,7 @@ public class AdminBanChar implements IAdminCommandHandler
 			{
 				String playerName = st.nextToken();
 				
-				try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+				try (Connection con = DatabaseManager.getConnection();
 					PreparedStatement statement = con.prepareStatement("UPDATE characters SET accesslevel=? WHERE char_name=?"))
 				{
 					statement.setInt(1, -1);
@@ -158,7 +158,7 @@ public class AdminBanChar implements IAdminCommandHandler
 			
 			if (st.hasMoreTokens())
 			{
-				try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+				try (Connection con = DatabaseManager.getConnection();
 					PreparedStatement statement = con.prepareStatement("UPDATE characters SET accesslevel=? WHERE char_name=?"))
 				{
 					statement.setInt(1, 0);
@@ -244,7 +244,7 @@ public class AdminBanChar implements IAdminCommandHandler
 	 */
 	private static void jailOfflinePlayer(L2PcInstance activeChar, String name, int delay, boolean jail)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement statement = con.prepareStatement("UPDATE characters SET x=?, y=?, z=?, in_jail=?, jail_timer=? WHERE char_name=?"))
 		{
 			statement.setInt(1, jail ? -114356 : 17836);

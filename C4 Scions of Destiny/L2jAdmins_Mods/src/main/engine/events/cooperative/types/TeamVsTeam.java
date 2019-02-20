@@ -277,7 +277,7 @@ public class TeamVsTeam extends AbstractCooperative
 			return;
 		}
 		
-		var death = ThreadPoolManager.getInstance().schedule(() ->
+		var death = ThreadPoolManager.schedule(() ->
 		{
 			deathTasks.remove(player.getObjectId());
 			

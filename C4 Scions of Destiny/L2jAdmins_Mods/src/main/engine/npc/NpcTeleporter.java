@@ -52,7 +52,7 @@ public class NpcTeleporter extends AbstractMod
 	 */
 	private void spawnGuards()
 	{
-		ThreadPoolManager.getInstance().schedule(() ->
+		ThreadPoolManager.schedule(() ->
 		{
 			for (LocationHolder loc : TELEPORTS.values())
 			{

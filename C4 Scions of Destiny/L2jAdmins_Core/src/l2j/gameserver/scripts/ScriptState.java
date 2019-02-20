@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.itemcontainer.Inventory;
 import l2j.gameserver.model.itemcontainer.inventory.PcInventory;
@@ -214,7 +214,7 @@ public final class ScriptState
 			}
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(repeatable ? QUEST_DELETE : QUEST_COMPLETE))
 		{
 			ps.setInt(1, player.getObjectId());
@@ -507,7 +507,7 @@ public final class ScriptState
 	 */
 	private void setQuestVarInDb(String var, String value)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(QUEST_SET_VAR))
 		{
 			ps.setInt(1, player.getObjectId());
@@ -528,7 +528,7 @@ public final class ScriptState
 	 */
 	private void removeQuestVarInDb(String var)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(QUEST_DEL_VAR))
 		{
 			ps.setInt(1, player.getObjectId());

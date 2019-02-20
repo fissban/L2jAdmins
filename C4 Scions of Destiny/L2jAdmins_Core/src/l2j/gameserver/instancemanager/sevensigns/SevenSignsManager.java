@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.CastleData;
 import l2j.gameserver.data.MapRegionData.TeleportWhereType;
@@ -162,7 +162,7 @@ public class SevenSignsManager
 		long milliToChange = getMilliToPeriodChange();
 		
 		// Schedule a time for the next period change.
-		ThreadPoolManager.getInstance().schedule(new SevenSignsPeriodChange(), milliToChange);
+		ThreadPoolManager.schedule(new SevenSignsPeriodChange(), milliToChange);
 		
 		// Thanks to http://rainbow.arch.scriptmania.com/scripts/timezone_countdown.html for help with this.
 		double numSecs = (milliToChange / 1000) % 60;
@@ -534,7 +534,7 @@ public class SevenSignsManager
 	 */
 	protected void restoreSevenSignsData()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			try (PreparedStatement ps = con.prepareStatement(RESTORE_SEVEN_SIGN_DATA);
 				ResultSet rset = ps.executeQuery())
@@ -618,7 +618,7 @@ public class SevenSignsManager
 			LOG.info("SevenSigns: Saving data to disk.");
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			for (StatsSet sevenDat : signsPlayerData.values())
 			{
@@ -774,7 +774,7 @@ public class SevenSignsManager
 			signsPlayerData.put(charObjId, currPlayerData);
 			
 			// Update data in database, as we have a new player signing up.
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement(UPDATE_CHAR_SEVEN_SIGN))
 			{
 				ps.setInt(1, charObjId);
@@ -1245,7 +1245,7 @@ public class SevenSignsManager
 			
 			setCalendarForNextPeriodChange();
 			
-			ThreadPoolManager.getInstance().schedule(new SevenSignsPeriodChange(), getMilliToPeriodChange());
+			ThreadPoolManager.schedule(new SevenSignsPeriodChange(), getMilliToPeriodChange());
 		}
 	}
 	

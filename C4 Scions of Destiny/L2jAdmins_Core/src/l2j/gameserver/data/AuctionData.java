@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.entity.clanhalls.auction.Auction;
 import l2j.util.UtilPrint;
 
@@ -64,7 +64,7 @@ public class AuctionData
 	
 	public final void load()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var ps = con.prepareStatement(SELECT);
 			var rs = ps.executeQuery())
 		{
@@ -115,7 +115,7 @@ public class AuctionData
 			return false;
 		}
 		
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var ps = con.prepareStatement(INSERT.replace("%item%", ITEM_INIT_DATA[i])))
 		{
 			ps.execute();

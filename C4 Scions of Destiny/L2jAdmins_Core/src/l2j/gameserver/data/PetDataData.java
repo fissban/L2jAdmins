@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.StatsSet;
 import l2j.gameserver.model.actor.instance.L2PetInstance;
 import l2j.gameserver.model.actor.templates.PetTemplate;
@@ -50,7 +50,7 @@ public class PetDataData
 	// XXX se puede pasar a xml
 	public void loadPetsData()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT typeId, level, expMax, hpMax, mpMax, patk, pdef, matk, mdef, acc, evasion, crit, speed, atk_speed, cast_speed, feedMax, feedbattle, feednormal, loadMax, hpregen, mpregen, owner_exp_taken FROM pets_stats");
 			ResultSet rs = ps.executeQuery())
 		{

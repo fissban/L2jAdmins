@@ -238,11 +238,11 @@ public abstract class Effect
 			final int initialDelay = Math.max((period - periodFirstTime) * 1000, 5);
 			if (count > 1)
 			{
-				currentFuture = ThreadPoolManager.getInstance().scheduleAtFixedRate(new EffectTask(), initialDelay, period * 1000);
+				currentFuture = ThreadPoolManager.scheduleAtFixedRate(new EffectTask(), initialDelay, period * 1000);
 			}
 			else
 			{
-				currentFuture = ThreadPoolManager.getInstance().schedule(new EffectTask(), initialDelay);
+				currentFuture = ThreadPoolManager.schedule(new EffectTask(), initialDelay);
 			}
 		}
 		if (state == EffectStateType.ACTING)

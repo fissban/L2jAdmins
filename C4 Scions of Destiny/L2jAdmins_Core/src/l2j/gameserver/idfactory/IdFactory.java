@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.util.UtilPrint;
 
 /**
@@ -106,7 +106,7 @@ public abstract class IdFactory
 	 */
 	private void setAllCharacterOffline()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.createStatement())
 		{
 			statement.executeUpdate("UPDATE characters SET online=0");
@@ -123,7 +123,7 @@ public abstract class IdFactory
 	 */
 	private void cleanUpDB()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.createStatement())
 		{
 			var cleanCount = 0;
@@ -175,7 +175,7 @@ public abstract class IdFactory
 	 */
 	protected int[] extractUsedObjectIDTable()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var statement = con.createStatement())
 		{
 			statement.executeUpdate("DROP TABLE IF EXISTS temporaryObjectTable");

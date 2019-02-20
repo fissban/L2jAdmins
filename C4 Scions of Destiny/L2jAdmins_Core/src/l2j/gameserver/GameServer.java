@@ -9,7 +9,7 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.Server;
 import l2j.gameserver.data.AdminCommandData;
 import l2j.gameserver.data.AnnouncementsData;
@@ -364,7 +364,7 @@ public class GameServer
 		}
 		
 		UtilPrint.section("Database");
-		L2DatabaseFactory.getInstance();
+		DatabaseManager.getInstance();
 		gameServer = new GameServer();
 		
 		if (Config.IS_TELNET_ENABLED)

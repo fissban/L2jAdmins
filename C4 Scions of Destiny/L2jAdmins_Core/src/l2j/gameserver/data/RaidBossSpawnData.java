@@ -11,7 +11,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.instancemanager.spawn.DayNightSpawnManager;
 import l2j.gameserver.model.StatsSet;
@@ -61,7 +61,7 @@ public class RaidBossSpawnData
 	
 	public void load()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(LOAD);
 			ResultSet rs = ps.executeQuery())
 		{
@@ -166,7 +166,7 @@ public class RaidBossSpawnData
 			
 			if (!schedules.containsKey(boss.getId()))
 			{
-				schedules.put(boss.getId(), ThreadPoolManager.getInstance().schedule(new spawnSchedule(boss.getId()), respawnDelay));
+				schedules.put(boss.getId(), ThreadPoolManager.schedule(new spawnSchedule(boss.getId()), respawnDelay));
 				// To update immediately Database uncomment on the following line, to post the hour of respawn raid boss on your site for example or to envisage a crash landing of the waiter.
 				updateDb(boss.getId());
 			}
@@ -230,7 +230,7 @@ public class RaidBossSpawnData
 		}
 		else
 		{
-			ScheduledFuture<?> futureSpawn = ThreadPoolManager.getInstance().schedule(new spawnSchedule(bossId), respawnTime - Calendar.getInstance().getTimeInMillis());
+			ScheduledFuture<?> futureSpawn = ThreadPoolManager.schedule(new spawnSchedule(bossId), respawnTime - Calendar.getInstance().getTimeInMillis());
 			schedules.put(bossId, futureSpawn);
 		}
 		
@@ -238,7 +238,7 @@ public class RaidBossSpawnData
 		
 		if (storeInDb)
 		{
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement(INSERT))
 			{
 				ps.setInt(1, spawnDat.getNpcId());
@@ -294,7 +294,7 @@ public class RaidBossSpawnData
 		
 		if (updateDb)
 		{
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement(DELETE))
 			{
 				ps.setInt(1, bossId);
@@ -310,7 +310,7 @@ public class RaidBossSpawnData
 	
 	private void updateDb(int bossId)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(UPDATE))
 		{
 			final L2RaidBossInstance boss = bosses.get(bossId);

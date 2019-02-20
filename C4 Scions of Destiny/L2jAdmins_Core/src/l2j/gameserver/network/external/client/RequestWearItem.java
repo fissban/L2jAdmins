@@ -247,7 +247,7 @@ public class RequestWearItem extends AClientPacket
 		// All wear items should be removed in ALLOW_WEAR_DELAY sec.
 		if (removeWearItemsTask == null)
 		{
-			removeWearItemsTask = ThreadPoolManager.getInstance().schedule(() -> destroyWearedItems(player, "Wear", null, true), Config.WEAR_DELAY * 1000);
+			removeWearItemsTask = ThreadPoolManager.schedule(() -> destroyWearedItems(player, "Wear", null, true), Config.WEAR_DELAY * 1000);
 		}
 	}
 	

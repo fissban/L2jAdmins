@@ -100,7 +100,7 @@ public final class L2RaidBossInstance extends L2MonsterInstance
 			minionList.spawnMinions();
 		}
 		
-		minionsSpawnTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(() ->
+		minionsSpawnTask = ThreadPoolManager.scheduleAtFixedRate(() ->
 		{
 			// teleport raid boss home if it's too far from home location
 			Spawn bossSpawn = getSpawn();

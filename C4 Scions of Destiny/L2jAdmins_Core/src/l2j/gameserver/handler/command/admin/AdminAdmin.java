@@ -149,7 +149,7 @@ public class AdminAdmin implements IAdminCommandHandler
 			activeChar.sendMessage("You're not a game master anymore.");
 			activeChar.broadcastUserInfo();
 			
-			ThreadPoolManager.getInstance().schedule(() ->
+			ThreadPoolManager.schedule(() ->
 			{
 				activeChar.sendMessage("You're already a Game Master again.");
 				activeChar.setAccessLevel(oldAccesLevel);

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.StatsSet;
 import l2j.gameserver.model.items.ItemHenna;
 import l2j.util.UtilPrint;
@@ -42,7 +42,7 @@ public class HennaData
 	 */
 	private void RestoreHennaData()
 	{
-		try (var con = L2DatabaseFactory.getInstance().getConnection();
+		try (var con = DatabaseManager.getConnection();
 			var ps = con.prepareStatement("SELECT symbol_id, symbol_name, dye_id, dye_amount, price, cancel_fee, stat_INT, stat_STR, stat_CON, stat_MEN, stat_DEX, stat_WIT FROM henna");
 			ResultSet rs = ps.executeQuery())
 		{

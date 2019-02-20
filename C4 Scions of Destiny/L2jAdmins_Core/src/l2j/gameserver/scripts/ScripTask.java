@@ -31,11 +31,11 @@ public class ScripTask
 		
 		if (repeating)
 		{
-			schedular = ThreadPoolManager.getInstance().scheduleAtFixedRate(new ScheduleTimerTask(), time, time);
+			schedular = ThreadPoolManager.scheduleAtFixedRate(new ScheduleTimerTask(), time, time);
 		}
 		else
 		{
-			schedular = ThreadPoolManager.getInstance().schedule(new ScheduleTimerTask(), time);
+			schedular = ThreadPoolManager.schedule(new ScheduleTimerTask(), time);
 		}
 	}
 	

@@ -72,7 +72,7 @@ public class SkillHarvest implements ISkillHandler
 							}
 							else
 							{
-								var item = player.getInventory().addItem("Manor", ritem.getId(), ritem.getCount(), player, object);
+								player.getInventory().addItem("Manor", ritem.getId(), ritem.getCount(), player, object);
 								
 								send = true;
 								total += ritem.getCount();

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.data.CharNameData;
 import l2j.gameserver.data.HtmData;
 import l2j.gameserver.model.PcBlockList;
@@ -63,7 +63,7 @@ public class CommunityFriends extends AbstractCommunityHandler
 					break;
 				
 				case "delall":
-					try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+					try (Connection con = DatabaseManager.getConnection();
 						PreparedStatement ps = con.prepareStatement("DELETE FROM character_friends WHERE char_id = ? OR friend_id = ?"))
 					{
 						ps.setInt(1, activeChar.getObjectId());
@@ -100,7 +100,7 @@ public class CommunityFriends extends AbstractCommunityHandler
 					break;
 				
 				case "del":
-					try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+					try (Connection con = DatabaseManager.getConnection())
 					{
 						for (int friendId : activeChar.getSelectedFriendList())
 						{

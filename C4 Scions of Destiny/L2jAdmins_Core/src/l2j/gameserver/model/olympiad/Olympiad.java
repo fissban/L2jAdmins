@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import l2j.Config;
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.ZoneData;
 import l2j.gameserver.model.StatsSet;
@@ -117,7 +117,7 @@ public class Olympiad
 	private void load()
 	{
 		boolean loaded = false;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(OLYMPIAD_LOAD_DATA);
 			ResultSet rset = ps.executeQuery())
 		{
@@ -164,7 +164,7 @@ public class Olympiad
 				{
 					loadNoblesPointsEom();
 					
-					scheduledValdationTask = ThreadPoolManager.getInstance().schedule(new ValidationEndTask(), getMillisToValidationEnd());
+					scheduledValdationTask = ThreadPoolManager.schedule(new ValidationEndTask(), getMillisToValidationEnd());
 				}
 				else
 				{
@@ -179,7 +179,7 @@ public class Olympiad
 				return;
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(OLYMPIAD_LOAD_NOBLES);
 			ResultSet rset = ps.executeQuery())
 		{
@@ -240,7 +240,7 @@ public class Olympiad
 	{
 		noblesEom.clear();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(GET_ALL_CLASSIFIED_NOBLESS_EOM);
 			ResultSet rset = ps.executeQuery())
 		{
@@ -272,7 +272,7 @@ public class Olympiad
 			scheduledOlympiadEnd.cancel(true);
 		}
 		
-		scheduledOlympiadEnd = ThreadPoolManager.getInstance().schedule(new OlympiadEndTask(), getMillisToOlympiadEnd());
+		scheduledOlympiadEnd = ThreadPoolManager.schedule(new OlympiadEndTask(), getMillisToOlympiadEnd());
 		
 		updateCompStatus();
 	}
@@ -302,7 +302,7 @@ public class Olympiad
 			validationEnd = Calendar.getInstance().getTimeInMillis() + VALIDATION_PERIOD;
 			
 			loadNoblesPointsEom();
-			scheduledValdationTask = ThreadPoolManager.getInstance().schedule(new ValidationEndTask(), getMillisToValidationEnd());
+			scheduledValdationTask = ThreadPoolManager.schedule(new ValidationEndTask(), getMillisToValidationEnd());
 		}
 	}
 	
@@ -342,7 +342,7 @@ public class Olympiad
 			UtilPrint.result("Olympiad", "Event starts/started", compStart.getTime() + "");
 		}
 		
-		scheduledCompStart = ThreadPoolManager.getInstance().schedule(() ->
+		scheduledCompStart = ThreadPoolManager.schedule(() ->
 		{
 			if (isOlympiadEnd())
 			{
@@ -354,19 +354,19 @@ public class Olympiad
 			Broadcast.toAllOnlinePlayers(new SystemMessage(SystemMessage.THE_OLYMPIAD_GAME_HAS_STARTED));
 			LOG.info("Olympiad: Olympiad game started.");
 			
-			gameManager = ThreadPoolManager.getInstance().scheduleAtFixedRate(OlympiadGameManager.getInstance(), 30000, 30000);
+			gameManager = ThreadPoolManager.scheduleAtFixedRate(OlympiadGameManager.getInstance(), 30000, 30000);
 			if (Config.ALT_OLY_ANNOUNCE_GAMES)
 			{
-				gameAnnouncer = ThreadPoolManager.getInstance().scheduleAtFixedRate(new OlympiadAnnouncer(), 30000, 500);
+				gameAnnouncer = ThreadPoolManager.scheduleAtFixedRate(new OlympiadAnnouncer(), 30000, 500);
 			}
 			
 			long regEnd = getMillisToCompEnd() - 600000;
 			if (regEnd > 0)
 			{
-				ThreadPoolManager.getInstance().schedule(() -> Broadcast.toAllOnlinePlayers("The Grand Olympiad registration period has ended"), regEnd);
+				ThreadPoolManager.schedule(() -> Broadcast.toAllOnlinePlayers("The Grand Olympiad registration period has ended"), regEnd);
 			}
 			
-			scheduledCompEnd = ThreadPoolManager.getInstance().schedule(() ->
+			scheduledCompEnd = ThreadPoolManager.schedule(() ->
 			{
 				if (isOlympiadEnd())
 				{
@@ -420,7 +420,7 @@ public class Olympiad
 			scheduledOlympiadEnd.cancel(true);
 		}
 		
-		scheduledOlympiadEnd = ThreadPoolManager.getInstance().schedule(new OlympiadEndTask(), 0);
+		scheduledOlympiadEnd = ThreadPoolManager.schedule(new OlympiadEndTask(), 0);
 	}
 	
 	protected long getMillisToValidationEnd()
@@ -506,7 +506,7 @@ public class Olympiad
 	
 	private void scheduleWeeklyChange()
 	{
-		scheduledWeeklyTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(() ->
+		scheduledWeeklyTask = ThreadPoolManager.scheduleAtFixedRate(() ->
 		{
 			addWeeklyPoints();
 			LOG.info("Olympiad: Added weekly points to nobles.");
@@ -559,7 +559,7 @@ public class Olympiad
 			return;
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			PreparedStatement ps;
 			for (Entry<Integer, StatsSet> nobleEntry : nobles.entrySet())
@@ -619,7 +619,7 @@ public class Olympiad
 	{
 		saveNobleData();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(OLYMPIAD_SAVE_DATA))
 		{
 			ps.setInt(1, currentCycle);
@@ -642,7 +642,7 @@ public class Olympiad
 	
 	protected void updateMonthlyData()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			try (PreparedStatement ps = con.prepareStatement(OLYMPIAD_MONTH_CLEAR))
 			{
@@ -663,7 +663,7 @@ public class Olympiad
 	{
 		heroesToBe.clear();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(OLYMPIAD_GET_HEROS))
 		{
 			for (ClassId id : ClassId.values())
@@ -699,7 +699,7 @@ public class Olympiad
 	public List<String> getClassLeaderBoard(int classId)
 	{
 		List<String> names = new ArrayList<>();
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(GET_EACH_CLASS_LEADER))
 		{
 			ps.setInt(1, classId);
@@ -738,7 +738,7 @@ public class Olympiad
 			// clear points in memory
 			noblesEom.put(objId, 0);
 			// clear points in DB
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			try (Connection con = DatabaseManager.getConnection();
 				PreparedStatement ps = con.prepareStatement(REMOVE_CLASSIFIED_NOBLESS_EOM))
 			{
 				ps.setInt(1, objId);
@@ -795,7 +795,7 @@ public class Olympiad
 	
 	protected void deleteNobles()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(OLYMPIAD_DELETE_ALL))
 		{
 			ps.execute();

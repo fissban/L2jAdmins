@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.fishing.PcFishingInstance;
 import l2j.gameserver.model.fishing.enums.PcFishLureType;
 import l2j.util.UtilPrint;
@@ -28,7 +28,7 @@ public class FishTable
 		fishsNewbie.clear();
 		fishs.clear();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT id, level, name, hp, hpregen, fish_type, fish_group, fish_guts, guts_check_time, wait_time, combat_time FROM fish ORDER BY id");
 			ResultSet rs = ps.executeQuery())
 		{

@@ -12,7 +12,7 @@ import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.util.UtilPrint;
 
@@ -130,7 +130,7 @@ public class CharNameData
 	public synchronized boolean doesCharNameExist(String name)
 	{
 		boolean result = true;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(SELECT_1))
 		{
 			ps.setString(1, name);
@@ -154,7 +154,7 @@ public class CharNameData
 	public int accountCharNumber(String account)
 	{
 		int number = 0;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement(SELECT_2))
 		{
 			ps.setString(1, account);
@@ -181,7 +181,7 @@ public class CharNameData
 		String name;
 		int id = -1;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			Statement s = con.createStatement();
 			ResultSet rs = s.executeQuery(SELECT_3))
 		{

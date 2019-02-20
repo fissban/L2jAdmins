@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 
 public class PetNameData
 {
@@ -16,7 +16,7 @@ public class PetNameData
 	{
 		boolean result = true;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT name FROM pets p, character_items i WHERE p.item_obj_id = i.object_id AND name=? AND i.item_id IN (?)"))
 		{
 			ps.setString(1, name);

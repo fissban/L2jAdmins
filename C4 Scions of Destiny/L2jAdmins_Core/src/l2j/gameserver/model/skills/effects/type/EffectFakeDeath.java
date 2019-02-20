@@ -1,5 +1,6 @@
 package l2j.gameserver.model.skills.effects.type;
 
+import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.skills.effects.Effect;
 import l2j.gameserver.model.skills.effects.EffectTemplate;
 import l2j.gameserver.model.skills.effects.enums.EffectType;
@@ -40,6 +41,14 @@ public class EffectFakeDeath extends Effect
 		if (getEffected().isDead())
 		{
 			return false;
+		}
+		
+		if (getEffected() instanceof L2PcInstance)
+		{
+			if (!((L2PcInstance) getEffected()).isSitting())
+			{
+				return false;
+			}
 		}
 		
 		double manaDam = calc();

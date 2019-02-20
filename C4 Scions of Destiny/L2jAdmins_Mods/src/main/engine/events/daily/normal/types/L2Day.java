@@ -142,7 +142,7 @@ public class L2Day extends AbstractEvent
 				// send message
 				UtilMessage.sendAnnounceMsg(MESSAGE_START, L2World.getInstance().getAllPlayers());
 				// add npc spawns
-				ThreadPoolManager.getInstance().schedule(() ->
+				ThreadPoolManager.schedule(() ->
 				{
 					// Generate Spawns
 					SPAWNS_HUMAN.forEach(loc -> npcs.add(UtilSpawn.npc(EVENT_HUMAN, loc, 0, 0, TeamType.NONE, 0)));

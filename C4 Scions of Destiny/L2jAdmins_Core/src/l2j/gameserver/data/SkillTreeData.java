@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.base.ClassId;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.holder.EnchantSkillLearnHolder;
@@ -39,7 +39,7 @@ public class SkillTreeData
 		int classId = 0;
 		int count = 0;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseManager.getConnection())
 		{
 			try (PreparedStatement ps = con.prepareStatement("SELECT * FROM class_list ORDER BY id");
 				ResultSet rs = ps.executeQuery())

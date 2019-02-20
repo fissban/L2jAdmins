@@ -114,7 +114,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 			{
 				durationCheckTask.cancel(true);
 			}
-			durationCheckTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new CheckDuration(this), DURATION_CHECK_INTERVAL, DURATION_CHECK_INTERVAL);
+			durationCheckTask = ThreadPoolManager.scheduleAtFixedRate(new CheckDuration(this), DURATION_CHECK_INTERVAL, DURATION_CHECK_INTERVAL);
 		}
 	}
 	
@@ -175,7 +175,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 			{
 				buffTask.cancel(true);
 			}
-			buffTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new CheckOwnerBuffs(this, totalBuffsAvailable), BUFF_INTERVAL, BUFF_INTERVAL);
+			buffTask = ThreadPoolManager.scheduleAtFixedRate(new CheckOwnerBuffs(this, totalBuffsAvailable), BUFF_INTERVAL, BUFF_INTERVAL);
 		}
 		else
 		{

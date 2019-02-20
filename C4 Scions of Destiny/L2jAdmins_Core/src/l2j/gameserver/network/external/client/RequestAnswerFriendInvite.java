@@ -3,7 +3,7 @@ package l2j.gameserver.network.external.client;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import l2j.L2DatabaseFactory;
+import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.FriendList;
@@ -37,7 +37,7 @@ public class RequestAnswerFriendInvite extends AClientPacket
 			
 			if (response == 1)
 			{
-				try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+				try (Connection con = DatabaseManager.getConnection();
 					PreparedStatement ps = con.prepareStatement("INSERT INTO character_friends (char_id, friend_id) VALUES (?, ?), (?, ?)"))
 				{
 					ps.setInt(1, requestor.getObjectId());
