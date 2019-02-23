@@ -11,6 +11,7 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import l2j.Config;
+import l2j.DatabaseManager;
 import l2j.Server;
 import l2j.loginserver.datatable.ServerNameTable;
 import l2j.loginserver.network.LoginClient;
@@ -60,6 +61,7 @@ public class LoginServer
 		
 		LOG.config("Login Server Configs");
 		Config.load();
+		DatabaseManager.getInstance();
 		ServerNameTable.getInstance().load();
 		LoginController.load();
 		GameServerTable.getInstance();
