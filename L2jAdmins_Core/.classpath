@@ -11,12 +11,12 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="dist/libs/ecj-4.4.jar"/>
-	<classpathentry kind="lib" path="dist/libs/HikariCP-2.7.8.jar"/>
 	<classpathentry kind="lib" path="dist/libs/mchange-commons-java-0.2.7.jar"/>
 	<classpathentry kind="lib" path="dist/libs/mysql-connector-java-5.1.35-bin.jar"/>
 	<classpathentry kind="lib" path="dist/libs/slf4j-api-1.7.25.jar"/>
 	<classpathentry kind="lib" path="dist/libs/slf4j-nop-1.7.25.jar"/>
 	<classpathentry kind="lib" path="dist/libs/L2J_EngineMods.jar"/>
 	<classpathentry kind="lib" path="dist/libs/mariadb-java-client-2.4.0.jar"/>
+	<classpathentry kind="lib" path="dist/libs/HikariCP-3.3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
