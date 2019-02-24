@@ -81,7 +81,7 @@ public class PanelGui extends AbstractMod
 	@Override
 	public void onSendData(ByteBuffer data)
 	{
-		if (data != null)
+		if (gui.isVisible() && data != null)
 		{
 			Gui.getStats().addSended(data.array());
 		}
@@ -90,7 +90,7 @@ public class PanelGui extends AbstractMod
 	@Override
 	public void onReceiveData(ByteBuffer data)
 	{
-		if (data != null)
+		if (gui.isVisible() && data != null)
 		{
 			Gui.getStats().addReceive(data.array());
 		}
@@ -128,7 +128,10 @@ public class PanelGui extends AbstractMod
 	@Override
 	public boolean onChat(PlayerHolder ph, String chat)
 	{
-		Gui.getUtils().addChat(ph, chat);
+		if (gui.isVisible())
+		{
+			Gui.getUtils().addChat(ph, chat);
+		}
 		return super.onChat(ph, chat);
 	}
 	
