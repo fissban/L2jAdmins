@@ -60,11 +60,10 @@ public abstract class AbstractAI
 			// get target
 			L2Character follow = followTarget;
 			
-			// target does not exist or is out of max follow/attack/cast range
-			if ((follow == null) || !activeActor.isInsideRadius(follow, 3000, true, false))
+			// target does not exist
+			if (follow == null)
 			{
 				setIntention(CtrlIntentionType.IDLE);
-				clientActionFailed();
 				return;
 			}
 			
@@ -131,6 +130,11 @@ public abstract class AbstractAI
 	public CtrlIntentionType getIntention()
 	{
 		return currentIntention;
+	}
+	
+	public boolean hasIntention(CtrlIntentionType ctrlIntentionType)
+	{
+		return currentIntention == ctrlIntentionType;
 	}
 	
 	/**
