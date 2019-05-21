@@ -464,25 +464,27 @@ public class AttackableAI extends CharacterAI implements Runnable
 			int y1 = npc.getSpawn().getY();
 			int z1 = npc.getSpawn().getZ();
 			
-			final int range = Config.MAX_DRIFT_RANGE;
+			boolean inSpawnRange = false;
+			if (npc.getX() == x1 && npc.getY() == y1)
+			{
+				inSpawnRange = true;
+			}
 			
 			// If the L2MonsterInstance is close to his spawn, he will walk back to the
-			if (GeoEngine.getInstance().canMoveToTarget(npc.getX(), npc.getY(), npc.getZ(), x1, y1, z1))
-			// if (npc.isInsideRadius(x1, y1, z1, range, true, false))
+			if (!inSpawnRange && GeoEngine.getInstance().canMoveToTarget(npc.getX(), npc.getY(), npc.getZ(), x1, y1, z1))
 			{
 				npc.setIsReturningToSpawnPoint(true);
 				npc.setWalking();
 				moveTo(x1, y1, z1);
-				// setIntention(CtrlIntentionType.MOVE_TO, new LocationHolder(x1, y1, z1));
 			}
 			else
 			{
 				// Order to the L2MonsterInstance to random walk
-				x1 = Rnd.get(range * 2); // x
-				y1 = Rnd.get(x1, range * 2); // distance
+				x1 = Rnd.get(Config.MAX_DRIFT_RANGE * 2); // x
+				y1 = Rnd.get(x1, Config.MAX_DRIFT_RANGE * 2); // distance
 				y1 = (int) Math.sqrt((y1 * y1) - (x1 * x1)); // y
-				x1 += npc.getSpawn().getX() - range;
-				y1 += npc.getSpawn().getY() - range;
+				x1 += npc.getSpawn().getX() - Config.MAX_DRIFT_RANGE;
+				y1 += npc.getSpawn().getY() - Config.MAX_DRIFT_RANGE;
 				z1 = npc.getZ();
 				
 				// Move the actor to Location (x,y,z) server side AND client side by sending Server->Client packet CharMoveToLocation (broadcast)
