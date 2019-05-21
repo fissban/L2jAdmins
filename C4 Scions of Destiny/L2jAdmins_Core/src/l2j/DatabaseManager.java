@@ -67,7 +67,7 @@ public class DatabaseManager
 			}
 			catch (SQLException e)
 			{
-				LOG.warning("L2DatabaseFactory: getConnection() failed, trying again " + e);
+				LOG.warning("DatabaseManager: getConnection() failed, trying again " + e);
 			}
 		}
 		return con;
