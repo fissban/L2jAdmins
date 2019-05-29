@@ -38,6 +38,7 @@ public class FavoriteCommunityBoard extends AbstractMod
 		switch (getState())
 		{
 			case START:
+				loadValuesFromDb();
 				readAllRebirths();
 				break;
 			
