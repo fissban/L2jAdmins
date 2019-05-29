@@ -1185,11 +1185,8 @@ public class PcInventory extends Inventory
 	 */
 	public void sendUpdateItem(ItemInstance item)
 	{
-		var iu = new InventoryUpdate();
-		iu.addItems(item);
-		
 		// Send Packet InventoryUpdate
-		owner.sendPacket(iu);
+		owner.sendPacket(new InventoryUpdate(item));
 		// Update CurLoad
 		owner.updateCurLoad();
 	}
