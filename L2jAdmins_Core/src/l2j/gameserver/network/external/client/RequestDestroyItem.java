@@ -10,6 +10,7 @@ import l2j.gameserver.illegalaction.IllegalAction;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.AClientPacket;
+import l2j.gameserver.network.external.server.ItemList;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**
@@ -104,6 +105,8 @@ public class RequestDestroyItem extends AClientPacket
 		if (itemToRemove.isEquipped())
 		{
 			activeChar.getInventory().unEquipItemInSlotAndRecord(itemToRemove.getEquipSlot());
+			// send update items equippeds
+			activeChar.sendPacket(new ItemList(activeChar, true));
 		}
 		
 		int itemId = itemToRemove.getId();
