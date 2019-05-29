@@ -240,7 +240,7 @@ public class FavoriteCommunityBoard extends AbstractMod
 		// Check that the character is at the highest level.
 		if (ph.getInstance().getLevel() < (ExperienceData.getInstance().getMaxLevel() - 1))
 		{
-			hb.append("<br><br><br><br>", Html.fontColor("LEVEL", "You have not yet reached the maximum level!<br>"));
+			hb.append("<br><br><br><br>", Html.fontColor("LEVEL", "You have not yet reached the maximum level!"), "<br>");
 			hb.append("Remember that the level to be reborn is ", ExperienceData.getInstance().getMaxLevel() - 1);
 			return hb.toString();
 		}
@@ -250,7 +250,7 @@ public class FavoriteCommunityBoard extends AbstractMod
 		
 		if (ph.getInstance().getInventory().getAdena() < priceForNextRebirth)
 		{
-			hb.append("<br><br><br><br>", Html.fontColor("LEVEL", "You have not managed to gather enough NCoins to complete the rebirth!<br>"));
+			hb.append("<br><br><br><br>", Html.fontColor("LEVEL", "You have not managed to gather enough Adena to complete the rebirth!<br>"));
 			return hb.toString();
 		}
 		
@@ -291,7 +291,7 @@ public class FavoriteCommunityBoard extends AbstractMod
 		hb.append("<br>");
 		hb.append("<center>");
 		hb.append("Bienvenido ", Html.fontColor("LEVEL", ph.getName()), " al sistema de rebirth.<br>");
-		hb.append("Si has logrado llegar al nivel ", Html.fontColor("LEVEL", ExperienceData.getInstance().getMaxLevel()), ", estas listo para poder renacer<br>");
+		hb.append("Si has logrado llegar al nivel ", Html.fontColor("LEVEL", ExperienceData.getInstance().getMaxLevel() - 1), ", estas listo para poder renacer<br>");
 		hb.append("y convertirte en un guerrero mas poderoso....<br>");
 		hb.append("quizas hasta podrias alcanzar el poder de un dios!<br>");
 		hb.append("<br>");
