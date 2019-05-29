@@ -51,7 +51,10 @@ public class InventoryUpdate extends AServerPacket
 	{
 		for (var item : items)
 		{
-			itemsList.add(new ItemInfoHolder(item));
+			synchronized (item)
+			{
+				itemsList.add(new ItemInfoHolder(item));
+			}
 		}
 	}
 	
@@ -59,7 +62,7 @@ public class InventoryUpdate extends AServerPacket
 	{
 		for (var item : items)
 		{
-			if (item != null)
+			synchronized (item)
 			{
 				itemsList.add(new ItemInfoHolder(item));
 			}
