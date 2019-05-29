@@ -430,7 +430,10 @@ public abstract class ItemContainer
 					item.updateDatabase();
 				}
 				
-				refreshWeight();
+				if (item.getItem().getWeight() > 0)
+				{
+					refreshWeight();
+				}
 				
 				return item;
 			}
