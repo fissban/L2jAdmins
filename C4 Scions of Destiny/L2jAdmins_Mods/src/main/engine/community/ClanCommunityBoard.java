@@ -55,11 +55,11 @@ public class ClanCommunityBoard extends AbstractMod
 		
 		if (command.startsWith("_bbsclan"))
 		{
-			StringTokenizer st = new StringTokenizer(command, " ");
+			var st = new StringTokenizer(command, " ");
 			// bbsclan
 			st.nextToken();
 			// bypass
-			String bypass = st.hasMoreTokens() ? st.nextToken() : "listClans";
+			var bypass = st.hasMoreTokens() ? st.nextToken() : "listClans";
 			
 			var hb = new HtmlBuilder(HtmlType.COMUNITY);
 			hb.append(Html.START);
@@ -240,13 +240,14 @@ public class ClanCommunityBoard extends AbstractMod
 							{
 								player.broadcastPacket(new MagicSkillUse(player, player, 5103, 1, 0, 0));
 								hb.append("Felicitaciones, has subido con exito tu clan");
-								hb.append("<button value=Back action=\"bypass _bbsclan myClan\" width=93 height=22 back=", L2UI_CH3.bigbutton_down, " fore=", L2UI_CH3.bigbutton, "></td>");
+								hb.append("<button value=\"Back\" action=\"bypass _bbsclan myClan\" width=93 height=22 back=", L2UI_CH3.bigbutton_down, " fore=", L2UI_CH3.bigbutton, ">");
 							}
 							else
 							{
 								hb.append("Lo siento, no cumples con los requisitos!");
-								hb.append("<button value=Back action=\"bypass _bbsclan myClan\" width=93 height=22 back=", L2UI_CH3.bigbutton_down, " fore=", L2UI_CH3.bigbutton, "></td>");
+								hb.append("<button value=\"Back\" action=\"bypass _bbsclan myClan\" width=93 height=22 back=", L2UI_CH3.bigbutton_down, " fore=", L2UI_CH3.bigbutton, ">");
 							}
+							break;
 						}
 						case "learnSkill":
 						{
@@ -344,12 +345,8 @@ public class ClanCommunityBoard extends AbstractMod
 		hb.append("<tr><td width=93 align=center><button value=\"Create Ally\" action=\"bypass _bbsclan myClan createAllyPage\" width=93 height=22 back=", L2UI_CH3.bigbutton_down, " fore=", L2UI_CH3.bigbutton, "></td></tr>");
 		hb.append("<tr><td width=93 align=center><button value=\"Disolve Ally\" action=\"bypass _bbsclan myClan disolveClanPage\" width=93 height=22 back=", L2UI_CH3.bigbutton_down, " fore=", L2UI_CH3.bigbutton, "></td></tr>");
 		hb.append("<tr><td width=93 align=center><button value=\"Disolve Clan\" action=\"bypass _bbsclan myClan disolveAllyPage\" width=93 height=22 back=", L2UI_CH3.bigbutton_down, " fore=", L2UI_CH3.bigbutton, "></td></tr>");
-		hb.append("<tr><td width=93 align=center><button value=\"Create Academy\" action=\"bypass _bbsclan myClan createAcademyPage\" width=93 height=22 back=", L2UI_CH3.bigbutton_down, " fore=", L2UI_CH3.bigbutton, "></td></tr>");
-		hb.append("<tr><td width=93 align=center><button value=\"Create Royal\" action=\"bypass _bbsclan myClan createRoyalPage\" width=93 height=22 back=", L2UI_CH3.bigbutton_down, " fore=", L2UI_CH3.bigbutton, "></td></tr>");
-		hb.append("<tr><td width=93 align=center><button value=\"Create Knight\" action=\"bypass _bbsclan myClan createKnightPage\" width=93 height=22 back=", L2UI_CH3.bigbutton_down, " fore=", L2UI_CH3.bigbutton, "></td></tr>");
 		hb.append("<tr><td width=93 align=center><button value=\"Change Leader\" action=\"bypass _bbsclan myClan changeClanLeaderPage\" width=93 height=22 back=", L2UI_CH3.bigbutton_down, " fore=", L2UI_CH3.bigbutton, "></td></tr>");
 		hb.append("<tr><td width=93 align=center><button value=\"Increase Lvl\" action=\"bypass _bbsclan myClan increaseClanLvlPage\" width=93 height=22 back=", L2UI_CH3.bigbutton_down, " fore=", L2UI_CH3.bigbutton, "></td></tr>");
-		hb.append("<tr><td width=93 align=center><button value=\"Learn Skills\" action=\"bypass _bbsclan myClan learnSkill\" width=93 height=22 back=", L2UI_CH3.bigbutton_down, " fore=", L2UI_CH3.bigbutton, "></td></tr>");
 		hb.append("</table>");
 		return hb.toString();
 	}
@@ -570,47 +567,37 @@ public class ClanCommunityBoard extends AbstractMod
 	private static String increaseClanLvlPage(L2PcInstance player)
 	{
 		var hb = new HtmlBuilder(HtmlType.COMUNITY);
-		hb.append("Requiere:");
+		
+		hb.append("Requiere:<br1>");
 		
 		switch (player.getClan().getLevel())
 		{
 			case 0:
-				hb.append(Html.fontColor("LEVEL", "SP: "), "30.000");
+				hb.append(Html.fontColor("LEVEL", "SP: "), "30.000", " - ");
 				hb.append(Html.fontColor("LEVEL", "Adena: "), "650.000");
 				break;
 			case 1:
-				hb.append(Html.fontColor("LEVEL", "SP: "), "150.000");
+				hb.append(Html.fontColor("LEVEL", "SP: "), "150.000", " - ");
 				hb.append(Html.fontColor("LEVEL", "Adena: "), "2.500.000");
 				break;
 			case 2:
-				hb.append(Html.fontColor("LEVEL", "SP: "), "500.000");
-				hb.append(Html.fontColor("LEVEL", "Blood Mark: "), "1");
+				hb.append(Html.fontColor("LEVEL", "SP: "), "500.000", " - ");
+				hb.append(Html.fontColor("LEVEL", "Proof of Blood: "), "1");
 				break;
 			case 3:
-				hb.append(Html.fontColor("LEVEL", "SP: "), "1.400.000");
-				hb.append(Html.fontColor("LEVEL", "Alliance Manifesto: "), "1");
+				hb.append(Html.fontColor("LEVEL", "SP: "), "1.400.000", " - ");
+				hb.append(Html.fontColor("LEVEL", "Proof of Alliance: "), "1");
 				break;
 			case 4:
-				hb.append(Html.fontColor("LEVEL", "SP: 3.500.000"), "");
-				hb.append(Html.fontColor("LEVEL", "Seal of Aspiration: 1"), "");
-				break;
-			case 5:
-				hb.append(Html.fontColor("LEVEL", "Reputation Score: "), "10.000");
-				hb.append(Html.fontColor("LEVEL", "Member Count: "), "30");
-				break;
-			case 6:
-				hb.append(Html.fontColor("LEVEL", "Reputation Score: "), "20.000");
-				hb.append(Html.fontColor("LEVEL", "Member Count: "), "80");
-				break;
-			case 7:
-				hb.append(Html.fontColor("LEVEL", "Reputation Score: "), "40.000");
-				hb.append(Html.fontColor("LEVEL", "Member Count: "), "120");
+				hb.append(Html.fontColor("LEVEL", "SP: 3.500.000"), " - ");
+				hb.append(Html.fontColor("LEVEL", "Proof of Aspiration: "), "1");
 				break;
 			default:
 				hb.append(Html.fontColor("LEVEL", "Maximo Nivel"));
 		}
 		
-		hb.append("<button value=\"Increase Level\" action=\"bypass _bbsclan increaseClanLvl\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, ">");
+		hb.append("<button value=\"Increase Level\" action=\"bypass _bbsclan myClan increaseClanLvl\" width=75 height=21 back=", L2UI_CH3.Btn1_normalOn, " fore=", L2UI_CH3.Btn1_normal, ">");
+		
 		return hb.toString();
 	}
 	
@@ -887,32 +874,41 @@ public class ClanCommunityBoard extends AbstractMod
 	
 	private static boolean increaseClanLevel(L2PcInstance player)
 	{
-		Clan clan = player.getClan();
+		var clan = player.getClan();
 		
-		boolean increaseClanLevel = false;
+		var increaseClanLevel = false;
 		
+		System.out.println("M -> increaseClanLevel - LVL:" + clan.getLevel());
 		switch (clan.getLevel())
 		{
 			case 0:
 				// upgrade to 1
 				if ((player.getSp() >= 30000) && (player.getInventory().getAdena() >= 650000))
 				{
-					if (player.getInventory().reduceAdena("ClanLvl", 650000, null, true))
-					{
-						player.setSp(player.getSp() - 30000);
-						increaseClanLevel = true;
-					}
+					player.getInventory().reduceAdena("ClanLvl", 650000, null, true);
+					player.setSp(player.getSp() - 30000);
+					increaseClanLevel = true;
+				}
+				else
+				{
+					player.sendMessage("Upgrade Clan lvl 1 need:");
+					player.sendMessage("Skill Point: 30000");
+					player.sendMessage("Adena: 650000");
 				}
 				break;
 			case 1:
 				// upgrade to 2
 				if ((player.getSp() >= 150000) && (player.getInventory().getAdena() >= 2500000))
 				{
-					if (player.getInventory().reduceAdena("ClanLvl", 2500000, null, true))
-					{
-						player.setSp(player.getSp() - 150000);
-						increaseClanLevel = true;
-					}
+					player.getInventory().reduceAdena("ClanLvl", 2500000, null, true);
+					player.setSp(player.getSp() - 150000);
+					increaseClanLevel = true;
+				}
+				else
+				{
+					player.sendMessage("Upgrade Clan lvl 2 need:");
+					player.sendMessage("Skill Point: 150000");
+					player.sendMessage("Adena: 2500000");
 				}
 				break;
 			case 2:
@@ -920,11 +916,15 @@ public class ClanCommunityBoard extends AbstractMod
 				if ((player.getSp() >= 500000) && (player.getInventory().getItemById(1419) != null))
 				{
 					// itemid 1419 == proof of blood
-					if (player.getInventory().destroyItemByItemId("ClanLvl", 1419, 1, player.getTarget(), false))
-					{
-						player.setSp(player.getSp() - 500000);
-						increaseClanLevel = true;
-					}
+					player.getInventory().destroyItemByItemId("ClanLvl", 1419, 1, player.getTarget(), false);
+					player.setSp(player.getSp() - 500000);
+					increaseClanLevel = true;
+				}
+				else
+				{
+					player.sendMessage("Upgrade Clan lvl 3 need:");
+					player.sendMessage("Skill Point: 500000");
+					player.sendMessage("Proof of Blood: 1");
 				}
 				break;
 			case 3:
@@ -932,11 +932,15 @@ public class ClanCommunityBoard extends AbstractMod
 				if ((player.getSp() >= 1400000) && (player.getInventory().getItemById(3874) != null))
 				{
 					// itemid 3874 == proof of alliance
-					if (player.getInventory().destroyItemByItemId("ClanLvl", 3874, 1, player.getTarget(), false))
-					{
-						player.setSp(player.getSp() - 1400000);
-						increaseClanLevel = true;
-					}
+					player.getInventory().destroyItemByItemId("ClanLvl", 3874, 1, player.getTarget(), false);
+					player.setSp(player.getSp() - 1400000);
+					increaseClanLevel = true;
+				}
+				else
+				{
+					player.sendMessage("Upgrade Clan lvl 4 need:");
+					player.sendMessage("Skill Point: 1400000");
+					player.sendMessage("Proof of Alliance: 1");
 				}
 				break;
 			case 4:
@@ -944,12 +948,15 @@ public class ClanCommunityBoard extends AbstractMod
 				if ((player.getSp() >= 3500000) && (player.getInventory().getItemById(3870) != null))
 				{
 					// itemid 3870 == proof of aspiration
-					if (player.getInventory().destroyItemByItemId("ClanLvl", 3870, 1, player.getTarget(), false))
-					{
-						player.setSp(player.getSp() - 3500000);
-						increaseClanLevel = true;
-					}
-					
+					player.getInventory().destroyItemByItemId("ClanLvl", 3870, 1, player.getTarget(), false);
+					player.setSp(player.getSp() - 3500000);
+					increaseClanLevel = true;
+				}
+				else
+				{
+					player.sendMessage("Upgrade Clan lvl 5 need:");
+					player.sendMessage("Skill Point: 3500000");
+					player.sendMessage("Proof of Aspiration: 1");
 				}
 				break;
 		}
@@ -957,7 +964,7 @@ public class ClanCommunityBoard extends AbstractMod
 		if (increaseClanLevel)
 		{
 			// the player should know that he has less sp now :p
-			StatusUpdate su = new StatusUpdate(player.getObjectId());
+			var su = new StatusUpdate(player.getObjectId());
 			su.addAttribute(StatusUpdateType.SP, player.getSp());
 			player.sendPacket(su);
 			player.sendPacket(new ItemList(player, false));
