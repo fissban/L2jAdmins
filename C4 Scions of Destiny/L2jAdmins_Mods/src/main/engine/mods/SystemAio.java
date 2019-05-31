@@ -103,9 +103,10 @@ public class SystemAio extends AbstractMod
 				{
 					return;
 				}
-				
-				informeExpireAio(ph, 1);
+				// remove aio
 				removeAio(ph);
+				// informe new expire aio HTML
+				informeExpireAio(ph, 1);
 				break;
 			}
 		}
@@ -157,7 +158,13 @@ public class SystemAio extends AbstractMod
 					return true;
 				}
 				
-				informeExpireAio((PlayerHolder) ph.getTarget(), 1);
+				var aio = (PlayerHolder) ph.getTarget();
+				// Informed admin
+				UtilMessage.sendCreatureMsg(ph, SayType.TELL, "[System]", "player: " + aio.getName() + " is not Aio");
+				// Informed player
+				UtilMessage.sendCreatureMsg(aio, SayType.TELL, "[System]", "Dear " + aio.getName() + " your are not Aio");
+				
+				informeExpireAio(aio, 1);
 				removeAio((PlayerHolder) ph.getTarget());
 				return true;
 			}
@@ -189,8 +196,10 @@ public class SystemAio extends AbstractMod
 				// Create calendar
 				var time = new GregorianCalendar();
 				time.add(Calendar.DAY_OF_YEAR, Integer.parseInt(days));
-				// save values in DB
+				// save time in DB
 				setValueDB(aio, "aio", time.getTimeInMillis() + "");
+				// save lvl in DB
+				setValueDB(aio, "aio lvl", ph.getInstance().getLevel() + "");
 				// saved state in memory
 				aio.setAio(true, time.getTimeInMillis());
 				
@@ -202,9 +211,6 @@ public class SystemAio extends AbstractMod
 				UtilMessage.sendCreatureMsg(aio, SayType.TELL, "[System]", "Dear " + aio.getName() + " your are now Aio");
 				
 				informeExpireAio(aio, 1);
-				// give duals
-				UtilInventory.giveItems(aio, ConfigData.AIO_ITEM_ID, 1, 15);
-				
 				return true;
 			}
 		}
@@ -344,16 +350,28 @@ public class SystemAio extends AbstractMod
 			ph.getInstance().addSkill(bh.getSkill(), false);
 		}
 		ph.getInstance().broadcastUserInfo();
+		
+		// give duals
+		UtilInventory.giveItems(ph, ConfigData.AIO_ITEM_ID, 1, 15);
 	}
 	
 	public void removeAio(PlayerHolder ph)
 	{
 		// remove state in memory
 		ph.setAio(false, 0);
+		// set old level for player
+		var lvl = getValueDB(ph, "aio lvl").getInt();
+		if (lvl > 0)
+		{
+			ph.getInstance().getStat().addExp(ph.getInstance().getStat().getExpForLevel(lvl));
+		}
 		// init title
 		ph.getInstance().setTitle("");
+		// update user info in client
 		ph.getInstance().broadcastUserInfo();
-		
+		// take duals
+		UtilInventory.takeItems(ph, ConfigData.AIO_ITEM_ID, 1);
+		// save in memory
 		setValueDB(ph, "aio", System.currentTimeMillis() + "");
 	}
 	
@@ -361,7 +379,7 @@ public class SystemAio extends AbstractMod
 	{
 		var hb = new HtmlBuilder(HtmlType.HTML);
 		
-		hb.append("<html><body>");
+		hb.append(Html.START);
 		hb.append("<br>");
 		hb.append(Html.head("All AIO Players"));
 		hb.append("<br>");
@@ -424,7 +442,7 @@ public class SystemAio extends AbstractMod
 		hb.append("<img src=L2UI.SquareGray width=264 height=1>");
 		hb.append("</center>");
 		
-		hb.append("</body></html>");
+		hb.append(Html.END);
 		sendHtml(null, hb, player);
 	}
 	
