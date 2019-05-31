@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
+import l2j.gameserver.model.actor.L2Summon;
 import l2j.gameserver.model.actor.ai.enums.CtrlEventType;
 import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -70,7 +71,20 @@ public abstract class AbstractAI
 			// target is not in range, trigger proper AI
 			if (!activeActor.isInsideRadius(follow, range, true, false))
 			{
-				moveToPawn(follow, range);
+				if (!activeActor.isInsideRadius(followTarget, 3000, true, false))
+				{
+					// if the target is too far (maybe also teleported)
+					if (activeActor instanceof L2Summon)
+					{
+						((L2Summon) activeActor).setFollowStatus(false);
+					}
+					
+					setIntention(CtrlIntentionType.IDLE);
+				}
+				else
+				{
+					moveToPawn(follow, range);
+				}
 			}
 		}
 	}
