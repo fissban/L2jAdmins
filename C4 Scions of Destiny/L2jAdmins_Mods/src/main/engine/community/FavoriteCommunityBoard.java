@@ -91,7 +91,7 @@ public class FavoriteCommunityBoard extends AbstractMod
 						{
 							case "add":
 							{
-								if (ph.getMasteryPoints() <= 0)
+								if (ph.getFreeStatsPoints() <= 1)
 								{
 									UtilMessage.sendCreatureMsg(ph, SayType.TELL, "[REBIRTH]", "You do not have enough points.!");
 									break;
@@ -233,7 +233,7 @@ public class FavoriteCommunityBoard extends AbstractMod
 		// Check the amount of rebirths of the character and prevent it from doing more than desired.
 		if (ph.getRebirth() >= ConfigData.MAX_REBIRTH)
 		{
-			hb.append("<br><br><br><br>", Html.fontColor("LEVEL", "You can not be reborn any more times!<br>"));
+			hb.append("<br><br><br><br>", Html.fontColor("LEVEL", "You can not be reborn any more times!"), "<br>");
 			hb.append("Remember that the maximum rebirths is ", ConfigData.MAX_REBIRTH);
 			return hb.toString();
 		}
@@ -250,7 +250,7 @@ public class FavoriteCommunityBoard extends AbstractMod
 		
 		if (ph.getInstance().getInventory().getAdena() < priceForNextRebirth)
 		{
-			hb.append("<br><br><br><br>", Html.fontColor("LEVEL", "You have not managed to gather enough Adena to complete the rebirth!<br>"));
+			hb.append("<br><br><br><br>", Html.fontColor("LEVEL", "You have not managed to gather enough Adena to complete the rebirth!"), "<br>");
 			return hb.toString();
 		}
 		
@@ -279,7 +279,7 @@ public class FavoriteCommunityBoard extends AbstractMod
 		}
 		
 		// Send message about the new update
-		hb.append("<br><br><br><br>", Html.fontColor("LEVEL", "Congratulations, you have successfully rebirth!<br>"));
+		hb.append("<br><br><br><br>", Html.fontColor("LEVEL", "Congratulations, you have successfully rebirth!"), "<br>");
 		hb.append("Do not forget to add your points and improve your masters<br>");
 		// TODO Could you show the points you won?
 		return hb.toString();
@@ -420,15 +420,15 @@ public class FavoriteCommunityBoard extends AbstractMod
 			try
 			{
 				// Obtain and save the number of masters points to be distributed
-				ph.setMasteryPoints(getValueDB(ph.getObjectId(), "MaestriaPoints").getInt());
+				// ph.setMasteryPoints(getValueDB(ph.getObjectId(), "MaestriaPoints").getInt());
 				
-				for (MaestriaType m : MaestriaType.values()) // Maestrias level
-				{
-					ph.setMaestriaLevel(m, getValueDB(ph.getObjectId(), "MaestriaLevel" + m).getInt());
-				}
+				// for (MaestriaType m : MaestriaType.values()) // Maestrias level
+				// {
+				// ph.setMaestriaLevel(m, getValueDB(ph.getObjectId(), "MaestriaLevel" + m).getInt());
+				// }
 				
 				// Obtain and save the number of masters points to be distributed
-				ph.setMasteryPoints(getValueDB(ph.getObjectId(), "stats").getInt());
+				ph.modifyFreeStatsPoints(MathType.SET, getValueDB(ph.getObjectId(), "stats").getInt());
 				
 				// Get the points that were added to each stat
 				int stat_str = getValueDB(ph.getObjectId(), "STAT_STR").getInt();
