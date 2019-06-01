@@ -5,6 +5,7 @@ import java.util.concurrent.Future;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.zone.Zone;
+import l2j.gameserver.network.external.server.SystemMessage;
 
 /**
  * A damage zone
@@ -13,6 +14,7 @@ import l2j.gameserver.model.zone.Zone;
 public class DamageZone extends Zone
 {
 	private int damagePerSec;
+	private int systemMessage;
 	private Future<?> task;
 	
 	public DamageZone(int id)
@@ -21,14 +23,19 @@ public class DamageZone extends Zone
 		
 		// Setup default damage
 		damagePerSec = 100;
+		systemMessage = 686;
 	}
 	
 	@Override
 	public void setParameter(String name, String value)
 	{
-		if (name.equals("dmgSec"))
+		if (name.equals("Damage"))
 		{
 			damagePerSec = Integer.parseInt(value);
+		}
+		if (name.equals("Message"))
+		{
+			systemMessage = Integer.parseInt(value);
 		}
 		else
 		{
@@ -49,6 +56,7 @@ public class DamageZone extends Zone
 					if ((temp != null) && !temp.isDead())
 					{
 						temp.reduceCurrentHp(getDamagePerSecond(), null);
+						temp.sendPacket(new SystemMessage(systemMessage));
 					}
 				}
 			}, 10, 1000);
