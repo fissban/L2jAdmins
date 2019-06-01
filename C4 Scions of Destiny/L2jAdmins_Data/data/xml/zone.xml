@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list>
-
+	
 <!-- Jail -->
 	<zone id="11000" type="JailZone" shape="Cuboid" minZ="-3200" maxZ="-2800"/>
 
@@ -1329,4 +1329,111 @@
 	<zone id="15186" type="WaterZone" shape="NPoly" minZ="-2638" maxZ="-2382"/> <!-- [22_16_16] water zone-->
 	<zone id="15187" type="WaterZone" shape="NPoly" minZ="-4810" maxZ="-3810"/> <!-- [22_17_1] water zone-->
 	<zone id="15188" type="WaterZone" shape="NPoly" minZ="-4810" maxZ="-3810"/> <!-- [22_17_2] water zone-->
+	
+	
+<!-- fireswamp_1 -->
+	<zone id="16000" type="EffectZone" shape="NPoly" minZ="-4752" maxZ="-4352">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
+<!-- fireswamp_2 -->
+	<zone id="16001" type="EffectZone" shape="NPoly" minZ="-4908" maxZ="-4508">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
+<!-- fireswamp_3 -->
+	<zone id="16002" type="EffectZone" shape="NPoly" minZ="-4776" maxZ="-4376">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
+<!-- fireswamp_4 -->
+	<zone id="16003" type="EffectZone" shape="NPoly" minZ="-4888" maxZ="-4288">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
+<!-- fireswamp_5 -->
+	<zone id="16004" type="EffectZone" shape="NPoly" minZ="-4672" maxZ="-4272">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
+<!-- fireswamp_6 -->
+	<zone id="16005" type="EffectZone" shape="NPoly" minZ="-4676" maxZ="-4276">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
+<!-- fireswamp_7 -->
+	<zone id="16006" type="EffectZone" shape="NPoly" minZ="-4728" maxZ="-4328">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
+<!-- fireswamp_8 -->
+	<zone id="16007" type="EffectZone" shape="NPoly" minZ="-4636" maxZ="-4036">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
+<!-- fireswamp_9 -->
+	<zone id="16008" type="EffectZone" shape="NPoly" minZ="-4700" maxZ="-4300">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
+<!-- fireswamp_10 -->
+	<zone id="16009" type="EffectZone" shape="NPoly" minZ="-4572" maxZ="-3972">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
+<!-- fireswamp_11 -->
+	<zone id="16010" type="EffectZone" shape="NPoly" minZ="-4572" maxZ="-4172">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
+<!-- fireswamp_12 -->
+	<zone id="16011" type="EffectZone" shape="NPoly" minZ="-4476" maxZ="-2976">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
+<!-- fireswamp_13 -->
+	<zone id="16012" type="EffectZone" shape="NPoly" minZ="-4604" maxZ="-4204">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
+<!-- fireswamp_14 -->
+	<zone id="16013" type="EffectZone" shape="NPoly" minZ="-3476" maxZ="-3076">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
+<!-- fireswamp_15 -->
+	<zone id="16014" type="EffectZone" shape="NPoly" minZ="-3208" maxZ="-1608">
+		<stat name="SkillId" val="4150"/>
+		<stat name="SkillLevel" val="5"/>
+		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
+	</zone>
 </list>
