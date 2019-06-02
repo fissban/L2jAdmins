@@ -1434,6 +1434,7 @@
 		<stat name="SkillId" val="4150"/>
 		<stat name="SkillLevel" val="5"/>
 		<stat name="InitialDelay" val="1"/>
+		<stat name="Reuse" val="3000" />
 	</zone>
 	<!-- godad_fire_zone1 -->
 	<zone id="16015" type="EffectZone" shape="NPoly" minZ="-1896" maxZ="-1696">

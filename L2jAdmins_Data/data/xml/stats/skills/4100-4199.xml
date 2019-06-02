@@ -622,7 +622,7 @@
 	  <set name="effectPower" val="#power"/> <!-- land rate -->
 	  <set name="saveVs" val="MEN"/>
 	  <for>
-	    <effect count="15" name="DamOverTime" time="1" val="#power"/>
+	    <effect count="15" name="DamOverTime" time="1" val="#power" abnormal="POISON"/>
 	  </for>
 	</skill>
 	<skill id="4149" levels="12" name="Bleed">
@@ -639,7 +639,7 @@
 	  <set name="effectPower" val="#power"/> <!-- land rate -->
 	  <set name="saveVs" val="CON"/>
 	  <for>
-	    <effect count="15" name="DamOverTime" time="1" val="#power"/>
+	    <effect count="15" name="DamOverTime" time="1" val="#power" abnormal="BLEEDING"/>
 	  </for>
 	</skill>
 	<skill id="4150" levels="12" name="Flame">
@@ -656,7 +656,7 @@
 	  <set name="effectPower" val="#power"/> <!-- land rate -->
 	  <set name="saveVs" val="WIT"/>
 	  <for>
-	    <effect count="15" name="DamOverTime" time="1" val="#power"/>
+	    <effect count="15" name="DamOverTime" time="1" val="#power" abnormal="BLEEDING"/>
 	  </for>
 	</skill>
 	<skill id="4151" levels="12" name="NPC Windstrike - Magic">
