@@ -121,6 +121,9 @@ public abstract class Skill
 	private final EffectType effectType;
 	private final int effectPower;
 	
+	// Cancel skills ids use in EffectNegateSpring
+	private final List<Integer> negateIds = new ArrayList<>();
+	
 	private final boolean isPotion;
 	private final SkillElementType element;
 	
@@ -211,6 +214,16 @@ public abstract class Skill
 		}
 		
 		maxNegatedEffects = set.getInteger("maxNegated", 0);
+		
+		String ids = set.getString("negateIds", "");
+		
+		if (!ids.isEmpty())
+		{
+			for (String id : ids.split(" "))
+			{
+				negateIds.add(Integer.parseInt(id));
+			}
+		}
 		
 		coolTime = set.getInteger("coolTime", 0);
 		staticHitTime = set.getBool("staticHitTime", false);
@@ -443,6 +456,11 @@ public abstract class Skill
 	public final Set<EffectType> getNegateStats()
 	{
 		return negateStats;
+	}
+	
+	public List<Integer> getNegateIds()
+	{
+		return negateIds;
 	}
 	
 	/**
