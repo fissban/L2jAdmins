@@ -80,17 +80,24 @@ public class EffectZone extends Zone
 					{
 						task = ThreadPoolManager.scheduleAtFixedRate(() ->
 						{
-							for (L2Character temp : characterList.values())
+							for (L2Character cha : characterList.values())
 							{
-								if (temp == null)
+								if (cha == null)
+								{
+									continue;
+								}
+								
+								// ignore if character get effect
+								if (cha.getEffect(skillId) != null)
 								{
 									continue;
 								}
 								
 								Skill skill = SkillData.getInstance().getSkill(skillId, skillLevel);
+								
 								if (skill != null)
 								{
-									skill.getEffects(temp, temp);
+									skill.getEffects(cha, cha);
 								}
 							}
 						}, initialDelay, reuse);
