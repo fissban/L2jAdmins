@@ -542,10 +542,9 @@ public final class PacketHandler implements IPacketHandler<GameClient>, IClientF
 					case 0xaf:
 						msg = new RequestRecipeItemMakeSelf();
 						break;
-						
-					// case 0xb0:
-					// msg = new RequestRecipeShopManageList();
-					// break;
+					case 0xb0:
+						msg = new RequestRecipeShopManageList();
+						break;
 					case 0xb1:
 						msg = new RequestRecipeShopMessageSet();
 						break;
