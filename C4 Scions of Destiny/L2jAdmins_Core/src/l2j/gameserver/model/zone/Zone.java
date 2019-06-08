@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.instance.enums.InstanceType;
 import l2j.gameserver.network.AServerPacket;
 import main.EngineModsManager;
 
@@ -21,6 +22,7 @@ public abstract class Zone
 	private final int id;
 	protected ZoneForm zone;
 	public Map<Integer, L2Character> characterList = new ConcurrentHashMap<>();
+	private InstanceType _target = InstanceType.L2Character; // default all chars
 	
 	/** Parameters to affect specific characters */
 	private boolean checkAffected;
@@ -127,6 +129,10 @@ public abstract class Zone
 				classType = 2;
 			}
 		}
+		else if (name.equals("targetClass"))
+		{
+			_target = Enum.valueOf(InstanceType.class, value);
+		}
 	}
 	
 	/**
@@ -138,6 +144,12 @@ public abstract class Zone
 	{
 		// Check lvl
 		if ((character.getLevel() < minLvl) || (character.getLevel() > maxLvl))
+		{
+			return false;
+		}
+		
+		// check obj class
+		if (!character.isInstanceTypes(_target))
 		{
 			return false;
 		}
@@ -320,7 +332,7 @@ public abstract class Zone
 	}
 	
 	/**
-	 * @param       <A>
+	 * @param  <A>
 	 * @param  type
 	 * @return      a list of given instances within this zone.
 	 */
@@ -372,6 +384,17 @@ public abstract class Zone
 	public Collection<L2Character> getCharacterList()
 	{
 		return characterList.values();
+	}
+	
+	public InstanceType getTargetType()
+	{
+		return _target;
+	}
+	
+	public void setTargetType(InstanceType type)
+	{
+		_target = type;
+		checkAffected = true;
 	}
 	
 	protected abstract void onEnter(L2Character character);

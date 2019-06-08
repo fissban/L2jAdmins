@@ -4,6 +4,7 @@ import java.util.concurrent.Future;
 
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.model.actor.L2Character;
+import l2j.gameserver.model.actor.instance.enums.InstanceType;
 import l2j.gameserver.model.zone.Zone;
 import l2j.gameserver.network.external.server.SystemMessage;
 
@@ -24,6 +25,7 @@ public class DamageZone extends Zone
 		// Setup default damage
 		damagePerSec = 100;
 		systemMessage = 686;
+		setTargetType(InstanceType.L2Playable); // default only playabale
 	}
 	
 	@Override
