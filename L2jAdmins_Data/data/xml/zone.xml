@@ -1032,118 +1032,99 @@
 
 <!-- Hot Springs Illusion Zones -->
 	<zone id="20200" type="EffectZone" shape="NPoly" minZ="-3634" maxZ="-3434"> <!-- [24_14] spa_11 -->
-		<stat name="SkillId" val="4559" /> <!-- s_spa_big_head -->
-        <stat name="SkillLevel" val="1" />
+        <stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->
 		<stat name="InitialDelay" val="1000" />
 		<stat name="Reuse" val="3000" />
 	</zone>
 	<zone id="20201" type="EffectZone" shape="NPoly" minZ="-3668" maxZ="-3468"> <!-- [24_14] spa_21 -->
-		<stat name="SkillId" val="4559" /> <!-- s_spa_big_head -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->
 		<stat name="InitialDelay" val="1000" />
 		<stat name="Reuse" val="3000" />
 	</zone>
 	<zone id="20202" type="EffectZone" shape="NPoly" minZ="-3724" maxZ="-3524"> <!-- [24_14] spa_31 -->
-		<stat name="SkillId" val="4559" /> <!-- s_spa_big_head -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->       
 		<stat name="InitialDelay" val="1000" />
 		<stat name="Reuse" val="3000" />
 	</zone>
 	<zone id="20203" type="EffectZone" shape="NPoly" minZ="-2871" maxZ="-2671"> <!-- [24_14] spa_41 -->
-		<stat name="SkillId" val="4559" /> <!-- s_spa_big_head -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->       
 		<stat name="InitialDelay" val="1000" />
 		<stat name="Reuse" val="3000" />
 	</zone>
 	<zone id="20204" type="EffectZone" shape="NPoly" minZ="-2787" maxZ="-2587"> <!-- [24_14] spa_51 -->
-		<stat name="SkillId" val="4559" /> <!-- s_spa_big_head -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->       
 		<stat name="InitialDelay" val="1000" />
 		<stat name="Reuse" val="3000" />
 	</zone>
 	<zone id="20205" type="EffectZone" shape="NPoly" minZ="-2717" maxZ="-2517"> <!-- [24_14] spa_61 -->
-		<stat name="SkillId" val="4559" /> <!-- s_spa_big_head -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->       
 		<stat name="InitialDelay" val="1000" />
 		<stat name="Reuse" val="3000" />
 	</zone>
 	<zone id="20206" type="EffectZone" shape="NPoly" minZ="-1609" maxZ="-1409"> <!-- [24_14] spa_71 -->
-		<stat name="SkillId" val="4559" /> <!-- s_spa_big_head -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->       
 		<stat name="InitialDelay" val="1000" />
 		<stat name="Reuse" val="3000" />
 	</zone>
 	<zone id="20207" type="EffectZone" shape="NPoly" minZ="-1694" maxZ="-1494"> <!-- [24_14] spa_81 -->
-		<stat name="SkillId" val="4559" /> <!-- s_spa_big_head -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->      
 		<stat name="InitialDelay" val="1000" />
 		<stat name="Reuse" val="3000" />
 	</zone>
 	<zone id="20208" type="EffectZone" shape="NPoly" minZ="-1979" maxZ="-1779"> <!-- [24_14] spa_91 -->
-		<stat name="SkillId" val="4559" /> <!-- s_spa_big_head -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->      
 		<stat name="InitialDelay" val="1000" />
 		<stat name="Reuse" val="3000" />
 	</zone>
 	
 	<!-- Disease treatment -->
-	<zone id="20209" type="EffectZone" shape="NPoly" minZ="-3634" maxZ="-3434"> <!-- [24_14] spa_12 -->
-		<stat name="SkillId" val="4557" /> <!-- s_dispel_spa_disease_bd -->
-        <stat name="SkillLevel" val="1" />
+	<zone id="20209" type="EffectZone" shape="NPoly" minZ="-3634" maxZ="-3434"> <!-- [24_14] spa_12 -->   
+		<stat name="skillIdLvl" val="4557-1;" /> <!-- s_dispel_spa_disease_bd -->  
 		<stat name="initialDelay" val="1000" />
 		<stat name="reuse" val="3000" />
 	</zone>
 	<zone id="20210" type="EffectZone" shape="NPoly" minZ="-3668" maxZ="-3468"> <!-- [24_14] spa_22 -->
-		<stat name="SkillId" val="4556" /> <!-- s_dispel_spa_disease_ad -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4556-1;" /> <!-- s_dispel_spa_disease_bd -->        
 		<stat name="initialDelay" val="1000" />
 		<stat name="reuse" val="3000" />
 	</zone>
 	<zone id="20211" type="EffectZone" shape="NPoly" minZ="-3724" maxZ="-3524"> <!-- [24_14] spa_32 -->
-		<stat name="SkillId" val="4558" /> <!-- s_dispel_spa_disease_cd -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4558-1;" />  <!-- s_dispel_spa_disease_cd -->       
 		<stat name="initialDelay" val="1000" />
 		<stat name="reuse" val="3000" />
 	</zone>
 	<zone id="20212" type="EffectZone" shape="NPoly" minZ="-2871" maxZ="-2671"> <!-- [24_14] spa_42 -->
-		<stat name="SkillId" val="4556" /> <!-- s_dispel_spa_disease_ad -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4556-1;" /> <!-- s_dispel_spa_disease_bd -->         
 		<stat name="initialDelay" val="1000" />
 		<stat name="reuse" val="3000" />
 	</zone>
 	<zone id="20213" type="EffectZone" shape="NPoly" minZ="-2787" maxZ="-2587"> <!-- [24_14] spa_52 -->
-		<stat name="SkillId" val="4558" /> <!-- s_dispel_spa_disease_cd -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4558-1;" />  <!-- s_dispel_spa_disease_cd -->      
 		<stat name="initialDelay" val="1000" />
 		<stat name="reuse" val="3000" />
 	</zone>
 	<zone id="20214" type="EffectZone" shape="NPoly" minZ="-2717" maxZ="-2517"> <!-- [24_14] spa_62 -->
-		<stat name="SkillId" val="4557" /> <!-- s_dispel_spa_disease_bd -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4557-1;" /> <!-- s_dispel_spa_disease_bd -->      
 		<stat name="initialDelay" val="1000" />
 		<stat name="reuse" val="3000" />
 	</zone>
 	<zone id="20215" type="EffectZone" shape="NPoly" minZ="-1609" maxZ="-1409"> <!-- [24_14] spa_72 -->
-		<stat name="SkillId" val="4556" /> <!-- s_dispel_spa_disease_ad -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4556-1;" /> <!-- s_dispel_spa_disease_bd -->         
 		<stat name="initialDelay" val="1000" />
 		<stat name="reuse" val="3000" />
 	</zone>
 	<zone id="20216" type="EffectZone" shape="NPoly" minZ="-1694" maxZ="-1494"> <!-- [24_14] spa_82 -->
-		<stat name="SkillId" val="4558" /> <!-- s_dispel_spa_disease_cd -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4558-1;" />  <!-- s_dispel_spa_disease_cd -->    
 		<stat name="initialDelay" val="1000" />
 		<stat name="reuse" val="3000" />
 	</zone>
 	<zone id="20217" type="EffectZone" shape="NPoly" minZ="-1979" maxZ="-1779"> <!-- [24_14] spa_92 -->
-		<stat name="SkillId" val="4557" /> <!-- s_dispel_spa_disease_bd -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4557-1;" /> <!-- s_dispel_spa_disease_bd --> 
 		<stat name="initialDelay" val="1000" />
 		<stat name="reuse" val="3000" />
 	</zone>
 	<zone id="20218" type="EffectZone" shape="NPoly" minZ="-2152" maxZ="-1952"> <!-- [24_14] spa_102 -->
-		<stat name="SkillId" val="4557" /> <!-- s_dispel_spa_disease_bd -->
-        <stat name="SkillLevel" val="1" />
+		<stat name="skillIdLvl" val="4557-1;" /> <!-- s_dispel_spa_disease_bd --> 
 		<stat name="initialDelay" val="1000" />
 		<stat name="reuse" val="3000" />
 	</zone>
@@ -1395,316 +1376,272 @@
 	
 <!-- fireswamp_1 -->
 	<zone id="16000" type="EffectZone" shape="NPoly" minZ="-4752" maxZ="-4352">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- fireswamp_2 -->
 	<zone id="16001" type="EffectZone" shape="NPoly" minZ="-4908" maxZ="-4508">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- fireswamp_3 -->
 	<zone id="16002" type="EffectZone" shape="NPoly" minZ="-4776" maxZ="-4376">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- fireswamp_4 -->
 	<zone id="16003" type="EffectZone" shape="NPoly" minZ="-4888" maxZ="-4288">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- fireswamp_5 -->
 	<zone id="16004" type="EffectZone" shape="NPoly" minZ="-4672" maxZ="-4272">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- fireswamp_6 -->
 	<zone id="16005" type="EffectZone" shape="NPoly" minZ="-4676" maxZ="-4276">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- fireswamp_7 -->
 	<zone id="16006" type="EffectZone" shape="NPoly" minZ="-4728" maxZ="-4328">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- fireswamp_8 -->
 	<zone id="16007" type="EffectZone" shape="NPoly" minZ="-4636" maxZ="-4036">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- fireswamp_9 -->
 	<zone id="16008" type="EffectZone" shape="NPoly" minZ="-4700" maxZ="-4300">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- fireswamp_10 -->
 	<zone id="16009" type="EffectZone" shape="NPoly" minZ="-4572" maxZ="-3972">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- fireswamp_11 -->
 	<zone id="16010" type="EffectZone" shape="NPoly" minZ="-4572" maxZ="-4172">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- fireswamp_12 -->
 	<zone id="16011" type="EffectZone" shape="NPoly" minZ="-4476" maxZ="-2976">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- fireswamp_13 -->
 	<zone id="16012" type="EffectZone" shape="NPoly" minZ="-4604" maxZ="-4204">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- fireswamp_14 -->
 	<zone id="16013" type="EffectZone" shape="NPoly" minZ="-3476" maxZ="-3076">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- fireswamp_15 -->
 	<zone id="16014" type="EffectZone" shape="NPoly" minZ="-3208" maxZ="-1608">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 	<!-- godad_fire_zone1 -->
 	<zone id="16015" type="EffectZone" shape="NPoly" minZ="-1896" maxZ="-1696">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_fire_zone2 -->
 	<zone id="16016" type="EffectZone" shape="NPoly" minZ="-3384" maxZ="-3184">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_fire_zone3 -->
 	<zone id="16017" type="EffectZone" shape="NPoly" minZ="-4728" maxZ="-4028">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_fire_zone4 -->
 	<zone id="16018" type="EffectZone" shape="NPoly" minZ="-6160" maxZ="-5260">
-		<stat name="SkillId" val="4150"/>
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4150-5;" />
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc1 -->
 	<zone id="16019" type="EffectZone" shape="NPoly" minZ="-3375" maxZ="-2975">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc2 -->
 	<zone id="16020" type="EffectZone" shape="NPoly" minZ="-3191" maxZ="-2991">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc3 -->
 	<zone id="16021" type="EffectZone" shape="NPoly" minZ="-3335" maxZ="-2935">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc4 -->
 	<zone id="16022" type="EffectZone" shape="NPoly" minZ="-3179" maxZ="-2979">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc5 -->
 	<zone id="16023" type="EffectZone" shape="NPoly" minZ="-3255" maxZ="-2955">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc6 -->
 	<zone id="16024" type="EffectZone" shape="NPoly" minZ="-3458" maxZ="-3158">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc7 -->
 	<zone id="16025" type="EffectZone" shape="NPoly" minZ="-3418" maxZ="-3118">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc8 -->
 	<zone id="16026" type="EffectZone" shape="NPoly" minZ="-3410" maxZ="-3110">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc9 -->
 	<zone id="16027" type="EffectZone" shape="NPoly" minZ="-3422" maxZ="-3122">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc10 -->
 	<zone id="16028" type="EffectZone" shape="NPoly" minZ="-3370" maxZ="-3070">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc11 -->
 	<zone id="16029" type="EffectZone" shape="NPoly" minZ="-3366" maxZ="-3066">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc12 -->
 	<zone id="16030" type="EffectZone" shape="NPoly" minZ="-2522" maxZ="-2222">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc13 -->
 	<zone id="16031" type="EffectZone" shape="NPoly" minZ="-2470" maxZ="-2170">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc14 -->
 	<zone id="16032" type="EffectZone" shape="NPoly" minZ="-2458" maxZ="-2158">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc15 -->
 	<zone id="16033" type="EffectZone" shape="NPoly" minZ="-2542" maxZ="-2242">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc16 -->
 	<zone id="16034" type="EffectZone" shape="NPoly" minZ="-2558" maxZ="-2258">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc17 -->
 	<zone id="16035" type="EffectZone" shape="NPoly" minZ="-2414" maxZ="-2114">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc18 -->
 	<zone id="16036" type="EffectZone" shape="NPoly" minZ="-2522" maxZ="-2222">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc19 -->
 	<zone id="16037" type="EffectZone" shape="NPoly" minZ="-2462" maxZ="-2162">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc20 -->
 	<zone id="16038" type="EffectZone" shape="NPoly" minZ="-2574" maxZ="-2274">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc21 -->
 	<zone id="16039" type="EffectZone" shape="NPoly" minZ="-2727" maxZ="-2427">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc22 -->
 	<zone id="16040" type="EffectZone" shape="NPoly" minZ="-2767" maxZ="-2467">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc23 -->
 	<zone id="16041" type="EffectZone" shape="NPoly" minZ="-2763" maxZ="-2463">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc24 -->
 	<zone id="16042" type="EffectZone" shape="NPoly" minZ="-2550" maxZ="-2150">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc25 -->
 	<zone id="16043" type="EffectZone" shape="NPoly" minZ="-2486" maxZ="-2286">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
 <!-- godad_swamp_pc26 -->
 	<zone id="16044" type="EffectZone" shape="NPoly" minZ="-2819" maxZ="-2619">
-		<stat name="SkillId" val="4148"/> <!-- have second skill Area Dispel -->
-		<stat name="SkillLevel" val="5"/>
+		<stat name="skillIdLvl" val="4148-5;4146-3;" /> 
 		<stat name="InitialDelay" val="1000"/>
 		<stat name="Reuse" val="3000" />
 	</zone>
