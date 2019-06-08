@@ -11,6 +11,7 @@ import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.SkillData;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.instance.enums.InstanceType;
 import l2j.gameserver.model.skills.Skill;
 import l2j.gameserver.model.zone.Zone;
 import l2j.gameserver.model.zone.enums.ZoneType;
@@ -36,6 +37,7 @@ public class EffectZone extends Zone
 		super(id);
 		initialDelay = 0;
 		reuse = 30000;
+		setTargetType(InstanceType.L2Playable); // default only playabale
 		enabled = true;
 		_bypassConditions = false;
 	}
