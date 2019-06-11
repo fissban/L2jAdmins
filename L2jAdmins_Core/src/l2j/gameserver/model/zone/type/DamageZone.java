@@ -25,7 +25,7 @@ public class DamageZone extends Zone
 		// Setup default damage
 		damagePerSec = 100;
 		systemMessage = 686;
-		setTargetType(InstanceType.L2Playable); // default only playabale
+		setTargetType(InstanceType.L2Playable); // default only playable
 	}
 	
 	@Override
@@ -35,9 +35,13 @@ public class DamageZone extends Zone
 		{
 			damagePerSec = Integer.parseInt(value);
 		}
-		if (name.equals("Message"))
+		else if (name.equals("Message"))
 		{
 			systemMessage = Integer.parseInt(value);
+		}
+		else if (name.equals("targetClass"))
+		{
+			setTargetType(Enum.valueOf(InstanceType.class, value));
 		}
 		else
 		{
@@ -55,11 +59,20 @@ public class DamageZone extends Zone
 			{
 				for (L2Character temp : getCharacterList())
 				{
-					if ((temp != null) && !temp.isDead())
+					// general check
+					if ((temp == null) || temp.isDead())
 					{
-						temp.reduceCurrentHp(getDamagePerSecond(), null);
-						temp.sendPacket(new SystemMessage(systemMessage));
+						return;
 					}
+					// check if affected object type
+					if (!character.isInstanceTypes(getTargetType()))
+					{
+						return;
+					}
+					
+					temp.reduceCurrentHp(getDamagePerSecond(), null);
+					temp.sendPacket(new SystemMessage(systemMessage));
+					
 				}
 			}, 10, 1000);
 		}

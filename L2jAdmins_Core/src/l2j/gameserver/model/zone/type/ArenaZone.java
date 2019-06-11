@@ -23,7 +23,7 @@ public class ArenaZone extends ZoneSpawn
 	@Override
 	public void setParameter(String name, String value)
 	{
-		if (name.equals("name"))
+		if (name.equals("Name"))
 		{
 			arenaName = value;
 		}

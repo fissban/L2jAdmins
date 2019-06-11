@@ -6,11 +6,11 @@ import l2j.gameserver.model.zone.ZoneForm;
  * A primitive rectangular zone
  * @author durgus
  */
-public class ZoneCuboid extends ZoneForm
+public class ZoneCubo extends ZoneForm
 {
 	private int x1, x2, y1, y2, z1, z2;
 	
-	public ZoneCuboid(int x1, int x2, int y1, int y2, int z1, int z2)
+	public ZoneCubo(int x1, int x2, int y1, int y2, int z1, int z2)
 	{
 		this.x1 = x1;
 		this.x2 = x2;

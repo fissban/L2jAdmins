@@ -31,19 +31,19 @@ public class TownZone extends ZoneSpawn
 	@Override
 	public void setParameter(String name, String value)
 	{
-		if (name.equals("name"))
+		if (name.equals("Name"))
 		{
 			townName = value;
 		}
-		else if (name.equals("townId"))
+		else if (name.equals("TownId"))
 		{
 			townId = Integer.parseInt(value);
 		}
-		else if (name.equals("redirectTownId"))
+		else if (name.equals("RedirectTownId"))
 		{
 			redirectTownId = Integer.parseInt(value);
 		}
-		else if (name.equals("taxById"))
+		else if (name.equals("TaxById"))
 		{
 			taxById = Integer.parseInt(value);
 		}

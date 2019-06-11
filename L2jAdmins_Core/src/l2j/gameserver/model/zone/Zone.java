@@ -19,32 +19,15 @@ import main.EngineModsManager;
  */
 public abstract class Zone
 {
-	private final int id;
+	private int id;
 	protected ZoneForm zone;
 	public Map<Integer, L2Character> characterList = new ConcurrentHashMap<>();
-	private InstanceType _target = InstanceType.L2Character; // default all chars
 	
-	/** Parameters to affect specific characters */
-	private boolean checkAffected;
-	
-	private int minLvl;
-	private int maxLvl;
-	private int[] race;
-	private int[] classId;
-	private char classType;
+	private InstanceType targets = InstanceType.L2Character; // default all chars
 	
 	protected Zone(int id)
 	{
 		this.id = id;
-		checkAffected = false;
-		
-		minLvl = 0;
-		maxLvl = 255;
-		
-		classType = 0;
-		
-		race = null;
-		classId = null;
 	}
 	
 	public int getId()
@@ -59,167 +42,14 @@ public abstract class Zone
 	 */
 	public void setParameter(String name, String value)
 	{
-		checkAffected = true;
-		
-		// Minimum level
-		if (name.equals("affectedLvlMin"))
-		{
-			minLvl = Integer.parseInt(value);
-		}
-		// Maximum level
-		else if (name.equals("affectedLvlMax"))
-		{
-			maxLvl = Integer.parseInt(value);
-		}
-		// Affected Races
-		else if (name.equals("affectedRace"))
-		{
-			// Create a new array holding the affected race
-			if (race == null)
-			{
-				race = new int[1];
-				race[0] = Integer.parseInt(value);
-			}
-			else
-			{
-				int[] temp = new int[race.length + 1];
-				
-				int i = 0;
-				for (; i < race.length; i++)
-				{
-					temp[i] = race[i];
-				}
-				
-				temp[i] = Integer.parseInt(value);
-				race = temp;
-			}
-		}
-		// Affected classes
-		else if (name.equals("affectedClassId"))
-		{
-			// Create a new array holding the affected classIds
-			if (classId == null)
-			{
-				classId = new int[1];
-				classId[0] = Integer.parseInt(value);
-			}
-			else
-			{
-				int[] temp = new int[classId.length + 1];
-				
-				int i = 0;
-				for (; i < classId.length; i++)
-				{
-					temp[i] = classId[i];
-				}
-				
-				temp[i] = Integer.parseInt(value);
-				classId = temp;
-			}
-		}
-		// Affected class type
-		else if (name.equals("affectedClassType"))
-		{
-			if (value.equals("Fighter"))
-			{
-				classType = 1;
-			}
-			else
-			{
-				classType = 2;
-			}
-		}
-		else if (name.equals("targetClass"))
-		{
-			_target = Enum.valueOf(InstanceType.class, value);
-		}
-	}
-	
-	/**
-	 * Checks if the given character is affected by this zone
-	 * @param  character
-	 * @return
-	 */
-	private boolean isAffected(L2Character character)
-	{
-		// Check lvl
-		if ((character.getLevel() < minLvl) || (character.getLevel() > maxLvl))
-		{
-			return false;
-		}
-		
-		// check obj class
-		if (!character.isInstanceTypes(_target))
-		{
-			return false;
-		}
-		
-		if (character instanceof L2PcInstance)
-		{
-			// Check class type
-			if (classType != 0)
-			{
-				if (((L2PcInstance) character).isMageClass())
-				{
-					if (classType == 1)
-					{
-						return false;
-					}
-				}
-				else if (classType == 2)
-				{
-					return false;
-				}
-			}
-			
-			// Check race
-			if (race != null)
-			{
-				boolean ok = false;
-				
-				for (int element : race)
-				{
-					if (((L2PcInstance) character).getRace().ordinal() == element)
-					{
-						ok = true;
-						break;
-					}
-				}
-				
-				if (!ok)
-				{
-					return false;
-				}
-			}
-			
-			// Check class
-			if (classId != null)
-			{
-				boolean ok = false;
-				for (int clas : classId)
-				{
-					if (((L2PcInstance) character).getClassId().ordinal() == clas)
-					{
-						ok = true;
-						break;
-					}
-				}
-				
-				if (!ok)
-				{
-					return false;
-				}
-			}
-		}
-		return true;
+		//
 	}
 	
 	/**
 	 * Set the zone for this L2ZoneType Instance
-	 * @param id
 	 * @param zone
 	 */
-	public void setZone(int id, ZoneForm zone)
+	public void setForm(ZoneForm zone)
 	{
 		if (this.zone != null)
 		{
@@ -278,15 +108,6 @@ public abstract class Zone
 		// If the object is inside the zone...
 		if (isInsideZone(character.getX(), character.getY(), character.getZ()))
 		{
-			// If the character can't be affected by this zone return
-			if (checkAffected)
-			{
-				if (!isAffected(character))
-				{
-					return;
-				}
-			}
-			
 			// Was the character not yet inside this zone?
 			if (!characterList.containsKey(character.getObjectId()))
 			{
@@ -332,7 +153,7 @@ public abstract class Zone
 	}
 	
 	/**
-	 * @param  <A>
+	 * @param       <A>
 	 * @param  type
 	 * @return      a list of given instances within this zone.
 	 */
@@ -381,20 +202,31 @@ public abstract class Zone
 		return characterList.containsKey(character.getObjectId());
 	}
 	
+	/**
+	 * Get all player inside in zone
+	 * @return
+	 */
 	public Collection<L2Character> getCharacterList()
 	{
 		return characterList.values();
 	}
 	
-	public InstanceType getTargetType()
-	{
-		return _target;
-	}
-	
+	/**
+	 * Set objects affected in EffectZone & DamageZone
+	 * @param type
+	 */
 	public void setTargetType(InstanceType type)
 	{
-		_target = type;
-		checkAffected = true;
+		targets = type;
+	}
+	
+	/**
+	 * Get all objects affected in EffectZone & DamageZone
+	 * @return
+	 */
+	public InstanceType getTargetType()
+	{
+		return targets;
 	}
 	
 	protected abstract void onEnter(L2Character character);
