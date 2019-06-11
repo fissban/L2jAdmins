@@ -25,7 +25,7 @@ public class ClanHallZone extends ZoneSpawn
 	@Override
 	public void setParameter(String name, String value)
 	{
-		if (name.equals("clanHallId"))
+		if (name.equals("ClanHallId"))
 		{
 			clanHallId = Integer.parseInt(value);
 			

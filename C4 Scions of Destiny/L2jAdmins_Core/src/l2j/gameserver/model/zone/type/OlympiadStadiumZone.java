@@ -35,7 +35,7 @@ public class OlympiadStadiumZone extends ZoneSpawn
 	@Override
 	public void setParameter(String name, String value)
 	{
-		if (name.equals("stadiumId"))
+		if (name.equals("StadiumId"))
 		{
 			stadiumId = Integer.parseInt(value);
 		}

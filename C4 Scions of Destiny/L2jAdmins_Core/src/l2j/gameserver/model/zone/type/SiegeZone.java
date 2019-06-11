@@ -31,7 +31,7 @@ public class SiegeZone extends ZoneSpawn
 	@Override
 	public void setParameter(String name, String value)
 	{
-		if (name.equals("castleId"))
+		if (name.equals("CastleId"))
 		{
 			castleId = Integer.parseInt(value);
 			

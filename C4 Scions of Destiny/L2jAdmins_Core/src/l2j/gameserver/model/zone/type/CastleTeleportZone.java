@@ -27,30 +27,30 @@ public class CastleTeleportZone extends Zone
 	@Override
 	public void setParameter(String name, String value)
 	{
-		if (name.equals("castleId"))
+		if (name.equals("CastleId"))
 		{
 			castleId = Integer.parseInt(value);
 			
 			// Register self to the correct castle
 			CastleData.getInstance().getCastleById(castleId).setTeleZone(this);
 		}
-		else if (name.equals("spawnMinX"))
+		else if (name.equals("SpawnMinX"))
 		{
 			spawnLoc[0] = Integer.parseInt(value);
 		}
-		else if (name.equals("spawnMaxX"))
+		else if (name.equals("SpawnMaxX"))
 		{
 			spawnLoc[1] = Integer.parseInt(value);
 		}
-		else if (name.equals("spawnMinY"))
+		else if (name.equals("SpawnMinY"))
 		{
 			spawnLoc[2] = Integer.parseInt(value);
 		}
-		else if (name.equals("spawnMaxY"))
+		else if (name.equals("SpawnMaxY"))
 		{
 			spawnLoc[3] = Integer.parseInt(value);
 		}
-		else if (name.equals("spawnZ"))
+		else if (name.equals("SpawnZ"))
 		{
 			spawnLoc[4] = Integer.parseInt(value);
 		}

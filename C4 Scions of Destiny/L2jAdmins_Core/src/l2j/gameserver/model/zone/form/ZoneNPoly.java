@@ -8,12 +8,12 @@ import l2j.gameserver.model.zone.ZoneForm;
  */
 public class ZoneNPoly extends ZoneForm
 {
-	private final int[] x;
-	private final int[] y;
+	private final Integer[] x;
+	private final Integer[] y;
 	private final int z1;
 	private final int z2;
 	
-	public ZoneNPoly(int[] x, int[] y, int z1, int z2)
+	public ZoneNPoly(Integer[] x, Integer[] y, int z1, int z2)
 	{
 		this.x = x;
 		this.y = y;

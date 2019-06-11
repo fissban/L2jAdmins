@@ -28,8 +28,7 @@ public class EffectZone extends Zone
 	private int initialDelay;
 	private int reuse;
 	public boolean enabled;
-	protected boolean _bypassConditions;
-	protected volatile Map<Integer, Integer> _skills;
+	protected Map<Integer, Integer> skills;
 	private Future<?> task;
 	
 	public EffectZone(int id)
@@ -37,9 +36,8 @@ public class EffectZone extends Zone
 		super(id);
 		initialDelay = 0;
 		reuse = 30000;
-		setTargetType(InstanceType.L2Playable); // default only playabale
 		enabled = true;
-		_bypassConditions = false;
+		setTargetType(InstanceType.L2Character);// default all chars
 	}
 	
 	@Override
@@ -57,36 +55,29 @@ public class EffectZone extends Zone
 		{
 			enabled = Boolean.parseBoolean(value);
 		}
-		else if (name.equals("bypassSkillConditions"))
+		else if (name.equals("SkillIdLvl"))
 		{
-			_bypassConditions = Boolean.parseBoolean(value);
-		}
-		else if (name.equals("skillIdLvl"))
-		{
-			String[] propertySplit = value.split(";");
-			_skills = new ConcurrentHashMap<>(propertySplit.length);
-			for (String skill : propertySplit)
+			try
 			{
-				String[] skillSplit = skill.split("-");
-				if (skillSplit.length != 2)
+				skills = new ConcurrentHashMap<>();
+				
+				for (String skill : value.trim().split(";"))
 				{
-					LOG.log(Level.WARNING, "invalid config property -> skillsIdLvl" + skill, "\"");
-				}
-				else
-				{
-					try
-					{
-						_skills.put(Integer.parseInt(skillSplit[0]), Integer.parseInt(skillSplit[1]));
-					}
-					catch (NumberFormatException nfe)
-					{
-						if (!skill.isEmpty())
-						{
-							LOG.log(Level.WARNING, "invalid config property -> skillsIdLvl" + skillSplit[0], "\"" + skillSplit[1]);
-						}
-					}
+					var id = Integer.parseInt(skill.split("-")[0]);
+					var lvl = Integer.parseInt(skill.split("-")[1]);
+					
+					skills.put(id, lvl);
 				}
 			}
+			catch (Exception e)
+			{
+				LOG.log(Level.WARNING, "length: invalid config property -> SkillIdLvl: " + value, "\"");
+				e.printStackTrace();
+			}
+		}
+		else if (name.equals("TargetClass"))
+		{
+			setTargetType(Enum.valueOf(InstanceType.class, value));
 		}
 		else
 		{
@@ -104,15 +95,17 @@ public class EffectZone extends Zone
 				return;
 			}
 			
+			// check if affected object type
+			if (!character.isInstanceTypes(getTargetType()))
+			{
+				return;
+			}
+			
+			System.out.println("character: " + character.getName() + " enter: " + getId());
+			
 			if (task == null)
 			{
-				synchronized (this)
-				{
-					if (task == null)
-					{
-						task = ThreadPoolManager.scheduleAtFixedRate(new ApplySkill(), initialDelay, reuse);
-					}
-				}
+				task = ThreadPoolManager.scheduleAtFixedRate(() -> applySkill(), initialDelay, reuse);
 			}
 			
 			character.setInsideZone(ZoneType.EFFECT, true);
@@ -154,76 +147,52 @@ public class EffectZone extends Zone
 			return;
 		}
 		
-		if (_skills == null)
+		if (skills == null)
 		{
-			synchronized (this)
-			{
-				if (_skills == null)
-				{
-					_skills = new ConcurrentHashMap<>(3);
-				}
-			}
+			skills = new ConcurrentHashMap<>(2);
 		}
-		_skills.put(skillId, skillLvL);
+		skills.put(skillId, skillLvL);
 	}
 	
 	public void removeSkill(int skillId)
 	{
-		if (_skills != null)
+		if (skills != null)
 		{
-			_skills.remove(skillId);
+			skills.remove(skillId);
 		}
 	}
 	
 	public void clearSkills()
 	{
-		if (_skills != null)
+		if (skills != null)
 		{
-			_skills.clear();
+			skills.clear();
 		}
 	}
 	
 	public int getSkillLevel(int skillId)
 	{
-		final Map<Integer, Integer> skills = _skills;
 		return skills != null ? skills.getOrDefault(skillId, 0) : 0;
 	}
 	
-	private final class ApplySkill implements Runnable
+	public void applySkill()
 	{
-		protected ApplySkill()
+		if (enabled)
 		{
-			if (_skills == null)
+			for (L2Character cha : getCharacterList())
 			{
-				throw new IllegalStateException("No skills defined.");
-			}
-		}
-		
-		@Override
-		public void run()
-		{
-			if (enabled)
-			{
-				for (L2Character temp : getCharacterList())
+				if ((cha != null) && !cha.isDead())
 				{
-					if ((temp != null) && !temp.isDead())
+					for (Entry<Integer, Integer> e : skills.entrySet())
 					{
-						for (Entry<Integer, Integer> e : _skills.entrySet())
+						Skill sk = getSkill(e.getKey(), e.getValue());
+						if (sk != null && cha.getEffect(sk) != null)
 						{
-							Skill skill = getSkill(e.getKey(), e.getValue());
-							if ((skill != null) && (_bypassConditions || skill.checkCondition(temp, false)))
-							{
-								if (skill != null)
-								{
-									skill.getEffects(temp, temp);
-								}
-							}
+							sk.getEffects(cha, cha);
 						}
 					}
 				}
 			}
 		}
-		
 	}
-	
 }

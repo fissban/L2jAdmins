@@ -44,7 +44,7 @@ public class BossZone extends Zone
 	@Override
 	public void setParameter(String name, String value)
 	{
-		if (name.equals("name"))
+		if (name.equals("Name"))
 		{
 			zoneName = value;
 		}
