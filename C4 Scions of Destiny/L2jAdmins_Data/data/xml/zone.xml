@@ -1980,6 +1980,7 @@
 	</zone>
 	<zone id="20201" type="Effect" shape="Poly" minZ="-3668" maxZ="-3468">
 		<stat name="SkillIdLvl" value="4559-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -1993,6 +1994,7 @@
 	</zone>
 	<zone id="20202" type="Effect" shape="Poly" minZ="-3724" maxZ="-3524">
 		<stat name="SkillIdLvl" value="4559-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2008,6 +2010,7 @@
 	</zone>
 	<zone id="20203" type="Effect" shape="Poly" minZ="-2871" maxZ="-2671">
 		<stat name="SkillIdLvl" value="4559-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2022,6 +2025,7 @@
 	</zone>
 	<zone id="20204" type="Effect" shape="Poly" minZ="-2787" maxZ="-2587">
 		<stat name="SkillIdLvl" value="4559-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2037,6 +2041,7 @@
 	</zone>
 	<zone id="20205" type="Effect" shape="Poly" minZ="-2717" maxZ="-2517">
 		<stat name="SkillIdLvl" value="4559-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2051,6 +2056,7 @@
 	</zone>
 	<zone id="20206" type="Effect" shape="Poly" minZ="-1609" maxZ="-1409">
 		<stat name="SkillIdLvl" value="4559-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2066,6 +2072,7 @@
 	</zone>
 	<zone id="20207" type="Effect" shape="Poly" minZ="-1694" maxZ="-1494">
 		<stat name="SkillIdLvl" value="4559-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2080,6 +2087,7 @@
 	</zone>
 	<zone id="20208" type="Effect" shape="Poly" minZ="-1979" maxZ="-1779">
 		<stat name="SkillIdLvl" value="4559-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2109,6 +2117,7 @@
 	</zone>
 	<zone id="20210" type="Effect" shape="Poly" minZ="-3668" maxZ="-3468">
 		<stat name="SkillIdLvl" value="4556-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2122,6 +2131,7 @@
 	</zone>
 	<zone id="20211" type="Effect" shape="Poly" minZ="-3724" maxZ="-3524">
 		<stat name="SkillIdLvl" value="4558-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2137,6 +2147,7 @@
 	</zone>
 	<zone id="20212" type="Effect" shape="Poly" minZ="-2871" maxZ="-2671">
 		<stat name="SkillIdLvl" value="4556-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2151,6 +2162,7 @@
 	</zone>
 	<zone id="20213" type="Effect" shape="Poly" minZ="-2787" maxZ="-2587">
 		<stat name="SkillIdLvl" value="4558-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2166,6 +2178,7 @@
 	</zone>
 	<zone id="20214" type="Effect" shape="Poly" minZ="-2717" maxZ="-2517">
 		<stat name="SkillIdLvl" value="4557-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2180,6 +2193,7 @@
 	</zone>
 	<zone id="20215" type="Effect" shape="Poly" minZ="-1609" maxZ="-1409">
 		<stat name="SkillIdLvl" value="4556-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2195,6 +2209,7 @@
 	</zone>
 	<zone id="20216" type="Effect" shape="Poly" minZ="-1694" maxZ="-1494">
 		<stat name="SkillIdLvl" value="4558-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2209,6 +2224,7 @@
 	</zone>
 	<zone id="20217" type="Effect" shape="Poly" minZ="-1979" maxZ="-1779">
 		<stat name="SkillIdLvl" value="4557-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -2222,6 +2238,7 @@
 	</zone>
 	<zone id="20218" type="Effect" shape="Poly" minZ="-2152" maxZ="-1952">
 		<stat name="SkillIdLvl" value="4557-1"/>
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4211,6 +4228,7 @@
 	<!-- fireswamp_1 -->
 	<zone id="16000" type="Effect" shape="Poly" minZ="-4752" maxZ="-4352">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4226,6 +4244,7 @@
 	<!-- fireswamp_2 -->
 	<zone id="16001" type="Effect" shape="Poly" minZ="-4908" maxZ="-4508">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4241,6 +4260,7 @@
 	<!-- fireswamp_3 -->
 	<zone id="16002" type="Effect" shape="Poly" minZ="-4776" maxZ="-4376">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4253,6 +4273,7 @@
 	<!-- fireswamp_4 -->
 	<zone id="16003" type="Effect" shape="Poly" minZ="-4888" maxZ="-4288">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4267,6 +4288,7 @@
 	<!-- fireswamp_5 -->
 	<zone id="16004" type="Effect" shape="Poly" minZ="-4672" maxZ="-4272">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4281,6 +4303,7 @@
 	<!-- fireswamp_6 -->
 	<zone id="16005" type="Effect" shape="Poly" minZ="-4676" maxZ="-4276">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4294,6 +4317,7 @@
 	<!-- fireswamp_7 -->
 	<zone id="16006" type="Effect" shape="Poly" minZ="-4728" maxZ="-4328">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4306,6 +4330,7 @@
 	<!-- fireswamp_8 -->
 	<zone id="16007" type="Effect" shape="Poly" minZ="-4636" maxZ="-4036">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4318,6 +4343,7 @@
 	<!-- fireswamp_9 -->
 	<zone id="16008" type="Effect" shape="Poly" minZ="-4700" maxZ="-4300">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4331,6 +4357,7 @@
 	<!-- fireswamp_10 -->
 	<zone id="16009" type="Effect" shape="Poly" minZ="-4572" maxZ="-3972">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4344,6 +4371,7 @@
 	<!-- fireswamp_11 -->
 	<zone id="16010" type="Effect" shape="Poly" minZ="-4572" maxZ="-4172">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4356,6 +4384,7 @@
 	<!-- fireswamp_12 -->
 	<zone id="16011" type="Effect" shape="Poly" minZ="-4476" maxZ="-2976">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4368,6 +4397,7 @@
 	<!-- fireswamp_13 -->
 	<zone id="16012" type="Effect" shape="Poly" minZ="-4604" maxZ="-4204">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4380,6 +4410,7 @@
 	<!-- fireswamp_14 -->
 	<zone id="16013" type="Effect" shape="Poly" minZ="-3476" maxZ="-3076">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4394,6 +4425,7 @@
 	<!-- fireswamp_15 -->
 	<zone id="16014" type="Effect" shape="Poly" minZ="-3208" maxZ="-1608">
 		<stat name="SkillIdLvl" value="4150-5"/>
+		<!-- <stat name="Chance" value="50" /> -->
 		<stat name="InitialDelay" value="1"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4456,6 +4488,7 @@
 	<!-- godad_swamp_pc1 -->
 	<zone id="16019" type="Effect" shape="Poly" minZ="-3375" maxZ="-2975">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4471,6 +4504,7 @@
 	<!-- godad_swamp_pc2 -->
 	<zone id="16020" type="Effect" shape="Poly" minZ="-3191" maxZ="-2991">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4488,6 +4522,7 @@
 	<!-- godad_swamp_pc3 -->
 	<zone id="16021" type="Effect" shape="Poly" minZ="-3335" maxZ="-2935">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4505,6 +4540,7 @@
 	<!-- godad_swamp_pc4 -->
 	<zone id="16022" type="Effect" shape="Poly" minZ="-3179" maxZ="-2979">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4520,7 +4556,8 @@
 	</zone>
 	<!-- godad_swamp_pc5 -->
 	<zone id="16023" type="Effect" shape="Poly" minZ="-3255" maxZ="-2955">
-		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<stat name="SkillIdLvl" value="4148-5;4146-3"/>
+		<!-- <stat name="Chance" value="70" /> --> 
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4537,6 +4574,7 @@
 	<!-- godad_swamp_pc6 -->
 	<zone id="16024" type="Effect" shape="Poly" minZ="-3458" maxZ="-3158">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4554,6 +4592,7 @@
 	<!-- godad_swamp_pc7 -->
 	<zone id="16025" type="Effect" shape="Poly" minZ="-3418" maxZ="-3118">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4569,7 +4608,8 @@
 	</zone>
 	<!-- godad_swamp_pc8 -->
 	<zone id="16026" type="Effect" shape="Poly" minZ="-3410" maxZ="-3110">
-		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<stat name="SkillIdLvl" value="4148-5;4146-3"/>
+		<!-- <stat name="Chance" value="70" /> --> 
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4587,6 +4627,7 @@
 	<!-- godad_swamp_pc9 -->
 	<zone id="16027" type="Effect" shape="Poly" minZ="-3422" maxZ="-3122">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4604,6 +4645,7 @@
 	<!-- godad_swamp_pc10 -->
 	<zone id="16028" type="Effect" shape="Poly" minZ="-3370" maxZ="-3070">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4621,7 +4663,8 @@
 	</zone>
 	<!-- godad_swamp_pc11 -->
 	<zone id="16029" type="Effect" shape="Poly" minZ="-3366" maxZ="-3066">
-		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<stat name="SkillIdLvl" value="4148-5;4146-3"/>
+		<!-- <stat name="Chance" value="70" /> --> 
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4639,6 +4682,7 @@
 	<!-- godad_swamp_pc12 -->
 	<zone id="16030" type="Effect" shape="Poly" minZ="-2522" maxZ="-2222">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4653,7 +4697,8 @@
 	</zone>
 	<!-- godad_swamp_pc13 -->
 	<zone id="16031" type="Effect" shape="Poly" minZ="-2470" maxZ="-2170">
-		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<stat name="SkillIdLvl" value="4148-5;4146-3"/>
+		<!-- <stat name="Chance" value="70" /> --> 
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4669,7 +4714,8 @@
 	</zone>
 	<!-- godad_swamp_pc14 -->
 	<zone id="16032" type="Effect" shape="Poly" minZ="-2458" maxZ="-2158">
-		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<stat name="SkillIdLvl" value="4148-5;4146-3"/>
+		<!-- <stat name="Chance" value="70" /> --> 
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4687,7 +4733,8 @@
 	</zone>
 	<!-- godad_swamp_pc15 -->
 	<zone id="16033" type="Effect" shape="Poly" minZ="-2542" maxZ="-2242">
-		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<stat name="SkillIdLvl" value="4148-5;4146-3"/>
+		<!-- <stat name="Chance" value="70" /> --> 
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4702,7 +4749,8 @@
 	</zone>
 	<!-- godad_swamp_pc16 -->
 	<zone id="16034" type="Effect" shape="Poly" minZ="-2558" maxZ="-2258">
-		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<stat name="SkillIdLvl" value="4148-5;4146-3"/>
+		<!-- <stat name="Chance" value="70" /> --> 
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4717,7 +4765,8 @@
 	</zone>
 	<!-- godad_swamp_pc17 -->
 	<zone id="16035" type="Effect" shape="Poly" minZ="-2414" maxZ="-2114">
-		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<stat name="SkillIdLvl" value="4148-5;4146-3"/>
+		<!-- <stat name="Chance" value="70" /> --> 
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4733,6 +4782,7 @@
 	<!-- godad_swamp_pc18 -->
 	<zone id="16036" type="Effect" shape="Poly" minZ="-2522" maxZ="-2222">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4747,6 +4797,7 @@
 	<!-- godad_swamp_pc19 -->
 	<zone id="16037" type="Effect" shape="Poly" minZ="-2462" maxZ="-2162">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4762,6 +4813,7 @@
 	<!-- godad_swamp_pc20 -->
 	<zone id="16038" type="Effect" shape="Poly" minZ="-2574" maxZ="-2274">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4777,6 +4829,7 @@
 	<!-- godad_swamp_pc21 -->
 	<zone id="16039" type="Effect" shape="Poly" minZ="-2727" maxZ="-2427">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4792,6 +4845,7 @@
 	<!-- godad_swamp_pc22 -->
 	<zone id="16040" type="Effect" shape="Poly" minZ="-2767" maxZ="-2467">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4807,6 +4861,7 @@
 	<!-- godad_swamp_pc23 -->
 	<zone id="16041" type="Effect" shape="Poly" minZ="-2763" maxZ="-2463">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4823,6 +4878,7 @@
 	<!-- godad_swamp_pc24 -->
 	<zone id="16042" type="Effect" shape="Poly" minZ="-2550" maxZ="-2150">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4838,6 +4894,7 @@
 	<!-- godad_swamp_pc25 -->
 	<zone id="16043" type="Effect" shape="Poly" minZ="-2486" maxZ="-2286">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4853,6 +4910,7 @@
 	<!-- godad_swamp_pc26 -->
 	<zone id="16044" type="Effect" shape="Poly" minZ="-2819" maxZ="-2619">
 		<stat name="SkillIdLvl" value="4148-5;4146-3"/> 
+		<!-- <stat name="Chance" value="70" /> -->
 		<stat name="InitialDelay" value="1000"/>
 		<stat name="Reuse" value="3000"/>
 		<vertices>
@@ -4863,6 +4921,568 @@
 			<loc x="94185" y="-54360"/>
 			<loc x="93565" y="-54344"/>
 			<loc x="93365" y="-54760"/>
+		</vertices>
+	</zone>
+	<!-- fire_pot_god_hp_regen1 -->
+	<zone id="16044" type="Effect" shape="Poly" minZ="-3359" maxZ="-2959">
+	<stat name="TargetClass" value="L2Npc" />
+	<stat name="skillIdLvl" value="4698-7;" /> <!-- s_area_hp_regeneration7 -->
+	<!-- <stat name="Chance" value="70" /> -->
+	<stat name="InitialDelay" value="1000"/>
+	<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="185241" y="-118610" />
+			<loc x="185966" y="-119586" />
+			<loc x="187638" y="-117286" />
+			<loc x="186478" y="-116565" />
+		</vertices>
+	</zone>
+	<!-- fire_pot_god_hp_regen2 -->
+	<zone id="16045" type="Effect" shape="Poly" minZ="-3246" maxZ="-2846">
+	<stat name="TargetClass" value="L2Npc" />
+	<stat name="skillIdLvl" value="4698-7;" /> <!-- s_area_hp_regeneration7 -->
+	<!-- <stat name="Chance" value="70" /> -->
+    <stat name="InitialDelay" value="1000"/>
+    <stat name="Reuse" value="3000" /> 
+		<vertices>
+			<loc x="182713" y="-119880" />
+			<loc x="183822" y="-120471" />
+			<loc x="184986" y="-118671" />
+			<loc x="183254" y="-118355" />
+		</vertices>
+	</zone>
+	<!-- fire_pot_god_hp_regen3 -->
+	<zone id="16046" type="Effect" shape="Poly" minZ="-3180" maxZ="-2780">
+	<stat name="TargetClass" value="L2Npc" />
+	<stat name="skillIdLvl" value="4698-7;" /> <!-- s_area_hp_regeneration7 -->
+	<!-- <stat name="Chance" value="70" /> -->
+    <stat name="InitialDelay" value="1000"/>
+    <stat name="Reuse" value="3000" /> 
+		<vertices>
+			<loc x="184021" y="-121547" />
+			<loc x="185825" y="-121596" />
+			<loc x="185937" y="-119732" />
+			<loc x="184633" y="-119645" />
+		</vertices>
+	</zone>
+	<!-- fire_pot_god_hp_regen4 -->
+	<zone id="16047" type="Effect" shape="Poly" minZ="-3164" maxZ="-2764">
+	<stat name="TargetClass" value="L2Npc" />
+	<stat name="skillIdLvl" value="4698-7;" /> <!-- s_area_hp_regeneration7 -->
+	<!-- <stat name="Chance" value="70" /> -->
+	<stat name="InitialDelay" value="1000"/>
+	<stat name="Reuse" value="3000" /> 
+		<vertices>
+			<loc x="186868" y="-121700" />
+			<loc x="188500" y="-121700" />
+			<loc x="188608" y="-119980" />
+			<loc x="187088" y="-120020" />
+		</vertices>
+	</zone>
+	 <!-- fire_pot_god_hp_regen5 -->
+	<zone id="16048" type="Effect" shape="Poly" minZ="-3152" maxZ="-2752">
+	<stat name="TargetClass" value="L2Npc" />
+	<stat name="skillIdLvl" value="4698-7;" /> <!-- s_area_hp_regeneration7 -->
+	<!-- <stat name="Chance" value="70" /> -->
+	<stat name="InitialDelay" value="1000"/>
+	<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="189116" y="-121636" />
+			<loc x="190732" y="-121116" />
+			<loc x="190108" y="-119288" />
+			<loc x="188672" y="-119984" />
+		</vertices>
+	</zone>
+	<!-- fire_pot_god_hp_regen6 -->
+	<zone id="16049" type="Effect" shape="Poly" minZ="-3388" maxZ="-2988">
+	<stat name="TargetClass" value="L2Npc" />
+	<stat name="skillIdLvl" value="4698-7;" /> <!-- s_area_hp_regeneration7 -->
+	<!-- <stat name="Chance" value="70" /> -->
+	<stat name="InitialDelay" value="1000"/>
+	<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="187636" y="-120012" />
+			<loc x="189680" y="-119284" />
+			<loc x="188696" y="-117896" />
+			<loc x="187504" y="-118572" />
+		</vertices>
+	</zone>
+    <!-- fire_pot_god_hp_regen7 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-3356" maxZ="-2956">
+	<stat name="TargetClass" value="L2Npc" />
+	<stat name="skillIdLvl" value="4698-7;" /> <!-- s_area_hp_regeneration7 -->
+	<!-- <stat name="Chance" value="70" /> -->
+	<stat name="InitialDelay" value="1000"/>
+	<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="188888" y="-118252" />
+			<loc x="191124" y="-118348" />
+			<loc x="190324" y="-115548" />
+			<loc x="188992" y="-116344" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster1 -->
+	<zone id="16044" type="Effect" shape="Poly" minZ="-3375" maxZ="-2975">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="71030" y="-60113" />
+			<loc x="70966" y="-59549" />
+			<loc x="70250" y="-59173" />
+			<loc x="69622" y="-59597" />
+			<loc x="69634" y="-60261" />
+			<loc x="70026" y="-60593" />
+			<loc x="70566" y="-60601" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster2 -->
+	<zone id="16045" type="Effect" shape="Poly" minZ="-3191" maxZ="-2991">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="73522" y="-59473" />
+			<loc x="73454" y="-58861" />
+			<loc x="73194" y="-58629" />
+			<loc x="72642" y="-58433" />
+			<loc x="72110" y="-58501" />
+			<loc x="71782" y="-59013" />
+			<loc x="71922" y="-59817" />
+			<loc x="72482" y="-60149" />
+			<loc x="72986" y="-60085" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster3 -->
+	<zone id="16046" type="Effect" shape="Poly" minZ="-3335" maxZ="-2935">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="72376" y="-55558" />
+			<loc x="72036" y="-54506" />
+			<loc x="71188" y="-54130" />
+			<loc x="70264" y="-54442" />
+			<loc x="69748" y="-55206" />
+			<loc x="69860" y="-56066" />
+			<loc x="70708" y="-56830" />
+			<loc x="71632" y="-56706" />
+			<loc x="72132" y="-56258" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster4 -->
+	<zone id="16047" type="Effect" shape="Poly" minZ="-3179" maxZ="-2979">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="76091" y="-53873" />
+			<loc x="75447" y="-53721" />
+			<loc x="75135" y="-54069" />
+			<loc x="75047" y="-54749" />
+			<loc x="75491" y="-55125" />
+			<loc x="76171" y="-54993" />
+			<loc x="76323" y="-54677" />
+			<loc x="76339" y="-54281" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster5 -->
+	<zone id="16048" type="Effect" shape="Poly" minZ="-3255" maxZ="-2955">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="74415" y="-51769" />
+			<loc x="74351" y="-51081" />
+			<loc x="74075" y="-50837" />
+			<loc x="74007" y="-50597" />
+			<loc x="73335" y="-50669" />
+			<loc x="72983" y="-51393" />
+			<loc x="73167" y="-51845" />
+			<loc x="73995" y="-52025" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster6 -->
+	<zone id="16049" type="Effect" shape="Poly" minZ="-3458" maxZ="-3158">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="73198" y="-44860" />
+			<loc x="72682" y="-44392" />
+			<loc x="71766" y="-44416" />
+			<loc x="71314" y="-44836" />
+			<loc x="71378" y="-45248" />
+			<loc x="71430" y="-45960" />
+			<loc x="71850" y="-46264" />
+			<loc x="72594" y="-46236" />
+			<loc x="73034" y="-45800" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster7 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-3418" maxZ="-3118">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="74049" y="-42558" />
+			<loc x="73997" y="-41998" />
+			<loc x="73513" y="-41622" />
+			<loc x="73093" y="-41610" />
+			<loc x="72537" y="-42338" />
+			<loc x="72661" y="-42830" />
+			<loc x="73325" y="-43018" />
+			<loc x="73641" y="-42942" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster8 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-3410" maxZ="-3110">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="77309" y="-42410" />
+			<loc x="76629" y="-41878" />
+			<loc x="75557" y="-41990" />
+			<loc x="74781" y="-42802" />
+			<loc x="74745" y="-43802" />
+			<loc x="75581" y="-44790" />
+			<loc x="76761" y="-44770" />
+			<loc x="77597" y="-44062" />
+			<loc x="77641" y="-43006" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster9 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-3422" maxZ="-3122">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="80214" y="-42670" />
+			<loc x="80438" y="-42094" />
+			<loc x="80314" y="-41546" />
+			<loc x="79614" y="-41342" />
+			<loc x="78754" y="-41710" />
+			<loc x="78662" y="-42230" />
+			<loc x="79062" y="-42894" />
+			<loc x="79758" y="-43070" />
+			<loc x="79930" y="-42834" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster10 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-3370" maxZ="-3070">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="83118" y="-41483" />
+			<loc x="82686" y="-40931" />
+			<loc x="82046" y="-40887" />
+			<loc x="82050" y="-41079" />
+			<loc x="81734" y="-41263" />
+			<loc x="81610" y="-41879" />
+			<loc x="82366" y="-42299" />
+			<loc x="82758" y="-42155" />
+			<loc x="82910" y="-41879" />
+			<loc x="83086" y="-41823" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster11 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-3366" maxZ="-3066">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="81654" y="-45503" />
+			<loc x="81886" y="-45267" />
+			<loc x="82222" y="-44899" />
+			<loc x="82266" y="-44547" />
+			<loc x="82098" y="-44207" />
+			<loc x="81506" y="-44063" />
+			<loc x="80846" y="-44375" />
+			<loc x="80786" y="-44795" />
+			<loc x="81094" y="-45271" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster12 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2522" maxZ="-2222">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="79526" y="-51746" />
+			<loc x="79638" y="-51098" />
+			<loc x="79190" y="-50458" />
+			<loc x="78398" y="-50694" />
+			<loc x="78158" y="-51298" />
+			<loc x="78570" y="-51934" />
+			<loc x="79214" y="-51898" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster13 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2470" maxZ="-2170">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="83615" y="-50828" />
+			<loc x="83507" y="-50428" />
+			<loc x="83115" y="-50032" />
+			<loc x="82447" y="-50180" />
+			<loc x="82231" y="-50752" />
+			<loc x="82535" y="-51328" />
+			<loc x="82855" y="-51444" />
+			<loc x="83535" y="-51204" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster14 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2458" maxZ="-2158">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="81946" y="-53719" />
+			<loc x="81398" y="-53767" />
+			<loc x="80642" y="-53691" />
+			<loc x="79554" y="-54587" />
+			<loc x="79782" y="-55123" />
+			<loc x="79886" y="-56423" />
+			<loc x="81054" y="-57231" />
+			<loc x="81802" y="-57111" />
+			<loc x="82970" y="-56139" />
+			<loc x="82738" y="-54227" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster15 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2542" maxZ="-2242">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="78226" y="-58454" />
+			<loc x="78206" y="-58026" />
+			<loc x="77858" y="-57766" />
+			<loc x="77370" y="-57814" />
+			<loc x="77058" y="-58266" />
+			<loc x="77374" y="-58806" />
+			<loc x="77966" y="-58870" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster16 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2558" maxZ="-2258">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="77796" y="-61961" />
+			<loc x="77836" y="-61333" />
+			<loc x="77524" y="-60969" />
+			<loc x="77100" y="-61041" />
+			<loc x="76796" y="-61233" />
+			<loc x="76728" y="-61865" />
+			<loc x="77368" y="-62213" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster17 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2414" maxZ="-2114">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="82052" y="-59979" />
+			<loc x="81588" y="-59123" />
+			<loc x="80692" y="-59059" />
+			<loc x="80152" y="-59707" />
+			<loc x="80172" y="-60535" />
+			<loc x="80824" y="-61043" />
+			<loc x="81552" y="-60955" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster18 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2522" maxZ="-2222">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="85533" y="-63207" />
+			<loc x="85685" y="-62647" />
+			<loc x="85249" y="-62239" />
+			<loc x="84589" y="-62535" />
+			<loc x="84549" y="-63151" />
+			<loc x="85101" y="-63443" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster19 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2462" maxZ="-2162">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="89512" y="-60985" />
+			<loc x="89712" y="-60141" />
+			<loc x="88888" y="-59441" />
+			<loc x="87948" y="-59557" />
+			<loc x="87620" y="-60545" />
+			<loc x="88136" y="-61165" />
+			<loc x="88544" y="-61437" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster20 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2574" maxZ="-2274">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="86034" y="-54576" />
+			<loc x="85642" y="-54220" />
+			<loc x="85238" y="-54224" />
+			<loc x="84862" y="-54636" />
+			<loc x="85082" y="-55248" />
+			<loc x="85526" y="-55364" />
+			<loc x="85950" y="-55020" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster21 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2727" maxZ="-2427">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="90080" y="-52443" />
+			<loc x="90212" y="-51947" />
+			<loc x="89700" y="-51239" />
+			<loc x="88928" y="-51583" />
+			<loc x="88764" y="-51991" />
+			<loc x="89008" y="-52687" />
+			<loc x="89688" y="-52723" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster22 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2767" maxZ="-2467">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="92777" y="-52363" />
+			<loc x="91981" y="-51967" />
+			<loc x="91281" y="-52519" />
+			<loc x="91229" y="-53299" />
+			<loc x="91385" y="-53679" />
+			<loc x="92405" y="-53943" />
+			<loc x="93025" y="-53439" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster23 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2763" maxZ="-2463">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="95179" y="-52286" />
+			<loc x="94747" y="-51982" />
+			<loc x="94303" y="-52062" />
+			<loc x="93927" y="-52458" />
+			<loc x="94187" y="-53042" />
+			<loc x="94707" y="-53150" />
+			<loc x="95043" y="-53058" />
+			<loc x="95211" y="-52546" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster24 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2550" maxZ="-2150">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="85757" y="-59957" />
+			<loc x="86073" y="-59585" />
+			<loc x="86085" y="-59117" />
+			<loc x="85761" y="-58801" />
+			<loc x="85177" y="-58893" />
+			<loc x="84905" y="-59329" />
+			<loc x="85229" y="-59869" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster25 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2486" maxZ="-2286">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> -->
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="81382" y="-63921" />
+			<loc x="81826" y="-63537" />
+			<loc x="81834" y="-62985" />
+			<loc x="81298" y="-62773" />
+			<loc x="80870" y="-62985" />
+			<loc x="80798" y="-63309" />
+			<loc x="80946" y="-63769" />
+		</vertices>
+	</zone>
+	<!-- godad_swamp_monster26 -->
+	<zone id="16050" type="Effect" shape="Poly" minZ="-2819" maxZ="-2619">
+		<stat name="TargetClass" value="L2Npc" />
+		<stat name="skillIdLvl" value="4644-2;4645-3;4646-3;4647-3;4648-3;" /> <!-- s_area_haste2/s_area_focus3/s_area_might3/s_area_shield3 and s_area_death_whisper3? -->
+		<!-- <stat name="Chance" value="70" /> --> 
+		<stat name="InitialDelay" value="1000" />
+		<stat name="Reuse" value="3000" />
+		<vertices>
+			<loc x="93421" y="-55220" />
+			<loc x="94109" y="-55536" />
+			<loc x="94601" y="-55164" />
+			<loc x="94581" y="-54740" />
+			<loc x="94185" y="-54360" />
+			<loc x="93565" y="-54344" />
+			<loc x="93365" y="-54760" />
 		</vertices>
 	</zone>
 </list>
