@@ -36,6 +36,7 @@ public abstract class L2Object
 	// Object localization : Used for items/chars that are seen in the world
 	private L2WorldRegion worldRegion;
 	
+	// used in EffectZone & DamageZone: objects affected
 	private InstanceType instanceType = null;
 	
 	public L2Object(int objectId)

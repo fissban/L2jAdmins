@@ -1108,6 +1108,8 @@ public abstract class L2Character extends L2Object
 			return;
 		}
 		
+		setIsCastingNow(true);
+		
 		// Recharge AutoSoulShot
 		rechargeShots(skill.useSoulShot(), skill.useSpiritShot());
 		
@@ -1140,7 +1142,6 @@ public abstract class L2Character extends L2Object
 				{
 					setIsCastingNow(false);
 					
-					// Send ActionFailed to the L2PcInstance
 					if (this instanceof L2PcInstance)
 					{
 						// Send ActionFailed to the L2PcInstance
@@ -2531,16 +2532,16 @@ public abstract class L2Character extends L2Object
 			setIsCastingNow(false);
 			castInterruptTime = 0;
 			
+			// broadcast packet to stop animations client-side
+			broadcastPacket(new MagicSkillCanceld(this));
+			// send ActionFailed to the caster
+			sendPacket(ActionFailed.STATIC_PACKET);
+			
 			if (this instanceof L2Playable)
 			{
 				// setting back previous intention
 				getAI().notifyEvent(CtrlEventType.FINISH_CASTING);
 			}
-			
-			// broadcast packet to stop animations client-side
-			broadcastPacket(new MagicSkillCanceld(this));
-			// send ActionFailed to the caster
-			sendPacket(ActionFailed.STATIC_PACKET);
 		}
 	}
 	
@@ -2971,7 +2972,7 @@ public abstract class L2Character extends L2Object
 			// Pathfinding checks. Only when geodata setting is 2, the LoS check gives shorter result
 			// than the original movement was and the LoS gives a shorter distance than 2000
 			// This way of detecting need for pathfinding could be changed.
-			if ((Config.PATHFINDING) && ((originalDistance - distance) > 30) && (distance < 2000) && !isAfraid())
+			if ((originalDistance - distance) > 30 && (distance < 2000) && !isAfraid())
 			{
 				// Path calculation
 				// Overrides previous movement check
