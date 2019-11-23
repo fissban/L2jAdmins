@@ -1,5 +1,6 @@
 package l2j.gameserver.network.external.server;
 
+import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.network.AServerPacket;
 
@@ -20,7 +21,7 @@ public class MoveToPawn extends AServerPacket
 	private final int distance;
 	private final int x, y, z, tx, ty, tz;
 	
-	public MoveToPawn(L2Character cha, L2Character target, int distance)
+	public MoveToPawn(L2Character cha, L2Object target, int distance)
 	{
 		chaObjId = cha.getObjectId();
 		targetObjId = target.getObjectId();

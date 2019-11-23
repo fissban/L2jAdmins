@@ -13,6 +13,7 @@ import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.model.items.enums.ItemLocationType;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.network.external.server.ActionFailed;
 import l2j.gameserver.network.external.server.AutoAttackStop;
 import l2j.gameserver.task.continuous.AttackStanceTaskManager;
 
@@ -97,7 +98,7 @@ public class CharacterAI extends AbstractAI
 	protected void onIntentionActive()
 	{
 		// Check if the Intention is not already Active
-		if (getIntention() != CtrlIntentionType.ACTIVE)
+		if (!hasIntention(CtrlIntentionType.ACTIVE))
 		{
 			// Set the AI Intention to ACTIVE
 			changeIntention(CtrlIntentionType.ACTIVE, null, null);
@@ -150,26 +151,26 @@ public class CharacterAI extends AbstractAI
 	{
 		if (target == null)
 		{
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
-		if (getIntention() == CtrlIntentionType.REST)
+		if (hasIntention(CtrlIntentionType.REST))
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if (activeActor.isAllSkillsDisabled() || activeActor.isCastingNow() || activeActor.isAfraid())
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		// Check if the Intention is already ATTACK
-		if (getIntention() == CtrlIntentionType.ATTACK)
+		if (hasIntention(CtrlIntentionType.ATTACK))
 		{
 			// Check if the AI already targets the L2Character
 			if (getTarget() != target)
@@ -184,7 +185,7 @@ public class CharacterAI extends AbstractAI
 			}
 			else
 			{
-				clientActionFailed(); // else client freezes until cancel target
+				activeActor.sendPacket(ActionFailed.STATIC_PACKET); // else client freezes until cancel target
 			}
 		}
 		else
@@ -215,9 +216,9 @@ public class CharacterAI extends AbstractAI
 	@Override
 	protected void onIntentionCast(Skill skill, L2Object target)
 	{
-		if ((getIntention() == CtrlIntentionType.REST) && skill.isMagic())
+		if (hasIntention(CtrlIntentionType.REST) && skill.isMagic())
 		{
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			activeActor.setIsCastingNow(false);
 			return;
 		}
@@ -252,17 +253,17 @@ public class CharacterAI extends AbstractAI
 	@Override
 	protected void onIntentionMoveTo(LocationHolder pos)
 	{
-		if (getIntention() == CtrlIntentionType.REST)
+		if (hasIntention(CtrlIntentionType.REST))
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if (activeActor.isAllSkillsDisabled() || activeActor.isCastingNow())
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -283,38 +284,38 @@ public class CharacterAI extends AbstractAI
 	@Override
 	protected void onIntentionFollow(L2Character target)
 	{
-		if (getIntention() == CtrlIntentionType.REST)
+		if (hasIntention(CtrlIntentionType.REST))
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if (activeActor.isAllSkillsDisabled() || activeActor.isCastingNow())
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if (activeActor.isMovementDisabled())
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		// Dead actors can`t follow
 		if (activeActor.isDead())
 		{
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		// do not follow yourself
 		if (activeActor == target)
 		{
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -335,23 +336,23 @@ public class CharacterAI extends AbstractAI
 	@Override
 	protected void onIntentionPickUp(L2Object object)
 	{
-		if (getIntention() == CtrlIntentionType.REST)
+		if (hasIntention(CtrlIntentionType.REST))
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if (activeActor.isAllSkillsDisabled())
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if ((object.getX() == 0) && (object.getY() == 0))
 		{
-			object.setXYZ(getActor().getX(), getActor().getY(), getActor().getZ() + 5);
+			object.setXYZ(activeActor.getX(), activeActor.getY(), activeActor.getZ() + 5);
 			return;
 		}
 		
@@ -381,21 +382,21 @@ public class CharacterAI extends AbstractAI
 	@Override
 	protected void onIntentionInteract(L2Object object)
 	{
-		if (getIntention() == CtrlIntentionType.REST)
+		if (hasIntention(CtrlIntentionType.REST))
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if (activeActor.isAllSkillsDisabled())
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
-		if (getIntention() != CtrlIntentionType.INTERACT)
+		if (!hasIntention(CtrlIntentionType.INTERACT))
 		{
 			// Set the Intention of this AbstractAI to AI_INTENTION_INTERACT
 			changeIntention(CtrlIntentionType.INTERACT, object, null);
@@ -553,30 +554,30 @@ public class CharacterAI extends AbstractAI
 	protected void onEvtArrived()
 	{
 		// Launch an explore task if necessary
-		if (getActor() instanceof L2PcInstance)
+		if (activeActor instanceof L2PcInstance)
 		{
-			if (((L2PcInstance) getActor()).isPendingSitting())
+			if (((L2PcInstance) activeActor).isPendingSitting())
 			{
-				((L2PcInstance) getActor()).sitDown();
+				((L2PcInstance) activeActor).sitDown();
 				return;
 			}
 		}
-		getActor().revalidateZone(true);
+		activeActor.revalidateZone(true);
 		
-		if (getActor().moveToNextRoutePoint())
+		if (activeActor.moveToNextRoutePoint())
 		{
 			return;
 		}
 		
-		if (getActor() instanceof L2Attackable)
+		if (activeActor instanceof L2Attackable)
 		{
-			((L2Attackable) getActor()).setIsReturningToSpawnPoint(false);
+			((L2Attackable) activeActor).setIsReturningToSpawnPoint(false);
 		}
 		
 		clientStoppedMoving();
 		
 		// If the Intention was MOVE_TO, set the Intention to ACTIVE
-		if (getIntention() == CtrlIntentionType.MOVE_TO)
+		if (hasIntention(CtrlIntentionType.MOVE_TO))
 		{
 			setIntention(CtrlIntentionType.ACTIVE);
 		}
@@ -596,7 +597,7 @@ public class CharacterAI extends AbstractAI
 	protected void onEvtArrivedBlocked(LocationHolder blocked_at_pos)
 	{
 		// If the Intention was MOVE_TO, set the Intention to ACTIVE
-		if ((getIntention() == CtrlIntentionType.MOVE_TO) || (getIntention() == CtrlIntentionType.CAST))
+		if (hasIntention(CtrlIntentionType.MOVE_TO) || hasIntention(CtrlIntentionType.CAST))
 		{
 			setIntention(CtrlIntentionType.ACTIVE);
 		}
@@ -771,10 +772,10 @@ public class CharacterAI extends AbstractAI
 			
 			if (activeActor.isMovementDisabled())
 			{
-				if (getIntention() == CtrlIntentionType.ATTACK)
+				if (hasIntention(CtrlIntentionType.ATTACK))
 				{
 					setIntention(CtrlIntentionType.IDLE);
-					clientActionFailed();
+					activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 				}
 				return true;
 			}
@@ -784,6 +785,8 @@ public class CharacterAI extends AbstractAI
 			{
 				activeActor.setRunning();
 			}
+			
+			stopFollow();
 			
 			if ((target instanceof L2Character) && !(target instanceof L2DoorInstance))
 			{
@@ -807,7 +810,11 @@ public class CharacterAI extends AbstractAI
 			return true;
 		}
 		
-		stopFollow();
+		if (getFollowTarget() != null)
+		{
+			stopFollow();
+		}
+		
 		return false;
 	}
 	

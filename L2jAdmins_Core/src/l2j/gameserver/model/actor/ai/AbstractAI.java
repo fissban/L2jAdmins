@@ -6,7 +6,6 @@ import java.util.logging.Logger;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
-import l2j.gameserver.model.actor.L2Summon;
 import l2j.gameserver.model.actor.ai.enums.CtrlEventType;
 import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -71,20 +70,7 @@ public abstract class AbstractAI
 			// target is not in range, trigger proper AI
 			if (!activeActor.isInsideRadius(follow, range, true, false))
 			{
-				if (!activeActor.isInsideRadius(followTarget, 3000, true, false))
-				{
-					// if the target is too far (maybe also teleported)
-					if (activeActor instanceof L2Summon)
-					{
-						((L2Summon) activeActor).setFollowStatus(false);
-					}
-					
-					setIntention(CtrlIntentionType.IDLE);
-				}
-				else
-				{
-					moveToPawn(follow, range);
-				}
+				moveToPawn(follow, range);
 			}
 		}
 	}
@@ -401,15 +387,6 @@ public abstract class AbstractAI
 	protected abstract void onEvtFinishCasting();
 	
 	/**
-	 * Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor.<br>
-	 * <FONT COLOR=#FF0000><B> <U>Caution</U> : Low level function, used by AI subclasses</B></FONT><br>
-	 */
-	protected void clientActionFailed()
-	{
-		activeActor.sendPacket(ActionFailed.STATIC_PACKET);
-	}
-	
-	/**
 	 * Move the actor to Pawn server side AND client side by sending Server->Client packet MoveToPawn <I>(broadcast)</I>.<br>
 	 * <FONT COLOR=#FF0000><B> <U>Caution</U> : Low level function, used by AI subclasses</B></FONT><br>
 	 * @param pawn
@@ -420,11 +397,16 @@ public abstract class AbstractAI
 		// Check if actor can move
 		if (activeActor.isMovementDisabled())
 		{
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		var time = System.currentTimeMillis();
+		
+		if (offset < 10)
+		{
+			offset = 10;
+		}
 		
 		if (clientMoving && (target == pawn))
 		{
@@ -433,7 +415,7 @@ public abstract class AbstractAI
 			{
 				if (time < moveToPawnTimeout)
 				{
-					clientActionFailed();
+					activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 					return;
 				}
 			}
@@ -442,7 +424,7 @@ public abstract class AbstractAI
 				// minimum time to calculate new route is 2 seconds
 				if (time < moveToPawnTimeout + 1000)
 				{
-					clientActionFailed();
+					activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 					return;
 				}
 			}
@@ -456,16 +438,16 @@ public abstract class AbstractAI
 		
 		if (pawn == null)
 		{
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		// Calculate movement data for a move to location action and add the actor to movingObjects of GameTimeController
-		activeActor.moveToLocation(pawn.getX(), pawn.getY(), pawn.getZ(), offset < 10 ? offset : 10);
+		activeActor.moveToLocation(pawn.getX(), pawn.getY(), pawn.getZ(), offset);
 		
 		if (!activeActor.isMoving())
 		{
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -477,7 +459,7 @@ public abstract class AbstractAI
 			{
 				clientMovingToPawnOffset = 0;
 			}
-			send = activeActor.isOnGeodataPath() ? new CharMoveToLocation(activeActor) : new MoveToPawn(activeActor, (L2Character) target, offset);
+			send = activeActor.isOnGeodataPath() ? new CharMoveToLocation(activeActor) : new MoveToPawn(activeActor, pawn, offset);
 		}
 		else
 		{
@@ -505,7 +487,7 @@ public abstract class AbstractAI
 	{
 		if (activeActor.isMovementDisabled())
 		{
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -629,11 +611,7 @@ public abstract class AbstractAI
 	 */
 	public synchronized void startFollow(L2Character target)
 	{
-		if (followTask != null)
-		{
-			followTask.cancel(false);
-			followTask = null;
-		}
+		stopFollow();
 		
 		// Create and Launch an AI Follow Task to execute every 1s
 		followTarget = target;
@@ -647,11 +625,7 @@ public abstract class AbstractAI
 	 */
 	public synchronized void startFollow(L2Character target, int range)
 	{
-		if (followTask != null)
-		{
-			followTask.cancel(false);
-			followTask = null;
-		}
+		stopFollow();
 		
 		followTarget = target;
 		followTask = ThreadPoolManager.scheduleAtFixedRate(new FollowTask(range), 5, ATTACK_FOLLOW_INTERVAL);

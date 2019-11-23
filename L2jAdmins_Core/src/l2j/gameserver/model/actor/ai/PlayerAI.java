@@ -7,6 +7,7 @@ import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.L2StaticObjectInstance;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.network.external.server.ActionFailed;
 import l2j.gameserver.network.external.server.AutoAttackStart;
 import l2j.gameserver.task.continuous.AttackStanceTaskManager;
 
@@ -100,7 +101,7 @@ public class PlayerAI extends PlayableAI
 	@Override
 	protected void onEvtFinishCasting()
 	{
-		if (getIntention() == CtrlIntentionType.CAST)
+		if (hasIntention(CtrlIntentionType.CAST))
 		{
 			if ((nextIntention != null) && (nextIntention.crtlIntention != CtrlIntentionType.CAST)) // previous state shouldn't be casting
 			{
@@ -140,16 +141,16 @@ public class PlayerAI extends PlayableAI
 	@Override
 	protected void onIntentionMoveTo(LocationHolder pos)
 	{
-		if (getIntention() == CtrlIntentionType.REST)
+		if (hasIntention(CtrlIntentionType.REST))
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if (activeActor.isAllSkillsDisabled() || activeActor.isCastingNow() || activeActor.isAttackingNow())
 		{
-			clientActionFailed();
+			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
 			setNextIntention(CtrlIntentionType.MOVE_TO, pos, null);
 			return;
 		}
