@@ -40,7 +40,7 @@ public class RequestRecipeShopListSet extends AClientPacket
 			return;
 		}
 		
-		if (player.isAttackingDisabled() || player.isConfused() || player.isImmobilized() || player.isCastingNow())
+		if (player.cantAttack() || player.isAttackingNow() || player.isImmobilized() || player.isCastingNow())
 		{
 			return;
 		}

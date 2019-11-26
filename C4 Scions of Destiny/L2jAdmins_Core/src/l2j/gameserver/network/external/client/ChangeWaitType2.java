@@ -62,7 +62,7 @@ public class ChangeWaitType2 extends AClientPacket
 					}
 					else
 					{
-						if (player.isAttackingDisabled() || player.isImmobilized() || player.isCastingNow())
+						if (player.cantAttack() || player.isAttackingNow() || player.isImmobilized() || player.isCastingNow())
 						{
 							return;
 						}

@@ -88,7 +88,7 @@ public class RequestActionUse extends AClientPacket
 						}
 						else
 						{
-							if (activeChar.isAttackingDisabled() || activeChar.isImmobilized() || activeChar.isCastingNow())
+							if (activeChar.cantAttack() || activeChar.isAttackingNow() || activeChar.isImmobilized() || activeChar.isCastingNow())
 							{
 								return;
 							}
