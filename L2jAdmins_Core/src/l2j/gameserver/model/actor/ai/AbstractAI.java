@@ -302,10 +302,16 @@ public abstract class AbstractAI
 				onEvtMuted((L2Character) arg0);
 				break;
 			case READY_TO_ACT:
-				onEvtReadyToAct();
+				if (!activeActor.isCastingNow())
+				{
+					onEvtReadyToAct();
+				}
 				break;
 			case ARRIVED:
-				onEvtArrived();
+				if (!activeActor.isCastingNow())
+				{
+					onEvtArrived();
+				}
 				break;
 			case ARRIVED_BLOCKED:
 				onEvtArrivedBlocked((LocationHolder) arg0);

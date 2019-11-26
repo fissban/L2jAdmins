@@ -343,7 +343,7 @@ public class CharacterAI extends AbstractAI
 			return;
 		}
 		
-		if (activeActor.isAllSkillsDisabled())
+		if (activeActor.isAllSkillsDisabled() || activeActor.isCastingNow() || activeActor.isAttackingNow())
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
 			activeActor.sendPacket(ActionFailed.STATIC_PACKET);
@@ -389,7 +389,7 @@ public class CharacterAI extends AbstractAI
 			return;
 		}
 		
-		if (activeActor.isAllSkillsDisabled())
+		if (activeActor.isAllSkillsDisabled() || activeActor.isCastingNow())
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
 			activeActor.sendPacket(ActionFailed.STATIC_PACKET);

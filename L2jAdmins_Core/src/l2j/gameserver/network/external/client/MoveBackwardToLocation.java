@@ -67,6 +67,12 @@ public class MoveBackwardToLocation extends AClientPacket
 			return;
 		}
 		
+		// if (activeChar.isCastingNow())
+		// {
+		// activeChar.sendPacket(ActionFailed.STATIC_PACKET);
+		// return;
+		// }
+		
 		if ((targetX == originX) && (targetY == originY) && (targetZ == originZ))
 		{
 			activeChar.sendPacket(new StopMove(activeChar));

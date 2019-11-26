@@ -562,7 +562,7 @@ public abstract class L2Character extends L2Object
 	 */
 	public void doAttack(L2Character target)
 	{
-		if ((target == null) || isAttackingDisabled())
+		if ((target == null) || cantAttack() || isAttackingNow())
 		{
 			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
@@ -680,7 +680,7 @@ public abstract class L2Character extends L2Object
 						return;
 					}
 					
-					// If L2PcInstance have enough MP, the bow consummes it
+					// If L2PcInstance have enough MP, the bow consumes it
 					getStatus().reduceMp(mpConsume);
 				}
 			}
@@ -708,14 +708,12 @@ public abstract class L2Character extends L2Object
 		// Check whether or not the player has loaded a soulshot
 		var wasSSCharged = isChargedShot(ShotType.SOULSHOTS);
 		
-		// Get the Attack Speed of the L2Character (delay (in milliseconds) before next attack)
-		// var timeAtk = calculateTimeBetweenAttacks(target, weaponItem);
-		// Get the Attack Speed of the Creature (delay (in milliseconds) before next attack)
-		int timeAtk = calculateTimeBetweenAttacks(target, weaponItem);
+		// Get the Attack Speed of the L2Character (delay in milliseconds) before next attack
+		var timeAtk = calculateTimeBetweenAttacks(weaponItem);
 		
 		attackEndTime = time + timeAtk - 100;
 		disableBowAttackEndTime = time + 50;
-		attackEndTime = System.currentTimeMillis() + timeAtk;
+		
 		// Create a Server->Client packet Attack
 		var attack = new Attack(this, wasSSCharged, (weaponItem != null) ? weaponItem.getCrystalType() : CrystalType.CRYSTAL_NONE);
 		
@@ -723,8 +721,8 @@ public abstract class L2Character extends L2Object
 		setHeading(Util.calculateHeadingFrom(this, target));
 		
 		var hitted = false;
-		// Select the type of attack to start
 		
+		// Select the type of attack to start
 		var weapon = getActiveWeaponItem();
 		var weaponType = (weapon != null) ? weapon.getType() : WeaponType.NONE;
 		
@@ -1275,6 +1273,8 @@ public abstract class L2Character extends L2Object
 		var level = (skill.getLevel() < 1) ? 1 : skill.getLevel();
 		
 		broadcastPacket(new MagicSkillUse(this, target, skill.getId(), level, hitTime, reuseDelay));
+		// Send a Server->Client packet MagicSkillLaunched to all knownPlayers
+		broadcastPacket(new MagicSkillLaunched(this, skill.getId(), skill.getLevel(), targets));
 		
 		// Send a system message USE_S1 to the L2Character
 		if ((this instanceof L2PcInstance) && (skill.getId() != 1312))
@@ -1291,9 +1291,10 @@ public abstract class L2Character extends L2Object
 				sendPacket(new SetupGauge(SetupGaugeType.BLUE, hitTime));
 			}
 			
-			if (skillCast != null)
+			Future<?> future = skillCast;
+			if (future != null)
 			{
-				skillCast.cancel(true);
+				future.cancel(true);
 				skillCast = null;
 			}
 			
@@ -1501,11 +1502,11 @@ public abstract class L2Character extends L2Object
 	}
 	
 	/**
-	 * @return True if the L2Character can't attack (stun, sleep, attackEndTime, fakeDeath, paralyze).
+	 * @return true if is in a state where he can't attack.
 	 */
-	public final boolean isAttackingDisabled()
+	public boolean cantAttack()
 	{
-		return isStunned() || isSleeping() || (attackEndTime > System.currentTimeMillis()) || isAlikeDead() || isParalyzed();
+		return isStunned() || isAfraid() || isSleeping() || isParalyzed() || isConfused() || isAlikeDead() || isTeleporting();
 	}
 	
 	public final synchronized Map<StatsType, Calculator> getCalculators()
@@ -3332,10 +3333,18 @@ public abstract class L2Character extends L2Object
 	 */
 	protected void onHitTimer(L2Character target, int damage, boolean crit, boolean miss, boolean soulshot, boolean shld)
 	{
+		// Deny the whole process if actor is casting or is in a state he can't attack.
+		if (isCastingNow() || cantAttack())
+		{
+			return;
+		}
+		
 		// If the attacker/target is dead or use fake death, notify the AI with CANCEL
 		if ((target == null) || isAlikeDead())
 		{
 			getAI().notifyEvent(CtrlEventType.CANCEL);
+			// Send ActionFailed to the L2PcInstance
+			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -3675,11 +3684,10 @@ public abstract class L2Character extends L2Object
 	}
 	
 	/**
-	 * @param  target
 	 * @param  weapon
 	 * @return        the Attack Speed of the L2Character (delay (in milliseconds) before next attack).
 	 */
-	public int calculateTimeBetweenAttacks(L2Character target, ItemWeapon weapon)
+	public int calculateTimeBetweenAttacks(ItemWeapon weapon)
 	{
 		if (weapon != null)
 		{
@@ -4050,7 +4058,7 @@ public abstract class L2Character extends L2Object
 		}
 		
 		// Send a Server->Client packet MagicSkillLaunched to all knownPlayers
-		broadcastPacket(new MagicSkillLaunched(this, skill.getId(), skill.getLevel(), targets));
+		// broadcastPacket(new MagicSkillLaunched(this, skill.getId(), skill.getLevel(), targets));
 		
 		if (instant)
 		{
