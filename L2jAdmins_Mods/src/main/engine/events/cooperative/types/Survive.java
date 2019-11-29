@@ -11,7 +11,7 @@ import l2j.gameserver.model.actor.L2Playable;
 import l2j.gameserver.model.actor.instance.enums.TeamType;
 import l2j.gameserver.model.spawn.Spawn;
 import l2j.util.Rnd;
-import main.data.ConfigData;
+import main.data.properties.ConfigData;
 import main.engine.events.cooperative.AbstractCooperative;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.NpcHolder;
@@ -176,7 +176,7 @@ public class Survive extends AbstractCooperative
 			}
 		}
 		
-		return false;
+		return super.canAttack(attacker, victim);
 	}
 	
 	@Override

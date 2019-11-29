@@ -6,8 +6,8 @@ import java.net.URL;
 
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.util.Broadcast;
-import main.data.ConfigData;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
+import main.data.properties.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.RewardHolder;
 import main.holders.objects.NpcHolder;

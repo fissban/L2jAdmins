@@ -16,7 +16,7 @@ import l2j.gameserver.network.external.server.PlaySound;
 import l2j.gameserver.network.external.server.PlaySound.PlaySoundType;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.network.external.server.TutorialShowQuestionMark;
-import main.data.ConfigData;
+import main.data.properties.ConfigData;
 import main.engine.events.daily.AbstractEvent;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.NpcHolder;
@@ -160,7 +160,7 @@ public class NpcClassMaster extends AbstractEvent
 					// Send html
 					var html = new NpcHtmlMessage(npc.getObjectId());
 					html.setFile(HTML_PATH + "ok.htm");
-					html.replace("%name%", ClassId.getById(val).getName());
+					html.replace("%name%", ClassId.values()[val].getName());
 					ph.getInstance().sendPacket(html);
 				}
 			}

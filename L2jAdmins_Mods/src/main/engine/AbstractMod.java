@@ -14,7 +14,7 @@ import l2j.gameserver.model.zone.Zone;
 import l2j.gameserver.network.external.server.NpcHtmlMessage;
 import l2j.gameserver.network.external.server.ShowBoard;
 import main.EngineModsManager;
-import main.data.ModsData;
+import main.data.sql.ModsData;
 import main.enums.EngineStateType;
 import main.holders.DataValueHolder;
 import main.holders.ModTimerHolder;
@@ -538,7 +538,7 @@ public abstract class AbstractMod
 	 * @param  victim
 	 * @return
 	 */
-	public boolean canAttack(CharacterHolder killer, CharacterHolder victim)
+	public boolean canAttack(CharacterHolder attacker, CharacterHolder victim)
 	{
 		return false;
 	}

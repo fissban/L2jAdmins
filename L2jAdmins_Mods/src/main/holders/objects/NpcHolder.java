@@ -8,14 +8,9 @@ import main.enums.ChampionType;
  */
 public class NpcHolder extends CharacterHolder
 {
-	// title
-	private String title = "";
-	
 	public NpcHolder(L2Npc npc)
 	{
 		super(npc);
-		
-		title = npc.getTitle();
 	}
 	
 	/**
@@ -31,24 +26,6 @@ public class NpcHolder extends CharacterHolder
 	public int getId()
 	{
 		return getInstance().getId();
-	}
-	
-	/**
-	 * The npc title is defined
-	 * @param title
-	 */
-	public void setTitle(String title)
-	{
-		this.title = title;
-	}
-	
-	/**
-	 * Get the npc title
-	 * @return
-	 */
-	public String getTitle()
-	{
-		return title;
 	}
 	
 	// XXX CHAMPIONS ---------------------------------------------------------------------------------------------------

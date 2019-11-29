@@ -2,7 +2,7 @@ package main.engine.npc;
 
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.network.external.client.Say2.SayType;
-import main.data.ConfigData;
+import main.data.properties.ConfigData;
 import main.engine.AbstractMod;
 import main.engine.mods.VoteReward;
 import main.holders.objects.CharacterHolder;

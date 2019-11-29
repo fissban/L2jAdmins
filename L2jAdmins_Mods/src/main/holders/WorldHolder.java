@@ -5,7 +5,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 import main.holders.objects.ObjectHolder;
 import main.holders.objects.PlayerHolder;
 import main.holders.objects.SummonHolder;

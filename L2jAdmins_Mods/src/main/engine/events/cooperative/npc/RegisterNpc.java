@@ -3,7 +3,7 @@ package main.engine.events.cooperative.npc;
 import java.util.StringTokenizer;
 
 import l2j.gameserver.model.actor.L2Npc;
-import main.data.ConfigData;
+import main.data.properties.ConfigData;
 import main.engine.AbstractMod;
 import main.engine.events.cooperative.EventCooperativeManager;
 import main.holders.objects.CharacterHolder;

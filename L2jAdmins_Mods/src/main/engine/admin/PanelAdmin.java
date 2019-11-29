@@ -3,8 +3,8 @@ package main.engine.admin;
 import java.util.StringTokenizer;
 
 import l2j.gameserver.network.external.client.Say2.SayType;
-import main.data.ConfigData;
-import main.data.WorldData;
+import main.data.memory.WorldData;
+import main.data.properties.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.WorldHolder;
 import main.holders.objects.PlayerHolder;

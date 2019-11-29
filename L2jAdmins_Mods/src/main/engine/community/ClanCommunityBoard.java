@@ -23,7 +23,7 @@ import l2j.gameserver.network.external.server.StatusUpdate;
 import l2j.gameserver.network.external.server.StatusUpdate.StatusUpdateType;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.network.external.server.UserInfo;
-import main.data.ConfigData;
+import main.data.properties.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.objects.PlayerHolder;
 import main.util.builders.html.Html;

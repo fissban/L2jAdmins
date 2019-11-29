@@ -5,7 +5,7 @@ import java.util.logging.Level;
 
 import l2j.DatabaseManager;
 import l2j.gameserver.data.SkillData;
-import main.data.ConfigData;
+import main.data.properties.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.objects.PlayerHolder;
 

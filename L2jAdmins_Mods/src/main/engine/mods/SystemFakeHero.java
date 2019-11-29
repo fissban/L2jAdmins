@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.network.external.client.Say2.SayType;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 import main.engine.AbstractMod;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.NpcHolder;

@@ -15,7 +15,7 @@ import l2j.gameserver.model.actor.L2Summon;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.model.skills.stats.enums.StatsType;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 import main.enums.MaestriaType;
 import main.enums.MathType;
 import main.holders.AuctionItemHolder;

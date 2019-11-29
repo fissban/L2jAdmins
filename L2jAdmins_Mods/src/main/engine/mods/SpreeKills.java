@@ -8,7 +8,7 @@ import l2j.gameserver.network.external.client.Say2.SayType;
 import l2j.gameserver.network.external.server.CreatureSay;
 import l2j.gameserver.network.external.server.PlaySound;
 import l2j.gameserver.util.Broadcast;
-import main.data.ConfigData;
+import main.data.properties.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.objects.CharacterHolder;
 import main.util.Util;

@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import l2j.gameserver.data.MapRegionData;
-import main.data.ConfigData;
+import l2j.gameserver.network.external.server.NetPing;
+import main.data.properties.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.PlayerHolder;
@@ -118,9 +119,9 @@ public class ReloadConfigs extends AbstractMod
 				System.out.println("-------------------------------");
 				return true;
 			}
-			case "point":
+			case "ping":
 			{
-				
+				ph.getInstance().sendPacket(new NetPing(ph.getObjectId()));
 				return true;
 			}
 			

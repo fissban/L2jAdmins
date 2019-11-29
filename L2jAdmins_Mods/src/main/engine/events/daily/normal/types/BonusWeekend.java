@@ -1,6 +1,6 @@
 package main.engine.events.daily.normal.types;
 
-import main.data.ConfigData;
+import main.data.properties.ConfigData;
 import main.engine.events.daily.AbstractEvent;
 import main.enums.ExpSpType;
 import main.enums.ItemDropType;

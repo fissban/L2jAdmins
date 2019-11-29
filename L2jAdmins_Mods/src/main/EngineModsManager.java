@@ -17,12 +17,12 @@ import l2j.gameserver.model.skills.stats.enums.StatsType;
 import l2j.gameserver.model.zone.Zone;
 import l2j.gameserver.network.external.server.ActionFailed;
 import l2j.gameserver.network.external.server.TutorialShowQuestionMark;
-import main.data.ConfigData;
-import main.data.IconData;
-import main.data.ObjectData;
-import main.data.SchemeBufferPredefinedData;
-import main.data.SkillInfoData;
-import main.data.WorldData;
+import main.data.memory.ObjectData;
+import main.data.memory.WorldData;
+import main.data.properties.ConfigData;
+import main.data.xml.IconData;
+import main.data.xml.SchemeBufferPredefinedData;
+import main.data.xml.SkillInfoData;
 import main.engine.AbstractMod;
 import main.engine.admin.PanelAdmin;
 import main.engine.admin.ReloadConfigs;
@@ -701,9 +701,9 @@ public class EngineModsManager
 		return false;
 	}
 	
-	public static boolean canAttack(L2Character killer, L2Character victim)
+	public static boolean canAttack(L2Character attacker, L2Character victim)
 	{
-		var chKiller = ObjectData.get(CharacterHolder.class, killer);
+		var chAttacker = ObjectData.get(CharacterHolder.class, attacker);
 		var chVictim = ObjectData.get(CharacterHolder.class, victim);
 		
 		if (chVictim == null)
@@ -720,9 +720,9 @@ public class EngineModsManager
 			
 			try
 			{
-				if (!mod.canAttack(chKiller, chVictim))
+				if (mod.canAttack(chAttacker, chVictim))
 				{
-					return false;
+					return true;
 				}
 			}
 			catch (Exception e)
@@ -732,7 +732,7 @@ public class EngineModsManager
 			}
 		}
 		
-		return true;
+		return false;
 	}
 	
 	public static void onKill(L2Character killer, L2Character victim, boolean isPet)
