@@ -46,7 +46,12 @@ public final class Init extends ALoginServerPacket
 		
 		writeB(publicKey); // RSA Public Key
 		
-		// unk GG related?
+		// unk GG related? always 0x00 in C4
+		writeD(0x00);
+		writeD(0x00);
+		writeD(0x00);
+		writeD(0x00);
+		
 		// writeD(0x29DD954E);
 		// writeD(0x77C39CFC);
 		// writeD(0x97ADB620);
