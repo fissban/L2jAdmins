@@ -9,7 +9,7 @@ import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.model.actor.L2Playable;
 import l2j.gameserver.model.actor.instance.enums.TeamType;
 import l2j.gameserver.model.party.Party;
-import main.data.ConfigData;
+import main.data.properties.ConfigData;
 import main.engine.events.cooperative.AbstractCooperative;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.PlayerHolder;
@@ -265,7 +265,7 @@ public class TeamVsTeam extends AbstractCooperative
 			}
 		}
 		
-		return false;
+		return super.canAttack(attacker, victim);
 	}
 	
 	@Override

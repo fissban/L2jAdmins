@@ -1,4 +1,4 @@
-package main.data;
+package main.data.properties;
 
 import java.io.File;
 import java.util.ArrayList;

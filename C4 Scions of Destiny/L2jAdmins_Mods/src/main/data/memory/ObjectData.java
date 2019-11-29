@@ -1,5 +1,5 @@
 
-package main.data;
+package main.data.memory;
 
 import java.util.List;
 import java.util.Map;

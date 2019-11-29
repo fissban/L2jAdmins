@@ -1,4 +1,4 @@
-package main.data;
+package main.data.memory;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;

@@ -9,7 +9,7 @@ import l2j.gameserver.data.ItemData;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.network.external.client.Say2.SayType;
 import l2j.util.Rnd;
-import main.data.ConfigData;
+import main.data.properties.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.PlayerHolder;

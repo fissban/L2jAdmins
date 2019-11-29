@@ -2,7 +2,7 @@ package main.holders.objects;
 
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 
 /**
  * @author fissban

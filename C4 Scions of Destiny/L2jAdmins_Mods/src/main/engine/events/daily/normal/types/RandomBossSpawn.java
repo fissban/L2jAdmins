@@ -5,7 +5,7 @@ import l2j.gameserver.model.actor.instance.enums.TeamType;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.util.Broadcast;
 import l2j.util.Rnd;
-import main.data.ConfigData;
+import main.data.properties.ConfigData;
 import main.engine.events.daily.AbstractEvent;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.NpcHolder;

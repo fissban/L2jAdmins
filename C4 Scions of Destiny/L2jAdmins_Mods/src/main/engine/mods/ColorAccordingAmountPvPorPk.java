@@ -1,7 +1,7 @@
 package main.engine.mods;
 
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import main.data.ConfigData;
+import main.data.properties.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.PlayerHolder;

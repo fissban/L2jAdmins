@@ -7,7 +7,7 @@ import l2j.Config;
 import l2j.gameserver.data.ExperienceData;
 import l2j.gameserver.data.ItemData;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import main.data.ConfigData;
+import main.data.properties.ConfigData;
 import main.engine.AbstractMod;
 import main.holders.RewardHolder;
 import main.holders.objects.PlayerHolder;

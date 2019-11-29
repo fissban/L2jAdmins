@@ -16,8 +16,8 @@ import l2j.gameserver.model.actor.templates.NpcTemplate;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.model.spawn.Spawn;
 import l2j.util.Rnd;
-import main.data.ObjectData;
-import main.data.WorldData;
+import main.data.memory.ObjectData;
+import main.data.memory.WorldData;
 import main.holders.objects.NpcHolder;
 import main.holders.objects.ObjectHolder;
 

@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.util.Broadcast;
-import main.data.ConfigData;
+import main.data.properties.ConfigData;
 import main.engine.events.cooperative.types.AllVsAll;
 import main.engine.events.cooperative.types.CaptureTheFlag;
 import main.engine.events.cooperative.types.Survive;
