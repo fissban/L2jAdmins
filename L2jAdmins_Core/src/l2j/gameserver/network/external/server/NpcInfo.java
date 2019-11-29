@@ -36,6 +36,7 @@ public class NpcInfo extends AServerPacket
 	private final int rhand, lhand, chest, val;
 	private final double collisionHeight, collisionRadius;
 	private String title = "";
+	private String name = "";
 	private int clanCrest, allyCrest, allyId, clanId;
 	
 	/**
@@ -45,20 +46,17 @@ public class NpcInfo extends AServerPacket
 	public NpcInfo(L2Npc cha, L2Character attacker)
 	{
 		this.cha = cha;
-		idTemplate = cha.getTemplate().getIdTemplate();
+		idTemplate = cha.getId();
 		isAttackable = cha.isAutoAttackable(attacker);
 		isSummoned = false;
 		rhand = cha.getRhand();
 		lhand = cha.getLhand();
 		chest = 0;
-		
 		val = 0;
-		
 		collisionHeight = cha.getCollisionHeight();
 		collisionRadius = cha.getCollisionRadius();
 		
 		title = cha.getTitle();
-		
 		if (Config.SHOW_NPC_LVL && (cha instanceof L2MonsterInstance))
 		{
 			String t = "Lv " + cha.getLevel() + (cha.getAggroRange() > 0 ? "*" : "");
@@ -66,8 +64,13 @@ public class NpcInfo extends AServerPacket
 			{
 				t += " " + title;
 			}
-			
 			title = t;
+		}
+		
+		// If a value is defined and the npc has a color assigned to its title, it will not be displayed.
+		if (!cha.isRaid() && !cha.isQuestMonster())
+		{
+			name = cha.getName();
 		}
 		
 		x = cha.getX();
@@ -187,8 +190,8 @@ public class NpcInfo extends AServerPacket
 		writeC(cha.isAlikeDead() ? 0x01 : 0x00);
 		writeC(isSummoned ? 0x02 : val); // 0=teleported 1=default 2=summoned
 		
-		writeS(cha.getName());
-		writeS(title);
+		writeS(name);// name
+		writeS(title); // title
 		
 		if (cha instanceof L2Summon)
 		{
@@ -220,7 +223,7 @@ public class NpcInfo extends AServerPacket
 		NpcHolder nh = ObjectData.get(NpcHolder.class, cha);
 		if (nh != null)
 		{
-			writeD(ObjectData.get(NpcHolder.class, cha.getObjectId()).isChampion() ? Rnd.get(0, 10) : 0); // weapon enchant effect
+			writeD(nh.isChampion() ? Rnd.get(3, 20) : 0); // weapon enchant effect
 		}
 		else
 		{
