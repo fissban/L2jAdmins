@@ -26,7 +26,7 @@ public abstract class L2Object
 {
 	private static final Logger LOG = Logger.getLogger(L2Object.class.getName());
 	
-	private String name;
+	private String name = null;
 	private int objectId; // Object identifier
 	// Object poly
 	private int polyId = -1;
@@ -36,7 +36,6 @@ public abstract class L2Object
 	// Object localization : Used for items/chars that are seen in the world
 	private L2WorldRegion worldRegion;
 	
-	// used in EffectZone & DamageZone: objects affected
 	private InstanceType instanceType = null;
 	
 	public L2Object(int objectId)
@@ -332,7 +331,7 @@ public abstract class L2Object
 		}
 	}
 	
-	public final String getName()
+	public String getName()
 	{
 		return name;
 	}
@@ -451,7 +450,7 @@ public abstract class L2Object
 	}
 	
 	/**
-	 * checks if current object changed its region, if so, update referencies
+	 * checks if current object changed its region, if so, update references
 	 */
 	private void updateWorldRegion()
 	{
@@ -468,7 +467,7 @@ public abstract class L2Object
 			
 			setWorldRegion(newRegion);
 			
-			// Add the L2Oject spawn to visibleObjects and if necessary to allplayers of its L2WorldRegion
+			// Add the L2Oject spawn to visibleObjects and if necessary to all players of its L2WorldRegion
 			getWorldRegion().addVisibleObject(this);
 		}
 	}

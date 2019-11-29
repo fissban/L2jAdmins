@@ -521,9 +521,9 @@ public final class PacketHandler implements IPacketHandler<GameClient>, IClientF
 					case 0xa7:
 						msg = new MultiSellChoose();
 						break;
-					// case 0xa8:
-					// NetPing
-					// break;
+					case 0xa8:
+						msg = new NetPing();
+						break;
 					case 0xaa:
 						msg = new RequestUserCommand();
 						break;

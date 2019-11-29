@@ -115,7 +115,7 @@ import main.data.ObjectData;
  * <li>L2CastleGuardInstance
  * <li>L2DoorInstance
  * <li>L2NpcInstance
- * <li>L2Playable <b><u> Concept of CharTemplate</u> :</b><br>
+ * <li>L2Playable <b><u> Concept of CharTemplate</u>:</b><br>
  * Each L2Character owns generic and static properties (ex : all Keltir have the same number of HP...). All of those properties are stored in a different template for each type of L2Character. Each template is loaded once in the server cache memory (reduce memory use). When a new instance of
  * L2Character is spawned, server just create a link between the instance and the template. This link is stored in <b>_template</b><br>
  * @version $Revision: 1.53.2.45.2.34 $ $Date: 2005/04/11 10:06:08 $
@@ -139,7 +139,7 @@ public abstract class L2Character extends L2Object
 	private CharStat stat;
 	private CharStatus status;
 	private CharTemplate template; // The link on the CharTemplate object containing generic and static properties of this L2Character type (ex : Max HP, Speed...)
-	private String title;
+	private String title = null;
 	private double hpUpdateIncCheck = .0;
 	private double hpUpdateDecCheck = .0;
 	private double hpUpdateInterval = .0;
@@ -188,7 +188,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Constructor of L2Character.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * Each L2Character owns generic and static properties (ex : all Keltir have the same number of HP...). All of those properties are stored in a different template for each type of L2Character. Each template is loaded once in the server cache memory (reduce memory use). When a new instance of
 	 * L2Character is spawned, server just create a link between the instance and the template This link is stored in <b>_template</b><br>
 	 * <b><u>Actions</u>:</b><br>
@@ -417,8 +417,8 @@ public abstract class L2Character extends L2Object
 	 * Send the Server->Client packet StatusUpdate with current HP and MP to all other L2PcInstance to inform.<br>
 	 * <b><u>Actions</u>:</b><br>
 	 * <li>Create the Server->Client packet StatusUpdate with current HP and MP
-	 * <li>Send the Server->Client packet StatusUpdate with current HP and MP to all L2Character called statusListener that must be informed of HP/MP updates of this L2Character <FONT COLOR=#FF0000><b> <u>Caution</u> : This method DOESN'T SEND CP information</b></FONT><br>
-	 * <b><u> Overridden in </u> :</b><br>
+	 * <li>Send the Server->Client packet StatusUpdate with current HP and MP to all L2Character called statusListener that must be informed of HP/MP updates of this L2Character <FONT COLOR=#FF0000><b> <u>Caution</u>: This method DOESN'T SEND CP information</b></FONT><br>
+	 * <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance : Send current HP,MP and CP to the L2PcInstance and only current HP, MP and Level to all other L2PcInstance of the Party
 	 */
 	public void broadcastStatusUpdate()
@@ -444,7 +444,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Not Implemented.<br>
-	 * <b><u> Overridden in </u> :</b><br>
+	 * <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance
 	 * @param mov
 	 */
@@ -1343,7 +1343,7 @@ public abstract class L2Character extends L2Object
 	 * <li>Stop HP/MP/CP Regeneration task
 	 * <li>Stop all active skills effects in progress on the L2Character
 	 * <li>Send the Server->Client packet StatusUpdate with current HP and MP to all other L2PcInstance to inform
-	 * <li>Notify L2Character AI <b><u> Overridden in </u> :</b><br>
+	 * <li>Notify L2Character AI <b><u> Overridden in </u>:</b><br>
 	 * <li>L2NpcInstance : Create a DecayTask to remove the corpse of the L2NpcInstance after 7 seconds
 	 * <li>L2Attackable : Distribute rewards (EXP, SP, Drops...) and notify Quest Engine
 	 * <li>L2PcInstance : Apply Death Penalty, Manage gain/loss Karma and Item Drop
@@ -1656,11 +1656,11 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Set the template of the L2Character.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * Each L2Character owns generic and static properties (ex : all Keltir have the same number of HP...). All of those properties are stored in a different template for each type of L2Character. Each template is loaded once in the server cache memory (reduce memory use). When a new instance of
 	 * L2Character is spawned, server just create a link between the instance and the template This link is stored in <b>_template</b><br>
-	 * <b><u> Assert </u> :</b><br>
-	 * <li>this instanceof L2Character <BR
+	 * <b><u> Assert </u>:</b><br>
+	 * <li>this instanceof L2Character
 	 * @param template
 	 */
 	protected final void setTemplate(CharTemplate template)
@@ -1672,7 +1672,7 @@ public abstract class L2Character extends L2Object
 	 * Return the Title of the L2Character.
 	 * @return
 	 */
-	public final String getTitle()
+	public String getTitle()
 	{
 		return title;
 	}
@@ -1681,7 +1681,7 @@ public abstract class L2Character extends L2Object
 	 * Set the Title of the L2Character.
 	 * @param value
 	 */
-	public final void setTitle(String value)
+	public void setTitle(String value)
 	{
 		title = value;
 	}
@@ -1791,7 +1791,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Launch and add Effect (including Stack Group management) to L2Character and update client magic icon.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All active skills effects in progress on the L2Character are identified in ConcurrentHashMap(Integer,Effect) <b>_effects</b>. The Integer key of effects is the Skill Identifier that has created the Effect.<br>
 	 * Several same effect can't be used on a L2Character at the same time. Indeed, effects are not stackable and the last cast will replace the previous in progress. More, some effects belong to the same Stack Group (ex WindWald and Haste Potion). If 2 effects of a same group are used at the same
 	 * time on a L2Character, only the more efficient (identified by its priority order) will be preserve.<br>
@@ -1922,7 +1922,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Insert an effect at the specified position in a Stack Group.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * Several same effect can't be used on a L2Character at the same time. Indeed, effects are not stackable and the last cast will replace the previous in progress. More, some effects belong to the same Stack Group (ex WindWald and Haste Potion). If 2 effects of a same group are used at the same
 	 * time on a L2Character, only the more efficient (identified by its priority order) will be preserve.<br>
 	 * @param  newStackedEffect
@@ -1967,7 +1967,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Stop and remove Effect (including Stack Group management) from L2Character and update client magic icon.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All active skills effects in progress on the L2Character are identified in ConcurrentHashMap(Integer,Effect) <b>_effects</b>. The Integer key of effects is the Skill Identifier that has created the Effect.<br>
 	 * Several same effect can't be used on a L2Character at the same time. Indeed, effects are not stackable and the last cast will replace the previous in progress. More, some effects belong to the same Stack Group (ex WindWald and Haste Potion). If 2 effects of a same group are used at the same
 	 * time on a L2Character, only the more efficient (identified by its priority order) will be preserve.<br>
@@ -2071,7 +2071,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Stop and remove the Effect corresponding to the Skill Identifier and update client magic icon.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All active skills effects in progress on the L2Character are identified in ConcurrentHashMap(Integer,Effect) <b>_effects</b>. The Integer key of effects is the Skill Identifier that has created the Effect.<br>
 	 * @param skillId The Skill Identifier of the Effect to remove from effects
 	 */
@@ -2086,7 +2086,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Stop and remove all Effect of the selected type (ex : BUFF, DMG_OVER_TIME...) from the L2Character and update client magic icon.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All active skills effects in progress on the L2Character are identified in ConcurrentHashMap(Integer,Effect) <b>_effects</b>. The Integer key of effects is the Skill Identifier that has created the Effect.<br>
 	 * <b><u>Actions</u>:</b><br>
 	 * <li>Remove Func added by this effect from the L2Character Calculator (Stop Effect)
@@ -2105,9 +2105,9 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Update active skills in progress (In Use and Not In Use because stacked) icons on client.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All active skills effects in progress (In Use and Not In Use because stacked) are represented by an icon on the client.<br>
-	 * <FONT COLOR=#FF0000><b> <u>Caution</u> : This method ONLY UPDATE the client of the player and not clients of all players in the party.</b></FONT><br>
+	 * <FONT COLOR=#FF0000><b> <u>Caution</u>: This method ONLY UPDATE the client of the player and not clients of all players in the party.</b></FONT><br>
 	 */
 	public final void updateEffectIcons()
 	{
@@ -2121,7 +2121,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Return all active skills effects in progress on the L2Character.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All active skills effects in progress on the L2Character are identified in <b>_effects</b>. The Integer key of effects is the Skill Identifier that has created the effect.<br>
 	 * @return A table containing all active skills effect in progress on the L2Character
 	 */
@@ -2132,7 +2132,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Return Effect in progress on the L2Character corresponding to the Skill Identifier.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All active skills effects in progress on the L2Character are identified in <b>_effects</b>.
 	 * @param  id The Skill Identifier of the Effect to return from the effects
 	 * @return    The Effect corresponding to the Skill Identifier
@@ -2144,7 +2144,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Return the first Effect in progress on the L2Character created by the Skill.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All active skills effects in progress on the L2Character are identified in <b>_effects</b>.
 	 * @param  skill The Skill whose effect must be returned
 	 * @return       The first Effect created by the Skill
@@ -2156,7 +2156,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Return the first Effect in progress on the L2Character corresponding to the Effect Type (ex : BUFF, STUN, ROOT...).<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All active skills effects in progress on the L2Character are identified in ConcurrentHashMap(Integer,Effect) <b>_effects</b>. The Integer key of effects is the Skill Identifier that has created the Effect.<br>
 	 * @param  tp The Effect Type of skills whose effect must be returned
 	 * @return    first Effect corresponding to the Effect Type
@@ -2168,7 +2168,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * This class group all movement data.<br>
-	 * <b><u> Data</u> :</b><br>
+	 * <b><u> Data</u>:</b><br>
 	 * <li>moveTimestamp : Last time position update
 	 * <li>xDestination, yDestination, zDestination : Position of the destination
 	 * <li>xMoveFrom, yMoveFrom, zMoveFrom : Position of the origin
@@ -2223,7 +2223,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Add a Func to the Calculator set of the L2Character.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * A L2Character owns a table of Calculators called <b>_calculators</b>. Each Calculator (a calculator per state) own a table of Func object. A Func object is a mathematic function that permit to calculate the modifier of a state (ex : REG_HP_RATE...). To reduce cache memory use, L2NpcInstances
 	 * who don't have skills share the same Calculator set called <b>NPC_STD_CALCULATOR</b>.<br>
 	 * That's why, if a L2NpcInstance is under a skill/spell effect that modify one of its state, a copy of the NPC_STD_CALCULATOR must be create in its calculators before addind new Func object.<br>
@@ -2253,10 +2253,10 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Add a list of Funcs to the Calculator set of the L2Character.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * A L2Character owns a table of Calculators called <b>_calculators</b>. Each Calculator (a calculator per state) own a table of Func object. A Func object is a mathematic function that permit to calculate the modifier of a state (ex : REG_HP_RATE...). <br>
-	 * <FONT COLOR=#FF0000><b> <u>Caution</u> : This method is ONLY for L2PcInstance</b></FONT><br>
-	 * <b><u> Example of use </u> :</b><br>
+	 * <FONT COLOR=#FF0000><b> <u>Caution</u>: This method is ONLY for L2PcInstance</b></FONT><br>
+	 * <b><u> Example of use </u>:</b><br>
 	 * <li>Equip an item from inventory
 	 * <li>Learn a new passive skill
 	 * <li>Use an active skill
@@ -2548,12 +2548,12 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Update the position of the L2Character during a movement and return True if the movement is finished.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * At the beginning of the move action, all properties of the movement are stored in the MoveData object called <b>_move</b> of the L2Character. The position of the start point and of the destination permit to estimated in function of the movement speed the time to achieve the destination.<br>
 	 * When the movement is started (ex : by MovetoLocation), this method will be called each 0.1 sec to estimate and update the L2Character position on the server. Note, that the current server position can differe from the current client position even if each movement is straight foward. That's
 	 * why, client send regularly a Client->Server ValidatePosition packet to eventually correct the gap on the server. But, it's always the server position that is used in range calculation.<br>
 	 * At the end of the estimated movement time, the L2Character position is automatically set to the destination position even if the movement is not finished.<br>
-	 * <FONT COLOR=#FF0000><b> <u>Caution</u> : The current Z position is obtained FROM THE CLIENT by the Client->Server ValidatePosition Packet. But x and y positions must be calculated to avoid that players try to modify their movement speed.</b></FONT><br>
+	 * <FONT COLOR=#FF0000><b> <u>Caution</u>: The current Z position is obtained FROM THE CLIENT by the Client->Server ValidatePosition Packet. But x and y positions must be calculated to avoid that players try to modify their movement speed.</b></FONT><br>
 	 * @return True if the movement is finished
 	 */
 	public boolean updatePosition()
@@ -2700,7 +2700,7 @@ public abstract class L2Character extends L2Object
 	 * <li>Delete movement data of the L2Character
 	 * <li>Set the current position (x,y,z), its current L2WorldRegion if necessary and its heading
 	 * <li>Remove the L2Object object from gmList** of GmListTable
-	 * <li>Remove object from knownObjects and knownPlayer* of all surrounding L2WorldRegion L2Characters <FONT COLOR=#FF0000><b> <u>Caution</u> : This method DOESN'T send Server->Client packet StopMove/StopRotation </b></FONT><br>
+	 * <li>Remove object from knownObjects and knownPlayer* of all surrounding L2WorldRegion L2Characters <FONT COLOR=#FF0000><b> <u>Caution</u>: This method DOESN'T send Server->Client packet StopMove/StopRotation </b></FONT><br>
 	 * @param pos
 	 */
 	public void stopMove(LocationHolder pos)
@@ -2721,13 +2721,13 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Target a L2Object (add the target to the L2Character target, knownObject and L2Character to KnownObject of the L2Object).<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * The L2Object (including L2Character) targeted is identified in <b>_target</b> of the L2Character<br>
 	 * <b><u>Actions</u>:</b><br>
 	 * <li>Set the target of L2Character to L2Object
 	 * <li>If necessary, add L2Object to knownObject of the L2Character
 	 * <li>If necessary, add L2Character to KnownObject of the L2Object
-	 * <li>If object==null, cancel Attack or Cast <b><u> Overridden in </u> :</b><br>
+	 * <li>If object==null, cancel Attack or Cast <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance : Remove the L2PcInstance from the old target statusListener and add it to the new target if it was a L2Character
 	 * @param object L2object to target
 	 */
@@ -2779,7 +2779,7 @@ public abstract class L2Character extends L2Object
 	// called from AIAccessor only
 	/**
 	 * Calculate movement data for a move to location action and add the L2Character to movingObjects of GameTimeController (only called by AI Accessor).<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * At the beginning of the move action, all properties of the movement are stored in the MoveData object called <b>_move</b> of the L2Character. The position of the start point and of the destination permit to estimated in function of the movement speed the time to achieve the destination.<br>
 	 * All L2Character in movement are identified in <b>movingObjects</b> of GameTimeController that will call the updatePosition method of those L2Character each 0.1s.<br>
 	 * <b><u>Actions</u>:</b><br>
@@ -2788,8 +2788,8 @@ public abstract class L2Character extends L2Object
 	 * <li>Create and Init a MoveData object
 	 * <li>Set the L2Character move object to MoveData object
 	 * <li>Add the L2Character to movingObjects of the GameTimeController
-	 * <li>Create a task to notify the AI that L2Character arrives at a check point of the movement <FONT COLOR=#FF0000><b> <u>Caution</u> : This method DOESN'T send Server->Client packet MoveToPawn/CharMoveToLocation </b></FONT><br>
-	 * <b><u> Example of use </u> :</b><br>
+	 * <li>Create a task to notify the AI that L2Character arrives at a check point of the movement <FONT COLOR=#FF0000><b> <u>Caution</u>: This method DOESN'T send Server->Client packet MoveToPawn/CharMoveToLocation </b></FONT><br>
+	 * <b><u> Example of use </u>:</b><br>
 	 * <li>AI : onIntentionMoveTo(LocationHolder), onIntentionPickUp(L2Object), onIntentionInteract(L2Object)
 	 * <li>FollowTask
 	 * @param x      The X position of the destination
@@ -3267,7 +3267,7 @@ public abstract class L2Character extends L2Object
 	}
 	
 	/**
-	 * <b><u> Overridden in </u> :</b><br>
+	 * <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance
 	 * @return True if arrows are available.
 	 */
@@ -3278,7 +3278,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Add Exp and Sp to the L2Character.<br>
-	 * <b><u> Overridden in </u> :</b><br>
+	 * <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance
 	 * <li>L2PetInstance
 	 * @param addToExp
@@ -3290,28 +3290,28 @@ public abstract class L2Character extends L2Object
 	}
 	
 	/**
-	 * <b><u> Overridden in </u> :</b><br>
+	 * <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance
 	 * @return the active weapon instance (always equipped in the right hand).
 	 */
 	public abstract ItemInstance getActiveWeaponInstance();
 	
 	/**
-	 * <b><u> Overridden in </u> :</b><br>
+	 * <b><u> Overridden in </u>:</b>
 	 * <li>L2PcInstance
 	 * @return the active weapon item (always equipped in the right hand).
 	 */
 	public abstract ItemWeapon getActiveWeaponItem();
 	
 	/**
-	 * <b><u> Overridden in </u> :</b><br>
+	 * <b><u> Overridden in </u>:</b>
 	 * <li>L2PcInstance
 	 * @return the secondary weapon instance (always equipped in the left hand).
 	 */
 	public abstract ItemInstance getSecondaryWeaponInstance();
 	
 	/**
-	 * <b><u> Overridden in </u> :</b><br>
+	 * <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance
 	 * @return the secondary weapon item (always equipped in the left hand).
 	 */
@@ -3522,7 +3522,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Reduce the arrow number of the L2Character.<br>
-	 * <b><u> Overridden in </u> :</b><br>
+	 * <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance
 	 */
 	protected void reduceArrowCount()
@@ -3728,12 +3728,12 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Add a skill to the L2Character skills and its Func objects to the calculator set of the L2Character.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All skills own by a L2Character are identified in <b>_skills</b><br>
 	 * <b><u>Actions</u>:</b><br>
 	 * <li>Replace oldSkill by newSkill or Add the newSkill
 	 * <li>If an old skill has been replaced, remove all its Func objects of L2Character calculator set
-	 * <li>Add Func objects of newSkill to the calculator set of the L2Character <b><u> Overridden in </u> :</b><br>
+	 * <li>Add Func objects of newSkill to the calculator set of the L2Character <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance : Save update in the character_skills table of the database
 	 * @param  newSkill The Skill to add to the L2Character
 	 * @return          The Skill replaced or null if just added a new Skill
@@ -3745,12 +3745,12 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Add a skill to the L2Character skills and its Func objects to the calculator set of the L2Character.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All skills own by a L2Character are identified in <b>_skills</b><br>
 	 * <b><u>Actions</u>:</b><br>
 	 * <li>Replace oldSkill by newSkill or Add the newSkill
 	 * <li>If an old skill has been replaced, remove all its Func objects of L2Character calculator set
-	 * <li>Add Func objects of newSkill to the calculator set of the L2Character <b><u> Overridden in </u> :</b><br>
+	 * <li>Add Func objects of newSkill to the calculator set of the L2Character <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance : Save update in the character_skills table of the database
 	 * @param  newSkill  The Skill to add to the L2Character
 	 * @param  ignoreLvl "false" dont delevel skill
@@ -3789,11 +3789,11 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Remove a skill from the L2Character and its Func objects from calculator set of the L2Character.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All skills own by a L2Character are identified in <b>_skills</b><br>
 	 * <b><u>Actions</u>:</b><br>
 	 * <li>Remove the skill from the L2Character skills
-	 * <li>Remove all its Func objects from the L2Character calculator set <b><u> Overridden in </u> :</b><br>
+	 * <li>Remove all its Func objects from the L2Character calculator set <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance : Save update in the character_skills table of the database
 	 * @param  skill The Skill to remove from the L2Character
 	 * @return       The Skill removed
@@ -3982,7 +3982,7 @@ public abstract class L2Character extends L2Object
 	 * <li>Launch the magic skill in order to calculate its effects
 	 * <li>If the skill type is PDAM, notify the AI of the target with AI_INTENTION_ATTACK
 	 * <li>Notify the AI of the {@link L2Character} with {@link CtrlEventType#FINISH_CASTING} <FONT COLOR=#FF0000><b><br>
-	 * <u>Caution</u> : A magic skill casting MUST BE in progress</b></FONT><br>
+	 * <u>Caution</u>: A magic skill casting MUST BE in progress</b></FONT><br>
 	 * @param targets
 	 * @param skill    The Skill to use
 	 * @param coolTime
@@ -4208,7 +4208,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Enable a skill (remove it from {@link #disabledSkills} of the {@link L2Character}).<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All skills disabled are identified by their skillId in {@link #disabledSkills} of the {@link L2Character}
 	 * @param skill The Skill to enable
 	 */
@@ -4239,7 +4239,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Check if a skill is disabled.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All skills disabled are identified by their reuse hashcodes in {@link #disabledSkills} of the {@link L2Character}
 	 * @param  skill The Skill to check
 	 * @return       true if the skill is currently disabled.
@@ -4255,7 +4255,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Check if a skill is disabled.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * All skills disabled are identified by their reuse hashcodes in {@link #disabledSkills} of the {@link L2Character}
 	 * @param  reuseHashCode The reuse hashcode of the skillId/level to check
 	 * @return               true if the skill is currently disabled.
@@ -4762,7 +4762,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Send system message<br>
-	 * <b><u> Overridden in </u> :</b><br>
+	 * <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance
 	 * @param message
 	 */
@@ -4773,7 +4773,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Send sound packet<br>
-	 * <b><u> Overridden in </u> :</b><br>
+	 * <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance
 	 * @param sound
 	 */
@@ -4794,7 +4794,7 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Send system message about damage.<br>
-	 * <b><u> Overridden in </u> :</b><br>
+	 * <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance
 	 * <li>L2SummonInstance
 	 * <li>L2PetInstance
@@ -4810,7 +4810,7 @@ public abstract class L2Character extends L2Object
 	}
 	
 	/**
-	 * <b><u> Overridden in </u> :</b><br>
+	 * <b><u> Overridden in </u>:</b><br>
 	 * <li>L2PcInstance
 	 * @return
 	 */
@@ -4840,9 +4840,9 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Return a map of 16 bits (0x0000) containing all abnormal effect in progress for this L2Character.<br>
-	 * <b><u> Concept</u> :</b><br>
+	 * <b><u> Concept</u>:</b><br>
 	 * In Server->Client packet, each effect is represented by 1 bit of the map (ex : BLEEDING = 0x0001 (bit 1), SLEEP = 0x0080 (bit 8)...). The map is calculated by applying a BINARY OR operation on each effect.<br>
-	 * <b><u> Example of use </u> :</b><br>
+	 * <b><u> Example of use </u>:</b><br>
 	 * <li>Server Packet : CharInfo, NpcInfo, NpcInfoPoly, UserInfo...
 	 * @return
 	 */
@@ -4877,7 +4877,7 @@ public abstract class L2Character extends L2Object
 	}
 	
 	/**
-	 * <b><u> Overridden in</u> :</b><br>
+	 * <b><u> Overridden in</u>:</b><br>
 	 * <li>L2NpcInstance
 	 * <li>L2PcInstance
 	 * <li>L2Summon
