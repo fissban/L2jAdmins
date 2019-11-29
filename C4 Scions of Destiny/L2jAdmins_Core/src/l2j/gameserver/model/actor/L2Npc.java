@@ -175,8 +175,6 @@ public class L2Npc extends L2Character
 		initCharStatusUpdateValues();
 		
 		// Set the name of the L2Character
-		setName(template.getName());
-		setTitle(template.getTitle());
 		rhand = template.getRhand();
 		lhand = template.getLhand();
 		
@@ -242,6 +240,18 @@ public class L2Npc extends L2Character
 	public int getId()
 	{
 		return getTemplate().getId();
+	}
+	
+	@Override
+	public String getName()
+	{
+		return super.getName() != null ? super.getName() : getTemplate().getName();
+	}
+	
+	@Override
+	public String getTitle()
+	{
+		return super.getTitle() != null ? super.getTitle() : getTemplate().getTitle();
 	}
 	
 	@Override
