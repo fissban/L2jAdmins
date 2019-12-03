@@ -77,7 +77,7 @@ public class NpcTeleporter extends AbstractMod
 		}
 		
 		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append(Html.head("TELEPORT MASTER"));
 		hb.append("Puedo mostrarte las zonas donde");
 		hb.append("los hombres se convierten en <font color=LEVEL>dioses!</font>");

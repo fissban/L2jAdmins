@@ -133,7 +133,7 @@ public class NpcRanking extends AbstractMod
 		}
 		
 		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append(Html.head("RANKING"));
 		hb.append("<br>");
 		hb.append("Welcome my name is ", npc.getInstance().getName(), " and take care to meet the most famous players in the world.<br>");
@@ -183,7 +183,7 @@ public class NpcRanking extends AbstractMod
 	private static HtmlBuilder getRanking(List<RankingHolder> ranking, String rankingName)
 	{
 		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append(Html.head("RANKING " + rankingName));
 		hb.append("<br>");
 		hb.append("<table width=280>");

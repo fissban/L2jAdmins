@@ -73,7 +73,7 @@ public class RegisterNpc extends AbstractMod
 			case "unregister":
 			{
 				var hb = new HtmlBuilder(HtmlType.HTML);
-				hb.append(Html.START);
+				hb.append(Html.START_BACKGROUND);
 				hb.append(Html.head("COOPERATIVE EVENTS"));
 				hb.append("<center>");
 				hb.append("<br><br><br><br>");
@@ -94,7 +94,7 @@ public class RegisterNpc extends AbstractMod
 			case "register":
 			{
 				var hb = new HtmlBuilder(HtmlType.HTML);
-				hb.append(Html.START);
+				hb.append(Html.START_BACKGROUND);
 				hb.append(Html.head("COOPERATIVE EVENTS"));
 				hb.append("<center>");
 				hb.append("<br><br><br><br>");
@@ -131,7 +131,7 @@ public class RegisterNpc extends AbstractMod
 			case "voteFor":
 			{
 				var hb = new HtmlBuilder(HtmlType.HTML);
-				hb.append(Html.START);
+				hb.append(Html.START_BACKGROUND);
 				hb.append(Html.head("COOPERATIVE EVENTS"));
 				hb.append("<center>");
 				hb.append("<br><br><br><br>");
@@ -168,7 +168,7 @@ public class RegisterNpc extends AbstractMod
 	private static HtmlBuilder htmlIndex(PlayerHolder ph)
 	{
 		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append(Html.head("COOPERATIVE EVENTS"));
 		hb.append("<center>");
 		hb.append("<br>");
