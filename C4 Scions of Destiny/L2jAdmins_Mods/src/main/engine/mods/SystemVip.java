@@ -343,7 +343,7 @@ public class SystemVip extends AbstractMod
 	{
 		var hb = new HtmlBuilder(HtmlType.HTML);
 		
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append("<br>");
 		hb.append(Html.head("All VIP Players"));
 		hb.append("<br>");

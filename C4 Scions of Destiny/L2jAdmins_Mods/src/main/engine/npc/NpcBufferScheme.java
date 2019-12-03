@@ -696,7 +696,7 @@ public class NpcBufferScheme extends AbstractMod
 	private void rebuildMainHtml(PlayerHolder player)
 	{
 		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append(Html.head("BUFFER"));
 		hb.append("<br>");
 		
@@ -903,7 +903,7 @@ public class NpcBufferScheme extends AbstractMod
 	private static void showText(PlayerHolder ph, String type, String text, boolean buttonEnabled, String buttonName, String location)
 	{
 		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append(Html.head("BUFFER"));
 		hb.append("<center>");
 		hb.append("<br>");
@@ -932,7 +932,7 @@ public class NpcBufferScheme extends AbstractMod
 	private static void deleteSpecifiedScheme(PlayerHolder ph, String eventParam1)
 	{
 		var hb = new HtmlBuilder();
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append(Html.head("BUFFER"));
 		hb.append("<center>");
 		hb.append("<br>Do you really want to delete '" + eventParam1 + "' scheme?<br><br>");
@@ -951,7 +951,7 @@ public class NpcBufferScheme extends AbstractMod
 	private static void createScheme(PlayerHolder ph)
 	{
 		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append(Html.head("BUFFER"));
 		hb.append("<center>");
 		hb.append("<br><br>");
@@ -972,7 +972,7 @@ public class NpcBufferScheme extends AbstractMod
 	private void deleteScheme(PlayerHolder ph)
 	{
 		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append(Html.head("BUFFER"));
 		hb.append("<center>");
 		hb.append("<br>Available schemes:<br><br>");
@@ -997,7 +997,7 @@ public class NpcBufferScheme extends AbstractMod
 	private void editScheme(PlayerHolder ph)
 	{
 		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append(Html.head("BUFFER"));
 		hb.append("<center>");
 		hb.append("<br>Select a scheme that you would like to manage:<br><br>");
@@ -1025,7 +1025,7 @@ public class NpcBufferScheme extends AbstractMod
 		var bcount = getBuffCount(ph, scheme);
 		
 		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append(Html.head("BUFFER"));
 		hb.append("<center>");
 		hb.append("<br>There are ", Html.fontColor("LEVEL", bcount), " buffs in current scheme!<br><br>");
@@ -1052,7 +1052,7 @@ public class NpcBufferScheme extends AbstractMod
 	private static void buildHtml(PlayerHolder ph, BuffType buffType, int page)
 	{
 		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append("<center><br>");
 		
 		var buffs = new ArrayList<BuffHolder>();
@@ -1205,7 +1205,7 @@ public class NpcBufferScheme extends AbstractMod
 	private void viewAllSchemeBuffs(PlayerHolder ph, String schemeName, String page, String action)
 	{
 		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append(Html.head("BUFFER"));
 		hb.append("<center>");
 		

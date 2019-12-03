@@ -12,6 +12,7 @@ public class Html
 {
 	// Tags
 	public static final String START = "<html><body>";
+	public static final String START_BACKGROUND = "<html imgsrc=L2UI_CH3.credit_ch3_07><body>";
 	public static final String END = "</body></html>";
 	
 	public static String fontColor(String color, int text)

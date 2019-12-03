@@ -264,7 +264,7 @@ public class SystemAio extends AbstractMod
 	{
 		var hb = new HtmlBuilder(HtmlType.HTML);
 		
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append("<br>");
 		hb.append(Html.head("AIO"));
 		hb.append("<br>");
@@ -379,7 +379,7 @@ public class SystemAio extends AbstractMod
 	{
 		var hb = new HtmlBuilder(HtmlType.HTML);
 		
-		hb.append(Html.START);
+		hb.append(Html.START_BACKGROUND);
 		hb.append("<br>");
 		hb.append(Html.head("All AIO Players"));
 		hb.append("<br>");
