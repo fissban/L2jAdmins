@@ -16,7 +16,7 @@ import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.templates.NpcTemplate;
 import l2j.gameserver.model.spawn.Spawn;
 import l2j.util.UtilPrint;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 
 /**
  * @author Nightmare, fissban

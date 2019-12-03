@@ -29,7 +29,7 @@ import l2j.gameserver.model.skills.Skill;
 import l2j.gameserver.model.skills.enums.SkillType;
 import l2j.gameserver.model.trade.MerchantTradeList;
 import l2j.gameserver.network.external.server.NpcHtmlMessage;
-import main.data.IconData;
+import main.data.xml.IconData;
 
 /**
  * @author fissban

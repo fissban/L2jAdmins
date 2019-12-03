@@ -17,7 +17,7 @@ import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.model.world.L2WorldRegion;
 import l2j.gameserver.network.external.server.ActionFailed;
 import l2j.gameserver.task.continuous.ItemsOnGroundTaskManager;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 
 /**
  * Mother class of all objects in the world which ones is it possible to interact (PC, NPC, Item...)

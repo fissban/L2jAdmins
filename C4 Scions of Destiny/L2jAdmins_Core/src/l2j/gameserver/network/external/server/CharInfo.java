@@ -9,7 +9,7 @@ import l2j.gameserver.model.actor.templates.NpcTemplate;
 import l2j.gameserver.model.itemcontainer.Inventory;
 import l2j.gameserver.model.items.enums.ParpedollType;
 import l2j.gameserver.network.AServerPacket;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 import main.holders.objects.PlayerHolder;
 
 /**
