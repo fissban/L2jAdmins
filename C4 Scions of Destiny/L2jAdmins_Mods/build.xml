@@ -45,8 +45,8 @@
 
 	<target name="checkRequirements" description="Check requirements.">
 		<echo message="Verification of your JDK version."/>
-		<available classname="java.util.stream.Stream" property="JDK10.present" />
-		<fail unless="JDK10.present" message="Java 10 is required, but your version is Java ${ant.java.version}. Install latest JDK." />
+		<available classname="java.net.http.HttpClient" property="JDK13.present" />
+		<fail unless="JDK13.present" message="Java 13 is required, but your version is Java ${ant.java.version}. Install latest JDK." />
 	</target>
 	
 	<path id="L2jAdmins_Core.classpath">
