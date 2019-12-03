@@ -4,7 +4,7 @@ import l2j.Config;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.trade.CharacterTradeList;
 import l2j.gameserver.network.external.server.PledgeShowMemberListUpdate;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 import main.holders.objects.PlayerHolder;
 
 /**

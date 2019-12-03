@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.util.Util;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 import main.holders.objects.ObjectHolder;
 
 public class ObjectKnownList

@@ -29,7 +29,7 @@ import l2j.loginserver.network.SessionKey;
 import l2j.mmocore.MMOClient;
 import l2j.mmocore.MMOConnection;
 import l2j.mmocore.ReceivablePacket;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 import main.holders.objects.PlayerHolder;
 
 /**

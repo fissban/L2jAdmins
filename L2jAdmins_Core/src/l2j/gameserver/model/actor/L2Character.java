@@ -107,7 +107,7 @@ import l2j.gameserver.util.Broadcast;
 import l2j.gameserver.util.Util;
 import l2j.util.Rnd;
 import main.EngineModsManager;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 
 /**
  * Mother class of all character objects of the world (PC, NPC...)<br>

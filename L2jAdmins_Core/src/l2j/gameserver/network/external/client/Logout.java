@@ -19,7 +19,7 @@ import l2j.gameserver.network.external.server.LeaveWorld;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.task.continuous.AttackStanceTaskManager;
 import main.EngineModsManager;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 import main.holders.objects.PlayerHolder;
 
 /**

@@ -17,7 +17,7 @@ import l2j.gameserver.model.entity.castle.siege.type.SiegeClanType;
 import l2j.gameserver.model.entity.clanhalls.type.ClanHallFunctionType;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.network.AClientPacket;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 import main.engine.events.cooperative.EventCooperativeManager;
 import main.holders.objects.PlayerHolder;
 

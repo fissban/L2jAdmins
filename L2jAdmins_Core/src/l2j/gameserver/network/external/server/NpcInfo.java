@@ -10,7 +10,7 @@ import l2j.gameserver.model.actor.instance.L2NpcInstance;
 import l2j.gameserver.model.clan.Clan;
 import l2j.gameserver.network.AServerPacket;
 import l2j.util.Rnd;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 import main.holders.objects.NpcHolder;
 
 /**

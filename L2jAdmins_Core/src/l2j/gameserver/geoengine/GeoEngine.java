@@ -34,7 +34,7 @@ import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.util.MathUtil;
 import l2j.util.L2Properties;
 import l2j.util.UtilPrint;
-import main.data.ObjectData;
+import main.data.memory.ObjectData;
 import main.holders.objects.ObjectHolder;
 
 /**
