@@ -35,7 +35,18 @@ public class NpcVoteRewardHopzone extends AbstractMod
 	@Override
 	public void onModState()
 	{
-		//
+		switch (getState())
+		{
+			case START:
+			{
+				loadValuesFromDb();
+				break;
+			}
+			case END:
+			{
+				break;
+			}
+		}
 	}
 	
 	@Override
@@ -51,26 +62,26 @@ public class NpcVoteRewardHopzone extends AbstractMod
 			return false;
 		}
 		
-		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);
+		HtmlBuilder hb = new HtmlBuilder(HtmlType.HTML);
+		hb.append(Html.START_BACKGROUND);
 		hb.append(Html.head("VOTE REWARD HOPZONE"));
 		hb.append("<br>");
 		hb.append("<center>");
-		hb.append("Bienvenido ", Html.fontColor("LEVEL", ph.getName()), "<br>");
+		hb.append("Welcome ", Html.fontColor("LEVEL", ph.getName()), "<br>");
 		
 		if (!checkLastVote(ph))
 		{
-			hb.append("Lo siento, aun no pasaron las ", Html.fontColor("LEVEL", "12hs"), "<br>");
-			hb.append("desde tu ultimo voto, intenta mas tarde.<br>");
+			hb.append("Sorry, it's not past ", Html.fontColor("LEVEL", "12 hours"), "t<br>");
+			hb.append("since your last vote, try later.<br>");
 		}
 		else
 		{
-			hb.append("Aqui podras votar por nuestro server<br>");
-			hb.append("y obtener una buena recompenza por ello.<br>");
+			hb.append("Here you can vote for our server<br>");
+			hb.append("and get a good reward for it.<br>");
 			if (player == null)
 			{
-				hb.append("Actualmente nadie esta votando<br>");
-				hb.append("No esperes mas, ", Html.fontColor("LEVEL", "vota por nosotros!"), "<br>");
+				hb.append("No one is currently voting.<br>");
+				hb.append("Don't wait any longer, ", Html.fontColor("LEVEL", "vote for us."), "<br>");
 				
 				hb.append("<table width=280>");
 				hb.append("<tr>");
@@ -82,8 +93,8 @@ public class NpcVoteRewardHopzone extends AbstractMod
 			}
 			else
 			{
-				hb.append("Actualmente se encuentra ", Html.fontColor("LEVEL", player.getName()), " votando<br>");
-				hb.append("Solo espera un momento y ya sera tu turno<br>");
+				hb.append("He is currently ", Html.fontColor("LEVEL", player.getName()), " voting.<br>");
+				hb.append("Just wait a moment and it will be your turn.<br>");
 			}
 		}
 		
@@ -147,7 +158,7 @@ public class NpcVoteRewardHopzone extends AbstractMod
 			{
 				votes = VoteReward.getVotesHopzone();
 				var hb = new HtmlBuilder();
-				hb.append(Html.START);
+				hb.append(Html.START_BACKGROUND);
 				hb.append(Html.head("VOTE REWARD HOPZONE"));
 				hb.append("<br>");
 				hb.append("<br>");

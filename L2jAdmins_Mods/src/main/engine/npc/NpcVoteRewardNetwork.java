@@ -35,7 +35,18 @@ public class NpcVoteRewardNetwork extends AbstractMod
 	@Override
 	public void onModState()
 	{
-		//
+		switch (getState())
+		{
+			case START:
+			{
+				loadValuesFromDb();
+				break;
+			}
+			case END:
+			{
+				break;
+			}
+		}
 	}
 	
 	@Override
@@ -51,39 +62,39 @@ public class NpcVoteRewardNetwork extends AbstractMod
 			return false;
 		}
 		
-		var hb = new HtmlBuilder(HtmlType.HTML);
-		hb.append(Html.START);
+		HtmlBuilder hb = new HtmlBuilder(HtmlType.HTML);
+		hb.append(Html.START_BACKGROUND);
 		hb.append(Html.head("VOTE REWARD NETWORK"));
 		hb.append("<br>");
 		hb.append("<center>");
-		hb.append("Bienvenido ", Html.fontColor("LEVEL", ph.getName()), "<br>");
+		hb.append("Welcome ", Html.fontColor("LEVEL", ph.getName()), "<br>");
 		
 		if (!checkLastVote(ph))
 		{
-			hb.append("Lo siento, aun no pasaron las ", Html.fontColor("LEVEL", "12hs"), "<br>");
-			hb.append("desde tu ultimo voto, intenta mas tarde.<br>");
+			hb.append("Sorry, it's not past ", Html.fontColor("LEVEL", "12 hours"), "t<br>");
+			hb.append("since your last vote, try later.<br>");
 		}
 		else
 		{
-			hb.append("Aqui podras votar por nuestro server<br>");
-			hb.append("y obtener una buena recompenza por ello.<br>");
+			hb.append("Here you can vote for our server<br>");
+			hb.append("and get a good reward for it.<br>");
 			if (player == null)
 			{
-				hb.append("Actualmente nadie esta votando<br>");
-				hb.append("No esperes mas, ", Html.fontColor("LEVEL", "vota por nosotros!"), "<br>");
+				hb.append("No one is currently voting.<br>");
+				hb.append("Don't wait any longer, ", Html.fontColor("LEVEL", "vote for us."), "<br>");
 				
 				hb.append("<table width=280>");
 				hb.append("<tr>");
 				hb.append("<td align=center>", Html.image(L2UI.bbs_folder, 32, 32), "</td>");
-				hb.append("<td><button value=\"Vote\" action=\"bypass -h Engine ", NpcVoteRewardNetwork.class.getSimpleName(), " vote\" width=216 height=32 back=", L2UI_CH3.refinegrade3_21, " fore=", L2UI_CH3.refinegrade3_21, "></td>");
+				hb.append("<td><button value=\"Vote\" action=\"bypass -h Engine ", NpcVoteRewardHopzone.class.getSimpleName(), " vote\" width=216 height=32 back=", L2UI_CH3.refinegrade3_21, " fore=", L2UI_CH3.refinegrade3_21, "></td>");
 				hb.append("<td align=center>", Html.image(L2UI.bbs_folder, 32, 32), "</td>");
 				hb.append("</tr>");
 				hb.append("</table>");
 			}
 			else
 			{
-				hb.append("Actualmente se encuentra ", Html.fontColor("LEVEL", player.getName()), " votando<br>");
-				hb.append("Solo espera un momento y ya sera tu turno<br>");
+				hb.append("He is currently ", Html.fontColor("LEVEL", player.getName()), " voting.<br>");
+				hb.append("Just wait a moment and it will be your turn.<br>");
 			}
 		}
 		
@@ -147,7 +158,7 @@ public class NpcVoteRewardNetwork extends AbstractMod
 			{
 				votes = VoteReward.getVotesNetwork();
 				var hb = new HtmlBuilder();
-				hb.append(Html.START);
+				hb.append(Html.START_BACKGROUND);
 				hb.append(Html.head("VOTE REWARD NETWORK"));
 				hb.append("<br>");
 				hb.append("<br>");
