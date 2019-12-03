@@ -35,8 +35,8 @@
 				</not>
 			</condition>
 		</fail>
-		<available classname="java.lang.AutoCloseable" property="JDK10.present" />
-		<fail unless="JDK10.present" message="Java 1.10 is required. But your version is Java ${ant.java.version} and probably JDK is not installed." />
+		<available classname="java.net.http.HttpClient" property="JDK13.present" />
+		<fail unless="JDK13.present" message="Java 13 is required. But your version is Java ${ant.java.version} and probably JDK is not installed." />
 	</target>
 
 	<target name="init" depends="checkRequirements" description="Create the output directories.">
