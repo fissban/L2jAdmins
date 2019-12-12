@@ -3507,13 +3507,20 @@ public final class L2PcInstance extends L2Playable
 				statement.execute();
 			}
 			
-			for (var recipe : getDwarvenRecipeBookList())
+			int count = 0;
+			try (var statement = con.prepareStatement("INSERT INTO character_recipebook (char_id, id, type) values(?,?,1)"))
 			{
-				try (var statement = con.prepareStatement("INSERT INTO character_recipebook (char_id, id, type) values(?,?,1)"))
+				for (var recipe : getDwarvenRecipeBookList())
 				{
 					statement.setInt(1, getObjectId());
 					statement.setInt(2, recipe.getId());
-					statement.execute();
+					statement.addBatch();
+					count++;
+				}
+				
+				if (count > 0)
+				{
+					statement.executeBatch();
 				}
 			}
 		}
@@ -3542,13 +3549,19 @@ public final class L2PcInstance extends L2Playable
 				statement.execute();
 			}
 			
-			for (var recipe : getCommonRecipeBookList())
+			int count = 0;
+			try (var statement = con.prepareStatement("INSERT INTO character_recipebook (char_id, id, type) values(?,?,0)"))
 			{
-				try (var statement = con.prepareStatement("INSERT INTO character_recipebook (char_id, id, type) values(?,?,0)"))
+				for (var recipe : getCommonRecipeBookList())
 				{
 					statement.setInt(1, getObjectId());
 					statement.setInt(2, recipe.getId());
-					statement.execute();
+					statement.addBatch();
+				}
+				
+				if (count > 0)
+				{
+					statement.executeBatch();
 				}
 			}
 		}
