@@ -1,4 +1,4 @@
-package l2j.gameserver.model.actor.knownlist;
+package l2j.gameserver.model.actor.manager.character.knownlist;
 
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;

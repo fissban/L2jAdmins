@@ -17,7 +17,7 @@ import l2j.gameserver.model.actor.instance.L2ControlTowerInstance;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
 import l2j.gameserver.model.actor.instance.enums.ShotType;
-import l2j.gameserver.model.actor.knownlist.NpcKnownList;
+import l2j.gameserver.model.actor.manager.character.knownlist.NpcKnownList;
 import l2j.gameserver.model.actor.manager.character.stat.NpcStat;
 import l2j.gameserver.model.actor.manager.character.status.NpcStatus;
 import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;

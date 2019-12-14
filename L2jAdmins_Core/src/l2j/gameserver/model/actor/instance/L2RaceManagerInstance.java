@@ -9,7 +9,7 @@ import l2j.gameserver.instancemanager.race.MonsterRaceHistoryInfo;
 import l2j.gameserver.instancemanager.race.MonsterRaceState;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.knownlist.RaceManagerKnownList;
+import l2j.gameserver.model.actor.manager.character.knownlist.RaceManagerKnownList;
 import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.external.server.ActionFailed;

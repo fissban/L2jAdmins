@@ -3,7 +3,7 @@ package l2j.gameserver.model.actor.instance;
 import l2j.gameserver.model.actor.L2Attackable;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.knownlist.FriendlyMobKnownList;
+import l2j.gameserver.model.actor.manager.character.knownlist.FriendlyMobKnownList;
 import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 
 /**

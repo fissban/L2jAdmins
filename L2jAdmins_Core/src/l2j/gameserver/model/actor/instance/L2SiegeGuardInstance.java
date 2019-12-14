@@ -5,7 +5,7 @@ import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.ai.SiegeGuardAI;
 import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.knownlist.SiegeGuardKnownList;
+import l2j.gameserver.model.actor.manager.character.knownlist.SiegeGuardKnownList;
 import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.holder.LocationHolder;
 

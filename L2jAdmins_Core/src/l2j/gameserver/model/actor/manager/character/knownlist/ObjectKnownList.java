@@ -1,4 +1,4 @@
-package l2j.gameserver.model.actor.knownlist;
+package l2j.gameserver.model.actor.manager.character.knownlist;
 
 import java.util.ArrayList;
 import java.util.Collection;

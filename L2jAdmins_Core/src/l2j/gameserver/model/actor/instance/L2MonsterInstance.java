@@ -4,7 +4,7 @@ import l2j.gameserver.instancemanager.MinionsListManager;
 import l2j.gameserver.model.actor.L2Attackable;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.knownlist.MonsterKnownList;
+import l2j.gameserver.model.actor.manager.character.knownlist.MonsterKnownList;
 import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 
 /**
