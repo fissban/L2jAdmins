@@ -13,8 +13,8 @@ import l2j.gameserver.model.actor.L2Playable;
 import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.L2TamedBeastInstance;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.network.external.server.SocialAction;
 import l2j.gameserver.network.external.server.SocialAction.SocialActionType;
 import l2j.gameserver.scripts.Script;
@@ -667,13 +667,13 @@ public class FeedableBeasts extends Script
 			// If not trained, the newly spawned mob will automatically be aggro against its feeder
 			L2Attackable nextNpc = (L2Attackable) addSpawn(nextNpcId, npc, false, 0);
 			
+			// Register the player in the feedinfo for the mob that just spawned
+			feedInfo.put(nextNpc.getObjectId(), player.getObjectId());
+			
 			if (MAD_COW_POLYMORPH.containsKey(nextNpcId))
 			{
 				startTimer("polymorph Mad Cow", 10000, nextNpc, player, false);
 			}
-			
-			// Register the player in the feedinfo for the mob that just spawned
-			feedInfo.put(nextNpc.getObjectId(), player.getObjectId());
 			
 			attack(nextNpc, player, 0);
 		}

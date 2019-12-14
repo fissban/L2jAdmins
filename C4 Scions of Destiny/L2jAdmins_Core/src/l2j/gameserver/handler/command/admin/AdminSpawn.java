@@ -14,7 +14,7 @@ import l2j.gameserver.handler.CommandAdminHandler.IAdminCommandHandler;
 import l2j.gameserver.instancemanager.spawn.DayNightSpawnManager;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.spawn.Spawn;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.network.external.server.SystemMessage;

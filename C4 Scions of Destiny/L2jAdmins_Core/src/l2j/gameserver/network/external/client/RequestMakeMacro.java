@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.macros.PcMacroCmdHolder;
-import l2j.gameserver.model.macros.PcMacroHolder;
-import l2j.gameserver.model.macros.PcMacroType;
+import l2j.gameserver.model.actor.manager.pc.macros.MacroCmdHolder;
+import l2j.gameserver.model.actor.manager.pc.macros.MacroHolder;
+import l2j.gameserver.model.actor.manager.pc.macros.MacroType;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.SystemMessage;
 
@@ -14,7 +14,7 @@ public class RequestMakeMacro extends AClientPacket
 {
 	private static final int MAX_MACRO_LENGTH = 12;
 	
-	private PcMacroHolder macro;
+	private MacroHolder macro;
 	private int commandsLenght = 0;
 	
 	@Override
@@ -31,7 +31,7 @@ public class RequestMakeMacro extends AClientPacket
 			count = MAX_MACRO_LENGTH;
 		}
 		
-		List<PcMacroCmdHolder> commands = new ArrayList<>(count);
+		List<MacroCmdHolder> commands = new ArrayList<>(count);
 		
 		for (int i = 0; i < count; i++)
 		{
@@ -44,23 +44,23 @@ public class RequestMakeMacro extends AClientPacket
 			switch (type)
 			{
 				case 1:
-					commands.add(new PcMacroCmdHolder(entry, PcMacroType.SKILL, d1, d2, command));
+					commands.add(new MacroCmdHolder(entry, MacroType.SKILL, d1, d2, command));
 					break;
 				case 3:
-					commands.add(new PcMacroCmdHolder(entry, PcMacroType.ACTION, d1, d2, command));
+					commands.add(new MacroCmdHolder(entry, MacroType.ACTION, d1, d2, command));
 					break;
 				case 4:
-					commands.add(new PcMacroCmdHolder(entry, PcMacroType.SHORTCUT, d1, d2, command));
+					commands.add(new MacroCmdHolder(entry, MacroType.SHORTCUT, d1, d2, command));
 					break;
 				case 6:
-					commands.add(new PcMacroCmdHolder(entry, PcMacroType.COMMAND, d1, d2, command));
+					commands.add(new MacroCmdHolder(entry, MacroType.COMMAND, d1, d2, command));
 					break;
 				default:
 					LOG.warning(getClass().getSimpleName() + ": wrong macroType -> " + type);
 					break;
 			}
 		}
-		macro = new PcMacroHolder(id, icon, name, desc, acronym, commands);
+		macro = new MacroHolder(id, icon, name, desc, acronym, commands);
 	}
 	
 	@Override

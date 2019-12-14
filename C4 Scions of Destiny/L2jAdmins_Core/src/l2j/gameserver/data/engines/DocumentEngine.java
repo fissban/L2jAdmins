@@ -11,12 +11,12 @@ import l2j.gameserver.data.SkillData;
 import l2j.gameserver.data.engines.item.DocumentItem;
 import l2j.gameserver.data.engines.item.DocumentItemHolder;
 import l2j.gameserver.data.engines.skill.DocumentSkill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 import l2j.gameserver.model.items.Item;
 import l2j.gameserver.model.items.ItemArmor;
 import l2j.gameserver.model.items.ItemEtcItem;
 import l2j.gameserver.model.items.ItemWeapon;
 import l2j.gameserver.model.items.enums.EtcItemType;
-import l2j.gameserver.model.skills.Skill;
 import l2j.util.UtilPrint;
 
 /**

@@ -2,7 +2,7 @@ package l2j.gameserver.network.external.client;
 
 import l2j.gameserver.model.PcBlockList;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.request.RequestPacketType;
+import l2j.gameserver.model.actor.manager.pc.request.RequestPacketType;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.AskJoinFriend;

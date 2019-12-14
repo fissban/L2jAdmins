@@ -5,7 +5,7 @@ import l2j.gameserver.model.actor.ai.NextAction;
 import l2j.gameserver.model.actor.ai.enums.CtrlEventType;
 import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.ActionFailed;
 

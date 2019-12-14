@@ -1,7 +1,7 @@
 package l2j.gameserver.model.holder;
 
 import l2j.gameserver.data.SkillData;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 
 /**
  * @author BiggBoss Simple class for storing skill id/level

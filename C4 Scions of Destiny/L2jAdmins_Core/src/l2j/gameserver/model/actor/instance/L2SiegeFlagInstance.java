@@ -4,7 +4,7 @@ import l2j.gameserver.instancemanager.siege.SiegeManager;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.entity.castle.siege.Siege;
 import l2j.gameserver.model.entity.castle.siege.SiegeClanHolder;
 import l2j.gameserver.model.entity.castle.siege.type.SiegeClanType;

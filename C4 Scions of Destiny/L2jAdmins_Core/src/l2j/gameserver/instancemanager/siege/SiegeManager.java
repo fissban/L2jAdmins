@@ -13,7 +13,7 @@ import l2j.gameserver.data.CastleData;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.model.entity.castle.Castle;
 import l2j.gameserver.model.entity.castle.siege.Siege;
 

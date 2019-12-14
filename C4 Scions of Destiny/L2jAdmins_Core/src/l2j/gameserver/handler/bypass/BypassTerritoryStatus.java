@@ -5,7 +5,7 @@ import l2j.gameserver.handler.BypassHandler.IBypassHandler;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.network.external.server.NpcHtmlMessage;
 
 /**

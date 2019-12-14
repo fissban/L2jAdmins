@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 import l2j.gameserver.instancemanager.siege.SiegeManager;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.olympiad.OlympiadManager;
 import l2j.gameserver.network.external.server.ActionFailed;
 import l2j.gameserver.network.external.server.ItemList;

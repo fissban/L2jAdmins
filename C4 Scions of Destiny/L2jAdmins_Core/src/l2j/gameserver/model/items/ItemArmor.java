@@ -2,8 +2,8 @@ package l2j.gameserver.model.items;
 
 import l2j.gameserver.data.SkillData;
 import l2j.gameserver.model.StatsSet;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 import l2j.gameserver.model.items.enums.ArmorType;
-import l2j.gameserver.model.skills.Skill;
 
 /**
  * This class is dedicated to the management of armors.

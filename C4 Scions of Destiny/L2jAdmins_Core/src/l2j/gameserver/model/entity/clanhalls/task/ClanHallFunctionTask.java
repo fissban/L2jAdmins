@@ -5,10 +5,10 @@ import java.util.logging.Logger;
 
 import l2j.Config;
 import l2j.gameserver.data.ClanData;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.Inventory;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.model.entity.clanhalls.ClanHall;
 import l2j.gameserver.model.entity.clanhalls.ClanHallFunction;
-import l2j.gameserver.model.itemcontainer.Inventory;
 
 /**
  * @author fissban

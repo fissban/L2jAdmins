@@ -1,7 +1,7 @@
 package l2j.gameserver.network.external.server;
 
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.itemcontainer.warehouse.enums.WareHouseType;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.warehouse.enums.WareHouseType;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.AServerPacket;
 

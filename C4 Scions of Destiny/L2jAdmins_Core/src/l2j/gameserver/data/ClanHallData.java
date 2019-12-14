@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import l2j.DatabaseManager;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.model.entity.clanhalls.ClanHall;
 import l2j.util.UtilPrint;
 

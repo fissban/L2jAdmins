@@ -14,9 +14,9 @@ import l2j.DatabaseManager;
 import l2j.gameserver.model.StatsSet;
 import l2j.gameserver.model.actor.base.ClassId;
 import l2j.gameserver.model.actor.enums.NpcRaceType;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.holder.MinionHolder;
-import l2j.gameserver.model.skills.Skill;
 import l2j.util.UtilPrint;
 
 /**

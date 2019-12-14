@@ -6,11 +6,11 @@ import java.util.List;
 import l2j.gameserver.data.SkillData;
 import l2j.gameserver.model.StatsSet;
 import l2j.gameserver.model.actor.L2Character;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.conditions.ConditionGameChance;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillType;
+import l2j.gameserver.model.actor.manager.character.skills.stats.Formulas;
 import l2j.gameserver.model.items.enums.WeaponType;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.conditions.ConditionGameChance;
-import l2j.gameserver.model.skills.enums.SkillType;
-import l2j.gameserver.model.skills.stats.Formulas;
 
 /**
  * This class is dedicated to the management of weapons.

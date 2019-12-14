@@ -2,7 +2,7 @@ package l2j.gameserver.handler.command.user;
 
 import l2j.gameserver.handler.CommandUserHandler.IUserCommandHandler;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.party.PartyCommandChannel;
+import l2j.gameserver.model.actor.manager.pc.party.PartyCommandChannel;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**

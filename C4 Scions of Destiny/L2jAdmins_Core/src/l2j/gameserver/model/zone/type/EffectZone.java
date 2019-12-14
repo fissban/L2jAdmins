@@ -12,7 +12,7 @@ import l2j.gameserver.data.SkillData;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 import l2j.gameserver.model.zone.Zone;
 import l2j.gameserver.model.zone.enums.ZoneType;
 import l2j.gameserver.network.external.server.EtcStatusUpdate;

@@ -11,7 +11,7 @@ import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.geoengine.GeoEngine;
 import l2j.gameserver.idfactory.IdFactory;
 import l2j.gameserver.model.actor.L2Npc;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.util.Rnd;
 import main.EngineModsManager;
 

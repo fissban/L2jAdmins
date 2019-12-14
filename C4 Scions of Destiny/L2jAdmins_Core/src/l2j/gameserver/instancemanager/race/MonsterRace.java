@@ -19,7 +19,7 @@ import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.NpcData;
 import l2j.gameserver.idfactory.IdFactory;
 import l2j.gameserver.model.actor.L2Npc;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.model.zone.enums.ZoneType;
 import l2j.gameserver.network.AServerPacket;

@@ -29,8 +29,8 @@ import l2j.gameserver.handler.target.TargetUndead;
 import l2j.gameserver.handler.target.TargetUnlockable;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.enums.SkillTargetType;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillTargetType;
 import l2j.util.UtilPrint;
 
 /**

@@ -4,7 +4,7 @@ import l2j.gameserver.instancemanager.siege.SiegeManager;
 import l2j.gameserver.model.actor.L2Attackable;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.model.entity.castle.siege.Siege;
 import l2j.gameserver.model.entity.castle.siege.type.SiegeClanType;
 import l2j.gameserver.network.AServerPacket;

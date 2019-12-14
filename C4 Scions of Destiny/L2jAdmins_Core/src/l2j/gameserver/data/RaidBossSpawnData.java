@@ -16,7 +16,7 @@ import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.instancemanager.spawn.DayNightSpawnManager;
 import l2j.gameserver.model.StatsSet;
 import l2j.gameserver.model.actor.instance.L2RaidBossInstance;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.spawn.Spawn;
 import l2j.util.Rnd;
 import l2j.util.UtilPrint;

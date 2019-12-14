@@ -1,8 +1,8 @@
 package l2j.gameserver.network.external.server;
 
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.fishing.enums.PcFishAnimationType;
-import l2j.gameserver.model.fishing.enums.PcFishModeType;
+import l2j.gameserver.model.actor.manager.pc.fishing.enums.FishAnimationType;
+import l2j.gameserver.model.actor.manager.pc.fishing.enums.FishModeType;
 import l2j.gameserver.network.AServerPacket;
 
 /**
@@ -14,12 +14,12 @@ public class ExFishingHpRegen extends AServerPacket
 	private final L2PcInstance player;
 	private final int time;
 	private final int fishHp;
-	private final PcFishModeType fishMode; // Hp mode
-	private final PcFishAnimationType animType;
+	private final FishModeType fishMode; // Hp mode
+	private final FishAnimationType animType;
 	private final int goodUse;
 	private final int penalty;
 	
-	public ExFishingHpRegen(L2PcInstance player, int time, int fishHp, PcFishModeType fishMode, int goodUse, PcFishAnimationType animType, int penalty)
+	public ExFishingHpRegen(L2PcInstance player, int time, int fishHp, FishModeType fishMode, int goodUse, FishAnimationType animType, int penalty)
 	{
 		this.player = player;
 		this.time = time;

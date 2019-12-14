@@ -3,7 +3,7 @@ package l2j.gameserver.network.external.client;
 import l2j.gameserver.data.SkillData;
 import l2j.gameserver.instancemanager.sevensigns.SevenSignsFestival;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.party.Party;
+import l2j.gameserver.model.actor.manager.pc.party.Party;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.GameClient.GameClientState;
 import l2j.gameserver.network.external.server.ActionFailed;

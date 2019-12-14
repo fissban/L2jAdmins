@@ -13,7 +13,7 @@ import org.w3c.dom.Node;
 import l2j.Config;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.itemcontainer.Inventory;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.Inventory;
 import l2j.gameserver.model.items.Item;
 import l2j.gameserver.model.items.ItemArmor;
 import l2j.gameserver.model.items.ItemWeapon;

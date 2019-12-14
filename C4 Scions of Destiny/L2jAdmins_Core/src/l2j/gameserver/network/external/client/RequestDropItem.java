@@ -6,7 +6,7 @@ import l2j.gameserver.illegalaction.IllegalAction;
 import l2j.gameserver.illegalaction.enums.IllegalActionType;
 import l2j.gameserver.model.actor.enums.FloodProtectorType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.itemcontainer.Inventory;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.Inventory;
 import l2j.gameserver.model.items.enums.EtcItemType;
 import l2j.gameserver.model.items.enums.ItemType2;
 import l2j.gameserver.model.items.instance.ItemInstance;

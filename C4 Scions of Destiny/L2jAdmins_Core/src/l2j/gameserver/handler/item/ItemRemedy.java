@@ -3,9 +3,9 @@ package l2j.gameserver.handler.item;
 import l2j.gameserver.handler.ItemHandler.IItemHandler;
 import l2j.gameserver.model.actor.L2Playable;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.manager.character.skills.effects.Effect;
+import l2j.gameserver.model.actor.manager.character.skills.effects.enums.EffectType;
 import l2j.gameserver.model.items.instance.ItemInstance;
-import l2j.gameserver.model.skills.effects.Effect;
-import l2j.gameserver.model.skills.effects.enums.EffectType;
 import l2j.gameserver.network.external.server.MagicSkillUse;
 import l2j.gameserver.network.external.server.SystemMessage;
 

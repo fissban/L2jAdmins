@@ -4,6 +4,7 @@ import l2j.Config;
 import l2j.gameserver.data.AnnouncementsData;
 import l2j.gameserver.data.ClanHallData;
 import l2j.gameserver.data.GmListData;
+import l2j.gameserver.data.HeroData;
 import l2j.gameserver.data.MapRegionData;
 import l2j.gameserver.data.MapRegionData.TeleportWhereType;
 import l2j.gameserver.data.ScriptsData;
@@ -13,15 +14,14 @@ import l2j.gameserver.instancemanager.communitybbs.Community;
 import l2j.gameserver.instancemanager.sevensigns.SevenSignsManager;
 import l2j.gameserver.instancemanager.siege.SiegeManager;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.clan.Clan;
-import l2j.gameserver.model.entity.Hero;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.effects.Effect;
+import l2j.gameserver.model.actor.manager.character.skills.effects.enums.EffectType;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.model.entity.castle.siege.Siege;
 import l2j.gameserver.model.entity.castle.siege.type.PlayerSiegeStateType;
 import l2j.gameserver.model.entity.clanhalls.ClanHall;
 import l2j.gameserver.model.olympiad.Olympiad;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.effects.Effect;
-import l2j.gameserver.model.skills.effects.enums.EffectType;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.model.zone.enums.ZoneType;
 import l2j.gameserver.network.AClientPacket;
@@ -291,7 +291,7 @@ public class EnterWorld extends AClientPacket
 			activeChar.sendPacket(new GameGuardQuery());
 		}
 		
-		if (Hero.getInstance().getHeroes().containsKey(activeChar.getObjectId()))
+		if (HeroData.getHeroes().containsKey(activeChar.getObjectId()))
 		{
 			activeChar.setHero(true);
 		}

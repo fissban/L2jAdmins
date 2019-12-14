@@ -7,17 +7,17 @@ import java.util.List;
 import l2j.Config;
 import l2j.gameserver.model.StatsSet;
 import l2j.gameserver.model.actor.L2Character;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.effects.Effect;
+import l2j.gameserver.model.actor.manager.character.skills.effects.EffectTemplate;
+import l2j.gameserver.model.actor.manager.character.skills.funcs.Func;
+import l2j.gameserver.model.actor.manager.character.skills.funcs.FuncTemplate;
+import l2j.gameserver.model.actor.manager.character.skills.stats.Env;
 import l2j.gameserver.model.items.enums.CrystalType;
 import l2j.gameserver.model.items.enums.ItemType1;
 import l2j.gameserver.model.items.enums.ItemType2;
 import l2j.gameserver.model.items.enums.SlotType;
 import l2j.gameserver.model.items.instance.ItemInstance;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.effects.Effect;
-import l2j.gameserver.model.skills.effects.EffectTemplate;
-import l2j.gameserver.model.skills.funcs.Func;
-import l2j.gameserver.model.skills.funcs.FuncTemplate;
-import l2j.gameserver.model.skills.stats.Env;
 import l2j.gameserver.scripts.Script;
 
 /**

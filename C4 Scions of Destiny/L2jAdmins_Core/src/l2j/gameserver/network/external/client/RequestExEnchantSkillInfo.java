@@ -7,8 +7,8 @@ import l2j.gameserver.data.SkillData;
 import l2j.gameserver.data.SkillTreeData;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 import l2j.gameserver.model.holder.EnchantSkillLearnHolder;
-import l2j.gameserver.model.skills.Skill;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.ExEnchantSkillInfo;
 

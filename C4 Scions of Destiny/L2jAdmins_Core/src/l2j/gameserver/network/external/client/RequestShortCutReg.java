@@ -2,9 +2,9 @@ package l2j.gameserver.network.external.client;
 
 import l2j.gameserver.data.SkillData;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.shortcuts.PcShortCutsInstance;
-import l2j.gameserver.model.shortcuts.PcShortCutsType;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.pc.shortcuts.ShortCutsHolder;
+import l2j.gameserver.model.actor.manager.pc.shortcuts.ShortCutsType;
 import l2j.gameserver.network.AClientPacket;
 
 /**
@@ -13,7 +13,7 @@ import l2j.gameserver.network.AClientPacket;
  */
 public class RequestShortCutReg extends AClientPacket
 {
-	private PcShortCutsType type;
+	private ShortCutsType type;
 	private int id;
 	private int slot;
 	private int page;
@@ -25,22 +25,22 @@ public class RequestShortCutReg extends AClientPacket
 		switch (readD())
 		{
 			case 0x01: // item
-				type = PcShortCutsType.ITEM;
+				type = ShortCutsType.ITEM;
 				break;
 			case 0x02: // skill
-				type = PcShortCutsType.SKILL;
+				type = ShortCutsType.SKILL;
 				break;
 			case 0x03: // action
-				type = PcShortCutsType.ACTION;
+				type = ShortCutsType.ACTION;
 				break;
 			case 0x04: // macro
-				type = PcShortCutsType.MACRO;
+				type = ShortCutsType.MACRO;
 				break;
 			case 0x05: // recipe
-				type = PcShortCutsType.RECIPE;
+				type = ShortCutsType.RECIPE;
 				break;
 			default:
-				type = PcShortCutsType.ITEM;// never happend
+				type = ShortCutsType.ITEM;// never happend
 		}
 		
 		int slot = readD();
@@ -66,7 +66,7 @@ public class RequestShortCutReg extends AClientPacket
 			case MACRO: // macro
 			case RECIPE: // recipe
 			{
-				activeChar.getShortCuts().registerShortCut(new PcShortCutsInstance(slot, page, type, id, -1, characterType), true);
+				activeChar.getShortCuts().registerShortCut(new ShortCutsHolder(slot, page, type, id, -1, characterType), true);
 				break;
 			}
 			case SKILL: // skill
@@ -80,7 +80,7 @@ public class RequestShortCutReg extends AClientPacket
 						return;
 					}
 					
-					activeChar.getShortCuts().registerShortCut(new PcShortCutsInstance(slot, page, type, id, shortCutSkill.getLevel(), characterType), true);
+					activeChar.getShortCuts().registerShortCut(new ShortCutsHolder(slot, page, type, id, shortCutSkill.getLevel(), characterType), true);
 				}
 				break;
 			}

@@ -1,8 +1,8 @@
 package l2j.gameserver.network.external.server;
 
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.fishing.enums.PcFishLureType;
-import l2j.gameserver.model.fishing.enums.PcFishModeType;
+import l2j.gameserver.model.actor.manager.pc.fishing.enums.FishLureType;
+import l2j.gameserver.model.actor.manager.pc.fishing.enums.FishModeType;
 import l2j.gameserver.network.AServerPacket;
 
 /**
@@ -13,10 +13,10 @@ public class ExFishingStartCombat extends AServerPacket
 {
 	private final int playerObjId;
 	private final int time, hp;
-	private final PcFishLureType lureType;
-	private final PcFishModeType modeType;
+	private final FishLureType lureType;
+	private final FishModeType modeType;
 	
-	public ExFishingStartCombat(L2PcInstance player, int time, int hp, PcFishModeType modeType, PcFishLureType lureType)
+	public ExFishingStartCombat(L2PcInstance player, int time, int hp, FishModeType modeType, FishLureType lureType)
 	{
 		playerObjId = player.getObjectId();
 		this.time = time;

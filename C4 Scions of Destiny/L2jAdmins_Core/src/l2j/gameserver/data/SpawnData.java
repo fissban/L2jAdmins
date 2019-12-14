@@ -13,7 +13,7 @@ import l2j.Config;
 import l2j.DatabaseManager;
 import l2j.gameserver.instancemanager.spawn.DayNightSpawnManager;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.spawn.Spawn;
 import l2j.util.UtilPrint;
 import main.data.memory.ObjectData;

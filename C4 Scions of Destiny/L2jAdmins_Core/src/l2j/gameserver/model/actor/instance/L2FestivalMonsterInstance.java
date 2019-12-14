@@ -3,8 +3,8 @@ package l2j.gameserver.model.actor.instance;
 import l2j.gameserver.instancemanager.sevensigns.SevenSignsFestival;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
-import l2j.gameserver.model.party.Party;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.pc.party.Party;
 
 /**
  * L2FestivalMonsterInstance This class manages all attackable festival NPCs, spawned during the Festival of Darkness.

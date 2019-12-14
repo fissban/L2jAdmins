@@ -3,7 +3,7 @@ package l2j.gameserver.network.external.server;
 import java.util.ArrayList;
 import java.util.List;
 
-import l2j.gameserver.model.actor.templates.PcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.PcTemplate;
 import l2j.gameserver.network.AServerPacket;
 
 /**

@@ -17,11 +17,11 @@ import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.AuctionData;
 import l2j.gameserver.data.ClanData;
 import l2j.gameserver.model.actor.instance.L2DoorInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.Inventory;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.model.entity.clanhalls.auction.Auction;
 import l2j.gameserver.model.entity.clanhalls.task.ClanHallRentTask;
 import l2j.gameserver.model.entity.clanhalls.type.ClanHallFunctionType;
-import l2j.gameserver.model.itemcontainer.Inventory;
 import l2j.gameserver.model.zone.type.ClanHallZone;
 import l2j.gameserver.network.external.server.PledgeShowInfoUpdate;
 

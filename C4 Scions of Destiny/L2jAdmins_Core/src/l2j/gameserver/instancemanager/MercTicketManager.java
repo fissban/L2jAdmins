@@ -15,7 +15,7 @@ import l2j.gameserver.data.NpcData;
 import l2j.gameserver.idfactory.IdFactory;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.L2SiegeGuardInstance;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.entity.castle.Castle;
 import l2j.gameserver.model.entity.castle.siege.managers.SiegeGuardManager;
 import l2j.gameserver.model.items.instance.ItemInstance;

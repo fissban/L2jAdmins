@@ -7,7 +7,7 @@ import l2j.gameserver.instancemanager.sevensigns.enums.CabalType;
 import l2j.gameserver.instancemanager.sevensigns.enums.SealType;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.itemcontainer.Inventory;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.Inventory;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.external.server.ActionFailed;
 import l2j.gameserver.network.external.server.SystemMessage;

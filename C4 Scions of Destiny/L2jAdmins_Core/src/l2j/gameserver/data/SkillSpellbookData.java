@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import l2j.DatabaseManager;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 import l2j.util.UtilPrint;
 
 public class SkillSpellbookData

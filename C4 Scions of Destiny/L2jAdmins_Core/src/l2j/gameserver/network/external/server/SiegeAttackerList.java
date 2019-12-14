@@ -1,7 +1,7 @@
 package l2j.gameserver.network.external.server;
 
 import l2j.gameserver.data.ClanData;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.model.entity.castle.Castle;
 import l2j.gameserver.model.entity.castle.siege.SiegeClanHolder;
 import l2j.gameserver.model.entity.castle.siege.type.SiegeClanType;

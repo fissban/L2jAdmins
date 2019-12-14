@@ -5,8 +5,8 @@ import l2j.gameserver.handler.ItemHandler.IItemHandler;
 import l2j.gameserver.model.actor.L2Playable;
 import l2j.gameserver.model.actor.enums.FloodProtectorType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 import l2j.gameserver.model.items.instance.ItemInstance;
-import l2j.gameserver.model.skills.Skill;
 import l2j.gameserver.network.external.server.MagicSkillUse;
 import l2j.gameserver.network.external.server.SystemMessage;
 

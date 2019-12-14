@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 import l2j.DatabaseManager;
 import l2j.gameserver.idfactory.IdFactory;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.model.holder.CrestDataHolder;
 import l2j.util.UtilPrint;
 import l2j.util.file.filter.BMPFilter;

@@ -10,7 +10,7 @@ import java.util.List;
 import l2j.DatabaseManager;
 import l2j.gameserver.data.ClanData;
 import l2j.gameserver.model.actor.base.Sex;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.model.holder.CharSelectInfoHolder;
 import l2j.gameserver.model.items.enums.ParpedollType;
 import l2j.gameserver.network.AServerPacket;

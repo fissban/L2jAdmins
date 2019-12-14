@@ -5,7 +5,7 @@ import l2j.gameserver.data.CrestData;
 import l2j.gameserver.data.CrestData.CrestType;
 import l2j.gameserver.idfactory.IdFactory;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.network.AClientPacket;
 
 /**

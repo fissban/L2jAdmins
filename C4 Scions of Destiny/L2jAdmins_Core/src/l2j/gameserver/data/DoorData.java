@@ -15,7 +15,7 @@ import l2j.gameserver.geoengine.geodata.GeoStructure;
 import l2j.gameserver.idfactory.IdFactory;
 import l2j.gameserver.model.StatsSet;
 import l2j.gameserver.model.actor.instance.L2DoorInstance;
-import l2j.gameserver.model.actor.templates.DoorTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.DoorTemplate;
 import l2j.gameserver.model.entity.clanhalls.ClanHall;
 import l2j.gameserver.util.geometry.Polygon;
 import l2j.util.UtilPrint;

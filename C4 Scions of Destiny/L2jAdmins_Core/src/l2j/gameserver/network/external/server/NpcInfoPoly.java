@@ -3,7 +3,7 @@ package l2j.gameserver.network.external.server;
 import l2j.gameserver.data.NpcData;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.AServerPacket;
 

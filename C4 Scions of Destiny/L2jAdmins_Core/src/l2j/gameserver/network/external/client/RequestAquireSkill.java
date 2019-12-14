@@ -10,11 +10,11 @@ import l2j.gameserver.illegalaction.IllegalAction;
 import l2j.gameserver.illegalaction.enums.IllegalActionType;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.pc.shortcuts.ShortCutsHolder;
+import l2j.gameserver.model.actor.manager.pc.shortcuts.ShortCutsType;
 import l2j.gameserver.model.holder.SkillLearnHolder;
 import l2j.gameserver.model.items.instance.ItemInstance;
-import l2j.gameserver.model.shortcuts.PcShortCutsInstance;
-import l2j.gameserver.model.shortcuts.PcShortCutsType;
-import l2j.gameserver.model.skills.Skill;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.ExStorageMaxCount;
 import l2j.gameserver.network.external.server.StatusUpdate;
@@ -211,16 +211,16 @@ public class RequestAquireSkill extends AClientPacket
 		// update all the shortcuts to this skill
 		if (level > 1)
 		{
-			for (PcShortCutsInstance sc : player.getShortCuts().getAllShortCuts())
+			for (ShortCutsHolder sc : player.getShortCuts().getAllShortCuts())
 			{
 				if (sc == null)
 				{
 					continue;
 				}
 				
-				if ((sc.getId() == id) && (sc.getType() == PcShortCutsType.SKILL))
+				if ((sc.getId() == id) && (sc.getType() == ShortCutsType.SKILL))
 				{
-					player.getShortCuts().registerShortCut(new PcShortCutsInstance(sc.getSlot(), sc.getPage(), sc.getType(), sc.getId(), level, 1), true);
+					player.getShortCuts().registerShortCut(new ShortCutsHolder(sc.getSlot(), sc.getPage(), sc.getType(), sc.getId(), level, 1), true);
 				}
 			}
 		}

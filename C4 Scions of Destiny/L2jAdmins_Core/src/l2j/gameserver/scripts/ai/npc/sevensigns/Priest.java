@@ -9,7 +9,7 @@ import l2j.gameserver.instancemanager.sevensigns.enums.CabalType;
 import l2j.gameserver.instancemanager.sevensigns.enums.SealType;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.external.server.NpcHtmlMessage;
 import l2j.gameserver.network.external.server.SystemMessage;

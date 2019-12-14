@@ -2,8 +2,8 @@ package l2j.gameserver.network.external.server;
 
 import java.util.Collection;
 
+import l2j.gameserver.data.HeroData;
 import l2j.gameserver.model.StatsSet;
-import l2j.gameserver.model.entity.Hero;
 import l2j.gameserver.model.olympiad.Olympiad;
 import l2j.gameserver.network.AServerPacket;
 
@@ -17,7 +17,7 @@ public class ExHeroList extends AServerPacket
 	
 	public ExHeroList()
 	{
-		heroList = Hero.getInstance().getHeroes().values();
+		heroList = HeroData.getHeroes().values();
 	}
 	
 	@Override
@@ -31,11 +31,11 @@ public class ExHeroList extends AServerPacket
 		{
 			writeS(hero.getString(Olympiad.CHAR_NAME));
 			writeD(hero.getInteger(Olympiad.CLASS_ID));
-			writeS(hero.getString(Hero.CLAN_NAME, ""));
-			writeD(hero.getInteger(Hero.CLAN_CREST, 0));
-			writeS(hero.getString(Hero.ALLY_NAME, ""));
-			writeD(hero.getInteger(Hero.ALLY_CREST, 0));
-			writeD(hero.getInteger(Hero.COUNT));
+			writeS(hero.getString(HeroData.CLAN_NAME, ""));
+			writeD(hero.getInteger(HeroData.CLAN_CREST, 0));
+			writeS(hero.getString(HeroData.ALLY_NAME, ""));
+			writeD(hero.getInteger(HeroData.ALLY_CREST, 0));
+			writeD(hero.getInteger(HeroData.COUNT));
 		}
 	}
 }

@@ -3,8 +3,8 @@ package l2j.gameserver.network.external.server;
 import java.util.Collection;
 
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.manager.pc.privatestore.PrivateStoreList;
 import l2j.gameserver.model.holder.ManufactureItemHolder;
-import l2j.gameserver.model.privatestore.PrivateStoreList;
 import l2j.gameserver.model.recipes.RecipeList;
 import l2j.gameserver.network.AServerPacket;
 

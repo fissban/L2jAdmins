@@ -8,10 +8,10 @@ import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.enums.ShotType;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.enums.SkillTargetType;
-import l2j.gameserver.model.skills.enums.SkillType;
-import l2j.gameserver.model.skills.stats.Formulas;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillTargetType;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillType;
+import l2j.gameserver.model.actor.manager.character.skills.stats.Formulas;
 import l2j.gameserver.network.external.server.StatusUpdate;
 import l2j.gameserver.network.external.server.StatusUpdate.StatusUpdateType;
 

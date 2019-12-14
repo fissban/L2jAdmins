@@ -1,7 +1,7 @@
 package l2j.gameserver.model.actor.instance;
 
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 
 public class L2RiftInvaderInstance extends L2MonsterInstance
 {

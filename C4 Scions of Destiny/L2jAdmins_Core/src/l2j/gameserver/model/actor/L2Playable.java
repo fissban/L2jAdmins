@@ -4,12 +4,12 @@ import l2j.gameserver.model.actor.ai.enums.CtrlEventType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
 import l2j.gameserver.model.actor.knownlist.PlayableKnownList;
-import l2j.gameserver.model.actor.stat.PlayableStat;
-import l2j.gameserver.model.actor.status.PlayableStatus;
-import l2j.gameserver.model.actor.templates.CharTemplate;
-import l2j.gameserver.model.itemcontainer.Inventory;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.effects.enums.EffectType;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.Inventory;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.effects.enums.EffectType;
+import l2j.gameserver.model.actor.manager.character.stat.PlayableStat;
+import l2j.gameserver.model.actor.manager.character.status.PlayableStatus;
+import l2j.gameserver.model.actor.manager.character.templates.CharTemplate;
 import l2j.gameserver.scripts.ScriptState;
 import main.EngineModsManager;
 

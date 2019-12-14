@@ -6,7 +6,7 @@ import java.util.List;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.spawn.Spawn;
 
 public class L2ControlTowerInstance extends L2Npc

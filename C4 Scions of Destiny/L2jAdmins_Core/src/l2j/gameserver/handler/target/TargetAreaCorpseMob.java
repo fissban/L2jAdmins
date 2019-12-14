@@ -12,8 +12,8 @@ import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Playable;
 import l2j.gameserver.model.actor.L2Summon;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.enums.SkillTargetType;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillTargetType;
 import l2j.gameserver.model.zone.enums.ZoneType;
 import l2j.gameserver.network.external.server.SystemMessage;
 

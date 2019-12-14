@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 import l2j.gameserver.network.AServerPacket;
 
 public class GMViewSkillInfo extends AServerPacket
