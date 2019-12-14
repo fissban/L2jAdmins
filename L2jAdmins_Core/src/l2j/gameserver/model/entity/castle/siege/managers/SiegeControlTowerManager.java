@@ -10,7 +10,7 @@ import l2j.Config;
 import l2j.gameserver.data.NpcData;
 import l2j.gameserver.idfactory.IdFactory;
 import l2j.gameserver.model.actor.instance.L2ControlTowerInstance;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.entity.castle.Castle;
 import l2j.gameserver.model.holder.SiegeSpawnHolder;
 

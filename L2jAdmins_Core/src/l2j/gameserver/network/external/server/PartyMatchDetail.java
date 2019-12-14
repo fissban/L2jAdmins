@@ -1,6 +1,6 @@
 package l2j.gameserver.network.external.server;
 
-import l2j.gameserver.model.party.PartyMatchRoom;
+import l2j.gameserver.model.actor.manager.pc.party.PartyMatchRoom;
 import l2j.gameserver.network.AServerPacket;
 
 /**

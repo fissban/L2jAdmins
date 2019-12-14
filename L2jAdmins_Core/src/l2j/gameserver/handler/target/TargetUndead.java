@@ -9,8 +9,8 @@ import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.enums.NpcRaceType;
 import l2j.gameserver.model.actor.instance.L2SummonInstance;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.enums.SkillTargetType;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillTargetType;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**

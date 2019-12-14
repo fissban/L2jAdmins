@@ -5,8 +5,8 @@ import java.util.StringTokenizer;
 import l2j.gameserver.data.ClanData;
 import l2j.gameserver.data.HtmData;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.clan.Clan;
-import l2j.gameserver.model.clan.ClanMemberInstance;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.ClanMemberInstance;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**

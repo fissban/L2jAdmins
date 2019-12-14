@@ -33,6 +33,7 @@ import l2j.gameserver.data.GmListData;
 import l2j.gameserver.data.GrandBossSpawnData;
 import l2j.gameserver.data.HennaData;
 import l2j.gameserver.data.HennaTreeData;
+import l2j.gameserver.data.HeroData;
 import l2j.gameserver.data.HitConditionBonusData;
 import l2j.gameserver.data.HtmData;
 import l2j.gameserver.data.InitialEquipamentData;
@@ -78,7 +79,6 @@ import l2j.gameserver.instancemanager.race.MonsterRace;
 import l2j.gameserver.instancemanager.sevensigns.SevenSignsFestival;
 import l2j.gameserver.instancemanager.sevensigns.SevenSignsManager;
 import l2j.gameserver.instancemanager.spawn.DayNightSpawnManager;
-import l2j.gameserver.model.entity.Hero;
 import l2j.gameserver.model.olympiad.Olympiad;
 import l2j.gameserver.model.olympiad.OlympiadGameManager;
 import l2j.gameserver.model.world.L2World;
@@ -245,7 +245,7 @@ public class GameServer
 		UtilPrint.section("Olympiad & Heroes");
 		OlympiadGameManager.getInstance();
 		Olympiad.getInstance();
-		Hero.getInstance();
+		HeroData.getInstance();
 		
 		UtilPrint.section("Manor");
 		ManorData.getInstance().load();

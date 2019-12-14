@@ -6,11 +6,11 @@ import l2j.gameserver.handler.SkillHandler.ISkillHandler;
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.effects.enums.EffectType;
-import l2j.gameserver.model.skills.effects.type.EffectSeed;
-import l2j.gameserver.model.skills.enums.SkillTargetType;
-import l2j.gameserver.model.skills.enums.SkillType;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.effects.enums.EffectType;
+import l2j.gameserver.model.actor.manager.character.skills.effects.type.EffectSeed;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillTargetType;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillType;
 
 /**
  * @author fissban

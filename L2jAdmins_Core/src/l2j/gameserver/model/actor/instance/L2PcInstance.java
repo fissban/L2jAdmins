@@ -28,6 +28,7 @@ import l2j.gameserver.data.ClanData;
 import l2j.gameserver.data.ExperienceData;
 import l2j.gameserver.data.GmListData;
 import l2j.gameserver.data.HennaData;
+import l2j.gameserver.data.HeroData;
 import l2j.gameserver.data.ItemData;
 import l2j.gameserver.data.MapRegionData;
 import l2j.gameserver.data.PetDataData;
@@ -60,25 +61,52 @@ import l2j.gameserver.model.actor.instance.enums.InstanceType;
 import l2j.gameserver.model.actor.instance.enums.MountType;
 import l2j.gameserver.model.actor.instance.enums.ShotType;
 import l2j.gameserver.model.actor.knownlist.PcKnownList;
-import l2j.gameserver.model.actor.stat.PcStat;
-import l2j.gameserver.model.actor.status.PcStatus;
-import l2j.gameserver.model.actor.templates.PcTemplate;
-import l2j.gameserver.model.actor.templates.PetTemplate;
-import l2j.gameserver.model.clan.Clan;
-import l2j.gameserver.model.clan.enums.ClanPrivilegesType;
-import l2j.gameserver.model.entity.Hero;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.Inventory;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.ItemContainer;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.inventory.PcFreightManager;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.inventory.PcInventory;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.warehouse.PcWarehouse;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.effects.Effect;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillType;
+import l2j.gameserver.model.actor.manager.character.skills.funcs.formulas.FuncHennaCON;
+import l2j.gameserver.model.actor.manager.character.skills.funcs.formulas.FuncHennaDEX;
+import l2j.gameserver.model.actor.manager.character.skills.funcs.formulas.FuncHennaINT;
+import l2j.gameserver.model.actor.manager.character.skills.funcs.formulas.FuncHennaMEN;
+import l2j.gameserver.model.actor.manager.character.skills.funcs.formulas.FuncHennaSTR;
+import l2j.gameserver.model.actor.manager.character.skills.funcs.formulas.FuncHennaWIT;
+import l2j.gameserver.model.actor.manager.character.skills.funcs.formulas.FuncMaxCpAdd;
+import l2j.gameserver.model.actor.manager.character.skills.funcs.formulas.FuncMaxCpMul;
+import l2j.gameserver.model.actor.manager.character.skills.funcs.formulas.FuncMaxHpAdd;
+import l2j.gameserver.model.actor.manager.character.skills.funcs.formulas.FuncMaxMpAdd;
+import l2j.gameserver.model.actor.manager.character.skills.stats.Formulas;
+import l2j.gameserver.model.actor.manager.character.skills.stats.enums.BaseStatsType;
+import l2j.gameserver.model.actor.manager.character.skills.stats.enums.StatsType;
+import l2j.gameserver.model.actor.manager.character.stat.PcStat;
+import l2j.gameserver.model.actor.manager.character.status.PcStatus;
+import l2j.gameserver.model.actor.manager.character.templates.PcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.PetTemplate;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.enums.ClanPrivilegesType;
+import l2j.gameserver.model.actor.manager.pc.fishing.Fishing;
+import l2j.gameserver.model.actor.manager.pc.macros.Macro;
+import l2j.gameserver.model.actor.manager.pc.party.Party;
+import l2j.gameserver.model.actor.manager.pc.party.PartyMatchRoomList;
+import l2j.gameserver.model.actor.manager.pc.party.enums.PartyItemDitributionType;
+import l2j.gameserver.model.actor.manager.pc.privatestore.PrivateStore;
+import l2j.gameserver.model.actor.manager.pc.radar.Radar;
+import l2j.gameserver.model.actor.manager.pc.request.RequestDoor;
+import l2j.gameserver.model.actor.manager.pc.request.RequestInvite;
+import l2j.gameserver.model.actor.manager.pc.request.RequestRevive;
+import l2j.gameserver.model.actor.manager.pc.request.RequestTrade;
+import l2j.gameserver.model.actor.manager.pc.shortcuts.ShortCuts;
+import l2j.gameserver.model.actor.manager.pc.shortcuts.ShortCutsType;
 import l2j.gameserver.model.entity.castle.siege.type.PlayerSiegeStateType;
-import l2j.gameserver.model.fishing.PcFishing;
 import l2j.gameserver.model.holder.HennaHolder;
 import l2j.gameserver.model.holder.ItemHolder;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.model.holder.SkillUseHolder;
 import l2j.gameserver.model.holder.TimeStampHolder;
-import l2j.gameserver.model.itemcontainer.Inventory;
-import l2j.gameserver.model.itemcontainer.ItemContainer;
-import l2j.gameserver.model.itemcontainer.inventory.PcFreightManager;
-import l2j.gameserver.model.itemcontainer.inventory.PcInventory;
-import l2j.gameserver.model.itemcontainer.warehouse.PcWarehouse;
 import l2j.gameserver.model.items.ItemWeapon;
 import l2j.gameserver.model.items.enums.ArmorType;
 import l2j.gameserver.model.items.enums.ItemType2;
@@ -86,38 +114,10 @@ import l2j.gameserver.model.items.enums.ParpedollType;
 import l2j.gameserver.model.items.enums.WeaponType;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.model.items.instance.enums.ChangeType;
-import l2j.gameserver.model.macros.PcMacro;
 import l2j.gameserver.model.olympiad.OlympiadGameManager;
 import l2j.gameserver.model.olympiad.OlympiadManager;
-import l2j.gameserver.model.party.Party;
-import l2j.gameserver.model.party.PartyMatchRoomList;
-import l2j.gameserver.model.party.enums.PartyItemDitributionType;
-import l2j.gameserver.model.privatestore.PcPrivateStore;
-import l2j.gameserver.model.radar.PcRadar;
 import l2j.gameserver.model.recipes.RecipeController;
 import l2j.gameserver.model.recipes.RecipeList;
-import l2j.gameserver.model.request.PcRequestDoor;
-import l2j.gameserver.model.request.PcRequestInvite;
-import l2j.gameserver.model.request.PcRequestRevive;
-import l2j.gameserver.model.request.PcRequestTrade;
-import l2j.gameserver.model.shortcuts.PcShortCuts;
-import l2j.gameserver.model.shortcuts.PcShortCutsType;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.effects.Effect;
-import l2j.gameserver.model.skills.enums.SkillType;
-import l2j.gameserver.model.skills.funcs.formulas.FuncHennaCON;
-import l2j.gameserver.model.skills.funcs.formulas.FuncHennaDEX;
-import l2j.gameserver.model.skills.funcs.formulas.FuncHennaINT;
-import l2j.gameserver.model.skills.funcs.formulas.FuncHennaMEN;
-import l2j.gameserver.model.skills.funcs.formulas.FuncHennaSTR;
-import l2j.gameserver.model.skills.funcs.formulas.FuncHennaWIT;
-import l2j.gameserver.model.skills.funcs.formulas.FuncMaxCpAdd;
-import l2j.gameserver.model.skills.funcs.formulas.FuncMaxCpMul;
-import l2j.gameserver.model.skills.funcs.formulas.FuncMaxHpAdd;
-import l2j.gameserver.model.skills.funcs.formulas.FuncMaxMpAdd;
-import l2j.gameserver.model.skills.stats.Formulas;
-import l2j.gameserver.model.skills.stats.enums.BaseStatsType;
-import l2j.gameserver.model.skills.stats.enums.StatsType;
 import l2j.gameserver.model.trade.CharacterTradeList;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.model.zone.enums.ZoneType;
@@ -857,7 +857,7 @@ public final class L2PcInstance extends L2Playable
 				continue;
 			}
 			
-			if ((sc.getId() == recipeId) && (sc.getType() == PcShortCutsType.RECIPE))
+			if ((sc.getId() == recipeId) && (sc.getType() == ShortCutsType.RECIPE))
 			{
 				getShortCuts().deleteShortCut(sc.getSlot(), sc.getPage());
 			}
@@ -3416,7 +3416,7 @@ public final class L2PcInstance extends L2Playable
 					player.getPet().setOwner(player);
 				}
 				
-				if ((!Hero.getInstance().getHeroes().isEmpty()) && Hero.getInstance().getHeroes().containsKey(player.getObjectId()))
+				if ((!HeroData.getHeroes().isEmpty()) && HeroData.getHeroes().containsKey(player.getObjectId()))
 				{
 					player.setHero(true);
 				}
@@ -3919,7 +3919,7 @@ public final class L2PcInstance extends L2Playable
 				continue;
 			}
 			
-			if ((skill != null) && (sc.getId() == skill.getId()) && (sc.getType() == PcShortCutsType.SKILL))
+			if ((skill != null) && (sc.getId() == skill.getId()) && (sc.getType() == ShortCutsType.SKILL))
 			{
 				getShortCuts().deleteShortCut(sc.getSlot(), sc.getPage());
 			}
@@ -4735,8 +4735,8 @@ public final class L2PcInstance extends L2Playable
 	 * Others {@link L2PcInstance} in the detection area of the {@link L2PcInstance} are identified in <B>_knownPlayers</B>. In order to inform other players of this {@link L2PcInstance} state modifications, server just need to go through knownPlayers to send Server->Client Packet<BR>
 	 * <B><U> Actions</U> :</B><BR>
 	 * <li>Send a Server->Client packet UserInfo to this {@link L2PcInstance} (Public and Private Data)
-	 * <li>Send a Server->Client packet CharInfo to all {@link L2PcInstance} in KnownPlayers of the {@link L2PcInstance} (Public data only) <FONT COLOR=#FF0000><B> <U>Caution</U> : DON'T SEND UserInfo packet to other players instead of CharInfo packet. Indeed, UserInfo packet contains PRIVATE DATA
-	 * as MaxHP, STR, DEX...</B></FONT><BR>
+	 * <li>Send a Server->Client packet CharInfo to all {@link L2PcInstance} in KnownPlayers of the {@link L2PcInstance} (Public data only)<BR>
+	 * <FONT COLOR=#FF0000><B> <U>Caution</U> : DON'T SEND UserInfo packet to other players instead of CharInfo packet. Indeed, UserInfo packet contains PRIVATE DATA as MaxHP, STR, DEX...</B></FONT><BR>
 	 */
 	@Override
 	public void updateAbnormalEffect()
@@ -7343,33 +7343,33 @@ public final class L2PcInstance extends L2Playable
 	}
 	
 	// PRIVATE STORE MANAGER =========================================================================== //
-	private final PcPrivateStore privateStore = new PcPrivateStore(this);
+	private final PrivateStore privateStore = new PrivateStore(this);
 	
-	public PcPrivateStore getPrivateStore()
+	public PrivateStore getPrivateStore()
 	{
 		return privateStore;
 	}
 	
 	// SHORT CUTS MANAGER ============================================================================== //
-	private final PcShortCuts shortCuts = new PcShortCuts(this);
+	private final ShortCuts shortCuts = new ShortCuts(this);
 	
-	public PcShortCuts getShortCuts()
+	public ShortCuts getShortCuts()
 	{
 		return shortCuts;
 	}
 	
 	// MACROSES MANAGER ================================================================================ //
-	private final PcMacro macroses = new PcMacro(this);
+	private final Macro macroses = new Macro(this);
 	
-	public PcMacro getMacroses()
+	public Macro getMacroses()
 	{
 		return macroses;
 	}
 	
 	// FISH MANAGER ==================================================================================== //
-	private final PcFishing fishing = new PcFishing(this);
+	private final Fishing fishing = new Fishing(this);
 	
-	public PcFishing getFishing()
+	public Fishing getFishing()
 	{
 		return fishing;
 	}
@@ -7430,9 +7430,9 @@ public final class L2PcInstance extends L2Playable
 	
 	// RADAR MANAGER ================================================================================= //
 	
-	private final PcRadar radarManager = new PcRadar(this);
+	private final Radar radarManager = new Radar(this);
 	
-	public PcRadar getRadar()
+	public Radar getRadar()
 	{
 		return radarManager;
 	}
@@ -7465,9 +7465,9 @@ public final class L2PcInstance extends L2Playable
 	
 	// REQUEST TRADE ==================================================================================//
 	
-	private final PcRequestTrade requestTrade = new PcRequestTrade(this);
+	private final RequestTrade requestTrade = new RequestTrade(this);
 	
-	public PcRequestTrade getRequestTrade()
+	public RequestTrade getRequestTrade()
 	{
 		return requestTrade;
 	}
@@ -7547,30 +7547,30 @@ public final class L2PcInstance extends L2Playable
 	}
 	// REQUEST DOOR ================================================================================== //
 	
-	private final PcRequestDoor requestDoor = new PcRequestDoor(this);
+	private final RequestDoor requestDoor = new RequestDoor(this);
 	
-	public PcRequestDoor getRequestDoor()
+	public RequestDoor getRequestDoor()
 	{
 		return requestDoor;
 	}
 	
 	// REQUEST INVITE ================================================================================ //
 	
-	private final PcRequestInvite requestInvite = new PcRequestInvite(this);
+	private final RequestInvite requestInvite = new RequestInvite(this);
 	
 	/**
 	 * @return the {@link L2PcInstance} requester of a transaction (ex : FriendInvite, JoinAlly, JoinParty...).
 	 */
-	public PcRequestInvite getRequestInvite()
+	public RequestInvite getRequestInvite()
 	{
 		return requestInvite;
 	}
 	
 	// REQUEST REVIVE =============================================================================== //
 	
-	private final PcRequestRevive requestRevive = new PcRequestRevive(this);
+	private final RequestRevive requestRevive = new RequestRevive(this);
 	
-	public PcRequestRevive getRequestRevive()
+	public RequestRevive getRequestRevive()
 	{
 		return requestRevive;
 	}

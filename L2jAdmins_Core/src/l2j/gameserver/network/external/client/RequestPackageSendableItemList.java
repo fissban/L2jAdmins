@@ -2,7 +2,7 @@ package l2j.gameserver.network.external.client;
 
 import java.util.List;
 
-import l2j.gameserver.model.itemcontainer.inventory.PcFreightManager;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.inventory.PcFreightManager;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.PackageSendableList;

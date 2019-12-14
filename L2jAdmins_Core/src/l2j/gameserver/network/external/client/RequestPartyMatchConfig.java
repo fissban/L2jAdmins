@@ -1,9 +1,9 @@
 package l2j.gameserver.network.external.client;
 
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.party.PartyMatchRoom;
-import l2j.gameserver.model.party.PartyMatchRoomList;
-import l2j.gameserver.model.party.enums.PartyRoomMemberType;
+import l2j.gameserver.model.actor.manager.pc.party.PartyMatchRoom;
+import l2j.gameserver.model.actor.manager.pc.party.PartyMatchRoomList;
+import l2j.gameserver.model.actor.manager.pc.party.enums.PartyRoomMemberType;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.ActionFailed;
 import l2j.gameserver.network.external.server.ExPartyRoomMember;

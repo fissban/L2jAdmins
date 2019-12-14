@@ -1,7 +1,7 @@
 package l2j.gameserver.network.external.server;
 
-import l2j.gameserver.model.macros.PcMacroCmdHolder;
-import l2j.gameserver.model.macros.PcMacroHolder;
+import l2j.gameserver.model.actor.manager.pc.macros.MacroCmdHolder;
+import l2j.gameserver.model.actor.manager.pc.macros.MacroHolder;
 import l2j.gameserver.network.AServerPacket;
 
 /**
@@ -11,9 +11,9 @@ public class SendMacroList extends AServerPacket
 {
 	private final int rev;
 	private final int count;
-	private final PcMacroHolder macro;
+	private final MacroHolder macro;
 	
-	public SendMacroList(int rev, int count, PcMacroHolder macro)
+	public SendMacroList(int rev, int count, MacroHolder macro)
 	{
 		this.rev = rev;
 		this.count = count;
@@ -42,7 +42,7 @@ public class SendMacroList extends AServerPacket
 			
 			for (int i = 0; i < macro.getCommands().size(); i++)
 			{
-				PcMacroCmdHolder cmd = macro.getCommands().get(i);
+				MacroCmdHolder cmd = macro.getCommands().get(i);
 				writeC(i + 1); // i of count
 				writeC(cmd.getType().getType()); // type 1 = skill, 3 = action, 4 = shortcut
 				writeD(cmd.getSkillId()); // skill id

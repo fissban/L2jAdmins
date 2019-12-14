@@ -19,7 +19,7 @@ import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.data.CharNameData;
 import l2j.gameserver.data.ClanData;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.model.holder.CharSelectInfoHolder;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.network.external.server.ActionFailed;

@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import l2j.DatabaseManager;
 import l2j.gameserver.data.NpcData;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.entity.castle.Castle;
 import l2j.gameserver.model.spawn.Spawn;
 

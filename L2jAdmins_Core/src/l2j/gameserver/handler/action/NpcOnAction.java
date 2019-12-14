@@ -4,7 +4,6 @@ import java.util.List;
 
 import l2j.gameserver.handler.ActionHandler.IActionHandler;
 import l2j.gameserver.model.L2Object;
-import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -68,7 +67,7 @@ public class NpcOnAction implements IActionHandler
 				else
 				{
 					// Rotate the player to face the instance
-					player.sendPacket(new MoveToPawn(player, (L2Character) target, L2Npc.INTERACTION_DISTANCE));
+					player.sendPacket(new MoveToPawn(player, target, L2Npc.INTERACTION_DISTANCE));
 					// Notify the L2PcInstance AI with FOLLOW
 					player.getAI().setIntention(CtrlIntentionType.FOLLOW, target);
 				}
@@ -84,7 +83,7 @@ public class NpcOnAction implements IActionHandler
 				else
 				{
 					// Rotate the player to face the instance
-					player.sendPacket(new MoveToPawn(player, (L2Character) target, L2Npc.INTERACTION_DISTANCE));
+					player.sendPacket(new MoveToPawn(player, target, L2Npc.INTERACTION_DISTANCE));
 					
 					// TODO hardcode
 					// These npc, make no animation and q are bodies lying on the ground.

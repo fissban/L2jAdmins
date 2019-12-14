@@ -1,6 +1,6 @@
 package l2j.gameserver.model.holder;
 
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 
 /**
  * Skill casting information (used to queue when several skills are cast in a short time)

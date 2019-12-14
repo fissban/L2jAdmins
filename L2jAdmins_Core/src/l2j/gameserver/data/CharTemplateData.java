@@ -8,7 +8,7 @@ import org.w3c.dom.Node;
 
 import l2j.gameserver.model.StatsSet;
 import l2j.gameserver.model.actor.base.ClassId;
-import l2j.gameserver.model.actor.templates.PcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.PcTemplate;
 import l2j.util.UtilPrint;
 import l2j.util.XmlParser;
 

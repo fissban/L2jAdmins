@@ -11,7 +11,7 @@ import java.util.Map;
 import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.network.external.client.Say2.SayType;
 import l2j.gameserver.network.external.server.CreatureSay;
 import l2j.gameserver.network.external.server.PlaySound.PlaySoundType;

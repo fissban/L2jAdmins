@@ -11,9 +11,9 @@ import org.w3c.dom.Node;
 
 import l2j.gameserver.data.engines.AbstractDocumentBase;
 import l2j.gameserver.model.StatsSet;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.conditions.Condition;
-import l2j.gameserver.model.skills.enums.SkillType;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.conditions.Condition;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillType;
 
 /**
  * @author mkizub

@@ -5,10 +5,10 @@ import java.util.concurrent.Future;
 import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillTargetType;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.items.instance.ItemInstance;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.enums.SkillTargetType;
 import l2j.util.Rnd;
 
 /**

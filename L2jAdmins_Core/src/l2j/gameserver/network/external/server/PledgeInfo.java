@@ -1,6 +1,6 @@
 package l2j.gameserver.network.external.server;
 
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.network.AServerPacket;
 
 /**

@@ -1,7 +1,7 @@
 package l2j.gameserver.model.holder;
 
 import l2j.gameserver.model.actor.base.Sex;
-import l2j.gameserver.model.itemcontainer.inventory.PcInventory;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.inventory.PcInventory;
 import l2j.gameserver.model.items.enums.ParpedollType;
 
 /**

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import l2j.gameserver.model.StatsSet;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 
 /**
  * @author fissban

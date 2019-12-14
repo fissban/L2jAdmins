@@ -7,9 +7,9 @@ import l2j.gameserver.ThreadPoolManager;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Summon;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
-import l2j.gameserver.model.itemcontainer.inventory.PcInventory;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.inventory.PcInventory;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.network.external.server.SetSummonRemainTime;
 import l2j.gameserver.network.external.server.SystemMessage;
 

@@ -6,7 +6,7 @@ import java.util.List;
 import l2j.Config;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.party.Party;
+import l2j.gameserver.model.actor.manager.pc.party.Party;
 import l2j.gameserver.network.external.server.PlaySound.PlaySoundType;
 import l2j.gameserver.scripts.Script;
 import l2j.gameserver.scripts.ScriptState;

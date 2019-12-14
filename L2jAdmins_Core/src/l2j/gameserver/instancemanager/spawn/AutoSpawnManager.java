@@ -13,7 +13,7 @@ import l2j.gameserver.data.MapRegionData;
 import l2j.gameserver.data.NpcData;
 import l2j.gameserver.data.SpawnData;
 import l2j.gameserver.model.actor.L2Npc;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.holder.AutoSpawnHolder;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.model.spawn.Spawn;

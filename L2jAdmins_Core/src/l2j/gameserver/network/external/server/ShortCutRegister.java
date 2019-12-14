@@ -1,6 +1,6 @@
 package l2j.gameserver.network.external.server;
 
-import l2j.gameserver.model.shortcuts.PcShortCutsInstance;
+import l2j.gameserver.model.actor.manager.pc.shortcuts.ShortCutsHolder;
 import l2j.gameserver.network.AServerPacket;
 
 /**
@@ -9,13 +9,13 @@ import l2j.gameserver.network.AServerPacket;
  */
 public class ShortCutRegister extends AServerPacket
 {
-	private final PcShortCutsInstance shortcut;
+	private final ShortCutsHolder shortcut;
 	
 	/**
 	 * Register new skill shortcut
 	 * @param shortcut
 	 */
-	public ShortCutRegister(PcShortCutsInstance shortcut)
+	public ShortCutRegister(ShortCutsHolder shortcut)
 	{
 		this.shortcut = shortcut;
 	}

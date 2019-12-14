@@ -8,7 +8,7 @@ import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.base.ClassId;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 import l2j.gameserver.network.external.server.PlaySound.PlaySoundType;
 import l2j.gameserver.scripts.Script;
 import l2j.gameserver.scripts.ScriptState;

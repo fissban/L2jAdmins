@@ -2,7 +2,7 @@ package l2j.gameserver.model.actor.instance;
 
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 
 /**
  * This class manages all Minions. In a group mob, there are one master called RaidBoss and several slaves called Minions.

@@ -9,7 +9,7 @@ import l2j.gameserver.model.actor.L2Playable;
 import l2j.gameserver.model.actor.enums.FloodProtectorType;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.L2PetInstance;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.holder.SummonItemHolder;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.model.spawn.Spawn;

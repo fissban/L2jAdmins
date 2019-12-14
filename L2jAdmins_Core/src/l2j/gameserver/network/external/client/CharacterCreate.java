@@ -10,12 +10,12 @@ import l2j.gameserver.data.SkillTreeData;
 import l2j.gameserver.idfactory.IdFactory;
 import l2j.gameserver.model.actor.base.Sex;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.actor.templates.PcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.PcTemplate;
+import l2j.gameserver.model.actor.manager.pc.shortcuts.ShortCutsHolder;
+import l2j.gameserver.model.actor.manager.pc.shortcuts.ShortCutsType;
 import l2j.gameserver.model.holder.SkillLearnHolder;
 import l2j.gameserver.model.items.enums.ItemType2;
 import l2j.gameserver.model.items.instance.ItemInstance;
-import l2j.gameserver.model.shortcuts.PcShortCutsInstance;
-import l2j.gameserver.model.shortcuts.PcShortCutsType;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.CharCreateFail;
@@ -110,11 +110,11 @@ public class CharacterCreate extends AClientPacket
 		newChar.setTitle("");
 		
 		// add attack shortcut
-		newChar.getShortCuts().registerShortCut(new PcShortCutsInstance(0, 0, PcShortCutsType.ACTION, 2, -1, 1), false);
+		newChar.getShortCuts().registerShortCut(new ShortCutsHolder(0, 0, ShortCutsType.ACTION, 2, -1, 1), false);
 		// add take shortcut
-		newChar.getShortCuts().registerShortCut(new PcShortCutsInstance(3, 0, PcShortCutsType.ACTION, 5, -1, 1), false);
+		newChar.getShortCuts().registerShortCut(new ShortCutsHolder(3, 0, ShortCutsType.ACTION, 5, -1, 1), false);
 		// add sit shortcut
-		newChar.getShortCuts().registerShortCut(new PcShortCutsInstance(10, 0, PcShortCutsType.ACTION, 0, -1, 1), false);
+		newChar.getShortCuts().registerShortCut(new ShortCutsHolder(10, 0, ShortCutsType.ACTION, 0, -1, 1), false);
 		
 		for (int itemId : InitialEquipamentData.getInstance().getItemsById(newChar.getClassId().getId()))
 		{
@@ -129,7 +129,7 @@ public class CharacterCreate extends AClientPacket
 			if (item.getId() == 5588)
 			{
 				// add tutbook shortcut
-				newChar.getShortCuts().registerShortCut(new PcShortCutsInstance(11, 0, PcShortCutsType.ITEM, item.getObjectId(), -1, 1), false);
+				newChar.getShortCuts().registerShortCut(new ShortCutsHolder(11, 0, ShortCutsType.ITEM, item.getObjectId(), -1, 1), false);
 			}
 			
 			if (item.isEquipable())
@@ -146,12 +146,12 @@ public class CharacterCreate extends AClientPacket
 			newChar.addSkill(SkillData.getInstance().getSkill(startSkill.getId(), startSkill.getLevel()), true);
 			if ((startSkill.getId() == 1001) || (startSkill.getId() == 1177))
 			{
-				newChar.getShortCuts().registerShortCut(new PcShortCutsInstance(1, 0, PcShortCutsType.SKILL, startSkill.getId(), startSkill.getLevel(), 1), false);
+				newChar.getShortCuts().registerShortCut(new ShortCutsHolder(1, 0, ShortCutsType.SKILL, startSkill.getId(), startSkill.getLevel(), 1), false);
 			}
 			
 			if (startSkill.getId() == 1216)
 			{
-				newChar.getShortCuts().registerShortCut(new PcShortCutsInstance(9, 0, PcShortCutsType.SKILL, startSkill.getId(), startSkill.getLevel(), 1), false);
+				newChar.getShortCuts().registerShortCut(new ShortCutsHolder(9, 0, ShortCutsType.SKILL, startSkill.getId(), startSkill.getLevel(), 1), false);
 			}
 			
 			if (Config.DEBUG)

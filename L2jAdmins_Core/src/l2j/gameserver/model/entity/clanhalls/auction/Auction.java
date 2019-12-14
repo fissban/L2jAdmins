@@ -17,9 +17,9 @@ import l2j.gameserver.data.ClanData;
 import l2j.gameserver.data.ClanHallData;
 import l2j.gameserver.idfactory.IdFactory;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.Inventory;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.model.holder.BidderHolder;
-import l2j.gameserver.model.itemcontainer.Inventory;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.network.external.server.SystemMessage;
 

@@ -1,6 +1,6 @@
 package l2j.gameserver.model.holder;
 
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 
 /**
  * Simple class containing all necessary information to maintain valid timestamps and reuse for skills upon relog. Filter this carefully as it becomes redundant to store reuse for small delays.

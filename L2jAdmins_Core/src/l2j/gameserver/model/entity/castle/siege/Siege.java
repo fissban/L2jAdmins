@@ -19,7 +19,7 @@ import l2j.gameserver.instancemanager.siege.SiegeManager;
 import l2j.gameserver.model.actor.instance.L2ControlTowerInstance;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.L2SiegeFlagInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.model.entity.castle.Castle;
 import l2j.gameserver.model.entity.castle.siege.managers.SiegeArtifactManager;
 import l2j.gameserver.model.entity.castle.siege.managers.SiegeClansListManager;

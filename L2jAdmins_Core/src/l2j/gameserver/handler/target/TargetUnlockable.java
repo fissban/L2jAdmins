@@ -8,8 +8,8 @@ import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.L2ChestInstance;
 import l2j.gameserver.model.actor.instance.L2DoorInstance;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.enums.SkillTargetType;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillTargetType;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**

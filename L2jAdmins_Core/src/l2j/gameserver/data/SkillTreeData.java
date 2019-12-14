@@ -13,9 +13,9 @@ import java.util.logging.Logger;
 import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.base.ClassId;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 import l2j.gameserver.model.holder.EnchantSkillLearnHolder;
 import l2j.gameserver.model.holder.SkillLearnHolder;
-import l2j.gameserver.model.skills.Skill;
 import l2j.util.UtilPrint;
 
 /**
@@ -59,9 +59,7 @@ public class SkillTreeData
 						{
 							if (parentClassId != -1)
 							{
-								Map<Integer, SkillLearnHolder> parentMap = skillTrees.get(ClassId.getById(parentClassId));
-								
-								map.putAll(parentMap);
+								map.putAll(skillTrees.get(ClassId.getById(parentClassId)));
 							}
 							
 							int prevSkillId = -1;

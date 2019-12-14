@@ -18,9 +18,9 @@ import l2j.gameserver.model.actor.instance.L2DoorInstance;
 import l2j.gameserver.model.actor.instance.L2NpcInstance;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.L2SiegeGuardInstance;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.effects.Effect;
-import l2j.gameserver.model.skills.enums.SkillType;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.effects.Effect;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillType;
 import l2j.util.Rnd;
 
 /**

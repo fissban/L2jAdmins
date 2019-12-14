@@ -18,11 +18,11 @@ import java.util.logging.Logger;
 import l2j.Config;
 import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
+import l2j.gameserver.data.HeroData;
 import l2j.gameserver.data.ZoneData;
 import l2j.gameserver.model.StatsSet;
 import l2j.gameserver.model.actor.base.ClassId;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.entity.Hero;
 import l2j.gameserver.model.zone.Zone;
 import l2j.gameserver.model.zone.type.OlympiadStadiumZone;
 import l2j.gameserver.network.external.server.SystemMessage;
@@ -294,7 +294,7 @@ public class Olympiad
 			period = 1;
 			sortHeroesToBe();
 			// Hero.getInstance().resetData();
-			Hero.getInstance().computeNewHeroes(heroesToBe);
+			HeroData.computeNewHeroes(heroesToBe);
 			
 			saveOlympiadStatus();
 			updateMonthlyData();

@@ -14,7 +14,7 @@ import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.L2MinionInstance;
 import l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import l2j.gameserver.model.actor.instance.L2RaidBossInstance;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.holder.MinionHolder;
 import l2j.util.Rnd;
 import main.data.memory.ObjectData;

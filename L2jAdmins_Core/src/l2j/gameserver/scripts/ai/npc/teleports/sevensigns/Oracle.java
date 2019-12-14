@@ -2,8 +2,8 @@ package l2j.gameserver.scripts.ai.npc.teleports.sevensigns;
 
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.Inventory;
 import l2j.gameserver.model.holder.LocationHolder;
-import l2j.gameserver.model.itemcontainer.Inventory;
 import l2j.gameserver.network.external.server.PlaySound.PlaySoundType;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.scripts.Script;

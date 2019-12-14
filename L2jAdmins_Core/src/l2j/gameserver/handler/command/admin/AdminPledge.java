@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 import l2j.gameserver.data.ClanData;
 import l2j.gameserver.handler.CommandAdminHandler.IAdminCommandHandler;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.network.external.server.NpcHtmlMessage;
 import l2j.gameserver.util.audit.GMAudit;
 

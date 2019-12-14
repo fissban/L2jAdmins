@@ -5,7 +5,7 @@ import l2j.gameserver.model.actor.L2Attackable;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
 import l2j.gameserver.model.actor.knownlist.MonsterKnownList;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 
 /**
  * This class manages all Monsters. L2MonsterInstance :<br>

@@ -1,9 +1,9 @@
 package l2j.gameserver.network.external.client;
 
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 import l2j.gameserver.model.items.enums.CrystalType;
 import l2j.gameserver.model.items.instance.ItemInstance;
-import l2j.gameserver.model.skills.Skill;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.ActionFailed;

@@ -2,7 +2,7 @@ package l2j.gameserver.handler.say;
 
 import l2j.gameserver.handler.SayHandler.ISayHandler;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.party.PartyMatchRoomList;
+import l2j.gameserver.model.actor.manager.pc.party.PartyMatchRoomList;
 import l2j.gameserver.network.external.client.Say2.SayType;
 import l2j.gameserver.network.external.server.CreatureSay;
 

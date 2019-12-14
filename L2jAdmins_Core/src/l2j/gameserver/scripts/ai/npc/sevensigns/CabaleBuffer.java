@@ -5,7 +5,7 @@ import l2j.gameserver.instancemanager.sevensigns.SevenSignsManager;
 import l2j.gameserver.instancemanager.sevensigns.enums.CabalType;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 import l2j.gameserver.network.external.server.MagicSkillUse;
 import l2j.gameserver.network.external.server.SystemMessage;
 import l2j.gameserver.scripts.Script;

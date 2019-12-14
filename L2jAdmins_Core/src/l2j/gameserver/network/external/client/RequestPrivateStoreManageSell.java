@@ -1,7 +1,7 @@
 package l2j.gameserver.network.external.client;
 
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.privatestore.PcStoreType;
+import l2j.gameserver.model.actor.manager.pc.privatestore.PcStoreType;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.ActionFailed;
 import l2j.gameserver.network.external.server.PrivateStoreManageListSell;

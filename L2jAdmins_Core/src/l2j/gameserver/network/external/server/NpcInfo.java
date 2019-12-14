@@ -7,7 +7,7 @@ import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.L2Summon;
 import l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import l2j.gameserver.model.actor.instance.L2NpcInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.network.AServerPacket;
 import l2j.util.Rnd;
 import main.data.memory.ObjectData;

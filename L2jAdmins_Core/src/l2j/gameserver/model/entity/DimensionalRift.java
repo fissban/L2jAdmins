@@ -14,8 +14,8 @@ import l2j.gameserver.data.DimensionalRiftData;
 import l2j.gameserver.instancemanager.DimensionalRiftManager;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
+import l2j.gameserver.model.actor.manager.pc.party.Party;
 import l2j.gameserver.model.holder.LocationHolder;
-import l2j.gameserver.model.party.Party;
 import l2j.gameserver.network.external.server.Earthquake;
 import l2j.util.Rnd;
 

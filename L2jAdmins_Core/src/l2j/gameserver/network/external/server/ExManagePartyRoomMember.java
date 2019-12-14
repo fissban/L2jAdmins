@@ -2,8 +2,8 @@ package l2j.gameserver.network.external.server;
 
 import l2j.gameserver.data.MapRegionData;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.party.PartyMatchRoom;
-import l2j.gameserver.model.party.enums.PartyRoomMemberType;
+import l2j.gameserver.model.actor.manager.pc.party.PartyMatchRoom;
+import l2j.gameserver.model.actor.manager.pc.party.enums.PartyRoomMemberType;
 import l2j.gameserver.network.AServerPacket;
 
 /**

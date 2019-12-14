@@ -9,11 +9,11 @@ import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillType;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.model.items.instance.ItemInstance;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.enums.SkillType;
 import l2j.gameserver.network.external.server.NpcInfo;
 import l2j.gameserver.network.external.server.StopMove;
 import l2j.util.Rnd;
@@ -307,7 +307,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 	 * Prepare and cast a skill: First smoothly prepare the beast for casting, by abandoning other actions Next, call super.doCast(skill) in order to actually cast the spell Finally, return to auto-following the owner.
 	 * @param skill
 	 * @param target
-	 * @see          l2j.gameserver.model.actor.L2Character#doCast(l2j.gameserver.model.skills.Skill)
+	 * @see          l2j.gameserver.model.actor.L2Character#doCast(l2j.gameserver.model.actor.manager.character.skills.Skill)
 	 */
 	protected void sitCastAndFollow(Skill skill, L2Character target)
 	{

@@ -5,7 +5,7 @@ import l2j.gameserver.data.NpcData;
 import l2j.gameserver.model.actor.L2Summon;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.enums.CubicType;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.entity.castle.siege.type.PlayerSiegeStateType;
 import l2j.gameserver.model.items.enums.ParpedollType;
 import l2j.gameserver.network.AServerPacket;

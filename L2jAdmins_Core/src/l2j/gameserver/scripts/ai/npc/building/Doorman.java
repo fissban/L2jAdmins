@@ -7,8 +7,8 @@ import l2j.gameserver.data.DoorData;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.enums.ConditionInteractNpcType;
-import l2j.gameserver.model.clan.Clan;
-import l2j.gameserver.model.clan.enums.ClanPrivilegesType;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.enums.ClanPrivilegesType;
 import l2j.gameserver.network.external.server.NpcHtmlMessage;
 import l2j.gameserver.scripts.Script;
 

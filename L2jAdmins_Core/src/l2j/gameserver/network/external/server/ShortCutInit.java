@@ -3,7 +3,7 @@ package l2j.gameserver.network.external.server;
 import java.util.Collection;
 
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.shortcuts.PcShortCutsInstance;
+import l2j.gameserver.model.actor.manager.pc.shortcuts.ShortCutsHolder;
 import l2j.gameserver.network.AServerPacket;
 
 /**
@@ -28,9 +28,9 @@ public class ShortCutInit extends AServerPacket
 	public void writeImpl()
 	{
 		writeC(0x45);
-		Collection<PcShortCutsInstance> allShortCuts = activeChar.getShortCuts().getAllShortCuts();
+		Collection<ShortCutsHolder> allShortCuts = activeChar.getShortCuts().getAllShortCuts();
 		writeD(allShortCuts.size());
-		for (PcShortCutsInstance sc : allShortCuts)
+		for (ShortCutsHolder sc : allShortCuts)
 		{
 			if (sc == null)
 			{

@@ -4,8 +4,8 @@ import l2j.gameserver.data.NpcData;
 import l2j.gameserver.data.SkillData;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.network.external.server.MagicSkillUse;
 import l2j.util.Rnd;
 

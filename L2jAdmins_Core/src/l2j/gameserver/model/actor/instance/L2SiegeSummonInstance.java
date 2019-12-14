@@ -1,8 +1,8 @@
 package l2j.gameserver.model.actor.instance;
 
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.templates.NpcTemplate;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.zone.enums.ZoneType;
 
 public class L2SiegeSummonInstance extends L2SummonInstance

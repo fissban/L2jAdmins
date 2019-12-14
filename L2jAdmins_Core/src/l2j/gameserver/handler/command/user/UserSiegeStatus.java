@@ -3,7 +3,7 @@ package l2j.gameserver.handler.command.user;
 import l2j.gameserver.handler.CommandUserHandler.IUserCommandHandler;
 import l2j.gameserver.instancemanager.siege.SiegeManager;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.model.entity.castle.siege.Siege;
 import l2j.gameserver.model.zone.type.SiegeZone;
 import l2j.gameserver.network.external.server.NpcHtmlMessage;

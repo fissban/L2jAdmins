@@ -1,7 +1,7 @@
 package l2j.gameserver.network.external.server;
 
-import l2j.gameserver.model.party.Party;
-import l2j.gameserver.model.party.PartyCommandChannel;
+import l2j.gameserver.model.actor.manager.pc.party.Party;
+import l2j.gameserver.model.actor.manager.pc.party.PartyCommandChannel;
 import l2j.gameserver.network.AServerPacket;
 
 /**

@@ -5,7 +5,7 @@ import java.util.List;
 
 import l2j.Config;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.privatestore.PcStoreType;
+import l2j.gameserver.model.actor.manager.pc.privatestore.PcStoreType;
 import l2j.gameserver.model.trade.CharacterTradeList;
 import l2j.gameserver.model.zone.enums.ZoneType;
 import l2j.gameserver.network.AClientPacket;

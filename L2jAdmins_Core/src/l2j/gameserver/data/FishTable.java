@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import l2j.DatabaseManager;
-import l2j.gameserver.model.fishing.PcFishingInstance;
-import l2j.gameserver.model.fishing.enums.PcFishLureType;
+import l2j.gameserver.model.actor.manager.pc.fishing.FishingHolder;
+import l2j.gameserver.model.actor.manager.pc.fishing.enums.FishLureType;
 import l2j.util.UtilPrint;
 
 /**
@@ -19,8 +19,8 @@ public class FishTable
 {
 	private static final Logger LOG = Logger.getLogger(FishTable.class.getName());
 	
-	private static final List<PcFishingInstance> fishs = new ArrayList<>();
-	private static final List<PcFishingInstance> fishsNewbie = new ArrayList<>();
+	private static final List<FishingHolder> fishs = new ArrayList<>();
+	private static final List<FishingHolder> fishsNewbie = new ArrayList<>();
 	
 	public void load()
 	{
@@ -40,13 +40,13 @@ public class FishTable
 				int hp = rs.getInt("hp");
 				int hpreg = rs.getInt("hpregen");
 				int type = rs.getInt("fish_type");
-				PcFishLureType lureType = PcFishLureType.values()[rs.getInt("fish_group")];// TODO cuando se ajuste en xml grabar este dato como enumerador
+				FishLureType lureType = FishLureType.values()[rs.getInt("fish_group")];// TODO cuando se ajuste en xml grabar este dato como enumerador
 				int fishGuts = rs.getInt("fish_guts");
 				int gutsCheck_time = rs.getInt("guts_check_time");
 				int waitTime = rs.getInt("wait_time");
 				int combatTime = rs.getInt("combat_time");
 				
-				PcFishingInstance fish = new PcFishingInstance(id, lvl, name, hp, hpreg, type, lureType, fishGuts, gutsCheck_time, waitTime, combatTime);
+				FishingHolder fish = new FishingHolder(id, lvl, name, hp, hpreg, type, lureType, fishGuts, gutsCheck_time, waitTime, combatTime);
 				
 				switch (lureType)
 				{
@@ -74,10 +74,10 @@ public class FishTable
 	 * @param  group
 	 * @return       List of Fish that can be fished
 	 */
-	public List<PcFishingInstance> getfish(int lvl, int type, int group)
+	public List<FishingHolder> getfish(int lvl, int type, int group)
 	{
-		List<PcFishingInstance> result = new ArrayList<>();
-		List<PcFishingInstance> fishing = new ArrayList<>();
+		List<FishingHolder> result = new ArrayList<>();
+		List<FishingHolder> fishing = new ArrayList<>();
 		if (group == 0)
 		{
 			fishing = fishsNewbie;
@@ -94,7 +94,7 @@ public class FishTable
 			return fishing;
 		}
 		
-		for (PcFishingInstance f : fishing)
+		for (FishingHolder f : fishing)
 		{
 			if (f.getLevel() != lvl)
 			{

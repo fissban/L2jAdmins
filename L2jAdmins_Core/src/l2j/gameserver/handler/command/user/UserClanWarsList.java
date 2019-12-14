@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import l2j.DatabaseManager;
 import l2j.gameserver.handler.CommandUserHandler.IUserCommandHandler;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.network.external.server.SystemMessage;
 
 /**

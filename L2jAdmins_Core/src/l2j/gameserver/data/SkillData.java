@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import l2j.gameserver.data.engines.DocumentEngine;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 
 /**
  *

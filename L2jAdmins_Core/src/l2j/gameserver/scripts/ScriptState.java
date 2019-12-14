@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 
 import l2j.DatabaseManager;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.itemcontainer.Inventory;
-import l2j.gameserver.model.itemcontainer.inventory.PcInventory;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.Inventory;
+import l2j.gameserver.model.actor.manager.character.itemcontainer.inventory.PcInventory;
 import l2j.gameserver.model.items.enums.ParpedollType;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.network.external.server.ExShowQuestMark;
