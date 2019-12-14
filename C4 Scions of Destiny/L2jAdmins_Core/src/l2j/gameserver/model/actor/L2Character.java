@@ -46,7 +46,7 @@ import l2j.gameserver.model.actor.instance.L2SummonInstance;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
 import l2j.gameserver.model.actor.instance.enums.ShotType;
 import l2j.gameserver.model.actor.instance.enums.TeamType;
-import l2j.gameserver.model.actor.knownlist.CharKnownList;
+import l2j.gameserver.model.actor.manager.character.knownlist.CharKnownList;
 import l2j.gameserver.model.actor.manager.character.skills.Skill;
 import l2j.gameserver.model.actor.manager.character.skills.effects.Effect;
 import l2j.gameserver.model.actor.manager.character.skills.effects.enums.AbnormalEffectType;

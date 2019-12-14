@@ -10,7 +10,7 @@ import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
 import l2j.gameserver.model.actor.instance.enums.ShotType;
-import l2j.gameserver.model.actor.knownlist.ObjectKnownList;
+import l2j.gameserver.model.actor.manager.character.knownlist.ObjectKnownList;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.model.items.instance.ItemInstance;
 import l2j.gameserver.model.world.L2World;

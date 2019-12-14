@@ -11,7 +11,7 @@ import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Playable;
 import l2j.gameserver.model.actor.ai.DoorAI;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.knownlist.DoorKnownList;
+import l2j.gameserver.model.actor.manager.character.knownlist.DoorKnownList;
 import l2j.gameserver.model.actor.manager.character.stat.DoorStat;
 import l2j.gameserver.model.actor.manager.character.status.DoorStatus;
 import l2j.gameserver.model.actor.manager.character.templates.DoorTemplate;

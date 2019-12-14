@@ -6,7 +6,7 @@ import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.ai.AttackableAI;
 import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;
 import l2j.gameserver.model.actor.instance.enums.InstanceType;
-import l2j.gameserver.model.actor.knownlist.GuardKnownList;
+import l2j.gameserver.model.actor.manager.character.knownlist.GuardKnownList;
 import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.holder.LocationHolder;
 import l2j.gameserver.model.world.L2World;

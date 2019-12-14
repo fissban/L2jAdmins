@@ -9,7 +9,7 @@ import l2j.gameserver.data.BoatData.BoatMessageType;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.ai.L2BoatAI;
-import l2j.gameserver.model.actor.knownlist.BoatKnownList;
+import l2j.gameserver.model.actor.manager.character.knownlist.BoatKnownList;
 import l2j.gameserver.model.actor.manager.character.stat.BoatStat;
 import l2j.gameserver.model.actor.manager.character.templates.NpcTemplate;
 import l2j.gameserver.model.holder.BoatHolder;

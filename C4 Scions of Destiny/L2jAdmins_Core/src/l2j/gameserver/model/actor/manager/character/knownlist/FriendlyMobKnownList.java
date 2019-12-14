@@ -1,16 +1,15 @@
-package l2j.gameserver.model.actor.knownlist;
+package l2j.gameserver.model.actor.manager.character.knownlist;
 
 import l2j.gameserver.model.L2Object;
 import l2j.gameserver.model.actor.L2Character;
-import l2j.gameserver.model.actor.ai.CharacterAI;
 import l2j.gameserver.model.actor.ai.enums.CtrlEventType;
 import l2j.gameserver.model.actor.ai.enums.CtrlIntentionType;
-import l2j.gameserver.model.actor.instance.L2MonsterInstance;
+import l2j.gameserver.model.actor.instance.L2FriendlyMobInstance;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 
-public class MonsterKnownList extends AttackableKnownList
+public class FriendlyMobKnownList extends AttackableKnownList
 {
-	public MonsterKnownList(L2MonsterInstance activeChar)
+	public FriendlyMobKnownList(L2FriendlyMobInstance activeChar)
 	{
 		super(activeChar);
 	}
@@ -26,13 +25,13 @@ public class MonsterKnownList extends AttackableKnownList
 		// object is player
 		if (object instanceof L2PcInstance)
 		{
-			// get monster AI
-			final CharacterAI ai = ((L2MonsterInstance) activeObject).getAI();
+			// get friendly monster
+			final L2FriendlyMobInstance monster = (L2FriendlyMobInstance) activeObject;
 			
-			// AI exists and is idle, set active
-			if ((ai != null) && (ai.getIntention() == CtrlIntentionType.IDLE))
+			// AI is idle, set AI
+			if (monster.getAI().getIntention() == CtrlIntentionType.IDLE)
 			{
-				ai.setIntention(CtrlIntentionType.ACTIVE, null);
+				monster.getAI().setIntention(CtrlIntentionType.ACTIVE, null);
 			}
 		}
 		
@@ -52,19 +51,25 @@ public class MonsterKnownList extends AttackableKnownList
 			return true;
 		}
 		
-		// get monster
-		final L2MonsterInstance monster = (L2MonsterInstance) activeObject;
+		// get friendly monster
+		final L2FriendlyMobInstance monster = (L2FriendlyMobInstance) activeObject;
 		
-		// monster has AI, inform about lost object
 		if (monster.hasAI())
 		{
 			monster.getAI().notifyEvent(CtrlEventType.FORGET_OBJECT, object);
+			if (monster.getTarget() == (L2Character) object)
+			{
+				monster.setTarget(null);
+			}
 		}
 		
-		// clear agro list
 		if (monster.isVisible() && getObjectType(L2PcInstance.class).isEmpty())
 		{
 			monster.clearAggroList();
+			if (monster.hasAI())
+			{
+				monster.getAI().setIntention(CtrlIntentionType.IDLE, null);
+			}
 		}
 		
 		return true;
