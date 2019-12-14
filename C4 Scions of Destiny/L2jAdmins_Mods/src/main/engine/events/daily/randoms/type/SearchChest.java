@@ -9,8 +9,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import l2j.gameserver.model.actor.instance.enums.TeamType;
+import l2j.gameserver.model.actor.manager.character.skills.effects.enums.AbnormalEffectType;
 import l2j.gameserver.model.holder.LocationHolder;
-import l2j.gameserver.model.skills.effects.enums.AbnormalEffectType;
 import l2j.gameserver.model.world.L2World;
 import l2j.gameserver.network.external.client.Say2.SayType;
 import l2j.gameserver.network.external.server.CreatureSay;

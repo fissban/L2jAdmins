@@ -7,7 +7,7 @@ import l2j.gameserver.data.SkillData;
 import l2j.gameserver.model.actor.L2Npc;
 import l2j.gameserver.model.actor.instance.L2CubicInstance;
 import l2j.gameserver.model.actor.instance.L2PetInstance;
-import l2j.gameserver.model.skills.enums.SkillType;
+import l2j.gameserver.model.actor.manager.character.skills.enums.SkillType;
 import l2j.gameserver.network.external.server.SetSummonRemainTime;
 import l2j.gameserver.network.external.server.SetupGauge;
 import l2j.gameserver.network.external.server.SetupGauge.SetupGaugeType;

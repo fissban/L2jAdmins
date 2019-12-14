@@ -8,8 +8,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Logger;
 
 import l2j.gameserver.model.actor.L2Npc;
-import l2j.gameserver.model.skills.Skill;
-import l2j.gameserver.model.skills.stats.enums.StatsType;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.stats.enums.StatsType;
 import l2j.gameserver.model.zone.Zone;
 import l2j.gameserver.network.external.server.NpcHtmlMessage;
 import l2j.gameserver.network.external.server.ShowBoard;

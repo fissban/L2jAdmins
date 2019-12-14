@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 import l2j.gameserver.data.ExperienceData;
 import l2j.gameserver.model.actor.L2Playable;
 import l2j.gameserver.model.actor.instance.L2MonsterInstance;
-import l2j.gameserver.model.skills.stats.enums.StatsType;
+import l2j.gameserver.model.actor.manager.character.skills.stats.enums.StatsType;
 import l2j.gameserver.network.external.client.Say2.SayType;
 import main.data.memory.ObjectData;
 import main.data.properties.ConfigData;

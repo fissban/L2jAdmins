@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 
 import l2j.gameserver.model.actor.L2Playable;
 import l2j.gameserver.model.actor.base.ClassId;
-import l2j.gameserver.model.skills.stats.enums.StatsType;
+import l2j.gameserver.model.actor.manager.character.skills.stats.enums.StatsType;
 import main.engine.AbstractMod;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.PlayerHolder;
