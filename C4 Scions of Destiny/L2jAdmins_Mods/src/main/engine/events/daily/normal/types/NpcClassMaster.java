@@ -53,14 +53,14 @@ public class NpcClassMaster extends AbstractEvent
 		var job2 = new ClassMasterList();
 		job2.setPriceItemId(ConfigData.CLASSMASTER_PRICE_JOB2.getRewardId());
 		job2.setPriceItemCount(ConfigData.CLASSMASTER_PRICE_JOB2.getRewardCount());
-		job2.setRewardItemId(ConfigData.CLASSMASTER_REWARD_JOB2.getRewardCount());
+		job2.setRewardItemId(ConfigData.CLASSMASTER_REWARD_JOB2.getRewardId());
 		job2.setRewardItemCount(ConfigData.CLASSMASTER_REWARD_JOB2.getRewardCount());
 		ITEM_LIST.add(job2);
 		// Tercer cambio de clase -----------------------
 		var job3 = new ClassMasterList();
 		job3.setPriceItemId(ConfigData.CLASSMASTER_PRICE_JOB3.getRewardId());
 		job3.setPriceItemCount(ConfigData.CLASSMASTER_PRICE_JOB3.getRewardCount());
-		job3.setRewardItemId(ConfigData.CLASSMASTER_REWARD_JOB3.getRewardCount());
+		job3.setRewardItemId(ConfigData.CLASSMASTER_REWARD_JOB3.getRewardId());
 		job3.setRewardItemCount(ConfigData.CLASSMASTER_REWARD_JOB3.getRewardCount());
 		ITEM_LIST.add(job3);
 	}
