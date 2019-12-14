@@ -6,7 +6,7 @@ import java.util.List;
 import l2j.gameserver.data.ClanData;
 import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.clan.Clan;
+import l2j.gameserver.model.actor.manager.pc.clan.Clan;
 import l2j.gameserver.network.external.client.Say2.SayType;
 import l2j.gameserver.network.external.server.CreatureSay;
 import main.holders.objects.PlayerHolder;

@@ -10,8 +10,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import l2j.gameserver.model.actor.manager.character.skills.stats.enums.StatsType;
 import l2j.gameserver.model.holder.LocationHolder;
-import l2j.gameserver.model.skills.stats.enums.StatsType;
 import main.enums.WeekDayType;
 import main.holders.IntIntHolder;
 import main.holders.RewardHolder;

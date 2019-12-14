@@ -3,7 +3,7 @@ package main.engine.mods;
 import java.util.Arrays;
 
 import l2j.gameserver.model.actor.instance.L2MonsterInstance;
-import l2j.gameserver.model.skills.effects.enums.AbnormalEffectType;
+import l2j.gameserver.model.actor.manager.character.skills.effects.enums.AbnormalEffectType;
 import l2j.util.Rnd;
 import main.data.properties.ConfigData;
 import main.data.xml.IconData;

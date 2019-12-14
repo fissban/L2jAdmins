@@ -1,7 +1,7 @@
 package main.holders;
 
 import l2j.gameserver.data.SkillData;
-import l2j.gameserver.model.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.Skill;
 
 /**
  * A generic int/int container.
