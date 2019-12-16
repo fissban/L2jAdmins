@@ -30,7 +30,7 @@ public final class FuncTemplate
 		
 		try
 		{
-			this.func = Class.forName("l2j.gameserver.model.skills.funcs.Func" + func);
+			this.func = Class.forName("l2j.gameserver.model.actor.manager.character.skills.funcs.Func" + func);
 		}
 		catch (ClassNotFoundException e)
 		{

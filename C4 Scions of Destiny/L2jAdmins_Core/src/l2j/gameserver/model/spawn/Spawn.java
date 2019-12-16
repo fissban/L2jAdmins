@@ -110,7 +110,7 @@ public class Spawn
 		Class<?>[] parameters =
 		{
 			int.class,
-			Class.forName("l2j.gameserver.model.actor.templates.NpcTemplate")
+			Class.forName("l2j.gameserver.model.actor.manager.character.templates.NpcTemplate")
 		};
 		
 		constructor = Class.forName("l2j.gameserver.model.actor.instance." + template.getType() + "Instance").getConstructor(parameters);
