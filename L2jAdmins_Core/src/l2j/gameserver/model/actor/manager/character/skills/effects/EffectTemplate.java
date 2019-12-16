@@ -52,7 +52,7 @@ public final class EffectTemplate
 		this.name = func;
 		try
 		{
-			constructor = Class.forName("l2j.gameserver.model.skills.effects.type.Effect" + func).getConstructor(Env.class, EffectTemplate.class);
+			constructor = Class.forName("l2j.gameserver.model.actor.manager.character.skills.effects.type.Effect" + func).getConstructor(Env.class, EffectTemplate.class);
 		}
 		catch (Exception e)
 		{
