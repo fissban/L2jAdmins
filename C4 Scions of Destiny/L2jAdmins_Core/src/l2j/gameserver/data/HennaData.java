@@ -111,8 +111,6 @@ public class HennaData extends XmlParser
 				
 				hennaInfo.get(ac).add(henna);
 			}
-			
-			System.out.println("load symbol id " + symbol_id);
 			count++;
 		}
 		
