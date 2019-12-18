@@ -20,8 +20,8 @@ public class HennaItemInfo extends AServerPacket
 	{
 		writeC(0xe3);
 		writeD(henna.getSymbolId()); // symbol Id
-		writeD(henna.getItemIdDye()); // item id of dye
-		writeD(henna.getAmountDyeRequire()); // total amount of dye require
+		writeD(henna.getDyeId()); // item id of dye
+		writeD(henna.getDyeAmount()); // total amount of dye require
 		writeD(henna.getPrice()); // total amount of aden require to draw symbol
 		writeD(1); // able to draw or not 0 is false and 1 is true
 		writeD(player.getInventory().getAdena());

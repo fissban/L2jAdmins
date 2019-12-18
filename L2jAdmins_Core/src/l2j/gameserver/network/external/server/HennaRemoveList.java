@@ -30,8 +30,8 @@ public class HennaRemoveList extends AServerPacket
 			if (henna != null)
 			{
 				writeD(henna.getSymbolId());
-				writeD(henna.getItemIdDye());
-				writeD(henna.getAmountDyeRequire() / 2);
+				writeD(henna.getDyeId());
+				writeD(henna.getDyeAmount() / 2);
 				writeD(henna.getCancelFee());
 				writeD(0x01);
 			}

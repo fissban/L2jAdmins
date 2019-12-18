@@ -7784,11 +7784,11 @@ public final class L2PcInstance extends L2Playable
 					
 					if (symbolId != 0)
 					{
-						var tpl = HennaData.getInstance().getTemplate(symbolId);
+						var tpl = HennaData.getById(symbolId);
 						
 						if (tpl != null)
 						{
-							henna[slot - 1] = new HennaHolder(tpl);
+							henna[slot - 1] = tpl;
 						}
 					}
 				}
@@ -7870,10 +7870,10 @@ public final class L2PcInstance extends L2Playable
 		// Send Server->Client UserInfo packet to this L2PcInstance
 		sendPacket(new UserInfo(this));
 		// Add the recovered dyes to the player's inventory and notify them.
-		getInventory().addItem("Henna", holder.getItemIdDye(), holder.getAmountDyeRequire() / 2, this, null);
+		getInventory().addItem("Henna", holder.getDyeId(), holder.getDyeAmount() / 2, this, null);
 		getInventory().reduceAdena("Henna", holder.getCancelFee(), this, false);
 		
-		sendPacket(new SystemMessage(SystemMessage.EARNED_S2_S1_S).addItemName(holder.getItemIdDye()).addNumber(holder.getAmountDyeRequire() / 2));
+		sendPacket(new SystemMessage(SystemMessage.EARNED_S2_S1_S).addItemName(holder.getDyeId()).addNumber(holder.getDyeAmount() / 2));
 		
 		return true;
 	}

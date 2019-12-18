@@ -2,8 +2,6 @@ package l2j.gameserver.network.external.client;
 
 import l2j.gameserver.data.HennaData;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
-import l2j.gameserver.model.holder.HennaHolder;
-import l2j.gameserver.model.items.ItemHenna;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.HennaItemInfo;
 
@@ -30,12 +28,6 @@ public class RequestHennaItemInfo extends AClientPacket
 			return;
 		}
 		
-		ItemHenna template = HennaData.getInstance().getTemplate(symbolId);
-		if (template == null)
-		{
-			return;
-		}
-		
-		activeChar.sendPacket(new HennaItemInfo(new HennaHolder(template), activeChar));
+		activeChar.sendPacket(new HennaItemInfo(HennaData.getById(symbolId), activeChar));
 	}
 }
