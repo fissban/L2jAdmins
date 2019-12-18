@@ -1,0 +1,1623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<henna>
+		<symbol_id val="1"/>
+		<dye_id val="4445"/>
+		<dye_amount val="10"/>
+		<price val="37000"/>
+		<cancel_fee val="7400"/>
+		<stat str="1" con="-3" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="2"/>
+		<dye_id val="4446"/>
+		<dye_amount val="10"/>
+		<price val="37000"/>
+		<cancel_fee val="7400"/>
+		<stat str="1" con="0" dex="-3" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="3"/>
+		<dye_id val="4447"/>
+		<dye_amount val="10"/>
+		<price val="37000"/>
+		<cancel_fee val="7400"/>
+		<stat str="-3" con="1" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="4"/>
+		<dye_id val="4448"/>
+		<dye_amount val="10"/>
+		<price val="37000"/>
+		<cancel_fee val="7400"/>
+		<stat str="0" con="1" dex="-3" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="5"/>
+		<dye_id val="4449"/>
+		<dye_amount val="10"/>
+		<price val="37000"/>
+		<cancel_fee val="7400"/>
+		<stat str="-3" con="0" dex="1" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="6"/>
+		<dye_id val="4450"/>
+		<dye_amount val="10"/>
+		<price val="37000"/>
+		<cancel_fee val="7400"/>
+		<stat str="0" con="-3" dex="1" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="7"/>
+		<dye_id val="4451"/>
+		<dye_amount val="10"/>
+		<price val="37000"/>
+		<cancel_fee val="7400"/>
+		<stat str="0" con="0" dex="0" wit="0" int="1" men="-3"/>
+		<availableClass val="11 39 26"/>
+	</henna>
+	<henna>
+		<symbol_id val="8"/>
+		<dye_id val="4452"/>
+		<dye_amount val="10"/>
+		<price val="37000"/>
+		<cancel_fee val="7400"/>
+		<stat str="0" con="0" dex="0" wit="-3" int="1" men="0"/>
+		<availableClass val="35 45 22 19 7 1 11 32 47 39 26 56 4 54"/>
+	</henna>
+	<henna>
+		<symbol_id val="9"/>
+		<dye_id val="4453"/>
+		<dye_amount val="10"/>
+		<price val="37000"/>
+		<cancel_fee val="7400"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-3" men="1"/>
+		<availableClass val="11 39 26"/>
+	</henna>
+	<henna>
+		<symbol_id val="10"/>
+		<dye_id val="4454"/>
+		<dye_amount val="10"/>
+		<price val="37000"/>
+		<cancel_fee val="7400"/>
+		<stat str="0" con="0" dex="0" wit="-3" int="0" men="1"/>
+		<availableClass val="50 11 29 39 26 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="11"/>
+		<dye_id val="4455"/>
+		<dye_amount val="10"/>
+		<price val="37000"/>
+		<cancel_fee val="7400"/>
+		<stat str="0" con="0" dex="0" wit="1" int="-3" men="0"/>
+		<availableClass val="35 45 22 19 7 1 11 32 47 39 26 56 4 54"/>
+	</henna>
+	<henna>
+		<symbol_id val="12"/>
+		<dye_id val="4456"/>
+		<dye_amount val="10"/>
+		<price val="37000"/>
+		<cancel_fee val="7400"/>
+		<stat str="0" con="0" dex="0" wit="1" int="0" men="-3"/>
+		<availableClass val="50 11 29 39 26 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="13"/>
+		<dye_id val="4457"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="1" con="-2" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="14"/>
+		<dye_id val="4458"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="1" con="0" dex="-2" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="15"/>
+		<dye_id val="4459"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="-2" con="1" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="16"/>
+		<dye_id val="4460"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="1" dex="-2" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="17"/>
+		<dye_id val="4461"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="-2" con="0" dex="1" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="18"/>
+		<dye_id val="4462"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="-2" dex="1" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="19"/>
+		<dye_id val="4463"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="0" dex="0" wit="0" int="1" men="-2"/>
+		<availableClass val="11 39 26"/>
+	</henna>
+	<henna>
+		<symbol_id val="20"/>
+		<dye_id val="4464"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="0" dex="0" wit="-2" int="1" men="0"/>
+		<availableClass val="35 45 22 19 7 1 11 32 47 39 26 56 4 54"/>
+	</henna>
+	<henna>
+		<symbol_id val="21"/>
+		<dye_id val="4465"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-2" men="1"/>
+		<availableClass val="11 39 26"/>
+	</henna>
+	<henna>
+		<symbol_id val="22"/>
+		<dye_id val="4466"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="0" dex="0" wit="-2" int="0" men="1"/>
+		<availableClass val="50 11 29 39 26 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="23"/>
+		<dye_id val="4467"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="0" dex="0" wit="1" int="-2" men="0"/>
+		<availableClass val="35 45 22 19 7 1 11 32 47 39 26 56 4 54"/>
+	</henna>
+	<henna>
+		<symbol_id val="24"/>
+		<dye_id val="4468"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="0" dex="0" wit="1" int="0" men="-2"/>
+		<availableClass val="50 11 29 39 26 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="25"/>
+		<dye_id val="4469"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="1" con="-1" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="26"/>
+		<dye_id val="4470"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="1" con="0" dex="-1" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="27"/>
+		<dye_id val="4471"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="-1" con="1" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="28"/>
+		<dye_id val="4472"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="1" dex="-1" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="29"/>
+		<dye_id val="4473"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="-1" con="0" dex="1" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="30"/>
+		<dye_id val="4474"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="-1" dex="1" wit="0" int="0" men="0"/>
+		<availableClass val="35 45 22 50 19 7 1 11 32 47 29 39 26 56 4 54 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="31"/>
+		<dye_id val="4475"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="0" dex="0" wit="0" int="1" men="-1"/>
+		<availableClass val="11 39 26"/>
+	</henna>
+	<henna>
+		<symbol_id val="32"/>
+		<dye_id val="4476"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="0" dex="0" wit="-1" int="1" men="0"/>
+		<availableClass val="35 45 22 19 7 1 11 32 47 39 26 56 4 54"/>
+	</henna>
+	<henna>
+		<symbol_id val="33"/>
+		<dye_id val="4477"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-1" men="1"/>
+		<availableClass val="11 39 26"/>
+	</henna>
+	<henna>
+		<symbol_id val="34"/>
+		<dye_id val="4478"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="0" dex="0" wit="-1" int="0" men="1"/>
+		<availableClass val="50 11 29 39 26 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="35"/>
+		<dye_id val="4479"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="0" dex="0" wit="1" int="-1" men="0"/>
+		<availableClass val="35 45 22 19 7 1 11 32 47 39 26 56 4 54"/>
+	</henna>
+	<henna>
+		<symbol_id val="36"/>
+		<dye_id val="4480"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="0" dex="0" wit="1" int="0" men="-1"/>
+		<availableClass val="50 11 29 39 26 15 42"/>
+	</henna>
+	<henna>
+		<symbol_id val="37"/>
+		<dye_id val="4481"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="1" con="-3" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="38"/>
+		<dye_id val="4482"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="1" con="0" dex="-3" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="39"/>
+		<dye_id val="4483"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="-3" con="1" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="40"/>
+		<dye_id val="4484"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="1" dex="-3" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="41"/>
+		<dye_id val="4485"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="-3" con="0" dex="1" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="42"/>
+		<dye_id val="4486"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="-3" dex="1" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="43"/>
+		<dye_id val="4487"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="0" dex="0" wit="0" int="1" men="-3"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="44"/>
+		<dye_id val="4488"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="0" dex="0" wit="-3" int="1" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="45"/>
+		<dye_id val="4489"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-3" men="1"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="46"/>
+		<dye_id val="4490"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="0" dex="0" wit="-3" int="0" men="1"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="47"/>
+		<dye_id val="4491"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="0" dex="0" wit="1" int="-3" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="48"/>
+		<dye_id val="4492"/>
+		<dye_amount val="10"/>
+		<price val="87000"/>
+		<cancel_fee val="17400"/>
+		<stat str="0" con="0" dex="0" wit="1" int="0" men="-3"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="49"/>
+		<dye_id val="4493"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="1" con="-2" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="50"/>
+		<dye_id val="4494"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="1" con="0" dex="-2" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="51"/>
+		<dye_id val="4495"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="-2" con="1" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="52"/>
+		<dye_id val="4496"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="1" dex="-2" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="53"/>
+		<dye_id val="4497"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="-2" con="0" dex="1" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="54"/>
+		<dye_id val="4498"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="-2" dex="1" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="55"/>
+		<dye_id val="4499"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="0" dex="0" wit="0" int="1" men="-2"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="56"/>
+		<dye_id val="4500"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="0" dex="0" wit="-2" int="1" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="57"/>
+		<dye_id val="4501"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-2" men="1"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="58"/>
+		<dye_id val="4502"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="0" dex="0" wit="-2" int="0" men="1"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="59"/>
+		<dye_id val="4503"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="0" dex="0" wit="1" int="-2" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="60"/>
+		<dye_id val="4504"/>
+		<dye_amount val="10"/>
+		<price val="149000"/>
+		<cancel_fee val="29800"/>
+		<stat str="0" con="0" dex="0" wit="1" int="0" men="-2"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="61"/>
+		<dye_id val="4505"/>
+		<dye_amount val="10"/>
+		<price val="176000"/>
+		<cancel_fee val="35200"/>
+		<stat str="2" con="-4" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="62"/>
+		<dye_id val="4506"/>
+		<dye_amount val="10"/>
+		<price val="176000"/>
+		<cancel_fee val="35200"/>
+		<stat str="2" con="0" dex="-4" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="63"/>
+		<dye_id val="4507"/>
+		<dye_amount val="10"/>
+		<price val="176000"/>
+		<cancel_fee val="35200"/>
+		<stat str="-4" con="2" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="64"/>
+		<dye_id val="4508"/>
+		<dye_amount val="10"/>
+		<price val="176000"/>
+		<cancel_fee val="35200"/>
+		<stat str="0" con="2" dex="-4" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="65"/>
+		<dye_id val="4509"/>
+		<dye_amount val="10"/>
+		<price val="176000"/>
+		<cancel_fee val="35200"/>
+		<stat str="-4" con="0" dex="2" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="66"/>
+		<dye_id val="4510"/>
+		<dye_amount val="10"/>
+		<price val="176000"/>
+		<cancel_fee val="35200"/>
+		<stat str="0" con="-4" dex="2" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="67"/>
+		<dye_id val="4511"/>
+		<dye_amount val="10"/>
+		<price val="176000"/>
+		<cancel_fee val="35200"/>
+		<stat str="0" con="0" dex="0" wit="0" int="2" men="-4"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="68"/>
+		<dye_id val="4512"/>
+		<dye_amount val="10"/>
+		<price val="176000"/>
+		<cancel_fee val="35200"/>
+		<stat str="0" con="0" dex="0" wit="-4" int="2" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="69"/>
+		<dye_id val="4513"/>
+		<dye_amount val="10"/>
+		<price val="176000"/>
+		<cancel_fee val="35200"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-4" men="2"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="70"/>
+		<dye_id val="4514"/>
+		<dye_amount val="10"/>
+		<price val="176000"/>
+		<cancel_fee val="35200"/>
+		<stat str="0" con="0" dex="0" wit="-4" int="0" men="2"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="71"/>
+		<dye_id val="4515"/>
+		<dye_amount val="10"/>
+		<price val="176000"/>
+		<cancel_fee val="35200"/>
+		<stat str="0" con="0" dex="0" wit="2" int="-4" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="72"/>
+		<dye_id val="4516"/>
+		<dye_amount val="10"/>
+		<price val="176000"/>
+		<cancel_fee val="35200"/>
+		<stat str="0" con="0" dex="0" wit="2" int="0" men="-4"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="73"/>
+		<dye_id val="4517"/>
+		<dye_amount val="10"/>
+		<price val="190000"/>
+		<cancel_fee val="38000"/>
+		<stat str="2" con="-3" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="74"/>
+		<dye_id val="4518"/>
+		<dye_amount val="10"/>
+		<price val="190000"/>
+		<cancel_fee val="38000"/>
+		<stat str="2" con="0" dex="-3" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="75"/>
+		<dye_id val="4519"/>
+		<dye_amount val="10"/>
+		<price val="190000"/>
+		<cancel_fee val="38000"/>
+		<stat str="-3" con="2" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="76"/>
+		<dye_id val="4520"/>
+		<dye_amount val="10"/>
+		<price val="190000"/>
+		<cancel_fee val="38000"/>
+		<stat str="0" con="2" dex="-3" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="77"/>
+		<dye_id val="4521"/>
+		<dye_amount val="10"/>
+		<price val="190000"/>
+		<cancel_fee val="38000"/>
+		<stat str="-3" con="0" dex="2" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="78"/>
+		<dye_id val="4522"/>
+		<dye_amount val="10"/>
+		<price val="190000"/>
+		<cancel_fee val="38000"/>
+		<stat str="0" con="-3" dex="2" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="79"/>
+		<dye_id val="4523"/>
+		<dye_amount val="10"/>
+		<price val="190000"/>
+		<cancel_fee val="38000"/>
+		<stat str="0" con="0" dex="0" wit="0" int="2" men="-3"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="80"/>
+		<dye_id val="4524"/>
+		<dye_amount val="10"/>
+		<price val="190000"/>
+		<cancel_fee val="38000"/>
+		<stat str="0" con="0" dex="0" wit="-3" int="2" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="81"/>
+		<dye_id val="4525"/>
+		<dye_amount val="10"/>
+		<price val="190000"/>
+		<cancel_fee val="38000"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-3" men="2"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="82"/>
+		<dye_id val="4526"/>
+		<dye_amount val="10"/>
+		<price val="190000"/>
+		<cancel_fee val="38000"/>
+		<stat str="0" con="0" dex="0" wit="-3" int="0" men="2"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="83"/>
+		<dye_id val="4527"/>
+		<dye_amount val="10"/>
+		<price val="190000"/>
+		<cancel_fee val="38000"/>
+		<stat str="0" con="0" dex="0" wit="2" int="-3" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="84"/>
+		<dye_id val="4528"/>
+		<dye_amount val="10"/>
+		<price val="190000"/>
+		<cancel_fee val="38000"/>
+		<stat str="0" con="0" dex="0" wit="2" int="0" men="-3"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="85"/>
+		<dye_id val="4529"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="3" con="-5" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="86"/>
+		<dye_id val="4530"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="3" con="0" dex="-5" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="87"/>
+		<dye_id val="4531"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="-5" con="3" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="88"/>
+		<dye_id val="4532"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="3" dex="-5" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="89"/>
+		<dye_id val="4533"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="-5" con="0" dex="3" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="90"/>
+		<dye_id val="4534"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="-5" dex="3" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="91"/>
+		<dye_id val="4535"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="0" int="3" men="-5"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="92"/>
+		<dye_id val="4536"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="-5" int="3" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="93"/>
+		<dye_id val="4537"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-5" men="3"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="94"/>
+		<dye_id val="4538"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="-5" int="0" men="3"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="95"/>
+		<dye_id val="4539"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="3" int="-5" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="96"/>
+		<dye_id val="4540"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="3" int="0" men="-5"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="97"/>
+		<dye_id val="4541"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="3" con="-4" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="98"/>
+		<dye_id val="4542"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="3" con="0" dex="-4" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="99"/>
+		<dye_id val="4543"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="-4" con="3" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="100"/>
+		<dye_id val="4544"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="3" dex="-4" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="101"/>
+		<dye_id val="4545"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="-4" con="0" dex="3" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="102"/>
+		<dye_id val="4546"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="-4" dex="3" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="103"/>
+		<dye_id val="4547"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="0" int="3" men="-4"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="104"/>
+		<dye_id val="4548"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="-4" int="3" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="105"/>
+		<dye_id val="4549"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-4" men="3"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="106"/>
+		<dye_id val="4550"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="-4" int="0" men="3"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="107"/>
+		<dye_id val="4551"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="3" int="-4" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="108"/>
+		<dye_id val="4552"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="3" int="0" men="-4"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="109"/>
+		<dye_id val="4553"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="1" con="-1" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="110"/>
+		<dye_id val="4554"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="1" con="0" dex="-1" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="111"/>
+		<dye_id val="4555"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="-1" con="1" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="112"/>
+		<dye_id val="4556"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="1" dex="-1" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="113"/>
+		<dye_id val="4557"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="-1" con="0" dex="1" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="114"/>
+		<dye_id val="4558"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="-1" dex="1" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="115"/>
+		<dye_id val="4559"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="0" int="1" men="-1"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="116"/>
+		<dye_id val="4560"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="-1" int="1" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="117"/>
+		<dye_id val="4561"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-1" men="1"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="118"/>
+		<dye_id val="4562"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="-1" int="0" men="1"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="119"/>
+		<dye_id val="4563"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="1" int="-1" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="120"/>
+		<dye_id val="4564"/>
+		<dye_amount val="10"/>
+		<price val="206000"/>
+		<cancel_fee val="41200"/>
+		<stat str="0" con="0" dex="0" wit="1" int="0" men="-1"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="121"/>
+		<dye_id val="4565"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="4" con="-6" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="122"/>
+		<dye_id val="4566"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="4" con="0" dex="-6" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="123"/>
+		<dye_id val="4567"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="-6" con="4" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="124"/>
+		<dye_id val="4568"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="4" dex="-6" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="125"/>
+		<dye_id val="4569"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="-6" con="0" dex="4" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="126"/>
+		<dye_id val="4570"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="-6" dex="4" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="127"/>
+		<dye_id val="4571"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="0" int="4" men="-6"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="128"/>
+		<dye_id val="4572"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="-6" int="4" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="129"/>
+		<dye_id val="4573"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-6" men="4"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="130"/>
+		<dye_id val="4574"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="-6" int="0" men="4"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="131"/>
+		<dye_id val="4575"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="4" int="-6" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="132"/>
+		<dye_id val="4576"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="4" int="0" men="-6"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="133"/>
+		<dye_id val="4577"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="4" con="-5" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="134"/>
+		<dye_id val="4578"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="4" con="0" dex="-5" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="135"/>
+		<dye_id val="4579"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="-5" con="4" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="136"/>
+		<dye_id val="4580"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="4" dex="-5" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="137"/>
+		<dye_id val="4581"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="-5" con="0" dex="4" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="138"/>
+		<dye_id val="4582"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="-5" dex="4" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="139"/>
+		<dye_id val="4583"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="0" int="4" men="-5"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="140"/>
+		<dye_id val="4584"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="-5" int="4" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="141"/>
+		<dye_id val="4585"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-5" men="4"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="142"/>
+		<dye_id val="4586"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="-5" int="0" men="4"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="143"/>
+		<dye_id val="4587"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="4" int="-5" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="144"/>
+		<dye_id val="4588"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="4" int="0" men="-5"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="145"/>
+		<dye_id val="4589"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="2" con="-2" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="146"/>
+		<dye_id val="4590"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="2" con="0" dex="-2" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="147"/>
+		<dye_id val="4591"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="-2" con="2" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="148"/>
+		<dye_id val="4592"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="2" dex="-2" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="149"/>
+		<dye_id val="4593"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="-2" con="0" dex="2" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="150"/>
+		<dye_id val="4594"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="-2" dex="2" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="151"/>
+		<dye_id val="4595"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="0" int="2" men="-2"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="152"/>
+		<dye_id val="4596"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="-2" int="2" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="153"/>
+		<dye_id val="4597"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-2" men="2"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="154"/>
+		<dye_id val="4598"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="-2" int="0" men="2"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="155"/>
+		<dye_id val="4599"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="2" int="-2" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="156"/>
+		<dye_id val="4600"/>
+		<dye_amount val="10"/>
+		<price val="258000"/>
+		<cancel_fee val="51600"/>
+		<stat str="0" con="0" dex="0" wit="2" int="0" men="-2"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="157"/>
+		<dye_id val="4601"/>
+		<dye_amount val="10"/>
+		<price val="387000"/>
+		<cancel_fee val="77400"/>
+		<stat str="3" con="-3" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="158"/>
+		<dye_id val="4602"/>
+		<dye_amount val="10"/>
+		<price val="387000"/>
+		<cancel_fee val="77400"/>
+		<stat str="3" con="0" dex="-3" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="159"/>
+		<dye_id val="4603"/>
+		<dye_amount val="10"/>
+		<price val="387000"/>
+		<cancel_fee val="77400"/>
+		<stat str="-3" con="3" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="160"/>
+		<dye_id val="4604"/>
+		<dye_amount val="10"/>
+		<price val="387000"/>
+		<cancel_fee val="77400"/>
+		<stat str="0" con="3" dex="-3" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="161"/>
+		<dye_id val="4605"/>
+		<dye_amount val="10"/>
+		<price val="387000"/>
+		<cancel_fee val="77400"/>
+		<stat str="-3" con="0" dex="3" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="162"/>
+		<dye_id val="4606"/>
+		<dye_amount val="10"/>
+		<price val="387000"/>
+		<cancel_fee val="77400"/>
+		<stat str="0" con="-3" dex="3" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="163"/>
+		<dye_id val="4607"/>
+		<dye_amount val="10"/>
+		<price val="387000"/>
+		<cancel_fee val="77400"/>
+		<stat str="0" con="0" dex="0" wit="0" int="3" men="-3"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="164"/>
+		<dye_id val="4608"/>
+		<dye_amount val="10"/>
+		<price val="387000"/>
+		<cancel_fee val="77400"/>
+		<stat str="0" con="0" dex="0" wit="-3" int="3" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="165"/>
+		<dye_id val="4609"/>
+		<dye_amount val="10"/>
+		<price val="387000"/>
+		<cancel_fee val="77400"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-3" men="3"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="166"/>
+		<dye_id val="4610"/>
+		<dye_amount val="10"/>
+		<price val="387000"/>
+		<cancel_fee val="77400"/>
+		<stat str="0" con="0" dex="0" wit="-3" int="0" men="3"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="167"/>
+		<dye_id val="4611"/>
+		<dye_amount val="10"/>
+		<price val="387000"/>
+		<cancel_fee val="77400"/>
+		<stat str="0" con="0" dex="0" wit="3" int="-3" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="168"/>
+		<dye_id val="4612"/>
+		<dye_amount val="10"/>
+		<price val="387000"/>
+		<cancel_fee val="77400"/>
+		<stat str="0" con="0" dex="0" wit="3" int="0" men="-3"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="169"/>
+		<dye_id val="4613"/>
+		<dye_amount val="10"/>
+		<price val="628000"/>
+		<cancel_fee val="125600"/>
+		<stat str="4" con="-4" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="170"/>
+		<dye_id val="4614"/>
+		<dye_amount val="10"/>
+		<price val="628000"/>
+		<cancel_fee val="125600"/>
+		<stat str="4" con="0" dex="-4" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="171"/>
+		<dye_id val="4615"/>
+		<dye_amount val="10"/>
+		<price val="628000"/>
+		<cancel_fee val="125600"/>
+		<stat str="-4" con="4" dex="0" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="172"/>
+		<dye_id val="4616"/>
+		<dye_amount val="10"/>
+		<price val="628000"/>
+		<cancel_fee val="125600"/>
+		<stat str="0" con="4" dex="-4" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="173"/>
+		<dye_id val="4617"/>
+		<dye_amount val="10"/>
+		<price val="628000"/>
+		<cancel_fee val="125600"/>
+		<stat str="-4" con="0" dex="4" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="174"/>
+		<dye_id val="4618"/>
+		<dye_amount val="10"/>
+		<price val="628000"/>
+		<cancel_fee val="125600"/>
+		<stat str="0" con="-4" dex="4" wit="0" int="0" men="0"/>
+		<availableClass val="2 13 116 105 9 100 16 112 117 5 51 89 106 34 21 97 14 6 101 90 109 110 108 57 102 17 107 104 28 30 41 20 27 98 52 36 92 118 40 12 99 37 115 88 96 43 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="175"/>
+		<dye_id val="4619"/>
+		<dye_amount val="10"/>
+		<price val="628000"/>
+		<cancel_fee val="125600"/>
+		<stat str="0" con="0" dex="0" wit="0" int="4" men="-4"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="176"/>
+		<dye_id val="4620"/>
+		<dye_amount val="10"/>
+		<price val="628000"/>
+		<cancel_fee val="125600"/>
+		<stat str="0" con="0" dex="0" wit="-4" int="4" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="177"/>
+		<dye_id val="4621"/>
+		<dye_amount val="10"/>
+		<price val="628000"/>
+		<cancel_fee val="125600"/>
+		<stat str="0" con="0" dex="0" wit="0" int="-4" men="4"/>
+		<availableClass val="13 14 110 104 28 41 27 40 12 96 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="178"/>
+		<dye_id val="4622"/>
+		<dye_amount val="10"/>
+		<price val="628000"/>
+		<cancel_fee val="125600"/>
+		<stat str="0" con="0" dex="0" wit="-4" int="0" men="4"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+	<henna>
+		<symbol_id val="179"/>
+		<dye_id val="4623"/>
+		<dye_amount val="10"/>
+		<price val="628000"/>
+		<cancel_fee val="125600"/>
+		<stat str="0" con="0" dex="0" wit="4" int="-4" men="0"/>
+		<availableClass val="2 13 9 100 117 5 89 106 34 21 14 6 101 90 109 110 108 57 102 107 104 28 41 20 27 36 92 118 40 12 99 37 88 96 114 103 91 8 111 95 93 55 113 48 94 24 46 33 3 23"/>
+	</henna>
+	<henna>
+		<symbol_id val="180"/>
+		<dye_id val="4624"/>
+		<dye_amount val="10"/>
+		<price val="628000"/>
+		<cancel_fee val="125600"/>
+		<stat str="0" con="0" dex="0" wit="4" int="0" men="-4"/>
+		<availableClass val="13 116 105 16 112 51 97 14 110 17 104 28 30 41 27 98 52 40 12 115 96 43 103 111 95 94"/>
+	</henna>
+</list>

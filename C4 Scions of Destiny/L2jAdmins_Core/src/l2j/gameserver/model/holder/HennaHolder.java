@@ -1,16 +1,13 @@
 package l2j.gameserver.model.holder;
 
-import l2j.gameserver.model.items.ItemHenna;
-
 /**
  * This class represents a Non-Player-Character in the world. it can be a monster or a friendly character. it also uses a template to fetch some static values. the templates are hardcoded in the client, so we can rely on them.
  * @version $Revision$ $Date$
  */
 public class HennaHolder
 {
-	private final ItemHenna template;
 	private int symbolId;
-	private int itemIdDye;
+	private int dyeId;
 	private int price;
 	private int cancel_fee;
 	private int statINT;
@@ -19,22 +16,11 @@ public class HennaHolder
 	private int statMEN;
 	private int statDEX;
 	private int statWIT;
-	private int amountDyeRequire;
+	private int dyeAmount;
 	
-	public HennaHolder(ItemHenna template)
+	public HennaHolder()
 	{
-		this.template = template;
-		symbolId = template.getSymbolId();
-		itemIdDye = template.getDyeId();
-		amountDyeRequire = template.getAmountDyeRequire();
-		price = template.getPrice();
-		cancel_fee = template.getCancelFee();
-		statINT = template.getStatINT();
-		statSTR = template.getStatSTR();
-		statCON = template.getStatCON();
-		statMEN = template.getStatMEN();
-		statDEX = template.getStatDEX();
-		statWIT = template.getStatWIT();
+		//
 	}
 	
 	public String getName()
@@ -93,39 +79,41 @@ public class HennaHolder
 		return res;
 	}
 	
-	public ItemHenna getTemplate()
-	{
-		return template;
-	}
-	
 	public int getSymbolId()
 	{
 		return symbolId;
 	}
 	
-	public void setSymbolId(int SymbolId)
+	public void setSymbolId(int symbolId)
 	{
-		symbolId = SymbolId;
+		this.symbolId = symbolId;
 	}
 	
-	public int getItemIdDye()
+	public int getDyeId()
 	{
-		return itemIdDye;
+		return dyeId;
 	}
 	
-	public void setItemIdDye(int ItemIdDye)
+	public void setDyeId(int dyeId)
 	{
-		itemIdDye = ItemIdDye;
+		this.dyeId = dyeId;
 	}
 	
-	public int getAmountDyeRequire()
+	/**
+	 * Cantidad de dye requeridos para crear el symbol
+	 * @return
+	 */
+	public int getDyeAmount()
 	{
-		return amountDyeRequire;
+		return dyeAmount;
 	}
 	
-	public void setAmountDyeRequire(int AmountDyeRequire)
+	/**
+	 * @param amountDyeRequire
+	 */
+	public void setDyeAmount(int amountDyeRequire)
 	{
-		amountDyeRequire = AmountDyeRequire;
+		this.dyeAmount = amountDyeRequire;
 	}
 	
 	public int getPrice()
@@ -133,9 +121,9 @@ public class HennaHolder
 		return price;
 	}
 	
-	public void setPrice(int Price)
+	public void setPrice(int price)
 	{
-		price = Price;
+		this.price = price;
 	}
 	
 	public int getStatINT()

@@ -32,7 +32,6 @@ import l2j.gameserver.data.FishTable;
 import l2j.gameserver.data.GmListData;
 import l2j.gameserver.data.GrandBossSpawnData;
 import l2j.gameserver.data.HennaData;
-import l2j.gameserver.data.HennaTreeData;
 import l2j.gameserver.data.HeroData;
 import l2j.gameserver.data.HitConditionBonusData;
 import l2j.gameserver.data.HtmData;
@@ -234,8 +233,7 @@ public class GameServer
 		CharTemplateData.getInstance().load();
 		GmListData.getInstance();
 		CharNameData.getInstance();
-		HennaData.getInstance();
-		HennaTreeData.getInstance();
+		HennaData.getInstance().load();
 		InitialEquipamentData.getInstance().load();
 		if ((Config.OFFLINE_TRADE_ENABLE || Config.OFFLINE_CRAFT_ENABLE) && Config.RESTORE_OFFLINERS)
 		{

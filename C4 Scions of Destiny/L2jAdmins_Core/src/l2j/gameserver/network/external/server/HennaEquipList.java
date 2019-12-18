@@ -2,7 +2,7 @@ package l2j.gameserver.network.external.server;
 
 import java.util.List;
 
-import l2j.gameserver.data.HennaTreeData;
+import l2j.gameserver.data.HennaData;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.holder.HennaHolder;
 import l2j.gameserver.network.AServerPacket;
@@ -15,7 +15,7 @@ public class HennaEquipList extends AServerPacket
 	public HennaEquipList(L2PcInstance player)
 	{
 		this.player = player;
-		hennaEquipList = HennaTreeData.getInstance().getAvailableHenna(player.getClassId());
+		hennaEquipList = HennaData.getByClass(player.getClassId().getId());
 	}
 	
 	@Override
@@ -27,14 +27,14 @@ public class HennaEquipList extends AServerPacket
 		
 		writeD(hennaEquipList.size());
 		
-		for (HennaHolder element : hennaEquipList)
+		for (HennaHolder henna : hennaEquipList)
 		{
-			if ((player.getInventory().getItemById(element.getItemIdDye())) != null)
+			if ((player.getInventory().getItemById(henna.getDyeId())) != null)
 			{
-				writeD(element.getSymbolId()); // symbolid
-				writeD(element.getItemIdDye()); // itemid of dye
-				writeD(element.getAmountDyeRequire()); // amount of dye require
-				writeD(element.getPrice()); // amount of adena require
+				writeD(henna.getSymbolId()); // symbolid
+				writeD(henna.getDyeId()); // itemid of dye
+				writeD(henna.getDyeAmount()); // amount of dye require
+				writeD(henna.getPrice()); // amount of adena require
 				writeD(0x01); // meet the requirement or not
 			}
 			else

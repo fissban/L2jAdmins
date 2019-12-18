@@ -23,8 +23,8 @@ public class HennaItemRemoveInfo extends AServerPacket
 	{
 		writeC(0xe6);
 		writeD(henna.getSymbolId()); // symbol Id
-		writeD(henna.getItemIdDye()); // item id of dye
-		writeD(henna.getAmountDyeRequire() / 2); // amount of given dyes
+		writeD(henna.getDyeId()); // item id of dye
+		writeD(henna.getDyeAmount() / 2); // amount of given dyes
 		writeD(henna.getCancelFee()); // amount of required adenas
 		writeD(1); // able to remove or not 0 is false and 1 is true
 		writeD(player.getInventory().getAdena());

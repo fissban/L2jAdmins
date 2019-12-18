@@ -1,85 +1,162 @@
 package l2j.gameserver.data;
 
-import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
-import l2j.DatabaseManager;
-import l2j.gameserver.model.StatsSet;
-import l2j.gameserver.model.items.ItemHenna;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+
+import l2j.gameserver.model.holder.HennaHolder;
 import l2j.util.UtilPrint;
+import l2j.util.XmlParser;
 
 /**
- * This class ...
- * @version $Revision$ $Date$
+ * @author fissban
  */
-public class HennaData
+public class HennaData extends XmlParser
 {
-	private static final Logger LOG = Logger.getLogger(HennaData.class.getName());
+	private final static Map<Integer, List<HennaHolder>> hennaInfo = new HashMap<>();
 	
-	private static HennaData INSTANCE;
-	
-	private final Map<Integer, ItemHenna> henna;
-	
-	public static HennaData getInstance()
+	@Override
+	public void load()
 	{
-		if (INSTANCE == null)
-		{
-			INSTANCE = new HennaData();
-		}
-		return INSTANCE;
+		loadFile("data/xml/hennas.xml");
 	}
 	
-	private HennaData()
+	@Override
+	protected void parseFile()
 	{
-		henna = new HashMap<>();
-		RestoreHennaData();
+		int count = 0;
+		for (Node n : getNodes("henna"))
+		{
+			// se lee todas la informacion de los diferentes hennas
+			HennaHolder henna = new HennaHolder();
+			
+			int symbol_id = 0;
+			int dye_id = 0;
+			int dye_amount = 0;
+			int price = 0;
+			int cancel_fee = 0;
+			int stat_str = 0;
+			int stat_dex = 0;
+			int stat_con = 0;
+			int stat_wit = 0;
+			int stat_int = 0;
+			int stat_men = 0;
+			List<Integer> availableClassList = new ArrayList<>();
+			
+			for (Node c = n.getFirstChild(); c != null; c = c.getNextSibling())
+			{
+				NamedNodeMap attrs = c.getAttributes();
+				
+				switch (c.getNodeName())
+				{
+					case "symbol_id":
+						symbol_id = parseInt(attrs, "val");
+						break;
+					case "dye_id":
+						dye_id = parseInt(attrs, "val");
+						break;
+					case "dye_amount":
+						dye_amount = parseInt(attrs, "val");
+						break;
+					case "price":
+						price = parseInt(attrs, "val");
+						break;
+					case "cancel_fee":
+						cancel_fee = parseInt(attrs, "val");
+						break;
+					case "stat":
+						stat_str = parseInt(attrs, "str");
+						stat_dex = parseInt(attrs, "dex");
+						stat_con = parseInt(attrs, "con");
+						stat_wit = parseInt(attrs, "wit");
+						stat_int = parseInt(attrs, "int");
+						stat_men = parseInt(attrs, "men");
+						break;
+					case "availableClass":
+						String availableClass = parseString(attrs, "val");
+						
+						for (String p : availableClass.split(" "))
+						{
+							availableClassList.add(Integer.valueOf(p));
+						}
+						break;
+				}
+			}
+			
+			henna.setSymbolId(symbol_id);
+			henna.setDyeId(dye_id);
+			henna.setDyeAmount(dye_amount);
+			henna.setPrice(price);
+			henna.setCancelFee(cancel_fee);
+			
+			henna.setStatSTR(stat_str);
+			henna.setStatDEX(stat_dex);
+			henna.setStatCON(stat_con);
+			
+			henna.setStatINT(stat_int);
+			henna.setStatWIT(stat_wit);
+			henna.setStatMEN(stat_men);
+			
+			// Segun la clase se van almacenando en la memoria
+			for (int ac : availableClassList)
+			{
+				if (!hennaInfo.containsKey(Integer.valueOf(ac)))
+				{
+					hennaInfo.put(ac, new ArrayList<>());
+				}
+				
+				hennaInfo.get(ac).add(henna);
+			}
+			
+			System.out.println("load symbol id " + symbol_id);
+			count++;
+		}
+		
+		UtilPrint.result("HennaData", "Loaded all henna info", count);
 	}
 	
 	/**
-	 *
+	 * Get all symbols for one class id.
+	 * @param  id
+	 * @return
 	 */
-	private void RestoreHennaData()
+	public static List<HennaHolder> getByClass(int id)
 	{
-		try (var con = DatabaseManager.getConnection();
-			var ps = con.prepareStatement("SELECT symbol_id, symbol_name, dye_id, dye_amount, price, cancel_fee, stat_INT, stat_STR, stat_CON, stat_MEN, stat_DEX, stat_WIT FROM henna");
-			ResultSet rs = ps.executeQuery())
-		{
-			while (rs.next())
-			{
-				StatsSet hennaDat = new StatsSet();
-				int id = rs.getInt("symbol_id");
-				
-				hennaDat.set("symbol_id", id);
-				// hennaDat.set("symbol_name", rset.getString("symbol_name"));
-				hennaDat.set("dye", rs.getInt("dye_id"));
-				hennaDat.set("price", rs.getInt("price"));
-				hennaDat.set("cancel_fee", rs.getInt("cancel_fee"));
-				// amount of dye required
-				hennaDat.set("amount", rs.getInt("dye_amount"));
-				hennaDat.set("stat_INT", rs.getInt("stat_INT"));
-				hennaDat.set("stat_STR", rs.getInt("stat_STR"));
-				hennaDat.set("stat_CON", rs.getInt("stat_CON"));
-				hennaDat.set("stat_MEN", rs.getInt("stat_MEN"));
-				hennaDat.set("stat_DEX", rs.getInt("stat_DEX"));
-				hennaDat.set("stat_WIT", rs.getInt("stat_WIT"));
-				
-				henna.put(id, new ItemHenna(hennaDat));
-			}
-		}
-		catch (Exception e)
-		{
-			LOG.severe("error while creating henna table " + e);
-			e.printStackTrace();
-		}
-		
-		UtilPrint.result("HennaData", "Loaded henna template", henna.size());
-		
+		return hennaInfo.get(id);
 	}
 	
-	public ItemHenna getTemplate(int id)
+	/**
+	 * Get symbol by id
+	 * @param  id
+	 * @return
+	 */
+	public static HennaHolder getById(int id)
 	{
-		return henna.get(id);
+		for (List<HennaHolder> listHenna : hennaInfo.values())
+		{
+			for (HennaHolder hh : listHenna)
+			{
+				if (hh.getSymbolId() == id)
+				{
+					return hh;
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	public static HennaData getInstance()
+	{
+		return SingletonHolder.INSTANCE;
+	}
+	
+	private static class SingletonHolder
+	{
+		protected static final HennaData INSTANCE = new HennaData();
 	}
 }
