@@ -30,7 +30,8 @@ public class FuncMAtkSpeed extends Func
 	{
 		if (env.getPlayer() instanceof L2RaidBossInstance || env.getPlayer() instanceof L2GrandBossInstance)
 		{
-			env.mulValue(BaseStatsType.WIT.calcBonus(20));
+			env.setValue(env.getPlayer().getTemplate().getBaseMAtkSpd());
+			// env.mulValue(BaseStatsType.WIT.calcBonus(20));
 		}
 		else if (env.getPlayer() instanceof L2PetInstance)
 		{
