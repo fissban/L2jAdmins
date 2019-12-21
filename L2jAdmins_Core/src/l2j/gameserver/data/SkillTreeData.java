@@ -26,6 +26,11 @@ public class SkillTreeData
 {
 	private static final Logger LOG = Logger.getLogger(SkillTreeData.class.getName());
 	
+	// Query
+	private static final String LOAD_CHARACTER_SKILL_TREE = "SELECT class_id, skill_id, level, name, sp, min_level FROM skill_trees WHERE class_id=? ORDER BY skill_id, level";
+	private static final String LOAD_FISHING_SKILL_TREE = "SELECT skill_id, level, name, sp, min_level, costid, cost, isfordwarf FROM fishing_skill_trees ORDER BY skill_id, level";
+	private static final String LOAD_ENCHANT_SKILL_TREE = "SELECT skill_id, level, name, base_lvl, sp, min_skill_lvl, exp, success_rate76, success_rate77, success_rate78 FROM enchant_skill_trees ORDER BY skill_id, level";
+	
 	private static final Map<ClassId, Map<Integer, SkillLearnHolder>> skillTrees = new HashMap<>();
 	// all common skills (teached by Fisherman)
 	private static final List<SkillLearnHolder> fishingSkillTrees = new ArrayList<>();
@@ -36,71 +41,52 @@ public class SkillTreeData
 	
 	public void load()
 	{
-		int classId = 0;
-		int count = 0;
-		
 		try (Connection con = DatabaseManager.getConnection())
 		{
-			try (PreparedStatement ps = con.prepareStatement("SELECT * FROM class_list ORDER BY id");
-				ResultSet rs = ps.executeQuery())
+			// Load character normal skill tree --------------------------------------------------------
+			for (ClassId cid : ClassId.values())
 			{
-				Map<Integer, SkillLearnHolder> map;
-				int parentClassId;
+				Map<Integer, SkillLearnHolder> skillsToLearn = new HashMap<>();
 				
-				while (rs.next())
+				try (PreparedStatement ps = con.prepareStatement(LOAD_CHARACTER_SKILL_TREE))
 				{
-					map = new HashMap<>();
-					parentClassId = rs.getInt("parent_id");
-					classId = rs.getInt("id");
-					try (PreparedStatement ps2 = con.prepareStatement("SELECT class_id, skill_id, level, name, sp, min_level FROM skill_trees where class_id=? ORDER BY skill_id, level"))
+					ps.setInt(1, cid.getId());
+					try (ResultSet result = ps.executeQuery())
 					{
-						ps2.setInt(1, classId);
-						try (ResultSet result = ps2.executeQuery())
+						while (result.next())
 						{
-							if (parentClassId != -1)
-							{
-								map.putAll(skillTrees.get(ClassId.getById(parentClassId)));
-							}
+							int id = result.getInt("skill_id");
+							int lvl = result.getInt("level");
+							String name = result.getString("name");
+							int minLvl = result.getInt("min_level");
+							int cost = result.getInt("sp");
 							
-							int prevSkillId = -1;
+							int hashCode = SkillData.getSkillHashCode(id, lvl);
+							SkillLearnHolder learnSkill = new SkillLearnHolder(id, lvl, minLvl, name, cost, 0, 0);
 							
-							while (result.next())
-							{
-								var id = result.getInt("skill_id");
-								var lvl = result.getInt("level");
-								var name = result.getString("name");
-								var minLvl = result.getInt("min_level");
-								var cost = result.getInt("sp");
-								
-								if (prevSkillId != id)
-								{
-									prevSkillId = id;
-								}
-								
-								map.put(SkillData.getSkillHashCode(id, lvl), new SkillLearnHolder(id, lvl, minLvl, name, cost, 0, 0));
-							}
-							
-							skillTrees.put(ClassId.getById(classId), map);
-							
-							count += map.size();
-							// Util.printResult("SkillTreeTable", "load skill tree for " + classId, map.size());
-							// LOG.fine("SkillTreeTable: skill tree for class " + classId + " has " + map.size() + " skills");
+							skillsToLearn.put(hashCode, learnSkill);
 						}
+						
+						skillTrees.put(cid, skillsToLearn);
 					}
 				}
 			}
-			// UtilPrint.result("SkillTreeData", "Loaded skills ", count);
-			// LOG.info("SkillTreeTable: Loaded " + count + " skills.");
 			
-			// Skill tree for fishing skill (from Fisherman)
+			for (ClassId cid : ClassId.values())
+			{
+				if (cid.getParent() != null)
+				{
+					skillTrees.get(cid).putAll(skillTrees.get(cid.getParent()));
+				}
+			}
+			
+			// Load skill tree for fishing -------------------------------------------------------------
+			int count1 = 0;
 			int count2 = 0;
-			int count3 = 0;
 			
-			try (PreparedStatement ps = con.prepareStatement("SELECT skill_id, level, name, sp, min_level, costid, cost, isfordwarf FROM fishing_skill_trees ORDER BY skill_id, level");
+			try (PreparedStatement ps = con.prepareStatement(LOAD_FISHING_SKILL_TREE);
 				ResultSet skilltree2 = ps.executeQuery())
 			{
-				int prevSkillId = -1;
-				
 				while (skilltree2.next())
 				{
 					int id = skilltree2.getInt("skill_id");
@@ -111,11 +97,6 @@ public class SkillTreeData
 					int costId = skilltree2.getInt("costid");
 					int costCount = skilltree2.getInt("cost");
 					int isDwarven = skilltree2.getInt("isfordwarf");
-					
-					if (prevSkillId != id)
-					{
-						prevSkillId = id;
-					}
 					
 					SkillLearnHolder skill = new SkillLearnHolder(id, lvl, minLvl, name, cost, costId, costCount);
 					
@@ -129,20 +110,19 @@ public class SkillTreeData
 					}
 				}
 				
-				count2 = fishingSkillTrees.size();
-				count3 = expandDwarfCraftSkillTrees.size();
+				count1 = fishingSkillTrees.size();
+				count2 = expandDwarfCraftSkillTrees.size();
 			}
 			catch (Exception e)
 			{
-				LOG.severe("SkillTreeTable: Error while creating fishing skill table: " + e);
+				LOG.severe("SkillTreeData: Error while creating fishing skill table: " + e);
 			}
 			
-			int count4 = 0;
-			try (PreparedStatement ps = con.prepareStatement("SELECT skill_id, level, name, base_lvl, sp, min_skill_lvl, exp, success_rate76, success_rate77, success_rate78 FROM enchant_skill_trees ORDER BY skill_id, level");
+			// Load enchant skill tree -----------------------------------------------------------------
+			int count3 = 0;
+			try (PreparedStatement ps = con.prepareStatement(LOAD_ENCHANT_SKILL_TREE);
 				ResultSet rs = ps.executeQuery())
 			{
-				int prevSkillId = -1;
-				
 				while (rs.next())
 				{
 					int id = rs.getInt("skill_id");
@@ -156,32 +136,22 @@ public class SkillTreeData
 					byte rate77 = rs.getByte("success_rate77");
 					byte rate78 = rs.getByte("success_rate78");
 					
-					if (prevSkillId != id)
-					{
-						prevSkillId = id;
-					}
-					
 					EnchantSkillLearnHolder skill = new EnchantSkillLearnHolder(id, lvl, minSkillLvl, baseLvl, name, sp, exp, rate76, rate77, rate78);
 					
 					enchantSkillTrees.put(SkillData.getSkillHashCode(id, lvl), skill);
 				}
 				
-				count4 = enchantSkillTrees.size();
-			}
-			catch (Exception e)
-			{
-				LOG.severe("SkillTreeTable: Error while creating enchant skill table: " + e);
+				count3 = enchantSkillTrees.size();
 			}
 			
-			UtilPrint.result("SkillTreeData", "Loaded general skills", count2);
-			UtilPrint.result("SkillTreeData", "Loaded dwarven skills", count3);
-			UtilPrint.result("SkillTreeData", "Loaded enchant skills", count4);
+			UtilPrint.result("SkillTreeData", "Loaded general skills", count1);
+			UtilPrint.result("SkillTreeData", "Loaded fishing & dwarven skills", count2);
+			UtilPrint.result("SkillTreeData", "Loaded enchant skills", count3);
 		}
 		catch (Exception e)
 		{
-			LOG.severe("SkillTreeTable: Error while creating skill tree (Class ID " + classId + "):" + e);
+			e.printStackTrace();
 		}
-		
 	}
 	
 	/**
