@@ -2221,15 +2221,15 @@ public final class Config
 		AUTO_LOOT_RAIDS = config.getBoolean("AutoLootRaids", false);
 		ALT_ENABLE_TUTORIAL = config.getBoolean("AltEnableTutorial", true);
 		
-		// if different from 100 (ie 100%) heal rate is modified acordingly
-		HP_REGEN_MULTIPLIER = config.getInteger("HpRegenMultiplier", 100) / 100;
-		MP_REGEN_MULTIPLIER = config.getInteger("MpRegenMultiplier", 100) / 100;
-		CP_REGEN_MULTIPLIER = config.getInteger("CpRegenMultiplier", 100) / 100;
+		// if different from 100 (ie 100%) heal rate is modified accordingly
+		HP_REGEN_MULTIPLIER = config.getDouble("HpRegenMultiplier", 100) / 100;
+		MP_REGEN_MULTIPLIER = config.getDouble("MpRegenMultiplier", 100) / 100;
+		CP_REGEN_MULTIPLIER = config.getDouble("CpRegenMultiplier", 100) / 100;
 		
 		UNSTUCK_INTERVAL = config.getInteger("UnstuckInterval", 300);
 		PLAYER_SPAWN_PROTECTION = config.getInteger("PlayerSpawnProtection", 0);
 		PLAYER_FAKEDEATH_UP_PROTECTION = config.getInteger("PlayerFakeDeathUpProtection", 0);
-		RESPAWN_RESTORE_HP = config.getInteger("RespawnRestoreHP", 70) / 100;
+		RESPAWN_RESTORE_HP = config.getDouble("RespawnRestoreHP", 70) / 100;
 		RESPAWN_RANDOM_ENABLED = config.getBoolean("RespawnRandomOffset", true);
 		RESPAWN_RANDOM_MAX_OFFSET = config.getInteger("RespawnRandomMaxOffset", 20);
 		MAX_PVTSTORE_SLOTS_DWARF = config.getInteger("MaxPvtStoreSlotsDwarf", 5);
@@ -2257,10 +2257,10 @@ public final class Config
 		ALT_GAME_FREIGHT_PRICE = config.getInteger("AltGameFreightPrice", 1000);
 		
 		LIST_PET_RENT_NPC = config.getList("ListPetRentNpc");
-		RAID_HP_REGEN_MULTIPLIER = config.getInteger("RaidHpRegenMultiplier", 100) / 100;
-		RAID_MP_REGEN_MULTIPLIER = config.getInteger("RaidMpRegenMultiplier", 100) / 100;
-		RAID_PDEFENCE_MULTIPLIER = config.getInteger("RaidPDefenceMultiplier", 100) / 100;
-		RAID_MDEFENCE_MULTIPLIER = config.getInteger("RaidMDefenceMultiplier", 100) / 100;
+		RAID_HP_REGEN_MULTIPLIER = config.getDouble("RaidHpRegenMultiplier", 100) / 100;
+		RAID_MP_REGEN_MULTIPLIER = config.getDouble("RaidMpRegenMultiplier", 100) / 100;
+		RAID_PDEFENCE_MULTIPLIER = config.getDouble("RaidPDefenceMultiplier", 100) / 100;
+		RAID_MDEFENCE_MULTIPLIER = config.getDouble("RaidMDefenceMultiplier", 100) / 100;
 		RAID_MINION_RESPAWN_TIMER = config.getInteger("RaidMinionRespawnTime", 300000);
 		RAID_MIN_RESPAWN_MULTIPLIER = config.getDouble("RaidMinRespawnMultiplier", 1.0);
 		RAID_MAX_RESPAWN_MULTIPLIER = config.getDouble("RaidMaxRespawnMultiplier", 1.0);
