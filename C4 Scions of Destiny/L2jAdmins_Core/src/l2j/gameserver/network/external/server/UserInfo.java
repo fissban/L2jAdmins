@@ -96,7 +96,9 @@ public class UserInfo extends AServerPacket
 		writeD(cha.getInventory().getTotalWeight());
 		writeD(cha.getMaxLoad());
 		
-		writeD(0x28); // unknown
+		writeD(cha.getActiveWeaponItem() != null ? 40 : 20); // 20 no weapon, 40 weapon equippe
+		
+		// writeD(0x28); // unknown
 		
 		writeD(cha.getInventory().getPaperdollObjectId(ParpedollType.UNDER));
 		writeD(cha.getInventory().getPaperdollObjectId(ParpedollType.REAR));
@@ -177,7 +179,7 @@ public class UserInfo extends AServerPacket
 		writeD(cha.getHairStyle());
 		writeD(cha.getHairColor());
 		writeD(cha.getFace());
-		writeD((cha.getAccessLevel() > 0) ? 1 : 0); // builder level
+		writeD((cha.getAccessLevel() > 0) ? 0x01 : 0x00); // builder level
 		
 		String title = cha.getTitle();
 		if (cha.getInvisible() && cha.isGM())
@@ -202,8 +204,8 @@ public class UserInfo extends AServerPacket
 		// siege flags: attacker - 0x180 sword over name, defender - 0x80 shield, 0xC0 crown (|leader), 0x1C0 flag (|leader)
 		writeD(relation);
 		writeC(cha.getMountType().ordinal()); // mount type
-		writeC(ObjectData.get(PlayerHolder.class, cha).isSellBuff() ? 1 : cha.getPrivateStore().getStoreType().getValue());
-		writeC(cha.hasDwarvenCraft() ? 1 : 0);
+		writeC(ObjectData.get(PlayerHolder.class, cha).isSellBuff() ? 0x01 : cha.getPrivateStore().getStoreType().getValue());
+		writeC(cha.hasDwarvenCristallize() ? 0x01 : 0x00);
 		writeD(cha.getPkKills());
 		writeD(cha.getPvpKills());
 		
@@ -213,7 +215,7 @@ public class UserInfo extends AServerPacket
 			writeH(type.ordinal());
 		}
 		
-		writeC(cha.isLookingForParty() ? 1 : 0);
+		writeC(cha.isLookingForParty() ? 0x01 : 0x00);
 		
 		writeD(cha.getAbnormalEffect());
 		writeC(0x00);
@@ -236,15 +238,15 @@ public class UserInfo extends AServerPacket
 		writeD(0x00); // special effects? circles around player...
 		writeD(cha.getStat().getMaxCp());
 		writeD((int) cha.getCurrentCp());
-		writeC(cha.isMounted() ? 0 : cha.getEnchantEffect());
+		writeC(cha.isMounted() ? 0x00 : cha.getEnchantEffect());
 		
 		writeC(cha.getTeam().ordinal()); // team circle around feet 1= Blue, 2 = red
 		
 		writeD(cha.getClanCrestLargeId());
-		writeC(cha.isNoble() ? 1 : 0); // 0x01: symbol on char menu ctrl+I
-		writeC((cha.isHero() || (cha.isGM() && Config.GM_HERO_AURA)) ? 1 : 0); // 0x01: Hero Aura
+		writeC(cha.isNoble() ? 0x01 : 0x00); // 0x01: symbol on char menu ctrl+I
+		writeC((cha.isHero() || (cha.isGM() && Config.GM_HERO_AURA)) ? 0x01 : 0x00); // 0x01: Hero Aura
 		
-		writeC(cha.getFishing().isFishing() ? 1 : 0); // Fishing Mode
+		writeC(cha.getFishing().isFishing() ? 0x01 : 0x00); // Fishing Mode
 		writeD(cha.getFishing().getLoc().getX()); // fishing x
 		writeD(cha.getFishing().getLoc().getY()); // fishing y
 		writeD(cha.getFishing().getLoc().getZ()); // fishing z

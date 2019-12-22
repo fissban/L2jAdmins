@@ -931,6 +931,14 @@ public final class L2PcInstance extends L2Playable
 	}
 	
 	/**
+	 * @return True if the L2PcInstance can crystallize.
+	 */
+	public boolean hasDwarvenCristallize()
+	{
+		return getSkillLevel(Skill.SKILL_CRYSTALLIZE) >= 1;
+	}
+	
+	/**
 	 * @return True if the L2PcInstance can Craft Dwarven Recipes.
 	 */
 	public boolean hasDwarvenCraft()

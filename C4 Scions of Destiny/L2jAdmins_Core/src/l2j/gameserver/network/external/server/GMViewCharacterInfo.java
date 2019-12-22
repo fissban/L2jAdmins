@@ -134,7 +134,7 @@ public class GMViewCharacterInfo extends AServerPacket
 		writeD(cha.getAllyId()); // ally id
 		writeC(cha.getMountType().ordinal()); // ??
 		writeC(cha.getPrivateStore().getStoreType().getValue()); // ??
-		writeC(cha.hasDwarvenCraft() ? 1 : 0); // ??
+		writeC(cha.hasDwarvenCristallize() ? 1 : 0); // ??
 		writeD(cha.getPkKills());
 		writeD(cha.getPvpKills());
 		

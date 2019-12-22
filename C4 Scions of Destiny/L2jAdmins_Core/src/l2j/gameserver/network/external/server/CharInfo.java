@@ -120,7 +120,7 @@ public class CharInfo extends AServerPacket
 			writeC(0x16);
 			writeD(cha.getObjectId());
 			writeD(template.getId() + 1000000); // npctype id
-			writeD(cha.getKarma() > 0 ? 1 : 0);
+			writeD(cha.getKarma() > 0 ? 0x01 : 0x00);
 			writeD(x);
 			writeD(y);
 			writeD(z);
@@ -141,20 +141,20 @@ public class CharInfo extends AServerPacket
 			writeF(template.getCollisionRadius());
 			writeF(template.getCollisionHeight());
 			writeD(inv.getPaperdollItemId(ParpedollType.RHAND)); // right hand weapon
-			writeD(0);
+			writeD(0x00);
 			writeD(inv.getPaperdollItemId(ParpedollType.LHAND)); // left hand weapon
-			writeC(1); // name above char 1=true ... ??
-			writeC(cha.isRunning() ? 1 : 0);
-			writeC(cha.isInCombat() ? 1 : 0);
-			writeC(cha.isAlikeDead() ? 1 : 0);
+			writeC(0x01); // name above char 1=true ... ??
+			writeC(cha.isRunning() ? 0x01 : 0x00);
+			writeC(cha.isInCombat() ? 0x01 : 0x00);
+			writeC(cha.isAlikeDead() ? 0x01 : 0x00);
 			
 			if (gmSeeInvis)
 			{
-				writeC(0);
+				writeC(0x00);
 			}
 			else
 			{
-				writeC(cha.getInvisible() ? 1 : 0); // invisible ?? 0=false 1=true 2=summoned (only works if model has a summon animation)
+				writeC(cha.getInvisible() ? 0x01 : 0x00); // invisible ?? 0=false 1=true 2=summoned (only works if model has a summon animation)
 			}
 			
 			writeS(cha.getName());
@@ -168,17 +168,17 @@ public class CharInfo extends AServerPacket
 				writeS(cha.getTitle());
 			}
 			
-			writeD(0);
-			writeD(0);
-			writeD(0000); // hmm karma ??
+			writeD(0x00);
+			writeD(0x00);
+			writeD(0x00); // hmm karma ??
 			
 			writeD(cha.getAbnormalEffect()); // C2
-			writeD(0000); // C2
-			writeD(0000); // C2
-			writeD(0000); // C2
-			writeD(0000); // C2
+			writeD(0x00); // C2
+			writeD(0x00); // C2
+			writeD(0x00); // C2
+			writeD(0x00); // C2
 			
-			writeC(0000); // C2
+			writeC(0x00); // C2
 			writeC(0x00); // event team?
 			
 			writeF(template.getCollisionRadius());
@@ -207,7 +207,7 @@ public class CharInfo extends AServerPacket
 				writeD(cha.getBaseClass());
 			}
 			
-			writeD(0); // unknown, maybe underwear?
+			writeD(0x00); // unknown, maybe underwear?
 			writeD(inv.getPaperdollItemId(ParpedollType.HEAD));
 			writeD(inv.getPaperdollItemId(ParpedollType.RHAND));
 			writeD(inv.getPaperdollItemId(ParpedollType.LHAND));
@@ -270,20 +270,20 @@ public class CharInfo extends AServerPacket
 			writeD(cha.getAllyCrestId());
 			// In UserInfo leader rights and siege flags, but here found nothing??
 			// Therefore RelationChanged packet with that info is required
-			writeD(0);
+			writeD(0x00);
 			
-			writeC(cha.isSitting() ? 0 : 1); // standing = 1 sitting = 0
-			writeC(cha.isRunning() ? 1 : 0); // running = 1 walking = 0
-			writeC(cha.isInCombat() ? 1 : 0);
-			writeC(!cha.isInOlympiadMode() && cha.isAlikeDead() ? 1 : 0);// En olympiadas los players no mueren
+			writeC(cha.isSitting() ? 0x00 : 0x01); // standing = 1 sitting = 0
+			writeC(cha.isRunning() ? 0x01 : 0x00); // running = 1 walking = 0
+			writeC(cha.isInCombat() ? 0x01 : 0x00);
+			writeC(!cha.isInOlympiadMode() && cha.isAlikeDead() ? 0x01 : 0x00);// En olympiadas los players no mueren
 			
 			if (gmSeeInvis)
 			{
-				writeC(0);
+				writeC(0x00);
 			}
 			else
 			{
-				writeC(cha.getInvisible() ? 1 : 0); // invisible = 1 visible =0
+				writeC(cha.getInvisible() ? 0x01 : 0x00); // invisible = 1 visible =0
 			}
 			
 			writeC(cha.getMountType().ordinal()); // 1 on strider 2 on wyvern 0 no mount
@@ -295,7 +295,7 @@ public class CharInfo extends AServerPacket
 				writeH(type.ordinal());
 			}
 			
-			writeC(cha.isLookingForParty() ? 1 : 0);
+			writeC(cha.isLookingForParty() ? 0x01 : 0x00);
 			
 			writeD(cha.getAbnormalEffect());
 			
@@ -307,15 +307,15 @@ public class CharInfo extends AServerPacket
 			
 			writeD(0x00); // ??
 			
-			writeC(cha.isMounted() ? 0 : cha.getEnchantEffect());
+			writeC(cha.isMounted() ? 0x00 : cha.getEnchantEffect());
 			
 			writeC(cha.getTeam().ordinal()); // team circle around feet 1= Blue, 2 = red
 			
 			writeD(cha.getClanCrestLargeId());
-			writeC(cha.isNoble() ? 1 : 0); // Symbol on char menu ctrl+I
-			writeC((cha.isHero() || (cha.isGM() && Config.GM_HERO_AURA)) ? 1 : 0); // Hero Aura
+			writeC(cha.isNoble() ? 0x01 : 0x00); // Symbol on char menu ctrl+I
+			writeC((cha.isHero() || (cha.isGM() && Config.GM_HERO_AURA)) ? 0x01 : 0x00); // Hero Aura
 			
-			writeC(cha.getFishing().isFishing() ? 1 : 0); // 0x01: Fishing Mode (Cant be undone by setting back to 0)
+			writeC(cha.getFishing().isFishing() ? 0x01 : 0x00); // 0x01: Fishing Mode (Cant be undone by setting back to 0)
 			writeD(cha.getFishing().getLoc().getX());
 			writeD(cha.getFishing().getLoc().getY());
 			writeD(cha.getFishing().getLoc().getZ());
