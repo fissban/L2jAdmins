@@ -34,6 +34,11 @@ public class MagicEffectIcons extends AServerPacket
 	
 	public void addEffect(int skillId, int level, int duration)
 	{
+		if (skillId == 2031 || skillId == 2032 || skillId == 2037)
+		{
+			return;
+		}
+		
 		effects.add(new Effect(skillId, level, duration));
 	}
 	

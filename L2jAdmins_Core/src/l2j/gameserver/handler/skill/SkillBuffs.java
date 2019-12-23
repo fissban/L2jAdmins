@@ -8,6 +8,7 @@ import l2j.gameserver.model.actor.L2Character;
 import l2j.gameserver.model.actor.instance.L2PcInstance;
 import l2j.gameserver.model.actor.instance.enums.ShotType;
 import l2j.gameserver.model.actor.manager.character.skills.Skill;
+import l2j.gameserver.model.actor.manager.character.skills.effects.Effect;
 import l2j.gameserver.model.actor.manager.character.skills.enums.SkillType;
 
 /**
@@ -32,7 +33,16 @@ public class SkillBuffs implements ISkillHandler
 			targets.forEach(object -> skill.getEffects(activeChar, (L2Character) object));
 		}
 		
-		skill.getEffectsSelf(activeChar);
+		if (skill.hasSelfEffects())
+		{
+			Effect effect = activeChar.getEffect(skill.getId());
+			if (effect != null && effect.isSelfEffect())
+			{
+				effect.exit();
+			}
+			
+			skill.getEffectsSelf(activeChar);
+		}
 		
 		var bss = activeChar.isChargedShot(ShotType.BLESSED_SPIRITSHOTS);
 		var sps = activeChar.isChargedShot(ShotType.SPIRITSHOTS);

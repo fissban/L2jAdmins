@@ -99,7 +99,7 @@ public class ItemPotions implements IItemHandler
 				}
 				usePotion(activeChar, item, 2002, 1);
 				break;
-			
+			case 1061: // healing_potion, xml: 2032
 			case 727: // healing_potion, xml: 2032
 				if (!isEffectReplaceable(activeChar, EffectType.HEAL_OVER_TIME, itemId))
 				{
@@ -128,14 +128,6 @@ public class ItemPotions implements IItemHandler
 				}
 				
 				usePotion(activeChar, item, 2031, 1);
-				break;
-			
-			case 1061: // healing_potion, xml: 2032
-				if (!isEffectReplaceable(activeChar, EffectType.HEAL_OVER_TIME, itemId))
-				{
-					return;
-				}
-				usePotion(activeChar, item, 2032, 1);
 				break;
 			
 			case 1062:
@@ -218,6 +210,13 @@ public class ItemPotions implements IItemHandler
 			}
 			
 			player.broadcastPacket(new MagicSkillUse(player, player, skill.getId(), skill.getLevel(), skill.getHitTime(), 0));
+			
+			// only for Heal potions
+			if (magicId == 2031 || magicId == 2032 || magicId == 2037)
+			{
+				// TODO se usa 15 como valor default pero depende del calculo de duracion del efecto.
+				player.shortBuffStatusUpdate(magicId, level, 15);
+			}
 			
 			// Apply effects
 			ISkillHandler handler = SkillHandler.getHandler(skill.getSkillType());

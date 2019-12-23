@@ -163,6 +163,7 @@ import l2j.gameserver.network.external.server.SendTradeDone;
 import l2j.gameserver.network.external.server.SendTradeDone.SendTradeType;
 import l2j.gameserver.network.external.server.SetupGauge;
 import l2j.gameserver.network.external.server.SetupGauge.SetupGaugeType;
+import l2j.gameserver.network.external.server.ShortBuffStatusUpdate;
 import l2j.gameserver.network.external.server.ShortCutInit;
 import l2j.gameserver.network.external.server.SkillCoolTime;
 import l2j.gameserver.network.external.server.SkillList;
@@ -8480,5 +8481,25 @@ public final class L2PcInstance extends L2Playable
 		
 		floodActions.put(action, currentTime + REUSEDELAY[action.ordinal()]);
 		return value;
+	}
+	
+	/** ShortBuff clearing Task */
+	private ScheduledFuture<?> shortBuffTask = null;
+	
+	/**
+	 * @param magicId
+	 * @param level
+	 * @param time
+	 */
+	public void shortBuffStatusUpdate(int magicId, int level, int time)
+	{
+		if (shortBuffTask != null)
+		{
+			shortBuffTask.cancel(false);
+			shortBuffTask = null;
+		}
+		shortBuffTask = ThreadPoolManager.schedule(() -> sendPacket(new ShortBuffStatusUpdate(0, 0, 0)), time * 1000);
+		
+		sendPacket(new ShortBuffStatusUpdate(magicId, level, time));
 	}
 }
