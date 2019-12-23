@@ -8,7 +8,6 @@ import l2j.gameserver.handler.command.admin.AdminAdmin;
 import l2j.gameserver.handler.command.admin.AdminAnnouncements;
 import l2j.gameserver.handler.command.admin.AdminBanChar;
 import l2j.gameserver.handler.command.admin.AdminBanChat;
-import l2j.gameserver.handler.command.admin.AdminConfigs;
 import l2j.gameserver.handler.command.admin.AdminCreateItem;
 import l2j.gameserver.handler.command.admin.AdminDelete;
 import l2j.gameserver.handler.command.admin.AdminDoorControl;
@@ -72,7 +71,6 @@ public class CommandAdminHandler
 		registerAdminCommand(new AdminAnnouncements());
 		registerAdminCommand(new AdminBanChar());
 		registerAdminCommand(new AdminBanChat());
-		registerAdminCommand(new AdminConfigs());
 		registerAdminCommand(new AdminCreateItem());
 		registerAdminCommand(new AdminDelete());
 		registerAdminCommand(new AdminDoorControl());
