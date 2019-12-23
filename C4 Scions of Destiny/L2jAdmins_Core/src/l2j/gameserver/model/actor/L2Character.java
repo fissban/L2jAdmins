@@ -386,8 +386,8 @@ public abstract class L2Character extends L2Object
 	 */
 	protected boolean needHpUpdate()
 	{
-		var barPixels = 352;
-		var currentHp = getCurrentHp();
+		int barPixels = 352;
+		double currentHp = getCurrentHp();
 		if ((currentHp <= 1.0) || (getStat().getMaxHp() < barPixels))
 		{
 			return true;
@@ -402,8 +402,8 @@ public abstract class L2Character extends L2Object
 			}
 			else
 			{
-				var doubleMulti = currentHp / hpUpdateInterval;
-				var intMulti = (int) doubleMulti;
+				double doubleMulti = currentHp / hpUpdateInterval;
+				int intMulti = (int) doubleMulti;
 				
 				hpUpdateDecCheck = hpUpdateInterval * (doubleMulti < intMulti ? intMulti-- : intMulti);
 				hpUpdateIncCheck = hpUpdateDecCheck + hpUpdateInterval;
