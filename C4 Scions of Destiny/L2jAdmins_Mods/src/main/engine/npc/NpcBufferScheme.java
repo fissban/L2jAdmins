@@ -256,7 +256,7 @@ public class NpcBufferScheme extends AbstractMod
 				
 				// obtenemos el scheme actual
 				var listBuff = getValueDB(ph.getObjectId(), schemeNameRemove).getString();
-				// agregamos el nuevo buff
+				// removemos el buff
 				listBuff = listBuff.replaceFirst(id + "," + level + ";", "");
 				// lo salvamos en la memoria y la db
 				setValueDB(ph.getObjectId(), schemeNameRemove, listBuff);
@@ -398,7 +398,7 @@ public class NpcBufferScheme extends AbstractMod
 					var shemeName = eventParam1;
 					var buffList = getValueDB(ph.getObjectId(), shemeName).getString();
 					
-					if (buffList != null)
+					if (buffList != null && !buffList.isEmpty())
 					{
 						for (String buff : buffList.split(";"))
 						{
@@ -884,7 +884,7 @@ public class NpcBufferScheme extends AbstractMod
 	{
 		var buffList = getValueDB(ph.getObjectId(), scheme).getString();
 		
-		if (buffList == null)
+		if (buffList == null || buffList.isEmpty())
 		{
 			return false;
 		}
@@ -1253,7 +1253,7 @@ public class NpcBufferScheme extends AbstractMod
 			{
 				System.out.println("error en remove buff");
 			}
-			else
+			else if (!buffList.isEmpty())
 			{
 				for (var buff : buffList.split(";"))
 				{
