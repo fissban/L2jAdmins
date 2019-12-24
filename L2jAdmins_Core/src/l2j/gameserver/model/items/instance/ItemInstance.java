@@ -303,13 +303,14 @@ public final class ItemInstance extends L2Object
 			return;
 		}
 		
-		if ((itemCount > 0) && (count + itemCount > Integer.MAX_VALUE))
+		// prevent negative values
+		try
+		{
+			count = Math.addExact(itemCount, count);
+		}
+		catch (Exception e)
 		{
 			count = Integer.MAX_VALUE;
-		}
-		else
-		{
-			count += itemCount;
 		}
 		
 		if (count < 0)
@@ -1051,7 +1052,7 @@ public final class ItemInstance extends L2Object
 				LOG.severe("ItemInstance: Could not update Timer save in Buylist" + e);
 				e.printStackTrace();
 			}
-			
+		
 		}, remainingTime, (long) getTime() * 3600000);
 	}
 	
