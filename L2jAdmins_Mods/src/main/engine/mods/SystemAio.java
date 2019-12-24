@@ -363,7 +363,7 @@ public class SystemAio extends AbstractMod
 		var lvl = getValueDB(ph, "aio lvl").getInt();
 		if (lvl > 0)
 		{
-			ph.getInstance().getStat().addExp(ph.getInstance().getStat().getExpForLevel(lvl));
+			ph.getInstance().getStat().setExp(ph.getInstance().getStat().getExpForLevel(lvl));
 		}
 		// init title
 		ph.getInstance().setTitle("");
