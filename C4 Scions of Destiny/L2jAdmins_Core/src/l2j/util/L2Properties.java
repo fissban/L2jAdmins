@@ -13,8 +13,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-import l2j.Config;
-
 /**
  * Specialized {@link java.util.Properties} class.<br>
  * Simplifies loading of property files and adds logging if a non existing property is requested.<br>
@@ -74,8 +72,6 @@ public final class L2Properties extends Properties
 			LOG.info("L2Properties: Missing defaultValue for key - " + key);
 			return defaultValue;
 		}
-		
-		Config.addConfig(key, property);
 		
 		return property.trim();
 	}
