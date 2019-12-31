@@ -72,6 +72,7 @@ public class RecomTaskManager extends AbstractTask implements Runnable
 		try (Connection con = DatabaseManager.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE characters SET rec_left=?,rec_have=? WHERE obj_id=?"))
 		{
+			int count = 0;
 			for (PlayerRecomHolder prh : players)
 			{
 				if (prh.level < 20)
@@ -97,7 +98,13 @@ public class RecomTaskManager extends AbstractTask implements Runnable
 				
 				ps.setInt(2, prh.recomHave);
 				ps.setInt(3, prh.objId);
-				ps.execute();
+				ps.addBatch();
+				count++;
+			}
+			
+			if (count > 0)
+			{
+				ps.executeBatch();
 			}
 		}
 		catch (Exception e)
