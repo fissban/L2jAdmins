@@ -52,6 +52,7 @@ public class DatabaseManager
 		catch (Exception e)
 		{
 			LOG.log(Level.INFO, "", e);
+			e.printStackTrace();
 		}
 	}
 	

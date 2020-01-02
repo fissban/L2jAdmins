@@ -51,14 +51,12 @@ public class ThreadPoolManager
 	{
 		try
 		{
-			System.out.println("ThreadPool: Shutting down.");
-			
 			scheduledPools.forEach(t -> t.shutdown());
 			instantPools.forEach(t -> t.shutdown());
 		}
-		catch (Throwable t)
+		catch (Exception e)
 		{
-			t.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 	
@@ -118,7 +116,7 @@ public class ThreadPoolManager
 	}
 	
 	/**
-	 * @param              <T> : The pool type.
+	 * @param  <T>         : The pool type.
 	 * @param  threadPools : The pool array to check.
 	 * @return             the less fed pool.
 	 */

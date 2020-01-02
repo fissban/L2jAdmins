@@ -16,8 +16,7 @@ public final class RestartTaskManager extends AbstractTask implements Runnable
 	@Override
 	public void run()
 	{
-		Shutdown handler = new Shutdown(50, true);
-		handler.start();
+		Shutdown.getInstance().startShutdown(50, true);
 	}
 	
 	public final static RestartTaskManager getInstance()

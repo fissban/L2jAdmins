@@ -182,8 +182,6 @@ public class ItemsOnGroundTaskManager extends AbstractTask implements Runnable
 				e.printStackTrace();
 			}
 		}
-		
-		System.err.println(ItemsOnGroundTaskManager.class.getSimpleName() + ": All items on ground saved!");
 	}
 	
 	/**

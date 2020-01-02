@@ -75,7 +75,7 @@ public class DeadLockDetector extends Thread
 					{
 						AnnouncementsData an = AnnouncementsData.getInstance();
 						an.announceToAll("Server has stability issues - restarting now.");
-						Shutdown.getInstance().startTelnetShutdown("DeadLockDetector - Auto Restart", 60, true);
+						Shutdown.getInstance().startShutdown(60, true);
 					}
 				}
 				Thread.sleep(sleepTime);
