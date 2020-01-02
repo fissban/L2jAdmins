@@ -16,8 +16,7 @@ public class ShutdownTaskManager extends AbstractTask implements Runnable
 	@Override
 	public void run()
 	{
-		Shutdown handler = new Shutdown(50, false);
-		handler.start();
+		Shutdown.getInstance().startShutdown(50, false);
 	}
 	
 	public final static ShutdownTaskManager getInstance()
