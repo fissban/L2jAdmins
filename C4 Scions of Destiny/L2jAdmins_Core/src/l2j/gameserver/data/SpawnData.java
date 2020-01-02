@@ -1,4 +1,3 @@
-
 package l2j.gameserver.data;
 
 import java.sql.Connection;
