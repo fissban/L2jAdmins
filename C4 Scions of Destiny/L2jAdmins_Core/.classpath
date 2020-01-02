@@ -45,6 +45,10 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="dist/libs/L2J_EngineMods.jar"/>
+	<classpathentry kind="lib" path="dist/libs/L2J_EngineMods.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
