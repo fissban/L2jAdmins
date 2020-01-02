@@ -101,7 +101,7 @@ public class CrestData
 			}
 		}
 		
-		UtilPrint.result("ClanHallData", "Loaded crest ", cache.size());
+		UtilPrint.result("CrestData", "Loaded crest ", cache.size());
 	}
 	
 	public static void convertOldPledgeFiles()
