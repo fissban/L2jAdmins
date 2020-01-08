@@ -53,7 +53,7 @@ public class AdminCommandData extends XmlParser
 			}
 		}
 		
-		LOG.warning("AdminCommandTable: missing AdminCommandHandler < " + command + " > in adminCommands.xml");
+		LOG.warn("AdminCommandTable: missing AdminCommandHandler < " + command + " > in adminCommands.xml");
 		return 1;
 	}
 	

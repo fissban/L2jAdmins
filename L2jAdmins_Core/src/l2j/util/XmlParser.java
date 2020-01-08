@@ -3,10 +3,11 @@ package l2j.util;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -21,7 +22,7 @@ import l2j.util.file.filter.XMLFilter;
  */
 public abstract class XmlParser
 {
-	public final Logger LOG = Logger.getLogger(getClass().getName());
+	public final Logger LOG = LoggerFactory.getLogger(XmlParser.class);
 	private static final XMLFilter XML_FILTER = new XMLFilter();
 	
 	private static final DocumentBuilderFactory BUILDER;
@@ -55,11 +56,11 @@ public abstract class XmlParser
 	 * <b>Validation is enforced.</b>
 	 * @param file the XML file to parse.
 	 */
-	private void loadFile(File file)
+	protected void loadFile(File file)
 	{
 		if (!XML_FILTER.accept(file))
 		{
-			LOG.warning(getClass().getSimpleName() + ": Could not parse " + file.getName() + " is not a file or it doesn't exist!");
+			LOG.warn(getClass().getSimpleName() + ": Could not parse " + file.getName() + " is not a file or it doesn't exist!");
 			return;
 		}
 		
@@ -72,8 +73,7 @@ public abstract class XmlParser
 		}
 		catch (Exception e)
 		{
-			LOG.warning(getClass().getSimpleName() + ": Could not parse " + file.getName() + " file: " + e.getMessage());
-			e.printStackTrace();
+			LOG.error(getClass().getSimpleName() + ": Could not parse " + file.getName() + " file. ", e);
 			return;
 		}
 	}
@@ -153,7 +153,7 @@ public abstract class XmlParser
 	{
 		if (!dir.exists())
 		{
-			LOG.warning(getClass().getSimpleName() + ": Folder " + dir.getAbsolutePath() + " doesn't exist!");
+			LOG.warn(getClass().getSimpleName() + ": Folder " + dir.getAbsolutePath() + " doesn't exist!");
 			return false;
 		}
 		

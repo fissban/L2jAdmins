@@ -3,7 +3,9 @@ package l2j.gameserver.data;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import l2j.DatabaseManager;
 import l2j.gameserver.model.entity.clanhalls.auction.Auction;
@@ -11,7 +13,7 @@ import l2j.util.UtilPrint;
 
 public class AuctionData
 {
-	protected static final Logger LOG = Logger.getLogger(AuctionData.class.getName());
+	protected static final Logger LOG = LoggerFactory.getLogger(AuctionData.class);
 	
 	private final Map<Integer, Auction> auctions = new HashMap<>();
 	
@@ -76,7 +78,7 @@ public class AuctionData
 		}
 		catch (Exception e)
 		{
-			LOG.warning(AuctionData.class.getSimpleName() + ": Exception: Auction.load(): " + e.getMessage() + e);
+			LOG.warn(AuctionData.class.getSimpleName() + ": Exception: Auction.load(): " + e.getMessage() + e);
 		}
 		
 		UtilPrint.result("AuctionData", "Loaded auctions", auctions.size());
@@ -111,7 +113,7 @@ public class AuctionData
 		
 		if (i >= ITEM_INIT_DATA_ID.length)
 		{
-			LOG.warning(AuctionData.class.getSimpleName() + ": Clan Hall auction not found for Id :" + id);
+			LOG.warn(AuctionData.class.getSimpleName() + ": Clan Hall auction not found for Id :" + id);
 			return false;
 		}
 		
@@ -123,7 +125,7 @@ public class AuctionData
 		}
 		catch (final Exception e)
 		{
-			LOG.warning(AuctionData.class.getSimpleName() + ": Exception: Auction.initNPC(): " + e.getMessage() + e);
+			LOG.warn(AuctionData.class.getSimpleName() + ": Exception: Auction.initNPC(): " + e.getMessage() + e);
 			return false;
 		}
 		return true;

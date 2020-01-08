@@ -95,7 +95,7 @@ public class RecipeData extends XmlParser
 			}
 			catch (Exception e)
 			{
-				LOG.warning(getClass().getSimpleName() + ": Error saving recipe Item, skipping!");
+				LOG.warn(getClass().getSimpleName() + ": Error saving recipe Item, skipping!");
 				continue;
 			}
 			recipes.put(id, recipeList);

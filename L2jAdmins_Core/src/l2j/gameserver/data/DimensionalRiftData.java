@@ -2,7 +2,6 @@ package l2j.gameserver.data;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -73,15 +72,15 @@ public class DimensionalRiftData extends XmlParser
 							NpcTemplate template = NpcData.getInstance().getTemplate(mobId);
 							if (template == null)
 							{
-								LOG.log(Level.WARNING, "Template " + mobId + " not found!");
+								LOG.warn(getClass().getSimpleName() + ": Template " + mobId + " not found!");
 							}
 							if (!rooms.containsKey(type))
 							{
-								LOG.log(Level.WARNING, "Type " + type + " not found!");
+								LOG.warn(getClass().getSimpleName() + ": Type " + type + " not found!");
 							}
 							else if (!rooms.get(type).containsKey(roomId))
 							{
-								LOG.log(Level.WARNING, "Room " + roomId + " in Type " + type + " not found!");
+								LOG.warn(getClass().getSimpleName() + ": Room " + roomId + " in Type " + type + " not found!");
 							}
 							
 							for (int i = 0; i < count; i++)
