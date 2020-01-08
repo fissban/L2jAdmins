@@ -3,11 +3,8 @@ package l2j.gameserver.data;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import l2j.Config;
@@ -23,62 +20,105 @@ import l2j.gameserver.model.multisell.MultisellEntry;
 import l2j.gameserver.model.multisell.MultisellIngredient;
 import l2j.gameserver.network.external.server.MultiSellList;
 import l2j.util.UtilPrint;
+import l2j.util.XmlParser;
+import l2j.util.file.filter.XMLFilter;
 
-public class MultisellData
+/**
+ * @author anonymous
+ * @author fissban
+ */
+public class MultisellData extends XmlParser
 {
-	private static final Logger LOG = Logger.getLogger(MultisellData.class.getName());
 	private final List<MultisellContainer> entries = new ArrayList<>();
+	
+	private int currentId = 0;
 	
 	public MultisellData()
 	{
 		//
 	}
 	
+	@Override
 	public void load()
 	{
-		parseData();
-	}
-	
-	public void reload()
-	{
-		entries.clear();
-		parseData();
-	}
-	
-	private void parseData()
-	{
-		Document doc = null;
-		int id = 0;
-		List<File> files = new ArrayList<>();
-		hashFiles("multisell", files);
+		File dir = new File(Config.DATAPACK_ROOT, "data/xml/multisell");
 		
-		for (File f : files)
+		XMLFilter XML_FILTER = new XMLFilter();
+		
+		for (File f : dir.listFiles())
 		{
-			id = Integer.parseInt(f.getName().replaceAll(".xml", ""));
-			try
+			if (XML_FILTER.accept(f))
 			{
-				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-				factory.setValidating(false);
-				factory.setIgnoringComments(true);
-				doc = factory.newDocumentBuilder().parse(f);
-			}
-			catch (Exception e)
-			{
-				LOG.severe("Error loading file " + f + e);
-			}
-			try
-			{
-				MultisellContainer list = parseDocument(doc);
-				list.setListId(id);
-				entries.add(list);
-			}
-			catch (Exception e)
-			{
-				LOG.severe("MultisellData: Error in file " + f + e);
+				currentId = Integer.valueOf(f.getName().replace(".xml", ""));
+				loadFile(f);
 			}
 		}
 		
 		UtilPrint.result("MultisellData", "Loaded multisell", entries.size());
+	}
+	
+	public void reload()
+	{
+		//
+	}
+	
+	@Override
+	protected void parseFile()
+	{
+		NamedNodeMap attrs = null;
+		
+		MultisellContainer container = new MultisellContainer();
+		container.setListId(currentId);
+		
+		for (Node nodeList : getNodes("list"))
+		{
+			attrs = nodeList.getAttributes();
+			boolean applyTaxes = parseBoolean(attrs, "applyTaxes");
+			boolean maintainEnchantment = parseBoolean(attrs, "maintainEnchantment");
+			
+			container.setApplyTaxes(applyTaxes);
+			container.setMaintainEnchantment(maintainEnchantment);
+			
+			for (Node nodeItems = nodeList.getFirstChild(); nodeItems != null; nodeItems = nodeItems.getNextSibling())
+			{
+				if (nodeItems.getNodeName().equals("item"))
+				{
+					attrs = nodeItems.getAttributes();
+					// var id = parseInt(attrs, "id");
+					
+					for (Node product = nodeItems.getFirstChild(); product != null; product = product.getNextSibling())
+					{
+						attrs = product.getAttributes();
+						
+						MultisellEntry entry = new MultisellEntry();
+						
+						int entryId = parseInt(attrs, "id");
+						int entryCount = parseInt(attrs, "count");
+						int entryEnchant = 0;
+						try
+						{
+							entryEnchant = parseInt(attrs, "enchant");
+						}
+						catch (Exception e)
+						{
+							//
+						}
+						
+						switch (product.getNodeName())
+						{
+							case "ingredient":
+								entry.addIngredient(new MultisellIngredient(entryId, entryCount, entryEnchant));
+								break;
+							case "production":
+								entry.addProduct(new MultisellIngredient(entryId, entryCount, entryEnchant));
+								break;
+						}
+					}
+				}
+			}
+		}
+		
+		entries.add(container);
 	}
 	
 	public MultisellContainer getList(int id)
@@ -91,106 +131,8 @@ public class MultisellData
 			}
 		}
 		
-		LOG.warning("MultisellData: cant find list with id: " + id);
+		LOG.error("MultisellData: cant find list with id: " + id);
 		return null;
-	}
-	
-	private void hashFiles(String dirname, List<File> hash)
-	{
-		File dir = new File(Config.DATAPACK_ROOT, "data/" + dirname);
-		if (!dir.exists())
-		{
-			LOG.severe("MultisellData: Dir " + dir.getAbsolutePath() + " not exists");
-			return;
-		}
-		File[] files = dir.listFiles();
-		for (File f : files)
-		{
-			if (f.getName().endsWith(".xml"))
-			{
-				hash.add(f);
-			}
-		}
-	}
-	
-	// XXX se puede optimizar usando "extends parseDocument"
-	protected MultisellContainer parseDocument(Document doc)
-	{
-		MultisellContainer list = new MultisellContainer();
-		
-		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
-		{
-			if ("list".equalsIgnoreCase(n.getNodeName()))
-			{
-				Node attribute;
-				attribute = n.getAttributes().getNamedItem("applyTaxes");
-				if (attribute == null)
-				{
-					list.setApplyTaxes(false);
-				}
-				else
-				{
-					list.setApplyTaxes(Boolean.parseBoolean(attribute.getNodeValue()));
-				}
-				attribute = n.getAttributes().getNamedItem("maintainEnchantment");
-				if (attribute == null)
-				{
-					list.setMaintainEnchantment(false);
-				}
-				else
-				{
-					list.setMaintainEnchantment(Boolean.parseBoolean(attribute.getNodeValue()));
-				}
-				
-				for (Node d = n.getFirstChild(); d != null; d = d.getNextSibling())
-				{
-					if ("item".equalsIgnoreCase(d.getNodeName()))
-					{
-						MultisellEntry e = parseEntry(d);
-						list.addEntry(e);
-					}
-				}
-			}
-			else if ("item".equalsIgnoreCase(n.getNodeName()))
-			{
-				MultisellEntry e = parseEntry(n);
-				list.addEntry(e);
-			}
-		}
-		
-		return list;
-	}
-	
-	protected MultisellEntry parseEntry(Node n)
-	{
-		int entryId = Integer.parseInt(n.getAttributes().getNamedItem("id").getNodeValue());
-		
-		Node first = n.getFirstChild();
-		MultisellEntry entry = new MultisellEntry();
-		
-		for (n = first; n != null; n = n.getNextSibling())
-		{
-			if ("ingredient".equalsIgnoreCase(n.getNodeName()))
-			{
-				int id = Integer.parseInt(n.getAttributes().getNamedItem("id").getNodeValue());
-				int count = Integer.parseInt(n.getAttributes().getNamedItem("count").getNodeValue());
-				
-				MultisellIngredient e = new MultisellIngredient(id, count);
-				entry.addIngredient(e);
-			}
-			else if ("production".equalsIgnoreCase(n.getNodeName()))
-			{
-				int id = Integer.parseInt(n.getAttributes().getNamedItem("id").getNodeValue());
-				int count = Integer.parseInt(n.getAttributes().getNamedItem("count").getNodeValue());
-				
-				MultisellIngredient e = new MultisellIngredient(id, count);
-				entry.addProduct(e);
-			}
-		}
-		
-		entry.setEntryId(entryId);
-		
-		return entry;
 	}
 	
 	/**
