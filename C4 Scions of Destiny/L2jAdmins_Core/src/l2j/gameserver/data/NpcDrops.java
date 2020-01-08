@@ -18,7 +18,6 @@ public class NpcDrops extends XmlParser
 	public void load()
 	{
 		loadFile("data/xml/npcDrops.xml");
-		LOG.info(getClass().getSimpleName() + ": Loaded: npc drops.");
 	}
 	
 	public void reLoad()
