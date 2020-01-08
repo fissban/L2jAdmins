@@ -8,7 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Future;
-import java.util.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import l2j.DatabaseManager;
 import l2j.gameserver.ThreadPoolManager;
@@ -45,7 +47,7 @@ public class AnnouncementsData
 		HERO_VOICE,
 	}
 	
-	private static final Logger LOG = Logger.getLogger(AnnouncementsData.class.getName());
+	private static final Logger LOG = LoggerFactory.getLogger(AnnouncementsData.class);
 	
 	// SQL
 	private static final String LOAD_ANNOUNCEMENTS = "SELECT text, sayType, repeatable, reuse FROM announcements";
@@ -80,7 +82,7 @@ public class AnnouncementsData
 		}
 		catch (Exception e)
 		{
-			LOG.warning(AnnouncementsData.class.getSimpleName() + ": Error reading announcements " + e);
+			LOG.warn(AnnouncementsData.class.getSimpleName() + ": Error reading announcements " + e);
 			e.printStackTrace();
 		}
 		
@@ -114,7 +116,7 @@ public class AnnouncementsData
 		}
 		catch (Exception e)
 		{
-			LOG.warning(AnnouncementsData.class.getSimpleName() + ": Error saved announcements " + e);
+			LOG.warn(AnnouncementsData.class.getSimpleName() + ": Error saved announcements " + e);
 			e.printStackTrace();
 		}
 	}
