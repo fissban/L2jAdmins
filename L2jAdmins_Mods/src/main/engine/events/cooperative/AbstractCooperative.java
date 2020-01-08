@@ -21,6 +21,7 @@ import main.data.memory.ObjectData;
 import main.data.memory.WorldData;
 import main.data.properties.ConfigData;
 import main.engine.AbstractMod;
+import main.engine.events.cooperative.AbstractCooperative.EventState;
 import main.holders.WorldHolder;
 import main.holders.objects.CharacterHolder;
 import main.holders.objects.ItemHolder;
@@ -261,7 +262,7 @@ public abstract class AbstractCooperative extends AbstractMod
 							removeAllEffectsAndRevive(ph);
 							// Remove the team effect
 						});
-						
+							
 						setEventState(EventState.TELEPORT_TO_BACK);
 						break;
 					}
