@@ -266,7 +266,7 @@ public class NpcData
 				cnt++;
 			}
 			
-			LOG.info("NpcData: Loaded " + cnt + " Minions.");
+			UtilPrint.result("NpcData", "Loaded minions", cnt);
 		}
 		catch (Exception e)
 		{
