@@ -2,8 +2,8 @@ package main;
 
 import java.nio.ByteBuffer;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -76,7 +76,7 @@ public class EngineModsManager
 {
 	private static final Logger LOG = Logger.getLogger(AbstractMod.class.getName());
 	
-	private static final Map<String, AbstractMod> ENGINES_MODS = new LinkedHashMap<>();
+	private static final Map<String, AbstractMod> ENGINES_MODS = new ConcurrentHashMap<>();
 	
 	public EngineModsManager()
 	{
