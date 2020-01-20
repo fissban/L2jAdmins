@@ -169,7 +169,7 @@ public class UtilInventory
 		var val = ph.getInstance().getInventory().destroyItemByItemId("Engine", itemId, itemCount, ph.getInstance(), true);
 		
 		// Send the ItemList Server->Client Packet to the player in order to refresh its Inventory
-		ph.getInstance().sendPacket(new ItemList(ph.getInstance().getInventory().getItems(), true));
+		ph.getInstance().sendPacket(new ItemList(ph.getInstance().getInventory().getItems(), false));
 		
 		ph.getInstance().broadcastUserInfo();
 		return val;
