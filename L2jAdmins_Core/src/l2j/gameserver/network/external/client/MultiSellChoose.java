@@ -15,9 +15,9 @@ import l2j.gameserver.model.items.Item;
 import l2j.gameserver.model.items.ItemArmor;
 import l2j.gameserver.model.items.ItemWeapon;
 import l2j.gameserver.model.items.instance.ItemInstance;
-import l2j.gameserver.model.multisell.MultisellContainer;
-import l2j.gameserver.model.multisell.MultisellEntry;
-import l2j.gameserver.model.multisell.MultisellIngredient;
+import l2j.gameserver.model.multisell.MultisellHolder;
+import l2j.gameserver.model.multisell.MultisellItemHolder;
+import l2j.gameserver.model.multisell.ProductHolder;
 import l2j.gameserver.network.AClientPacket;
 import l2j.gameserver.network.external.server.ItemList;
 import l2j.gameserver.network.external.server.SystemMessage;
@@ -61,7 +61,7 @@ public class MultiSellChoose extends AClientPacket
 			return;
 		}
 		
-		MultisellContainer list = MultisellData.getInstance().getList(listId);
+		MultisellHolder list = MultisellData.getInstance().getList(listId);
 		if (list == null)
 		{
 			return;
@@ -78,7 +78,7 @@ public class MultiSellChoose extends AClientPacket
 			return;
 		}
 		
-		for (MultisellEntry entry : list.getEntries())
+		for (MultisellItemHolder entry : list.getEntries())
 		{
 			if (entry.getEntryId() == entryId)
 			{
@@ -88,7 +88,7 @@ public class MultiSellChoose extends AClientPacket
 		}
 	}
 	
-	private void doExchange(L2PcInstance player, MultisellEntry templateEntry, boolean applyTaxes, boolean maintainEnchantment, int enchantment)
+	private void doExchange(L2PcInstance player, MultisellItemHolder templateEntry, boolean applyTaxes, boolean maintainEnchantment, int enchantment)
 	{
 		PcInventory inv = player.getInventory();
 		
@@ -101,11 +101,11 @@ public class MultiSellChoose extends AClientPacket
 			return;
 		}
 		
-		MultisellEntry entry = prepareEntry(merchant, templateEntry, applyTaxes, maintainEnchantment, enchantment);
+		MultisellItemHolder entry = prepareEntry(merchant, templateEntry, applyTaxes, maintainEnchantment, enchantment);
 		
 		int slots = 0;
 		int weight = 0;
-		for (MultisellIngredient e : entry.getProducts())
+		for (ProductHolder e : entry.getProducts())
 		{
 			if (e.getItemId() < 0)
 			{
@@ -141,15 +141,15 @@ public class MultiSellChoose extends AClientPacket
 		
 		// Generate a list of distinct ingredients and counts in order to check if the correct item-counts
 		// are possessed by the player
-		List<MultisellIngredient> ingredientsList = new ArrayList<>();
+		List<ProductHolder> ingredientsList = new ArrayList<>();
 		boolean newIng = true;
-		for (MultisellIngredient e : entry.getIngredients())
+		for (ProductHolder e : entry.getIngredients())
 		{
 			newIng = true;
 			
 			// at this point, the template has already been modified so that enchantments are properly included
 			// whenever they need to be applied. Uniqueness of items is thus judged by item id AND enchantment level
-			for (MultisellIngredient ex : ingredientsList)
+			for (ProductHolder ex : ingredientsList)
 			{
 				// if the item was already added in the list, merely increment the count
 				// this happens if 1 list entry has the same ingredient twice (example 2 swords = 1 dual)
@@ -169,11 +169,11 @@ public class MultiSellChoose extends AClientPacket
 			if (newIng)
 			{
 				// if it's a new ingredient, just store its info directly (item id, count, enchantment)
-				ingredientsList.add(new MultisellIngredient(e));
+				ingredientsList.add(new ProductHolder(e));
 			}
 		}
 		// now check if the player has sufficient items in the inventory to cover the ingredients' expences
-		for (MultisellIngredient e : ingredientsList)
+		for (ProductHolder e : ingredientsList)
 		{
 			if ((e.getItemCount() * amount) > Integer.MAX_VALUE)
 			{
@@ -198,7 +198,7 @@ public class MultiSellChoose extends AClientPacket
 		ingredientsList = null;
 		
 		/** All ok, remove items and add final product */
-		for (MultisellIngredient e : entry.getIngredients())
+		for (ProductHolder e : entry.getIngredients())
 		{
 			ItemInstance itemToTake = inv.getItemById(e.getItemId()); // initialize and initial guess for the item to take.
 			
@@ -289,7 +289,7 @@ public class MultiSellChoose extends AClientPacket
 		}
 		
 		// Generate the appropriate items
-		for (MultisellIngredient e : entry.getProducts())
+		for (ProductHolder e : entry.getProducts())
 		{
 			ItemInstance tempItem = ItemData.getInstance().createDummyItem(e.getItemId());
 			if (tempItem == null)
@@ -363,15 +363,15 @@ public class MultiSellChoose extends AClientPacket
 	// example: If the template has an item worth 120aa, and the tax is 10%,
 	// then from 120aa, take 5/6 so that is 100aa, apply the 10% tax in adena (10a)
 	// so the final price will be 120aa and 10a!
-	private MultisellEntry prepareEntry(L2Npc merchant, MultisellEntry templateEntry, boolean applyTaxes, boolean maintainEnchantment, int enchantLevel)
+	private MultisellItemHolder prepareEntry(L2Npc merchant, MultisellItemHolder templateEntry, boolean applyTaxes, boolean maintainEnchantment, int enchantLevel)
 	{
-		MultisellEntry newEntry = new MultisellEntry();
+		MultisellItemHolder newEntry = new MultisellItemHolder();
 		newEntry.setEntryId(templateEntry.getEntryId());
 		
-		for (MultisellIngredient ing : templateEntry.getIngredients())
+		for (ProductHolder ing : templateEntry.getIngredients())
 		{
 			// load the ingredient from the template
-			MultisellIngredient newIngredient = new MultisellIngredient(ing);
+			ProductHolder newIngredient = new ProductHolder(ing);
 			
 			// if taxes are to be applied, modify/add the adena count based on the template adena/ancient adena count
 			if (applyTaxes && ((newIngredient.getItemId() == Inventory.ADENA_ID) || (newIngredient.getItemId() == Inventory.ANCIENT_ADENA_ID)))
@@ -399,7 +399,7 @@ public class MultiSellChoose extends AClientPacket
 					{
 						continue;
 					}
-					newIngredient = new MultisellIngredient(Inventory.ADENA_ID, transactionTax);
+					newIngredient = new ProductHolder(Inventory.ADENA_ID, transactionTax);
 				}
 			}
 			// if it is an armor/weapon, modify the enchantment level appropriately, if necessary
@@ -416,10 +416,10 @@ public class MultiSellChoose extends AClientPacket
 			newEntry.addIngredient(newIngredient);
 		}
 		// Now modify the enchantment level of products, if necessary
-		for (MultisellIngredient ing : templateEntry.getProducts())
+		for (ProductHolder ing : templateEntry.getProducts())
 		{
 			// load the ingredient from the template
-			MultisellIngredient newIngredient = new MultisellIngredient(ing);
+			ProductHolder newIngredient = new ProductHolder(ing);
 			
 			if (maintainEnchantment)
 			{

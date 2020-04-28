@@ -6,12 +6,12 @@ import java.util.List;
 /**
  * @author fissban
  */
-public class MultisellEntry
+public class MultisellItemHolder
 {
 	private int entryId;
 	
-	private final List<MultisellIngredient> products = new ArrayList<>();
-	private final List<MultisellIngredient> ingredients = new ArrayList<>();
+	private final List<ProductHolder> products = new ArrayList<>();
+	private final List<ProductHolder> ingredients = new ArrayList<>();
 	
 	/**
 	 * @param entryId The entryId to set.
@@ -32,7 +32,7 @@ public class MultisellEntry
 	/**
 	 * @param product The product to add.
 	 */
-	public void addProduct(MultisellIngredient product)
+	public void addProduct(ProductHolder product)
 	{
 		products.add(product);
 	}
@@ -40,7 +40,7 @@ public class MultisellEntry
 	/**
 	 * @return the products.
 	 */
-	public List<MultisellIngredient> getProducts()
+	public List<ProductHolder> getProducts()
 	{
 		return products;
 	}
@@ -48,7 +48,7 @@ public class MultisellEntry
 	/**
 	 * @param ingredient The ingredients to set.
 	 */
-	public void addIngredient(MultisellIngredient ingredient)
+	public void addIngredient(ProductHolder ingredient)
 	{
 		ingredients.add(ingredient);
 	}
@@ -56,7 +56,7 @@ public class MultisellEntry
 	/**
 	 * @return the ingredients.
 	 */
-	public List<MultisellIngredient> getIngredients()
+	public List<ProductHolder> getIngredients()
 	{
 		return ingredients;
 	}

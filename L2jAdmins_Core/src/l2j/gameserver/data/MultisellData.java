@@ -15,9 +15,9 @@ import l2j.gameserver.model.items.Item;
 import l2j.gameserver.model.items.ItemArmor;
 import l2j.gameserver.model.items.ItemWeapon;
 import l2j.gameserver.model.items.instance.ItemInstance;
-import l2j.gameserver.model.multisell.MultisellContainer;
-import l2j.gameserver.model.multisell.MultisellEntry;
-import l2j.gameserver.model.multisell.MultisellIngredient;
+import l2j.gameserver.model.multisell.MultisellHolder;
+import l2j.gameserver.model.multisell.MultisellItemHolder;
+import l2j.gameserver.model.multisell.ProductHolder;
 import l2j.gameserver.network.external.server.MultiSellList;
 import l2j.util.UtilPrint;
 import l2j.util.XmlParser;
@@ -29,7 +29,7 @@ import l2j.util.file.filter.XMLFilter;
  */
 public class MultisellData extends XmlParser
 {
-	private final List<MultisellContainer> entries = new ArrayList<>();
+	private final List<MultisellHolder> multisells = new ArrayList<>();
 	
 	private int currentId = 0;
 	
@@ -54,7 +54,7 @@ public class MultisellData extends XmlParser
 			}
 		}
 		
-		UtilPrint.result("MultisellData", "Loaded multisell", entries.size());
+		UtilPrint.result("MultisellData", "Loaded multisell", multisells.size());
 	}
 	
 	public void reload()
@@ -67,63 +67,58 @@ public class MultisellData extends XmlParser
 	{
 		NamedNodeMap attrs = null;
 		
-		MultisellContainer container = new MultisellContainer();
-		container.setListId(currentId);
+		MultisellHolder multisell = new MultisellHolder();
+		multisell.setListId(currentId);
 		
-		for (Node nodeList : getNodes("list"))
+		attrs = getCurrentDocument().getFirstChild().getAttributes();
+		
+		multisell.setApplyTaxes(parseBoolean(attrs, "applyTaxes"));
+		multisell.setMaintainEnchantment(parseBoolean(attrs, "maintainEnchantment"));
+		
+		for (Node itemsNode : getNodes("item"))
 		{
-			attrs = nodeList.getAttributes();
-			boolean applyTaxes = parseBoolean(attrs, "applyTaxes");
-			boolean maintainEnchantment = parseBoolean(attrs, "maintainEnchantment");
+			System.out.println("name:" + itemsNode.getNodeName());
 			
-			container.setApplyTaxes(applyTaxes);
-			container.setMaintainEnchantment(maintainEnchantment);
+			MultisellItemHolder itemHolder = new MultisellItemHolder();
 			
-			for (Node nodeItems = nodeList.getFirstChild(); nodeItems != null; nodeItems = nodeItems.getNextSibling())
+			attrs = itemsNode.getAttributes();
+			itemHolder.setEntryId(parseInt(attrs, "id"));
+			for (Node productNode : getPrivateNodes(itemsNode, "ingredient", "production"))
 			{
-				if (nodeItems.getNodeName().equals("item"))
+				String nodeName = productNode.getNodeName();
+				
+				attrs = productNode.getAttributes();
+				
+				int id = parseInt(attrs, "id");
+				int count = parseInt(attrs, "count");
+				int enchant = 0;
+				try
 				{
-					attrs = nodeItems.getAttributes();
-					// var id = parseInt(attrs, "id");
-					
-					for (Node product = nodeItems.getFirstChild(); product != null; product = product.getNextSibling())
-					{
-						attrs = product.getAttributes();
-						
-						MultisellEntry entry = new MultisellEntry();
-						
-						int entryId = parseInt(attrs, "id");
-						int entryCount = parseInt(attrs, "count");
-						int entryEnchant = 0;
-						try
-						{
-							entryEnchant = parseInt(attrs, "enchant");
-						}
-						catch (Exception e)
-						{
-							//
-						}
-						
-						switch (product.getNodeName())
-						{
-							case "ingredient":
-								entry.addIngredient(new MultisellIngredient(entryId, entryCount, entryEnchant));
-								break;
-							case "production":
-								entry.addProduct(new MultisellIngredient(entryId, entryCount, entryEnchant));
-								break;
-						}
-					}
+					enchant = parseInt(attrs, "enchant");
+				}
+				catch (Exception e)
+				{
+					//
+				}
+				switch (nodeName)
+				{
+					case "ingredient":
+						itemHolder.addIngredient(new ProductHolder(id, count, enchant));
+						break;
+					case "production":
+						itemHolder.addProduct(new ProductHolder(id, count, enchant));
+						break;
 				}
 			}
+			multisell.addEntry(itemHolder);
 		}
 		
-		entries.add(container);
+		multisells.add(multisell);
 	}
 	
-	public MultisellContainer getList(int id)
+	public MultisellHolder getList(int id)
 	{
-		for (MultisellContainer list : entries)
+		for (MultisellHolder list : multisells)
 		{
 			if (list.getListId() == id)
 			{
@@ -147,17 +142,17 @@ public class MultisellData extends XmlParser
 	 * @param  merchant
 	 * @return
 	 */
-	private MultisellContainer generateMultiSell(int listId, boolean inventoryOnly, L2PcInstance player, L2Npc merchant)
+	private MultisellHolder generateMultiSell(int listId, boolean inventoryOnly, L2PcInstance player, L2Npc merchant)
 	{
-		MultisellContainer listTemplate = MultisellData.getInstance().getList(listId);
-		MultisellContainer list = new MultisellContainer();
+		MultisellHolder listTemplate = MultisellData.getInstance().getList(listId);
+		MultisellHolder list = new MultisellHolder();
 		
 		if (listTemplate == null)
 		{
 			return list;
 		}
 		
-		list = new MultisellContainer();
+		list = new MultisellHolder();
 		list.setListId(listId);
 		if ((merchant != null) && (merchant.getId() != 0) && !listTemplate.checkNpcId(merchant.getId()))
 		{
@@ -190,12 +185,12 @@ public class MultisellData extends XmlParser
 				{
 					enchantLevel = (listTemplate.getMaintainEnchantment() ? item.getEnchantLevel() : 0);
 					// loop through the entries to see which ones we wish to include
-					for (MultisellEntry ent : listTemplate.getEntries())
+					for (MultisellItemHolder ent : listTemplate.getEntries())
 					{
 						boolean doInclude = false;
 						
 						// check ingredients of this entry to see if it's an entry we'd like to include.
-						for (MultisellIngredient ing : ent.getIngredients())
+						for (ProductHolder ing : ent.getIngredients())
 						{
 							if (item.getId() == ing.getItemId())
 							{
@@ -218,7 +213,7 @@ public class MultisellData extends XmlParser
 		// this is a list-all type
 		{
 			// if no taxes are applied, no modifications are needed
-			for (MultisellEntry ent : listTemplate.getEntries())
+			for (MultisellItemHolder ent : listTemplate.getEntries())
 			{
 				list.addEntry(prepareEntry(ent, listTemplate.getApplyTaxes(), false, 0, merchant));
 			}
@@ -236,20 +231,19 @@ public class MultisellData extends XmlParser
 	// example: If the template has an item worth 120aa, and the tax is 10%,
 	// then from 120aa, take 5/6 so that is 100aa, apply the 10% tax in adena (10a)
 	// so the final price will be 120aa and 10a!
-	private MultisellEntry prepareEntry(MultisellEntry templateEntry, boolean applyTaxes, boolean maintainEnchantment, int enchantLevel, L2Npc merchant)
+	private MultisellItemHolder prepareEntry(MultisellItemHolder templateEntry, boolean applyTaxes, boolean maintainEnchantment, int enchantLevel, L2Npc merchant)
 	{
-		MultisellEntry newEntry = new MultisellEntry();
+		MultisellItemHolder newEntry = new MultisellItemHolder();
 		newEntry.setEntryId((templateEntry.getEntryId() * 100000) + enchantLevel);
 		
-		for (MultisellIngredient ing : templateEntry.getIngredients())
+		for (ProductHolder ing : templateEntry.getIngredients())
 		{
 			// load the ingredient from the template
-			MultisellIngredient newIngredient = new MultisellIngredient(ing);
+			ProductHolder newIngredient = new ProductHolder(ing);
 			
 			// if taxes are to be applied, modify/add the adena count based on the template adena/ancient adena count
 			if (applyTaxes && ((ing.getItemId() == Inventory.ADENA_ID) || (ing.getItemId() == Inventory.ANCIENT_ADENA_ID)))
 			{
-				
 				double taxRate = 0.0;
 				if ((merchant != null) && (merchant.getCastle() != null))
 				{
@@ -271,7 +265,7 @@ public class MultisellData extends XmlParser
 					{
 						continue;
 					}
-					newIngredient = new MultisellIngredient(Inventory.ADENA_ID, (int) Math.round(taxableCount * taxRate));
+					newIngredient = new ProductHolder(Inventory.ADENA_ID, (int) Math.round(taxableCount * taxRate));
 				}
 			}
 			// if it is an armor/weapon, modify the enchantment level appropriately, if necessary
@@ -288,10 +282,10 @@ public class MultisellData extends XmlParser
 			newEntry.addIngredient(newIngredient);
 		}
 		// Now modify the enchantment level of products, if necessary
-		for (MultisellIngredient ing : templateEntry.getProducts())
+		for (ProductHolder ing : templateEntry.getProducts())
 		{
 			// load the ingredient from the template
-			MultisellIngredient newIngredient = new MultisellIngredient(ing);
+			ProductHolder newIngredient = new ProductHolder(ing);
 			
 			if (maintainEnchantment)
 			{
@@ -310,18 +304,20 @@ public class MultisellData extends XmlParser
 	
 	public void createMultiSell(int listId, L2PcInstance player, boolean inventoryOnly, L2Npc merchant)
 	{
-		MultisellContainer list = generateMultiSell(listId, inventoryOnly, player, merchant);
-		MultisellContainer temp = new MultisellContainer();
+		MultisellHolder list = generateMultiSell(listId, inventoryOnly, player, merchant);
+		
+		MultisellHolder temp = new MultisellHolder();
+		temp.setListId(list.getListId());
+		
 		int page = 1;
 		
-		temp.setListId(list.getListId());
-		for (MultisellEntry e : list.getEntries())
+		for (MultisellItemHolder e : list.getEntries())
 		{
 			if (temp.getEntries().size() == 40)
 			{
 				player.sendPacket(new MultiSellList(temp, page, 0));
 				page++;
-				temp = new MultisellContainer();
+				temp = new MultisellHolder();
 				temp.setListId(list.getListId());
 			}
 			temp.addEntry(e);

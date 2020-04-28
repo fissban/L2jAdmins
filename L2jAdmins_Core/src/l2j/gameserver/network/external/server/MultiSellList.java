@@ -1,9 +1,9 @@
 package l2j.gameserver.network.external.server;
 
 import l2j.gameserver.data.ItemData;
-import l2j.gameserver.model.multisell.MultisellContainer;
-import l2j.gameserver.model.multisell.MultisellEntry;
-import l2j.gameserver.model.multisell.MultisellIngredient;
+import l2j.gameserver.model.multisell.MultisellHolder;
+import l2j.gameserver.model.multisell.MultisellItemHolder;
+import l2j.gameserver.model.multisell.ProductHolder;
 import l2j.gameserver.network.AServerPacket;
 
 /**
@@ -13,9 +13,9 @@ import l2j.gameserver.network.AServerPacket;
 public class MultiSellList extends AServerPacket
 {
 	private final int page, finished;
-	private final MultisellContainer list;
+	private final MultisellHolder list;
 	
-	public MultiSellList(MultisellContainer list, int page, int finished)
+	public MultiSellList(MultisellHolder list, int page, int finished)
 	{
 		this.list = list;
 		this.page = page;
@@ -32,18 +32,18 @@ public class MultiSellList extends AServerPacket
 		writeD(page); // page
 		writeD(finished); // finished
 		writeD(0x28); // size of pages
-		writeD(list == null ? 0 : list.getEntries().size()); // list length
+		writeD(list.getEntries().size()); // list length
 		
 		if (list != null)
 		{
-			for (MultisellEntry ent : list.getEntries())
+			for (MultisellItemHolder ent : list.getEntries())
 			{
 				writeD(ent.getEntryId());
 				writeC(1);
 				writeH(ent.getProducts().size());
 				writeH(ent.getIngredients().size());
 				
-				for (MultisellIngredient i : ent.getProducts())
+				for (ProductHolder i : ent.getProducts())
 				{
 					writeH(i.getItemId());
 					writeD(ItemData.getInstance().getTemplate(i.getItemId()).getBodyPart().getMask());
@@ -52,7 +52,7 @@ public class MultiSellList extends AServerPacket
 					writeH(i.getEnchantmentLevel()); // enchant lvl
 				}
 				
-				for (MultisellIngredient i : ent.getIngredients())
+				for (ProductHolder i : ent.getIngredients())
 				{
 					writeH(i.getItemId()); // ID
 					writeH(ItemData.getInstance().getTemplate(i.getItemId()).getType2().ordinal());

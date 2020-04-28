@@ -1,27 +1,28 @@
 package l2j.gameserver.model.multisell;
 
 /**
+ * Used in ingredient and product with creation multisell.
  * @author fissban
  */
-public class MultisellIngredient
+public class ProductHolder
 {
 	private int itemId;
 	private long itemCount;
 	private int enchantmentLevel;
 	
-	public MultisellIngredient(int itemId, int itemCount)
+	public ProductHolder(int itemId, int itemCount)
 	{
 		this(itemId, itemCount, 0);
 	}
 	
-	public MultisellIngredient(int itemId, long itemCount, int enchantmentLevel)
+	public ProductHolder(int itemId, long itemCount, int enchantmentLevel)
 	{
 		setItemId(itemId);
 		setItemCount(itemCount);
 		setEnchantmentLevel(enchantmentLevel);
 	}
 	
-	public MultisellIngredient(MultisellIngredient e)
+	public ProductHolder(ProductHolder e)
 	{
 		itemId = e.getItemId();
 		itemCount = e.getItemCount();
