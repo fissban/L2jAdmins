@@ -31,6 +31,7 @@ public abstract class XmlParser
 		BUILDER = DocumentBuilderFactory.newInstance();
 		BUILDER.setValidating(false);
 		BUILDER.setIgnoringComments(true);
+		BUILDER.setIgnoringElementContentWhitespace(true);
 	}
 	
 	private Document currentDocument = null;
@@ -110,6 +111,23 @@ public abstract class XmlParser
 			nodes.add(n);
 		}
 		return nodes;
+	}
+	
+	public List<Node> getPrivateNodes(Node nodeList, String... names)
+	{
+		List<Node> aux = new ArrayList<>();
+		for (Node n = nodeList.getFirstChild(); n != null; n = n.getNextSibling())
+		{
+			for (String name : names)
+			{
+				if (name == n.getNodeName())
+				{
+					aux.add(n);
+				}
+			}
+		}
+		
+		return aux;
 	}
 	
 	/**

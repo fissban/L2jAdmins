@@ -6,14 +6,14 @@ import java.util.List;
 /**
  * @author fissban
  */
-public class MultisellContainer
+public class MultisellHolder
 {
 	private int listId = 0;
 	private boolean applyTaxes = false;
 	private boolean maintainEnchantment = false;
 	private List<Integer> npcIds = new ArrayList<>();
 	
-	List<MultisellEntry> entriesC = new ArrayList<>();
+	List<MultisellItemHolder> entriesC = new ArrayList<>();
 	
 	/**
 	 * @param listId The listId to set.
@@ -61,12 +61,12 @@ public class MultisellContainer
 		return npcIds.contains(npcId);
 	}
 	
-	public void addEntry(MultisellEntry e)
+	public void addEntry(MultisellItemHolder e)
 	{
 		entriesC.add(e);
 	}
 	
-	public List<MultisellEntry> getEntries()
+	public List<MultisellItemHolder> getEntries()
 	{
 		return entriesC;
 	}
