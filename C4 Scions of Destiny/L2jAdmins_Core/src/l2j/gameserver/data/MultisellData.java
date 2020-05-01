@@ -77,8 +77,6 @@ public class MultisellData extends XmlParser
 		
 		for (Node itemsNode : getNodes("item"))
 		{
-			System.out.println("name:" + itemsNode.getNodeName());
-			
 			MultisellItemHolder itemHolder = new MultisellItemHolder();
 			
 			attrs = itemsNode.getAttributes();
