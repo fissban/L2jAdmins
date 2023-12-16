@@ -8,3 +8,5 @@ Emulador del servidor de NcSoft para la cronica C4 realizada usando Java.
 - MySql
 
 # Este trabajo fue abordado por Marco Faccio (fissban) apra brindar un servicio gratuito, pido no vender este proyecto ni vender modificaciones.
+
+SeMeMuerenTodos jeje
